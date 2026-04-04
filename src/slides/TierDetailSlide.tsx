@@ -129,7 +129,7 @@ export default function TierDetailSlide() {
                 className="grid items-center"
                 style={{
                   gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
-                  padding: "13px 0",
+                  padding: "18px 0",
                   borderBottom: "1px solid hsl(var(--border) / 0.5)",
                 }}
               >
