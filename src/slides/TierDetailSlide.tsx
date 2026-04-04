@@ -107,7 +107,7 @@ export default function TierDetailSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
+                    fontSize: 18,
                     color: "hsl(var(--pres-text-dim))",
                     marginTop: 3,
                   }}
