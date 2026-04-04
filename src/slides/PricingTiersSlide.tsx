@@ -112,6 +112,7 @@ export default function PricingTiersSlide() {
         <div className="absolute left-[60px] right-[60px] top-[248px] bottom-[50px] grid grid-cols-4 gap-5 z-10">
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
+            const isBestValue = 'bestValue' in tier && tier.bestValue;
 
             return (
               <motion.div
