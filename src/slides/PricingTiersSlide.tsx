@@ -51,6 +51,7 @@ const tiers = [
       "Architecture & code quality",
     ],
     featured: false,
+    bestValue: true,
   },
   {
     name: "Tier 3.B — Leadership",
