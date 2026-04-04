@@ -12,9 +12,8 @@ const fade = (i: number) => ({
 type ColKey = "starter" | "growth" | "skilled" | "leadership";
 
 const features: { label: string; starter: boolean | string; growth: boolean | string; skilled: boolean | string; leadership: boolean | string }[] = [
-  { label: "Dedicated developer", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "160 hrs/month", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "Weekly reports", starter: true, growth: true, skilled: true, leadership: true },
+  { label: "Dedicated developer · 160 hrs/mo", starter: true, growth: true, skilled: true, leadership: true },
+  { label: "Weekly progress reports", starter: true, growth: true, skilled: true, leadership: true },
   { label: "Daily standups", starter: false, growth: true, skilled: true, leadership: true },
   { label: "Sprint participation", starter: false, growth: true, skilled: true, leadership: true },
   { label: "Task breakdown & delegation", starter: false, growth: true, skilled: true, leadership: true },
@@ -22,8 +21,7 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Architecture decisions", starter: false, growth: false, skilled: true, leadership: true },
   { label: "Project management", starter: false, growth: false, skilled: false, leadership: true },
   { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
-  { label: "Priority Slack access", starter: false, growth: true, skilled: true, leadership: true },
-  { label: "24/7 SLA", starter: false, growth: false, skilled: false, leadership: true },
+  { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: "Slack only", leadership: true },
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
@@ -55,7 +53,7 @@ export default function TierDetailSlide() {
         {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[190px] bottom-[40px] z-10"
+          className="absolute left-[80px] right-[80px] top-[180px] bottom-[30px] z-10 flex flex-col"
         >
           {/* Header row */}
           <div
@@ -76,7 +74,7 @@ export default function TierDetailSlide() {
                 style={{
                   background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
                   borderRadius: "12px 12px 0 0",
-                  padding: "10px 4px",
+                  padding: "14px 8px",
                 }}
               >
                 {col.bestValue && (
@@ -86,19 +84,19 @@ export default function TierDetailSlide() {
                       background: "hsl(142 71% 45%)",
                       color: "#fff",
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 10,
+                      fontSize: 13,
                       fontWeight: 700,
                       letterSpacing: "0.05em",
                       whiteSpace: "nowrap",
                     }}
                   >
-                    <Award size={10} /> BEST VALUE
+                    <Award size={13} /> BEST VALUE
                   </div>
                 )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 22,
+                    fontSize: 28,
                     fontWeight: 700,
                     color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
                     marginTop: col.bestValue ? 14 : 0,
@@ -109,7 +107,7 @@ export default function TierDetailSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
+                    fontSize: 18,
                     color: "hsl(var(--pres-text-dim))",
                     marginTop: 3,
                   }}
@@ -121,7 +119,7 @@ export default function TierDetailSlide() {
           </div>
 
           {/* Feature rows */}
-          <div className="flex flex-col">
+          <div className="flex flex-col flex-1 justify-evenly">
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
@@ -131,14 +129,14 @@ export default function TierDetailSlide() {
                 className="grid items-center"
                 style={{
                   gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
-                  padding: "13px 0",
+                  padding: "18px 0",
                   borderBottom: "1px solid hsl(var(--border) / 0.5)",
                 }}
               >
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 17,
+                    fontSize: 22,
                     color: "hsl(var(--pres-text-muted))",
                   }}
                 >
@@ -152,18 +150,18 @@ export default function TierDetailSlide() {
                       className="flex justify-center"
                       style={{
                         background: col.bestValue ? "hsl(142 71% 45% / 0.06)" : "transparent",
-                        padding: "4px 0",
+                        padding: "8px 0",
                       }}
                     >
                       {val === true ? (
-                        <CheckCircle size={20} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
+                        <CheckCircle size={26} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
                       ) : val === false ? (
-                        <X size={20} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
+                        <X size={26} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
                       ) : (
                         <span
                           style={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: 600,
                             color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))",
                           }}
