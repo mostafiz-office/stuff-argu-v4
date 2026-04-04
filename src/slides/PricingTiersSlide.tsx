@@ -11,43 +11,57 @@ const fade = (i: number) => ({
 
 const tiers = [
   {
-    name: "Starter",
-    experience: "1+ Years Experience",
+    name: "Tier 1 — Starter",
+    experience: "1+ Yr Industry · 3+ Yrs Coding",
     price: "$1,900",
     per: "/mo",
     hours: "160 hrs/month",
     features: [
       "Tech-stack specific developer",
-      "Needs mentoring & guidance",
-      "Ideal for support tasks",
+      "Task guidance from Tier 2 lead",
+      "Ideal for well-defined tasks",
       "Weekly progress reports",
     ],
     featured: false,
   },
   {
-    name: "Growth",
+    name: "Tier 2 — Growth",
     experience: "2-3+ Years Experience",
     price: "$4,299",
     per: "/mo",
     hours: "160 hrs/month",
     features: [
       "Fluent, autonomous coder",
-      "Manages up to 2 developers",
+      "Breaks down & delegates tasks",
       "Full sprint participation",
       "Daily standups & Slack access",
     ],
     featured: true,
   },
   {
-    name: "Enterprise",
+    name: "Tier 3.A — Skilled",
     experience: "7-15+ Years Experience",
     price: "$6,800–$8,000",
     per: "/mo",
     hours: "160 hrs/month",
     features: [
-      "Architecture & technical leadership",
+      "Best-in-class developer",
+      "Deep expertise in their stack",
+      "Manages 3-5 team members",
+      "Architecture & code quality",
+    ],
+    featured: false,
+  },
+  {
+    name: "Tier 3.B — Leadership",
+    experience: "7-15+ Years Experience",
+    price: "$7,500–$10,000",
+    per: "/mo",
+    hours: "160 hrs/month",
+    features: [
+      "Project management focus",
       "Manages up to 15 developers",
-      "CTO-level oversight available",
+      "CTO-level strategic oversight",
       "24/7 SLA & priority support",
     ],
     featured: false,
@@ -93,8 +107,8 @@ export default function PricingTiersSlide() {
           All plans include 160 dedicated hours/month. Scale anytime.
         </motion.p>
 
-        {/* Tier cards */}
-        <div className="absolute left-[80px] right-[80px] top-[248px] bottom-[60px] grid grid-cols-3 gap-7 z-10">
+        {/* Tier cards — 4 columns */}
+        <div className="absolute left-[60px] right-[60px] top-[248px] bottom-[50px] grid grid-cols-4 gap-5 z-10">
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
 
@@ -103,29 +117,29 @@ export default function PricingTiersSlide() {
                 key={tier.name}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.15, duration: 0.6 }}
+                transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
                 className="rounded-2xl flex flex-col relative overflow-hidden"
                 style={{
                   background: isFeatured
                     ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
                     : "hsl(var(--pres-bg-surface))",
                   border: `2px solid ${isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
-                  padding: "40px 36px",
+                  padding: "32px 26px",
                 }}
               >
                 {isFeatured && (
                   <div
-                    className="absolute top-0 right-0 flex items-center gap-1.5 px-4 py-1.5 rounded-bl-xl"
+                    className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
                     style={{
                       background: "hsl(var(--pres-accent))",
                       color: "hsl(var(--pres-bg))",
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
+                      fontSize: 12,
                       fontWeight: 700,
                       letterSpacing: "0.05em",
                     }}
                   >
-                    <Star size={14} /> MOST POPULAR
+                    <Star size={12} /> MOST POPULAR
                   </div>
                 )}
 
@@ -133,10 +147,10 @@ export default function PricingTiersSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: 600,
                     color: "hsl(var(--pres-text-dim))",
-                    letterSpacing: "0.15em",
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
                   }}
                 >
@@ -147,21 +161,22 @@ export default function PricingTiersSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 18,
+                    fontSize: 15,
                     color: "hsl(var(--pres-accent))",
                     fontWeight: 500,
                     marginTop: 6,
+                    lineHeight: 1.3,
                   }}
                 >
                   {tier.experience}
                 </p>
 
                 {/* Price */}
-                <div className="mt-5">
+                <div className="mt-4">
                   <span
                     style={{
                       fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: tier.price.length > 8 ? 38 : 52,
+                      fontSize: tier.price.length > 8 ? 30 : 42,
                       fontWeight: 700,
                       color: "hsl(var(--pres-text))",
                     }}
@@ -171,7 +186,7 @@ export default function PricingTiersSlide() {
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 20,
+                      fontSize: 17,
                       color: "hsl(var(--pres-text-dim))",
                     }}
                   >
@@ -181,7 +196,7 @@ export default function PricingTiersSlide() {
 
                 {/* Hours badge */}
                 <div
-                  className="mt-3 inline-flex items-center rounded-lg px-3 py-1.5"
+                  className="mt-2 inline-flex items-center rounded-lg px-3 py-1"
                   style={{
                     background: "hsl(var(--pres-accent) / 0.08)",
                     border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -191,7 +206,7 @@ export default function PricingTiersSlide() {
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: 600,
                       color: "hsl(var(--pres-accent))",
                     }}
@@ -201,11 +216,11 @@ export default function PricingTiersSlide() {
                 </div>
 
                 {/* Features */}
-                <div className="mt-6 space-y-4 flex-1">
+                <div className="mt-5 space-y-3 flex-1">
                   {tier.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
+                    <div key={feature} className="flex items-start gap-2.5">
                       <CheckCircle
-                        size={20}
+                        size={18}
                         style={{
                           color: "hsl(var(--pres-accent))",
                           flexShrink: 0,
@@ -215,7 +230,7 @@ export default function PricingTiersSlide() {
                       <span
                         style={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: 18,
+                          fontSize: 16,
                           color: "hsl(var(--pres-text-muted))",
                           lineHeight: 1.4,
                         }}
