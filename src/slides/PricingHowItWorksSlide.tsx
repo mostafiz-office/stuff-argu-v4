@@ -20,9 +20,9 @@ const steps = [
   {
     icon: UserCheck,
     step: "02",
-    title: "Talent Match",
-    desc: "We present pre-vetted candidates. You interview and select your developer.",
-    time: "Day 2–5",
+    title: "7-Stage Vetting",
+    desc: "We present candidates who passed our 7-stage assessment. You interview & select.",
+    time: "As fast as 20 min",
   },
   {
     icon: Rocket,
