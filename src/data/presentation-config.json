@@ -76,7 +76,7 @@
   },
   "features": {
     "exportEnabled": true,
-    "hiddenSlides": [4, 18]
+    "hiddenSlides": []
   },
   "customization": {
     "clientName": "",
