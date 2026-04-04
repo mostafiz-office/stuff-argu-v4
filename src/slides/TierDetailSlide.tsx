@@ -119,7 +119,7 @@ export default function TierDetailSlide() {
           </div>
 
           {/* Feature rows */}
-          <div className="flex flex-col">
+          <div className="flex flex-col flex-1 justify-evenly">
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
