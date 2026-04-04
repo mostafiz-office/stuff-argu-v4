@@ -74,7 +74,7 @@ export default function TierDetailSlide() {
                 style={{
                   background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
                   borderRadius: "12px 12px 0 0",
-                  padding: "10px 4px",
+                  padding: "14px 8px",
                 }}
               >
                 {col.bestValue && (
