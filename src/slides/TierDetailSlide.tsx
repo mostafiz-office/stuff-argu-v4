@@ -150,7 +150,7 @@ export default function TierDetailSlide() {
                       className="flex justify-center"
                       style={{
                         background: col.bestValue ? "hsl(142 71% 45% / 0.06)" : "transparent",
-                        padding: "4px 0",
+                        padding: "8px 0",
                       }}
                     >
                       {val === true ? (
