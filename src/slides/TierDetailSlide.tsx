@@ -147,9 +147,16 @@ export default function TierDetailSlide() {
                 {columns.map((col) => {
                   const val = feat[col.key];
                   return (
-                    <div key={col.key} className="flex justify-center">
+                    <div
+                      key={col.key}
+                      className="flex justify-center"
+                      style={{
+                        background: col.bestValue ? "hsl(142 71% 45% / 0.06)" : "transparent",
+                        padding: "4px 0",
+                      }}
+                    >
                       {val === true ? (
-                        <CheckCircle size={20} style={{ color: "hsl(var(--pres-accent))" }} />
+                        <CheckCircle size={20} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
                       ) : val === false ? (
                         <X size={20} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
                       ) : (
@@ -158,7 +165,7 @@ export default function TierDetailSlide() {
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: 14,
                             fontWeight: 600,
-                            color: "hsl(var(--pres-accent))",
+                            color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))",
                           }}
                         >
                           {val}
