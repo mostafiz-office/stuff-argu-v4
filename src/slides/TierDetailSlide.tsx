@@ -90,7 +90,7 @@ export default function TierDetailSlide() {
                       whiteSpace: "nowrap",
                     }}
                   >
-                    <Award size={10} /> BEST VALUE
+                    <Award size={13} /> BEST VALUE
                   </div>
                 )}
                 <p
