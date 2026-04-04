@@ -122,10 +122,12 @@ export default function PricingTiersSlide() {
                 transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
                 className="rounded-2xl flex flex-col relative overflow-hidden"
                 style={{
-                  background: isFeatured
-                    ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                    : "hsl(var(--pres-bg-surface))",
-                  border: `2px solid ${isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
+                  background: isBestValue
+                    ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                    : isFeatured
+                      ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                      : "hsl(var(--pres-bg-surface))",
+                  border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
                   padding: "32px 26px",
                 }}
               >
