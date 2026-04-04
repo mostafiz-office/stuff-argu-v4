@@ -156,7 +156,7 @@ export default function TierDetailSlide() {
                       {val === true ? (
                         <CheckCircle size={26} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
                       ) : val === false ? (
-                        <X size={20} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
+                        <X size={26} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
                       ) : (
                         <span
                           style={{
