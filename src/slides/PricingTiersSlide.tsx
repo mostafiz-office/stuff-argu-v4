@@ -147,6 +147,22 @@ export default function PricingTiersSlide() {
                   </div>
                 )}
 
+                {isBestValue && (
+                  <div
+                    className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
+                    style={{
+                      background: "hsl(142 71% 45%)",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    <Award size={12} /> BEST VALUE
+                  </div>
+                )}
+
                 {/* Tier name */}
                 <p
                   style={{
