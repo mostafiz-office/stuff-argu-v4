@@ -12,9 +12,8 @@ const fade = (i: number) => ({
 type ColKey = "starter" | "growth" | "skilled" | "leadership";
 
 const features: { label: string; starter: boolean | string; growth: boolean | string; skilled: boolean | string; leadership: boolean | string }[] = [
-  { label: "Dedicated developer", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "160 hrs/month", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "Weekly reports", starter: true, growth: true, skilled: true, leadership: true },
+  { label: "Dedicated developer · 160 hrs/mo", starter: true, growth: true, skilled: true, leadership: true },
+  { label: "Weekly progress reports", starter: true, growth: true, skilled: true, leadership: true },
   { label: "Daily standups", starter: false, growth: true, skilled: true, leadership: true },
   { label: "Sprint participation", starter: false, growth: true, skilled: true, leadership: true },
   { label: "Task breakdown & delegation", starter: false, growth: true, skilled: true, leadership: true },
@@ -22,8 +21,7 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Architecture decisions", starter: false, growth: false, skilled: true, leadership: true },
   { label: "Project management", starter: false, growth: false, skilled: false, leadership: true },
   { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
-  { label: "Priority Slack access", starter: false, growth: true, skilled: true, leadership: true },
-  { label: "24/7 SLA", starter: false, growth: false, skilled: false, leadership: true },
+  { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: "Slack only", leadership: true },
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
