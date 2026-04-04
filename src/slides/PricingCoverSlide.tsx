@@ -92,8 +92,8 @@ export default function PricingCoverSlide() {
               lineHeight: 1.6,
             }}
           >
-            Transparent, predictable pricing with <strong style={{ color: "hsl(var(--pres-accent))" }}>60% savings</strong> vs US/UK rates.
-            <br />No hidden fees. No surprises.
+            <strong style={{ color: "hsl(var(--pres-accent))" }}>7-stage vetted</strong> talent. Hire in as fast as <strong style={{ color: "hsl(var(--pres-accent))" }}>20 minutes</strong>.
+            <br />60% savings vs US/UK rates — no hidden fees.
           </motion.p>
 
           <motion.div {...fade(4)} className="flex items-center gap-3 mt-10">

@@ -11,9 +11,9 @@ const fade = (i: number) => ({
 
 const items = [
   { icon: Clock, title: "160 hrs/month", desc: "Guaranteed dedicated hours — full-time commitment to your project." },
-  { icon: Shield, title: "Vetted Talent", desc: "Every developer passes technical screening, English assessment & culture fit." },
+  { icon: Shield, title: "7-Stage Vetting", desc: "Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass." },
   { icon: MessageSquare, title: "Direct Communication", desc: "Slack, Teams, or your preferred tool — no middlemen, no delays." },
-  { icon: Zap, title: "2-Week Onboarding", desc: "From agreement to productive team member in under 14 days." },
+  { icon: Zap, title: "Hire in 20 Minutes", desc: "Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days." },
   { icon: Users, title: "Flexible Scaling", desc: "Add or reduce team members as your project evolves. No lock-in." },
   { icon: RefreshCw, title: "Free Replacement", desc: "Not satisfied? We'll replace the developer at no extra cost." },
 ];
