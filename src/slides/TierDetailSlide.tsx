@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { CheckCircle, X } from "lucide-react";
+import { Award, CheckCircle, X } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -26,10 +26,10 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "24/7 SLA", starter: false, growth: false, skilled: false, leadership: true },
 ];
 
-const columns: { key: ColKey; name: string; price: string }[] = [
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
   { key: "starter", name: "Tier 1", price: "$1,900/mo" },
   { key: "growth", name: "Tier 2", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo" },
+  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo", bestValue: true },
   { key: "leadership", name: "Tier 3.B", price: "$7.5K–10K/mo" },
 ];
 
@@ -72,14 +72,36 @@ export default function TierDetailSlide() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
-                className="text-center"
+                className="text-center relative"
+                style={{
+                  background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
+                  borderRadius: "12px 12px 0 0",
+                  padding: "10px 4px",
+                }}
               >
+                {col.bestValue && (
+                  <div
+                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "hsl(142 71% 45%)",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <Award size={10} /> BEST VALUE
+                  </div>
+                )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 22,
                     fontWeight: 700,
-                    color: col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
+                    color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
+                    marginTop: col.bestValue ? 14 : 0,
                   }}
                 >
                   {col.name}
@@ -125,9 +147,16 @@ export default function TierDetailSlide() {
                 {columns.map((col) => {
                   const val = feat[col.key];
                   return (
-                    <div key={col.key} className="flex justify-center">
+                    <div
+                      key={col.key}
+                      className="flex justify-center"
+                      style={{
+                        background: col.bestValue ? "hsl(142 71% 45% / 0.06)" : "transparent",
+                        padding: "4px 0",
+                      }}
+                    >
                       {val === true ? (
-                        <CheckCircle size={20} style={{ color: "hsl(var(--pres-accent))" }} />
+                        <CheckCircle size={20} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
                       ) : val === false ? (
                         <X size={20} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
                       ) : (
@@ -136,7 +165,7 @@ export default function TierDetailSlide() {
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: 14,
                             fontWeight: 600,
-                            color: "hsl(var(--pres-accent))",
+                            color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))",
                           }}
                         >
                           {val}
