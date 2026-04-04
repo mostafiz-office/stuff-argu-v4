@@ -84,7 +84,7 @@ export default function TierDetailSlide() {
                       background: "hsl(142 71% 45%)",
                       color: "#fff",
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 10,
+                      fontSize: 13,
                       fontWeight: 700,
                       letterSpacing: "0.05em",
                       whiteSpace: "nowrap",
