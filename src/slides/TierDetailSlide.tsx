@@ -96,7 +96,7 @@ export default function TierDetailSlide() {
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 22,
+                    fontSize: 28,
                     fontWeight: 700,
                     color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
                     marginTop: col.bestValue ? 14 : 0,
