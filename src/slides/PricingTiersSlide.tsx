@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { CheckCircle, Star } from "lucide-react";
+import { Award, CheckCircle, Star } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -51,6 +51,7 @@ const tiers = [
       "Architecture & code quality",
     ],
     featured: false,
+    bestValue: true,
   },
   {
     name: "Tier 3.B — Leadership",
@@ -111,6 +112,7 @@ export default function PricingTiersSlide() {
         <div className="absolute left-[60px] right-[60px] top-[248px] bottom-[50px] grid grid-cols-4 gap-5 z-10">
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
+            const isBestValue = 'bestValue' in tier && tier.bestValue;
 
             return (
               <motion.div
@@ -120,10 +122,12 @@ export default function PricingTiersSlide() {
                 transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
                 className="rounded-2xl flex flex-col relative overflow-hidden"
                 style={{
-                  background: isFeatured
-                    ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                    : "hsl(var(--pres-bg-surface))",
-                  border: `2px solid ${isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
+                  background: isBestValue
+                    ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                    : isFeatured
+                      ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                      : "hsl(var(--pres-bg-surface))",
+                  border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
                   padding: "32px 26px",
                 }}
               >
@@ -140,6 +144,22 @@ export default function PricingTiersSlide() {
                     }}
                   >
                     <Star size={12} /> MOST POPULAR
+                  </div>
+                )}
+
+                {isBestValue && (
+                  <div
+                    className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
+                    style={{
+                      background: "hsl(142 71% 45%)",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    <Award size={12} /> BEST VALUE
                   </div>
                 )}
 
