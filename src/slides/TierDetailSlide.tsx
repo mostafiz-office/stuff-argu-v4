@@ -26,10 +26,10 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "24/7 SLA", starter: false, growth: false, skilled: false, leadership: true },
 ];
 
-const columns: { key: ColKey; name: string; price: string }[] = [
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
   { key: "starter", name: "Tier 1", price: "$1,900/mo" },
   { key: "growth", name: "Tier 2", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo" },
+  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo", bestValue: true },
   { key: "leadership", name: "Tier 3.B", price: "$7.5K–10K/mo" },
 ];
 
