@@ -161,7 +161,7 @@ export default function TierDetailSlide() {
                         <span
                           style={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: 600,
                             color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))",
                           }}
