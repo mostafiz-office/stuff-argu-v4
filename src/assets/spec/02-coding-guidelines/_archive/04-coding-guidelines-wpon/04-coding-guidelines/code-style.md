@@ -1,0 +1,1127 @@
+# Cross-Language Code Style — Braces, Nesting, Spacing & Function Size
+
+> **Version:** 3.1.0  
+> **Updated:** 2026-02-21  
+> **Applies to:** PHP, TypeScript, Go
+
+---
+
+## Overview
+
+These ten rules govern control-flow formatting and function design across **all languages** in the project. Language-specific specs (PHP, TypeScript, Go) reference this document as the single source of truth.
+
+---
+
+## Rule 1: Always Use Braces — No Single-Line Statements
+
+Every `if`, `for`, `foreach`/`for...of`, `while` block **must** use curly braces `{}`, even for single-statement bodies.
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+if ($this->initialized) return;
+if ($error === null) return false;
+
+// ✅ REQUIRED
+if ($this->initialized) {
+    return;
+}
+
+if ($error === null) {
+    return false;
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+if (isLoading) return null;
+
+// ✅ REQUIRED
+if (isLoading) {
+    return null;
+}
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+// Go enforces braces by syntax — this rule is already satisfied.
+```
+
+---
+
+## Rule 2: Zero Nested `if` — Absolute Ban
+
+Nested `if` blocks are **absolutely forbidden** — zero tolerance, no exceptions. Every nested `if` must be flattened using one of: (a) combined conditions, (b) early returns, (c) extracted helper functions. If a helper function already handles the null/empty check internally, rely on it — don't wrap it in a redundant outer guard.
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: Nested if — redundant null guard
+if ($error !== null) {
+    if (ErrorChecker::isFatalError($error)) {
+        $this->logger->fatal($error);
+    }
+}
+
+// ✅ REQUIRED: Flat — isFatalError() handles null internally
+if (ErrorChecker::isFatalError($error)) {
+    $this->logger->fatal($error);
+}
+
+// ✅ ALSO OK: Early return to flatten
+if ($request === null) {
+    return;
+}
+
+if ($request->has_param('file')) {
+    $this->process($request);
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN: Nested if
+if (response) {
+    if (response.status >= 400) {
+        handleError(response);
+    }
+}
+
+// ✅ REQUIRED: Early return or combined condition
+if (!response) {
+    return;
+}
+
+if (response.status >= 400) {
+    handleError(response);
+}
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: Nested if
+if err != nil {
+    if resp != nil {
+        handleError(resp)
+    }
+}
+
+// ✅ REQUIRED: Combined condition
+if err != nil && resp != nil {
+    handleError(resp)
+}
+```
+
+---
+
+## Rule 3: Extract Complex Conditions — No Inline Multi-Part Checks
+
+When an `if` condition contains **two or more operators** (`&&`, `||`, `!`), it **must** be extracted into one of:
+
+1. **A named boolean variable** (`$is_*` / `$has_*` / `isX` / `hasX`) — for local, one-off checks
+2. **A dedicated method/function** — for reusable or domain-meaningful checks
+3. **A named constant** — for static flag combinations
+
+The goal: every `if` reads as a **single intent**, not as implementation logic.
+
+### 3a: Multi-Line Formatting for Compound Boolean Assignments
+
+When a boolean assignment has **two or more conditions** joined by `&&` or `||`, each condition **must** be on its own line. Place a line break after the `=` (or `:=`), indent each condition, and leave a **blank line before the `if`** that uses the variable.
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: All conditions on one line
+$hasFileParam = $request !== null && $request->hasParam('file') && $request->getParam('file') !== '';
+
+// ✅ REQUIRED: Each condition on its own line
+$hasFileParam =
+    $request !== null &&
+    $request->hasParam('file') &&
+    $request->getParam('file') !== '';
+
+if ($hasFileParam) {
+    $this->process($request);
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN: All conditions on one line
+const isDelegatedError = response != null && response.status >= 400 && response.data?.code?.startsWith('E8');
+
+// ✅ REQUIRED: Each condition on its own line
+const isDelegatedError =
+    response != null &&
+    response.status >= 400 &&
+    response.data?.code?.startsWith('E8');
+
+if (isDelegatedError) {
+    showDelegatedError(response);
+}
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: All conditions on one line
+isUpstreamError := err != nil && resp != nil && resp.StatusCode >= 400
+
+// ✅ REQUIRED: Each condition on its own line (tab-indented)
+isUpstreamError :=
+	err != nil &&
+	resp != nil &&
+	resp.StatusCode >= 400
+
+if isUpstreamError {
+	handleUpstreamError(resp)
+}
+```
+
+### 3b: Single-Condition Assignments Stay on One Line
+
+When a boolean has only **one condition** (no `&&` or `||`), it stays on a single line:
+
+```go
+// ✅ OK: Single condition — one line
+isRuntime := strings.HasPrefix(fn, "runtime.")
+isMain := fn == "runtime.main"
+```
+
+```php
+// ✅ OK: Single condition — one line
+$isActive = $status === 'active';
+```
+
+### When to Use Which Extraction
+
+| Complexity | Extraction | Example |
+|------------|-----------|---------|
+| 2 conditions, used once | Named `$is_*` / `isX` variable (multi-line) | `$hasFile =\n    $req !== null &&\n    $req->hasParam('file');` |
+| 2+ conditions, used in multiple places | Dedicated method/function | `ErrorChecker::isFatalError($error)` |
+| Static flag combination | Named constant | `const EDITABLE = 'PUT, PATCH';` |
+```
+
+---
+
+## Rule 4: Blank Line Before `return` or `throw` When Preceded by Other Statements
+
+If a block contains statements before `return` or `throw`, insert **one blank line** before the `return`/`throw`. If `return`/`throw` is the **only statement** in the block, no blank line is needed.
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line before return
+if (ErrorChecker::isInvalidPdoExtension()) {
+    $this->logger->error('PDO/SQLite not available');
+    return $this->envelope->error('SQLite support not available', 500);
+}
+
+// ✅ REQUIRED: Blank line separates logic from exit
+if (ErrorChecker::isInvalidPdoExtension()) {
+    $this->logger->error('PDO/SQLite not available');
+
+    return $this->envelope->error('SQLite support not available', 500);
+}
+
+// ❌ FORBIDDEN: No blank line before throw
+if (PathHelper::isFileMissing($path)) {
+    $this->logger->error('File not found: ' . $path);
+    throw new RuntimeException('File not found: ' . $path);
+}
+
+// ✅ REQUIRED: Blank line before throw
+if (PathHelper::isFileMissing($path)) {
+    $this->logger->error('File not found: ' . $path);
+
+    throw new RuntimeException('File not found: ' . $path);
+}
+
+// ✅ OK: Return is the only statement — no blank line needed
+if ($error === null) {
+    return false;
+}
+
+// ✅ OK: Throw is the only statement — no blank line needed
+if ($error === null) {
+    throw new InvalidArgumentException('Error required');
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+const processData = (data: unknown[]) => {
+    const filtered = data.filter(isValid);
+    return filtered.map(transform);
+};
+
+// ✅ REQUIRED
+const processData = (data: unknown[]) => {
+    const filtered = data.filter(isValid);
+
+    return filtered.map(transform);
+};
+
+// ❌ FORBIDDEN: No blank line before throw
+const validate = (input: string) => {
+    const trimmed = input.trim();
+    throw new Error(`Invalid input: ${trimmed}`);
+};
+
+// ✅ REQUIRED
+const validate = (input: string) => {
+    const trimmed = input.trim();
+
+    throw new Error(`Invalid input: ${trimmed}`);
+};
+
+// ✅ OK: Return is the only statement
+if (!data) {
+    return null;
+}
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+func process(data []Item) ([]Item, *apperror.AppError) {
+    filtered := filter(data)
+    return filtered, nil
+}
+
+// ✅ REQUIRED
+func process(data []Item) ([]Item, *apperror.AppError) {
+    filtered := filter(data)
+
+    return filtered, nil
+}
+```
+
+---
+
+## Rule 5: Blank Line After Closing `}` When Followed by More Code
+
+If code continues after a closing `}` (i.e., not followed by another `}`, `else`, `catch`, or end of function), insert **one blank line** after it. This applies to **all block types**: `if`, `foreach`/`for`/`for...of`, `while`, `switch`, `try`, and any other brace-delimited block.
+
+### 5a — After `if` Blocks
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line after block when code follows
+if ($this->initialized) {
+    return;
+}
+$this->initialized = true;
+add_action(HookType::Init->value, [$this, 'setup']);
+
+// ✅ REQUIRED: Blank line after block when code follows
+if ($this->initialized) {
+    return;
+}
+
+$this->initialized = true;
+add_action(HookType::Init->value, [$this, 'setup']);
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+if (!user) {
+    return;
+}
+const profile = await fetchProfile(user.id);
+
+// ✅ REQUIRED
+if (!user) {
+    return;
+}
+
+const profile = await fetchProfile(user.id);
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+if appErr != nil {
+    return appErr
+}
+result := compute()
+
+// ✅ REQUIRED
+if appErr != nil {
+    return appErr
+}
+
+result := compute()
+```
+
+### 5b — After Loop Blocks (`foreach`, `for`, `while`, `for...of`)
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line after foreach when code follows
+foreach (array_keys($data) as $col) {
+    $setParts[] = "{$col} = ?";
+}
+$setClause = implode(', ', $setParts);
+$sql       = "UPDATE {$table} SET {$setClause} WHERE {$where}";
+
+// ✅ REQUIRED: Blank line separates the loop from subsequent logic
+foreach (array_keys($data) as $col) {
+    $setParts[] = "{$col} = ?";
+}
+
+$setClause = implode(', ', $setParts);
+$sql       = "UPDATE {$table} SET {$setClause} WHERE {$where}";
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line after for...of when code follows
+for (const item of items) {
+    processed.push(transform(item));
+}
+const result = merge(processed);
+
+// ✅ REQUIRED
+for (const item of items) {
+    processed.push(transform(item));
+}
+
+const result = merge(processed);
+
+// ❌ FORBIDDEN: No blank line after while when code follows
+while (queue.length > 0) {
+    const task = queue.shift()!;
+    execute(task);
+}
+logCompletion(queue);
+
+// ✅ REQUIRED
+while (queue.length > 0) {
+    const task = queue.shift()!;
+    execute(task);
+}
+
+logCompletion(queue);
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line after for range when code follows
+for _, item := range items {
+    results = append(results, process(item))
+}
+total := len(results)
+
+// ✅ REQUIRED
+for _, item := range items {
+    results = append(results, process(item))
+}
+
+total := len(results)
+
+// ❌ FORBIDDEN: No blank line after for loop when code follows
+for i := 0; i < retries; i++ {
+    appErr = tryAttempt(ctx)
+
+    if appErr == nil {
+        break
+    }
+}
+logger.Info("retries exhausted", "attempts", retries)
+
+// ✅ REQUIRED
+for i := 0; i < retries; i++ {
+    appErr = tryAttempt(ctx)
+
+    if appErr == nil {
+        break
+    }
+}
+
+logger.Info("retries exhausted", "attempts", retries)
+```
+
+### 5c — After `switch` / `try` Blocks
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+try {
+    $result = $this->execute($sql);
+} catch (Throwable $e) {
+    $this->fileLogger->logException($e, 'execute failed');
+}
+$this->cleanup();
+
+// ✅ REQUIRED
+try {
+    $result = $this->execute($sql);
+} catch (Throwable $e) {
+    $this->fileLogger->logException($e, 'execute failed');
+}
+
+$this->cleanup();
+```
+
+### Exception: Consecutive Closing Braces, `else`, `catch`, `finally`
+
+No blank line is needed when a `}` is immediately followed by another `}`, `else`, `catch`, or `finally`:
+
+```php
+if (ErrorChecker::isFatalError($error)) {
+    $this->logger->fatal($error);
+}
+// ✅ No blank line — next line is another closing brace
+```
+
+```go
+if appErr != nil {
+    return appErr
+} // ✅ No blank line — function ends here (outer })
+```
+
+---
+
+## Rule 6: Maximum 15 Lines Per Function — Extract Small Helpers
+
+Every function/method body must be **15 lines or fewer** (excluding blank lines, comments, and the signature). If a function exceeds this limit, extract logic into small, well-named helper functions.
+
+### 6a — Error Wrapping Lines Are NOT Compressed
+
+Error wrapping chains (e.g., `apperror.Wrap(...).WithX(...).WithY(...)`) must be formatted with **one method call per line** for readability. Each `.WithX()` call occupies its own line. These lines **do count** toward the 15-line limit, but they must **never** be compressed onto a single line to game the limit. If a function exceeds 15 lines due to error wrapping, extract other logic into helpers — don't compress the error chain.
+
+```go
+// ❌ FORBIDDEN — Compressed error chain to save lines
+return nil, nil, apperror.Wrap(err, apperror.ErrWPConnection, "failed to stream").WithSiteId(siteID).WithSnapshotId(snapshotID).WithURL(meta.URL)
+
+// ✅ REQUIRED — One method per line
+return nil, nil, apperror.Wrap(err, apperror.ErrWPConnection, "failed to stream").
+    WithSiteId(siteID).
+    WithSnapshotId(snapshotID).
+    WithURL(meta.URL)
+```
+
+### Why
+
+- Short functions are easier to read, test, and debug
+- Named helpers act as documentation — the function name describes intent
+- Reduces cognitive load — each function does exactly one thing
+- Makes code review faster — reviewers can understand each piece in isolation
+
+### How to Flatten
+
+| Problem | Solution |
+|---------|----------|
+| Long setup + logic + cleanup | Extract each phase into a helper |
+| Multiple validation checks | Extract `validateRequest()` helper |
+| Complex data transformation | Extract `transformPayload()` helper |
+| Repeated patterns | Extract shared utility function |
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: 25+ line function
+public function handleUpload($request) {
+    $file = $request->get_param('file');
+    $source = $request->get_param('source');
+    // ... validation ...
+    // ... processing ...
+    // ... logging ...
+    // ... response building ...
+}
+
+// ✅ REQUIRED: Short top-level, helpers do the work
+public function handleUpload(WP_REST_Request $request): WP_REST_Response {
+    $params = $this->extractUploadParams($request);
+    $this->validateUpload($params);
+    $result = $this->processUpload($params);
+    $this->logUpload($result);
+
+    return $this->envelope->success($result);
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN: Long function
+const handleSubmit = async (data: FormData) => {
+    // 20+ lines of validation, API call, state updates, toasts...
+};
+
+// ✅ REQUIRED: Decomposed
+const handleSubmit = async (data: FormData) => {
+    const validated = validateFormData(data);
+    const result = await submitToApi(validated);
+    updateLocalState(result);
+    showSuccessToast(result.message);
+};
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: Long function
+func ProcessUpload(ctx context.Context, req UploadRequest) *apperror.AppError {
+    // 20+ lines...
+}
+
+// ✅ REQUIRED: Decomposed
+func ProcessUpload(ctx context.Context, req UploadRequest) *apperror.AppError {
+    appErr := validateUpload(req)
+
+    if appErr != nil {
+        return appErr
+    }
+
+    result, appErr := executeUpload(ctx, req)
+
+    if appErr != nil {
+        return appErr
+    }
+
+    return logAndRespond(ctx, result)
+}
+```
+
+---
+
+## Rule 7: Zero Nested `if` — Absolute Ban (Reinforced)
+
+This is a **reinforcement of Rule 2** with stricter language. Nested `if` blocks are the single biggest readability killer. There is **zero tolerance** — any code review finding a nested `if` is an automatic rejection.
+
+### Flattening Techniques
+
+| Nesting Pattern | Flattening Technique |
+|----------------|---------------------|
+| Null guard → logic | Early return for null |
+| Permission → action | Early return for no permission |
+| Multiple conditions | Combined `&&` (extract if 2+ operators) |
+| If-inside-loop | Extract loop body to helper function |
+| If-inside-if-inside-if | Extract to dedicated method |
+
+```php
+// ❌ FORBIDDEN: Triple nesting
+if ($request !== null) {
+    if ($request->hasParam('file')) {
+        if ($this->isValidFile($request->getParam('file'))) {
+            $this->process($request);
+        }
+    }
+}
+
+// ✅ REQUIRED: Flat with early returns
+if ($request === null) {
+    return;
+}
+
+$hasValidFile = $request->hasParam('file')
+    && $this->isValidFile($request->getParam('file'));
+
+if ($hasValidFile) {
+    $this->process($request);
+}
+```
+
+---
+
+## Rule 8: No Leading Backslash on Global Types
+
+In catch blocks, type hints, and `new` instantiation, use global types **without** the leading backslash in namespaced files. Add `use` imports at the file top instead. This applies to `Throwable`, `RuntimeException`, `InvalidArgumentException`, `PDO`, `PDOException`, `WP_Query`, and all other global-namespace types.
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+catch (\Throwable $e)
+throw new \RuntimeException('message', 14100);
+$pdo = new \PDO($dsn);
+$query = new \WP_Query($args);
+catch (\PDOException $e)
+
+// ✅ REQUIRED — add `use` imports at file top
+use Throwable;
+use RuntimeException;
+use PDO;
+use PDOException;
+use WP_Query;
+
+// Then use unqualified:
+catch (Throwable $e)
+throw new RuntimeException('message', 14100);
+$pdo = new PDO($dsn);
+$query = new WP_Query($args);
+catch (PDOException $e)
+```
+
+**Exemptions:** `Autoloader.php` (must be self-contained before autoloading is available) and the main plugin bootstrap file.
+
+```typescript
+// ── TypeScript / Go ─────────────────────────────────────────
+// Not applicable — these languages don't have leading-backslash syntax.
+```
+
+---
+
+## Rule 9: Multi-Line Arguments — Signatures, Calls, and Arrays
+
+When a function/method **signature or call** has **more than two arguments**, each argument must be on its own line with consistent indentation and a **trailing comma** after the last argument (where syntax permits).
+
+This applies equally to:
+- **Function/method signatures** (parameter declarations)
+- **Function/method calls** (argument expressions)
+- **Constructor calls** (`new Foo(...)`)
+
+### 9a: Function Signatures (>2 Parameters)
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 params on one line)
+function buildRecord(string $label, string $path, bool $success, ?string $error): void {
+
+// ✅ REQUIRED
+function buildRecord(
+    string $label,
+    string $path,
+    bool $success,
+    ?string $error,
+): void {
+
+// ✅ OK: 2 params — single line is fine
+function loadFile(string $label, string $path): bool {
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 params on one line)
+function buildRecord(label: string, path: string, success: boolean, error?: string): void {
+
+// ✅ REQUIRED
+function buildRecord(
+    label: string,
+    path: string,
+    success: boolean,
+    error?: string,
+): void {
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 params on one line)
+func BuildRecord(label string, path string, success bool, errMsg string) {
+
+// ✅ REQUIRED — multi-line if you must keep individual params
+func BuildRecord(
+	label string,
+	path string,
+	success bool,
+	errMsg string,
+) {
+
+// ✅✅ PREFERRED — use a struct (see go-function-parameters guideline)
+type BuildRecordInput struct {
+	Label   string
+	Path    string
+	Success bool
+	ErrMsg  string
+}
+func BuildRecord(input BuildRecordInput) {
+```
+
+### 9b: Function Calls (>2 Arguments)
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 args on one line)
+$this->logAction($agentId, ActionType::AgentTest->value, null, StatusType::Failed->value, null, $error->get_error_message());
+
+// ✅ REQUIRED
+$this->logAction(
+    $agentId,
+    ActionType::AgentTest->value,
+    null,
+    StatusType::Failed->value,
+    null,
+    $error->get_error_message(),
+);
+
+// ✅ OK: 2 args — single line is fine
+$this->updateAgent($agentId, $data);
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 args on one line)
+const result = buildRecord(label, path, true, errorMessage);
+
+// ✅ REQUIRED
+const result = buildRecord(
+    label,
+    path,
+    true,
+    errorMessage,
+);
+
+// ✅ OK: 2 args — single line is fine
+const result = fetchData(url, options);
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN (>2 args on one line)
+result := buildRecord(label, path, true, errMsg)
+
+// ✅ REQUIRED — multi-line call
+result := buildRecord(
+	label,
+	path,
+	true,
+	errMsg,
+)
+
+// ✅✅ PREFERRED — struct literal (self-documenting fields)
+result := buildRecord(BuildRecordInput{
+	Label:   label,
+	Path:    path,
+	Success: true,
+	ErrMsg:  errMsg,
+})
+```
+
+### 9d: Go Struct Input Pattern — Canonical Examples
+
+When a Go function exceeds 3 parameters (excluding `context.Context`), **always** use a struct input. This is the **preferred** approach over multi-line individual parameters.
+
+```go
+// ── ProgressEvent — WordPress client callbacks ──────────────
+type ProgressEvent struct {
+	Step    string
+	Status  string
+	Message string
+	Details ProgressDetails
+}
+func (c *Client) progress(event ProgressEvent)
+
+// ── OperationLogInput — WebSocket hub broadcasting ──────────
+type OperationLogInput struct {
+	PluginID  int64
+	SiteID    int64
+	SessionID string
+	Entry     OperationLogEntry
+}
+func (h *Hub) BroadcastPublishLog(input OperationLogInput)
+func (h *Hub) BroadcastPublishLogWithSession(input OperationLogInput)
+
+// ── ConnectionProgressInput — Site connection progress ──────
+type ConnectionProgressInput struct {
+	SiteID  int64
+	Step    string
+	Status  string
+	Message string
+	Details json.RawMessage
+}
+
+// ── publishContext — Pipeline-scoped context struct ──────────
+// For multi-stage pipelines where 3+ identifiers flow through every method
+type publishContext struct {
+	PluginID  int64
+	SiteID    int64
+	SessionID string
+	WPClient  *wordpress.Client
+	Mapping   *models.PluginMapping
+	SiteInfo  *models.Site
+}
+func (s *Service) executeUploadStage(ctx context.Context, pctx *publishContext, zipPath string) (bool, Stage)
+
+// ── ProcessErrorInput — Logger ──────────────────────────────
+type ProcessErrorInput struct {
+	ProcessName string
+	Command     string
+	Err         error
+	Stdout      string
+	Stderr      string
+}
+func (l *Logger) LogProcessError(input ProcessErrorInput)
+```
+
+### 9c: PHP Arrays — Each Item on Its Own Line
+
+In PHP, `array(...)` and `[...]` literals with **more than two items** must place each item on its own line with a trailing comma.
+
+```php
+// ❌ FORBIDDEN (>2 items on one line)
+$statuses = array(301, 302, 303, 307, 308);
+$data = ['agent_id' => $agentId, 'action' => $action, 'slug' => $slug];
+
+// ✅ REQUIRED
+$statuses = array(
+    301,
+    302,
+    303,
+    307,
+    308,
+);
+
+$data = [
+    'agent_id' => $agentId,
+    'action'   => $action,
+    'slug'     => $slug,
+];
+
+// ✅ OK: 2 items — single line is fine
+$pair = array('key' => $value, 'name' => $name);
+```
+
+```typescript
+// ── TypeScript / Go ─────────────────────────────────────────
+// Same principle applies to array/slice literals with >2 items.
+// Each item on its own line with trailing comma.
+
+// ❌ FORBIDDEN
+const codes = [301, 302, 303, 307, 308];
+
+// ✅ REQUIRED
+const codes = [
+    301,
+    302,
+    303,
+    307,
+    308,
+];
+```
+
+---
+
+## Rule 10: Blank Line Before Control Structures When Preceded by Statements
+
+When an `if`, `for`, `foreach`/`for...of`, or `while` block is preceded by **one or more non-brace statements** (assignments, function calls, etc.), insert **one blank line** before the control structure. This visually separates "setup" from "decision" logic.
+
+**Exception:** No blank line is needed when the control structure is the first statement in a block or immediately follows another closing `}` (already covered by Rule 5).
+
+```php
+// ── PHP ──────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN: No blank line between statement and if
+$result = $this->apiRequest($agentId, HttpMethodType::Post->value, $endpoint);
+if (is_wp_error($result)) {
+    return $result;
+}
+
+// ✅ REQUIRED: Blank line before if when preceded by a statement
+$result = $this->apiRequest($agentId, HttpMethodType::Post->value, $endpoint);
+
+if (is_wp_error($result)) {
+    return $result;
+}
+
+// ❌ FORBIDDEN: No blank line between statement and foreach
+$items = $this->fetchItems();
+foreach ($items as $item) {
+    $this->process($item);
+}
+
+// ✅ REQUIRED
+$items = $this->fetchItems();
+
+foreach ($items as $item) {
+    $this->process($item);
+}
+
+// ✅ OK: if is the first statement — no blank line needed
+public function handle(): void {
+    if ($this->isDone()) {
+        return;
+    }
+}
+
+// ✅ OK: if follows a closing brace — Rule 5 applies instead
+if ($guardA) {
+    return;
+}
+
+if ($guardB) {
+    return;
+}
+```
+
+```typescript
+// ── TypeScript ───────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+const data = await fetchData(url);
+if (!data) {
+    return null;
+}
+
+// ✅ REQUIRED
+const data = await fetchData(url);
+
+if (!data) {
+    return null;
+}
+```
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN
+result, appErr := doWork(ctx)
+if appErr != nil {
+    return appErr
+}
+
+// ✅ REQUIRED
+result, appErr := doWork(ctx)
+
+if appErr != nil {
+    return appErr
+}
+```
+
+---
+
+## Rule 11: No Inline Statements in `if` Conditions (Go)
+
+In Go, **never** use the `if init; condition {` short-statement form for `os.Stat`, function calls that produce multiple return values, or any call whose result is used after the `if` block. Separate the call from the condition.
+
+This rule applies to **all** languages where similar patterns exist. The goal: every `if` checks **one named boolean or error**, not an inline expression.
+
+```go
+// ── Go ───────────────────────────────────────────────────────
+
+// ❌ FORBIDDEN — Inline os.Stat in if condition
+if _, err := os.Stat(projectDir); os.IsNotExist(err) {
+    return apperror.New(apperror.ErrFSNotFound, "project not found")
+}
+
+// ❌ FORBIDDEN — Inline stat + mixed polarity
+if _, err := os.Stat(projectDir); err == nil && !isOverwrite {
+    return apperror.New(apperror.ErrFSWrite, "project exists, use overwrite=true to replace")
+}
+
+// ✅ REQUIRED — Separate stat call, use pathutil, named booleans
+fi, statErr := pathutil.StatDir(projectDir)
+isProjectExists := statErr == nil
+isReadOnly := !isOverwrite
+isConflict := isProjectExists && isReadOnly
+
+if isConflict {
+    return apperror.New(apperror.ErrFSWrite, "project exists, use overwrite=true to replace").
+        WithPath(projectDir)
+}
+```
+
+### Why
+
+- Inline `if init; cond {` hides variable scope and intent
+- `os.Stat` errors must be handled explicitly, not tested inline
+- Raw `os.Stat` must be wrapped in `pathutil` helpers that return `*apperror.AppError`
+- Mixed polarity (`err == nil && !isOverwrite`) violates P6
+
+---
+
+## Rule 12: No Raw `os.Stat` — Use `pathutil` Helpers
+
+Never call `os.Stat()` directly in application code. Always use the `pathutil` package which resolves paths to absolute and returns structured `*apperror.AppError`.
+
+```go
+// ❌ FORBIDDEN — Raw os.Stat
+info, err := os.Stat(path)
+if os.IsNotExist(err) {
+    return apperror.New(apperror.ErrFSNotFound, "not found")
+}
+
+// ❌ FORBIDDEN — Inline os.Stat for existence check
+if _, err := os.Stat(path); err == nil {
+    // exists
+}
+
+// ✅ REQUIRED — Use pathutil.StatFile or pathutil.StatDir
+fi, appErr := pathutil.StatFile(path)
+if appErr != nil {
+    return appErr
+}
+size := fi.Info.Size()
+
+// ✅ REQUIRED — Use pathutil.IsFileExists / IsFileMissing for simple checks
+if pathutil.IsFileMissing(path) {
+    return apperror.New(apperror.ErrFSNotFound, "file not found")
+}
+
+// ✅ REQUIRED — Use pathutil.FileSize for size-only checks
+size := pathutil.FileSize(zipPath)
+```
+
+### Available `pathutil` Helpers
+
+| Helper | Returns | Replaces |
+|--------|---------|----------|
+| `StatFile(path)` | `(*FileInfo, *AppError)` | `os.Stat(path)` |
+| `StatDir(path)` | `(*FileInfo, *AppError)` | `os.Stat(path)` + `IsDir()` check |
+| `IsFileExists(path)` | `bool` | `_, err := os.Stat(path); err == nil` |
+| `IsFileMissing(path)` | `bool` | `os.IsNotExist(err)` |
+| `FileSize(path)` | `int64` | `info, _ := os.Stat(path); info.Size()` |
+| `Exists(path)` | `bool` | `_, err := os.Stat(path); err == nil` |
+| `IsDir(path)` | `bool` | `info.IsDir()` |
+| `IsDirMissing(path)` | `bool` | `!IsDir(path)` |
+
+**Exception**: `os.Stat` is permitted inside `pathutil` itself and in test files.
+
+---
+
+## Checklist Summary (Copy for PRs)
+
+```
+[ ] No single-line `if (...) return;` — always use braces
+[ ] No nested `if` — ZERO TOLERANCE — flatten with early returns or combined conditions
+[ ] No inline multi-part `if` (2+ operators) — extract to named variable or method
+[ ] Blank line before `return` or `throw` when preceded by other statements
+[ ] Blank line after closing `}` when followed by more code
+[ ] Functions max 15 lines — extract helpers for longer logic
+[ ] No deeply nested control flow — extract loop/condition bodies to helpers
+[ ] No leading backslash on `Throwable` or other global types in catch/type hints
+[ ] Functions/calls with >2 args — one arg per line with trailing comma (signatures AND calls)
+[ ] PHP arrays with >2 items — each item on its own line with trailing comma
+[ ] Blank line before control structures (`if`/`for`/`foreach`/`while`) when preceded by statements
+[ ] No inline `if init; cond {` for os.Stat or multi-return calls (Go) — separate call from condition
+[ ] No raw `os.Stat` — use `pathutil.StatFile`, `pathutil.StatDir`, or boolean helpers
+```
+
+---
+
+## Cross-References
+
+- [No Raw Negations](./no-negatives.md) — Positive guard functions instead of `!` (all languages)
+- [Function Naming](./function-naming.md) — No boolean flag parameters (all languages)
+- [Strict Typing](./strict-typing.md) — Type declarations & docblock rules (all languages)
+- [PHP Coding Standards](../06-php-standards/readme.md) — PHP-specific rules that reference this spec
+- [PHP Forbidden Patterns](../06-php-standards/forbidden-patterns.md) — PHP checklist
+- [PHP Enum Classes](../06-php-standards/enums.md) — `ErrorChecker` examples
+
+---
+
+*Cross-language code style specification v3.3.0 — 2026-03-12*
