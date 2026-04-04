@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { CheckCircle, X } from "lucide-react";
+import { Award, CheckCircle, X } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
