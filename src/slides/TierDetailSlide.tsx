@@ -72,14 +72,36 @@ export default function TierDetailSlide() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
-                className="text-center"
+                className="text-center relative"
+                style={{
+                  background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
+                  borderRadius: "12px 12px 0 0",
+                  padding: "10px 4px",
+                }}
               >
+                {col.bestValue && (
+                  <div
+                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "hsl(142 71% 45%)",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <Award size={10} /> BEST VALUE
+                  </div>
+                )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 22,
                     fontWeight: 700,
-                    color: col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
+                    color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
+                    marginTop: col.bestValue ? 14 : 0,
                   }}
                 >
                   {col.name}
