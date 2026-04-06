@@ -57,7 +57,7 @@ function RocketFlight({
         transition={{ duration: 5, times: [0, 0.13, 0.18, 0.4] }}
         style={{
           position: "absolute",
-          bottom: 5,
+          bottom: -40,
           right: 10 + SIZE / 2 - 30,
           width: 60,
           height: 16,
@@ -78,7 +78,7 @@ function RocketFlight({
             transition={{ duration: 5, times: [0, 0.13, 0.2, 0.4] }}
             style={{
               position: "absolute",
-              bottom: 8,
+              bottom: -40,
               right: 10 + SIZE / 2 - 6,
               width: 12,
               height: 12,
