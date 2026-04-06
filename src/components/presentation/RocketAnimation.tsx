@@ -94,16 +94,16 @@ function RocketFlight({
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{
-          opacity: [0, 0, 1, 1, 1, 0],
-          y: [0, 0, 0, -120, -420, -420],
+          opacity: [0, 0, 1, 1, 1, 1, 0],
+          y: [0, 0, 0, -120, -420, -420, -420],
         }}
         transition={{
           duration: 14,
           times: intensity === 3
-            ? [0, 0.14, 0.15, 0.28, 0.42, 1]   // 2s hidden, then fastest
+            ? [0, 0.14, 0.15, 0.28, 0.42, 0.88, 1]   // longer hover at top
             : intensity === 2
-              ? [0, 0.14, 0.15, 0.32, 0.56, 1]  // 2s hidden, then medium
-              : [0, 0.14, 0.15, 0.36, 0.64, 1], // 2s hidden, then slowest
+              ? [0, 0.14, 0.15, 0.32, 0.50, 0.88, 1]
+              : [0, 0.14, 0.15, 0.36, 0.57, 0.88, 1],
           ease: "easeInOut",
         }}
         style={{
