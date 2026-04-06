@@ -27,9 +27,8 @@ const tierThemes = {
 };
 
 const SIZE = 260;
-// Timeline: 2.5s wait → 4s flight up → 5s hover at top → fade = ~13s total
-const FLIGHT = 11; // total animation duration after delay
-const CYCLE = 14000;
+const FLIGHT = 16;
+const CYCLE = 20000;
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
