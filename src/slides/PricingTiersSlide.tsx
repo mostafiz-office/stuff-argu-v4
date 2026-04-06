@@ -163,6 +163,22 @@ export default function PricingTiersSlide() {
                     </div>
                   )}
 
+                  {isPremium && (
+                    <div
+                      className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
+                        color: "#fff",
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 18,
+                        fontWeight: 700,
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      <Crown size={18} /> PREMIUM
+                    </div>
+                  )}
+
                   {/* Tier name */}
                   <p
                     style={{
