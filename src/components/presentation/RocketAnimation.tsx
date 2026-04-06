@@ -65,8 +65,8 @@ function Launch({
         transition={{ delay: 0.1, duration: 1.2, ease: "easeOut" }}
         style={{
           position: "absolute",
-          bottom: 10,
-          right: 10,
+          bottom: 0,
+          right: 5,
           width: 80,
           height: 24,
           borderRadius: "50%",
@@ -91,11 +91,11 @@ function Launch({
               x: [0, dx],
               y: [0, dy],
             }}
-            transition={{ delay: 0.1 + i * 0.04, duration: 1.6, ease: "easeOut" }}
+            transition={{ delay: 3 + i * 0.04, duration: 1.6, ease: "easeOut" }}
             style={{
               position: "absolute",
-              bottom: 16,
-              right: 30,
+              bottom: 0,
+              right: 20,
               width: 14,
               height: 14,
               borderRadius: "50%",
