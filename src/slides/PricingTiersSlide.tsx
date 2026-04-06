@@ -28,7 +28,7 @@ const tiers = [
     youtubeId: "uveR9C5CgSY",
   },
   {
-    name: "Tier 3.A — Skilled",
+    name: "Tier 2 — Skilled",
     experience: "7-15+ Years Experience",
     price: "$6,800–$8,000",
     per: "/mo",
@@ -44,7 +44,7 @@ const tiers = [
     youtubeId: "uveR9C5CgSY",
   },
   {
-    name: "Tier 3.B — Leadership",
+    name: "Tier 3 — Leadership",
     experience: "7-15+ Years Experience",
     price: "$7,500–$10,000",
     per: "/mo",
