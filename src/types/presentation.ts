@@ -79,4 +79,5 @@ export interface PresentationConfig {
   readonly stats: StatsConfig;
   readonly features: PresentationFeatures;
   readonly customization: CustomizationConfig;
+  readonly slideLabels?: readonly string[];
 }
