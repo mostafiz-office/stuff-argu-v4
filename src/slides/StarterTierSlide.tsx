@@ -1,7 +1,9 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
+import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
+import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, ArrowRight } from "lucide-react";
+import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -74,147 +76,200 @@ export default function StarterTierSlide() {
         </motion.p>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[230px] bottom-[50px] flex gap-10 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[230px] bottom-[40px] flex gap-10 z-10">
 
-          {/* LEFT — Pricing Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="rounded-2xl flex flex-col relative overflow-hidden"
-            style={{
-              width: 460,
-              flexShrink: 0,
-              background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
-              border: "2px solid hsl(var(--pres-accent))",
-              padding: "36px 32px",
-            }}
-          >
-            {/* Badge */}
-            <div
-              className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
+          {/* LEFT — Pricing Card with hover video */}
+          <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
               style={{
-                background: "hsl(var(--pres-accent))",
-                color: "hsl(var(--pres-bg))",
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 18,
-                fontWeight: 700,
-                letterSpacing: "0.05em",
+                width: 620,
+                flexShrink: 0,
+                background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
+                border: "2px solid hsl(var(--pres-accent))",
+                padding: "40px 32px",
               }}
             >
-              <Rocket size={18} /> STARTER
-            </div>
-
-            {/* Tier label */}
-            <p
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 22,
-                fontWeight: 600,
-                color: "hsl(var(--pres-text-dim))",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
-            >
-              Starter
-            </p>
-
-            {/* Experience */}
-            <p
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 24,
-                color: "hsl(var(--pres-accent))",
-                fontWeight: 500,
-                marginTop: 8,
-              }}
-            >
-              3+ Years Coding · 1+ Year Industry
-            </p>
-
-            {/* Price */}
-            <div className="mt-5">
-              <span
+              {/* Badge */}
+              <div
+                className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
                 style={{
-                  fontFamily: "'Ubuntu', sans-serif",
-                  fontSize: 64,
-                  fontWeight: 700,
-                  color: "hsl(var(--pres-text))",
-                }}
-              >
-                $1,900
-              </span>
-              <span
-                style={{
+                  background: "hsl(var(--pres-accent))",
+                  color: "hsl(var(--pres-bg))",
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 28,
-                  color: "hsl(var(--pres-text-dim))",
+                  fontSize: 18,
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
                 }}
               >
-                /mo
-              </span>
-            </div>
+                <Rocket size={18} /> STARTER
+              </div>
 
-            {/* Hours badge */}
-            <div
-              className="mt-3 inline-flex items-center rounded-lg px-4 py-2"
-              style={{
-                background: "hsl(var(--pres-accent) / 0.08)",
-                border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                width: "fit-content",
-              }}
-            >
-              <span
+              {/* Tier label */}
+              <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: 22,
                   fontWeight: 600,
-                  color: "hsl(var(--pres-accent))",
+                  color: "hsl(var(--pres-text-dim))",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
                 }}
               >
-                160 hrs/month
-              </span>
-            </div>
+                Starter
+              </p>
 
-            {/* Features */}
-            <div className="mt-5 space-y-4 flex-1">
-              {features.map((feature, i) => (
-                <motion.div
-                  key={feature}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                  className="flex items-start gap-3"
+              {/* Experience */}
+              <p
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 24,
+                  color: "hsl(var(--pres-accent))",
+                  fontWeight: 500,
+                  marginTop: 8,
+                }}
+              >
+                3+ Years Coding · 1+ Year Industry
+              </p>
+
+              {/* Price */}
+              <div className="mt-5">
+                <span
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 64,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-text))",
+                  }}
                 >
-                  <CheckCircle
-                    size={26}
-                    style={{
-                      color: "hsl(var(--pres-accent))",
-                      flexShrink: 0,
-                      marginTop: 3,
-                    }}
-                  />
+                  $1,900
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 28,
+                    color: "hsl(var(--pres-text-dim))",
+                  }}
+                >
+                  /mo
+                </span>
+              </div>
+
+              {/* Hours badge */}
+              <div
+                className="mt-3 inline-flex items-center rounded-lg px-4 py-2"
+                style={{
+                  background: "hsl(var(--pres-accent) / 0.08)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.15)",
+                  width: "fit-content",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 22,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-accent))",
+                  }}
+                >
+                  160 hrs/month
+                </span>
+              </div>
+
+              {/* Rocket animation */}
+              <RocketAnimation intensity={1} />
+
+              {/* Features */}
+              <div className="mt-4 space-y-4 flex-1">
+                {features.map((feature, i) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle
+                      size={26}
+                      style={{
+                        color: "hsl(var(--pres-accent))",
+                        flexShrink: 0,
+                        marginTop: 3,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 26,
+                        color: "hsl(var(--pres-text-muted))",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {feature}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Alim add-on */}
+              <div
+                className="mt-4 rounded-xl"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.08), hsl(var(--pres-accent) / 0.03))",
+                  border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                  padding: "14px 16px",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Plus size={16} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 26,
-                      color: "hsl(var(--pres-text-muted))",
-                      lineHeight: 1.4,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "hsl(var(--pres-accent))",
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
                     }}
                   >
-                    {feature}
+                    Premium Add-on
                   </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                  <Crown size={14} style={{ color: "hsl(var(--pres-accent))" }} />
+                </div>
+                <p
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 16,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-text))",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Alim Ul Karim — Chief Software Engineer
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 14,
+                    color: "hsl(var(--pres-text-muted))",
+                    lineHeight: 1.4,
+                    marginTop: 4,
+                  }}
+                >
+                  4h/day dedicated · <strong style={{ color: "hsl(var(--pres-accent))" }}>$625/hr</strong> · $50,000/mo
+                </p>
+              </div>
+            </motion.div>
+          </HoverVideoPreview>
 
           {/* RIGHT — Explanation */}
           <motion.div
             {...fade(2)}
             className="flex flex-col justify-center gap-8 flex-1"
           >
-            {/* Who it's for */}
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <div
