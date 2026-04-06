@@ -112,18 +112,20 @@ function Launch({
         );
       })}
 
-      {/* ── THE ROCKET ── flies straight up ── */}
+      {/* ── THE ROCKET ── launches from pad upward ── */}
       <motion.div
-        initial={{ bottom: -s, left: "50%", opacity: 0 }}
+        initial={{ bottom: 10, left: "50%", opacity: 0, scale: 0.6 }}
         animate={{
-          bottom: ["0%", "105%"],
-          opacity: [0, 1, 1, 1, 0.8],
+          bottom: [10, 30, "30%", "60%", "110%"],
+          opacity: [0, 1, 1, 1, 0],
+          scale: [0.6, 0.8, 1, 1, 1],
         }}
         transition={{
-          delay: 0.2,
+          delay: 0.3,
           duration: FLIGHT,
-          ease: [0.2, 0.8, 0.3, 1],
-        }}
+          ease: [0.15, 0.7, 0.3, 1],
+          times: [0, 0.08, 0.35, 0.7, 1],
+        }
         style={{
           position: "absolute",
           marginLeft: -(s / 2),
