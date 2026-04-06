@@ -1,6 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
+import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Star } from "lucide-react";
 
