@@ -154,6 +154,7 @@ export default function PresentationEngine({ slides }: PresentationEngineProps) 
         onNavigate={navigate}
         showDownload={isExportActive}
         onOpenDownload={isExportActive ? () => setIsDownloadOpen(true) : undefined}
+        slideLabels={SLIDE_LABELS}
       />
 
       {isExportActive && (
