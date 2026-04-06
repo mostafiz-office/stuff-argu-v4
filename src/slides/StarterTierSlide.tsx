@@ -265,56 +265,110 @@ export default function StarterTierSlide() {
             </motion.div>
           </HoverVideoPreview>
 
-          {/* RIGHT — Explanation */}
+          {/* RIGHT — Redesigned */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col justify-center gap-8 flex-1"
+            className="flex flex-col justify-center gap-6 flex-1"
           >
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className="flex items-center justify-center rounded-xl"
-                  style={{
-                    width: 44,
-                    height: 44,
-                    background: "hsl(var(--pres-accent) / 0.12)",
-                    border: "1px solid hsl(var(--pres-accent) / 0.25)",
-                  }}
-                >
-                  <Star size={22} style={{ color: "hsl(var(--pres-accent))" }} />
-                </div>
+            {/* Big savings stat */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, type: "spring", stiffness: 150, damping: 12 }}
+              className="rounded-2xl relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
+                border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
+                padding: "28px 32px",
+              }}
+            >
+              <div
+                className="absolute top-0 right-0 bottom-0 w-1/3 pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle at 80% 50%, hsl(var(--pres-accent) / 0.08), transparent 70%)",
+                }}
+              />
+              <div className="flex items-center gap-3 mb-3">
+                <TrendingDown size={22} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: 600,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  Built for Founders
+                  vs US Market Rate
                 </span>
               </div>
+              <div className="flex items-baseline gap-4">
+                <span
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 56,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
+                  }}
+                >
+                  76%
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 24,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-text))",
+                  }}
+                >
+                  Savings
+                </span>
+              </div>
+              <div className="flex items-center gap-3 mt-3">
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 18,
+                    color: "hsl(var(--pres-text-dim))",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  $6,000–$8,000/mo
+                </span>
+                <ArrowRight size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <span
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 22,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
+                  }}
+                >
+                  $1,900/mo
+                </span>
+              </div>
+            </motion.div>
 
+            {/* Built for Founders text */}
+            <div>
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 19,
+                  fontSize: 22,
                   color: "hsl(var(--pres-text-muted))",
                   lineHeight: 1.7,
-                  marginBottom: 8,
                 }}
               >
                 Tight on budget but ready to build?{" "}
                 <strong style={{ color: "hsl(var(--pres-text))" }}>
                   Get a dedicated developer
                 </strong>{" "}
-                at a price that won't break the bank — then scale to higher tiers when you're ready.
+                at a price that won't break the bank — then scale when you're ready.
               </p>
             </div>
 
-            {/* Ideal For box */}
+            {/* Ideal For with icons */}
             <div
               className="rounded-2xl px-7 py-6"
               style={{
@@ -325,37 +379,51 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 15,
+                  fontSize: 18,
                   fontWeight: 600,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "hsl(var(--pres-accent))",
-                  marginBottom: 16,
+                  marginBottom: 18,
                 }}
               >
                 Ideal For
               </p>
-              <div className="space-y-3.5">
-                {idealFor.map((item, i) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 + i * 0.08, duration: 0.4 }}
-                    className="flex items-center gap-3"
-                  >
-                    <ArrowRight size={14} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 16,
-                        color: "hsl(var(--pres-text-muted))",
-                      }}
+              <div className="space-y-5">
+                {idealFor.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={item.text}
+                      initial={{ opacity: 0, x: 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
+                      className="flex items-center gap-4"
                     >
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
+                      <div
+                        className="flex items-center justify-center rounded-lg"
+                        style={{
+                          width: 36,
+                          height: 36,
+                          background: "hsl(var(--pres-accent) / 0.1)",
+                          border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 22,
+                          color: "hsl(var(--pres-text-muted))",
+                        }}
+                      >
+                        {item.text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
