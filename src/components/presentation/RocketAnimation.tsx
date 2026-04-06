@@ -90,7 +90,7 @@ function RocketFlight({
         );
       })}
 
-      {/* Rocket container — waits 2s, rises 4s, hovers 5s, fades 1s */}
+      {/* Tier 3 fastest, Tier 2 medium, Tier 1 slowest — all 12s total */}
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{
@@ -99,7 +99,11 @@ function RocketFlight({
         }}
         transition={{
           duration: 12,
-          times: [0, 0.16, 0.22, 0.5, 0.92, 1],
+          times: intensity === 3
+            ? [0, 0.08, 0.12, 0.25, 0.92, 1]
+            : intensity === 2
+              ? [0, 0.12, 0.18, 0.40, 0.92, 1]
+              : [0, 0.16, 0.24, 0.55, 0.92, 1],
           ease: "easeInOut",
         }}
         style={{
