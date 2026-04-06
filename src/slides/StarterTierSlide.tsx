@@ -105,7 +105,7 @@ export default function StarterTierSlide() {
                   letterSpacing: "0.05em",
                 }}
               >
-                🚀 TIER 1
+                <Rocket size={14} /> TIER 1
               </div>
 
               {/* Tier label */}
