@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import rocketTier1 from "@/assets/rocket-tier1.png";
 import rocketTier2 from "@/assets/rocket-tier2.png";
 import rocketTier3 from "@/assets/rocket-tier3.png";
@@ -31,16 +32,43 @@ const tierThemes = {
   },
 };
 
+const CYCLE_DURATION = 7000; // full cycle: 3s flight + 4s pause
+
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
   const smokeCount = intensity === 3 ? 10 : intensity === 2 ? 8 : 6;
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCycle((c) => c + 1);
+    }, CYCLE_DURATION);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.div
       className="absolute inset-0 pointer-events-none z-20 overflow-hidden"
       style={{ borderRadius: "inherit" }}
     >
-      {/* Vertical glowing trail left behind */}
+      {/* Everything keyed to cycle so it re-mounts and replays */}
+      <LaunchSequence key={cycle} theme={theme} intensity={intensity} smokeCount={smokeCount} />
+    </motion.div>
+  );
+}
+
+function LaunchSequence({
+  theme,
+  intensity,
+  smokeCount,
+}: {
+  theme: (typeof tierThemes)[1];
+  intensity: 1 | 2 | 3;
+  smokeCount: number;
+}) {
+  return (
+    <>
+      {/* Vertical glowing trail */}
       <motion.div
         initial={{ scaleY: 0, opacity: 0 }}
         animate={{ scaleY: 1, opacity: 0.12 }}
@@ -75,7 +103,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
         }}
       />
 
-      {/* Sparkle particles along the flight path */}
+      {/* Sparkle particles */}
       {[...Array(8)].map((_, i) => {
         const color = theme.trail[i % theme.trail.length];
         const bottomPct = 8 + i * 11;
@@ -93,8 +121,6 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
             transition={{
               delay: 0.8 + i * 0.2,
               duration: 1.6,
-              repeat: Infinity,
-              repeatDelay: 2.5,
               ease: "easeOut",
             }}
             style={{
@@ -111,7 +137,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
         );
       })}
 
-      {/* Smoke / cloud burst at launch pad */}
+      {/* Smoke burst at launch pad */}
       {[...Array(smokeCount)].map((_, i) => {
         const angle = (i / smokeCount) * 360;
         const radius = 15 + (i % 3) * 10;
@@ -147,7 +173,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
         );
       })}
 
-      {/* Launch pad bright flash */}
+      {/* Launch pad flash */}
       <motion.div
         initial={{ opacity: 0, scale: 0.2 }}
         animate={{
@@ -167,9 +193,9 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
         }}
       />
 
-      {/* The rocket — dramatic bottom-to-top flight */}
+      {/* Rocket — bottom to top flight */}
       <motion.div
-        initial={{ bottom: -30, opacity: 0 }}
+        initial={{ bottom: "-5%", opacity: 0 }}
         animate={{
           bottom: ["-5%", "86%"],
           opacity: [0, 1, 1, 1, 0.95],
@@ -187,7 +213,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           alignItems: "center",
         }}
       >
-        {/* Wide glow halo behind rocket */}
+        {/* Glow halo */}
         <motion.div
           animate={{
             scale: [0.85, 1.4, 0.85],
@@ -208,7 +234,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           }}
         />
 
-        {/* Rocket image with breathing glow */}
+        {/* Rocket image */}
         <motion.img
           src={theme.image}
           alt=""
@@ -230,7 +256,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           }}
         />
 
-        {/* Main flame — tall and dramatic */}
+        {/* Main flame */}
         <motion.div
           animate={{
             scaleY: [0.7, 1.4, 0.7],
@@ -249,7 +275,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           }}
         />
 
-        {/* Inner hot core flame */}
+        {/* Inner hot core */}
         <motion.div
           animate={{
             scaleY: [0.8, 1.3, 0.8],
@@ -269,7 +295,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           }}
         />
 
-        {/* Flame sparks shooting down */}
+        {/* Flame sparks */}
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={`fspark-${i}`}
@@ -300,6 +326,6 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
           />
         ))}
       </motion.div>
-    </motion.div>
+    </>
   );
 }
