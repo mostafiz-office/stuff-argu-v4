@@ -162,7 +162,7 @@ export default function PricingSavingsSlide() {
                     animate={{ width: `${c.barUs}%` }}
                     transition={{ delay: 0.5 + i * 0.12, duration: 0.8 }}
                     className="h-full rounded-md"
-                    style={{ background: "linear-gradient(90deg, #ef4444, #ef444488)" }}
+                    style={{ background: "linear-gradient(90deg, #7c3aed, #7c3aed88)" }}
                   />
                 </div>
                 <span
@@ -170,7 +170,7 @@ export default function PricingSavingsSlide() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 14,
                     fontWeight: 600,
-                    color: "#ef4444",
+                    color: "#7c3aed",
                     width: 160,
                     textAlign: "right",
                   }}
