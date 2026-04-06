@@ -21,7 +21,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCycle((c) => c + 1), 17500);
+    const id = setInterval(() => setCycle((c) => c + 1), 15500);
     return () => clearInterval(id);
   }, []);
 
@@ -94,16 +94,16 @@ function RocketFlight({
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{
-          opacity: [0, 0, 1, 1, 1, 1, 0],
-          y: intensity === 1 ? [0, 0, 0, -180, -560, -560, -560] : [0, 0, 0, -180, -550, -550, -550],
+          opacity: [0, 1, 1, 1, 1, 0],
+          y: intensity === 1 ? [0, 0, -180, -560, -560, -560] : [0, 0, -180, -550, -550, -550],
         }}
         transition={{
-          duration: 17,
+          duration: 15,
           times: intensity === 3
-            ? [0, 0.12, 0.13, 0.30, 0.42, 0.90, 1]
+            ? [0, 0.01, 0.20, 0.33, 0.90, 1]
             : intensity === 2
-              ? [0, 0.12, 0.13, 0.34, 0.50, 0.90, 1]
-              : [0, 0.12, 0.13, 0.38, 0.57, 0.90, 1],
+              ? [0, 0.01, 0.25, 0.42, 0.90, 1]
+              : [0, 0.01, 0.30, 0.50, 0.90, 1],
           ease: "easeInOut",
         }}
         style={{
