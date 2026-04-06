@@ -170,7 +170,7 @@ export default function PricingSavingsSlide() {
                     animate={{ width: `${c.barUs}%` }}
                     transition={{ delay: 0.5 + i * 0.12, duration: 0.8 }}
                     className="h-full rounded-md"
-                    style={{ background: "linear-gradient(90deg, #7c3aed, #7c3aed88)" }}
+                    style={{ background: `linear-gradient(90deg, ${c.usColor}, ${c.usColor}88)` }}
                   />
                 </div>
                 <span
