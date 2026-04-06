@@ -168,7 +168,7 @@ function RocketFlight({
             background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}cc, ${theme.trail[1]}80, transparent)`,
             filter: "blur(3px)",
             transformOrigin: "top center",
-            marginTop: -8,
+            marginTop: -20,
           }}
         />
       </motion.div>
