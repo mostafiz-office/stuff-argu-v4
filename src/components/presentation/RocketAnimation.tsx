@@ -125,7 +125,7 @@ function Launch({
           duration: FLIGHT,
           ease: [0.15, 0.7, 0.3, 1],
           times: [0, 0.08, 0.35, 0.7, 1],
-        }
+        }}
         style={{
           position: "absolute",
           marginLeft: -(s / 2),
