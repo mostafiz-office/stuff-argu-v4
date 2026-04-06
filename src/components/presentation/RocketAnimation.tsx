@@ -14,7 +14,7 @@ const tierThemes = {
   3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketTier3 },
 };
 
-const SIZE = 120;
+const SIZE = 160;
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
