@@ -92,24 +92,24 @@ export default function StarterTierSlide() {
           >
             {/* Badge */}
             <div
-              className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
+              className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
               style={{
                 background: "hsl(var(--pres-accent))",
                 color: "hsl(var(--pres-bg))",
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 12,
+                fontSize: 18,
                 fontWeight: 700,
                 letterSpacing: "0.05em",
               }}
             >
-              <Rocket size={12} /> STARTER
+              <Rocket size={18} /> STARTER
             </div>
 
             {/* Tier label */}
             <p
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 14,
+                fontSize: 22,
                 fontWeight: 600,
                 color: "hsl(var(--pres-text-dim))",
                 letterSpacing: "0.12em",
@@ -123,10 +123,10 @@ export default function StarterTierSlide() {
             <p
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 15,
+                fontSize: 24,
                 color: "hsl(var(--pres-accent))",
                 fontWeight: 500,
-                marginTop: 6,
+                marginTop: 8,
               }}
             >
               3+ Years Coding · 1+ Year Industry
@@ -137,7 +137,7 @@ export default function StarterTierSlide() {
               <span
                 style={{
                   fontFamily: "'Ubuntu', sans-serif",
-                  fontSize: 52,
+                  fontSize: 64,
                   fontWeight: 700,
                   color: "hsl(var(--pres-text))",
                 }}
@@ -147,7 +147,7 @@ export default function StarterTierSlide() {
               <span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 28,
                   color: "hsl(var(--pres-text-dim))",
                 }}
               >
@@ -157,7 +157,7 @@ export default function StarterTierSlide() {
 
             {/* Hours badge */}
             <div
-              className="mt-3 inline-flex items-center rounded-lg px-3 py-1"
+              className="mt-3 inline-flex items-center rounded-lg px-4 py-2"
               style={{
                 background: "hsl(var(--pres-accent) / 0.08)",
                 border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -167,7 +167,7 @@ export default function StarterTierSlide() {
               <span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 13,
+                  fontSize: 22,
                   fontWeight: 600,
                   color: "hsl(var(--pres-accent))",
                 }}
@@ -177,27 +177,27 @@ export default function StarterTierSlide() {
             </div>
 
             {/* Features */}
-            <div className="mt-6 space-y-3.5 flex-1">
+            <div className="mt-5 space-y-4 flex-1">
               {features.map((feature, i) => (
                 <motion.div
                   key={feature}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                  className="flex items-start gap-2.5"
+                  className="flex items-start gap-3"
                 >
                   <CheckCircle
-                    size={18}
+                    size={26}
                     style={{
                       color: "hsl(var(--pres-accent))",
                       flexShrink: 0,
-                      marginTop: 2,
+                      marginTop: 3,
                     }}
                   />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 16,
+                      fontSize: 26,
                       color: "hsl(var(--pres-text-muted))",
                       lineHeight: 1.4,
                     }}
