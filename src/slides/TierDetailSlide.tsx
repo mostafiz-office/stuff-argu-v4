@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, X } from "lucide-react";
+import { Award, CheckCircle, Crown, X } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,11 +24,11 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: "Slack only", leadership: true },
 ];
 
-const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
-  { key: "starter", name: "Tier 1", price: "$1,900/mo" },
-  { key: "growth", name: "Tier 2", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo", bestValue: true },
-  { key: "leadership", name: "Tier 3.B", price: "$7.5K–10K/mo" },
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
+  { key: "starter", name: "Starter", price: "$1,900/mo", color: "hsl(var(--pres-text-dim))" },
+  { key: "growth", name: "Tier 1", price: "$4,299/mo", color: "hsl(var(--pres-accent))" },
+  { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 71% 45%)" },
+  { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 85% 60%)" },
 ];
 
 export default function TierDetailSlide() {
