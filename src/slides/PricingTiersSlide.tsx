@@ -80,7 +80,7 @@ export default function PricingTiersSlide() {
           className="absolute left-[80px] top-[90px] z-10"
           style={{
             fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 68,
+            fontSize: 52,
             fontWeight: 700,
             color: "hsl(var(--pres-text))",
           }}
@@ -93,7 +93,7 @@ export default function PricingTiersSlide() {
           className="absolute left-[80px] top-[178px] z-10"
           style={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: 22,
+            fontSize: 18,
             color: "hsl(var(--pres-text-muted))",
           }}
         >
@@ -128,7 +128,7 @@ export default function PricingTiersSlide() {
                           ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
                           : "hsl(var(--pres-bg-surface))",
                     border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isPremium ? "hsl(280 85% 60%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
-                    padding: "40px 32px",
+                    padding: "28px 24px",
                   }}
                 >
                   {/* Rocket flies from bottom to badge */}
@@ -141,12 +141,12 @@ export default function PricingTiersSlide() {
                         background: "hsl(var(--pres-accent))",
                         color: "hsl(var(--pres-bg))",
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: 700,
                         letterSpacing: "0.05em",
                       }}
                     >
-                      <Star size={18} /> MOST POPULAR
+                      <Star size={14} /> MOST POPULAR
                     </div>
                   )}
 
@@ -157,12 +157,12 @@ export default function PricingTiersSlide() {
                         background: "hsl(142 71% 45%)",
                         color: "#fff",
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: 700,
                         letterSpacing: "0.05em",
                       }}
                     >
-                      <Award size={18} /> BEST VALUE
+                      <Award size={14} /> BEST VALUE
                     </div>
                   )}
 
@@ -173,12 +173,12 @@ export default function PricingTiersSlide() {
                         background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
                         color: "#fff",
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: 700,
                         letterSpacing: "0.05em",
                       }}
                     >
-                      <Crown size={18} /> PREMIUM
+                      <Crown size={14} /> PREMIUM
                     </div>
                   )}
 
@@ -186,7 +186,7 @@ export default function PricingTiersSlide() {
                   <p
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 22,
+                      fontSize: 16,
                       fontWeight: 600,
                       color: "hsl(var(--pres-text-dim))",
                       letterSpacing: "0.12em",
@@ -200,7 +200,7 @@ export default function PricingTiersSlide() {
                   <p
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 24,
+                      fontSize: 18,
                       color: "hsl(var(--pres-accent))",
                       fontWeight: 500,
                       marginTop: 8,
@@ -215,7 +215,7 @@ export default function PricingTiersSlide() {
                     <span
                       style={{
                         fontFamily: "'Ubuntu', sans-serif",
-                        fontSize: tier.price.length > 8 ? 48 : 64,
+                        fontSize: tier.price.length > 8 ? 36 : 48,
                         fontWeight: 700,
                         color: "hsl(var(--pres-text))",
                       }}
@@ -225,7 +225,7 @@ export default function PricingTiersSlide() {
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 28,
+                        fontSize: 20,
                         color: "hsl(var(--pres-text-dim))",
                       }}
                     >
@@ -235,7 +235,7 @@ export default function PricingTiersSlide() {
 
                   {/* Hours badge */}
                   <div
-                    className="mt-3 inline-flex items-center rounded-lg px-4 py-2"
+                    className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
                     style={{
                       background: "hsl(var(--pres-accent) / 0.08)",
                       border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -245,7 +245,7 @@ export default function PricingTiersSlide() {
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 22,
+                        fontSize: 16,
                         fontWeight: 600,
                         color: "hsl(var(--pres-accent))",
                       }}
@@ -255,11 +255,11 @@ export default function PricingTiersSlide() {
                   </div>
 
                   {/* Features */}
-                  <div className="mt-5 space-y-4 flex-1">
+                  <div className="mt-3 space-y-2.5 flex-1">
                     {tier.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
                         <CheckCircle
-                          size={26}
+                          size={18}
                           style={{
                             color: "hsl(var(--pres-accent))",
                             flexShrink: 0,
@@ -269,7 +269,7 @@ export default function PricingTiersSlide() {
                         <span
                           style={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontSize: 26,
+                            fontSize: 18,
                             color: "hsl(var(--pres-text-muted))",
                             lineHeight: 1.4,
                           }}
@@ -287,7 +287,7 @@ export default function PricingTiersSlide() {
                     style={{
                       background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.08), hsl(var(--pres-accent) / 0.03))",
                       border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                      padding: "14px 16px",
+                      padding: "10px 14px",
                     }}
                   >
                     <div className="flex items-center gap-2 mb-2">
@@ -295,7 +295,7 @@ export default function PricingTiersSlide() {
                       <span
                         style={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: 13,
+                          fontSize: 11,
                           fontWeight: 700,
                           color: "hsl(var(--pres-accent))",
                           letterSpacing: "0.08em",
@@ -309,7 +309,7 @@ export default function PricingTiersSlide() {
                     <p
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 16,
+                        fontSize: 13,
                         fontWeight: 600,
                         color: "hsl(var(--pres-text))",
                         lineHeight: 1.4,
@@ -320,7 +320,7 @@ export default function PricingTiersSlide() {
                     <p
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
+                        fontSize: 12,
                         color: "hsl(var(--pres-text-muted))",
                         lineHeight: 1.4,
                         marginTop: 4,
