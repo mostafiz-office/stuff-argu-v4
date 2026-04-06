@@ -110,7 +110,7 @@ function Launch({
       <motion.div
         initial={{ bottom: -20, right: 0, opacity: 0 }}
         animate={{
-          bottom: [-20, -20, 20, "65%", "65%", "65%"],
+          bottom: [-20, -20, 20, "45%", "45%", "45%"],
           opacity: [0, 0, 1, 1, 1, 0],
         }}
         transition={{
