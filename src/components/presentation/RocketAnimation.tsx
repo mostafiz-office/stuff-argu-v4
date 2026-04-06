@@ -58,7 +58,7 @@ function RocketFlight({
         style={{
           position: "absolute",
           bottom: 5,
-          right: SIZE / 2 - 30,
+          right: 10 + SIZE / 2 - 30,
           width: 60,
           height: 16,
           borderRadius: "50%",
@@ -79,7 +79,7 @@ function RocketFlight({
             style={{
               position: "absolute",
               bottom: 8,
-              right: SIZE / 2 - 6,
+              right: 10 + SIZE / 2 - 6,
               width: 12,
               height: 12,
               borderRadius: "50%",
