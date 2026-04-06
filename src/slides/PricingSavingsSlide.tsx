@@ -17,6 +17,8 @@ const comparisons = [
     saving: "Up to 76%",
     barUs: 100,
     barRiseup: 24,
+    usColor: "#ef4444",
+    badgeColor: "#ef4444",
   },
   {
     role: "Mid-Level Developer",
@@ -26,6 +28,8 @@ const comparisons = [
     saving: "Up to 71%",
     barUs: 100,
     barRiseup: 29,
+    usColor: "#f97316",
+    badgeColor: "#f97316",
   },
   {
     role: "Skilled Expert",
@@ -35,6 +39,8 @@ const comparisons = [
     saving: "Up to 68%",
     barUs: 100,
     barRiseup: 32,
+    usColor: "#7c3aed",
+    badgeColor: "#7c3aed",
   },
   {
     role: "Tech Leadership",
@@ -44,6 +50,8 @@ const comparisons = [
     saving: "Up to 67%",
     barUs: 100,
     barRiseup: 33,
+    usColor: "#ec4899",
+    badgeColor: "#ec4899",
   },
 ];
 
@@ -132,8 +140,8 @@ export default function PricingSavingsSlide() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 14,
                     fontWeight: 700,
-                    color: "hsl(var(--pres-bg))",
-                    background: "hsl(var(--pres-accent))",
+                    color: "#fff",
+                    background: c.badgeColor,
                   }}
                 >
                   {c.saving}
@@ -162,15 +170,14 @@ export default function PricingSavingsSlide() {
                     animate={{ width: `${c.barUs}%` }}
                     transition={{ delay: 0.5 + i * 0.12, duration: 0.8 }}
                     className="h-full rounded-md"
-                    style={{ background: "linear-gradient(90deg, #7c3aed, #7c3aed88)" }}
+                    style={{ background: `linear-gradient(90deg, ${c.usColor}, ${c.usColor}88)` }}
                   />
                 </div>
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 14,
-                    fontWeight: 600,
-                    color: "#7c3aed",
+                    color: c.usColor,
                     width: 160,
                     textAlign: "right",
                   }}
