@@ -26,7 +26,7 @@ const recommendations = [
     quote: '"Solid and high quality work... the smoothest on-boarding process I have had in my whole career."',
     image: konstantinosImg,
     x: 70,
-    y: 680,
+    y: 860,
   },
   {
     name: "Marek Flejszman",
