@@ -89,8 +89,8 @@ export default function HoverVideoPreview({
             {/* Video fills most of the card in 9:16 portrait */}
             <div
               style={{
-                width: "70%",
-                maxWidth: 220,
+                width: "90%",
+                maxWidth: 400,
                 aspectRatio: "9/16",
                 borderRadius: 18,
                 overflow: "hidden",
