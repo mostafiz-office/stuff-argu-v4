@@ -187,13 +187,13 @@ function Launch({
           }}
           transition={{ duration: 0.22, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            width: 24,
-            height: 70 + intensity * 14,
+            width: 32,
+            height: 100 + intensity * 20,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}cc, ${theme.trail[1]}80, transparent)`,
-            filter: "blur(3px)",
+            filter: "blur(4px)",
             transformOrigin: "top center",
-            marginTop: -8,
+            marginTop: -10,
           }}
         />
 
@@ -203,11 +203,11 @@ function Launch({
           transition={{ duration: 0.16, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            bottom: -(35 + intensity * 8),
+            bottom: -(50 + intensity * 12),
             left: "50%",
-            marginLeft: -5,
-            width: 10,
-            height: 40 + intensity * 10,
+            marginLeft: -7,
+            width: 14,
+            height: 60 + intensity * 14,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, #fffbe6, ${theme.trail[0]}80, transparent)`,
             transformOrigin: "top center",
