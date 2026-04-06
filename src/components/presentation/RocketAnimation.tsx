@@ -284,11 +284,11 @@ function LaunchSequence({
           transition={{ duration: 0.25, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            bottom: -(intensity === 3 ? 28 : intensity === 2 ? 22 : 16),
+            bottom: -(intensity === 3 ? 40 : intensity === 2 ? 32 : 24),
             left: "50%",
-            marginLeft: -4,
-            width: 8,
-            height: intensity === 3 ? 36 : intensity === 2 ? 28 : 22,
+            marginLeft: -6,
+            width: 12,
+            height: intensity === 3 ? 50 : intensity === 2 ? 40 : 30,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, #fffbe6, ${theme.trail[0]}90, transparent)`,
             transformOrigin: "top center",
