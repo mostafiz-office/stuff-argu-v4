@@ -66,7 +66,7 @@ export default function DigitalMarketing360Slide() {
         </div>
 
         {/* 2x2 Grid */}
-        <div className="absolute left-[80px] right-[80px] top-[260px] bottom-[40px] z-10 grid grid-cols-2 grid-rows-2 gap-6">
+        <div className="absolute left-[80px] right-[80px] top-[260px] bottom-[80px] z-10 grid grid-cols-2 grid-rows-2 gap-6">
           {sections.map((section, idx) => {
             const Icon = section.icon;
             return (

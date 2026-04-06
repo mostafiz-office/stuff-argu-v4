@@ -59,7 +59,7 @@ export default function IndustriesSlide() {
           style={{ width: 80 }}
         />
 
-        <div className="absolute left-[60px] right-[60px] top-[230px] bottom-[40px] grid grid-cols-3 grid-rows-2 gap-5 z-10">
+        <div className="absolute left-[60px] right-[60px] top-[230px] bottom-[80px] grid grid-cols-3 grid-rows-2 gap-5 z-10">
           {industries.map((ind, i) => (
             <motion.div
               key={ind.name}

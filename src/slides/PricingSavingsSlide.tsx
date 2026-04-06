@@ -104,7 +104,7 @@ export default function PricingSavingsSlide() {
         </div>
 
         {/* Comparison bars */}
-        <div className="absolute left-[80px] right-[80px] top-[360px] bottom-[50px] z-10 flex flex-col justify-center gap-7">
+        <div className="absolute left-[80px] right-[80px] top-[360px] bottom-[80px] z-10 flex flex-col justify-center gap-7">
           {comparisons.map((c, i) => (
             <motion.div
               key={c.role}

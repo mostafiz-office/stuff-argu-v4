@@ -101,7 +101,7 @@ export default function PricingTiersSlide() {
         </motion.p>
 
         {/* Tier cards — 3 columns */}
-        <div className="absolute left-[80px] right-[80px] top-[240px] bottom-[40px] grid grid-cols-3 gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] grid grid-cols-3 gap-8 z-10">
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
             const isBestValue = 'bestValue' in tier && tier.bestValue;
