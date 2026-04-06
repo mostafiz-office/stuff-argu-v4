@@ -11,20 +11,6 @@ const fade = (i: number) => ({
 
 const tiers = [
   {
-    name: "Tier 1 — Starter",
-    experience: "1+ Yr Industry · 3+ Yrs Coding",
-    price: "$1,900",
-    per: "/mo",
-    hours: "160 hrs/month",
-    features: [
-      "Tech-stack specific developer",
-      "Task guidance from Tier 2 lead",
-      "Ideal for well-defined tasks",
-      "Weekly progress reports",
-    ],
-    featured: false,
-  },
-  {
     name: "Tier 2 — Growth",
     experience: "2-3+ Years Experience",
     price: "$4,299",
@@ -108,8 +94,8 @@ export default function PricingTiersSlide() {
           All plans include 160 dedicated hours/month. Scale anytime.
         </motion.p>
 
-        {/* Tier cards — 4 columns */}
-        <div className="absolute left-[60px] right-[60px] top-[248px] bottom-[50px] grid grid-cols-4 gap-5 z-10">
+        {/* Tier cards — 3 columns */}
+        <div className="absolute left-[120px] right-[120px] top-[248px] bottom-[50px] grid grid-cols-3 gap-7 z-10">
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
             const isBestValue = 'bestValue' in tier && tier.bestValue;
