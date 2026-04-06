@@ -23,6 +23,7 @@ export default function SlideNavigation({
   onNavigate,
   onOpenDownload,
   showDownload = true,
+  slideLabels = [],
 }: SlideNavigationProps) {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
