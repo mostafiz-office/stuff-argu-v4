@@ -121,7 +121,7 @@ function Launch({
         }}
         style={{
           position: "absolute",
-          right: -SIZE * 0.25,
+          right: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
