@@ -93,15 +93,16 @@ export default function PricingSavingsSlide() {
             {...fade(0)}
             style={{
               fontFamily: "'Ubuntu', sans-serif",
-              fontSize: 72,
+              fontSize: 64,
               fontWeight: 700,
               fontStyle: "italic",
               lineHeight: 1.05,
             }}
           >
-            <span style={{ color: "hsl(var(--pres-accent))" }}>Cost</span>
+            <span style={{ color: "hsl(var(--pres-accent))" }}>Save</span>{" "}
+            <span style={{ color: "hsl(var(--pres-text))" }}>Up To</span>
             <br />
-            <span style={{ color: "hsl(var(--pres-text))" }}>Comparison</span>
+            <span style={{ color: "hsl(var(--pres-accent))", fontSize: 88 }}>76%</span>
           </motion.h1>
 
           {/* Accent underline */}
@@ -127,11 +128,11 @@ export default function PricingSavingsSlide() {
               maxWidth: 440,
             }}
           >
-            Same quality talent at{" "}
+            Compare monthly costs:{" "}
             <strong style={{ color: "hsl(var(--pres-accent))" }}>
-              60% less cost
-            </strong>
-            . No compromise on expertise, process, or delivery standards.
+              US market rates
+            </strong>{" "}
+            vs RiseUp Asia.
           </motion.p>
 
           {/* Savings stat card */}
