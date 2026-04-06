@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, X } from "lucide-react";
+import { Award, CheckCircle, Crown, X } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,11 +24,11 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: "Slack only", leadership: true },
 ];
 
-const columns: { key: ColKey; name: string; price: string; bestValue?: boolean }[] = [
-  { key: "starter", name: "Tier 1", price: "$1,900/mo" },
-  { key: "growth", name: "Tier 2", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 3.A", price: "$6,800–8K/mo", bestValue: true },
-  { key: "leadership", name: "Tier 3.B", price: "$7.5K–10K/mo" },
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
+  { key: "starter", name: "Starter", price: "$1,900/mo", color: "hsl(var(--pres-text-dim))" },
+  { key: "growth", name: "Tier 1", price: "$4,299/mo", color: "hsl(var(--pres-accent))" },
+  { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 71% 45%)" },
+  { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 85% 60%)" },
 ];
 
 export default function TierDetailSlide() {
@@ -72,7 +72,11 @@ export default function TierDetailSlide() {
                 transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
                 className="text-center relative"
                 style={{
-                  background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
+                  background: col.bestValue
+                    ? "hsl(142 71% 45% / 0.08)"
+                    : col.premium
+                      ? "hsl(280 85% 60% / 0.08)"
+                      : "transparent",
                   borderRadius: "12px 12px 0 0",
                   padding: "14px 8px",
                 }}
@@ -93,13 +97,29 @@ export default function TierDetailSlide() {
                     <Award size={13} /> BEST VALUE
                   </div>
                 )}
+                {col.premium && (
+                  <div
+                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <Crown size={13} /> PREMIUM
+                  </div>
+                )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 28,
                     fontWeight: 700,
-                    color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
-                    marginTop: col.bestValue ? 14 : 0,
+                    color: col.color || "hsl(var(--pres-text))",
+                    marginTop: (col.bestValue || col.premium) ? 14 : 0,
                   }}
                 >
                   {col.name}
@@ -144,17 +164,22 @@ export default function TierDetailSlide() {
                 </span>
                 {columns.map((col) => {
                   const val = feat[col.key];
+                  const cellColor = col.bestValue ? "hsl(142 71% 45%)" : col.premium ? "hsl(280 85% 60%)" : "hsl(var(--pres-accent))";
                   return (
                     <div
                       key={col.key}
                       className="flex justify-center"
                       style={{
-                        background: col.bestValue ? "hsl(142 71% 45% / 0.06)" : "transparent",
+                        background: col.bestValue
+                          ? "hsl(142 71% 45% / 0.06)"
+                          : col.premium
+                            ? "hsl(280 85% 60% / 0.06)"
+                            : "transparent",
                         padding: "8px 0",
                       }}
                     >
                       {val === true ? (
-                        <CheckCircle size={26} style={{ color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))" }} />
+                        <CheckCircle size={26} style={{ color: cellColor }} />
                       ) : val === false ? (
                         <X size={26} style={{ color: "hsl(var(--pres-text-dim) / 0.4)" }} />
                       ) : (
@@ -163,7 +188,7 @@ export default function TierDetailSlide() {
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: 18,
                             fontWeight: 600,
-                            color: col.bestValue ? "hsl(142 71% 45%)" : "hsl(var(--pres-accent))",
+                            color: cellColor,
                           }}
                         >
                           {val}
