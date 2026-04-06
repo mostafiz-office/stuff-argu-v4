@@ -21,10 +21,10 @@ const features = [
 ];
 
 const idealFor = [
-  "Pre-seed & seed-stage startups",
-  "Bootstrapped founders shipping fast",
-  "MVPs & well-defined sprints",
-  "Budget-conscious teams needing quality",
+  { text: "Pre-seed & seed-stage startups", icon: Lightbulb },
+  { text: "Bootstrapped founders shipping fast", icon: Zap },
+  { text: "MVPs & well-defined sprints", icon: Target },
+  { text: "Budget-conscious teams needing quality", icon: Wallet },
 ];
 
 export default function StarterTierSlide() {
