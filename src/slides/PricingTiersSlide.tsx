@@ -25,7 +25,7 @@ const tiers = [
       "Daily standups & Slack access",
     ],
     featured: true,
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "uveR9C5CgSY",
   },
   {
     name: "Tier 3.A — Skilled",
@@ -41,7 +41,7 @@ const tiers = [
     ],
     featured: false,
     bestValue: true,
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "uveR9C5CgSY",
   },
   {
     name: "Tier 3.B — Leadership",
@@ -56,7 +56,7 @@ const tiers = [
       "24/7 SLA & priority support",
     ],
     featured: false,
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "uveR9C5CgSY",
   },
 ];
 
