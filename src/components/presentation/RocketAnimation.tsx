@@ -91,11 +91,11 @@ function Launch({
               x: [0, dx],
               y: [0, dy],
             }}
-            transition={{ delay: 0.1 + i * 0.04, duration: 1.6, ease: "easeOut" }}
+            transition={{ delay: 3 + i * 0.04, duration: 1.6, ease: "easeOut" }}
             style={{
               position: "absolute",
-              bottom: 16,
-              right: 30,
+              bottom: 0,
+              right: 20,
               width: 14,
               height: 14,
               borderRadius: "50%",
