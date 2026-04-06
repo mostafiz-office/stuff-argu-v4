@@ -140,8 +140,8 @@ export default function PricingSavingsSlide() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 14,
                     fontWeight: 700,
-                    color: "hsl(var(--pres-bg))",
-                    background: "hsl(var(--pres-accent))",
+                    color: "#fff",
+                    background: c.badgeColor,
                   }}
                 >
                   {c.saving}
