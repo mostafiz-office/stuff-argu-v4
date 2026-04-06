@@ -56,6 +56,7 @@ const tiers = [
       "24/7 SLA & priority support",
     ],
     featured: false,
+    premium: true,
     youtubeId: "uveR9C5CgSY",
   },
 ];
