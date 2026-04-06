@@ -92,16 +92,14 @@ function Launch({
 
       {/* THE ROCKET */}
       <motion.div
-        initial={{ opacity: 0 }}
         animate={{
-          // 0→0.17 = 2s wait, 0.17→0.5 = 4s rise, 0.5→0.92 = 5s hover, 0.92→1 = 1s fade
-          bottom: [5, 5, "35%", "35%", "35%"],
-          opacity: [0, 0.5, 1, 1, 0],
+          bottom: ["2%", "2%", "8%", "35%", "35%", "35%"],
+          opacity: [0, 0.5, 1, 1, 1, 0],
         }}
         transition={{
           duration: 12,
           ease: "easeInOut",
-          times: [0, 0.16, 0.5, 0.92, 1],
+          times: [0, 0.16, 0.2, 0.5, 0.92, 1],
         }}
         style={{
           position: "absolute",
