@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 
 const tiers = [
   {
-    name: "Tier 1 — Growth",
+    name: "Tier 2 — Growth",
     experience: "2-3+ Years Experience",
     price: "$4,299",
     per: "/mo",
@@ -28,7 +28,7 @@ const tiers = [
     youtubeId: "uveR9C5CgSY",
   },
   {
-    name: "Tier 2 — Skilled",
+    name: "Tier 3.A — Skilled",
     experience: "7-15+ Years Experience",
     price: "$6,800–$8,000",
     per: "/mo",
@@ -44,7 +44,7 @@ const tiers = [
     youtubeId: "uveR9C5CgSY",
   },
   {
-    name: "Tier 3 — Leadership",
+    name: "Tier 3.B — Leadership",
     experience: "7-15+ Years Experience",
     price: "$7,500–$10,000",
     per: "/mo",
