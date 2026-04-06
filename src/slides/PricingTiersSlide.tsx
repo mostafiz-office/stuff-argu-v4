@@ -251,8 +251,6 @@ export default function PricingTiersSlide() {
                     </span>
                   </div>
 
-                  {/* Rocket animation */}
-                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
                   {/* Features */}
                   <div className="mt-5 space-y-4 flex-1">
                     {tier.features.map((feature) => (
@@ -278,6 +276,9 @@ export default function PricingTiersSlide() {
                       </div>
                     ))}
                   </div>
+
+                  {/* Rocket animation */}
+                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
 
                   {/* Alim add-on */}
                   <div
