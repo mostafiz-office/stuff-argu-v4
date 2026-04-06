@@ -134,8 +134,9 @@ export default function PricingCoverV2() {
               Staff Augmentation
             </motion.p>
 
-            <motion.h1 {...fade(2)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 82, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
-              <span style={{ color: "hsl(var(--pres-accent))" }}>Pricing</span> Plans
+            <motion.h1 {...fade(2)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 78, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
+              <span style={{ color: "hsl(var(--pres-accent))" }}>Elite</span> Engineers
+              <br />On Demand
             </motion.h1>
 
             <motion.p {...fade(3)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 22, color: "hsl(var(--pres-text-muted))", marginTop: 24, maxWidth: 520, lineHeight: 1.6 }}>

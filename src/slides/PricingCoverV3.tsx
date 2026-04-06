@@ -102,9 +102,9 @@ export default function PricingCoverV3() {
               </div>
             </motion.div>
 
-            <motion.h1 {...fade(1)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 84, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
-              <span style={{ color: "hsl(var(--pres-accent))" }}>Pricing</span>
-              <br />Plans
+            <motion.h1 {...fade(1)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 80, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
+              <span style={{ color: "hsl(var(--pres-accent))" }}>Elite</span> Engineers
+              <br />On Demand
             </motion.h1>
 
             <motion.p {...fade(2)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 22, color: "hsl(var(--pres-text-muted))", marginTop: 20, maxWidth: 560, lineHeight: 1.65 }}>
