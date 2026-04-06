@@ -135,19 +135,23 @@ function RocketFlight({
           }}
         />
 
-        {/* Rocket image */}
+        {/* Rocket image — vibrates during pre-launch */}
         <motion.img
           src={theme.image}
           alt=""
           draggable={false}
           animate={{
+            x: [0, -2, 2, -1, 1, 0, -2, 2, -1, 1, 0, 0, 0, 0],
             filter: [
               `drop-shadow(0 0 20px ${theme.glow}80) drop-shadow(0 0 40px ${theme.glow}30)`,
               `drop-shadow(0 0 35px ${theme.glow}ff) drop-shadow(0 0 60px ${theme.glow}60)`,
               `drop-shadow(0 0 20px ${theme.glow}80) drop-shadow(0 0 40px ${theme.glow}30)`,
             ],
           }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            x: { duration: 2.4, ease: "linear", repeat: 0 },
+            filter: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+          }}
           style={{ width: SIZE, height: SIZE, objectFit: "contain" }}
         />
 
