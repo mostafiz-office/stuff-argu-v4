@@ -95,15 +95,15 @@ function RocketFlight({
         initial={{ opacity: 0, y: 0 }}
         animate={{
           opacity: [0, 1, 1, 1, 1, 0],
-          y: intensity === 1 ? [0, 0, -180, -560, -560, -560] : [0, 0, -180, -550, -550, -550],
+          y: intensity === 1 ? [0, 0, 0, -560, -560, -560] : [0, 0, 0, -550, -550, -550],
         }}
         transition={{
           duration: 15,
           times: intensity === 3
-            ? [0, 0.01, 0.12, 0.24, 0.90, 1]   // fastest
+            ? [0, 0.01, 0.20, 0.35, 0.90, 1]   // 3s wait, reaches top fastest
             : intensity === 2
-              ? [0, 0.01, 0.18, 0.32, 0.90, 1]  // medium
-              : [0, 0.01, 0.25, 0.42, 0.90, 1], // slowest
+              ? [0, 0.01, 0.20, 0.45, 0.90, 1]  // 3s wait, reaches top medium
+              : [0, 0.01, 0.20, 0.55, 0.90, 1], // 3s wait, reaches top slowest
           ease: "easeInOut",
         }}
         style={{
