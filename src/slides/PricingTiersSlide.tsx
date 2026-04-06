@@ -1,5 +1,6 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
+import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Star } from "lucide-react";
 
@@ -23,6 +24,7 @@ const tiers = [
       "Daily standups & Slack access",
     ],
     featured: true,
+    youtubeId: "dQw4w9WgXcQ",
   },
   {
     name: "Tier 3.A — Skilled",
@@ -38,6 +40,7 @@ const tiers = [
     ],
     featured: false,
     bestValue: true,
+    youtubeId: "dQw4w9WgXcQ",
   },
   {
     name: "Tier 3.B — Leadership",
@@ -52,6 +55,7 @@ const tiers = [
       "24/7 SLA & priority support",
     ],
     featured: false,
+    youtubeId: "dQw4w9WgXcQ",
   },
 ];
 
@@ -99,154 +103,160 @@ export default function PricingTiersSlide() {
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
             const isBestValue = 'bestValue' in tier && tier.bestValue;
+            const videoPosition = index === 0 ? "right" : index === 2 ? "left" : "center";
 
             return (
-              <motion.div
+              <HoverVideoPreview
                 key={tier.name}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
-                className="rounded-2xl flex flex-col relative overflow-hidden"
-                style={{
-                  background: isBestValue
-                    ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                    : isFeatured
-                      ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                      : "hsl(var(--pres-bg-surface))",
-                  border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
-                  padding: "32px 26px",
-                }}
+                youtubeId={tier.youtubeId}
+                position={videoPosition as "left" | "right" | "center"}
               >
-                {isFeatured && (
-                  <div
-                    className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
-                    style={{
-                      background: "hsl(var(--pres-accent))",
-                      color: "hsl(var(--pres-bg))",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    <Star size={12} /> MOST POPULAR
-                  </div>
-                )}
-
-                {isBestValue && (
-                  <div
-                    className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
-                    style={{
-                      background: "hsl(142 71% 45%)",
-                      color: "#fff",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    <Award size={12} /> BEST VALUE
-                  </div>
-                )}
-
-                {/* Tier name */}
-                <p
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
+                  className="rounded-2xl flex flex-col relative overflow-hidden h-full"
                   style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-text-dim))",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
+                    background: isBestValue
+                      ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                      : isFeatured
+                        ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                        : "hsl(var(--pres-bg-surface))",
+                    border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
+                    padding: "32px 26px",
                   }}
                 >
-                  {tier.name}
-                </p>
-
-                {/* Experience */}
-                <p
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 15,
-                    color: "hsl(var(--pres-accent))",
-                    fontWeight: 500,
-                    marginTop: 6,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {tier.experience}
-                </p>
-
-                {/* Price */}
-                <div className="mt-4">
-                  <span
-                    style={{
-                      fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: tier.price.length > 8 ? 30 : 42,
-                      fontWeight: 700,
-                      color: "hsl(var(--pres-text))",
-                    }}
-                  >
-                    {tier.price}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 17,
-                      color: "hsl(var(--pres-text-dim))",
-                    }}
-                  >
-                    {tier.per}
-                  </span>
-                </div>
-
-                {/* Hours badge */}
-                <div
-                  className="mt-2 inline-flex items-center rounded-lg px-3 py-1"
-                  style={{
-                    background: "hsl(var(--pres-accent) / 0.08)",
-                    border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                    width: "fit-content",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "hsl(var(--pres-accent))",
-                    }}
-                  >
-                    {tier.hours}
-                  </span>
-                </div>
-
-                {/* Features */}
-                <div className="mt-5 space-y-3 flex-1">
-                  {tier.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-2.5">
-                      <CheckCircle
-                        size={18}
-                        style={{
-                          color: "hsl(var(--pres-accent))",
-                          flexShrink: 0,
-                          marginTop: 2,
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontFamily: "'Poppins', sans-serif",
-                          fontSize: 16,
-                          color: "hsl(var(--pres-text-muted))",
-                          lineHeight: 1.4,
-                        }}
-                      >
-                        {feature}
-                      </span>
+                  {isFeatured && (
+                    <div
+                      className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
+                      style={{
+                        background: "hsl(var(--pres-accent))",
+                        color: "hsl(var(--pres-bg))",
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      <Star size={12} /> MOST POPULAR
                     </div>
-                  ))}
-                </div>
-              </motion.div>
+                  )}
+
+                  {isBestValue && (
+                    <div
+                      className="absolute top-0 right-0 flex items-center gap-1.5 px-3 py-1 rounded-bl-xl"
+                      style={{
+                        background: "hsl(142 71% 45%)",
+                        color: "#fff",
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      <Award size={12} /> BEST VALUE
+                    </div>
+                  )}
+
+                  {/* Tier name */}
+                  <p
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: "hsl(var(--pres-text-dim))",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {tier.name}
+                  </p>
+
+                  {/* Experience */}
+                  <p
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 15,
+                      color: "hsl(var(--pres-accent))",
+                      fontWeight: 500,
+                      marginTop: 6,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {tier.experience}
+                  </p>
+
+                  {/* Price */}
+                  <div className="mt-4">
+                    <span
+                      style={{
+                        fontFamily: "'Ubuntu', sans-serif",
+                        fontSize: tier.price.length > 8 ? 30 : 42,
+                        fontWeight: 700,
+                        color: "hsl(var(--pres-text))",
+                      }}
+                    >
+                      {tier.price}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 17,
+                        color: "hsl(var(--pres-text-dim))",
+                      }}
+                    >
+                      {tier.per}
+                    </span>
+                  </div>
+
+                  {/* Hours badge */}
+                  <div
+                    className="mt-2 inline-flex items-center rounded-lg px-3 py-1"
+                    style={{
+                      background: "hsl(var(--pres-accent) / 0.08)",
+                      border: "1px solid hsl(var(--pres-accent) / 0.15)",
+                      width: "fit-content",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: "hsl(var(--pres-accent))",
+                      }}
+                    >
+                      {tier.hours}
+                    </span>
+                  </div>
+
+                  {/* Features */}
+                  <div className="mt-5 space-y-3 flex-1">
+                    {tier.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-2.5">
+                        <CheckCircle
+                          size={18}
+                          style={{
+                            color: "hsl(var(--pres-accent))",
+                            flexShrink: 0,
+                            marginTop: 2,
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: 16,
+                            color: "hsl(var(--pres-text-muted))",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </HoverVideoPreview>
             );
           })}
         </div>
