@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import rocketTier1 from "@/assets/rocket-tier1.png";
 import rocketTier2 from "@/assets/rocket-tier2.png";
@@ -30,7 +30,7 @@ const tierThemes = {
 };
 
 const FLIGHT = 3.5;
-const CYCLE = 7000;
+const CYCLE = 7500;
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
@@ -60,19 +60,51 @@ function Launch({
 }) {
   const s = theme.size;
 
+  // Curved path: bottom-left → up-left → curves right → exits top-right
+  // Matching the red line the user drew
+  const leftKf = ["12%", "15%", "25%", "55%", "85%"];
+  const bottomKf = ["5%", "25%", "50%", "70%", "105%"];
+  const rotateKf = [0, -5, -20, -40, -50]; // tilts as it curves right
+  const scaleKf = [0.5, 0.7, 0.9, 1, 1.05];
+  const times = [0, 0.15, 0.4, 0.7, 1];
+
   return (
     <>
-      {/* ── launch-pad flash ── */}
+      {/* SVG curved trail */}
+      <svg className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
+        <motion.path
+          d="M 60,480 C 70,350 90,250 150,160 C 210,80 300,20 380,-20"
+          fill="none"
+          stroke={theme.glow}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.2 }}
+          transition={{ delay: 0.4, duration: FLIGHT, ease: "easeOut" }}
+        />
+        <motion.path
+          d="M 60,480 C 70,350 90,250 150,160 C 210,80 300,20 380,-20"
+          fill="none"
+          stroke={theme.glow}
+          strokeWidth={10}
+          strokeLinecap="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.06 }}
+          transition={{ delay: 0.4, duration: FLIGHT, ease: "easeOut" }}
+          style={{ filter: "blur(6px)" }}
+        />
+      </svg>
+
+      {/* Launch pad flash — bottom-left */}
       <motion.div
         initial={{ opacity: 0, scale: 0.4 }}
-        animate={{ opacity: [0, 0.8, 0], scale: [0.4, 2.2, 3] }}
+        animate={{ opacity: [0, 0.8, 0], scale: [0.4, 2, 3] }}
         transition={{ delay: 0.1, duration: 1.4, ease: "easeOut" }}
         style={{
           position: "absolute",
           bottom: 18,
-          left: "50%",
-          marginLeft: -40,
-          width: 80,
+          left: 30,
+          width: 70,
           height: 20,
           borderRadius: "50%",
           background: `radial-gradient(ellipse, ${theme.glow}aa, ${theme.glow}30, transparent)`,
@@ -80,10 +112,10 @@ function Launch({
         }}
       />
 
-      {/* ── smoke puffs ── */}
+      {/* Smoke puffs at bottom-left */}
       {Array.from({ length: 8 }).map((_, i) => {
         const angle = (i / 8) * 360;
-        const r = 20 + (i % 3) * 10;
+        const r = 18 + (i % 3) * 10;
         const dx = Math.cos((angle * Math.PI) / 180) * r;
         const dy = Math.sin((angle * Math.PI) / 180) * r * 0.5;
         return (
@@ -100,8 +132,7 @@ function Launch({
             style={{
               position: "absolute",
               bottom: 20,
-              left: "50%",
-              marginLeft: -8,
+              left: 50,
               width: 16,
               height: 16,
               borderRadius: "50%",
@@ -112,29 +143,37 @@ function Launch({
         );
       })}
 
-      {/* ── THE ROCKET ── launches from pad upward ── */}
+      {/* ── THE ROCKET — curved trajectory bottom-left → top-right ── */}
       <motion.div
-        initial={{ bottom: 10, left: "50%", opacity: 0, scale: 0.6 }}
+        initial={{
+          left: leftKf[0],
+          bottom: bottomKf[0],
+          opacity: 0,
+          scale: scaleKf[0],
+          rotate: rotateKf[0],
+        }}
         animate={{
-          bottom: [10, 30, "30%", "60%", "110%"],
+          left: leftKf,
+          bottom: bottomKf,
           opacity: [0, 1, 1, 1, 0],
-          scale: [0.6, 0.8, 1, 1, 1],
+          scale: scaleKf,
+          rotate: rotateKf,
         }}
         transition={{
-          delay: 0.3,
+          delay: 0.2,
           duration: FLIGHT,
-          ease: [0.15, 0.7, 0.3, 1],
-          times: [0, 0.08, 0.35, 0.7, 1],
+          ease: [0.12, 0.6, 0.35, 1],
+          times,
         }}
         style={{
           position: "absolute",
-          marginLeft: -(s / 2),
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          transformOrigin: "center center",
         }}
       >
-        {/* glow halo */}
+        {/* Glow halo */}
         <motion.div
           animate={{ scale: [0.9, 1.3, 0.9], opacity: [0.15, 0.4, 0.15] }}
           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
@@ -152,7 +191,7 @@ function Launch({
           }}
         />
 
-        {/* rocket image */}
+        {/* Rocket image */}
         <motion.img
           src={theme.image}
           alt=""
@@ -167,7 +206,7 @@ function Launch({
           style={{ width: s, height: s, objectFit: "contain" }}
         />
 
-        {/* main flame */}
+        {/* Main flame */}
         <motion.div
           animate={{
             scaleY: [0.8, 1.4, 0.8],
@@ -186,7 +225,7 @@ function Launch({
           }}
         />
 
-        {/* inner core */}
+        {/* Inner core */}
         <motion.div
           animate={{ scaleY: [0.9, 1.3, 0.9], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 0.18, repeat: Infinity, ease: "easeInOut" }}
