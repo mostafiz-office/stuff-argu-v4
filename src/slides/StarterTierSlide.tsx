@@ -196,7 +196,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Rocket animation */}
-              <RocketAnimation intensity={1} />
+              <RocketAnimation intensity={1} profile="compact" />
 
               {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
