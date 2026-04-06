@@ -108,7 +108,7 @@ function RocketFlight({
         }}
         style={{
           position: "absolute",
-          bottom: -80,
+          bottom: -60,
           right: 10,
           display: "flex",
           flexDirection: "column",
