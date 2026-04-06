@@ -95,7 +95,7 @@ function RocketFlight({
         initial={{ opacity: 0, y: 0 }}
         animate={{
           opacity: [0, 0, 1, 1, 1, 1, 0],
-          y: intensity === 1 ? [0, 0, 0, -180, -560, -560, -560] : [0, 0, 0, -180, -556, -556, -556],
+          y: intensity === 1 ? [0, 0, 0, -180, -560, -560, -560] : [0, 0, 0, -180, -550, -550, -550],
         }}
         transition={{
           duration: 14,
