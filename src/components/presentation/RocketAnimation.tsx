@@ -27,8 +27,9 @@ const tierThemes = {
 };
 
 const SIZE = 260;
-const FLIGHT = 6;
-const CYCLE = 10000;
+// Timeline: 2.5s wait → 4s flight up → 5s hover at top → fade = ~13s total
+const FLIGHT = 11; // total animation duration after delay
+const CYCLE = 14000;
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
@@ -110,14 +111,13 @@ function Launch({
       <motion.div
         initial={{ bottom: -20, right: 0, opacity: 0 }}
         animate={{
-          bottom: [-20, 20, "50%", "110%"],
-          opacity: [0, 1, 1, 0],
+          bottom: [-20, -20, 20, "65%", "65%", "65%"],
+          opacity: [0, 0, 1, 1, 1, 0],
         }}
         transition={{
-          delay: 0.15,
           duration: FLIGHT,
-          ease: [0.15, 0.65, 0.3, 1],
-          times: [0, 0.1, 0.6, 1],
+          ease: "easeInOut",
+          times: [0, 0.22, 0.25, 0.58, 0.9, 1],
         }}
         style={{
           position: "absolute",
