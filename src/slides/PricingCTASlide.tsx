@@ -88,7 +88,7 @@ export default function PricingCTASlide() {
               {/* CTA button */}
               <motion.a
                 {...fade(3)}
-                href="https://meet.rasia.pro/intro-call"
+                href="https://client.rasia.pro/hiring-v1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 mt-8"
