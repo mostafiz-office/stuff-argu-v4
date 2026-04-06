@@ -13,21 +13,21 @@ const tierThemes = {
     glow: "#38bdf8",
     trail: ["#38bdf8", "#818cf8", "#c084fc", "#facc15"],
     image: rocketTier1,
-    imageSize: 52,
+    imageSize: 75,
   },
   2: {
     gradient: "linear-gradient(135deg, #4ade80, #22d3ee)",
     glow: "#4ade80",
     trail: ["#4ade80", "#22d3ee", "#38bdf8", "#facc15"],
     image: rocketTier2,
-    imageSize: 58,
+    imageSize: 85,
   },
   3: {
     gradient: "linear-gradient(135deg, #a78bfa, #f472b6, #fb923c)",
     glow: "#a78bfa",
     trail: ["#a78bfa", "#f472b6", "#fb923c", "#facc15", "#4ade80"],
     image: rocketTier3,
-    imageSize: 64,
+    imageSize: 95,
   },
 };
 
