@@ -32,7 +32,7 @@ const tierThemes = {
   },
 };
 
-const CYCLE_DURATION = 7000; // full cycle: 3s flight + 4s pause
+const CYCLE_DURATION = 9000; // full cycle: 4.5s flight + 4.5s pause
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
