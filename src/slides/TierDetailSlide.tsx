@@ -58,7 +58,7 @@ export default function TierDetailSlide() {
           <div
             className="grid items-end pb-3"
             style={{
-              gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+              gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
               borderBottom: "2px solid hsl(var(--pres-accent) / 0.3)",
             }}
           >
@@ -147,7 +147,7 @@ export default function TierDetailSlide() {
                 transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
                 className="grid items-center"
                 style={{
-                  gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+                  gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
                   padding: "18px 0",
                   borderBottom: "1px solid hsl(var(--border) / 0.5)",
                 }}
