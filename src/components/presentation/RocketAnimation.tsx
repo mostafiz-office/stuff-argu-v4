@@ -21,7 +21,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCycle((c) => c + 1), 14500);
+    const id = setInterval(() => setCycle((c) => c + 1), 17500);
     return () => clearInterval(id);
   }, []);
 
@@ -98,12 +98,12 @@ function RocketFlight({
           y: intensity === 1 ? [0, 0, 0, -180, -560, -560, -560] : [0, 0, 0, -180, -550, -550, -550],
         }}
         transition={{
-          duration: 14,
+          duration: 17,
           times: intensity === 3
-            ? [0, 0.14, 0.15, 0.28, 0.42, 0.88, 1]   // longer hover at top
+            ? [0, 0.12, 0.13, 0.30, 0.42, 0.90, 1]
             : intensity === 2
-              ? [0, 0.14, 0.15, 0.32, 0.50, 0.88, 1]
-              : [0, 0.14, 0.15, 0.36, 0.57, 0.88, 1],
+              ? [0, 0.12, 0.13, 0.34, 0.50, 0.90, 1]
+              : [0, 0.12, 0.13, 0.38, 0.57, 0.90, 1],
           ease: "easeInOut",
         }}
         style={{
