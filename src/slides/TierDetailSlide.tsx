@@ -25,7 +25,6 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
-  { key: "starter", name: "Starter", price: "$1,900/mo", color: "hsl(var(--pres-text-dim))" },
   { key: "growth", name: "Tier 1", price: "$4,299/mo", color: "hsl(var(--pres-accent))" },
   { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 71% 45%)" },
   { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 85% 60%)" },
@@ -59,7 +58,7 @@ export default function TierDetailSlide() {
           <div
             className="grid items-end pb-3"
             style={{
-              gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+              gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
               borderBottom: "2px solid hsl(var(--pres-accent) / 0.3)",
             }}
           >
@@ -148,7 +147,7 @@ export default function TierDetailSlide() {
                 transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
                 className="grid items-center"
                 style={{
-                  gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+                  gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
                   padding: "18px 0",
                   borderBottom: "1px solid hsl(var(--border) / 0.5)",
                 }}
