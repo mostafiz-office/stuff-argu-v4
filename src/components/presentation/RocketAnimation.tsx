@@ -12,262 +12,182 @@ const tierThemes = {
     gradient: "linear-gradient(135deg, #38bdf8, #818cf8)",
     glow: "#38bdf8",
     trail: ["#38bdf8", "#818cf8", "#c084fc", "#facc15"],
-    label: "Growth",
     image: rocketTier1,
-    imageSize: 70,
+    imageSize: 52,
   },
   2: {
     gradient: "linear-gradient(135deg, #4ade80, #22d3ee)",
     glow: "#4ade80",
     trail: ["#4ade80", "#22d3ee", "#38bdf8", "#facc15"],
-    label: "Accelerate",
     image: rocketTier2,
-    imageSize: 80,
+    imageSize: 58,
   },
   3: {
     gradient: "linear-gradient(135deg, #a78bfa, #f472b6, #fb923c)",
     glow: "#a78bfa",
     trail: ["#a78bfa", "#f472b6", "#fb923c", "#facc15", "#4ade80"],
-    label: "Ignite",
     image: rocketTier3,
-    imageSize: 90,
+    imageSize: 64,
   },
 };
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
-  const particleCount = intensity === 3 ? 14 : intensity === 2 ? 10 : 7;
 
   return (
-    <div
-      className="relative flex items-end justify-center overflow-hidden"
-      style={{ height: 120, marginTop: 10, marginBottom: 6 }}
+    <motion.div
+      className="absolute inset-0 pointer-events-none z-20 overflow-hidden"
+      style={{ borderRadius: "inherit" }}
     >
-      {/* Vertical launch trail */}
+      {/* Vertical light trail the rocket leaves behind */}
       <motion.div
         initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 0.12 }}
-        transition={{ delay: 0.3, duration: 1.2, ease: "easeOut" }}
+        animate={{ scaleY: 1, opacity: 0.08 }}
+        transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
         style={{
           position: "absolute",
           bottom: 0,
-          left: "50%",
-          marginLeft: -2,
-          width: 4,
+          right: 28,
+          width: 3,
           height: "100%",
-          borderRadius: 4,
           background: theme.gradient,
           transformOrigin: "bottom center",
+          borderRadius: 3,
         }}
       />
 
-      {/* Launch pad glow at bottom */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.3 }}
-        animate={{ opacity: [0, 0.6, 0.3], scale: [0.3, 1.2, 1] }}
-        transition={{ delay: 0.2, duration: 1.5, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: -4,
-          left: "50%",
-          marginLeft: -30,
-          width: 60,
-          height: 12,
-          borderRadius: "50%",
-          background: `radial-gradient(ellipse, ${theme.glow}60, transparent)`,
-          filter: "blur(6px)",
-        }}
-      />
-
-      {/* Stardust particles along launch path */}
-      {[...Array(particleCount)].map((_, i) => {
+      {/* Sparkle particles along the path */}
+      {[...Array(6)].map((_, i) => {
         const color = theme.trail[i % theme.trail.length];
-        const yPos = 10 + (i / particleCount) * 80;
-        const xDir = i % 2 === 0 ? -1 : 1;
-        const size = intensity === 3 ? 6 + (i % 3) * 2 : 5 + (i % 2) * 2;
+        const bottomPct = 10 + i * 14;
         return (
           <motion.div
             key={i}
+            initial={{ opacity: 0, scale: 0 }}
             animate={{
-              opacity: [0, 1, 0],
-              scale: [0.2, 1.5, 0],
-              x: [0, xDir * (12 + (i % 4) * 5)],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1.2, 0],
+              x: [0, (i % 2 === 0 ? 1 : -1) * 10],
             }}
             transition={{
-              delay: 0.8 + i * 0.18,
-              duration: 2,
+              delay: 1.0 + i * 0.25,
+              duration: 1.8,
               repeat: Infinity,
-              repeatDelay: 2.5 - intensity * 0.5,
+              repeatDelay: 3,
               ease: "easeOut",
             }}
             style={{
               position: "absolute",
-              left: "50%",
-              bottom: `${yPos}%`,
-              marginLeft: -size / 2,
-              width: size,
-              height: size,
+              right: 26,
+              bottom: `${bottomPct}%`,
+              width: 5,
+              height: 5,
               borderRadius: "50%",
               background: color,
-              boxShadow: `0 0 ${size * 3}px ${color}`,
+              boxShadow: `0 0 10px ${color}`,
             }}
           />
         );
       })}
 
-      {/* Rocket — launches from bottom to top */}
+      {/* The rocket — flies from bottom to top */}
       <motion.div
-        initial={{ y: 60, opacity: 0, scale: 0.4 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        transition={{
-          delay: 0.3,
-          duration: 1.4,
-          type: "spring",
-          stiffness: 60,
-          damping: 12,
+        initial={{ bottom: -20, opacity: 0 }}
+        animate={{
+          bottom: ["0%", "88%"],
+          opacity: [0, 1, 1, 1, 0.9],
         }}
-        className="relative z-10"
-        style={{ marginBottom: 8 }}
+        transition={{
+          delay: 0.5,
+          duration: 2.5,
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
+        style={{
+          position: "absolute",
+          right: 28 - theme.imageSize / 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
-        {/* Outer pulsing ring */}
+        {/* Glow behind rocket */}
         <motion.div
           animate={{
-            scale: [1, 1.8, 1],
-            opacity: [0.08, 0.25, 0.08],
+            scale: [0.9, 1.3, 0.9],
+            opacity: [0.2, 0.5, 0.2],
           }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            left: -(theme.imageSize * 0.35),
-            top: -(theme.imageSize * 0.35),
-            width: theme.imageSize * 1.7,
-            height: theme.imageSize * 1.7,
+            left: "50%",
+            top: "50%",
+            marginLeft: -(theme.imageSize * 0.6),
+            marginTop: -(theme.imageSize * 0.6),
+            width: theme.imageSize * 1.2,
+            height: theme.imageSize * 1.2,
             borderRadius: "50%",
-            border: `2px solid ${theme.glow}40`,
-            boxShadow: `0 0 30px ${theme.glow}25`,
+            background: `radial-gradient(circle, ${theme.glow}50, transparent)`,
+            filter: "blur(10px)",
           }}
         />
 
-        {/* Inner glow halo */}
-        <motion.div
+        {/* Rocket image */}
+        <motion.img
+          src={theme.image}
+          alt=""
+          width={theme.imageSize}
+          height={theme.imageSize}
           animate={{
-            scale: [0.9, 1.4, 0.9],
-            opacity: [0.15, 0.45, 0.15],
+            rotate: [-3, 3, -3],
+            filter: [
+              `drop-shadow(0 0 ${intensity * 10}px ${theme.glow}90)`,
+              `drop-shadow(0 0 ${intensity * 16}px ${theme.glow}ff)`,
+              `drop-shadow(0 0 ${intensity * 10}px ${theme.glow}90)`,
+            ],
           }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          style={{
-            position: "absolute",
-            left: -(theme.imageSize * 0.25),
-            top: -(theme.imageSize * 0.25),
-            width: theme.imageSize * 1.5,
-            height: theme.imageSize * 1.5,
-            borderRadius: "50%",
-            background: `radial-gradient(circle, ${theme.glow}45, transparent)`,
-            filter: "blur(12px)",
-          }}
-        />
-
-        {/* 3D Rocket Image with gentle hover float */}
-        <motion.div
-          animate={{
-            y: [-4, 4, -4],
-            rotate: [-2, 2, -2],
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           style={{
             width: theme.imageSize,
             height: theme.imageSize,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <motion.img
-            src={theme.image}
-            alt="Rocket"
-            width={theme.imageSize}
-            height={theme.imageSize}
-            style={{
-              width: theme.imageSize,
-              height: theme.imageSize,
-              objectFit: "contain",
-            }}
-            animate={{
-              filter: [
-                `drop-shadow(0 0 ${intensity * 12}px ${theme.glow}90) drop-shadow(0 0 ${intensity * 6}px ${theme.glow}60)`,
-                `drop-shadow(0 0 ${intensity * 18}px ${theme.glow}ff) drop-shadow(0 0 ${intensity * 10}px ${theme.glow}90)`,
-                `drop-shadow(0 0 ${intensity * 12}px ${theme.glow}90) drop-shadow(0 0 ${intensity * 6}px ${theme.glow}60)`,
-              ],
-            }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-
-        {/* Exhaust flame below rocket */}
-        <motion.div
-          initial={{ opacity: 0, scaleY: 0 }}
-          animate={{
-            opacity: [0.4, 1, 0.4],
-            scaleY: [0.6, 1.3, 0.6],
-          }}
-          transition={{ delay: 0.6, duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            position: "absolute",
-            bottom: -(intensity === 3 ? 30 : intensity === 2 ? 24 : 18),
-            left: "50%",
-            marginLeft: -8,
-            width: 16,
-            height: intensity === 3 ? 40 : intensity === 2 ? 32 : 24,
-            borderRadius: "0 0 50% 50%",
-            background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}90, ${theme.trail[1]}60, transparent)`,
-            transformOrigin: "top center",
-            filter: "blur(3px)",
+            objectFit: "contain",
           }}
         />
 
-        {/* Hot core flame */}
+        {/* Flame below rocket */}
         <motion.div
           animate={{
-            opacity: [0.6, 1, 0.6],
-            scaleY: [0.8, 1.2, 0.8],
+            scaleY: [0.7, 1.3, 0.7],
+            opacity: [0.5, 1, 0.5],
           }}
-          transition={{ duration: 0.35, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 0.4, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            position: "absolute",
-            bottom: -(intensity === 3 ? 18 : intensity === 2 ? 14 : 10),
-            left: "50%",
-            marginLeft: -3,
-            width: 6,
-            height: intensity === 3 ? 24 : intensity === 2 ? 18 : 14,
+            width: 10,
+            height: intensity === 3 ? 32 : intensity === 2 ? 26 : 20,
             borderRadius: "0 0 50% 50%",
-            background: `linear-gradient(to bottom, #fff, ${theme.trail[0]})`,
+            background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}aa, ${theme.trail[1]}60, transparent)`,
+            filter: "blur(2px)",
             transformOrigin: "top center",
+            marginTop: -4,
           }}
         />
       </motion.div>
 
-      {/* Growth label */}
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
+      {/* Launch pad glow at bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.5, 0] }}
+        transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
         style={{
           position: "absolute",
-          right: 12,
           bottom: 8,
-          fontFamily: "'Poppins', sans-serif",
-          fontSize: 13,
-          fontWeight: 700,
-          letterSpacing: "0.18em",
-          textTransform: "uppercase",
-          background: theme.gradient,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          right: 10,
+          width: 40,
+          height: 10,
+          borderRadius: "50%",
+          background: `radial-gradient(ellipse, ${theme.glow}60, transparent)`,
+          filter: "blur(5px)",
         }}
-      >
-        {theme.label}
-      </motion.span>
-    </div>
+      />
+    </motion.div>
   );
 }
