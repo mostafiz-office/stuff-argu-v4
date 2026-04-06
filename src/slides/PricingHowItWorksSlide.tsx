@@ -56,7 +56,7 @@ export default function PricingHowItWorksSlide() {
 
         <motion.h1
           {...fade(0)}
-          className="absolute left-[80px] top-[90px] z-10"
+          className="absolute left-0 right-0 top-[90px] z-10 text-center"
           style={{
             fontFamily: "'Ubuntu', sans-serif",
             fontSize: 68,
@@ -69,7 +69,7 @@ export default function PricingHowItWorksSlide() {
 
         <motion.p
           {...fade(1)}
-          className="absolute left-[80px] top-[178px] z-10"
+          className="absolute left-0 right-0 top-[178px] z-10 text-center"
           style={{
             fontFamily: "'Poppins', sans-serif",
             fontSize: 22,
@@ -88,7 +88,7 @@ export default function PricingHowItWorksSlide() {
           style={{
             left: 140,
             right: 140,
-            top: 390,
+            top: 410,
             height: 3,
             background: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.2))",
             transformOrigin: "left center",
@@ -97,7 +97,7 @@ export default function PricingHowItWorksSlide() {
         />
 
         {/* Step cards */}
-        <div className="absolute left-[80px] right-[80px] top-[280px] bottom-[60px] grid grid-cols-4 gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[300px] bottom-[60px] grid grid-cols-4 gap-8 z-10">
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
