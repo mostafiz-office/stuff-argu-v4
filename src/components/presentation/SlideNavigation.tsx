@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Download, Share2, Link2, Presentation } from "lucide-react";
 import { toast } from "sonner";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface SlideNavigationProps {
   total: number;
@@ -8,6 +14,7 @@ interface SlideNavigationProps {
   onNavigate: (index: number) => void;
   onOpenDownload?: () => void;
   showDownload?: boolean;
+  slideLabels?: string[];
 }
 
 export default function SlideNavigation({
