@@ -72,7 +72,11 @@ export default function TierDetailSlide() {
                 transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
                 className="text-center relative"
                 style={{
-                  background: col.bestValue ? "hsl(142 71% 45% / 0.08)" : "transparent",
+                  background: col.bestValue
+                    ? "hsl(142 71% 45% / 0.08)"
+                    : col.premium
+                      ? "hsl(280 85% 60% / 0.08)"
+                      : "transparent",
                   borderRadius: "12px 12px 0 0",
                   padding: "14px 8px",
                 }}
@@ -93,13 +97,29 @@ export default function TierDetailSlide() {
                     <Award size={13} /> BEST VALUE
                   </div>
                 )}
+                {col.premium && (
+                  <div
+                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
+                      color: "#fff",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <Crown size={13} /> PREMIUM
+                  </div>
+                )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 28,
                     fontWeight: 700,
-                    color: col.bestValue ? "hsl(142 71% 45%)" : col.key === "growth" ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text))",
-                    marginTop: col.bestValue ? 14 : 0,
+                    color: col.color || "hsl(var(--pres-text))",
+                    marginTop: (col.bestValue || col.premium) ? 14 : 0,
                   }}
                 >
                   {col.name}
