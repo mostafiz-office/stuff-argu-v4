@@ -99,11 +99,7 @@ function RocketFlight({
         }}
         transition={{
           duration: 15,
-          times: intensity === 3
-            ? [0, 0.01, 0.20, 0.33, 0.90, 1]
-            : intensity === 2
-              ? [0, 0.01, 0.25, 0.42, 0.90, 1]
-              : [0, 0.01, 0.30, 0.50, 0.90, 1],
+          times: [0, 0.01, 0.20, 0.33, 0.90, 1],
           ease: "easeInOut",
         }}
         style={{
