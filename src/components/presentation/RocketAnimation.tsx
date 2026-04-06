@@ -90,20 +90,22 @@ function RocketFlight({
         );
       })}
 
-      {/* Tier 3 fastest, Tier 2 medium, Tier 1 slowest — all 12s total */}
+      {/* Rocket: appear 0.5s → vibrate on pad 2s → fly up → hover → fade. Total 14s */}
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{
-          opacity: [0, 0, 1, 1, 1, 0],
-          y: [0, 0, -120, -420, -420, -420],
+          opacity: [0, 1, 1, 1, 1, 1, 0],
+          y: [0, 0, 0, -120, -420, -420, -420],
+          x: [0, 0, 0, 0, 0, 0, 0],
         }}
         transition={{
-          duration: 12,
+          duration: 14,
+          // 0→0.03 fade in | 0.03→0.17 sit on pad 2s | 0.17→flight→hover→fade
           times: intensity === 3
-            ? [0, 0.08, 0.12, 0.25, 0.92, 1]
+            ? [0, 0.03, 0.17, 0.22, 0.35, 0.93, 1]   // fastest flight
             : intensity === 2
-              ? [0, 0.12, 0.18, 0.40, 0.92, 1]
-              : [0, 0.16, 0.24, 0.55, 0.92, 1],
+              ? [0, 0.03, 0.17, 0.25, 0.50, 0.93, 1]  // medium flight
+              : [0, 0.03, 0.17, 0.30, 0.60, 0.93, 1], // slowest flight
           ease: "easeInOut",
         }}
         style={{
