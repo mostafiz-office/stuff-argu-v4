@@ -108,15 +108,15 @@ function Launch({
 
       {/* ── THE ROCKET — right side, straight up, BIG ── */}
       <motion.div
-        initial={{ bottom: -20, right: 0, opacity: 0 }}
+        initial={{ bottom: 10, opacity: 0 }}
         animate={{
-          bottom: [-20, -20, 20, "45%", "45%", "45%"],
-          opacity: [0, 0, 1, 1, 1, 0],
+          bottom: [10, 10, 40, "40%", "40%", "40%"],
+          opacity: [0, 0.5, 1, 1, 1, 0],
         }}
         transition={{
           duration: FLIGHT,
           ease: "easeInOut",
-          times: [0, 0.22, 0.25, 0.58, 0.9, 1],
+          times: [0, 0.15, 0.22, 0.5, 0.85, 1],
         }}
         style={{
           position: "absolute",
