@@ -74,13 +74,6 @@ const parseSlideIndex = (slideParam: string | null, totalSlides: number): number
   return Math.max(0, Math.min(totalSlides - 1, safeSlide - 1));
 };
 
-const SLIDE_LABELS = [
-  "Introduction",
-  "About the Leader",
-  "Feature Comparison",
-  "Cost Comparison",
-  "Schedule a Call",
-];
 
 export default function PresentationEngine({ slides }: PresentationEngineProps) {
   const presentation = usePresentation();
@@ -162,7 +155,7 @@ export default function PresentationEngine({ slides }: PresentationEngineProps) 
         onNavigate={navigate}
         showDownload={isExportActive}
         onOpenDownload={isExportActive ? () => setIsDownloadOpen(true) : undefined}
-        slideLabels={SLIDE_LABELS}
+        slideLabels={presentation.slideLabels as string[] ?? []}
       />
 
       {isExportActive && (

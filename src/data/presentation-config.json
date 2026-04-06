@@ -51,20 +51,35 @@
         "title": "Starter",
         "price": "$2,500",
         "per": "/mo",
-        "items": ["1-2 developers", "Weekly sprints", "Basic reporting", "Email support"]
+        "items": [
+          "1-2 developers",
+          "Weekly sprints",
+          "Basic reporting",
+          "Email support"
+        ]
       },
       {
         "title": "Growth",
         "price": "$7,500",
         "per": "/mo",
         "featured": true,
-        "items": ["3-5 developers", "Daily standups", "Full PM support", "Priority Slack"]
+        "items": [
+          "3-5 developers",
+          "Daily standups",
+          "Full PM support",
+          "Priority Slack"
+        ]
       },
       {
         "title": "Enterprise",
         "price": "Custom",
         "per": "",
-        "items": ["Full team 6-20+", "Embedded model", "CTO oversight", "24/7 SLA"]
+        "items": [
+          "Full team 6-20+",
+          "Embedded model",
+          "CTO oversight",
+          "24/7 SLA"
+        ]
       }
     ]
   },
@@ -81,6 +96,15 @@
   "customization": {
     "clientName": "",
     "clientIndustry": "",
-    "notes": "Default presentation — no client-specific customization applied."
-  }
+    "notes": "Default presentation \u2014 no client-specific customization applied."
+  },
+  "slideLabels": [
+    "Pricing Plans",
+    "Choose Your Tier",
+    "Tier Details",
+    "Cost Comparison",
+    "What's Included",
+    "How It Works",
+    "Schedule a Call"
+  ]
 }
