@@ -127,33 +127,51 @@ function Launch({
           alignItems: "center",
         }}
       >
-        {/* Glow halo */}
+        {/* Outer glow halo */}
         <motion.div
-          animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.1, 0.35, 0.1] }}
-          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ scale: [0.7, 1.4, 0.7], opacity: [0.08, 0.3, 0.08] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
             left: "50%",
             top: "50%",
-            marginLeft: -(SIZE * 0.6),
-            marginTop: -(SIZE * 0.6),
-            width: SIZE * 1.2,
-            height: SIZE * 1.2,
+            marginLeft: -(SIZE * 0.9),
+            marginTop: -(SIZE * 0.9),
+            width: SIZE * 1.8,
+            height: SIZE * 1.8,
             borderRadius: "50%",
-            background: `radial-gradient(circle, ${theme.glow}40, ${theme.glow}10, transparent)`,
-            filter: "blur(16px)",
+            background: `radial-gradient(circle, ${theme.glow}30, ${theme.glow}08, transparent)`,
+            filter: "blur(30px)",
           }}
         />
 
-        {/* Rocket image — BIG */}
+        {/* Inner glow halo */}
+        <motion.div
+          animate={{ scale: [0.9, 1.3, 0.9], opacity: [0.15, 0.5, 0.15] }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            marginLeft: -(SIZE * 0.5),
+            marginTop: -(SIZE * 0.5),
+            width: SIZE,
+            height: SIZE,
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${theme.glow}60, ${theme.glow}20, transparent)`,
+            filter: "blur(14px)",
+          }}
+        />
+
+        {/* Rocket image — HUGE */}
         <motion.img
           src={theme.image}
           alt=""
           animate={{
             filter: [
-              `drop-shadow(0 0 20px ${theme.glow}80)`,
-              `drop-shadow(0 0 40px ${theme.glow}ff)`,
-              `drop-shadow(0 0 20px ${theme.glow}80)`,
+              `drop-shadow(0 0 30px ${theme.glow}90) drop-shadow(0 0 60px ${theme.glow}40)`,
+              `drop-shadow(0 0 50px ${theme.glow}ff) drop-shadow(0 0 90px ${theme.glow}70)`,
+              `drop-shadow(0 0 30px ${theme.glow}90) drop-shadow(0 0 60px ${theme.glow}40)`,
             ],
           }}
           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
