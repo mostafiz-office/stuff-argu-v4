@@ -9,7 +9,7 @@ const fade = (i: number) => ({
 });
 
 const data = [
-  { region: "USA", rate: "$150–250/hr", annual: "$312K–520K", bar: 100, highlight: false, color: "#7c3aed", colorDim: "#7c3aed88", colorGlow: "#7c3aed33" },
+  { region: "USA", rate: "$150–250/hr", annual: "$312K–520K", bar: 100, highlight: false, color: "#e05a6f", colorDim: "#e05a6f88", colorGlow: "#e05a6f33" },
   { region: "UK", rate: "$120–200/hr", annual: "$250K–416K", bar: 85, highlight: false, color: "#3b82f6", colorDim: "#3b82f688", colorGlow: "#3b82f633" },
   { region: "Eastern Europe", rate: "$50–80/hr", annual: "$104K–166K", bar: 45, highlight: false, color: "#a855f7", colorDim: "#a855f788", colorGlow: "#a855f733" },
   { region: "Riseup Asia", rate: "$25–50/hr", annual: "$52K–104K", bar: 25, highlight: true, color: "", colorDim: "", colorGlow: "" },
