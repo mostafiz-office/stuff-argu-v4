@@ -6,6 +6,7 @@ import rocketTier3 from "@/assets/rocket-tier3.png";
 
 interface RocketAnimationProps {
   intensity: 1 | 2 | 3;
+  profile?: "default" | "compact";
 }
 
 const tierThemes = {
@@ -14,10 +15,24 @@ const tierThemes = {
   3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketTier3 },
 };
 
-const SIZE = 160;
+const flightProfiles = {
+  default: {
+    size: 160,
+    startBottom: -60,
+    startRight: 10,
+    travelY: { 1: -560, 2: -550, 3: -550 },
+  },
+  compact: {
+    size: 120,
+    startBottom: -8,
+    startRight: 46,
+    travelY: { 1: -320, 2: -340, 3: -360 },
+  },
+} as const;
 
-export default function RocketAnimation({ intensity }: RocketAnimationProps) {
+export default function RocketAnimation({ intensity, profile = "default" }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
+  const flightProfile = flightProfiles[profile];
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
@@ -36,7 +51,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
         overflow: "hidden",
       }}
     >
-      <RocketFlight key={cycle} theme={theme} intensity={intensity} />
+      <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} />
     </div>
   );
 }
@@ -44,10 +59,17 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
 function RocketFlight({
   theme,
   intensity,
+  profile,
 }: {
   theme: (typeof tierThemes)[1];
   intensity: number;
+  profile: (typeof flightProfiles)[keyof typeof flightProfiles];
 }) {
+  const size = profile.size;
+  const startBottom = profile.startBottom;
+  const startRight = profile.startRight;
+  const travelY = profile.travelY[intensity as 1 | 2 | 3];
+
   return (
     <>
       {/* Launch pad glow */}
@@ -57,8 +79,8 @@ function RocketFlight({
         transition={{ duration: 5, times: [0, 0.13, 0.18, 0.4] }}
         style={{
           position: "absolute",
-          bottom: -40,
-          right: 10 + SIZE / 2 - 30,
+          bottom: startBottom + 20,
+          right: startRight + size / 2 - 30,
           width: 60,
           height: 16,
           borderRadius: "50%",
@@ -78,8 +100,8 @@ function RocketFlight({
             transition={{ duration: 5, times: [0, 0.13, 0.2, 0.4] }}
             style={{
               position: "absolute",
-              bottom: -40,
-              right: 10 + SIZE / 2 - 6,
+              bottom: startBottom + 20,
+              right: startRight + size / 2 - 6,
               width: 12,
               height: 12,
               borderRadius: "50%",
@@ -95,7 +117,7 @@ function RocketFlight({
         initial={{ opacity: 0, y: 0 }}
         animate={{
           opacity: [0, 1, 1, 1, 1, 0],
-          y: intensity === 1 ? [0, 0, 0, -560, -560, -560] : [0, 0, 0, -550, -550, -550],
+          y: [0, 0, 0, travelY, travelY, travelY],
         }}
         transition={{
           duration: 15,
@@ -108,8 +130,8 @@ function RocketFlight({
         }}
         style={{
           position: "absolute",
-          bottom: -60,
-          right: 10,
+          bottom: startBottom,
+          right: startRight,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -123,10 +145,10 @@ function RocketFlight({
             position: "absolute",
             left: "50%",
             top: "50%",
-            marginLeft: -(SIZE * 0.6),
-            marginTop: -(SIZE * 0.6),
-            width: SIZE * 1.2,
-            height: SIZE * 1.2,
+            marginLeft: -(size * 0.6),
+            marginTop: -(size * 0.6),
+            width: size * 1.2,
+            height: size * 1.2,
             borderRadius: "50%",
             background: `radial-gradient(circle, ${theme.glow}50, ${theme.glow}15, transparent)`,
             filter: "blur(14px)",
@@ -150,7 +172,7 @@ function RocketFlight({
             x: { duration: 2.4, ease: "linear", repeat: 0 },
             filter: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
           }}
-          style={{ width: SIZE, height: SIZE, objectFit: "contain" }}
+          style={{ width: size, height: size, objectFit: "contain" }}
         />
 
         {/* Flame */}

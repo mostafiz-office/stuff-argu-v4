@@ -105,7 +105,23 @@ export default function StarterTierSlide() {
                   letterSpacing: "0.05em",
                 }}
               >
-                <Rocket size={14} /> TIER 1
+                <motion.span
+                  animate={{
+                    y: [0, -3, 0],
+                    x: [0, 1, 0],
+                    rotate: [-10, 0, 8, 0],
+                    scale: [1, 1.08, 1],
+                  }}
+                  transition={{
+                    duration: 1.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="inline-flex"
+                >
+                  <Rocket size={14} />
+                </motion.span>
+                TIER 1
               </div>
 
               {/* Tier label */}
@@ -180,7 +196,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Rocket animation */}
-              <RocketAnimation intensity={1} />
+              <RocketAnimation intensity={1} profile="compact" />
 
               {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
