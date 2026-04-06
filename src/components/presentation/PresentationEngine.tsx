@@ -74,6 +74,14 @@ const parseSlideIndex = (slideParam: string | null, totalSlides: number): number
   return Math.max(0, Math.min(totalSlides - 1, safeSlide - 1));
 };
 
+const SLIDE_LABELS = [
+  "Introduction",
+  "About the Leader",
+  "Feature Comparison",
+  "Cost Comparison",
+  "Schedule a Call",
+];
+
 export default function PresentationEngine({ slides }: PresentationEngineProps) {
   const presentation = usePresentation();
   const hiddenSlideIndices = new Set(
