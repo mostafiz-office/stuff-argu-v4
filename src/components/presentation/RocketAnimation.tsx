@@ -21,7 +21,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCycle((c) => c + 1), 16000);
+    const id = setInterval(() => setCycle((c) => c + 1), 13000);
     return () => clearInterval(id);
   }, []);
 
@@ -90,22 +90,20 @@ function RocketFlight({
         );
       })}
 
-      {/* Rocket: appear 0.5s → vibrate on pad 2s → fly up → hover → fade. Total 14s */}
+      {/* Rocket: appear → immediately start flying → hover → fade. Total 12s */}
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{
-          opacity: [0, 1, 1, 1, 1, 1, 0],
-          y: [0, 0, 0, -120, -420, -420, -420],
-          x: [0, 0, 0, 0, 0, 0, 0],
+          opacity: [0, 1, 1, 1, 0],
+          y: [0, -120, -420, -420, -420],
         }}
         transition={{
-          duration: 14,
-          // 0→0.03 fade in | 0.03→0.17 sit on pad 2s | 0.17→flight→hover→fade
+          duration: 12,
           times: intensity === 3
-            ? [0, 0.03, 0.17, 0.22, 0.35, 0.93, 1]   // fastest flight
+            ? [0, 0.06, 0.20, 0.93, 1]   // fastest
             : intensity === 2
-              ? [0, 0.03, 0.17, 0.25, 0.50, 0.93, 1]  // medium flight
-              : [0, 0.03, 0.17, 0.30, 0.60, 0.93, 1], // slowest flight
+              ? [0, 0.10, 0.38, 0.93, 1]  // medium
+              : [0, 0.14, 0.50, 0.93, 1], // slowest
           ease: "easeInOut",
         }}
         style={{
