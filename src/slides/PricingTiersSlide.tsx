@@ -1,6 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
+import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Star } from "lucide-react";
 
@@ -230,6 +231,8 @@ export default function PricingTiersSlide() {
                     </span>
                   </div>
 
+                  {/* Rocket animation */}
+                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
                   {/* Features */}
                   <div className="mt-5 space-y-3 flex-1">
                     {tier.features.map((feature) => (
