@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Download, Share2, Link2, Presentation } from "lucide-react";
 import { toast } from "sonner";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface SlideNavigationProps {
   total: number;
@@ -8,6 +14,7 @@ interface SlideNavigationProps {
   onNavigate: (index: number) => void;
   onOpenDownload?: () => void;
   showDownload?: boolean;
+  slideLabels?: string[];
 }
 
 export default function SlideNavigation({
@@ -16,6 +23,7 @@ export default function SlideNavigation({
   onNavigate,
   onOpenDownload,
   showDownload = true,
+  slideLabels = [],
 }: SlideNavigationProps) {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -278,18 +286,29 @@ export default function SlideNavigation({
         </button>
       </div>
 
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2">
-        {Array.from({ length: total }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => onNavigate(i)}
-            className={`nav-dot h-2 rounded-full transition-all ${
-              i === current ? "active" : "w-2 bg-pres-text-dim hover:bg-pres-text-muted"
-            }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
+      <TooltipProvider delayDuration={200}>
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2">
+          {Array.from({ length: total }, (_, i) => (
+            <Tooltip key={i}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => onNavigate(i)}
+                  className={`nav-dot h-2 rounded-full transition-all ${
+                    i === current ? "active" : "w-2 bg-pres-text-dim hover:bg-pres-text-muted"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              </TooltipTrigger>
+              <TooltipContent side="top" className="bg-black/90 border-white/10 text-white px-3 py-1.5">
+                <p className="text-xs font-semibold">Slide {i + 1}</p>
+                {slideLabels[i] && (
+                  <p className="text-[11px] text-white/70">{slideLabels[i]}</p>
+                )}
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      </TooltipProvider>
 
     </>
   );
