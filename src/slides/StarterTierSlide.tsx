@@ -121,7 +121,7 @@ export default function StarterTierSlide() {
                 >
                   <Rocket size={14} />
                 </motion.span>
-                TIER 1
+                STARTER
               </div>
 
               {/* Tier label */}
