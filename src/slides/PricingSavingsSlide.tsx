@@ -177,8 +177,7 @@ export default function PricingSavingsSlide() {
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 14,
-                    fontWeight: 600,
-                    color: "#7c3aed",
+                    color: c.usColor,
                     width: 160,
                     textAlign: "right",
                   }}
