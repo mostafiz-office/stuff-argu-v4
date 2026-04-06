@@ -14,25 +14,25 @@ const tierThemes = {
     glow: "#38bdf8",
     trail: ["#38bdf8", "#818cf8", "#c084fc", "#facc15"],
     image: rocketTier1,
-    imageSize: 90,
+    imageSize: 110,
   },
   2: {
     gradient: "linear-gradient(135deg, #4ade80, #22d3ee)",
     glow: "#4ade80",
     trail: ["#4ade80", "#22d3ee", "#38bdf8", "#facc15"],
     image: rocketTier2,
-    imageSize: 100,
+    imageSize: 120,
   },
   3: {
     gradient: "linear-gradient(135deg, #a78bfa, #f472b6, #fb923c)",
     glow: "#a78bfa",
     trail: ["#a78bfa", "#f472b6", "#fb923c", "#facc15", "#4ade80"],
     image: rocketTier3,
-    imageSize: 110,
+    imageSize: 130,
   },
 };
 
-const CYCLE_DURATION = 7000; // full cycle: 3s flight + 4s pause
+const CYCLE_DURATION = 9000; // full cycle: 4.5s flight + 4.5s pause
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
@@ -202,8 +202,8 @@ function LaunchSequence({
         }}
         transition={{
           delay: 0.4,
-          duration: 3,
-          ease: [0.22, 0.68, 0.36, 1],
+          duration: 4.5,
+          ease: [0.15, 0.6, 0.35, 1],
         }}
         style={{
           position: "absolute",
@@ -265,8 +265,8 @@ function LaunchSequence({
           }}
           transition={{ duration: 0.35, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            width: 16,
-            height: intensity === 3 ? 60 : intensity === 2 ? 48 : 38,
+            width: 22,
+            height: intensity === 3 ? 90 : intensity === 2 ? 72 : 56,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}cc, ${theme.trail[1]}80, ${theme.trail[2] || theme.trail[0]}40, transparent)`,
             filter: "blur(3px)",
@@ -284,11 +284,11 @@ function LaunchSequence({
           transition={{ duration: 0.25, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            bottom: -(intensity === 3 ? 28 : intensity === 2 ? 22 : 16),
+            bottom: -(intensity === 3 ? 40 : intensity === 2 ? 32 : 24),
             left: "50%",
-            marginLeft: -4,
-            width: 8,
-            height: intensity === 3 ? 36 : intensity === 2 ? 28 : 22,
+            marginLeft: -6,
+            width: 12,
+            height: intensity === 3 ? 50 : intensity === 2 ? 40 : 30,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, #fffbe6, ${theme.trail[0]}90, transparent)`,
             transformOrigin: "top center",
