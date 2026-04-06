@@ -277,6 +277,9 @@ export default function PricingTiersSlide() {
                     ))}
                   </div>
 
+                  {/* Rocket animation */}
+                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
+
                   {/* Alim add-on */}
                   <div
                     className="mt-4 rounded-xl"
