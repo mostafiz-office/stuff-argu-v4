@@ -120,7 +120,7 @@ function Launch({
         }}
         style={{
           position: "absolute",
-          right: 5,
+          right: 20,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
