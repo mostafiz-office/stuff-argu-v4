@@ -54,7 +54,7 @@ export default function StarterTierSlide() {
           className="absolute left-[80px] top-[85px] z-10"
           style={{
             fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 58,
+            fontSize: 48,
             fontWeight: 700,
             color: "hsl(var(--pres-text))",
           }}
@@ -64,10 +64,10 @@ export default function StarterTierSlide() {
 
         <motion.p
           {...fade(1)}
-          className="absolute left-[80px] top-[162px] z-10"
+          className="absolute left-[80px] top-[148px] z-10"
           style={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: 20,
+            fontSize: 17,
             color: "hsl(var(--pres-text-muted))",
             maxWidth: 700,
           }}
@@ -76,7 +76,7 @@ export default function StarterTierSlide() {
         </motion.p>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[230px] bottom-[80px] flex gap-10 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
@@ -86,33 +86,33 @@ export default function StarterTierSlide() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="rounded-2xl flex flex-col relative overflow-hidden h-full"
               style={{
-                width: 620,
+                width: 560,
                 flexShrink: 0,
                 background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
                 border: "2px solid hsl(var(--pres-accent))",
-                padding: "40px 32px",
+                padding: "28px 24px",
               }}
             >
               {/* Badge */}
               <div
-                className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
+                className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-bl-xl"
                 style={{
                   background: "hsl(var(--pres-accent))",
                   color: "hsl(var(--pres-bg))",
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 14,
                   fontWeight: 700,
                   letterSpacing: "0.05em",
                 }}
               >
-                <Rocket size={18} /> STARTER
+                <Rocket size={14} /> STARTER
               </div>
 
               {/* Tier label */}
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 22,
+                  fontSize: 16,
                   fontWeight: 600,
                   color: "hsl(var(--pres-text-dim))",
                   letterSpacing: "0.12em",
@@ -126,21 +126,21 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 24,
+                  fontSize: 18,
                   color: "hsl(var(--pres-accent))",
                   fontWeight: 500,
-                  marginTop: 8,
+                  marginTop: 6,
                 }}
               >
                 3+ Years Coding · 1+ Year Industry
               </p>
 
               {/* Price */}
-              <div className="mt-5">
+              <div className="mt-3">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 64,
+                    fontSize: 48,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
                   }}
@@ -150,7 +150,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 28,
+                    fontSize: 20,
                     color: "hsl(var(--pres-text-dim))",
                   }}
                 >
@@ -160,7 +160,7 @@ export default function StarterTierSlide() {
 
               {/* Hours badge */}
               <div
-                className="mt-3 inline-flex items-center rounded-lg px-4 py-2"
+                className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
                 style={{
                   background: "hsl(var(--pres-accent) / 0.08)",
                   border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -170,7 +170,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 22,
+                    fontSize: 16,
                     fontWeight: 600,
                     color: "hsl(var(--pres-accent))",
                   }}
@@ -183,27 +183,27 @@ export default function StarterTierSlide() {
               <RocketAnimation intensity={1} />
 
               {/* Features */}
-              <div className="mt-4 space-y-4 flex-1">
+              <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
                   <motion.div
                     key={feature}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                    className="flex items-start gap-3"
+                    className="flex items-start gap-2"
                   >
                     <CheckCircle
-                      size={26}
+                      size={18}
                       style={{
                         color: "hsl(var(--pres-accent))",
                         flexShrink: 0,
-                        marginTop: 3,
+                        marginTop: 2,
                       }}
                     />
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 26,
+                        fontSize: 18,
                         color: "hsl(var(--pres-text-muted))",
                         lineHeight: 1.4,
                       }}
@@ -216,19 +216,19 @@ export default function StarterTierSlide() {
 
               {/* Alim add-on */}
               <div
-                className="mt-4 rounded-xl"
+                className="mt-3 rounded-xl"
                 style={{
                   background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.08), hsl(var(--pres-accent) / 0.03))",
                   border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                  padding: "14px 16px",
+                  padding: "10px 14px",
                 }}
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <Plus size={16} style={{ color: "hsl(var(--pres-accent))" }} />
+                <div className="flex items-center gap-2 mb-1">
+                  <Plus size={14} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
+                      fontSize: 11,
                       fontWeight: 700,
                       color: "hsl(var(--pres-accent))",
                       letterSpacing: "0.08em",
@@ -237,12 +237,12 @@ export default function StarterTierSlide() {
                   >
                     Premium Add-on
                   </span>
-                  <Crown size={14} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <Crown size={12} style={{ color: "hsl(var(--pres-accent))" }} />
                 </div>
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: 600,
                     color: "hsl(var(--pres-text))",
                     lineHeight: 1.4,
@@ -253,10 +253,10 @@ export default function StarterTierSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
+                    fontSize: 12,
                     color: "hsl(var(--pres-text-muted))",
                     lineHeight: 1.4,
-                    marginTop: 4,
+                    marginTop: 2,
                   }}
                 >
                   4h/day dedicated · <strong style={{ color: "hsl(var(--pres-accent))" }}>$625/hr</strong> · $50,000/mo
@@ -268,7 +268,7 @@ export default function StarterTierSlide() {
           {/* RIGHT — Redesigned */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col justify-center gap-6 flex-1"
+            className="flex flex-col justify-center gap-5 flex-1"
           >
             {/* Big savings stat */}
             <motion.div
@@ -279,7 +279,7 @@ export default function StarterTierSlide() {
               style={{
                 background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
                 border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
-                padding: "28px 32px",
+                padding: "22px 26px",
               }}
             >
               <div
@@ -288,12 +288,12 @@ export default function StarterTierSlide() {
                   background: "radial-gradient(circle at 80% 50%, hsl(var(--pres-accent) / 0.08), transparent 70%)",
                 }}
               />
-              <div className="flex items-center gap-3 mb-3">
-                <TrendingDown size={22} style={{ color: "hsl(var(--pres-accent))" }} />
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingDown size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: 600,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -303,11 +303,11 @@ export default function StarterTierSlide() {
                   vs US Market Rate
                 </span>
               </div>
-              <div className="flex items-baseline gap-4">
+              <div className="flex items-baseline gap-3">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 56,
+                    fontSize: 44,
                     fontWeight: 700,
                     color: "hsl(var(--pres-accent))",
                   }}
@@ -317,7 +317,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: 600,
                     color: "hsl(var(--pres-text))",
                   }}
@@ -325,22 +325,22 @@ export default function StarterTierSlide() {
                   Savings
                 </span>
               </div>
-              <div className="flex items-center gap-3 mt-3">
+              <div className="flex items-center gap-3 mt-2">
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 18,
+                    fontSize: 15,
                     color: "hsl(var(--pres-text-dim))",
                     textDecoration: "line-through",
                   }}
                 >
                   $6,000–$8,000/mo
                 </span>
-                <ArrowRight size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <ArrowRight size={16} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: 700,
                     color: "hsl(var(--pres-accent))",
                   }}
@@ -355,7 +355,7 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 22,
+                  fontSize: 18,
                   color: "hsl(var(--pres-text-muted))",
                   lineHeight: 1.7,
                 }}
@@ -370,7 +370,7 @@ export default function StarterTierSlide() {
 
             {/* Ideal For with icons */}
             <div
-              className="rounded-2xl px-7 py-6"
+              className="rounded-2xl px-6 py-5"
               style={{
                 background: "hsl(var(--pres-bg-surface) / 0.7)",
                 border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -379,17 +379,17 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 14,
                   fontWeight: 600,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "hsl(var(--pres-accent))",
-                  marginBottom: 18,
+                  marginBottom: 14,
                 }}
               >
                 Ideal For
               </p>
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {idealFor.map((item, i) => {
                   const Icon = item.icon;
                   return (
@@ -398,24 +398,24 @@ export default function StarterTierSlide() {
                       initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-3"
                     >
                       <div
                         className="flex items-center justify-center rounded-lg"
                         style={{
-                          width: 36,
-                          height: 36,
+                          width: 30,
+                          height: 30,
                           background: "hsl(var(--pres-accent) / 0.1)",
                           border: "1px solid hsl(var(--pres-accent) / 0.2)",
                           flexShrink: 0,
                         }}
                       >
-                        <Icon size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                        <Icon size={15} style={{ color: "hsl(var(--pres-accent))" }} />
                       </div>
                       <span
                         style={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: 22,
+                          fontSize: 18,
                           color: "hsl(var(--pres-text-muted))",
                         }}
                       >
