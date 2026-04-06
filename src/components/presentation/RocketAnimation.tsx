@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import rocketTier1 from "@/assets/rocket-tier1.png";
-import rocketTier2 from "@/assets/rocket-tier2.png";
-import rocketTier3 from "@/assets/rocket-tier3.png";
+import rocketSvg from "@/assets/rocket-emoji.svg";
 
 interface RocketAnimationProps {
   intensity: 1 | 2 | 3;
   profile?: "default" | "compact";
 }
 
-const tierThemes = {
-  1: { glow: "#38bdf8", trail: ["#38bdf8", "#818cf8"], image: rocketTier1 },
-  2: { glow: "#4ade80", trail: ["#4ade80", "#22d3ee"], image: rocketTier2 },
-  3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketTier3 },
+const tierThemes: Record<1 | 2 | 3, { glow: string; trail: string[]; image: string }> = {
+  1: { glow: "#38bdf8", trail: ["#38bdf8", "#818cf8"], image: rocketSvg },
+  2: { glow: "#4ade80", trail: ["#4ade80", "#22d3ee"], image: rocketSvg },
+  3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketSvg },
 };
 
 const flightProfiles = {
