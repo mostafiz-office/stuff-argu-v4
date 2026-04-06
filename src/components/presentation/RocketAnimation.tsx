@@ -202,8 +202,8 @@ function LaunchSequence({
         }}
         transition={{
           delay: 0.4,
-          duration: 3,
-          ease: [0.22, 0.68, 0.36, 1],
+          duration: 4.5,
+          ease: [0.15, 0.6, 0.35, 1],
         }}
         style={{
           position: "absolute",
@@ -265,8 +265,8 @@ function LaunchSequence({
           }}
           transition={{ duration: 0.35, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            width: 16,
-            height: intensity === 3 ? 60 : intensity === 2 ? 48 : 38,
+            width: 22,
+            height: intensity === 3 ? 90 : intensity === 2 ? 72 : 56,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}cc, ${theme.trail[1]}80, ${theme.trail[2] || theme.trail[0]}40, transparent)`,
             filter: "blur(3px)",
