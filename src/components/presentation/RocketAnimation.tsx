@@ -21,7 +21,7 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setCycle((c) => c + 1), 15500);
+    const id = setInterval(() => setCycle((c) => c + 1), 15000);
     return () => clearInterval(id);
   }, []);
 
