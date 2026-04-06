@@ -170,7 +170,7 @@ function RocketFlight({
             x: { duration: 2.4, ease: "linear", repeat: 0 },
             filter: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
           }}
-          style={{ width: size, height: size, objectFit: "contain" }}
+          style={{ width: size, height: size, objectFit: "contain", transform: "rotate(45deg)" }}
         />
 
         {/* Flame */}
