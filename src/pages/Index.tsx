@@ -7,6 +7,7 @@ import TierDetailSlide from "@/slides/TierDetailSlide";
 import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
+import StarterTierSlide from "@/slides/StarterTierSlide";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const slides = [
@@ -16,7 +17,8 @@ const slides = [
   <PricingSavingsSlide key="4" />,
   <WhatsIncludedSlide key="5" />,
   <PricingHowItWorksSlide key="6" />,
-  <PricingCTASlide key="7" />,
+  <StarterTierSlide key="7" />,
+  <PricingCTASlide key="8" />,
 ];
 
 export default function Index() {
