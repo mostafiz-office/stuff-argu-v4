@@ -258,6 +258,55 @@ export default function PricingTiersSlide() {
                       </div>
                     ))}
                   </div>
+
+                  {/* Alim add-on */}
+                  <div
+                    className="mt-4 rounded-xl"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.08), hsl(var(--pres-accent) / 0.03))",
+                      border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                      padding: "14px 16px",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Plus size={16} style={{ color: "hsl(var(--pres-accent))" }} />
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: "hsl(var(--pres-accent))",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Premium Add-on
+                      </span>
+                      <Crown size={14} style={{ color: "hsl(var(--pres-accent))" }} />
+                    </div>
+                    <p
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 16,
+                        fontWeight: 600,
+                        color: "hsl(var(--pres-text))",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      Alim Ul Karim — Chief Software Engineer
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 14,
+                        color: "hsl(var(--pres-text-muted))",
+                        lineHeight: 1.4,
+                        marginTop: 4,
+                      }}
+                    >
+                      4h/day dedicated · <strong style={{ color: "hsl(var(--pres-accent))" }}>$625/hr</strong> · $50,000/mo
+                    </p>
+                  </div>
                 </motion.div>
               </HoverVideoPreview>
             );
