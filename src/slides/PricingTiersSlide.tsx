@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 
 const tiers = [
   {
-    name: "Tier 2 — Growth",
+    name: "Tier 1 — Growth",
     experience: "2-3+ Years Experience",
     price: "$4,299",
     per: "/mo",
