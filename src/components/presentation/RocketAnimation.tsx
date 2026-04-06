@@ -9,26 +9,13 @@ interface RocketAnimationProps {
 }
 
 const tierThemes = {
-  1: {
-    glow: "#38bdf8",
-    trail: ["#38bdf8", "#818cf8"],
-    image: rocketTier1,
-  },
-  2: {
-    glow: "#4ade80",
-    trail: ["#4ade80", "#22d3ee"],
-    image: rocketTier2,
-  },
-  3: {
-    glow: "#a78bfa",
-    trail: ["#a78bfa", "#f472b6"],
-    image: rocketTier3,
-  },
+  1: { glow: "#38bdf8", trail: ["#38bdf8", "#818cf8"], image: rocketTier1 },
+  2: { glow: "#4ade80", trail: ["#4ade80", "#22d3ee"], image: rocketTier2 },
+  3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketTier3 },
 };
 
-const SIZE = 140;
-const FLIGHT = 12;
-const CYCLE = 15000;
+const SIZE = 120;
+const CYCLE = 15000; // 15s loop
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
@@ -41,8 +28,8 @@ export default function RocketAnimation({ intensity }: RocketAnimationProps) {
 
   return (
     <div
-      className="absolute inset-0 pointer-events-none z-20"
-      style={{ borderRadius: "inherit", overflow: "hidden" }}
+      className="absolute inset-0 pointer-events-none"
+      style={{ borderRadius: "inherit", overflow: "hidden", zIndex: 50 }}
     >
       <Launch key={cycle} theme={theme} intensity={intensity} />
     </div>
@@ -56,46 +43,26 @@ function Launch({
   theme: (typeof tierThemes)[1];
   intensity: number;
 }) {
+  // Timeline: 2s wait → 4s slow rise → 5s hover at top → 1s fade
+  // Total ~12s, cycle every 15s
   return (
     <>
-      {/* Launch pad flash — bottom-right */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.3 }}
-        animate={{ opacity: [0, 0.7, 0], scale: [0.3, 2, 3] }}
-        transition={{ delay: 0.1, duration: 1.2, ease: "easeOut" }}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          right: 5,
-          width: 80,
-          height: 24,
-          borderRadius: "50%",
-          background: `radial-gradient(ellipse, ${theme.glow}99, ${theme.glow}30, transparent)`,
-          filter: "blur(10px)",
-        }}
-      />
-
-      {/* Smoke at bottom-right */}
+      {/* Smoke at launch — synced to launch time */}
       {Array.from({ length: 6 }).map((_, i) => {
         const angle = (i / 6) * 360;
-        const r = 16 + (i % 3) * 8;
+        const r = 14 + (i % 3) * 8;
         const dx = Math.cos((angle * Math.PI) / 180) * r;
-        const dy = Math.sin((angle * Math.PI) / 180) * r * 0.5;
+        const dy = Math.sin((angle * Math.PI) / 180) * r * 0.4;
         return (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: [0, 0.35, 0],
-              scale: [0.2, 1.2, 1.8],
-              x: [0, dx],
-              y: [0, dy],
-            }}
-            transition={{ delay: 3 + i * 0.04, duration: 1.6, ease: "easeOut" }}
+            animate={{ opacity: [0, 0, 0.35, 0], scale: [0, 0, 1.2, 1.8], x: [0, 0, dx], y: [0, 0, dy] }}
+            transition={{ duration: 4, ease: "easeOut", times: [0, 0.5, 0.6, 1] }}
             style={{
               position: "absolute",
-              bottom: 0,
-              right: 20,
+              bottom: 10,
+              right: SIZE / 2 - 8,
               width: 14,
               height: 14,
               borderRadius: "50%",
@@ -106,78 +73,78 @@ function Launch({
         );
       })}
 
-      {/* ── THE ROCKET — right side, straight up, BIG ── */}
+      {/* Launch pad flash */}
       <motion.div
-        initial={{ bottom: 10, opacity: 0 }}
+        initial={{ opacity: 0, scale: 0.3 }}
+        animate={{ opacity: [0, 0, 0.7, 0], scale: [0.3, 0.3, 2, 3] }}
+        transition={{ duration: 4, ease: "easeOut", times: [0, 0.5, 0.55, 0.8] }}
+        style={{
+          position: "absolute",
+          bottom: 5,
+          right: SIZE / 2 - 40,
+          width: 80,
+          height: 20,
+          borderRadius: "50%",
+          background: `radial-gradient(ellipse, ${theme.glow}99, ${theme.glow}30, transparent)`,
+          filter: "blur(8px)",
+        }}
+      />
+
+      {/* THE ROCKET */}
+      <motion.div
+        initial={{ opacity: 0 }}
         animate={{
-          bottom: [10, 10, 40, "40%", "40%", "40%"],
-          opacity: [0, 0.5, 1, 1, 1, 0],
+          // 0→0.17 = 2s wait, 0.17→0.5 = 4s rise, 0.5→0.92 = 5s hover, 0.92→1 = 1s fade
+          bottom: [5, 5, "35%", "35%", "35%"],
+          opacity: [0, 0.5, 1, 1, 0],
         }}
         transition={{
-          duration: FLIGHT,
+          duration: 12,
           ease: "easeInOut",
-          times: [0, 0.15, 0.22, 0.5, 0.85, 1],
+          times: [0, 0.16, 0.5, 0.92, 1],
         }}
         style={{
           position: "absolute",
-          right: 20,
+          right: 10,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        {/* Outer glow halo */}
+        {/* Glow */}
         <motion.div
-          animate={{ scale: [0.7, 1.4, 0.7], opacity: [0.08, 0.3, 0.08] }}
+          animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.1, 0.35, 0.1] }}
           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
             left: "50%",
             top: "50%",
-            marginLeft: -(SIZE * 0.9),
-            marginTop: -(SIZE * 0.9),
-            width: SIZE * 1.8,
-            height: SIZE * 1.8,
+            marginLeft: -(SIZE * 0.6),
+            marginTop: -(SIZE * 0.6),
+            width: SIZE * 1.2,
+            height: SIZE * 1.2,
             borderRadius: "50%",
-            background: `radial-gradient(circle, ${theme.glow}30, ${theme.glow}08, transparent)`,
-            filter: "blur(30px)",
-          }}
-        />
-
-        {/* Inner glow halo */}
-        <motion.div
-          animate={{ scale: [0.9, 1.3, 0.9], opacity: [0.15, 0.5, 0.15] }}
-          transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            marginLeft: -(SIZE * 0.5),
-            marginTop: -(SIZE * 0.5),
-            width: SIZE,
-            height: SIZE,
-            borderRadius: "50%",
-            background: `radial-gradient(circle, ${theme.glow}60, ${theme.glow}20, transparent)`,
+            background: `radial-gradient(circle, ${theme.glow}50, ${theme.glow}15, transparent)`,
             filter: "blur(14px)",
           }}
         />
 
-        {/* Rocket image — HUGE */}
+        {/* Rocket image */}
         <motion.img
           src={theme.image}
           alt=""
           animate={{
             filter: [
-              `drop-shadow(0 0 30px ${theme.glow}90) drop-shadow(0 0 60px ${theme.glow}40)`,
-              `drop-shadow(0 0 50px ${theme.glow}ff) drop-shadow(0 0 90px ${theme.glow}70)`,
-              `drop-shadow(0 0 30px ${theme.glow}90) drop-shadow(0 0 60px ${theme.glow}40)`,
+              `drop-shadow(0 0 20px ${theme.glow}80) drop-shadow(0 0 40px ${theme.glow}30)`,
+              `drop-shadow(0 0 35px ${theme.glow}ff) drop-shadow(0 0 60px ${theme.glow}60)`,
+              `drop-shadow(0 0 20px ${theme.glow}80) drop-shadow(0 0 40px ${theme.glow}30)`,
             ],
           }}
-          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           style={{ width: SIZE, height: SIZE, objectFit: "contain" }}
         />
 
-        {/* Main flame */}
+        {/* Flame */}
         <motion.div
           animate={{
             scaleY: [0.7, 1.5, 0.7],
@@ -186,13 +153,13 @@ function Launch({
           }}
           transition={{ duration: 0.22, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            width: 32,
-            height: 100 + intensity * 20,
+            width: 22,
+            height: 60 + intensity * 14,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, ${theme.trail[0]}cc, ${theme.trail[1]}80, transparent)`,
-            filter: "blur(4px)",
+            filter: "blur(3px)",
             transformOrigin: "top center",
-            marginTop: -10,
+            marginTop: -8,
           }}
         />
 
@@ -202,11 +169,11 @@ function Launch({
           transition={{ duration: 0.16, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            bottom: -(50 + intensity * 12),
+            bottom: -(35 + intensity * 8),
             left: "50%",
-            marginLeft: -7,
-            width: 14,
-            height: 60 + intensity * 14,
+            marginLeft: -5,
+            width: 10,
+            height: 44 + intensity * 10,
             borderRadius: "0 0 50% 50%",
             background: `linear-gradient(to bottom, #fff, #fffbe6, ${theme.trail[0]}80, transparent)`,
             transformOrigin: "top center",
