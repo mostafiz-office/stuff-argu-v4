@@ -34,20 +34,20 @@ export default function HoverVideoPreview({
       {/* Play icon indicator */}
       {!isHovered && (
         <div
-          className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 rounded-full px-2.5 py-1 pointer-events-none"
+          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full px-3 py-1.5 pointer-events-none"
           style={{
             background: "hsl(var(--pres-accent) / 0.15)",
             border: "1px solid hsl(var(--pres-accent) / 0.3)",
           }}
         >
           <Play
-            size={12}
+            size={14}
             style={{ color: "hsl(var(--pres-accent))", fill: "hsl(var(--pres-accent))" }}
           />
           <span
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 600,
               color: "hsl(var(--pres-accent))",
             }}
@@ -59,53 +59,53 @@ export default function HoverVideoPreview({
 
       {children}
 
-      {/* Video overlay on card */}
+      {/* Video overlay — fills the entire card like DesignMonks style */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="absolute inset-0 z-[100] flex items-center justify-center"
             style={{
               borderRadius: 16,
               overflow: "hidden",
-              background: "hsl(var(--pres-bg-deep) / 0.95)",
+              background: "hsl(var(--pres-bg-deep) / 0.97)",
             }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Glowing border */}
+            {/* Accent border glow */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 borderRadius: 16,
-                border: "2px solid hsl(var(--pres-accent) / 0.4)",
-                boxShadow: "inset 0 0 30px hsl(var(--pres-accent) / 0.08), 0 0 20px hsl(var(--pres-accent) / 0.1)",
+                border: "2px solid hsl(var(--pres-accent) / 0.5)",
+                boxShadow: "inset 0 0 40px hsl(var(--pres-accent) / 0.06), 0 0 30px hsl(var(--pres-accent) / 0.08)",
               }}
             />
 
-            {/* Phone frame centered */}
+            {/* Video fills most of the card in 9:16 portrait */}
             <div
               style={{
-                width: "55%",
-                maxWidth: 160,
+                width: "70%",
+                maxWidth: 220,
                 aspectRatio: "9/16",
-                borderRadius: 14,
+                borderRadius: 18,
                 overflow: "hidden",
-                border: "3px solid hsl(var(--pres-bg-surface))",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+                border: "3px solid hsl(var(--pres-bg-surface) / 0.6)",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 20px hsl(var(--pres-accent) / 0.15)",
                 position: "relative",
               }}
             >
-              {/* Notch */}
+              {/* Phone notch */}
               <div
-                className="absolute top-1 left-1/2 -translate-x-1/2 z-20 rounded-full"
+                className="absolute top-1.5 left-1/2 -translate-x-1/2 z-20 rounded-full"
                 style={{
-                  width: 40,
-                  height: 5,
-                  background: "hsl(var(--pres-bg-surface))",
+                  width: 48,
+                  height: 6,
+                  background: "hsl(var(--pres-bg-surface) / 0.8)",
                 }}
               />
               <iframe
@@ -123,13 +123,13 @@ export default function HoverVideoPreview({
 
             {/* Label */}
             <div
-              className="absolute bottom-3 left-0 right-0 text-center pointer-events-none"
+              className="absolute bottom-4 left-0 right-0 text-center pointer-events-none"
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 600,
-                color: "hsl(var(--pres-accent) / 0.7)",
-                letterSpacing: "0.05em",
+                color: "hsl(var(--pres-accent) / 0.6)",
+                letterSpacing: "0.08em",
                 textTransform: "uppercase",
               }}
             >
