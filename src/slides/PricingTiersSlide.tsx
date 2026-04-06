@@ -120,14 +120,10 @@ export default function PricingTiersSlide() {
                   transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
                   className="rounded-2xl flex flex-col relative overflow-hidden h-full"
                   style={{
-                    background: isBestValue
-                      ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                      : isPremium
-                        ? "linear-gradient(180deg, hsl(280 85% 60% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                        : isFeatured
-                          ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                          : "hsl(var(--pres-bg-surface))",
-                    border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isPremium ? "hsl(280 85% 60%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
+                    background: (isFeatured || isBestValue || isPremium)
+                      ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                      : "hsl(var(--pres-bg-surface))",
+                    border: `2px solid ${(isFeatured || isBestValue || isPremium) ? "hsl(var(--pres-accent) / 0.4)" : "hsl(var(--border))"}`,
                     padding: "28px 24px",
                   }}
                 >
@@ -154,8 +150,8 @@ export default function PricingTiersSlide() {
                     <div
                       className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
                       style={{
-                        background: "hsl(142 71% 45%)",
-                        color: "#fff",
+                        background: "hsl(var(--pres-accent))",
+                        color: "hsl(var(--pres-bg))",
                         fontFamily: "'Poppins', sans-serif",
                         fontSize: 14,
                         fontWeight: 700,
@@ -170,8 +166,8 @@ export default function PricingTiersSlide() {
                     <div
                       className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
                       style={{
-                        background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
-                        color: "#fff",
+                        background: "hsl(var(--pres-accent))",
+                        color: "hsl(var(--pres-bg))",
                         fontFamily: "'Poppins', sans-serif",
                         fontSize: 14,
                         fontWeight: 700,
