@@ -131,6 +131,9 @@ export default function PricingTiersSlide() {
                     padding: "40px 32px",
                   }}
                 >
+                  {/* Rocket flies from bottom to badge */}
+                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
+
                   {isFeatured && (
                     <div
                       className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
@@ -277,8 +280,6 @@ export default function PricingTiersSlide() {
                     ))}
                   </div>
 
-                  {/* Rocket animation */}
-                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
 
                   {/* Alim add-on */}
                   <div
