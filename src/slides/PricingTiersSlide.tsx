@@ -231,6 +231,8 @@ export default function PricingTiersSlide() {
                     </span>
                   </div>
 
+                  {/* Rocket animation */}
+                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} />
                   {/* Features */}
                   <div className="mt-5 space-y-3 flex-1">
                     {tier.features.map((feature) => (
