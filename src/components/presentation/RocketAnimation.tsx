@@ -27,8 +27,8 @@ const tierThemes = {
 };
 
 const SIZE = 260;
-const FLIGHT = 3;
-const CYCLE = 6500;
+const FLIGHT = 6;
+const CYCLE = 10000;
 
 export default function RocketAnimation({ intensity }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
