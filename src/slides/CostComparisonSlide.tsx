@@ -177,25 +177,32 @@ export default function CostComparisonSlide() {
 
                 {/* Bar */}
                 <div
-                  className="w-full rounded-lg overflow-hidden"
+                  className="relative w-full overflow-hidden"
                   style={{
-                    height: 20,
-                    background: "hsl(var(--pres-bg-surface))",
-                    border: "1px solid hsl(var(--pres-accent) / 0.05)",
+                    height: 18,
+                    borderRadius: 9,
+                    background: "hsl(var(--pres-bg-surface) / 0.5)",
+                    border: "1px solid hsl(var(--pres-text-dim) / 0.12)",
                   }}
                 >
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${d.bar}%` }}
                     transition={{ delay: 0.5 + i * 0.12, duration: 0.9, ease: "easeOut" }}
-                    className="h-full rounded-lg"
+                    className="h-full"
                     style={{
+                      borderRadius: 9,
                       background: d.highlight
-                        ? "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))"
-                        : `linear-gradient(90deg, ${d.color}, ${d.colorDim})`,
-                      boxShadow: d.highlight
-                        ? "0 0 16px hsl(var(--pres-accent) / 0.3)"
-                        : `0 0 12px ${d.colorGlow}`,
+                        ? `linear-gradient(90deg, hsl(var(--pres-accent)) 0%, hsl(var(--pres-accent) / 0.6) 70%, transparent 100%)`
+                        : `linear-gradient(90deg, ${d.color} 0%, ${d.colorDim} 70%, transparent 100%)`,
+                    }}
+                  />
+                  {/* Full-width track outline */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      borderRadius: 9,
+                      border: `1px solid ${d.highlight ? "hsl(var(--pres-text-dim) / 0.15)" : "hsl(var(--pres-text-dim) / 0.1)"}`,
                     }}
                   />
                 </div>
