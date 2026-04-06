@@ -135,7 +135,7 @@ export default function StarterTierSlide() {
                   textTransform: "uppercase",
                 }}
               >
-                Tier 1 — Starter
+                Tier 1
               </p>
 
               {/* Experience */}
