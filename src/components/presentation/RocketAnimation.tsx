@@ -26,7 +26,7 @@ const tierThemes = {
   },
 };
 
-const SIZE = 180; // 3x bigger
+const SIZE = 260;
 const FLIGHT = 3;
 const CYCLE = 6500;
 
