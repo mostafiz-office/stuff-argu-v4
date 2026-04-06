@@ -105,6 +105,7 @@ export default function PricingTiersSlide() {
           {tiers.map((tier, index) => {
             const isFeatured = tier.featured;
             const isBestValue = 'bestValue' in tier && tier.bestValue;
+            const isPremium = 'premium' in tier && tier.premium;
             const videoPosition = index === 0 ? "right" : index === 2 ? "left" : "center";
 
             return (
@@ -121,10 +122,12 @@ export default function PricingTiersSlide() {
                   style={{
                     background: isBestValue
                       ? "linear-gradient(180deg, hsl(142 71% 45% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                      : isFeatured
-                        ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                        : "hsl(var(--pres-bg-surface))",
-                    border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
+                      : isPremium
+                        ? "linear-gradient(180deg, hsl(280 85% 60% / 0.12) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                        : isFeatured
+                          ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
+                          : "hsl(var(--pres-bg-surface))",
+                    border: `2px solid ${isBestValue ? "hsl(142 71% 45%)" : isPremium ? "hsl(280 85% 60%)" : isFeatured ? "hsl(var(--pres-accent))" : "hsl(var(--border))"}`,
                     padding: "40px 32px",
                   }}
                 >
