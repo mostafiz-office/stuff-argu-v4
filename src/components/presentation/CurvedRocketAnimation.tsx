@@ -43,7 +43,7 @@ export default function CurvedRocketAnimation() {
         inset: 0,
         pointerEvents: "none",
         zIndex: 50,
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       <CurvedFlight key={cycle} />
