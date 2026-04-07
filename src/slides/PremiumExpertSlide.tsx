@@ -53,7 +53,7 @@ export default function PremiumExpertSlide() {
             width: 600,
             height: 600,
             top: "50%",
-            left: "50%",
+            left: "40%",
             transform: "translate(-50%, -50%)",
             background: "radial-gradient(circle, hsl(var(--pres-accent) / 0.06) 0%, transparent 70%)",
             borderRadius: "50%",
@@ -118,36 +118,36 @@ export default function PremiumExpertSlide() {
 
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[50px] z-10 flex gap-6 items-start"
+          className="absolute left-[80px] right-[80px] top-[250px] bottom-[55px] z-10 flex gap-6"
         >
-          {/* LEFT — Benefits 2x2 grid */}
-          <div className="grid grid-cols-2 gap-4 flex-1">
+          {/* LEFT — Benefits as vertical cards */}
+          <div className="flex flex-col gap-4 flex-1 justify-between">
             {benefits.map((b, i) => (
               <motion.div
                 key={b.title}
                 {...fade(i + 2)}
-                className="rounded-xl flex items-start gap-3"
+                className="rounded-xl flex items-start gap-4 flex-1"
                 style={{
                   background: "hsl(var(--pres-bg-surface))",
                   border: "1px solid hsl(var(--pres-accent) / 0.1)",
-                  padding: "18px 16px",
+                  padding: "20px 20px",
                 }}
               >
                 <div
                   className="flex items-center justify-center rounded-lg flex-shrink-0"
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 44,
+                    height: 44,
                     background: "hsl(var(--pres-accent) / 0.1)",
                   }}
                 >
-                  <b.icon size={20} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <b.icon size={22} style={{ color: "hsl(var(--pres-accent))" }} />
                 </div>
                 <div>
                   <p
                     style={{
                       fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: 700,
                       color: "hsl(var(--pres-text))",
                       marginBottom: 4,
@@ -158,9 +158,9 @@ export default function PremiumExpertSlide() {
                   <p
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 14,
+                      fontSize: 15,
                       color: "hsl(var(--pres-text-muted))",
-                      lineHeight: 1.45,
+                      lineHeight: 1.5,
                     }}
                   >
                     {b.desc}
@@ -175,20 +175,20 @@ export default function PremiumExpertSlide() {
             {...fade(3)}
             className="rounded-2xl flex flex-col justify-between"
             style={{
-              width: 460,
+              width: 440,
               flexShrink: 0,
               background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 50%)",
               border: "2px solid hsl(var(--pres-accent) / 0.25)",
-              padding: "24px 24px",
+              padding: "28px 26px",
             }}
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-5">
                 <Star size={16} style={{ color: "hsl(var(--pres-accent))", fill: "hsl(var(--pres-accent))" }} />
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: 700,
                     color: "hsl(var(--pres-accent))",
                     letterSpacing: "0.1em",
@@ -199,14 +199,14 @@ export default function PremiumExpertSlide() {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {includedItems.map((item, i) => (
                   <motion.div key={item} {...fade(i + 4)} className="flex items-center gap-3">
-                    <CheckCircle size={18} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
+                    <CheckCircle size={20} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 16,
+                        fontSize: 17,
                         color: "hsl(var(--pres-text))",
                         lineHeight: 1.4,
                       }}
@@ -220,18 +220,19 @@ export default function PremiumExpertSlide() {
 
             {/* Value highlight */}
             <div
-              className="mt-5 rounded-xl"
+              className="rounded-xl"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-accent) / 0.04))",
                 border: "1.5px solid hsl(var(--pres-accent) / 0.3)",
-                padding: "16px 20px",
+                padding: "20px 22px",
+                marginTop: 24,
               }}
             >
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-3">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 24,
+                    fontSize: 26,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text-dim))",
                     textDecoration: "line-through",
@@ -241,11 +242,11 @@ export default function PremiumExpertSlide() {
                 >
                   $50,000/mo
                 </span>
-                <ArrowRight size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <ArrowRight size={20} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 30,
+                    fontSize: 34,
                     fontWeight: 700,
                     color: "hsl(var(--pres-accent))",
                   }}
@@ -253,29 +254,28 @@ export default function PremiumExpertSlide() {
                   $0 Extra
                 </span>
               </div>
-              <div className="flex items-center justify-between">
-                <p
+              <p
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 14,
+                  color: "hsl(var(--pres-text-muted))",
+                  lineHeight: 1.5,
+                }}
+              >
+                80 hrs/mo of Chief Engineer time · Already included in your tier price
+              </p>
+              <div className="flex items-center gap-1.5 mt-2">
+                <CheckCircle size={15} style={{ color: "hsl(var(--pres-accent))" }} />
+                <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 13,
-                    color: "hsl(var(--pres-text-muted))",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  80 hrs/mo Chief Engineer time · Already in your tier
-                </p>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle size={14} style={{ color: "hsl(var(--pres-accent))" }} />
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "hsl(var(--pres-accent))",
-                    }}
-                  >
-                    No hidden fees
-                  </span>
-                </div>
+                  No hidden fees
+                </span>
               </div>
             </div>
           </motion.div>
@@ -284,7 +284,7 @@ export default function PremiumExpertSlide() {
         {/* Bottom tagline */}
         <motion.p
           {...fade(8)}
-          className="absolute bottom-[24px] left-0 right-0 text-center z-10"
+          className="absolute bottom-[20px] left-0 right-0 text-center z-10"
           style={{
             fontFamily: "'Poppins', sans-serif",
             fontSize: 16,
