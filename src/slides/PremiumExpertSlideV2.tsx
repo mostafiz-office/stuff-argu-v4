@@ -64,7 +64,7 @@ export default function PremiumExpertSlideV2() {
                 fontWeight: 800,
               }}
             >
-              $50K/mo Expert
+              $10K/mo Expert
             </span>{" "}
             Bonus
           </h1>
