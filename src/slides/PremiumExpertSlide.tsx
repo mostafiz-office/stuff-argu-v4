@@ -118,39 +118,39 @@ export default function PremiumExpertSlide() {
 
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[250px] bottom-[80px] z-10 flex gap-6"
+          className="absolute left-[80px] right-[80px] top-[250px] bottom-[55px] z-10 flex gap-6"
         >
           {/* LEFT — Benefits as vertical cards */}
-          <div className="flex flex-col gap-5 flex-1 justify-between">
+          <div className="flex flex-col gap-4 flex-1">
             {benefits.map((b, i) => (
               <motion.div
                 key={b.title}
                 {...fade(i + 2)}
-                className="rounded-xl flex items-start gap-4 flex-1"
+                className="rounded-xl flex items-start gap-4"
                 style={{
                   background: "hsl(var(--pres-bg-surface))",
                   border: "1px solid hsl(var(--pres-accent) / 0.1)",
-                  padding: "22px 24px",
+                  padding: "20px 20px",
                 }}
               >
                 <div
                   className="flex items-center justify-center rounded-lg flex-shrink-0"
                   style={{
-                    width: 48,
-                    height: 48,
+                    width: 44,
+                    height: 44,
                     background: "hsl(var(--pres-accent) / 0.1)",
                   }}
                 >
-                  <b.icon size={24} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <b.icon size={22} style={{ color: "hsl(var(--pres-accent))" }} />
                 </div>
                 <div>
                   <p
                     style={{
                       fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: 700,
                       color: "hsl(var(--pres-text))",
-                      marginBottom: 6,
+                      marginBottom: 4,
                     }}
                   >
                     {b.title}
@@ -158,7 +158,7 @@ export default function PremiumExpertSlide() {
                   <p
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 16,
+                      fontSize: 15,
                       color: "hsl(var(--pres-text-muted))",
                       lineHeight: 1.5,
                     }}
