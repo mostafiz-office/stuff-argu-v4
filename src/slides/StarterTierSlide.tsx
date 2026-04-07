@@ -30,9 +30,7 @@ const idealFor = [
 export default function StarterTierSlide() {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full">
-        {/* Overflow clip layer for content only */}
-        <div className="absolute inset-0 overflow-hidden">
+      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
 
         {/* Ambient glow */}
@@ -445,9 +443,8 @@ export default function StarterTierSlide() {
             </div>
           </motion.div>
         </div>
-        </div>
 
-        {/* Curved rocket — outside overflow-hidden so it can fly freely */}
+        {/* Curved rocket at slide level */}
         <CurvedRocketAnimation />
       </div>
     </ScaledSlide>
