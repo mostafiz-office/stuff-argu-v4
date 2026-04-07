@@ -65,61 +65,6 @@ export default function PricingCoverV1() {
           }}
         />
 
-        {/* SVG connection lines */}
-        <svg
-          className="absolute z-[3] pointer-events-none"
-          style={{ left: 0, top: 0, width: 1920, height: 1080 }}
-          viewBox="0 0 1920 1080"
-          fill="none"
-        >
-          {keywords.map((kw, i) => {
-            const nx = kw.x + 90;
-            const ny = kw.y + 21;
-            const midX = (cx + nx) / 2 + (i % 2 === 0 ? 28 : -28);
-            const midY = (cy + ny) / 2 + (i % 2 === 0 ? -18 : 18);
-            return (
-              <motion.path
-                key={`kw-${i}`}
-                d={`M${cx},${cy} Q${midX},${midY} ${nx},${ny}`}
-                stroke="hsl(var(--pres-accent))"
-                strokeWidth={1.5}
-                strokeOpacity={0.25}
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 0.45 + i * 0.1, duration: 0.65, ease: "easeOut" }}
-              />
-            );
-          })}
-          {recommendations.map((rec, i) => {
-            const nx = rec.x + (i === 0 ? 410 : 12);
-            const ny = rec.y + 74;
-            const midX = (cx + nx) / 2 + (i === 0 ? -70 : 55);
-            const midY = (cy + ny) / 2 + (i === 0 ? 24 : -30);
-            return (
-              <motion.path
-                key={`rec-${i}`}
-                d={`M${cx},${cy} Q${midX},${midY} ${nx},${ny}`}
-                stroke="hsl(var(--pres-accent))"
-                strokeWidth={1.2}
-                strokeOpacity={0.15}
-                strokeDasharray="6 4"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 0.55 + i * 0.12, duration: 0.7, ease: "easeOut" }}
-              />
-            );
-          })}
-          <motion.circle
-            cx={cx} cy={cy} r={5}
-            fill="hsl(var(--pres-accent))"
-            fillOpacity={0.3}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.35, duration: 0.35 }}
-          />
-        </svg>
 
         {/* Skill keyword badges */}
         {keywords.map((kw, i) => (
