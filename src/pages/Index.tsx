@@ -27,6 +27,7 @@ const slides = [
   <PremiumExpertSlideV3 key="5c" />,
   <TierDetailSlide key="6" />,
   <PricingSavingsSlide key="7" />,
+  <PricingSavingsSlideV2 key="7b" />,
   <WhatsIncludedSlide key="8" />,
   <PricingHowItWorksSlide key="9" />,
   <StarterTierSlide key="10" />,
