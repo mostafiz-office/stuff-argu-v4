@@ -123,12 +123,12 @@ export default function PremiumExpertSlide() {
             </motion.div>
 
             {/* Benefit cards — stretch to fill remaining height */}
-            <div className="flex flex-col gap-4 flex-1">
+            <div className="flex flex-col gap-4">
               {benefits.map((b, i) => (
                 <motion.div
                   key={b.title}
                   {...fade(i + 2)}
-                  className="rounded-xl flex items-start gap-4 flex-1"
+                  className="rounded-xl flex items-start gap-4"
                   style={{
                     background: "hsl(var(--pres-bg-surface))",
                     border: "1px solid hsl(var(--pres-accent) / 0.1)",
@@ -176,7 +176,7 @@ export default function PremiumExpertSlide() {
           {/* RIGHT — Premium card */}
           <motion.div
             {...fade(3)}
-            className="rounded-2xl flex flex-col justify-between"
+            className="rounded-2xl flex flex-col"
             style={{
               width: 440,
               flexShrink: 0,
