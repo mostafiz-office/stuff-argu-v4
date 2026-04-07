@@ -1,6 +1,6 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import alimPhoto from "@/assets/alim-updated.png";
@@ -29,25 +29,26 @@ function HoverCard({ delay, title, hoverText, fontSize = 22 }: { delay: number; 
         backdropFilter: "blur(12px)",
         padding: "14px 22px",
         maxWidth: 360,
-        transition: "all 0.3s ease",
+        transition: "background 0.35s ease, border-color 0.35s ease",
       }}
     >
       <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
         {title}
       </p>
-      <AnimatePresence>
-        {hovered && (
-          <motion.p
-            initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: "auto", marginTop: 8 }}
-            exit={{ opacity: 0, height: 0, marginTop: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-muted))", lineHeight: 1.5, overflow: "hidden" }}
-          >
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: hovered ? "1fr" : "0fr",
+          opacity: hovered ? 1 : 0,
+          transition: "grid-template-rows 0.35s ease, opacity 0.3s ease",
+        }}
+      >
+        <div style={{ overflow: "hidden" }}>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-muted))", lineHeight: 1.5, paddingTop: 8 }}>
             {hoverText}
-          </motion.p>
-        )}
-      </AnimatePresence>
+          </p>
+        </div>
+      </div>
     </motion.div>
   );
 }
