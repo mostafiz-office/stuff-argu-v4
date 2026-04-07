@@ -181,6 +181,7 @@ export default function PremiumExpertSlide() {
             style={{
               width: 420,
               flexShrink: 0,
+              marginTop: 68,
               background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 50%)",
               border: "2px solid hsl(var(--pres-accent) / 0.25)",
               padding: "20px 22px",
