@@ -49,7 +49,7 @@ export default function StarterTierSlide() {
         />
 
         {/* Title — below header */}
-        <div className="absolute left-[80px] right-[80px] top-[50px] z-10">
+        <div className="absolute left-[80px] right-[80px] top-[42px] z-10">
           <motion.h1
             {...fade(0)}
             style={{
@@ -83,13 +83,14 @@ export default function StarterTierSlide() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden h-full justify-between"
+              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
               style={{
-                width: 420,
+                width: 380,
                 flexShrink: 0,
                 background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
                 border: "2px solid hsl(var(--pres-accent))",
-                padding: "22px 20px",
+                padding: "18px 18px",
+                gap: 6,
               }}
             >
               {/* Badge */}
