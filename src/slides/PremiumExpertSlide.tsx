@@ -105,6 +105,7 @@ export default function PremiumExpertSlide() {
               fontSize: 18,
               color: "hsl(var(--pres-text-muted))",
               marginTop: 6,
+              marginBottom: 16,
               maxWidth: 800,
             }}
           >
