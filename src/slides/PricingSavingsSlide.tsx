@@ -99,10 +99,9 @@ export default function PricingSavingsSlide() {
               lineHeight: 1.05,
             }}
           >
-            <span style={{ color: "hsl(var(--pres-accent))" }}>Save</span>{" "}
-            <span style={{ color: "hsl(var(--pres-text))" }}>Up To</span>
+            <span style={{ color: "hsl(var(--pres-text))" }}>Get Up To</span>
             <br />
-            <span style={{ color: "hsl(var(--pres-accent))", fontSize: 88 }}>76%</span>
+            <span style={{ color: "hsl(var(--pres-accent))", fontSize: 88 }}>4× Value</span>
           </motion.h1>
 
           {/* Accent underline */}
@@ -128,11 +127,11 @@ export default function PricingSavingsSlide() {
               maxWidth: 440,
             }}
           >
-            Compare monthly costs:{" "}
+            Compare the value you receive:{" "}
             <strong style={{ color: "hsl(var(--pres-accent))" }}>
-              US market rates
+              more output, more expertise
             </strong>{" "}
-            vs RiseUp Asia.
+            than US market alternatives.
           </motion.p>
 
           {/* Savings stat card */}
@@ -156,7 +155,7 @@ export default function PricingSavingsSlide() {
                 lineHeight: 1,
               }}
             >
-              76%
+              4×
             </span>
             <div>
               <p
@@ -168,7 +167,7 @@ export default function PricingSavingsSlide() {
                   lineHeight: 1.3,
                 }}
               >
-                Max Savings
+                More Value
               </p>
               <p
                 style={{
@@ -179,7 +178,7 @@ export default function PricingSavingsSlide() {
                   marginTop: 2,
                 }}
               >
-                vs. US market rates
+                vs. hiring directly in the US
               </p>
             </div>
           </motion.div>
@@ -188,7 +187,7 @@ export default function PricingSavingsSlide() {
         {/* RIGHT COLUMN — Tier comparison bars */}
         <div
           className="absolute z-10 flex flex-col justify-center gap-8"
-          style={{ left: 700, right: 80, top: 100, bottom: 80 }}
+          style={{ left: 720, right: 60, top: 100, bottom: 80 }}
         >
           {comparisons.map((c, i) => (
             <motion.div
