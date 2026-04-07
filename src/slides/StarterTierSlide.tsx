@@ -49,7 +49,7 @@ export default function StarterTierSlide() {
         />
 
         {/* Title — below header */}
-        <div className="absolute left-[240px] right-[80px] top-[18px] z-10">
+        <div className="absolute left-[240px] right-[80px] top-[24px] z-10">
           <motion.h1
             {...fade(0)}
             style={{
