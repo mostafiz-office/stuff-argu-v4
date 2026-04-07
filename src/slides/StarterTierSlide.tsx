@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
-import CurvedRocketAnimation from "@/components/presentation/CurvedRocketAnimation";
+import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
 import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Wallet, TrendingDown } from "lucide-react";
 
@@ -84,7 +84,7 @@ export default function StarterTierSlide() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
+              className="rounded-2xl flex flex-col relative h-full"
               style={{
                 width: 560,
                 flexShrink: 0,
@@ -196,7 +196,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Rocket animation */}
-              <CurvedRocketAnimation />
+              <RocketAnimation intensity={1} profile="compact" />
 
               {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
@@ -444,6 +444,7 @@ export default function StarterTierSlide() {
             </div>
           </motion.div>
         </div>
+
       </div>
     </ScaledSlide>
   );
