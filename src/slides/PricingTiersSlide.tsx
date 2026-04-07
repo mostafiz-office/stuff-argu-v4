@@ -127,8 +127,6 @@ export default function PricingTiersSlide() {
                     padding: "28px 24px",
                   }}
                 >
-                  {/* Rocket flies from bottom to badge */}
-                  <RocketAnimation intensity={index === 0 ? 1 : index === 1 ? 2 : 3} profile="compact" />
 
                   {isFeatured && (
                     <div
