@@ -27,7 +27,7 @@ const idealFor = [
   { text: "Budget-conscious teams needing quality", icon: Wallet },
 ];
 
-export default function StarterTierSlide() {
+export default function StarterTierSlideV3() {
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
