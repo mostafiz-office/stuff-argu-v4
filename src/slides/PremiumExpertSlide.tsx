@@ -61,7 +61,7 @@ export default function PremiumExpertSlide() {
         />
 
         {/* Title section */}
-        <motion.div {...fade(0)} className="absolute left-[80px] right-[80px] top-[86px] z-10">
+        <motion.div {...fade(0)} className="absolute left-[80px] right-[80px] top-[102px] z-10">
           <div className="flex items-center gap-3 mb-3">
             <div
               className="flex items-center justify-center rounded-xl"
