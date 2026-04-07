@@ -69,12 +69,12 @@ export default function PricingCoverV2() {
         {/* Alim photo — centered-right, smaller */}
         <div
           className="absolute z-[4] flex items-end justify-center pointer-events-none"
-          style={{ left: 480, bottom: -20, width: 1100, height: "160%" }}
+          style={{ left: 380, bottom: -40, width: 1400, height: "200%" }}
         >
           <img
             src={alimPhoto} alt="Alim UL Karim" loading="eager" fetchPriority="high"
             className="h-full object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.7))", transform: "scale(1.15)" }}
+            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.7))", transform: "scale(1.4)" }}
           />
         </div>
 
