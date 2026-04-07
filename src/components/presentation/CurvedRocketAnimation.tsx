@@ -62,7 +62,7 @@ function CurvedFlight() {
         transition={{ duration: 15, times: [0, 0.13, 0.18, 0.4] }}
         style={{
           position: "absolute",
-          bottom: START_BOTTOM,
+          top: START_TOP,
           left: START_LEFT + SIZE / 2 - 30,
           width: 60,
           height: 16,
@@ -87,7 +87,7 @@ function CurvedFlight() {
             transition={{ duration: 15, times: [0, 0.13, 0.2, 0.4] }}
             style={{
               position: "absolute",
-              bottom: START_BOTTOM,
+              top: START_TOP,
               left: START_LEFT + SIZE / 2 - 6,
               width: 12,
               height: 12,
@@ -114,7 +114,7 @@ function CurvedFlight() {
         }}
         style={{
           position: "absolute",
-          bottom: START_BOTTOM,
+          top: START_TOP,
           left: START_LEFT,
           display: "flex",
           flexDirection: "column",
