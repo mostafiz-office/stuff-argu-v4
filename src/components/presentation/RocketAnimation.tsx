@@ -53,12 +53,7 @@ const flightProfiles: Record<string, FlightProfile> = {
 export default function RocketAnimation({ intensity, profile = "default", flyingLabel }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
   const flightProfile = flightProfiles[profile];
-  const [cycle, setCycle] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setCycle((c) => c + 1), 15000);
-    return () => clearInterval(id);
-  }, []);
+  const [cycle] = useState(0);
 
   return (
     <div
