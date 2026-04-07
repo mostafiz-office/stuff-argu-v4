@@ -14,10 +14,12 @@ export default function HoverVideoPreview({
   youtubeId,
   children,
 }: HoverVideoPreviewProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   if (!HOVER_VIDEO_ENABLED) {
     return <>{children}</>;
   }
-  const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback(() => {
