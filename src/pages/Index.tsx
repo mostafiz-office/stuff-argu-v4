@@ -10,7 +10,7 @@ import PremiumExpertSlideV2 from "@/slides/PremiumExpertSlideV2";
 import PremiumExpertSlideV3 from "@/slides/PremiumExpertSlideV3";
 import TierDetailSlide from "@/slides/TierDetailSlide";
 import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
-import PricingSavingsSlideV2 from "@/slides/PricingSavingsSlideV2";
+
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 import StarterTierSlide from "@/slides/StarterTierSlide";
@@ -27,7 +27,7 @@ const slides = [
   <PremiumExpertSlideV3 key="5c" />,
   <TierDetailSlide key="6" />,
   <PricingSavingsSlide key="7" />,
-  <PricingSavingsSlideV2 key="7b" />,
+  
   <WhatsIncludedSlide key="8" />,
   <PricingHowItWorksSlide key="9" />,
   <StarterTierSlide key="10" />,
