@@ -32,7 +32,7 @@ const flightProfiles: Record<string, FlightProfile> = {
   },
   compact: {
     size: 120,
-    startBottom: -8,
+    startBottom: 200,
     startRight: 46,
     travelY: { 1: -520, 2: -520, 3: -520 },
   },
