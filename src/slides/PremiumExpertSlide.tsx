@@ -83,7 +83,7 @@ export default function PremiumExpertSlide() {
                 textTransform: "uppercase",
               }}
             >
-              Exclusive Bonus With Every Tier
+              Included Free With Every Tier
             </p>
           </div>
           <h1
@@ -95,8 +95,9 @@ export default function PremiumExpertSlide() {
               lineHeight: 1.15,
             }}
           >
-            Get Direct Access to{" "}
+            Your Team Gets{" "}
             <span style={{ color: "hsl(var(--pres-accent))" }}>Alim Ul Karim</span>
+            {" "}— Free
           </h1>
           <p
             style={{
@@ -104,10 +105,10 @@ export default function PremiumExpertSlide() {
               fontSize: 20,
               color: "hsl(var(--pres-text-muted))",
               marginTop: 8,
-              maxWidth: 700,
+              maxWidth: 750,
             }}
           >
-            Chief Software Engineer · 20+ Years of Experience · Your dedicated expert
+            Chief Software Engineer · 20+ Years of Experience · Included at <strong style={{ color: "hsl(var(--pres-accent))" }}>no extra cost</strong> with any tier you choose
           </p>
         </motion.div>
 
@@ -184,7 +185,7 @@ export default function PremiumExpertSlide() {
                 textTransform: "uppercase",
               }}
             >
-              What You Get
+              Included With Your Tier
             </p>
           </div>
 
@@ -212,12 +213,12 @@ export default function PremiumExpertSlide() {
             ))}
           </div>
 
-          {/* Pricing */}
+          {/* Value highlight — no extra cost */}
           <div
             className="mt-6 rounded-xl flex items-center justify-between"
             style={{
-              background: "hsl(var(--pres-accent) / 0.08)",
-              border: "1px solid hsl(var(--pres-accent) / 0.2)",
+              background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-accent) / 0.05))",
+              border: "1.5px solid hsl(var(--pres-accent) / 0.3)",
               padding: "18px 22px",
             }}
           >
@@ -225,31 +226,22 @@ export default function PremiumExpertSlide() {
               <span
                 style={{
                   fontFamily: "'Ubuntu', sans-serif",
-                  fontSize: 36,
+                  fontSize: 28,
                   fontWeight: 700,
-                  color: "hsl(var(--pres-text))",
+                  color: "hsl(var(--pres-accent))",
                 }}
               >
-                $625
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
-                  color: "hsl(var(--pres-text-dim))",
-                }}
-              >
-                /hr
+                $0 Extra
               </span>
               <span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   fontSize: 16,
                   color: "hsl(var(--pres-text-muted))",
-                  marginLeft: 16,
+                  marginLeft: 12,
                 }}
               >
-                $50,000/mo
+                Already included in your tier price
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -261,9 +253,9 @@ export default function PremiumExpertSlide() {
                   color: "hsl(var(--pres-accent))",
                 }}
               >
-                Add to any tier
+                No hidden fees
               </span>
-              <ArrowRight size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+              <CheckCircle size={18} style={{ color: "hsl(var(--pres-accent))" }} />
             </div>
           </div>
         </motion.div>
@@ -279,7 +271,7 @@ export default function PremiumExpertSlide() {
             fontStyle: "italic",
           }}
         >
-          "Purchase any tier and unlock access to a Chief Software Engineer who ensures your project succeeds."
+          "Every tier includes Alim's expertise at no additional cost — your unfair advantage starts day one."
         </motion.p>
       </div>
     </ScaledSlide>
