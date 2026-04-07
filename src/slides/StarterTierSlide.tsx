@@ -59,7 +59,7 @@ export default function StarterTierSlide() {
             color: "hsl(var(--pres-text))",
           }}
         >
-          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Smart</span>, Scale Later
+          Great News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
         </motion.h1>
 
         <motion.p
@@ -72,7 +72,7 @@ export default function StarterTierSlide() {
             maxWidth: 700,
           }}
         >
-          The perfect entry point for founders who need quality engineering without enterprise budgets.
+          World-class engineering talent, dedicated to your product — without the enterprise price tag.
         </motion.p>
 
         {/* Two-column layout */}
