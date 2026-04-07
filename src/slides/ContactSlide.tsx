@@ -224,13 +224,13 @@ export default function ContactSlide() {
 
             {/* Social icons */}
             <motion.div {...fade(6)} className="flex items-center gap-5 mt-2">
-              <a href="https://www.linkedin.com/in/alimkarim/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/company/riseup-asia/" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={36} style={{ color: "hsl(var(--pres-text-dim))" }} className="hover:opacity-70 transition-opacity cursor-pointer" />
               </a>
               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alim.karim@riseup-asia.com" target="_blank" rel="noopener noreferrer">
                 <Mail size={36} style={{ color: "hsl(var(--pres-text-dim))" }} className="hover:opacity-70 transition-opacity cursor-pointer" />
               </a>
-              <a href="https://github.com/AliMKarim" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/aukgit" target="_blank" rel="noopener noreferrer">
                 <Github size={36} style={{ color: "hsl(var(--pres-text-dim))" }} className="hover:opacity-70 transition-opacity cursor-pointer" />
               </a>
             </motion.div>
