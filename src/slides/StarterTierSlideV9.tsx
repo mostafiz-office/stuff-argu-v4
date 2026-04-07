@@ -4,6 +4,7 @@ import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
 import { CheckCircle, Crown, Shield, Clock, Flame, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -27,9 +28,9 @@ const guarantees = [
 ];
 
 const results = [
-  { metric: "3x", label: "Faster than hiring" },
-  { metric: "160h", label: "Pure dev time/mo" },
-  { metric: "$50K", label: "Expert bonus included" },
+  { metric: "3x", label: "Faster than hiring", tooltip: "Skip 3-month hiring cycles — your developer starts in 20 minutes" },
+  { metric: "160h", label: "Pure dev time/mo", tooltip: "160 dedicated development hours per month, fully focused on your project" },
+  { metric: "$11,999", label: "Expert bonus included", tooltip: "Alim's expert oversight valued at $11,999/mo — included as a bonus with your tier" },
 ];
 
 export default function StarterTierSlideV9() {
