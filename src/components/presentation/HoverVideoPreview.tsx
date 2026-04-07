@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play } from "lucide-react";
 
+const HOVER_VIDEO_ENABLED = false; // Set to true to re-enable hover video previews
+
 interface HoverVideoPreviewProps {
   youtubeId: string;
   children: React.ReactNode;
@@ -12,6 +14,9 @@ export default function HoverVideoPreview({
   youtubeId,
   children,
 }: HoverVideoPreviewProps) {
+  if (!HOVER_VIDEO_ENABLED) {
+    return <>{children}</>;
+  }
   const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
