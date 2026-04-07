@@ -4,6 +4,7 @@ import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
 import { CheckCircle, Crown, Shield, Clock, Flame, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -27,9 +28,9 @@ const guarantees = [
 ];
 
 const results = [
-  { metric: "3x", label: "Faster than hiring" },
-  { metric: "160h", label: "Pure dev time/mo" },
-  { metric: "$50K", label: "Expert bonus included" },
+  { metric: "3x", label: "Faster than hiring", tooltip: "Skip 3-month hiring cycles — your developer starts in 20 minutes" },
+  { metric: "160h", label: "Pure dev time/mo", tooltip: "160 dedicated development hours per month, fully focused on your project" },
+  { metric: "$11,999", label: "Expert bonus included", tooltip: "Alim's expert oversight valued at $11,999/mo — included as a bonus with your tier" },
 ];
 
 export default function StarterTierSlideV9() {
@@ -129,7 +130,7 @@ export default function StarterTierSlideV9() {
                 </div>
                 <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 600, color: "hsl(var(--pres-text))", lineHeight: 1.4 }}>Alim Ul Karim — Chief Software Engineer</p>
                 <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", lineHeight: 1.4, marginTop: 4 }}>
-                  4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(45 90% 55%)", fontSize: 16 }}>$50,000/mo</strong> value
+                  4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(45 90% 55%)", fontSize: 16 }}>$11,999/mo</strong> value
                 </p>
                 <div className="mt-3 flex items-center gap-2 rounded-lg px-4 py-2" style={{ background: "hsl(45 90% 55% / 0.15)", border: "1.5px solid hsl(45 90% 55% / 0.35)", width: "fit-content" }}>
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(45 90% 55%)" }}>↑ Upgrade to Tier 2 or 3 to unlock</span>
@@ -142,27 +143,39 @@ export default function StarterTierSlideV9() {
           <motion.div {...fade(2)} className="flex flex-col justify-center gap-5 flex-1">
             {/* Results row — 3 big metrics */}
             <div className="flex gap-3">
-              {results.map((r, i) => (
-                <motion.div
-                  key={r.label}
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 + i * 0.12, type: "spring", stiffness: 150, damping: 14 }}
-                  className="flex-1 rounded-xl text-center"
-                  style={{
-                    background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
-                    border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
-                    padding: "18px 12px",
-                  }}
-                >
-                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 36, fontWeight: 700, color: "hsl(var(--pres-accent))", display: "block" }}>
-                    {r.metric}
-                  </span>
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 500, color: "hsl(var(--pres-text-muted))" }}>
-                    {r.label}
-                  </span>
-                </motion.div>
-              ))}
+              <TooltipProvider delayDuration={200}>
+                {results.map((r, i) => (
+                  <Tooltip key={r.label}>
+                    <TooltipTrigger asChild>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.4 + i * 0.12, type: "spring", stiffness: 150, damping: 14 }}
+                        className="flex-1 rounded-xl text-center cursor-pointer"
+                        style={{
+                          background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
+                          border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
+                          padding: "18px 12px",
+                        }}
+                      >
+                        <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 36, fontWeight: 700, color: "hsl(var(--pres-accent))", display: "block" }}>
+                          {r.metric}
+                        </span>
+                        <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 500, color: "hsl(var(--pres-text-muted))" }}>
+                          {r.label}
+                        </span>
+                      </motion.div>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      className="max-w-[260px] text-center"
+                      style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13 }}
+                    >
+                      {r.tooltip}
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
             </div>
 
             {/* Guarantee cards */}
