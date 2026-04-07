@@ -21,7 +21,7 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Architecture decisions", starter: false, growth: false, skilled: true, leadership: true },
   { label: "Project management", starter: false, growth: false, skilled: false, leadership: true },
   { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
-  { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: "Slack only", leadership: true },
+  { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: true, leadership: "Versatile" },
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
