@@ -35,9 +35,6 @@ const slides = [
   <PricingHowItWorksSlide key="9" />,
   <StarterTierSlide key="10" />,
   <StarterTierSlideV3 key="10b" />,
-  <StarterTierSlideV4 key="10c" />,
-  <StarterTierSlideV5 key="10d" />,
-  <StarterTierSlideV6 key="10e" />,
   <PricingCTASlide key="12" />,
 ];
 
