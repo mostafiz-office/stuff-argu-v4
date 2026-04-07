@@ -24,7 +24,7 @@ const tiers = [
       "Full sprint participation",
       "Daily standups & Slack access",
     ],
-    featured: true,
+    featured: false,
     youtubeId: "uveR9C5CgSY",
   },
   {
@@ -56,7 +56,7 @@ const tiers = [
       "24/7 SLA & priority support",
     ],
     featured: false,
-    premium: true,
+    premium: false,
     youtubeId: "uveR9C5CgSY",
   },
 ];
