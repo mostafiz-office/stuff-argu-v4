@@ -30,7 +30,9 @@ const idealFor = [
 export default function StarterTierSlide() {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-full h-full">
+        {/* Overflow clip layer for content only */}
+        <div className="absolute inset-0 overflow-hidden">
         <SlideHeader />
 
         {/* Ambient glow */}
