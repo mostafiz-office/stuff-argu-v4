@@ -68,7 +68,7 @@ export default function RocketAnimation({ intensity, profile = "default", flying
         pointerEvents: "none",
         zIndex: 50,
         borderRadius: "inherit",
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} flyingLabel={flyingLabel} />
