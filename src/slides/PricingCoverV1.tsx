@@ -44,8 +44,6 @@ const ALIM_LINK = "https://www.linkedin.com/in/alimkarim/details/recommendations
  * Removed dot pattern, updated pills to hiring copy, slightly smaller Alim image
  */
 export default function PricingCoverV1() {
-  const cx = 1020;
-  const cy = 430;
 
   return (
     <ScaledSlide>
