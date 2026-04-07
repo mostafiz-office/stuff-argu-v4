@@ -14,7 +14,7 @@ import PricingSavingsSlideV2 from "@/slides/PricingSavingsSlideV2";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 import StarterTierSlide from "@/slides/StarterTierSlide";
-import StarterTierSlideV2 from "@/slides/StarterTierSlideV2";
+
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const slides = [
@@ -31,7 +31,7 @@ const slides = [
   <WhatsIncludedSlide key="8" />,
   <PricingHowItWorksSlide key="9" />,
   <StarterTierSlide key="10" />,
-  <StarterTierSlideV2 key="11" />,
+  
   <PricingCTASlide key="12" />,
 ];
 
