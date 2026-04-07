@@ -195,7 +195,8 @@ export default function StarterTierSlide() {
                 </span>
               </div>
 
-              {/* Rocket animation moved to slide level */}
+              {/* Rocket animation */}
+              <CurvedRocketAnimation />
 
               {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
@@ -444,8 +445,6 @@ export default function StarterTierSlide() {
           </motion.div>
         </div>
 
-        {/* Curved rocket at slide level */}
-        <CurvedRocketAnimation />
       </div>
     </ScaledSlide>
   );
