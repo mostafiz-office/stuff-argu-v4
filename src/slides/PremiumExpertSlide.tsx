@@ -62,7 +62,7 @@ export default function PremiumExpertSlide() {
 
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[104px] bottom-[55px] z-10 flex gap-6"
+          className="absolute left-[80px] right-[80px] top-[104px] bottom-[55px] z-10 flex items-start gap-6"
         >
           {/* LEFT — Title + Benefits */}
           <div className="flex flex-col flex-1">
