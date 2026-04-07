@@ -5,6 +5,7 @@ import rocketSvg from "@/assets/rocket-emoji.svg";
 interface RocketAnimationProps {
   intensity: 1 | 2 | 3;
   profile?: "default" | "compact" | "curved";
+  flyingLabel?: string;
 }
 
 const tierThemes: Record<1 | 2 | 3, { glow: string; trail: string[]; image: string }> = {
