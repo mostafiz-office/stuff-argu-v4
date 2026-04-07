@@ -5,6 +5,7 @@ import PricingCoverV1 from "@/slides/PricingCoverV1";
 import PricingCoverV2 from "@/slides/PricingCoverV2";
 import PricingCoverV3 from "@/slides/PricingCoverV3";
 import PricingTiersSlide from "@/slides/PricingTiersSlide";
+import PremiumExpertSlide from "@/slides/PremiumExpertSlide";
 import TierDetailSlide from "@/slides/TierDetailSlide";
 import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
@@ -17,12 +18,13 @@ const slides = [
   <PricingCoverV1 key="v1" />,
   <PricingCoverV2 key="v2" />,
   <PricingTiersSlide key="4" />,
-  <TierDetailSlide key="5" />,
-  <PricingSavingsSlide key="6" />,
-  <WhatsIncludedSlide key="7" />,
-  <PricingHowItWorksSlide key="8" />,
-  <StarterTierSlide key="9" />,
-  <PricingCTASlide key="10" />,
+  <PremiumExpertSlide key="5" />,
+  <TierDetailSlide key="6" />,
+  <PricingSavingsSlide key="7" />,
+  <WhatsIncludedSlide key="8" />,
+  <PricingHowItWorksSlide key="9" />,
+  <StarterTierSlide key="10" />,
+  <PricingCTASlide key="11" />,
 ];
 
 export default function Index() {
