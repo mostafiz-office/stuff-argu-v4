@@ -33,7 +33,7 @@ export default function PremiumExpertSlideV3() {
           <div className="flex flex-col flex-1 gap-6">
             {/* Header */}
             <motion.div {...fade(0)}>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="flex items-center justify-center rounded-xl" style={{ width: 48, height: 48, background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))" }}>
                   <Crown size={26} style={{ color: "hsl(var(--pres-bg))" }} />
                 </div>
@@ -48,7 +48,7 @@ export default function PremiumExpertSlideV3() {
                 </span>
                 {" "}Bonus
               </h1>
-              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 19, color: "hsl(var(--pres-text-muted))", marginTop: 10, lineHeight: 1.5 }}>
+              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 19, color: "hsl(var(--pres-text-muted))", marginTop: 10, marginBottom: 24, lineHeight: 1.5 }}>
                 Alim Ul Karim — Chief Software Engineer with 20+ years — dedicates{" "}
                 <strong style={{ color: "hsl(var(--pres-text))" }}>80 hours/month</strong> to your project. No extra charge.
               </p>
