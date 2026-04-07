@@ -118,10 +118,10 @@ export default function PremiumExpertSlide() {
 
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[260px] bottom-[60px] z-10 flex gap-6"
+          className="absolute left-[80px] right-[80px] top-[240px] bottom-[50px] z-10 flex gap-6 items-start"
         >
           {/* LEFT — Benefits 2x2 grid */}
-          <div className="grid grid-cols-2 gap-4 flex-1 content-center">
+          <div className="grid grid-cols-2 gap-4 flex-1">
             {benefits.map((b, i) => (
               <motion.div
                 key={b.title}
