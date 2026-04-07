@@ -28,7 +28,7 @@ export default function PremiumExpertSlideV3() {
         <div className="absolute z-[1]" style={{ left: "50%", top: "50%", width: 900, height: 700, transform: "translate(-50%, -50%)", background: "radial-gradient(ellipse, hsl(var(--pres-accent) / 0.05) 0%, transparent 65%)", filter: "blur(80px)" }} />
 
         {/* Left side — Value proposition */}
-        <div className="absolute left-[100px] top-[90px] z-10 flex flex-col gap-[44px]" style={{ width: 860 }}>
+        <div className="absolute left-[100px] top-[90px] bottom-[130px] z-10 flex flex-col justify-between" style={{ width: 860 }}>
           {/* Header */}
           <motion.div {...fade(0)}>
             <div className="flex items-center gap-3 mb-4">
