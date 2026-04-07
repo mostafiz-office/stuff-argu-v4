@@ -10,6 +10,7 @@ import PremiumExpertSlideV2 from "@/slides/PremiumExpertSlideV2";
 import PremiumExpertSlideV3 from "@/slides/PremiumExpertSlideV3";
 import TierDetailSlide from "@/slides/TierDetailSlide";
 import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
+import PricingSavingsSlideV2 from "@/slides/PricingSavingsSlideV2";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 import StarterTierSlide from "@/slides/StarterTierSlide";
