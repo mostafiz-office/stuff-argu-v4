@@ -182,9 +182,9 @@ export default function PricingCoverV3() {
                   style={{
                     padding: "8px 18px", fontSize: 16, fontWeight: 600,
                     fontFamily: "'Poppins', sans-serif",
-                    color: "hsl(var(--pres-accent))",
-                    background: "hsl(var(--pres-accent) / 0.1)",
-                    border: "1px solid hsl(var(--pres-accent) / 0.25)",
+                    color: "hsl(var(--pres-text))",
+                    background: "hsl(var(--pres-bg-surface) / 0.9)",
+                    border: "1px solid hsl(var(--pres-text-muted) / 0.25)",
                     borderRadius: 20, whiteSpace: "nowrap",
                   }}
                 >
