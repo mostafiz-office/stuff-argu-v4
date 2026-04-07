@@ -83,7 +83,7 @@ export default function PremiumExpertSlide() {
                 textTransform: "uppercase",
               }}
             >
-              Exclusive Bonus With Every Tier
+              Included Free With Every Tier
             </p>
           </div>
           <h1
@@ -185,7 +185,7 @@ export default function PremiumExpertSlide() {
                 textTransform: "uppercase",
               }}
             >
-              What You Get
+              Included With Your Tier
             </p>
           </div>
 
