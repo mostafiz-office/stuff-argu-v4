@@ -34,7 +34,7 @@ const flightProfiles: Record<string, FlightProfile> = {
     size: 120,
     startBottom: 152,
     startRight: 46,
-    travelY: { 1: -520, 2: -520, 3: -520 },
+    travelY: { 1: -420, 2: -420, 3: -420 },
   },
   curved: {
     size: 120,
