@@ -48,35 +48,34 @@ export default function StarterTierSlide() {
           }}
         />
 
-        {/* Title */}
-        <motion.h1
-          {...fade(0)}
-          className="absolute left-[80px] top-[85px] z-10"
-          style={{
-            fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 48,
-            fontWeight: 700,
-            color: "hsl(var(--pres-text))",
-          }}
-        >
-          Great News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
-        </motion.h1>
-
-        <motion.p
-          {...fade(1)}
-          className="absolute left-[80px] top-[148px] z-10"
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 17,
-            color: "hsl(var(--pres-text-muted))",
-            maxWidth: 700,
-          }}
-        >
-          World-class engineering talent, dedicated to your product — without the enterprise price tag.
-        </motion.p>
+        {/* Title — below header */}
+        <div className="absolute left-[240px] right-[80px] top-[24px] z-10">
+          <motion.h1
+            {...fade(0)}
+            style={{
+              fontFamily: "'Ubuntu', sans-serif",
+            fontSize: 32,
+              fontWeight: 700,
+              color: "hsl(var(--pres-text))",
+            }}
+          >
+            Great News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
+          </motion.h1>
+          <motion.p
+            {...fade(1)}
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: 14,
+              color: "hsl(var(--pres-text-muted))",
+              marginTop: 4,
+            }}
+          >
+            World-class engineering talent, dedicated to your product — without the enterprise price tag.
+          </motion.p>
+        </div>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[25px] flex gap-6 z-10 items-start">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
@@ -84,13 +83,14 @@ export default function StarterTierSlide() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
+              className="rounded-2xl flex flex-col relative overflow-hidden"
               style={{
-                width: 560,
+                width: 380,
                 flexShrink: 0,
                 background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
                 border: "2px solid hsl(var(--pres-accent))",
-                padding: "28px 24px",
+                padding: "18px 18px",
+                gap: 6,
               }}
             >
               {/* Badge */}
@@ -128,7 +128,7 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 16,
+                  fontSize: 13,
                   fontWeight: 600,
                   color: "hsl(var(--pres-text-dim))",
                   letterSpacing: "0.12em",
@@ -142,21 +142,21 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 15,
                   color: "hsl(var(--pres-accent))",
                   fontWeight: 500,
-                  marginTop: 6,
+                  marginTop: 4,
                 }}
               >
                 3+ Years Coding · 1+ Year Industry
               </p>
 
               {/* Price */}
-              <div className="mt-3">
+              <div className="mt-2">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 48,
+                    fontSize: 36,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
                   }}
@@ -166,7 +166,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 20,
+                    fontSize: 16,
                     color: "hsl(var(--pres-text-dim))",
                   }}
                 >
@@ -176,7 +176,7 @@ export default function StarterTierSlide() {
 
               {/* Hours badge */}
               <div
-                className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
+                className="mt-1 inline-flex items-center rounded-lg px-2 py-1"
                 style={{
                   background: "hsl(var(--pres-accent) / 0.08)",
                   border: "1px solid hsl(var(--pres-accent) / 0.15)",
@@ -186,7 +186,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: 600,
                     color: "hsl(var(--pres-accent))",
                   }}
@@ -195,8 +195,8 @@ export default function StarterTierSlide() {
                 </span>
               </div>
 
-              {/* Rocket animation + flying tooltips */}
-              <div className="relative">
+              {/* Rocket animation + flying tooltips — positioned absolute */}
+              <div className="absolute top-2 right-2" style={{ width: 80, height: 80 }}>
                 <RocketAnimation intensity={1} profile="compact" />
                 {[
                   { text: "🚀 Senior-led from Day 1", delay: 1.5 },
@@ -237,7 +237,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Features */}
-              <div className="mt-3 space-y-3 flex-1">
+              <div className="mt-2 space-y-2">
                 {features.map((feature, i) => (
                   <motion.div
                     key={feature}
@@ -247,7 +247,7 @@ export default function StarterTierSlide() {
                     className="flex items-start gap-2"
                   >
                     <CheckCircle
-                      size={18}
+                      size={15}
                       style={{
                         color: "hsl(var(--pres-accent))",
                         flexShrink: 0,
@@ -257,7 +257,7 @@ export default function StarterTierSlide() {
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 18,
+                        fontSize: 14,
                         color: "hsl(var(--pres-text-muted))",
                         lineHeight: 1.4,
                       }}
@@ -345,7 +345,7 @@ export default function StarterTierSlide() {
           {/* RIGHT — Redesigned */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col justify-center gap-5 flex-1"
+            className="flex flex-col justify-center gap-4 flex-1 self-stretch"
           >
             {/* Value highlight stat */}
             <motion.div
