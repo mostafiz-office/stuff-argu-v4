@@ -20,13 +20,14 @@ const SIZE = 120;
 const GLOW = "#38bdf8";
 const TRAIL = ["#38bdf8", "#818cf8"];
 
-// Starting position (absolute within the slide, near bottom-right of the left card)
-const START_BOTTOM = 80;
-const START_LEFT = 500;
+// Starting position (absolute within the 1920×1080 slide)
+// Card is at left:80, top:200, width:560, so bottom-right of card ≈ left:540, top:900
+const START_TOP = 880;
+const START_LEFT = 480;
 
 // Travel offsets from start position
-const TRAVEL_X = 480;   // how far right
-const TRAVEL_Y = -520;  // how far up
+const TRAVEL_X = 500;   // how far right
+const TRAVEL_Y = -780;  // how far up (to reach near top of slide)
 
 export default function CurvedRocketAnimation() {
   const [cycle, setCycle] = useState(0);
