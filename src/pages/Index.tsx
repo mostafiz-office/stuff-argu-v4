@@ -15,6 +15,9 @@ import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 import StarterTierSlide from "@/slides/StarterTierSlide";
 import StarterTierSlideV3 from "@/slides/StarterTierSlideV3";
+import StarterTierSlideV4 from "@/slides/StarterTierSlideV4";
+import StarterTierSlideV5 from "@/slides/StarterTierSlideV5";
+import StarterTierSlideV6 from "@/slides/StarterTierSlideV6";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const slides = [
