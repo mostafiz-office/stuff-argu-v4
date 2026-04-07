@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, Plus, Crown, Lightbulb, Zap, Target, Award } from "lucide-react";
+import { Rocket, CheckCircle, Star, Crown, Lightbulb, Zap, Target, Award } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
