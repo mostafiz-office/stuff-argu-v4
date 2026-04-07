@@ -54,7 +54,7 @@ export default function StarterTierSlideV2() {
 
         {/* Rocket flies across the slide */}
         <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-          <RocketAnimation intensity={1} profile="curved" />
+          <RocketAnimation intensity={1} profile="compact" />
         </div>
 
         {/* Hero section */}
