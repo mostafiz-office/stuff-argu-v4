@@ -1,9 +1,8 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
-import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Award, Gift } from "lucide-react";
+import { Rocket, CheckCircle, Crown, Lightbulb, Zap, Target, Award, Gift } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -48,14 +47,15 @@ export default function StarterTierSlide() {
           }}
         />
 
-        {/* Title — below header */}
-        <div className="absolute left-[240px] right-[80px] top-[24px] z-10">
+        {/* Title — cleaned up */}
+        <div className="absolute left-[230px] right-[80px] top-[28px] z-10">
           <motion.h1
             {...fade(0)}
             style={{
               fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 32,
+              fontSize: 30,
               fontWeight: 700,
+              lineHeight: 1.05,
               color: "hsl(var(--pres-text))",
             }}
           >
@@ -65,9 +65,10 @@ export default function StarterTierSlide() {
             {...fade(1)}
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: 14,
+              fontSize: 13,
               color: "hsl(var(--pres-text-muted))",
-              marginTop: 4,
+              marginTop: 6,
+              maxWidth: 760,
             }}
           >
             World-class engineering talent, dedicated to your product — without the enterprise price tag.
@@ -150,6 +151,22 @@ export default function StarterTierSlide() {
               >
                 3+ Years Coding · 1+ Year Industry
               </p>
+
+              <div
+                className="absolute rounded-full px-3 py-1"
+                style={{
+                  top: 72,
+                  right: 14,
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: "hsl(var(--pres-accent))",
+                  background: "hsl(var(--pres-accent) / 0.12)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.22)",
+                }}
+              >
+                ⚡ 160h focused output
+              </div>
 
               {/* Price */}
               <div className="mt-2">
@@ -452,71 +469,7 @@ export default function StarterTierSlide() {
           </motion.div>
         </div>
 
-        {/* Rocket + flying tooltips */}
-        <div
-          className="absolute z-30 pointer-events-none"
-          style={{ left: 60, top: 640, width: 500, height: 300 }}
-        >
-          {/* Simple animated rocket */}
-          <motion.div
-            animate={{
-              y: [0, -180, -360],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              repeatDelay: 6,
-              ease: "easeOut",
-            }}
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 30,
-              fontSize: 40,
-              transform: "rotate(-45deg)",
-            }}
-          >
-            🚀
-          </motion.div>
 
-          {/* Flying tooltip badges */}
-          {[
-            { text: "🚀 Senior-led from Day 1", delay: 1.5 },
-            { text: "⚡ 160h focused output", delay: 4.5 },
-            { text: "🎯 Top 5% vetted talent", delay: 7.5 },
-          ].map((tip, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full px-3 py-1.5"
-              style={{
-                bottom: 40 + i * 40,
-                left: 90,
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 14,
-                fontWeight: 600,
-                color: "hsl(var(--pres-accent))",
-                background: "hsl(var(--pres-accent) / 0.15)",
-                border: "1px solid hsl(var(--pres-accent) / 0.3)",
-                whiteSpace: "nowrap",
-              }}
-              animate={{
-                opacity: [0, 0, 1, 1, 1, 0],
-                x: [0, 0, 0, 10, 20, 60],
-                y: [0, 0, 0, -10, -20, -40],
-              }}
-              transition={{
-                duration: 5,
-                delay: tip.delay,
-                repeat: Infinity,
-                repeatDelay: 7,
-                ease: "easeOut",
-              }}
-            >
-              {tip.text}
-            </motion.div>
-          ))}
-        </div>
 
       </div>
     </ScaledSlide>
