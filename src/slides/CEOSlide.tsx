@@ -195,7 +195,7 @@ export default function CEOSlide() {
                   lineHeight: 1.4,
                 }}
               >
-                How do companies scale offshore teams profitably using <span style={{ color: "hsl(var(--pres-accent))" }}>top 1% talent</span>?
+                How do companies scale offshore teams profitably using <span style={{ color: "hsl(var(--pres-accent))" }}>top 5% talent</span>?
               </p>
             </motion.div>
 
