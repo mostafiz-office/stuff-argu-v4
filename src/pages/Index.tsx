@@ -14,6 +14,7 @@ import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 
 
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
+import StarterTierDetailSlide from "@/slides/StarterTierDetailSlide";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const coverVariants = [
