@@ -207,14 +207,14 @@ export default function StarterTierSlide() {
           {/* MIDDLE — Price + Savings */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col gap-4 flex-1"
+            className="flex flex-col justify-between flex-1"
           >
             {/* Total value card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
-              className="rounded-2xl relative overflow-hidden flex-1 flex flex-col justify-end"
+              className="rounded-2xl relative overflow-hidden flex flex-col justify-center"
               style={{
                 background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
                 border: "2px solid hsl(var(--pres-accent) / 0.3)",
