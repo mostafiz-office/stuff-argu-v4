@@ -73,7 +73,7 @@ export default function StarterTierSlideV3() {
           The right first engineering hire for founders who need real execution, reliable skill, and momentum from day one.
         </motion.p>
 
-        <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[224px] bottom-[60px] flex gap-8 z-10">
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
