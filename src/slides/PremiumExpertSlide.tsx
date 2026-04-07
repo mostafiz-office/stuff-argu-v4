@@ -62,13 +62,13 @@ export default function PremiumExpertSlide() {
 
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[80px] bottom-[55px] z-10 flex gap-6"
+          className="absolute left-[80px] right-[80px] top-[104px] bottom-[55px] z-10 flex gap-6"
         >
           {/* LEFT — Title + Benefits */}
           <div className="flex flex-col flex-1">
             {/* Title section */}
             <motion.div {...fade(0)} className="mb-4">
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-6">
                 <div
                   className="flex items-center justify-center rounded-xl"
                   style={{
@@ -111,6 +111,7 @@ export default function PremiumExpertSlide() {
                   fontSize: 18,
                   color: "hsl(var(--pres-text-muted))",
                   marginTop: 6,
+                  marginBottom: 24,
                   maxWidth: 800,
                 }}
               >
