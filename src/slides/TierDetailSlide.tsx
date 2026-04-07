@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, Crown, X } from "lucide-react";
+import { Award, CheckCircle, X } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -25,9 +25,9 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
-  { key: "growth", name: "Tier 1", price: "$4,299/mo", color: "hsl(var(--pres-accent))" },
-  { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 71% 45%)" },
-  { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 85% 60%)" },
+  { key: "growth", name: "Tier 1", price: "$4,299/mo" },
+  { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(var(--pres-accent))" },
+  { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo" },
 ];
 
 export default function TierDetailSlide() {
@@ -72,10 +72,8 @@ export default function TierDetailSlide() {
                 className="text-center relative"
                 style={{
                   background: col.bestValue
-                    ? "hsl(142 71% 45% / 0.08)"
-                    : col.premium
-                      ? "hsl(280 85% 60% / 0.08)"
-                      : "transparent",
+                    ? "hsl(var(--pres-accent) / 0.08)"
+                    : "transparent",
                   borderRadius: "12px 12px 0 0",
                   padding: "14px 8px",
                 }}
@@ -84,8 +82,8 @@ export default function TierDetailSlide() {
                   <div
                     className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
                     style={{
-                      background: "hsl(142 71% 45%)",
-                      color: "#fff",
+                      background: "hsl(var(--pres-accent))",
+                      color: "hsl(var(--pres-bg))",
                       fontFamily: "'Poppins', sans-serif",
                       fontSize: 13,
                       fontWeight: 700,
@@ -94,22 +92,6 @@ export default function TierDetailSlide() {
                     }}
                   >
                     <Award size={13} /> BEST VALUE
-                  </div>
-                )}
-                {col.premium && (
-                  <div
-                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
-                      color: "#fff",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    <Crown size={13} /> PREMIUM
                   </div>
                 )}
                 <p
@@ -163,17 +145,15 @@ export default function TierDetailSlide() {
                 </span>
                 {columns.map((col) => {
                   const val = feat[col.key];
-                  const cellColor = col.bestValue ? "hsl(142 71% 45%)" : col.premium ? "hsl(280 85% 60%)" : "hsl(var(--pres-accent))";
+                  const cellColor = col.bestValue ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text-muted))";
                   return (
                     <div
                       key={col.key}
                       className="flex justify-center"
                       style={{
                         background: col.bestValue
-                          ? "hsl(142 71% 45% / 0.06)"
-                          : col.premium
-                            ? "hsl(280 85% 60% / 0.06)"
-                            : "transparent",
+                          ? "hsl(var(--pres-accent) / 0.06)"
+                          : "transparent",
                         padding: "8px 0",
                       }}
                     >
