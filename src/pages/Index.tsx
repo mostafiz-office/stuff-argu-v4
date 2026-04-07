@@ -2,7 +2,7 @@ import PresentationEngine from "@/components/presentation/PresentationEngine";
 import { PresentationProvider } from "@/context/PresentationContext";
 
 import PricingCoverV1 from "@/slides/PricingCoverV1";
-import PricingCoverV2 from "@/slides/PricingCoverV2";
+
 import PricingCoverV3 from "@/slides/PricingCoverV3";
 import PricingTiersSlide from "@/slides/PricingTiersSlide";
 import PremiumExpertSlide from "@/slides/PremiumExpertSlide";
@@ -25,7 +25,7 @@ import PricingCTASlide from "@/slides/PricingCTASlide";
 const slides = [
   <PricingCoverV3 key="v3" />,
   <PricingCoverV1 key="v1" />,
-  <PricingCoverV2 key="v2" />,
+  
   <PricingTiersSlide key="4" />,
   <PremiumExpertSlide key="5" />,
   <PremiumExpertSlideV2 key="5b" />,
