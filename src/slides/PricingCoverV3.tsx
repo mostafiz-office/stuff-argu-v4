@@ -84,6 +84,65 @@ export default function PricingCoverV3() {
           />
         </div>
 
+        {/* Highlighted expertise text — right side */}
+        <div className="absolute z-[6] pointer-events-none" style={{ right: 60, top: 340 }}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col gap-4"
+          >
+            <div
+              className="rounded-xl"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.9), hsl(var(--pres-accent) / 0.7))",
+                padding: "14px 22px",
+                maxWidth: 300,
+                boxShadow: "0 8px 32px hsl(var(--pres-accent) / 0.3)",
+              }}
+            >
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-bg))", lineHeight: 1.3 }}>
+                20+ Years in Software Engineering
+              </p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.25, duration: 0.7, ease: "easeOut" }}
+              className="rounded-xl"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.85), hsl(var(--pres-accent) / 0.65))",
+                padding: "14px 22px",
+                maxWidth: 300,
+                boxShadow: "0 8px 32px hsl(var(--pres-accent) / 0.25)",
+              }}
+            >
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-bg))", lineHeight: 1.3 }}>
+                Led 50+ Enterprise Projects
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.5, duration: 0.7, ease: "easeOut" }}
+              className="rounded-xl"
+              style={{
+                background: "hsl(var(--pres-bg) / 0.85)",
+                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
+                backdropFilter: "blur(12px)",
+                padding: "14px 22px",
+                maxWidth: 300,
+              }}
+            >
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-accent))", lineHeight: 1.3 }}>
+                Chief Software Engineer & Your Dedicated Expert
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+
         {/* LEFT — Bold content block */}
         <div className="pointer-events-none absolute left-[80px] top-[100px] bottom-[80px] z-10 flex w-[700px] items-center">
           <div>
