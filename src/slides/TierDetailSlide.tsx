@@ -145,17 +145,15 @@ export default function TierDetailSlide() {
                 </span>
                 {columns.map((col) => {
                   const val = feat[col.key];
-                  const cellColor = col.bestValue ? "hsl(142 71% 45%)" : col.premium ? "hsl(280 85% 60%)" : "hsl(var(--pres-accent))";
+                  const cellColor = col.bestValue ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text-muted))";
                   return (
                     <div
                       key={col.key}
                       className="flex justify-center"
                       style={{
                         background: col.bestValue
-                          ? "hsl(142 71% 45% / 0.06)"
-                          : col.premium
-                            ? "hsl(280 85% 60% / 0.06)"
-                            : "transparent",
+                          ? "hsl(var(--pres-accent) / 0.06)"
+                          : "transparent",
                         padding: "8px 0",
                       }}
                     >
