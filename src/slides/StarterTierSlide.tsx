@@ -443,6 +443,9 @@ export default function StarterTierSlide() {
             </div>
           </motion.div>
         </div>
+
+        {/* Curved rocket — at slide level so it can fly across the full slide */}
+        <CurvedRocketAnimation />
       </div>
     </ScaledSlide>
   );
