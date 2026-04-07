@@ -108,7 +108,7 @@ export default function PremiumExpertSlide() {
               maxWidth: 750,
             }}
           >
-            Chief Software Engineer · 20+ Years of Experience · Included at <strong style={{ color: "hsl(var(--pres-accent))" }}>no extra cost</strong> with any tier you choose
+            Chief Software Engineer · 20+ Years · <strong style={{ color: "hsl(var(--pres-accent))" }}>4 hrs/day (80 hrs/mo)</strong> of expert guidance included at <strong style={{ color: "hsl(var(--pres-accent))" }}>no extra cost</strong> — valued at <strong style={{ color: "hsl(var(--pres-accent))" }}>$50,000/mo</strong>
           </p>
         </motion.div>
 
@@ -222,28 +222,41 @@ export default function PremiumExpertSlide() {
               padding: "18px 22px",
             }}
           >
-            <div>
+            <div className="flex items-baseline gap-3">
               <span
                 style={{
                   fontFamily: "'Ubuntu', sans-serif",
                   fontSize: 28,
                   fontWeight: 700,
                   color: "hsl(var(--pres-accent))",
+                  textDecoration: "line-through",
+                  opacity: 0.6,
+                }}
+              >
+                $50,000/mo value
+              </span>
+              <ArrowRight size={20} style={{ color: "hsl(var(--pres-accent))" }} />
+              <span
+                style={{
+                  fontFamily: "'Ubuntu', sans-serif",
+                  fontSize: 32,
+                  fontWeight: 700,
+                  color: "hsl(var(--pres-accent))",
                 }}
               >
                 $0 Extra
               </span>
-              <span
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 16,
-                  color: "hsl(var(--pres-text-muted))",
-                  marginLeft: 12,
-                }}
-              >
-                Already included in your tier price
-              </span>
             </div>
+            <p
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: 15,
+                color: "hsl(var(--pres-text-muted))",
+                marginTop: 6,
+              }}
+            >
+              80 hrs/mo of Chief Engineer time · Already included in your tier price
+            </p>
             <div className="flex items-center gap-2">
               <span
                 style={{
