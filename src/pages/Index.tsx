@@ -27,10 +27,10 @@ const slides = [
   <PricingCoverV1 key="v1" />,
   
   <PricingTiersSlide key="4" />,
+  <TierDetailSlide key="6" />,
   
   <PremiumExpertSlideV2 key="5b" />,
   
-  <TierDetailSlide key="6" />,
   <PricingSavingsSlide key="7" />,
   
   <WhatsIncludedSlide key="8" />,
