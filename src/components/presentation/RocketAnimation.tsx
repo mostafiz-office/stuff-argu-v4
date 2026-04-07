@@ -50,7 +50,7 @@ const flightProfiles: Record<string, FlightProfile> = {
   },
 };
 
-export default function RocketAnimation({ intensity, profile = "default" }: RocketAnimationProps) {
+export default function RocketAnimation({ intensity, profile = "default", flyingLabel }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
   const flightProfile = flightProfiles[profile];
   const [cycle, setCycle] = useState(0);
@@ -71,7 +71,7 @@ export default function RocketAnimation({ intensity, profile = "default" }: Rock
         overflow: "hidden",
       }}
     >
-      <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} />
+      <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} flyingLabel={flyingLabel} />
     </div>
   );
 }
