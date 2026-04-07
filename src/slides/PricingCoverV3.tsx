@@ -13,6 +13,45 @@ const fade = (i: number) => ({
   transition: { delay: 0.2 * i, duration: 0.7, ease: "easeOut" as const },
 });
 
+function HoverCard({ delay, title, hoverText, fontSize = 22 }: { delay: number; title: React.ReactNode; hoverText: string; fontSize?: number }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay, duration: 0.7, ease: "easeOut" }}
+      className="rounded-xl cursor-pointer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: hovered ? "hsl(var(--pres-accent) / 0.12)" : "hsl(var(--pres-bg) / 0.85)",
+        border: `1.5px solid ${hovered ? "hsl(var(--pres-accent) / 0.7)" : "hsl(var(--pres-accent) / 0.4)"}`,
+        backdropFilter: "blur(12px)",
+        padding: "14px 22px",
+        maxWidth: 360,
+        transition: "all 0.3s ease",
+      }}
+    >
+      <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
+        {title}
+      </p>
+      <AnimatePresence>
+        {hovered && (
+          <motion.p
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-muted))", lineHeight: 1.5, overflow: "hidden" }}
+          >
+            {hoverText}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 const keywords = [
   { label: "Top 5% Talent" },
   { label: "Hire in 20 Min" },
