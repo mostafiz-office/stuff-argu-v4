@@ -47,53 +47,18 @@ export default function StarterTierSlideV3() {
           }}
         />
 
-        <motion.div
+        <motion.h1
           {...fade(0)}
-          className="absolute left-[80px] top-[75px] z-10 flex items-center gap-5"
+          className="absolute left-[80px] top-[85px] z-10"
+          style={{
+            fontFamily: "'Ubuntu', sans-serif",
+            fontSize: 48,
+            fontWeight: 700,
+            color: "hsl(var(--pres-text))",
+          }}
         >
-          {/* Rocket box */}
-          <motion.div
-            className="flex items-center justify-center rounded-2xl"
-            style={{
-              width: 72,
-              height: 72,
-              background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))",
-              boxShadow: "0 0 30px hsl(var(--pres-accent) / 0.3), 0 0 60px hsl(var(--pres-accent) / 0.1)",
-            }}
-          >
-            <motion.div
-              animate={{
-                y: [0, -6, 0],
-                x: [0, 3, 0],
-                rotate: [-5, 5, -5],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Rocket size={34} style={{ color: "hsl(var(--pres-bg))", transform: "rotate(-45deg)" }} />
-            </motion.div>
-          </motion.div>
-
-          {/* Title in highlighted box */}
-          <div
-            className="rounded-2xl px-7 py-4"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-accent) / 0.04))",
-              border: "2px solid hsl(var(--pres-accent) / 0.3)",
-            }}
-          >
-            <h1
-              style={{
-                fontFamily: "'Ubuntu', sans-serif",
-                fontSize: 48,
-                fontWeight: 700,
-                color: "hsl(var(--pres-text))",
-                lineHeight: 1.1,
-              }}
-            >
-              Good News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
-            </h1>
-          </div>
-        </motion.div>
+          Good News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
+        </motion.h1>
 
         <motion.p
           {...fade(1)}
