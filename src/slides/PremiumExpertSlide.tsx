@@ -203,7 +203,7 @@ export default function PremiumExpertSlide() {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" style={{ marginBottom: 100 }}>
                 {includedItems.map((item, i) => (
                   <motion.div key={item} {...fade(i + 4)} className="flex items-center gap-3">
                     <CheckCircle size={18} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
