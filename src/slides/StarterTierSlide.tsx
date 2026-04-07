@@ -51,7 +51,7 @@ export default function StarterTierSlide() {
         {/* Title */}
         <motion.h1
           {...fade(0)}
-          className="absolute left-[80px] top-[65px] z-10"
+          className="absolute left-[80px] top-[55px] z-10"
           style={{
             fontFamily: "'Ubuntu', sans-serif",
             fontSize: 40,
@@ -64,7 +64,7 @@ export default function StarterTierSlide() {
 
         <motion.p
           {...fade(1)}
-          className="absolute left-[80px] top-[115px] z-10"
+          className="absolute left-[80px] top-[100px] z-10"
           style={{
             fontFamily: "'Poppins', sans-serif",
             fontSize: 15,
@@ -76,7 +76,7 @@ export default function StarterTierSlide() {
         </motion.p>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[155px] bottom-[40px] flex gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[135px] bottom-[30px] flex gap-8 z-10">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
@@ -195,8 +195,8 @@ export default function StarterTierSlide() {
                 </span>
               </div>
 
-              {/* Rocket animation + flying tooltips */}
-              <div className="relative">
+              {/* Rocket animation + flying tooltips — positioned absolute */}
+              <div className="absolute top-2 right-2" style={{ width: 80, height: 80 }}>
                 <RocketAnimation intensity={1} profile="compact" />
                 {[
                   { text: "🚀 Senior-led from Day 1", delay: 1.5 },
