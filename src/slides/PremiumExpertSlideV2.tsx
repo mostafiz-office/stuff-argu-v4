@@ -11,15 +11,16 @@ const fade = (i: number) => ({
 });
 
 const valueStats = [
-  { icon: Clock, value: "4 hrs/day", sub: "80 hrs/month dedicated", highlight: false },
+  { icon: Clock, value: "2–4 hrs/week", sub: "Varies by tier", highlight: false },
   { icon: DollarSign, value: "$625/hr", sub: "Market rate for this expertise", highlight: false },
-  { icon: Gift, value: "$50,000", sub: "Monthly value — BONUS with your tier", highlight: true },
+  { icon: Gift, value: "Up to $10K", sub: "Monthly value — BONUS with your tier", highlight: true },
 ];
 
 const tierValues = [
-  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$50,000", total: "$51,900", savings: "96%" },
-  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$50,000", total: "$54,299", savings: "92%" },
-  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$50,000", total: "$56,800", savings: "88%" },
+  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$5,000", total: "$6,900", savings: "2 hrs/wk · 2 months only", limited: true },
+  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$5,000", total: "$9,299", savings: "2 hrs/wk" },
+  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$7,500", total: "$14,300", savings: "3 hrs/wk" },
+  { tier: "Tier 3.B — Leadership", price: "$7,500/mo", bonus: "$10,000", total: "$17,500", savings: "4 hrs/wk" },
 ];
 
 export default function PremiumExpertSlideV2() {
@@ -130,7 +131,7 @@ export default function PremiumExpertSlideV2() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-4 gap-4">
             {tierValues.map((t, i) => (
               <motion.div
                 key={t.tier}
@@ -151,14 +152,19 @@ export default function PremiumExpertSlideV2() {
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>{t.bonus} bonus</span>
                 </div>
                 <div className="flex items-center justify-between mt-2">
-                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>
+                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>
                   <span
                     className="rounded-full px-2 py-0.5"
-                    style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, fontWeight: 700, color: "hsl(var(--pres-accent))", background: "hsl(var(--pres-accent) / 0.12)" }}
+                    style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, fontWeight: 700, color: "hsl(var(--pres-accent))", background: "hsl(var(--pres-accent) / 0.12)" }}
                   >
-                    {t.savings} bonus
+                    {t.savings}
                   </span>
                 </div>
+                {(t as any).limited && (
+                  <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "hsl(0 80% 55%)", marginTop: 4, fontWeight: 600 }}>
+                    ⏳ Limited time offer
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -170,7 +176,7 @@ export default function PremiumExpertSlideV2() {
           className="absolute top-[980px] left-0 right-0 text-center z-10"
           style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
         >
-          "You pay for the developer. Alim's $50,000/mo expertise? That's on us."
+          "You pay for the developer. Alim's expert oversight? That's on us."
         </motion.p>
       </div>
     </ScaledSlide>
