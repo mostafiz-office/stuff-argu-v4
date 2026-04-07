@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 const valueStats = [
   { icon: Clock, value: "4 hrs/day", sub: "80 hrs/month dedicated", highlight: false },
   { icon: DollarSign, value: "$625/hr", sub: "Market rate for this expertise", highlight: false },
-  { icon: Gift, value: "$50,000", sub: "Monthly value — FREE with your tier", highlight: true },
+  { icon: Gift, value: "$50,000", sub: "Monthly value — BONUS with your tier", highlight: true },
 ];
 
 const tierValues = [
@@ -49,13 +49,13 @@ export default function PremiumExpertSlideV2() {
               <Gift size={24} style={{ color: "hsl(var(--pres-bg))" }} />
             </div>
             <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(var(--pres-accent))", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-              Bonus Value — Included Free
+              Bonus Value — Included With Every Tier
             </p>
           </div>
           <h1 style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 46, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.15 }}>
             <span style={{ color: "hsl(var(--pres-accent))" }}>$50,000/mo</span> of Expert Value
             <br />
-            <span style={{ fontSize: 38 }}>Added to Every Tier — Free</span>
+            <span style={{ fontSize: 38 }}>Added to Every Tier — As a Bonus</span>
           </h1>
         </motion.div>
 
@@ -138,7 +138,7 @@ export default function PremiumExpertSlideV2() {
                 <div className="flex items-center gap-2 mb-1">
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))" }}>{t.price}</span>
                   <span style={{ fontSize: 14, color: "hsl(var(--pres-text-dim))" }}>+</span>
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>{t.bonus} free</span>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>{t.bonus} bonus</span>
                 </div>
                 <div className="flex items-center justify-between mt-2">
                   <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>

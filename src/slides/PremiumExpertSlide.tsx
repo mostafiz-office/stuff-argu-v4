@@ -83,7 +83,7 @@ export default function PremiumExpertSlide() {
                 textTransform: "uppercase",
               }}
             >
-              Included Free With Every Tier
+              Included As a Bonus With Every Tier
             </p>
           </div>
           <h1
@@ -97,7 +97,7 @@ export default function PremiumExpertSlide() {
           >
             Your Team Gets{" "}
             <span style={{ color: "hsl(var(--pres-accent))" }}>Alim Ul Karim</span>
-            {" "}— Free
+            {" "}— As a Bonus
           </h1>
           <p
             style={{

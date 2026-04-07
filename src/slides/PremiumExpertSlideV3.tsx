@@ -44,7 +44,7 @@ export default function PremiumExpertSlideV3() {
               <span style={{ color: "hsl(var(--pres-bg))", background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.8))", padding: "2px 14px", borderRadius: 8 }}>
                 $50K/mo Expert
               </span>
-              {" "}Free
+              {" "}Bonus
             </h1>
             <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 19, color: "hsl(var(--pres-text-muted))", marginTop: 10, lineHeight: 1.5 }}>
               Alim Ul Karim — Chief Software Engineer with 20+ years — dedicates{" "}
@@ -58,7 +58,7 @@ export default function PremiumExpertSlideV3() {
               { icon: Clock, label: "80 hrs/mo", desc: "4 hrs/day dedicated" },
               { icon: DollarSign, label: "$625/hr", desc: "Market rate value" },
               { icon: TrendingUp, label: "$50,000/mo", desc: "You pay $0 extra" },
-              { icon: Gift, label: "FREE", desc: "Included in every tier" },
+              { icon: Gift, label: "BONUS", desc: "Included in every tier" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -155,7 +155,7 @@ export default function PremiumExpertSlideV3() {
 
         {/* Bottom tagline */}
         <motion.p {...fade(10)} className="absolute bottom-[30px] left-0 right-0 text-center z-10" style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}>
-          "Your competitors pay $50K/mo for this level of expertise. You get it free with every tier."
+          "Your competitors pay $50K/mo for this level of expertise. You get it as a bonus with every tier."
         </motion.p>
       </div>
     </ScaledSlide>
