@@ -128,7 +128,7 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 16,
+                  fontSize: 13,
                   fontWeight: 600,
                   color: "hsl(var(--pres-text-dim))",
                   letterSpacing: "0.12em",
@@ -142,21 +142,21 @@ export default function StarterTierSlide() {
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 15,
                   color: "hsl(var(--pres-accent))",
                   fontWeight: 500,
-                  marginTop: 6,
+                  marginTop: 4,
                 }}
               >
                 3+ Years Coding · 1+ Year Industry
               </p>
 
               {/* Price */}
-              <div className="mt-3">
+              <div className="mt-2">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 48,
+                    fontSize: 40,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
                   }}
@@ -166,7 +166,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 20,
+                    fontSize: 16,
                     color: "hsl(var(--pres-text-dim))",
                   }}
                 >
@@ -186,7 +186,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: 600,
                     color: "hsl(var(--pres-accent))",
                   }}
