@@ -4,7 +4,7 @@ import rocketSvg from "@/assets/rocket-emoji.svg";
 
 interface RocketAnimationProps {
   intensity: 1 | 2 | 3;
-  profile?: "default" | "compact";
+  profile?: "default" | "compact" | "curved";
 }
 
 const tierThemes: Record<1 | 2 | 3, { glow: string; trail: string[]; image: string }> = {
@@ -13,7 +13,16 @@ const tierThemes: Record<1 | 2 | 3, { glow: string; trail: string[]; image: stri
   3: { glow: "#a78bfa", trail: ["#a78bfa", "#f472b6"], image: rocketSvg },
 };
 
-const flightProfiles = {
+interface FlightProfile {
+  size: number;
+  startBottom: number;
+  startRight: number;
+  travelY: Record<1 | 2 | 3, number>;
+  travelX?: Record<1 | 2 | 3, number>;
+  noseRotate?: Record<1 | 2 | 3, number>;
+}
+
+const flightProfiles: Record<string, FlightProfile> = {
   default: {
     size: 160,
     startBottom: -60,
@@ -26,7 +35,19 @@ const flightProfiles = {
     startRight: 46,
     travelY: { 1: -520, 2: -520, 3: -520 },
   },
-} as const;
+  curved: {
+    size: 120,
+    startBottom: -8,
+    startRight: 46,
+    travelY: { 1: -520, 2: -520, 3: -520 },
+    // Negative x moves element leftward on screen (toward right edge since positioned with `right`)
+    // Wait — transform x is always screen-relative: positive = rightward
+    // To move the rocket to the RIGHT of the slide, use positive x
+    travelX: { 1: 280, 2: 280, 3: 280 },
+    // Nose tilts right to follow the rightward arc
+    noseRotate: { 1: 25, 2: 25, 3: 25 },
+  },
+};
 
 export default function RocketAnimation({ intensity, profile = "default" }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
@@ -61,12 +82,21 @@ function RocketFlight({
 }: {
   theme: (typeof tierThemes)[1];
   intensity: number;
-  profile: (typeof flightProfiles)[keyof typeof flightProfiles];
+  profile: FlightProfile;
 }) {
   const size = profile.size;
   const startBottom = profile.startBottom;
   const startRight = profile.startRight;
   const travelY = profile.travelY[intensity as 1 | 2 | 3];
+  const travelX = profile.travelX?.[intensity as 1 | 2 | 3] ?? 0;
+  const noseRotate = profile.noseRotate?.[intensity as 1 | 2 | 3] ?? 0;
+  const isCurved = travelX !== 0;
+
+  const times = intensity === 3
+    ? [0, 0.01, 0.20, 0.35, 0.90, 1]
+    : intensity === 2
+      ? [0, 0.01, 0.20, 0.45, 0.90, 1]
+      : [0, 0.01, 0.20, 0.55, 0.90, 1];
 
   return (
     <>
@@ -110,20 +140,17 @@ function RocketFlight({
         );
       })}
 
-      {/* Rocket: appear → immediately start flying → hover → fade. Total 12s */}
+      {/* Rocket: appear → fly (straight or curved) → hover → fade */}
       <motion.div
-        initial={{ opacity: 0, y: 0 }}
+        initial={{ opacity: 0, y: 0, ...(isCurved ? { x: 0 } : {}) }}
         animate={{
           opacity: [0, 1, 1, 1, 1, 0],
           y: [0, 0, 0, travelY, travelY, travelY],
+          ...(isCurved ? { x: [0, 0, 0, travelX, travelX, travelX] } : {}),
         }}
         transition={{
           duration: 15,
-          times: intensity === 3
-            ? [0, 0.01, 0.20, 0.35, 0.90, 1]   // 3s wait, reaches top fastest
-            : intensity === 2
-              ? [0, 0.01, 0.20, 0.45, 0.90, 1]  // 3s wait, reaches top medium
-              : [0, 0.01, 0.20, 0.55, 0.90, 1], // 3s wait, reaches top slowest
+          times,
           ease: "easeInOut",
         }}
         style={{
@@ -153,13 +180,16 @@ function RocketFlight({
           }}
         />
 
-        {/* Rocket image — vibrates during pre-launch */}
+        {/* Rocket image — vibrates during pre-launch, rotates if curved */}
         <motion.img
           src={theme.image}
           alt=""
           draggable={false}
           animate={{
             x: [0, -2, 2, -1, 1, 0, -2, 2, -1, 1, 0, 0, 0, 0],
+            ...(isCurved
+              ? { rotate: [0, 0, 0, noseRotate, noseRotate, noseRotate] }
+              : {}),
             filter: [
               `drop-shadow(0 0 20px ${theme.glow}80) drop-shadow(0 0 40px ${theme.glow}30)`,
               `drop-shadow(0 0 35px ${theme.glow}ff) drop-shadow(0 0 60px ${theme.glow}60)`,
@@ -168,6 +198,9 @@ function RocketFlight({
           }}
           transition={{
             x: { duration: 2.4, ease: "linear", repeat: 0 },
+            ...(isCurved
+              ? { rotate: { duration: 15, times, ease: "easeInOut" } }
+              : {}),
             filter: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
           }}
           style={{ width: size, height: size, objectFit: "contain", transform: "rotate(-45deg)" }}
