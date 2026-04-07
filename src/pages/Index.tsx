@@ -47,6 +47,7 @@ export default function Index() {
       <PricingHowItWorksSlide key="9" />,
       
       
+      <StarterTierDetailSlide key="starter-detail" />,
       <StarterTierSlideV9 key="10d" />,
       <PricingCTASlide key="12" />,
     ];
