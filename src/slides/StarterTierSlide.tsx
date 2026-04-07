@@ -268,44 +268,44 @@ export default function StarterTierSlide() {
                 ))}
               </div>
 
-              {/* Alim premium bonus — highlighted */}
+              {/* Alim premium bonus — BIG highlighted */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="mt-3 rounded-xl relative overflow-hidden"
+                className="mt-4 rounded-2xl relative overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.15), hsl(var(--pres-accent) / 0.05))",
-                  border: "1.5px solid hsl(var(--pres-accent) / 0.35)",
-                  padding: "14px 16px",
+                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.18), hsl(var(--pres-accent) / 0.06))",
+                  border: "2px solid hsl(var(--pres-accent) / 0.45)",
+                  padding: "18px 20px",
                 }}
               >
                 {/* Glow accent */}
                 <div
-                  className="absolute top-0 right-0 w-1/2 h-full pointer-events-none"
+                  className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
                   style={{
-                    background: "radial-gradient(circle at 90% 30%, hsl(var(--pres-accent) / 0.12), transparent 60%)",
+                    background: "radial-gradient(circle at 85% 40%, hsl(var(--pres-accent) / 0.15), transparent 55%)",
                   }}
                 />
                 <div className="flex items-center gap-2 mb-2">
-                  <Crown size={16} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <Crown size={20} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: 700,
                       color: "hsl(var(--pres-accent))",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                     }}
                   >
-                    Bonus — No Extra Cost
+                    🎁 Bonus — No Extra Cost
                   </span>
                 </div>
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 17,
+                    fontSize: 22,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
                     lineHeight: 1.3,
@@ -316,17 +316,28 @@ export default function StarterTierSlide() {
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 13,
+                    fontSize: 15,
                     color: "hsl(var(--pres-text-muted))",
                     lineHeight: 1.5,
-                    marginTop: 4,
+                    marginTop: 6,
                   }}
                 >
-                  Chief Software Engineer · 4h/day dedicated ·{" "}
-                  <span style={{ color: "hsl(var(--pres-accent))", fontWeight: 600 }}>
-                    Worth $50,000/mo — included free
-                  </span>
+                  Chief Software Engineer · 4h/day dedicated
                 </p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4, duration: 0.5 }}
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 18,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
+                    marginTop: 8,
+                  }}
+                >
+                  Worth $50,000/mo — Included FREE
+                </motion.p>
               </motion.div>
             </motion.div>
           </HoverVideoPreview>
