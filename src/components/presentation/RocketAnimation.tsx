@@ -5,6 +5,7 @@ import rocketSvg from "@/assets/rocket-emoji.svg";
 interface RocketAnimationProps {
   intensity: 1 | 2 | 3;
   profile?: "default" | "compact" | "curved";
+  flyingLabel?: string;
 }
 
 const tierThemes: Record<1 | 2 | 3, { glow: string; trail: string[]; image: string }> = {
@@ -49,7 +50,7 @@ const flightProfiles: Record<string, FlightProfile> = {
   },
 };
 
-export default function RocketAnimation({ intensity, profile = "default" }: RocketAnimationProps) {
+export default function RocketAnimation({ intensity, profile = "default", flyingLabel }: RocketAnimationProps) {
   const theme = tierThemes[intensity];
   const flightProfile = flightProfiles[profile];
   const [cycle, setCycle] = useState(0);
@@ -70,7 +71,7 @@ export default function RocketAnimation({ intensity, profile = "default" }: Rock
         overflow: "hidden",
       }}
     >
-      <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} />
+      <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} flyingLabel={flyingLabel} />
     </div>
   );
 }
@@ -79,10 +80,12 @@ function RocketFlight({
   theme,
   intensity,
   profile,
+  flyingLabel,
 }: {
   theme: (typeof tierThemes)[1];
   intensity: number;
   profile: FlightProfile;
+  flyingLabel?: string;
 }) {
   const size = profile.size;
   const startBottom = profile.startBottom;
@@ -234,6 +237,40 @@ function RocketFlight({
             marginTop: -20,
           }}
         />
+
+        {/* Flying label */}
+        {flyingLabel && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{
+              opacity: [0, 0, 1, 1, 1, 0],
+              scale: [0.5, 0.5, 1, 1, 1, 1],
+            }}
+            transition={{
+              duration: 15,
+              times,
+              ease: "easeInOut",
+            }}
+            style={{
+              position: "absolute",
+              left: size + 8,
+              top: size * 0.25,
+              whiteSpace: "nowrap",
+              fontFamily: "'Ubuntu', sans-serif",
+              fontSize: 22,
+              fontWeight: 700,
+              color: theme.glow,
+              textShadow: `0 0 16px ${theme.glow}80, 0 0 32px ${theme.glow}40`,
+              background: `linear-gradient(135deg, ${theme.glow}20, ${theme.glow}08)`,
+              border: `1px solid ${theme.glow}40`,
+              borderRadius: 10,
+              padding: "6px 14px",
+              backdropFilter: "blur(6px)",
+            }}
+          >
+            {flyingLabel}
+          </motion.div>
+        )}
       </motion.div>
     </>
   );

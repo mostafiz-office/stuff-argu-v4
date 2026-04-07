@@ -169,7 +169,7 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              <RocketAnimation intensity={1} profile="compact" />
+              <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
