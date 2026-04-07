@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Wallet, TrendingDown } from "lucide-react";
+import { Rocket, CheckCircle, Star, Plus, Crown, Lightbulb, Zap, Target, Award } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,7 +24,7 @@ const idealFor = [
   { text: "Pre-seed & seed-stage startups", icon: Lightbulb },
   { text: "Bootstrapped founders shipping fast", icon: Zap },
   { text: "MVPs & well-defined sprints", icon: Target },
-  { text: "Budget-conscious teams needing quality", icon: Wallet },
+  { text: "Teams needing senior-led execution", icon: Award },
 ];
 
 export default function StarterTierSlideV3() {
@@ -59,7 +59,7 @@ export default function StarterTierSlideV3() {
             color: "hsl(var(--pres-text))",
           }}
         >
-          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Smart</span>, Scale Later
+          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Strong</span>, Ship Faster
         </motion.h1>
 
         <motion.p
@@ -72,7 +72,7 @@ export default function StarterTierSlideV3() {
             maxWidth: 700,
           }}
         >
-          The perfect entry point for founders who need quality engineering without enterprise budgets.
+          The right first engineering hire for founders who need real execution, reliable skill, and momentum from Day 1.
         </motion.p>
 
         {/* Two-column layout */}
@@ -281,12 +281,12 @@ export default function StarterTierSlideV3() {
             </motion.div>
           </HoverVideoPreview>
 
-          {/* RIGHT — Redesigned */}
+          {/* RIGHT — Value / Skill Focus */}
           <motion.div
             {...fade(2)}
             className="flex flex-col justify-center gap-5 flex-1"
           >
-            {/* Big savings stat */}
+            {/* Big skill/value stat */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -305,7 +305,7 @@ export default function StarterTierSlideV3() {
                 }}
               />
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <Star size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
@@ -316,7 +316,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  vs US Market Rate
+                  What You Get
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
@@ -328,7 +328,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  76%
+                  160h
                 </span>
                 <span
                   style={{
@@ -338,7 +338,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-text))",
                   }}
                 >
-                  Savings
+                  Focused Output
                 </span>
               </div>
               <div className="flex items-center gap-3 mt-2">
@@ -347,26 +347,14 @@ export default function StarterTierSlideV3() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 15,
                     color: "hsl(var(--pres-text-dim))",
-                    textDecoration: "line-through",
                   }}
                 >
-                  $6,000–$8,000/mo
-                </span>
-                <ArrowRight size={16} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  $1,900/mo
+                  Dedicated developer + senior-led guidance built for reliable execution
                 </span>
               </div>
             </motion.div>
 
-            {/* Built for Founders text */}
+            {/* Built for founders text */}
             <div>
               <p
                 style={{
@@ -376,76 +364,4 @@ export default function StarterTierSlideV3() {
                   lineHeight: 1.7,
                 }}
               >
-                Tight on budget but ready to build?{" "}
-                <strong style={{ color: "hsl(var(--pres-text))" }}>
-                  Get a dedicated developer
-                </strong>{" "}
-                at a price that won't break the bank — then scale when you're ready.
-              </p>
-            </div>
-
-            {/* Ideal For with icons */}
-            <div
-              className="rounded-2xl px-6 py-5"
-              style={{
-                background: "hsl(var(--pres-bg-surface) / 0.7)",
-                border: "1px solid hsl(var(--pres-accent) / 0.15)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "hsl(var(--pres-accent))",
-                  marginBottom: 14,
-                }}
-              >
-                Ideal For
-              </p>
-              <div className="space-y-4">
-                {idealFor.map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <motion.div
-                      key={item.text}
-                      initial={{ opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                      className="flex items-center gap-3"
-                    >
-                      <div
-                        className="flex items-center justify-center rounded-lg"
-                        style={{
-                          width: 30,
-                          height: 30,
-                          background: "hsl(var(--pres-accent) / 0.1)",
-                          border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <Icon size={15} style={{ color: "hsl(var(--pres-accent))" }} />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: "'Poppins', sans-serif",
-                          fontSize: 18,
-                          color: "hsl(var(--pres-text-muted))",
-                        }}
-                      >
-                        {item.text}
-                      </span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-      </div>
-    </ScaledSlide>
-  );
-}
+                You are not just hiring for hours. You are buying{
