@@ -11,15 +11,16 @@ const fade = (i: number) => ({
 });
 
 const valueStats = [
-  { icon: Clock, value: "4 hrs/day", sub: "80 hrs/month dedicated", highlight: false },
+  { icon: Clock, value: "2–4 hrs/week", sub: "Varies by tier", highlight: false },
   { icon: DollarSign, value: "$625/hr", sub: "Market rate for this expertise", highlight: false },
-  { icon: Gift, value: "$50,000", sub: "Monthly value — BONUS with your tier", highlight: true },
+  { icon: Gift, value: "Up to $10K", sub: "Monthly value — BONUS with your tier", highlight: true },
 ];
 
 const tierValues = [
-  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$50,000", total: "$51,900", savings: "96%" },
-  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$50,000", total: "$54,299", savings: "92%" },
-  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$50,000", total: "$56,800", savings: "88%" },
+  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$5,000", total: "$6,900", savings: "2 hrs/wk · 2 months only", limited: true },
+  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$5,000", total: "$9,299", savings: "2 hrs/wk" },
+  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$7,500", total: "$14,300", savings: "3 hrs/wk" },
+  { tier: "Tier 3.B — Leadership", price: "$7,500/mo", bonus: "$10,000", total: "$17,500", savings: "4 hrs/wk" },
 ];
 
 export default function PremiumExpertSlideV2() {
