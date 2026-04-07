@@ -12,7 +12,7 @@ import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 import StarterTierSlideV3 from "@/slides/StarterTierSlideV3";
-import StarterTierSlideV8 from "@/slides/StarterTierSlideV8";
+
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
