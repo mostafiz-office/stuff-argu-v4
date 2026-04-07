@@ -95,14 +95,15 @@ export default function PricingCoverV3() {
             <div
               className="rounded-xl"
               style={{
-                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.9), hsl(var(--pres-accent) / 0.7))",
+                background: "hsl(var(--pres-bg) / 0.85)",
+                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
+                backdropFilter: "blur(12px)",
                 padding: "14px 22px",
                 maxWidth: 300,
-                boxShadow: "0 8px 32px hsl(var(--pres-accent) / 0.3)",
               }}
             >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-bg))", lineHeight: 1.3 }}>
-                20+ Years in Software Engineering
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
+                <span style={{ color: "hsl(var(--pres-accent))" }}>20+ Years</span> in Software Engineering
               </p>
             </div>
 
@@ -112,14 +113,15 @@ export default function PricingCoverV3() {
               transition={{ delay: 1.25, duration: 0.7, ease: "easeOut" }}
               className="rounded-xl"
               style={{
-                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.85), hsl(var(--pres-accent) / 0.65))",
+                background: "hsl(var(--pres-bg) / 0.85)",
+                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
+                backdropFilter: "blur(12px)",
                 padding: "14px 22px",
                 maxWidth: 300,
-                boxShadow: "0 8px 32px hsl(var(--pres-accent) / 0.25)",
               }}
             >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-bg))", lineHeight: 1.3 }}>
-                Led 50+ Enterprise Projects
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
+                Led <span style={{ color: "hsl(var(--pres-accent))" }}>50+ Enterprise</span> Projects
               </p>
             </motion.div>
 
@@ -136,8 +138,8 @@ export default function PricingCoverV3() {
                 maxWidth: 300,
               }}
             >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-accent))", lineHeight: 1.3 }}>
-                Chief Software Engineer & Your Dedicated Expert
+              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
+                <span style={{ color: "hsl(var(--pres-accent))" }}>Chief Software Engineer</span> & Your Dedicated Expert
               </p>
             </motion.div>
           </motion.div>
