@@ -82,8 +82,8 @@ export default function TierDetailSlide() {
                   <div
                     className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
                     style={{
-                      background: "hsl(142 71% 45%)",
-                      color: "#fff",
+                      background: "hsl(var(--pres-accent))",
+                      color: "hsl(var(--pres-bg))",
                       fontFamily: "'Poppins', sans-serif",
                       fontSize: 13,
                       fontWeight: 700,
@@ -92,22 +92,6 @@ export default function TierDetailSlide() {
                     }}
                   >
                     <Award size={13} /> BEST VALUE
-                  </div>
-                )}
-                {col.premium && (
-                  <div
-                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(280 85% 60%), hsl(320 80% 55%))",
-                      color: "#fff",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    <Crown size={13} /> PREMIUM
                   </div>
                 )}
                 <p
