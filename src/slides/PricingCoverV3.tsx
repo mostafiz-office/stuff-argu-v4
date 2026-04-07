@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 });
 
 const keywords = [
-  { label: "Top 1% Talent" },
+  { label: "Top 5% Talent" },
   { label: "Hire in 20 Min" },
   { label: "7-Stage Vetted" },
   { label: "60% Cost Savings" },
@@ -169,7 +169,7 @@ export default function PricingCoverV3() {
             </motion.h1>
 
             <motion.p {...fade(2)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 22, color: "hsl(var(--pres-text-muted))", marginTop: 20, maxWidth: 560, lineHeight: 1.65 }}>
-              Pre-vetted <strong style={{ color: "hsl(var(--pres-accent))" }}>top 1% engineers</strong> ready to join your team. No recruitment delays. No hidden fees.
+              Pre-vetted <strong style={{ color: "hsl(var(--pres-accent))" }}>top 5% engineers</strong> ready to join your team. No recruitment delays. No hidden fees.
             </motion.p>
 
             {/* Inline pill row */}

@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 });
 
 const keywords = [
-  { label: "Top 1% Talent", icon: Award, x: 1380, y: 120 },
+  { label: "Top 5% Talent", icon: Award, x: 1380, y: 120 },
   { label: "Hire in 20 Min", icon: Clock, x: 1400, y: 340 },
   { label: "7-Stage Vetted", icon: Shield, x: 1360, y: 560 },
 ];
@@ -140,7 +140,7 @@ export default function PricingCoverV2() {
             </motion.h1>
 
             <motion.p {...fade(3)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 22, color: "hsl(var(--pres-text-muted))", marginTop: 24, maxWidth: 520, lineHeight: 1.6 }}>
-              Access the <strong style={{ color: "hsl(var(--pres-accent))" }}>top 1%</strong> of global engineering talent.
+              Access the <strong style={{ color: "hsl(var(--pres-accent))" }}>top 5%</strong> of global engineering talent.
               <br />Fully vetted. Ready in <strong style={{ color: "hsl(var(--pres-accent))" }}>20 minutes</strong>.
             </motion.p>
 

@@ -15,7 +15,7 @@ const tiers = [
     tier: "Tier 1",
     price: "$1,900",
     hours: "160 hrs",
-    value: "Top 1% BD talent",
+    value: "Top 5% BD talent",
     color: "hsl(var(--pres-accent))",
     gradient: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
   },

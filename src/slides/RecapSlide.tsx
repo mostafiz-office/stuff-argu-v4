@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const items = [
   { n: 1, text: '90+ engineers, designers, and marketers across 4 continents' },
-  { n: 2, text: 'Top 1% talent — rigorous 5-stage hiring (3% acceptance rate)' },
+  { n: 2, text: 'Top 5% talent — rigorous 5-stage hiring (3% acceptance rate)' },
   { n: 3, text: '13x average organic traffic growth for SEO clients' },
   { n: 4, text: '$100M+ partner portfolio under management' },
   { n: 5, text: 'Enterprise clients: Crossover, Veradigm, GL Banking' },

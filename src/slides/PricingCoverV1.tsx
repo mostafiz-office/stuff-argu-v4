@@ -13,7 +13,7 @@ const fade = (i: number) => ({
 });
 
 const keywords = [
-  { label: "Top 1% Talent", x: 1420, y: 160 },
+  { label: "Top 5% Talent", x: 1420, y: 160 },
   { label: "Hire in 20 Minutes", x: 780, y: 640 },
   { label: "7-Stage Vetted", x: 1420, y: 420 },
 ];
@@ -171,7 +171,7 @@ export default function PricingCoverV1() {
             </motion.h1>
 
             <motion.p {...fade(3)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 24, color: "hsl(var(--pres-text-muted))", marginTop: 24, maxWidth: 600, lineHeight: 1.6 }}>
-              <strong style={{ color: "hsl(var(--pres-accent))" }}>Top 1% vetted</strong> talent. Hire in as fast as <strong style={{ color: "hsl(var(--pres-accent))" }}>20 minutes</strong>.
+              <strong style={{ color: "hsl(var(--pres-accent))" }}>Top 5% vetted</strong> talent. Hire in as fast as <strong style={{ color: "hsl(var(--pres-accent))" }}>20 minutes</strong>.
               <br />60% savings vs US/UK rates — no hidden fees.
             </motion.p>
 

@@ -22,12 +22,16 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Project management", starter: false, growth: false, skilled: false, leadership: true },
   { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
   { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: true, leadership: "Versatile" },
+  { label: "QA Engineers", starter: false, growth: false, skilled: false, leadership: "2" },
+  { label: "Alim Expert Oversight", starter: "2 hrs/wk*", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
+  { label: "Min. Developer Experience", starter: "2+ yrs", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
+  { label: "Onboarding Deposit", starter: "$2K", growth: "$2K", skilled: "$2K", leadership: "$2K" },
 ];
 
-const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string; tagline?: string }[] = [
   { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo" },
   { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(var(--pres-accent))" },
-  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo" },
+  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", tagline: "Impossible to say no" },
 ];
 
 export default function TierDetailSlide() {
@@ -115,6 +119,20 @@ export default function TierDetailSlide() {
                 >
                   {col.price}
                 </p>
+                {col.tagline && (
+                  <p
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "hsl(var(--pres-accent))",
+                      marginTop: 4,
+                    }}
+                  >
+                    ✨ {col.tagline}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>

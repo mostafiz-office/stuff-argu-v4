@@ -20,6 +20,10 @@ const features: { label: string; included: boolean | string }[] = [
   { label: "Project management", included: false },
   { label: "CTO-level oversight", included: false },
   { label: "Priority Slack · 24/7 SLA", included: false },
+  { label: "QA Engineers", included: false },
+  { label: "Alim Expert Oversight", included: "2 hrs/wk*" },
+  { label: "Min. Developer Experience", included: "2+ yrs" },
+  { label: "Onboarding Deposit", included: "$2K" },
 ];
 
 export default function StarterTierDetailSlide() {
