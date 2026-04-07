@@ -253,7 +253,7 @@ function RocketFlight({
             }}
             style={{
               position: "absolute",
-              left: size + 8,
+              right: size + 8,
               top: size * 0.25,
               whiteSpace: "nowrap",
               fontFamily: "'Ubuntu', sans-serif",
