@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
 import { Users, ArrowRight, Shield, Clock, Award, Linkedin, MoveRight } from "lucide-react";
 import alimPhoto from "@/assets/alim-updated.png";
-import marekImg from "@/assets/testimonials/marek-f.png";
+import claudioImg from "@/assets/testimonials/claudio-c.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
 
 const fade = (i: number) => ({
@@ -26,10 +26,10 @@ const recommendations = [
     image: konstantinosImg,
   },
   {
-    name: "Marek Flejszman",
-    title: "Head of Software Development",
-    quote: '"Most competent and talented developers I knew... talented architect and team leader."',
-    image: marekImg,
+    name: "Claudio C.",
+    title: "Engineering Leader | AI-Powered Platforms",
+    quote: '"A skillful professional and kind communicator."',
+    image: claudioImg,
   },
 ];
 
