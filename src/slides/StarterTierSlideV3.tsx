@@ -33,6 +33,11 @@ export default function StarterTierSlideV3() {
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
 
+        {/* Rocket animation — slide-level overlay */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+          <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+        </div>
+
         <div
           className="absolute z-[1]"
           style={{
