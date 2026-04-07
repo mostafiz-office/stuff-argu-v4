@@ -49,12 +49,12 @@ export default function StarterTierSlide() {
         />
 
         {/* Title — below header */}
-        <div className="absolute left-[80px] right-[80px] top-[42px] z-10">
+        <div className="absolute left-[240px] right-[80px] top-[18px] z-10">
           <motion.h1
             {...fade(0)}
             style={{
               fontFamily: "'Ubuntu', sans-serif",
-              fontSize: 36,
+            fontSize: 32,
               fontWeight: 700,
               color: "hsl(var(--pres-text))",
             }}
@@ -75,7 +75,7 @@ export default function StarterTierSlide() {
         </div>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[130px] bottom-[25px] flex gap-6 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[25px] flex gap-6 z-10">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
