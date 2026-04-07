@@ -32,7 +32,7 @@ const flightProfiles: Record<string, FlightProfile> = {
   },
   compact: {
     size: 120,
-    startBottom: 200,
+    startBottom: -8,
     startRight: 46,
     travelY: { 1: -520, 2: -520, 3: -520 },
   },
@@ -68,7 +68,7 @@ export default function RocketAnimation({ intensity, profile = "default", flying
         pointerEvents: "none",
         zIndex: 50,
         borderRadius: "inherit",
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
       <RocketFlight key={cycle} theme={theme} intensity={intensity} profile={flightProfile} flyingLabel={flyingLabel} />
