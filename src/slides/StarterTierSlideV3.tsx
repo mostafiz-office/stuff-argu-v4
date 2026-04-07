@@ -33,7 +33,6 @@ export default function StarterTierSlideV3() {
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
 
-        {/* Ambient glow */}
         <div
           className="absolute z-[1]"
           style={{
@@ -48,7 +47,6 @@ export default function StarterTierSlideV3() {
           }}
         />
 
-        {/* Title */}
         <motion.h1
           {...fade(0)}
           className="absolute left-[80px] top-[85px] z-10"
@@ -72,13 +70,10 @@ export default function StarterTierSlideV3() {
             maxWidth: 700,
           }}
         >
-          The right first engineering hire for founders who need real execution, reliable skill, and momentum from Day 1.
+          The right first engineering hire for founders who need real execution, reliable skill, and momentum from day one.
         </motion.p>
 
-        {/* Two-column layout */}
         <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
-
-          {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -93,7 +88,6 @@ export default function StarterTierSlideV3() {
                 padding: "28px 24px",
               }}
             >
-              {/* Badge */}
               <div
                 className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-bl-xl"
                 style={{
@@ -106,17 +100,8 @@ export default function StarterTierSlideV3() {
                 }}
               >
                 <motion.span
-                  animate={{
-                    y: [0, -3, 0],
-                    x: [0, 1, 0],
-                    rotate: [-10, 0, 8, 0],
-                    scale: [1, 1.08, 1],
-                  }}
-                  transition={{
-                    duration: 1.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={{ y: [0, -3, 0], x: [0, 1, 0], rotate: [-10, 0, 8, 0], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                   className="inline-flex"
                 >
                   <Rocket size={14} />
@@ -124,7 +109,6 @@ export default function StarterTierSlideV3() {
                 STARTER
               </div>
 
-              {/* Tier label */}
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -138,7 +122,6 @@ export default function StarterTierSlideV3() {
                 Tier 1
               </p>
 
-              {/* Experience */}
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -151,7 +134,6 @@ export default function StarterTierSlideV3() {
                 3+ Years Coding · 1+ Year Industry
               </p>
 
-              {/* Price */}
               <div className="mt-3">
                 <span
                   style={{
@@ -174,7 +156,6 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              {/* Hours badge */}
               <div
                 className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
                 style={{
@@ -195,10 +176,8 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              {/* Rocket animation */}
               <RocketAnimation intensity={1} profile="compact" />
 
-              {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
                   <motion.div
@@ -210,11 +189,7 @@ export default function StarterTierSlideV3() {
                   >
                     <CheckCircle
                       size={18}
-                      style={{
-                        color: "hsl(var(--pres-accent))",
-                        flexShrink: 0,
-                        marginTop: 2,
-                      }}
+                      style={{ color: "hsl(var(--pres-accent))", flexShrink: 0, marginTop: 2 }}
                     />
                     <span
                       style={{
@@ -230,7 +205,6 @@ export default function StarterTierSlideV3() {
                 ))}
               </div>
 
-              {/* Alim add-on */}
               <div
                 className="mt-3 rounded-xl"
                 style={{
@@ -281,12 +255,7 @@ export default function StarterTierSlideV3() {
             </motion.div>
           </HoverVideoPreview>
 
-          {/* RIGHT — Value / Skill Focus */}
-          <motion.div
-            {...fade(2)}
-            className="flex flex-col justify-center gap-5 flex-1"
-          >
-            {/* Big skill/value stat */}
+          <motion.div {...fade(2)} className="flex flex-col justify-center gap-5 flex-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -316,7 +285,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  What You Get
+                  Value Delivered
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
@@ -354,7 +323,6 @@ export default function StarterTierSlideV3() {
               </div>
             </motion.div>
 
-            {/* Built for founders text */}
             <div>
               <p
                 style={{
@@ -364,4 +332,70 @@ export default function StarterTierSlideV3() {
                   lineHeight: 1.7,
                 }}
               >
-                You are not just hiring for hours. You are buying{
+                You are not just hiring for hours. You are buying <strong style={{ color: "hsl(var(--pres-text))" }}>consistent execution</strong>, <strong style={{ color: "hsl(var(--pres-text))" }}>real product momentum</strong>, and a developer with enough skill to contribute from day one.
+              </p>
+            </div>
+
+            <div
+              className="rounded-2xl px-6 py-5"
+              style={{
+                background: "hsl(var(--pres-bg-surface) / 0.7)",
+                border: "1px solid hsl(var(--pres-accent) / 0.15)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "hsl(var(--pres-accent))",
+                  marginBottom: 14,
+                }}
+              >
+                Ideal For
+              </p>
+              <div className="space-y-4">
+                {idealFor.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={item.text}
+                      initial={{ opacity: 0, x: 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
+                      className="flex items-center gap-3"
+                    >
+                      <div
+                        className="flex items-center justify-center rounded-lg"
+                        style={{
+                          width: 30,
+                          height: 30,
+                          background: "hsl(var(--pres-accent) / 0.1)",
+                          border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon size={15} style={{ color: "hsl(var(--pres-accent))" }} />
+                      </div>
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 18,
+                          color: "hsl(var(--pres-text-muted))",
+                        }}
+                      >
+                        {item.text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
