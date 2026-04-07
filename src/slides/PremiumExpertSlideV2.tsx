@@ -176,7 +176,7 @@ export default function PremiumExpertSlideV2() {
           className="absolute top-[980px] left-0 right-0 text-center z-10"
           style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
         >
-          "You pay for the developer. Alim's $50,000/mo expertise? That's on us."
+          "You pay for the developer. Alim's expert oversight? That's on us."
         </motion.p>
       </div>
     </ScaledSlide>
