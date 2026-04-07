@@ -73,11 +73,6 @@ export default function StarterTierSlideV3() {
           The right first engineering hire for founders who need real execution, reliable skill, and momentum from day one.
         </motion.p>
 
-        <div className="absolute z-[11]" style={{ left: 80, top: 165, width: 560, height: 600, pointerEvents: "none", overflow: "visible" }}>
-          <div style={{ position: "relative", width: "100%", height: "100%" }}>
-            <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
-          </div>
-        </div>
 
         <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
