@@ -74,6 +74,9 @@ export default function StarterTierSlideV3() {
         </motion.p>
 
         <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
+          <div className="absolute left-[80px] z-[11]" style={{ top: 170 }}>
+            <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+          </div>
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -169,7 +172,6 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
