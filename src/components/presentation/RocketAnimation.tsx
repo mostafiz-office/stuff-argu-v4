@@ -80,10 +80,12 @@ function RocketFlight({
   theme,
   intensity,
   profile,
+  flyingLabel,
 }: {
   theme: (typeof tierThemes)[1];
   intensity: number;
   profile: FlightProfile;
+  flyingLabel?: string;
 }) {
   const size = profile.size;
   const startBottom = profile.startBottom;
