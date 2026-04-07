@@ -155,7 +155,7 @@ export default function StarterTierSlide() {
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 40,
+                    fontSize: 36,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
                   }}
@@ -175,7 +175,7 @@ export default function StarterTierSlide() {
 
               {/* Hours badge */}
               <div
-                className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
+                className="mt-1 inline-flex items-center rounded-lg px-2 py-1"
                 style={{
                   background: "hsl(var(--pres-accent) / 0.08)",
                   border: "1px solid hsl(var(--pres-accent) / 0.15)",
