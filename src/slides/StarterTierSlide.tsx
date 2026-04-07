@@ -24,6 +24,12 @@ const bonusValue = {
   worth: "$50,000",
 };
 
+const trustSignals = [
+  { icon: Shield, text: "Cancel anytime — zero risk" },
+  { icon: Clock, text: "Start in as fast as 20 minutes" },
+  { icon: CheckCircle, text: "7-stage vetting — top 5% engineers" },
+];
+
 export default function StarterTierSlide() {
   return (
     <ScaledSlide>
@@ -64,8 +70,8 @@ export default function StarterTierSlide() {
           </motion.h1>
         </div>
 
-        {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[72px] bottom-[20px] flex gap-7 z-10 items-stretch">
+        {/* Three-column layout */}
+        <div className="absolute left-[80px] right-[80px] top-[72px] bottom-[20px] flex gap-5 z-10 items-stretch">
 
           {/* LEFT — Value Stack */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
@@ -73,23 +79,23 @@ export default function StarterTierSlide() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden"
+              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
               style={{
-                width: 480,
+                width: 440,
                 flexShrink: 0,
                 background: "hsl(var(--pres-bg-surface))",
                 border: "1.5px solid hsl(var(--pres-accent) / 0.3)",
-                padding: "20px 24px",
+                padding: "18px 20px",
               }}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <DollarSign size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <DollarSign size={16} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: 700,
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
@@ -104,7 +110,7 @@ export default function StarterTierSlide() {
                   style={{
                     background: "hsl(var(--pres-accent))",
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: 700,
                     color: "hsl(var(--pres-bg))",
                   }}
@@ -114,7 +120,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Value items */}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 flex-1">
                 {valueStack.map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -128,14 +134,11 @@ export default function StarterTierSlide() {
                     }}
                   >
                     <div className="flex items-center gap-2.5">
-                      <CheckCircle
-                        size={16}
-                        style={{ color: "hsl(142 71% 45%)", flexShrink: 0 }}
-                      />
+                      <CheckCircle size={15} style={{ color: "hsl(142 71% 45%)", flexShrink: 0 }} />
                       <span
                         style={{
                           fontFamily: "'Poppins', sans-serif",
-                          fontSize: 14,
+                          fontSize: 13,
                           color: "hsl(var(--pres-text))",
                           fontWeight: 500,
                         }}
@@ -146,7 +149,7 @@ export default function StarterTierSlide() {
                     <span
                       style={{
                         fontFamily: "'Ubuntu', sans-serif",
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: 700,
                         color: "hsl(var(--pres-text-muted))",
                       }}
@@ -162,25 +165,11 @@ export default function StarterTierSlide() {
                 className="flex items-center justify-between mt-3 pt-3"
                 style={{ borderTop: "1px solid hsl(var(--pres-accent) / 0.15)" }}
               >
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-text-dim))",
-                  }}
-                >
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 600, color: "hsl(var(--pres-text-dim))" }}>
                   Subtotal Value
                 </span>
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-text))",
-                  }}
-                >
-                  $11,500<span style={{ fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>/mo</span>
+                <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 18, fontWeight: 700, color: "hsl(var(--pres-text))" }}>
+                  $11,500<span style={{ fontSize: 12, color: "hsl(var(--pres-text-dim))" }}>/mo</span>
                 </span>
               </div>
 
@@ -193,113 +182,64 @@ export default function StarterTierSlide() {
                 style={{
                   background: "linear-gradient(135deg, hsl(45 100% 50% / 0.12), hsl(var(--pres-accent) / 0.08))",
                   border: "2px solid hsl(45 100% 50% / 0.4)",
-                  padding: "14px 16px",
+                  padding: "12px 14px",
                 }}
               >
-                <div
-                  className="absolute top-0 right-0 w-1/2 h-full pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle at 90% 40%, hsl(45 100% 50% / 0.12), transparent 60%)",
-                  }}
-                />
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Crown size={16} style={{ color: "hsl(45 100% 50%)" }} />
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "hsl(45 100% 50%)",
-                    }}
-                  >
+                <div className="flex items-center gap-2 mb-1">
+                  <Crown size={14} style={{ color: "hsl(45 100% 50%)" }} />
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "hsl(45 100% 50%)" }}>
                     🎁 BONUS — FREE
                   </span>
                 </div>
-                <p
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 17,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-text))",
-                    lineHeight: 1.2,
-                  }}
-                >
+                <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 15, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.2 }}>
                   {bonusValue.label}
                 </p>
-                <p
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
-                    color: "hsl(var(--pres-text-muted))",
-                    marginTop: 3,
-                  }}
-                >
+                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "hsl(var(--pres-text-muted))", marginTop: 2 }}>
                   {bonusValue.sublabel}
                 </p>
-                <div className="flex items-center justify-between mt-2">
-                  <span
-                    style={{
-                      fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: 24,
-                      fontWeight: 700,
-                      color: "hsl(45 100% 50%)",
-                    }}
-                  >
-                    {bonusValue.worth}<span style={{ fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>/mo value</span>
-                  </span>
-                </div>
+                <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(45 100% 50%)" }}>
+                  {bonusValue.worth}<span style={{ fontSize: 12, color: "hsl(var(--pres-text-dim))" }}>/mo value</span>
+                </span>
               </motion.div>
             </motion.div>
           </HoverVideoPreview>
 
-          {/* RIGHT — The Close */}
+          {/* MIDDLE — Price + Savings */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col justify-between flex-1 self-stretch"
+            className="flex flex-col justify-between flex-1"
           >
-            {/* Total value vs price */}
+            {/* Total value card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
-              className="rounded-2xl relative overflow-hidden"
+              className="rounded-2xl relative overflow-hidden flex flex-col justify-center"
               style={{
-                background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.15), hsl(var(--pres-bg-surface)))",
-                border: "2px solid hsl(var(--pres-accent) / 0.35)",
-                padding: "24px 28px",
+                background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
+                border: "2px solid hsl(var(--pres-accent) / 0.3)",
+                padding: "28px 28px",
               }}
             >
               <div
                 className="absolute top-0 left-0 w-full h-full pointer-events-none"
                 style={{
-                  background: "radial-gradient(circle at 20% 30%, hsl(var(--pres-accent) / 0.1), transparent 50%)",
+                  background: "radial-gradient(circle at 20% 30%, hsl(var(--pres-accent) / 0.08), transparent 50%)",
                 }}
               />
 
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-4">
                 <Flame size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "hsl(var(--pres-accent))" }}>
                   Total Value
                 </span>
               </div>
 
-              {/* Crossed out total */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 flex-wrap">
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 40,
+                    fontSize: 36,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text-dim))",
                     textDecoration: "line-through",
@@ -309,61 +249,60 @@ export default function StarterTierSlide() {
                 >
                   $61,500
                 </span>
-                <ArrowRight size={24} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 52,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  $1,900
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
-                    color: "hsl(var(--pres-text-dim))",
-                    alignSelf: "flex-end",
-                    marginBottom: 8,
-                  }}
-                >
-                  /mo
-                </span>
+                <ArrowRight size={22} style={{ color: "hsl(var(--pres-accent))" }} />
+                <div>
+                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 56, fontWeight: 700, color: "hsl(var(--pres-accent))" }}>
+                    $1,900
+                  </span>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, color: "hsl(var(--pres-text-dim))" }}>
+                    /mo
+                  </span>
+                </div>
               </div>
 
-              {/* Savings badge */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
-                className="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2"
+                className="mt-4 inline-flex items-center gap-2 rounded-full px-5 py-2"
                 style={{
                   background: "linear-gradient(135deg, hsl(142 71% 45% / 0.2), hsl(142 71% 45% / 0.08))",
                   border: "1.5px solid hsl(142 71% 45% / 0.4)",
+                  width: "fit-content",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 22,
-                    fontWeight: 700,
-                    color: "hsl(142 71% 45%)",
-                  }}
-                >
+                <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(142 71% 45%)" }}>
                   You Save 97%
                 </span>
               </motion.div>
+
+              {/* Hourly breakdown */}
+              <p
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 16,
+                  color: "hsl(var(--pres-text-muted))",
+                  marginTop: 20,
+                  lineHeight: 1.6,
+                }}
+              >
+                That's{" "}
+                <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 18 }}>$11.87/hour</strong>
+                {" "}for a full-time developer +{" "}
+                <strong style={{ color: "hsl(45 100% 50%)" }}>$50K/mo expert oversight FREE</strong>
+              </p>
             </motion.div>
 
             {/* Trust signals */}
-            <div className="flex flex-col gap-3 mt-4">
-              {[
-                { icon: Shield, text: "Cancel anytime — zero risk" },
-                { icon: Clock, text: "Start in as fast as 20 minutes" },
-                { icon: CheckCircle, text: "7-stage vetting — top 5% engineers" },
-              ].map((item, i) => (
+            <div
+              className="rounded-2xl flex flex-col justify-center gap-4"
+              style={{
+                background: "hsl(var(--pres-bg-surface))",
+                border: "1px solid hsl(var(--pres-accent) / 0.1)",
+                padding: "22px 24px",
+              }}
+            >
+              {trustSignals.map((item, i) => (
                 <motion.div
                   key={item.text}
                   initial={{ opacity: 0, x: 16 }}
@@ -374,13 +313,13 @@ export default function StarterTierSlide() {
                   <div
                     className="flex items-center justify-center rounded-lg"
                     style={{
-                      width: 34,
-                      height: 34,
+                      width: 36,
+                      height: 36,
                       background: "hsl(var(--pres-accent) / 0.1)",
                       flexShrink: 0,
                     }}
                   >
-                    <item.icon size={17} style={{ color: "hsl(var(--pres-accent))" }} />
+                    <item.icon size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                   </div>
                   <span
                     style={{
@@ -395,37 +334,6 @@ export default function StarterTierSlide() {
                 </motion.div>
               ))}
             </div>
-
-            {/* Bottom anchor */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.6 }}
-              className="rounded-xl mt-4 text-center"
-              style={{
-                background: "hsl(var(--pres-accent) / 0.08)",
-                border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                padding: "14px 20px",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 16,
-                  color: "hsl(var(--pres-text-muted))",
-                  lineHeight: 1.5,
-                }}
-              >
-                That's{" "}
-                <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 18 }}>
-                  $11.87/hour
-                </strong>{" "}
-                for a full-time developer +{" "}
-                <strong style={{ color: "hsl(45 100% 50%)" }}>
-                  $50K/mo expert oversight FREE
-                </strong>
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </div>
