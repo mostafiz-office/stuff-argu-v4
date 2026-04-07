@@ -57,7 +57,7 @@ export default function StarterTierSlideV3() {
             color: "hsl(var(--pres-text))",
           }}
         >
-          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Strong</span>, Ship Faster
+          Good News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
         </motion.h1>
 
         <motion.p
