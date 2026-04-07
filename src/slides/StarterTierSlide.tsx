@@ -75,7 +75,7 @@ export default function StarterTierSlide() {
         </div>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[25px] flex gap-6 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[25px] flex gap-6 z-10 items-start">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
