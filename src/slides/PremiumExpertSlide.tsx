@@ -121,12 +121,12 @@ export default function PremiumExpertSlide() {
           className="absolute left-[80px] right-[80px] top-[250px] bottom-[55px] z-10 flex gap-6"
         >
           {/* LEFT — Benefits as vertical cards */}
-          <div className="flex flex-col gap-4 flex-1 justify-between">
+          <div className="flex flex-col gap-4 flex-1">
             {benefits.map((b, i) => (
               <motion.div
                 key={b.title}
                 {...fade(i + 2)}
-                className="rounded-xl flex items-start gap-4 flex-1"
+                className="rounded-xl flex items-start gap-4"
                 style={{
                   background: "hsl(var(--pres-bg-surface))",
                   border: "1px solid hsl(var(--pres-accent) / 0.1)",
