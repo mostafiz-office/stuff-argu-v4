@@ -237,6 +237,40 @@ function RocketFlight({
             marginTop: -20,
           }}
         />
+
+        {/* Flying label */}
+        {flyingLabel && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{
+              opacity: [0, 0, 1, 1, 1, 0],
+              scale: [0.5, 0.5, 1, 1, 1, 1],
+            }}
+            transition={{
+              duration: 15,
+              times,
+              ease: "easeInOut",
+            }}
+            style={{
+              position: "absolute",
+              left: size + 8,
+              top: size * 0.25,
+              whiteSpace: "nowrap",
+              fontFamily: "'Ubuntu', sans-serif",
+              fontSize: 22,
+              fontWeight: 700,
+              color: theme.glow,
+              textShadow: `0 0 16px ${theme.glow}80, 0 0 32px ${theme.glow}40`,
+              background: `linear-gradient(135deg, ${theme.glow}20, ${theme.glow}08)`,
+              border: `1px solid ${theme.glow}40`,
+              borderRadius: 10,
+              padding: "6px 14px",
+              backdropFilter: "blur(6px)",
+            }}
+          >
+            {flyingLabel}
+          </motion.div>
+        )}
       </motion.div>
     </>
   );
