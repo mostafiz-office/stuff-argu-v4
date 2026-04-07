@@ -173,6 +173,54 @@ export default function PremiumExpertSlide() {
             </div>
           </div>
 
+          {/* RIGHT — Premium card */}
+          <motion.div
+            {...fade(3)}
+            className="rounded-2xl flex flex-col justify-between"
+            style={{
+              width: 440,
+              flexShrink: 0,
+              background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 50%)",
+              border: "2px solid hsl(var(--pres-accent) / 0.25)",
+              padding: "28px 26px",
+            }}
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-5">
+                <Star size={16} style={{ color: "hsl(var(--pres-accent))", fill: "hsl(var(--pres-accent))" }} />
+                <p
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Included With Your Tier
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {includedItems.map((item, i) => (
+                  <motion.div key={item} {...fade(i + 4)} className="flex items-center gap-3">
+                    <CheckCircle size={20} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
+                    <span
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 17,
+                        color: "hsl(var(--pres-text))",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
             {/* Value highlight */}
             <div
               className="rounded-xl"
