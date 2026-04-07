@@ -60,164 +60,118 @@ export default function PremiumExpertSlide() {
           }}
         />
 
-        {/* Title section */}
-        <motion.div {...fade(0)} className="absolute left-[80px] right-[80px] top-[102px] z-10">
-          <div className="flex items-center gap-3 mb-3">
-            <div
-              className="flex items-center justify-center rounded-xl"
-              style={{
-                width: 44,
-                height: 44,
-                background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))",
-              }}
-            >
-              <Crown size={24} style={{ color: "hsl(var(--pres-bg))" }} />
-            </div>
-            <p
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 13,
-                fontWeight: 700,
-                color: "hsl(var(--pres-accent))",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-              }}
-            >
-              Included As a Bonus With Every Tier
-            </p>
-          </div>
-          <h1
-            style={{
-              fontFamily: "'Ubuntu', sans-serif",
-              fontSize: 44,
-              fontWeight: 700,
-              color: "hsl(var(--pres-text))",
-              lineHeight: 1.15,
-            }}
-          >
-            Your Team Gets{" "}
-            <span style={{ color: "hsl(var(--pres-accent))" }}>Alim Ul Karim</span>
-            {" "}— As a Bonus
-          </h1>
-          <p
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 18,
-              color: "hsl(var(--pres-text-muted))",
-              marginTop: 6,
-              marginBottom: 16,
-              maxWidth: 800,
-            }}
-          >
-            Chief Software Engineer · 20+ Years ·{" "}
-            <strong style={{ color: "hsl(var(--pres-accent))" }}>4 hrs/day (80 hrs/mo)</strong> of expert
-            guidance included at{" "}
-            <strong style={{ color: "hsl(var(--pres-accent))" }}>no extra cost</strong> — valued at{" "}
-            <strong style={{ color: "hsl(var(--pres-accent))" }}>$50,000/mo</strong>
-          </p>
-        </motion.div>
-
         {/* Content area — two columns */}
         <div
-          className="absolute left-[80px] right-[80px] top-[250px] bottom-[55px] z-10 flex gap-6"
+          className="absolute left-[80px] right-[80px] top-[80px] bottom-[55px] z-10 flex gap-6"
         >
-          {/* LEFT — Benefits as vertical cards */}
-          <div className="flex flex-col gap-4 flex-1">
-            {benefits.map((b, i) => (
-              <motion.div
-                key={b.title}
-                {...fade(i + 2)}
-                className="rounded-xl flex items-start gap-4"
-                style={{
-                  background: "hsl(var(--pres-bg-surface))",
-                  border: "1px solid hsl(var(--pres-accent) / 0.1)",
-                  padding: "20px 20px",
-                }}
-              >
+          {/* LEFT — Title + Benefits */}
+          <div className="flex flex-col flex-1">
+            {/* Title section */}
+            <motion.div {...fade(0)} className="mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div
-                  className="flex items-center justify-center rounded-lg flex-shrink-0"
+                  className="flex items-center justify-center rounded-xl"
                   style={{
                     width: 44,
                     height: 44,
-                    background: "hsl(var(--pres-accent) / 0.1)",
+                    background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))",
                   }}
                 >
-                  <b.icon size={22} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <Crown size={24} style={{ color: "hsl(var(--pres-bg))" }} />
                 </div>
-                <div>
-                  <p
-                    style={{
-                      fontFamily: "'Ubuntu', sans-serif",
-                      fontSize: 20,
-                      fontWeight: 700,
-                      color: "hsl(var(--pres-text))",
-                      marginBottom: 4,
-                    }}
-                  >
-                    {b.title}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 15,
-                      color: "hsl(var(--pres-text-muted))",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {b.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* RIGHT — Premium card */}
-          <motion.div
-            {...fade(3)}
-            className="rounded-2xl flex flex-col justify-between"
-            style={{
-              width: 440,
-              flexShrink: 0,
-              background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 50%)",
-              border: "2px solid hsl(var(--pres-accent) / 0.25)",
-              padding: "28px 26px",
-            }}
-          >
-            <div>
-              <div className="flex items-center gap-2 mb-5">
-                <Star size={16} style={{ color: "hsl(var(--pres-accent))", fill: "hsl(var(--pres-accent))" }} />
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 13,
                     fontWeight: 700,
                     color: "hsl(var(--pres-accent))",
-                    letterSpacing: "0.1em",
+                    letterSpacing: "0.15em",
                     textTransform: "uppercase",
                   }}
                 >
-                  Included With Your Tier
+                  Included As a Bonus With Every Tier
                 </p>
               </div>
+              <h1
+                style={{
+                  fontFamily: "'Ubuntu', sans-serif",
+                  fontSize: 44,
+                  fontWeight: 700,
+                  color: "hsl(var(--pres-text))",
+                  lineHeight: 1.15,
+                }}
+              >
+                Your Team Gets{" "}
+                <span style={{ color: "hsl(var(--pres-accent))" }}>Alim Ul Karim</span>
+                {" "}— As a Bonus
+              </h1>
+              <p
+                style={{
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: 18,
+                  color: "hsl(var(--pres-text-muted))",
+                  marginTop: 6,
+                  maxWidth: 800,
+                }}
+              >
+                Chief Software Engineer · 20+ Years ·{" "}
+                <strong style={{ color: "hsl(var(--pres-accent))" }}>4 hrs/day (80 hrs/mo)</strong> of expert
+                guidance included at{" "}
+                <strong style={{ color: "hsl(var(--pres-accent))" }}>no extra cost</strong> — valued at{" "}
+                <strong style={{ color: "hsl(var(--pres-accent))" }}>$50,000/mo</strong>
+              </p>
+            </motion.div>
 
-              <div className="space-y-4">
-                {includedItems.map((item, i) => (
-                  <motion.div key={item} {...fade(i + 4)} className="flex items-center gap-3">
-                    <CheckCircle size={20} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
-                    <span
+            {/* Benefit cards — stretch to fill remaining height */}
+            <div className="flex flex-col gap-4 flex-1">
+              {benefits.map((b, i) => (
+                <motion.div
+                  key={b.title}
+                  {...fade(i + 2)}
+                  className="rounded-xl flex items-start gap-4 flex-1"
+                  style={{
+                    background: "hsl(var(--pres-bg-surface))",
+                    border: "1px solid hsl(var(--pres-accent) / 0.1)",
+                    padding: "20px 20px",
+                  }}
+                >
+                  <div
+                    className="flex items-center justify-center rounded-lg flex-shrink-0"
+                    style={{
+                      width: 44,
+                      height: 44,
+                      background: "hsl(var(--pres-accent) / 0.1)",
+                    }}
+                  >
+                    <b.icon size={22} style={{ color: "hsl(var(--pres-accent))" }} />
+                  </div>
+                  <div>
+                    <p
                       style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 17,
+                        fontFamily: "'Ubuntu', sans-serif",
+                        fontSize: 20,
+                        fontWeight: 700,
                         color: "hsl(var(--pres-text))",
-                        lineHeight: 1.4,
+                        marginBottom: 4,
                       }}
                     >
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+                      {b.title}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontSize: 15,
+                        color: "hsl(var(--pres-text-muted))",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {b.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
+          </div>
 
             {/* Value highlight */}
             <div
