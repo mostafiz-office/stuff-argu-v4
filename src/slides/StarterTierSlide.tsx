@@ -194,48 +194,6 @@ export default function StarterTierSlide() {
                   160 hrs/month
                 </span>
               </div>
-
-              {/* Rocket animation + flying tooltips — positioned absolute */}
-              <div className="absolute top-2 right-2" style={{ width: 80, height: 80 }}>
-                <RocketAnimation intensity={1} profile="compact" />
-                {[
-                  { text: "🚀 Senior-led from Day 1", delay: 1.5 },
-                  { text: "⚡ 160h focused output", delay: 4.5 },
-                  { text: "🎯 Top 5% vetted talent", delay: 7.5 },
-                ].map((tip, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute rounded-full px-3 py-1 pointer-events-none"
-                    style={{
-                      top: 10 + i * 22,
-                      right: -10,
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      color: "hsl(var(--pres-accent))",
-                      background: "hsl(var(--pres-accent) / 0.12)",
-                      border: "1px solid hsl(var(--pres-accent) / 0.25)",
-                      whiteSpace: "nowrap",
-                    }}
-                    initial={{ opacity: 0, x: -40, y: 0 }}
-                    animate={{
-                      opacity: [0, 0, 1, 1, 1, 0],
-                      x: [-40, -40, 0, 0, 10, 40],
-                      y: [0, 0, 0, -6, -12, -20],
-                    }}
-                    transition={{
-                      duration: 4,
-                      delay: tip.delay,
-                      repeat: Infinity,
-                      repeatDelay: 8,
-                      ease: "easeOut",
-                    }}
-                  >
-                    {tip.text}
-                  </motion.div>
-                ))}
-              </div>
-
               {/* Features */}
               <div className="mt-2 space-y-2">
                 {features.map((feature, i) => (
