@@ -65,7 +65,7 @@ export default function PremiumExpertSlideV2() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           className="absolute z-[3] pointer-events-none"
-          style={{ left: 80, top: 250, width: 200 }}
+          style={{ left: 80, top: 280, width: 200 }}
         >
           <div className="rounded-2xl overflow-hidden" style={{ border: "2px solid hsl(var(--pres-accent) / 0.3)", boxShadow: "0 12px 40px hsl(var(--pres-bg) / 0.6)" }}>
             <img src={alimPhoto} alt="Alim Ul Karim" className="w-full object-cover" style={{ height: 230, objectPosition: "top" }} />
@@ -78,7 +78,7 @@ export default function PremiumExpertSlideV2() {
         </motion.div>
 
         {/* Value stat cards */}
-        <div className="absolute left-[320px] top-[250px] z-10 flex gap-5">
+        <div className="absolute left-[320px] top-[280px] z-10 flex gap-5">
           {valueStats.map((s, i) => (
             <motion.div
               key={s.value}
@@ -106,7 +106,7 @@ export default function PremiumExpertSlideV2() {
         {/* Tier value comparison table */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[320px] top-[450px] right-[80px] z-10 rounded-2xl"
+          className="absolute left-[80px] top-[510px] right-[80px] z-10 rounded-2xl"
           style={{
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
