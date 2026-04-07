@@ -13,9 +13,9 @@ import StarterTierSlide from "@/slides/StarterTierSlide";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const slides = [
+  <PricingCoverV3 key="v3" />,
   <PricingCoverV1 key="v1" />,
   <PricingCoverV2 key="v2" />,
-  <PricingCoverV3 key="v3" />,
   <PricingTiersSlide key="4" />,
   <TierDetailSlide key="5" />,
   <PricingSavingsSlide key="6" />,
