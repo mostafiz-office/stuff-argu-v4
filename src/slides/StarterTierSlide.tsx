@@ -455,9 +455,32 @@ export default function StarterTierSlide() {
         {/* Rocket + flying tooltips */}
         <div
           className="absolute z-30 pointer-events-none"
-          style={{ left: 60, top: 580, width: 400, height: 400 }}
+          style={{ left: 60, top: 640, width: 500, height: 300 }}
         >
-          <RocketAnimation intensity={1} profile="compact" />
+          {/* Simple animated rocket */}
+          <motion.div
+            animate={{
+              y: [0, -180, -360],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              repeatDelay: 6,
+              ease: "easeOut",
+            }}
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 30,
+              fontSize: 40,
+              transform: "rotate(-45deg)",
+            }}
+          >
+            🚀
+          </motion.div>
+
+          {/* Flying tooltip badges */}
           {[
             { text: "🚀 Senior-led from Day 1", delay: 1.5 },
             { text: "⚡ 160h focused output", delay: 4.5 },
@@ -465,30 +488,28 @@ export default function StarterTierSlide() {
           ].map((tip, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full px-3 py-1"
+              className="absolute rounded-full px-3 py-1.5"
               style={{
-                bottom: 80 + i * 35,
-                right: 20,
+                bottom: 40 + i * 40,
+                left: 90,
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 600,
                 color: "hsl(var(--pres-accent))",
                 background: "hsl(var(--pres-accent) / 0.15)",
                 border: "1px solid hsl(var(--pres-accent) / 0.3)",
                 whiteSpace: "nowrap",
-                zIndex: 40,
               }}
-              initial={{ opacity: 0, x: -30 }}
               animate={{
                 opacity: [0, 0, 1, 1, 1, 0],
-                x: [-30, -30, 0, 0, 15, 50],
-                y: [0, 0, 0, -8, -16, -24],
+                x: [0, 0, 0, 10, 20, 60],
+                y: [0, 0, 0, -10, -20, -40],
               }}
               transition={{
-                duration: 4,
+                duration: 5,
                 delay: tip.delay,
                 repeat: Infinity,
-                repeatDelay: 8,
+                repeatDelay: 7,
                 ease: "easeOut",
               }}
             >
