@@ -212,8 +212,18 @@ function RocketFlight({
             scaleY: [0.7, 1.5, 0.7],
             scaleX: [0.8, 1.3, 0.8],
             opacity: [0.5, 1, 0.5],
+            ...(isCurved
+              ? { rotate: [0, 0, 0, noseRotate, noseRotate, noseRotate] }
+              : {}),
           }}
-          transition={{ duration: 0.22, repeat: Infinity, ease: "easeInOut" }}
+          transition={{
+            scaleY: { duration: 0.22, repeat: Infinity, ease: "easeInOut" },
+            scaleX: { duration: 0.22, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 0.22, repeat: Infinity, ease: "easeInOut" },
+            ...(isCurved
+              ? { rotate: { duration: 15, times, ease: "easeInOut" } }
+              : {}),
+          }}
           style={{
             width: 22,
             height: 60 + intensity * 14,
