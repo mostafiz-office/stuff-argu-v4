@@ -20,7 +20,7 @@ export default function HoverVideoPreview({
   if (!HOVER_VIDEO_ENABLED) {
     return <>{children}</>;
   }
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
 
   const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
