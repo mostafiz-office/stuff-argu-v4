@@ -5,7 +5,7 @@ import PricingCoverV1 from "@/slides/PricingCoverV1";
 
 import PricingCoverV3 from "@/slides/PricingCoverV3";
 import PricingTiersSlide from "@/slides/PricingTiersSlide";
-import PremiumExpertSlide from "@/slides/PremiumExpertSlide";
+
 import PremiumExpertSlideV2 from "@/slides/PremiumExpertSlideV2";
 import PremiumExpertSlideV3 from "@/slides/PremiumExpertSlideV3";
 import TierDetailSlide from "@/slides/TierDetailSlide";
@@ -27,7 +27,7 @@ const slides = [
   <PricingCoverV1 key="v1" />,
   
   <PricingTiersSlide key="4" />,
-  <PremiumExpertSlide key="5" />,
+  
   <PremiumExpertSlideV2 key="5b" />,
   <PremiumExpertSlideV3 key="5c" />,
   <TierDetailSlide key="6" />,
