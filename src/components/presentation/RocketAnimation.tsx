@@ -24,7 +24,7 @@ const flightProfiles = {
     size: 120,
     startBottom: -8,
     startRight: 46,
-    travelY: { 1: -320, 2: -340, 3: -360 },
+    travelY: { 1: -520, 2: -540, 3: -560 },
   },
 } as const;
 
