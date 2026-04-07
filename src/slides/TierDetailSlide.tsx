@@ -119,6 +119,20 @@ export default function TierDetailSlide() {
                 >
                   {col.price}
                 </p>
+                {col.tagline && (
+                  <p
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "hsl(var(--pres-accent))",
+                      marginTop: 4,
+                    }}
+                  >
+                    ✨ {col.tagline}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
