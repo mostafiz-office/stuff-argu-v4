@@ -452,6 +452,47 @@ export default function StarterTierSlide() {
           </motion.div>
         </div>
 
+        {/* Rocket + flying tooltips — outside card to avoid overflow clip */}
+        <div className="absolute z-30 pointer-events-none" style={{ left: 300, top: 100, width: 200, height: 120 }}>
+          <RocketAnimation intensity={1} profile="compact" />
+          {[
+            { text: "🚀 Senior-led from Day 1", delay: 1.5 },
+            { text: "⚡ 160h focused output", delay: 4.5 },
+            { text: "🎯 Top 5% vetted talent", delay: 7.5 },
+          ].map((tip, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full px-3 py-1"
+              style={{
+                top: 5 + i * 28,
+                left: 90,
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                color: "hsl(var(--pres-accent))",
+                background: "hsl(var(--pres-accent) / 0.15)",
+                border: "1px solid hsl(var(--pres-accent) / 0.3)",
+                whiteSpace: "nowrap",
+              }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{
+                opacity: [0, 0, 1, 1, 1, 0],
+                x: [-30, -30, 0, 0, 15, 50],
+                y: [0, 0, 0, -8, -16, -24],
+              }}
+              transition={{
+                duration: 4,
+                delay: tip.delay,
+                repeat: Infinity,
+                repeatDelay: 8,
+                ease: "easeOut",
+              }}
+            >
+              {tip.text}
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </ScaledSlide>
   );
