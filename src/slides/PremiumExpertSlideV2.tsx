@@ -106,7 +106,7 @@ export default function PremiumExpertSlideV2() {
         {/* Tier value comparison table */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[80px] top-[510px] right-[80px] z-10 rounded-2xl"
+          className="absolute left-[80px] top-[480px] right-[80px] z-10 rounded-2xl"
           style={{
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
@@ -157,7 +157,7 @@ export default function PremiumExpertSlideV2() {
         {/* Bottom tagline */}
         <motion.p
           {...fade(9)}
-          className="absolute top-[650px] left-0 right-0 text-center z-10"
+          className="absolute top-[670px] left-0 right-0 text-center z-10"
           style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
         >
           "You pay for the developer. Alim's $50,000/mo expertise? That's on us."
