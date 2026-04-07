@@ -30,7 +30,7 @@ export default function PremiumExpertSlideV3() {
         {/* Two-column layout */}
         <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[80px] z-10 flex gap-6">
           {/* LEFT — Value proposition */}
-          <div className="flex flex-col flex-1 justify-between">
+          <div className="flex flex-col flex-1 gap-6">
             {/* Header */}
             <motion.div {...fade(0)}>
               <div className="flex items-center gap-3 mb-4">
