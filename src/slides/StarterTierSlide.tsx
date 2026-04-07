@@ -51,10 +51,10 @@ export default function StarterTierSlide() {
         {/* Title */}
         <motion.h1
           {...fade(0)}
-          className="absolute left-[80px] top-[85px] z-10"
+          className="absolute left-[80px] top-[65px] z-10"
           style={{
             fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 48,
+            fontSize: 40,
             fontWeight: 700,
             color: "hsl(var(--pres-text))",
           }}
@@ -64,10 +64,10 @@ export default function StarterTierSlide() {
 
         <motion.p
           {...fade(1)}
-          className="absolute left-[80px] top-[148px] z-10"
+          className="absolute left-[80px] top-[115px] z-10"
           style={{
             fontFamily: "'Poppins', sans-serif",
-            fontSize: 17,
+            fontSize: 15,
             color: "hsl(var(--pres-text-muted))",
             maxWidth: 700,
           }}
@@ -76,7 +76,7 @@ export default function StarterTierSlide() {
         </motion.p>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[155px] bottom-[40px] flex gap-8 z-10">
 
           {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
@@ -84,13 +84,13 @@ export default function StarterTierSlide() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
+              className="rounded-2xl flex flex-col relative overflow-hidden h-full justify-between"
               style={{
-                width: 560,
+                width: 420,
                 flexShrink: 0,
                 background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
                 border: "2px solid hsl(var(--pres-accent))",
-                padding: "28px 24px",
+                padding: "22px 20px",
               }}
             >
               {/* Badge */}
