@@ -3,23 +3,30 @@ import { useState, useEffect } from "react";
 import rocketSvg from "@/assets/rocket-emoji.svg";
 
 /**
- * CurvedRocketAnimation — rocket launches from the bottom-right of its
- * container, arcs upward-and-right in a parabolic curve, and fades out
- * near the top-right of the slide.  The nose rotates to follow the arc.
+ * CurvedRocketAnimation — positioned at slide level.
+ * Rocket launches from the bottom-right area of the pricing card,
+ * arcs upward-and-right in a parabolic curve toward the top-right of the slide.
  *
- * 15-second cycle (same cadence as the straight RocketAnimation):
+ * 15-second cycle:
  *   0-3 s   — pad vibration, smoke
  *   3-8 s   — curved flight (bottom → peak top-right)
- *   8-13 s  — hover / float at peak
+ *   8-13 s  — hover at peak
  *  13-15 s  — fade out
  */
 
 const CYCLE_MS = 15_000;
 const SIZE = 120;
 
-// Glow / trail colors (same as tier-1 in RocketAnimation)
 const GLOW = "#38bdf8";
 const TRAIL = ["#38bdf8", "#818cf8"];
+
+// Starting position (absolute within the slide, near bottom-right of the left card)
+const START_BOTTOM = 80;
+const START_LEFT = 500;
+
+// Travel offsets from start position
+const TRAVEL_X = 480;   // how far right
+const TRAVEL_Y = -520;  // how far up
 
 export default function CurvedRocketAnimation() {
   const [cycle, setCycle] = useState(0);
@@ -36,7 +43,7 @@ export default function CurvedRocketAnimation() {
         inset: 0,
         pointerEvents: "none",
         zIndex: 50,
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
       <CurvedFlight key={cycle} />
@@ -45,20 +52,6 @@ export default function CurvedRocketAnimation() {
 }
 
 function CurvedFlight() {
-  // Keyframe positions (relative to starting point at bottom-right of card)
-  // x: moves right;  y: moves up (negative)
-  // rotate: nose direction (0 = pointing up-left at -45deg base; positive = tilting right)
-  //
-  // The base image is already rotated -45deg in its style, so rotate 0 = nose up-right.
-  // We add additional rotation on top to follow the curve.
-
-  // Normalised times for 15s cycle
-  // 0.00 = appear
-  // 0.20 = launch starts (3s)
-  // 0.53 = reaches peak (8s)
-  // 0.87 = still hovering (13s)
-  // 1.00 = faded out (15s)
-
   return (
     <>
       {/* Launch pad glow */}
@@ -68,8 +61,8 @@ function CurvedFlight() {
         transition={{ duration: 15, times: [0, 0.13, 0.18, 0.4] }}
         style={{
           position: "absolute",
-          bottom: 10,
-          right: 60,
+          bottom: START_BOTTOM,
+          left: START_LEFT + SIZE / 2 - 30,
           width: 60,
           height: 16,
           borderRadius: "50%",
@@ -93,8 +86,8 @@ function CurvedFlight() {
             transition={{ duration: 15, times: [0, 0.13, 0.2, 0.4] }}
             style={{
               position: "absolute",
-              bottom: 10,
-              right: 80,
+              bottom: START_BOTTOM,
+              left: START_LEFT + SIZE / 2 - 6,
               width: 12,
               height: 12,
               borderRadius: "50%",
@@ -105,25 +98,23 @@ function CurvedFlight() {
         );
       })}
 
-      {/* Rocket — curved arc via x/y/rotate keyframes */}
+      {/* Rocket — curved arc */}
       <motion.div
         initial={{ opacity: 0, x: 0, y: 0 }}
         animate={{
-          opacity:  [0, 1,  1,    1,    1,    0],
-          // x: right is positive — rocket drifts right during flight
-          x:        [0, 0,  0,    420,  420,  420],
-          // y: up is negative — rocket goes up
-          y:        [0, 0,  0,    -560, -560, -560],
+          opacity: [0, 1, 1, 1, 1, 0],
+          x:       [0, 0, 0, TRAVEL_X, TRAVEL_X, TRAVEL_X],
+          y:       [0, 0, 0, TRAVEL_Y, TRAVEL_Y, TRAVEL_Y],
         }}
         transition={{
           duration: 15,
-          times:   [0, 0.01, 0.20, 0.53, 0.87, 1],
+          times: [0, 0.01, 0.20, 0.53, 0.87, 1],
           ease: "easeInOut",
         }}
         style={{
           position: "absolute",
-          bottom: 0,
-          right: 40,
+          bottom: START_BOTTOM,
+          left: START_LEFT,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -153,10 +144,7 @@ function CurvedFlight() {
           alt=""
           draggable={false}
           animate={{
-            // Base transform is -45deg (points up). During the curve we tilt
-            // the nose rightward to follow the parabolic path.
             rotate: [0, 0, 0, 35, 35, 35],
-            // Pre-launch vibration
             x: [0, -2, 2, -1, 1, 0, -2, 2, -1, 1, 0, 0, 0, 0],
             filter: [
               `drop-shadow(0 0 20px ${GLOW}80) drop-shadow(0 0 40px ${GLOW}30)`,
@@ -181,7 +169,7 @@ function CurvedFlight() {
           }}
         />
 
-        {/* Flame — rotates with the rocket */}
+        {/* Flame */}
         <motion.div
           animate={{
             scaleY: [0.7, 1.5, 0.7],
