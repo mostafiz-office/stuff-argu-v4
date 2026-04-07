@@ -52,10 +52,20 @@ export default function PremiumExpertSlideV2() {
               Bonus Value — Included With Every Tier
             </p>
           </div>
-          <h1 style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 46, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.15 }}>
-            <span style={{ color: "hsl(var(--pres-accent))" }}>$50,000/mo</span> of Expert Value
-            <br />
-            <span style={{ fontSize: 38 }}>Added to Every Tier — As a Bonus</span>
+          <h1 style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 46, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.25 }}>
+            Buy Any Tier, Get a{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.85))",
+                color: "hsl(var(--pres-bg))",
+                padding: "2px 14px",
+                borderRadius: 8,
+                fontWeight: 800,
+              }}
+            >
+              $50K/mo Expert
+            </span>{" "}
+            Bonus
           </h1>
         </motion.div>
 
