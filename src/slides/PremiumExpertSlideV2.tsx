@@ -131,7 +131,7 @@ export default function PremiumExpertSlideV2() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-4 gap-4">
             {tierValues.map((t, i) => (
               <motion.div
                 key={t.tier}
