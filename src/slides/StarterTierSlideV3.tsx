@@ -103,6 +103,8 @@ export default function StarterTierSlideV3() {
                 STARTER
               </div>
 
+              <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
