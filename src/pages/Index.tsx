@@ -11,7 +11,7 @@ import TierDetailSlide from "@/slides/TierDetailSlide";
 import PricingSavingsSlide from "@/slides/PricingSavingsSlide";
 import WhatsIncludedSlide from "@/slides/WhatsIncludedSlide";
 import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
-import StarterTierSlideV3 from "@/slides/StarterTierSlideV3";
+
 
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
 import PricingCTASlide from "@/slides/PricingCTASlide";
@@ -44,7 +44,7 @@ export default function Index() {
       <PricingSavingsSlide key="7" />,
       <WhatsIncludedSlide key="8" />,
       <PricingHowItWorksSlide key="9" />,
-      <StarterTierSlideV3 key="10b" />,
+      
       
       <StarterTierSlideV9 key="10d" />,
       <PricingCTASlide key="12" />,
