@@ -2,7 +2,7 @@ import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Crown, Lightbulb, Zap, Target, Award, Gift } from "lucide-react";
+import { CheckCircle, Crown, Shield, Clock, DollarSign, ArrowRight, Flame } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -10,21 +10,19 @@ const fade = (i: number) => ({
   transition: { delay: 0.18 * i, duration: 0.7, ease: "easeOut" as const },
 });
 
-const features = [
-  "3+ yrs coding, 1+ yr industry exp",
-  "160 dedicated hours/month",
-  "Tech-stack specific developer",
-  "Task guidance from senior lead",
-  "Daily standups & Slack access",
-  "Weekly progress reports",
+const valueStack = [
+  { label: "Full-time developer (160h/mo)", worth: "$4,800" },
+  { label: "Senior lead task guidance", worth: "$3,200" },
+  { label: "Daily standups & Slack access", worth: "$1,500" },
+  { label: "Weekly progress reports", worth: "$800" },
+  { label: "Tech-stack specific matching", worth: "$1,200" },
 ];
 
-const idealFor = [
-  { text: "Pre-seed & seed-stage startups", icon: Lightbulb },
-  { text: "Bootstrapped founders shipping fast", icon: Zap },
-  { text: "MVPs & well-defined sprints", icon: Target },
-  { text: "Senior-led guidance on every task", icon: Award },
-];
+const bonusValue = {
+  label: "Alim Ul Karim — Chief Engineer Oversight",
+  sublabel: "80 hrs/mo · Architecture · Code Reviews · Strategy",
+  worth: "$50,000",
+};
 
 export default function StarterTierSlide() {
   return (
@@ -36,146 +34,288 @@ export default function StarterTierSlide() {
         <div
           className="absolute z-[1]"
           style={{
-            left: "35%",
-            top: "50%",
-            width: 800,
-            height: 600,
+            left: "50%",
+            top: "55%",
+            width: 900,
+            height: 700,
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.06) 0%, transparent 65%)",
+              "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.08) 0%, transparent 60%)",
             filter: "blur(80px)",
           }}
         />
 
-        {/* Title — cleaned up */}
-        <div className="absolute left-[230px] right-[80px] top-[28px] z-10">
+        {/* Headline */}
+        <div className="absolute left-[230px] right-[80px] top-[24px] z-10">
           <motion.h1
             {...fade(0)}
             style={{
               fontFamily: "'Ubuntu', sans-serif",
-              fontSize: 30,
+              fontSize: 32,
               fontWeight: 700,
-              lineHeight: 1.05,
-              color: "hsl(var(--pres-text))",
+              lineHeight: 1.1,
             }}
           >
-            Great News for <span style={{ color: "hsl(var(--pres-accent))" }}>Startups</span>
+            <span style={{ color: "hsl(var(--pres-text))" }}>You Pay </span>
+            <span style={{ color: "hsl(var(--pres-accent))" }}>$1,900</span>
+            <span style={{ color: "hsl(var(--pres-text))" }}> — You Get </span>
+            <span style={{ color: "hsl(142 71% 45%)" }}>$61,500</span>
+            <span style={{ color: "hsl(var(--pres-text-dim))", fontSize: 20 }}> in value</span>
           </motion.h1>
-          <motion.p
-            {...fade(1)}
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 13,
-              color: "hsl(var(--pres-text-muted))",
-              marginTop: 6,
-              maxWidth: 760,
-            }}
-          >
-            World-class engineering talent, dedicated to your product — without the enterprise price tag.
-          </motion.p>
         </div>
 
         {/* Two-column layout */}
-        <div className="absolute left-[80px] right-[80px] top-[80px] bottom-[25px] flex gap-6 z-10 items-start">
+        <div className="absolute left-[80px] right-[80px] top-[72px] bottom-[20px] flex gap-7 z-10 items-stretch">
 
-          {/* LEFT — Pricing Card with hover video */}
+          {/* LEFT — Value Stack */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="rounded-2xl flex flex-col relative overflow-hidden"
               style={{
-                width: 380,
+                width: 480,
                 flexShrink: 0,
-                background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)",
-                border: "2px solid hsl(var(--pres-accent))",
-                padding: "18px 18px",
-                gap: 6,
+                background: "hsl(var(--pres-bg-surface))",
+                border: "1.5px solid hsl(var(--pres-accent) / 0.3)",
+                padding: "20px 24px",
               }}
             >
-              {/* Badge */}
-              <div
-                className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-bl-xl"
-                style={{
-                  background: "hsl(var(--pres-accent))",
-                  color: "hsl(var(--pres-bg))",
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  letterSpacing: "0.05em",
-                }}
-              >
-                <motion.span
-                  animate={{
-                    y: [0, -3, 0],
-                    x: [0, 1, 0],
-                    rotate: [-10, 0, 8, 0],
-                    scale: [1, 1.08, 1],
+              {/* Header */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <DollarSign size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                  <span
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "hsl(var(--pres-accent))",
+                    }}
+                  >
+                    What's Included
+                  </span>
+                </div>
+                <div
+                  className="rounded-full px-3 py-1"
+                  style={{
+                    background: "hsl(var(--pres-accent))",
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-bg))",
                   }}
-                  transition={{
-                    duration: 1.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="inline-flex"
                 >
-                  <Rocket size={14} />
-                </motion.span>
-                STARTER
+                  TIER 1 · STARTER
+                </div>
               </div>
 
-              {/* Tier label */}
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "hsl(var(--pres-text-dim))",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Tier 1
-              </p>
+              {/* Value items */}
+              <div className="flex flex-col gap-2">
+                {valueStack.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + i * 0.08, duration: 0.4 }}
+                    className="flex items-center justify-between rounded-xl px-4 py-2.5"
+                    style={{
+                      background: "hsl(var(--pres-accent) / 0.05)",
+                      border: "1px solid hsl(var(--pres-accent) / 0.1)",
+                    }}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle
+                        size={16}
+                        style={{ color: "hsl(142 71% 45%)", flexShrink: 0 }}
+                      />
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 14,
+                          color: "hsl(var(--pres-text))",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: "'Ubuntu', sans-serif",
+                        fontSize: 16,
+                        fontWeight: 700,
+                        color: "hsl(var(--pres-text-muted))",
+                      }}
+                    >
+                      {item.worth}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
 
-              {/* Experience */}
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 15,
-                  color: "hsl(var(--pres-accent))",
-                  fontWeight: 500,
-                  marginTop: 4,
-                }}
-              >
-                3+ Years Coding · 1+ Year Industry
-              </p>
-
+              {/* Subtotal line */}
               <div
-                className="absolute rounded-full px-3 py-1"
-                style={{
-                  top: 72,
-                  right: 14,
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: "hsl(var(--pres-accent))",
-                  background: "hsl(var(--pres-accent) / 0.12)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.22)",
-                }}
+                className="flex items-center justify-between mt-3 pt-3"
+                style={{ borderTop: "1px solid hsl(var(--pres-accent) / 0.15)" }}
               >
-                ⚡ 160h focused output
-              </div>
-
-              {/* Price */}
-              <div className="mt-2">
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-text-dim))",
+                  }}
+                >
+                  Subtotal Value
+                </span>
                 <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 36,
+                    fontSize: 20,
                     fontWeight: 700,
                     color: "hsl(var(--pres-text))",
+                  }}
+                >
+                  $11,500<span style={{ fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>/mo</span>
+                </span>
+              </div>
+
+              {/* BONUS — Alim block */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="mt-3 rounded-xl relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(135deg, hsl(45 100% 50% / 0.12), hsl(var(--pres-accent) / 0.08))",
+                  border: "2px solid hsl(45 100% 50% / 0.4)",
+                  padding: "14px 16px",
+                }}
+              >
+                <div
+                  className="absolute top-0 right-0 w-1/2 h-full pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle at 90% 40%, hsl(45 100% 50% / 0.12), transparent 60%)",
+                  }}
+                />
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Crown size={16} style={{ color: "hsl(45 100% 50%)" }} />
+                  <span
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "hsl(45 100% 50%)",
+                    }}
+                  >
+                    🎁 BONUS — FREE
+                  </span>
+                </div>
+                <p
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 17,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-text))",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {bonusValue.label}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 12,
+                    color: "hsl(var(--pres-text-muted))",
+                    marginTop: 3,
+                  }}
+                >
+                  {bonusValue.sublabel}
+                </p>
+                <div className="flex items-center justify-between mt-2">
+                  <span
+                    style={{
+                      fontFamily: "'Ubuntu', sans-serif",
+                      fontSize: 24,
+                      fontWeight: 700,
+                      color: "hsl(45 100% 50%)",
+                    }}
+                  >
+                    {bonusValue.worth}<span style={{ fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>/mo value</span>
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </HoverVideoPreview>
+
+          {/* RIGHT — The Close */}
+          <motion.div
+            {...fade(2)}
+            className="flex flex-col justify-between flex-1 self-stretch"
+          >
+            {/* Total value vs price */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
+              className="rounded-2xl relative overflow-hidden"
+              style={{
+                background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.15), hsl(var(--pres-bg-surface)))",
+                border: "2px solid hsl(var(--pres-accent) / 0.35)",
+                padding: "24px 28px",
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle at 20% 30%, hsl(var(--pres-accent) / 0.1), transparent 50%)",
+                }}
+              />
+
+              <div className="flex items-center gap-2 mb-3">
+                <Flame size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <span
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "hsl(var(--pres-accent))",
+                  }}
+                >
+                  Total Value
+                </span>
+              </div>
+
+              {/* Crossed out total */}
+              <div className="flex items-center gap-4">
+                <span
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 40,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-text-dim))",
+                    textDecoration: "line-through",
+                    textDecorationColor: "hsl(0 70% 55%)",
+                    textDecorationThickness: 3,
+                  }}
+                >
+                  $61,500
+                </span>
+                <ArrowRight size={24} style={{ color: "hsl(var(--pres-accent))" }} />
+                <span
+                  style={{
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 52,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
                   }}
                 >
                   $1,900
@@ -185,292 +325,109 @@ export default function StarterTierSlide() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 16,
                     color: "hsl(var(--pres-text-dim))",
+                    alignSelf: "flex-end",
+                    marginBottom: 8,
                   }}
                 >
                   /mo
                 </span>
               </div>
 
-              {/* Hours badge */}
-              <div
-                className="mt-1 inline-flex items-center rounded-lg px-2 py-1"
-                style={{
-                  background: "hsl(var(--pres-accent) / 0.08)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                  width: "fit-content",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  160 hrs/month
-                </span>
-              </div>
-              {/* Features */}
-              <div className="mt-2 space-y-2">
-                {features.map((feature, i) => (
-                  <motion.div
-                    key={feature}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                    className="flex items-start gap-2"
-                  >
-                    <CheckCircle
-                      size={15}
-                      style={{
-                        color: "hsl(var(--pres-accent))",
-                        flexShrink: 0,
-                        marginTop: 2,
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
-                        color: "hsl(var(--pres-text-muted))",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {feature}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Alim premium bonus — BIG highlighted */}
+              {/* Savings badge */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="mt-4 rounded-2xl relative overflow-hidden"
+                transition={{ delay: 1.1, duration: 0.5 }}
+                className="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.18), hsl(var(--pres-accent) / 0.06))",
-                  border: "2px solid hsl(var(--pres-accent) / 0.45)",
-                  padding: "18px 20px",
+                  background: "linear-gradient(135deg, hsl(142 71% 45% / 0.2), hsl(142 71% 45% / 0.08))",
+                  border: "1.5px solid hsl(142 71% 45% / 0.4)",
                 }}
               >
-                {/* Glow accent */}
-                <div
-                  className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle at 85% 40%, hsl(var(--pres-accent) / 0.15), transparent 55%)",
-                  }}
-                />
-                <div className="flex items-center gap-2 mb-2">
-                  <Crown size={20} style={{ color: "hsl(var(--pres-accent))" }} />
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: "hsl(var(--pres-accent))",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    🎁 Bonus — No Extra Cost
-                  </span>
-                </div>
-                <p
+                <span
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 22,
                     fontWeight: 700,
-                    color: "hsl(var(--pres-text))",
-                    lineHeight: 1.3,
+                    color: "hsl(142 71% 45%)",
                   }}
                 >
-                  Alim Ul Karim's Expert Oversight
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 15,
-                    color: "hsl(var(--pres-text-muted))",
-                    lineHeight: 1.5,
-                    marginTop: 6,
-                  }}
-                >
-                  Chief Software Engineer · 4h/day dedicated
-                </p>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.4, duration: 0.5 }}
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                    marginTop: 8,
-                  }}
-                >
-                  Worth $50,000/mo — Included FREE
-                </motion.p>
+                  You Save 97%
+                </span>
               </motion.div>
             </motion.div>
-          </HoverVideoPreview>
 
-          {/* RIGHT — Redesigned */}
-          <motion.div
-            {...fade(2)}
-            className="flex flex-col justify-center gap-4 flex-1 self-stretch"
-          >
-            {/* Value highlight stat */}
+            {/* Trust signals */}
+            <div className="flex flex-col gap-3 mt-4">
+              {[
+                { icon: Shield, text: "Cancel anytime — zero risk" },
+                { icon: Clock, text: "Start in as fast as 20 minutes" },
+                { icon: CheckCircle, text: "7-stage vetting — top 5% engineers" },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.text}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.2 + i * 0.12, duration: 0.4 }}
+                  className="flex items-center gap-3"
+                >
+                  <div
+                    className="flex items-center justify-center rounded-lg"
+                    style={{
+                      width: 34,
+                      height: 34,
+                      background: "hsl(var(--pres-accent) / 0.1)",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <item.icon size={17} style={{ color: "hsl(var(--pres-accent))" }} />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 17,
+                      fontWeight: 500,
+                      color: "hsl(var(--pres-text))",
+                    }}
+                  >
+                    {item.text}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom anchor */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, type: "spring", stiffness: 150, damping: 12 }}
-              className="rounded-2xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
+              className="rounded-xl mt-4 text-center"
               style={{
-                background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.12), hsl(var(--pres-bg-surface)))",
-                border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
-                padding: "22px 26px",
+                background: "hsl(var(--pres-accent) / 0.08)",
+                border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                padding: "14px 20px",
               }}
             >
-              <div
-                className="absolute top-0 right-0 bottom-0 w-1/3 pointer-events-none"
-                style={{
-                  background: "radial-gradient(circle at 80% 50%, hsl(var(--pres-accent) / 0.08), transparent 70%)",
-                }}
-              />
-              <div className="flex items-center gap-2 mb-2">
-                <Gift size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  What You Get
-                </span>
-              </div>
-              <div className="flex items-baseline gap-3">
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 44,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  160h
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 20,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-text))",
-                  }}
-                >
-                  Focused Output
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mt-2">
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 15,
-                    color: "hsl(var(--pres-text-muted))",
-                  }}
-                >
-                  Full-time developer + senior lead oversight
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Value-focused copy */}
-            <div>
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
+                  fontSize: 16,
                   color: "hsl(var(--pres-text-muted))",
-                  lineHeight: 1.7,
+                  lineHeight: 1.5,
                 }}
               >
-                A{" "}
-                <strong style={{ color: "hsl(var(--pres-text))" }}>
-                  dedicated developer
+                That's{" "}
+                <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 18 }}>
+                  $11.87/hour
                 </strong>{" "}
-                embedded in your workflow, guided by senior expertise — ready to ship from Day 1.
+                for a full-time developer +{" "}
+                <strong style={{ color: "hsl(45 100% 50%)" }}>
+                  $50K/mo expert oversight FREE
+                </strong>
               </p>
-            </div>
-
-            {/* Ideal For with icons */}
-            <div
-              className="rounded-2xl px-6 py-5"
-              style={{
-                background: "hsl(var(--pres-bg-surface) / 0.7)",
-                border: "1px solid hsl(var(--pres-accent) / 0.15)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "hsl(var(--pres-accent))",
-                  marginBottom: 14,
-                }}
-              >
-                Ideal For
-              </p>
-              <div className="space-y-4">
-                {idealFor.map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <motion.div
-                      key={item.text}
-                      initial={{ opacity: 0, x: 12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                      className="flex items-center gap-3"
-                    >
-                      <div
-                        className="flex items-center justify-center rounded-lg"
-                        style={{
-                          width: 30,
-                          height: 30,
-                          background: "hsl(var(--pres-accent) / 0.1)",
-                          border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <Icon size={15} style={{ color: "hsl(var(--pres-accent))" }} />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: "'Poppins', sans-serif",
-                          fontSize: 18,
-                          color: "hsl(var(--pres-text-muted))",
-                        }}
-                      >
-                        {item.text}
-                      </span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
-
-
-
       </div>
     </ScaledSlide>
   );
