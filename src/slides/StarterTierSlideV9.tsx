@@ -32,7 +32,7 @@ const results = [
   { metric: "$50K", label: "Expert bonus included" },
 ];
 
-export default function StarterTierSlideV7() {
+export default function StarterTierSlideV9() {
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
