@@ -33,6 +33,11 @@ export default function StarterTierSlideV3() {
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
 
+        {/* Rocket animation — slide-level overlay */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+          <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+        </div>
+
         <div
           className="absolute z-[1]"
           style={{
@@ -73,16 +78,14 @@ export default function StarterTierSlideV3() {
           The right first engineering hire for founders who need real execution, reliable skill, and momentum from day one.
         </motion.p>
 
+
         <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
-          <div className="absolute left-[80px] z-[11]" style={{ top: 170 }}>
-            <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
-          </div>
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="rounded-2xl flex flex-col relative overflow-hidden h-full"
+              className="rounded-2xl flex flex-col relative h-full"
               style={{
                 width: 560,
                 flexShrink: 0,
@@ -104,6 +107,8 @@ export default function StarterTierSlideV3() {
               >
                 STARTER
               </div>
+
+              
 
               <p
                 style={{
