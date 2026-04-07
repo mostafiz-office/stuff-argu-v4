@@ -25,9 +25,9 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string }[] = [
-  { key: "growth", name: "Tier 1", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 2", price: "$6,800–8K/mo", bestValue: true, color: "hsl(var(--pres-accent))" },
-  { key: "leadership", name: "Tier 3", price: "$7.5K–10K/mo" },
+  { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo" },
+  { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(var(--pres-accent))" },
+  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo" },
 ];
 
 export default function TierDetailSlide() {
