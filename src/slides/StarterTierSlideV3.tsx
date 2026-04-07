@@ -99,13 +99,6 @@ export default function StarterTierSlideV3() {
                   letterSpacing: "0.05em",
                 }}
               >
-                <motion.span
-                  animate={{ y: [0, -3, 0], x: [0, 1, 0], rotate: [-10, 0, 8, 0], scale: [1, 1.08, 1] }}
-                  transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-                  className="inline-flex"
-                >
-                  <Rocket size={14} />
-                </motion.span>
                 STARTER
               </div>
 
