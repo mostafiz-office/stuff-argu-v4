@@ -177,14 +177,13 @@ export default function PremiumExpertSlide() {
           {/* RIGHT — Premium card */}
           <motion.div
             {...fade(3)}
-            className="rounded-2xl flex flex-col"
+            className="rounded-2xl flex flex-col justify-between"
             style={{
               width: 420,
               flexShrink: 0,
               background: "linear-gradient(160deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 50%)",
               border: "2px solid hsl(var(--pres-accent) / 0.25)",
               padding: "20px 22px",
-              alignSelf: "flex-start",
             }}
           >
             <div>
