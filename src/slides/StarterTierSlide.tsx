@@ -237,7 +237,7 @@ export default function StarterTierSlide() {
               </div>
 
               {/* Features */}
-              <div className="mt-3 space-y-3 flex-1">
+              <div className="mt-2 space-y-2">
                 {features.map((feature, i) => (
                   <motion.div
                     key={feature}
@@ -247,7 +247,7 @@ export default function StarterTierSlide() {
                     className="flex items-start gap-2"
                   >
                     <CheckCircle
-                      size={18}
+                      size={15}
                       style={{
                         color: "hsl(var(--pres-accent))",
                         flexShrink: 0,
@@ -257,7 +257,7 @@ export default function StarterTierSlide() {
                     <span
                       style={{
                         fontFamily: "'Poppins', sans-serif",
-                        fontSize: 18,
+                        fontSize: 14,
                         color: "hsl(var(--pres-text-muted))",
                         lineHeight: 1.4,
                       }}
