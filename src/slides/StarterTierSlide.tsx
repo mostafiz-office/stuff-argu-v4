@@ -268,54 +268,66 @@ export default function StarterTierSlide() {
                 ))}
               </div>
 
-              {/* Alim add-on */}
-              <div
-                className="mt-3 rounded-xl"
+              {/* Alim premium bonus — highlighted */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                className="mt-3 rounded-xl relative overflow-hidden"
                 style={{
-                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.08), hsl(var(--pres-accent) / 0.03))",
-                  border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                  padding: "10px 14px",
+                  background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.15), hsl(var(--pres-accent) / 0.05))",
+                  border: "1.5px solid hsl(var(--pres-accent) / 0.35)",
+                  padding: "14px 16px",
                 }}
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <Plus size={14} style={{ color: "hsl(var(--pres-accent))" }} />
+                {/* Glow accent */}
+                <div
+                  className="absolute top-0 right-0 w-1/2 h-full pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle at 90% 30%, hsl(var(--pres-accent) / 0.12), transparent 60%)",
+                  }}
+                />
+                <div className="flex items-center gap-2 mb-2">
+                  <Crown size={16} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: 700,
                       color: "hsl(var(--pres-accent))",
-                      letterSpacing: "0.08em",
+                      letterSpacing: "0.1em",
                       textTransform: "uppercase",
                     }}
                   >
-                    Premium Add-on
+                    Bonus — No Extra Cost
                   </span>
-                  <Crown size={12} style={{ color: "hsl(var(--pres-accent))" }} />
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 14,
-                    fontWeight: 600,
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 17,
+                    fontWeight: 700,
                     color: "hsl(var(--pres-text))",
-                    lineHeight: 1.4,
+                    lineHeight: 1.3,
                   }}
                 >
-                  Alim Ul Karim — Chief Software Engineer
+                  Alim Ul Karim's Expert Oversight
                 </p>
                 <p
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
+                    fontSize: 13,
                     color: "hsl(var(--pres-text-muted))",
-                    lineHeight: 1.4,
-                    marginTop: 2,
+                    lineHeight: 1.5,
+                    marginTop: 4,
                   }}
                 >
-                  4h/day dedicated · <strong style={{ color: "hsl(var(--pres-accent))" }}>$625/hr</strong> · $50,000/mo
+                  Chief Software Engineer · 4h/day dedicated ·{" "}
+                  <span style={{ color: "hsl(var(--pres-accent))", fontWeight: 600 }}>
+                    Worth $50,000/mo — included free
+                  </span>
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
           </HoverVideoPreview>
 
