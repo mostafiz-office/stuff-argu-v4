@@ -345,7 +345,7 @@ export default function StarterTierSlide() {
           {/* RIGHT — Redesigned */}
           <motion.div
             {...fade(2)}
-            className="flex flex-col justify-center gap-5 flex-1"
+            className="flex flex-col justify-center gap-4 flex-1 self-stretch"
           >
             {/* Value highlight stat */}
             <motion.div
