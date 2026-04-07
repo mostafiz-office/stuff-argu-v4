@@ -452,14 +452,12 @@ export default function StarterTierSlide() {
           </motion.div>
         </div>
 
-        {/* Rocket + flying tooltips — positioned on slide */}
+        {/* Rocket + flying tooltips */}
         <div
           className="absolute z-30 pointer-events-none"
-          style={{ left: 180, top: 340, width: 220, height: 200, overflow: "visible" }}
+          style={{ left: 60, top: 580, width: 400, height: 400 }}
         >
-          <div className="relative" style={{ width: 60, height: 120 }}>
-            <RocketAnimation intensity={1} profile="compact" />
-          </div>
+          <RocketAnimation intensity={1} profile="compact" />
           {[
             { text: "🚀 Senior-led from Day 1", delay: 1.5 },
             { text: "⚡ 160h focused output", delay: 4.5 },
@@ -469,10 +467,10 @@ export default function StarterTierSlide() {
               key={i}
               className="absolute rounded-full px-3 py-1"
               style={{
-                top: 10 + i * 30,
-                left: 70,
+                bottom: 80 + i * 35,
+                right: 20,
                 fontFamily: "'Poppins', sans-serif",
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 600,
                 color: "hsl(var(--pres-accent))",
                 background: "hsl(var(--pres-accent) / 0.15)",
