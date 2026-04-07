@@ -1,7 +1,8 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 import alimPhoto from "@/assets/alim-updated.png";
 import claudioImg from "@/assets/testimonials/claudio-c.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
@@ -92,56 +93,22 @@ export default function PricingCoverV3() {
             transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
             className="flex flex-col gap-4"
           >
-            <div
-              className="rounded-xl"
-              style={{
-                background: "hsl(var(--pres-bg) / 0.85)",
-                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
-                backdropFilter: "blur(12px)",
-                padding: "14px 22px",
-                maxWidth: 300,
-              }}
-            >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
-                <span style={{ color: "hsl(var(--pres-accent))" }}>20+ Years</span> in Software Engineering
-              </p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.25, duration: 0.7, ease: "easeOut" }}
-              className="rounded-xl"
-              style={{
-                background: "hsl(var(--pres-bg) / 0.85)",
-                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
-                backdropFilter: "blur(12px)",
-                padding: "14px 22px",
-                maxWidth: 300,
-              }}
-            >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
-                Led <span style={{ color: "hsl(var(--pres-accent))" }}>50+ Enterprise</span> Projects
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.5, duration: 0.7, ease: "easeOut" }}
-              className="rounded-xl"
-              style={{
-                background: "hsl(var(--pres-bg) / 0.85)",
-                border: "1.5px solid hsl(var(--pres-accent) / 0.4)",
-                backdropFilter: "blur(12px)",
-                padding: "14px 22px",
-                maxWidth: 300,
-              }}
-            >
-              <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
-                <span style={{ color: "hsl(var(--pres-accent))" }}>Chief Software Engineer</span> & Your Dedicated Expert
-              </p>
-            </motion.div>
+            <HoverCard
+              delay={1.0}
+              title={<><span style={{ color: "hsl(var(--pres-accent))" }}>20+ Years</span> in Software Engineering</>}
+              hoverText="Two decades of hands-on experience across startups, enterprises, and everything in between — from architecture to deployment."
+            />
+            <HoverCard
+              delay={1.25}
+              title={<>Led <span style={{ color: "hsl(var(--pres-accent))" }}>50+ Enterprise</span> Projects</>}
+              hoverText="From Fortune 500 platforms to high-growth SaaS — proven delivery across healthcare, fintech, e-commerce, and more."
+            />
+            <HoverCard
+              delay={1.5}
+              title={<><span style={{ color: "hsl(var(--pres-accent))" }}>Chief Software Engineer</span> & Your Dedicated Expert</>}
+              hoverText="Not a manager watching from the sidelines — Alim reviews your code, guides architecture, and mentors your developer directly."
+              fontSize={20}
+            />
           </motion.div>
         </div>
 
