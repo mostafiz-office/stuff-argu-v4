@@ -17,11 +17,6 @@ export default function HoverVideoPreview({
   const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  if (!HOVER_VIDEO_ENABLED) {
-    return <>{children}</>;
-  }
-
-
   const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsHovered(true);
@@ -30,6 +25,10 @@ export default function HoverVideoPreview({
   const handleMouseLeave = useCallback(() => {
     timeoutRef.current = setTimeout(() => setIsHovered(false), 300);
   }, []);
+
+  if (!HOVER_VIDEO_ENABLED) {
+    return <>{children}</>;
+  }
 
   return (
     <div
