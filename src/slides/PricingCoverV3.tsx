@@ -125,7 +125,7 @@ export default function PricingCoverV3() {
         </div>
 
         {/* Highlighted expertise text — right side */}
-        <div className="absolute z-[6] pointer-events-none" style={{ right: 60, top: 340 }}>
+        <div className="absolute z-[6]" style={{ right: 60, top: 340 }}>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
