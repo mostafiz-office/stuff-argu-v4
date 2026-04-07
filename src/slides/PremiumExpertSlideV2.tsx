@@ -152,14 +152,19 @@ export default function PremiumExpertSlideV2() {
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>{t.bonus} bonus</span>
                 </div>
                 <div className="flex items-center justify-between mt-2">
-                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>
+                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>
                   <span
                     className="rounded-full px-2 py-0.5"
-                    style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, fontWeight: 700, color: "hsl(var(--pres-accent))", background: "hsl(var(--pres-accent) / 0.12)" }}
+                    style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, fontWeight: 700, color: "hsl(var(--pres-accent))", background: "hsl(var(--pres-accent) / 0.12)" }}
                   >
-                    {t.savings} bonus
+                    {t.savings}
                   </span>
                 </div>
+                {(t as any).limited && (
+                  <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "hsl(0 80% 55%)", marginTop: 4, fontWeight: 600 }}>
+                    ⏳ Limited time offer
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
