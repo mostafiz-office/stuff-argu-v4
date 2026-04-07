@@ -73,7 +73,7 @@ export default function StarterTierSlideV8() {
           Same output. Fraction of the cost. Here's how RiseUp stacks up against every alternative.
         </motion.p>
 
-        <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[224px] bottom-[60px] flex gap-8 z-10">
           {/* LEFT — Same pricing card */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
