@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Wallet, TrendingDown } from "lucide-react";
+import { Rocket, CheckCircle, Star, Plus, Crown, Lightbulb, Zap, Target, Award } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,7 +24,7 @@ const idealFor = [
   { text: "Pre-seed & seed-stage startups", icon: Lightbulb },
   { text: "Bootstrapped founders shipping fast", icon: Zap },
   { text: "MVPs & well-defined sprints", icon: Target },
-  { text: "Budget-conscious teams needing quality", icon: Wallet },
+  { text: "Teams needing senior-led execution", icon: Award },
 ];
 
 export default function StarterTierSlideV3() {
@@ -33,7 +33,6 @@ export default function StarterTierSlideV3() {
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
 
-        {/* Ambient glow */}
         <div
           className="absolute z-[1]"
           style={{
@@ -48,7 +47,6 @@ export default function StarterTierSlideV3() {
           }}
         />
 
-        {/* Title */}
         <motion.h1
           {...fade(0)}
           className="absolute left-[80px] top-[85px] z-10"
@@ -59,7 +57,7 @@ export default function StarterTierSlideV3() {
             color: "hsl(var(--pres-text))",
           }}
         >
-          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Smart</span>, Scale Later
+          Start <span style={{ color: "hsl(var(--pres-accent))" }}>Strong</span>, Ship Faster
         </motion.h1>
 
         <motion.p
@@ -72,13 +70,10 @@ export default function StarterTierSlideV3() {
             maxWidth: 700,
           }}
         >
-          The perfect entry point for founders who need quality engineering without enterprise budgets.
+          The right first engineering hire for founders who need real execution, reliable skill, and momentum from day one.
         </motion.p>
 
-        {/* Two-column layout */}
         <div className="absolute left-[80px] right-[80px] top-[200px] bottom-[60px] flex gap-8 z-10">
-
-          {/* LEFT — Pricing Card with hover video */}
           <HoverVideoPreview youtubeId="uveR9C5CgSY" position="right">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -93,7 +88,6 @@ export default function StarterTierSlideV3() {
                 padding: "28px 24px",
               }}
             >
-              {/* Badge */}
               <div
                 className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 rounded-bl-xl"
                 style={{
@@ -106,17 +100,8 @@ export default function StarterTierSlideV3() {
                 }}
               >
                 <motion.span
-                  animate={{
-                    y: [0, -3, 0],
-                    x: [0, 1, 0],
-                    rotate: [-10, 0, 8, 0],
-                    scale: [1, 1.08, 1],
-                  }}
-                  transition={{
-                    duration: 1.4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={{ y: [0, -3, 0], x: [0, 1, 0], rotate: [-10, 0, 8, 0], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                   className="inline-flex"
                 >
                   <Rocket size={14} />
@@ -124,7 +109,6 @@ export default function StarterTierSlideV3() {
                 STARTER
               </div>
 
-              {/* Tier label */}
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -138,7 +122,6 @@ export default function StarterTierSlideV3() {
                 Tier 1
               </p>
 
-              {/* Experience */}
               <p
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -151,7 +134,6 @@ export default function StarterTierSlideV3() {
                 3+ Years Coding · 1+ Year Industry
               </p>
 
-              {/* Price */}
               <div className="mt-3">
                 <span
                   style={{
@@ -174,7 +156,6 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              {/* Hours badge */}
               <div
                 className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
                 style={{
@@ -195,10 +176,8 @@ export default function StarterTierSlideV3() {
                 </span>
               </div>
 
-              {/* Rocket animation */}
               <RocketAnimation intensity={1} profile="compact" />
 
-              {/* Features */}
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
                   <motion.div
@@ -210,11 +189,7 @@ export default function StarterTierSlideV3() {
                   >
                     <CheckCircle
                       size={18}
-                      style={{
-                        color: "hsl(var(--pres-accent))",
-                        flexShrink: 0,
-                        marginTop: 2,
-                      }}
+                      style={{ color: "hsl(var(--pres-accent))", flexShrink: 0, marginTop: 2 }}
                     />
                     <span
                       style={{
@@ -230,7 +205,6 @@ export default function StarterTierSlideV3() {
                 ))}
               </div>
 
-              {/* Alim add-on */}
               <div
                 className="mt-3 rounded-xl"
                 style={{
@@ -281,12 +255,7 @@ export default function StarterTierSlideV3() {
             </motion.div>
           </HoverVideoPreview>
 
-          {/* RIGHT — Redesigned */}
-          <motion.div
-            {...fade(2)}
-            className="flex flex-col justify-center gap-5 flex-1"
-          >
-            {/* Big savings stat */}
+          <motion.div {...fade(2)} className="flex flex-col justify-center gap-5 flex-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -305,7 +274,7 @@ export default function StarterTierSlideV3() {
                 }}
               />
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <Star size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
@@ -316,7 +285,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  vs US Market Rate
+                  Value Delivered
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
@@ -328,7 +297,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  76%
+                  160h
                 </span>
                 <span
                   style={{
@@ -338,7 +307,7 @@ export default function StarterTierSlideV3() {
                     color: "hsl(var(--pres-text))",
                   }}
                 >
-                  Savings
+                  Focused Output
                 </span>
               </div>
               <div className="flex items-center gap-3 mt-2">
@@ -347,26 +316,13 @@ export default function StarterTierSlideV3() {
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 15,
                     color: "hsl(var(--pres-text-dim))",
-                    textDecoration: "line-through",
                   }}
                 >
-                  $6,000–$8,000/mo
-                </span>
-                <ArrowRight size={16} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  $1,900/mo
+                  Dedicated developer + senior-led guidance built for reliable execution
                 </span>
               </div>
             </motion.div>
 
-            {/* Built for Founders text */}
             <div>
               <p
                 style={{
@@ -376,15 +332,10 @@ export default function StarterTierSlideV3() {
                   lineHeight: 1.7,
                 }}
               >
-                Tight on budget but ready to build?{" "}
-                <strong style={{ color: "hsl(var(--pres-text))" }}>
-                  Get a dedicated developer
-                </strong>{" "}
-                at a price that won't break the bank — then scale when you're ready.
+                You are not just hiring for hours. You are buying <strong style={{ color: "hsl(var(--pres-text))" }}>consistent execution</strong>, <strong style={{ color: "hsl(var(--pres-text))" }}>real product momentum</strong>, and a developer with enough skill to contribute from day one.
               </p>
             </div>
 
-            {/* Ideal For with icons */}
             <div
               className="rounded-2xl px-6 py-5"
               style={{
@@ -444,7 +395,6 @@ export default function StarterTierSlideV3() {
             </div>
           </motion.div>
         </div>
-
       </div>
     </ScaledSlide>
   );
