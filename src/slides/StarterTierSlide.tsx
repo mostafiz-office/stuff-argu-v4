@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Wallet, TrendingDown } from "lucide-react";
+import { Rocket, CheckCircle, Star, ArrowRight, Plus, Crown, Lightbulb, Zap, Target, Award, Gift } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -24,7 +24,7 @@ const idealFor = [
   { text: "Pre-seed & seed-stage startups", icon: Lightbulb },
   { text: "Bootstrapped founders shipping fast", icon: Zap },
   { text: "MVPs & well-defined sprints", icon: Target },
-  { text: "Budget-conscious teams needing quality", icon: Wallet },
+  { text: "Senior-led guidance on every task", icon: Award },
 ];
 
 export default function StarterTierSlide() {
@@ -286,7 +286,7 @@ export default function StarterTierSlide() {
             {...fade(2)}
             className="flex flex-col justify-center gap-5 flex-1"
           >
-            {/* Big savings stat */}
+            {/* Value highlight stat */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -305,7 +305,7 @@ export default function StarterTierSlide() {
                 }}
               />
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown size={18} style={{ color: "hsl(var(--pres-accent))" }} />
+                <Gift size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
@@ -316,7 +316,7 @@ export default function StarterTierSlide() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  vs US Market Rate
+                  What You Get
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
@@ -328,7 +328,7 @@ export default function StarterTierSlide() {
                     color: "hsl(var(--pres-accent))",
                   }}
                 >
-                  76%
+                  160h
                 </span>
                 <span
                   style={{
@@ -338,7 +338,7 @@ export default function StarterTierSlide() {
                     color: "hsl(var(--pres-text))",
                   }}
                 >
-                  Savings
+                  Focused Output
                 </span>
               </div>
               <div className="flex items-center gap-3 mt-2">
@@ -346,27 +346,15 @@ export default function StarterTierSlide() {
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 15,
-                    color: "hsl(var(--pres-text-dim))",
-                    textDecoration: "line-through",
+                    color: "hsl(var(--pres-text-muted))",
                   }}
                 >
-                  $6,000–$8,000/mo
-                </span>
-                <ArrowRight size={16} style={{ color: "hsl(var(--pres-accent))" }} />
-                <span
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                  }}
-                >
-                  $1,900/mo
+                  Full-time developer + senior lead oversight
                 </span>
               </div>
             </motion.div>
 
-            {/* Built for Founders text */}
+            {/* Value-focused copy */}
             <div>
               <p
                 style={{
@@ -376,11 +364,11 @@ export default function StarterTierSlide() {
                   lineHeight: 1.7,
                 }}
               >
-                Tight on budget but ready to build?{" "}
+                A{" "}
                 <strong style={{ color: "hsl(var(--pres-text))" }}>
-                  Get a dedicated developer
+                  dedicated developer
                 </strong>{" "}
-                at a price that won't break the bank — then scale when you're ready.
+                embedded in your workflow, guided by senior expertise — ready to ship from Day 1.
               </p>
             </div>
 
