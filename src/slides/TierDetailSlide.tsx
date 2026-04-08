@@ -23,6 +23,9 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
   { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: true, leadership: "Versatile" },
   { label: "QA Engineers", starter: false, growth: false, skilled: false, leadership: "2" },
+  { label: "Alim Expert Oversight", starter: "2 hrs/wk*", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
+  { label: "Min. Developer Experience", starter: "2+ yrs", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
+  { label: "Onboarding Deposit", starter: "$2K", growth: "$2K", skilled: "$2K", leadership: "$2K" },
 ];
 
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string; tagline?: string }[] = [
