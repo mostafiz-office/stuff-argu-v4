@@ -28,9 +28,15 @@ const guarantees = [
 ];
 
 const results = [
-  { metric: "3x", label: "Faster than hiring", tooltip: "Skip 3-month hiring cycles — your developer starts in 20 minutes" },
-  { metric: "160h", label: "Pure dev time/mo", tooltip: "160 dedicated development hours per month, fully focused on your project" },
-  { metric: "$11,999", label: "Expert bonus included", tooltip: "Alim's expert oversight valued at $11,999/mo — included as a bonus with your tier" },
+  { metric: "3x", label: "Faster than hiring", tooltip: (
+    <>Skip <span style={{ background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.3), hsl(var(--pres-accent) / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(var(--pres-accent))" }}>3-month hiring cycles</span> — your developer starts in <span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>20 minutes</span></>
+  )},
+  { metric: "160h", label: "Pure dev time/mo", tooltip: (
+    <><span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>160 dedicated hours</span> per month, <span style={{ background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.3), hsl(var(--pres-accent) / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(var(--pres-accent))" }}>fully focused</span> on your project</>
+  )},
+  { metric: "$11,999", label: "Expert bonus included", tooltip: (
+    <>Alim's expert oversight valued at <span style={{ background: "linear-gradient(135deg, hsl(45 90% 55% / 0.3), hsl(45 90% 55% / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(45 90% 55%)" }}>$11,999/mo</span> — included as a <span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>bonus</span> with your tier</>
+  )},
 ];
 
 export default function StarterTierSlideV9() {
