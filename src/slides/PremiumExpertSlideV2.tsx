@@ -72,11 +72,11 @@ export default function PremiumExpertSlideV2() {
 
         {/* Alim photo — subtle on left */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.95, rotate: 20 }}
+          animate={{ opacity: 1, scale: 1, rotate: 20 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           className="absolute z-[3] pointer-events-none"
-          style={{ left: 120, top: 380, width: 240, transform: "rotate(20deg)" }}
+          style={{ left: 120, top: 380, width: 240 }}
         >
           <div className="rounded-2xl overflow-hidden" style={{ border: "2px solid hsl(var(--pres-accent) / 0.3)", boxShadow: "0 12px 40px hsl(var(--pres-bg) / 0.6)" }}>
             <img src={alimPhoto} alt="Alim Ul Karim" className="w-full object-cover" style={{ height: 280, objectPosition: "top" }} />
