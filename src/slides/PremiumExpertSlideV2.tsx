@@ -176,7 +176,7 @@ export default function PremiumExpertSlideV2() {
         {/* Bottom tagline */}
         <motion.p
           {...fade(9)}
-          className="absolute bottom-[35px] left-0 right-0 text-center z-10"
+          className="absolute top-[680px] left-0 right-0 text-center z-10"
           style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
         >
           "You pay for the developer. Alim's expert oversight? That's on us."
