@@ -96,6 +96,22 @@ export default function TierDetailSlide() {
                     <Award size={13} /> BEST VALUE
                   </div>
                 )}
+                {col.premium && (
+                  <div
+                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(280 60% 60%), hsl(320 60% 55%))",
+                      color: "hsl(0 0% 100%)",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    👑 PREMIUM
+                  </div>
+                )}
                 <p
                   style={{
                     fontFamily: "'Ubuntu', sans-serif",
