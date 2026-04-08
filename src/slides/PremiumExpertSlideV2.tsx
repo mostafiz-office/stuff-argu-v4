@@ -41,7 +41,7 @@ export default function PremiumExpertSlideV2() {
         />
 
         {/* Title */}
-        <motion.div {...fade(0)} className="absolute left-[80px] top-[90px] z-10">
+        <motion.div {...fade(0)} className="absolute left-[80px] top-[80px] z-10">
           <div className="flex items-center gap-3 mb-2">
             <div
               className="flex items-center justify-center rounded-xl"
@@ -71,7 +71,7 @@ export default function PremiumExpertSlideV2() {
         </motion.div>
 
         {/* Middle section — Photo + Stats aligned */}
-        <div className="absolute left-[80px] right-[80px] top-[240px] z-10 flex items-start gap-8">
+        <div className="absolute left-[80px] right-[80px] top-[210px] z-10 flex items-start gap-8">
           {/* Alim photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -120,7 +120,7 @@ export default function PremiumExpertSlideV2() {
         {/* Tier value comparison table */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[80px] right-[80px] top-[560px] z-10 rounded-2xl"
+          className="absolute left-[80px] right-[80px] top-[490px] z-10 rounded-2xl"
           style={{
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
@@ -176,7 +176,7 @@ export default function PremiumExpertSlideV2() {
         {/* Bottom tagline */}
         <motion.p
           {...fade(9)}
-          className="absolute bottom-[50px] left-0 right-0 text-center z-10"
+          className="absolute bottom-[35px] left-0 right-0 text-center z-10"
           style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
         >
           "You pay for the developer. Alim's expert oversight? That's on us."
