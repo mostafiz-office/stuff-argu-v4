@@ -56,7 +56,7 @@ export default function TierDetailSlide() {
         {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[180px] bottom-[80px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col" style={{ bottom: 40 }}
         >
           {/* Header row */}
           <div
@@ -148,14 +148,14 @@ export default function TierDetailSlide() {
                 className="grid items-center"
                 style={{
                   gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
-                  padding: "12px 0",
+                  padding: "6px 0",
                   borderBottom: "1px solid hsl(var(--border) / 0.5)",
                 }}
               >
                 <span
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 22,
+                    fontSize: 18,
                     color: "hsl(var(--pres-text-muted))",
                   }}
                 >
