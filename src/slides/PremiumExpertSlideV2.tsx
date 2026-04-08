@@ -79,7 +79,7 @@ export default function PremiumExpertSlideV2() {
           style={{ left: 120, top: 380, width: 240 }}
         >
           <div className="rounded-2xl overflow-hidden" style={{ border: "2px solid hsl(var(--pres-accent) / 0.3)", boxShadow: "0 12px 40px hsl(var(--pres-bg) / 0.6)" }}>
-            <img src={alimPhoto} alt="Alim Ul Karim" className="w-full object-cover" style={{ height: 280, objectPosition: "top", transform: "rotate(20deg) scale(1.15)" }} />
+            <img src={alimPhoto} alt="Alim Ul Karim" className="w-full object-cover" style={{ height: 280, objectPosition: "top", transform: "rotate(4deg) scale(1.05)" }} />
           </div>
           <div className="mt-3 text-center">
             <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 18, fontWeight: 700, color: "hsl(var(--pres-text))" }}>Alim Ul Karim</p>
