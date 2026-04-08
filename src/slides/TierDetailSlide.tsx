@@ -56,7 +56,7 @@ export default function TierDetailSlide() {
         {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[180px] bottom-[80px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col" style={{ bottom: 40 }}
         >
           {/* Header row */}
           <div
