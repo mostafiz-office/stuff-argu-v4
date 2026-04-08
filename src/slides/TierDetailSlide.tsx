@@ -75,9 +75,7 @@ export default function TierDetailSlide() {
                 transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
                 className="text-center relative"
                 style={{
-                  background: col.bestValue
-                    ? "hsl(var(--pres-accent) / 0.08)"
-                    : "transparent",
+                  background: col.bgTint,
                   borderRadius: "12px 12px 0 0",
                   padding: "14px 8px",
                 }}
@@ -86,7 +84,7 @@ export default function TierDetailSlide() {
                   <div
                     className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
                     style={{
-                      background: "hsl(var(--pres-accent))",
+                      background: col.color,
                       color: "hsl(var(--pres-bg))",
                       fontFamily: "'Poppins', sans-serif",
                       fontSize: 13,
@@ -103,7 +101,7 @@ export default function TierDetailSlide() {
                     fontFamily: "'Ubuntu', sans-serif",
                     fontSize: 28,
                     fontWeight: 700,
-                    color: col.color || "hsl(var(--pres-text))",
+                    color: col.color,
                     marginTop: (col.bestValue || col.premium) ? 14 : 0,
                   }}
                 >
@@ -126,7 +124,7 @@ export default function TierDetailSlide() {
                       fontSize: 14,
                       fontWeight: 700,
                       fontStyle: "italic",
-                      color: "hsl(var(--pres-accent))",
+                      color: col.color,
                       marginTop: 4,
                     }}
                   >
@@ -163,20 +161,17 @@ export default function TierDetailSlide() {
                 </span>
                 {columns.map((col) => {
                   const val = feat[col.key];
-                  const cellColor = col.bestValue ? "hsl(var(--pres-accent))" : "hsl(var(--pres-text-muted))";
                   return (
                     <div
                       key={col.key}
                       className="flex justify-center"
                       style={{
-                        background: col.bestValue
-                          ? "hsl(var(--pres-accent) / 0.06)"
-                          : "transparent",
+                        background: col.bgTint,
                         padding: "8px 0",
                       }}
                     >
                       {val === true ? (
-                        <CheckCircle size={26} style={{ color: cellColor }} />
+                        <CheckCircle size={26} style={{ color: col.color }} />
                       ) : val === false ? (
                         <X size={26} style={{ color: "hsl(0 80% 55%)" }} />
                       ) : (
@@ -185,7 +180,7 @@ export default function TierDetailSlide() {
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: 18,
                             fontWeight: 600,
-                            color: cellColor,
+                            color: col.color,
                           }}
                         >
                           {val}
