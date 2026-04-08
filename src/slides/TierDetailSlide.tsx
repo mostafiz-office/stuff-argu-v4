@@ -28,10 +28,10 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
   { label: "Onboarding Deposit", starter: "$2K", growth: "$2K", skilled: "$2K", leadership: "$2K" },
 ];
 
-const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color?: string; tagline?: string }[] = [
-  { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo" },
-  { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(var(--pres-accent))" },
-  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", tagline: "Impossible to say no" },
+const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color: string; bgTint: string; tagline?: string }[] = [
+  { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo", color: "hsl(var(--pres-accent))", bgTint: "hsl(var(--pres-accent) / 0.06)" },
+  { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 70% 45%)", bgTint: "hsl(142 70% 45% / 0.08)" },
+  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 60% 60%)", bgTint: "hsl(280 60% 60% / 0.08)", tagline: "Impossible to say no" },
 ];
 
 export default function TierDetailSlide() {
