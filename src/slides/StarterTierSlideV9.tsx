@@ -113,8 +113,11 @@ export default function StarterTierSlideV9() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 20, color: "hsl(var(--pres-text-dim))" }}>/mo</span>
               </div>
 
-              <div className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5" style={{ background: "hsl(var(--pres-accent) / 0.08)", border: "1px solid hsl(var(--pres-accent) / 0.15)", width: "fit-content" }}>
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>160 hrs/month</span>
+              <div className="mt-2 flex items-center gap-3">
+                <div className="inline-flex items-center rounded-lg px-3 py-1.5" style={{ background: "hsl(var(--pres-accent) / 0.08)", border: "1px solid hsl(var(--pres-accent) / 0.15)" }}>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>160 hrs/month</span>
+                </div>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
 
               <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
