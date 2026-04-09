@@ -1,12 +1,14 @@
 # Slide 05 — Data Model
 
-## Tier Value Rows
-| Tier | Price | Bonus | Total | Hours | Limited |
-|------|-------|-------|-------|-------|---------|
-| Tier 1 — Starter | $1,900/mo | $5,000 | $6,900 | 2 hrs/wk · 2 months only | ⏳ Yes |
-| Tier 2 — Growth | $4,299/mo | $5,000 | $9,299 | 2 hrs/wk | No |
-| Tier 3.A — Skilled | $6,800/mo | $7,500 | $14,300 | 3 hrs/wk | No |
-| Tier 3.B — Leadership | $7,500/mo | $10,000 | $17,500 | 4 hrs/wk | No |
+## Tier Bonus Rows (NO totals — avoid price confusion)
+| Tier | You Pay | FREE Bonus | Hours | Limited |
+|------|---------|------------|-------|---------|
+| Tier 1 — Starter | $1,900/mo | $5,000/mo FREE | 2 hrs/wk | ⏳ 2 months only |
+| Tier 2 — Growth | $4,299/mo | $5,000/mo FREE | 2 hrs/wk | No |
+| Tier 3.A — Skilled | $6,800/mo | $7,500/mo FREE | 3 hrs/wk | No |
+| Tier 3.B — Leadership | $7,500/mo | $10,000/mo FREE | 4 hrs/wk | No |
+
+## DESIGN RULE: Never combine price + bonus into a "total" — it makes customers think they pay more.
 
 ## Value Stat Cards
 | Icon | Value | Sub |
