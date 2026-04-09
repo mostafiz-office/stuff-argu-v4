@@ -117,16 +117,16 @@ export default function PremiumExpertSlideV2() {
         {/* FREE Bonus per tier — no totals, no confusion */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[120px] top-[680px] z-10 rounded-2xl"
+          className="absolute left-[120px] top-[640px] z-10 rounded-2xl"
           style={{
             width: 1148,
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
-            padding: "24px 32px 20px",
+            padding: "20px 32px 16px",
           }}
         >
           {/* Panel heading — high emphasis */}
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-1">
             <div
               className="flex items-center justify-center rounded-lg"
               style={{ width: 36, height: 36, background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))" }}
@@ -137,11 +137,11 @@ export default function PremiumExpertSlideV2() {
               🎁 FREE Expert Bonus — Included With Every Tier
             </h2>
           </div>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", marginBottom: 16, fontStyle: "italic" }}>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", marginBottom: 10, fontStyle: "italic" }}>
             You pay for execution. Expert oversight is included at no extra cost.
           </p>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             {tierBonuses.map((t, i) => (
               <motion.div
                 key={t.tier}
@@ -150,7 +150,7 @@ export default function PremiumExpertSlideV2() {
                 style={{
                   background: "hsl(var(--pres-accent) / 0.05)",
                   border: "1px solid hsl(var(--pres-accent) / 0.12)",
-                  padding: "14px 20px",
+                  padding: "10px 20px",
                   gap: 16,
                 }}
               >
@@ -160,10 +160,10 @@ export default function PremiumExpertSlideV2() {
                 </span>
 
                 {/* You Pay */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 500, color: "hsl(var(--pres-text-muted))" }}>
                   You pay
                 </span>
-                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 120 }}>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 700, color: "hsl(var(--pres-accent))", minWidth: 120 }}>
                   {t.price}
                 </span>
 
@@ -171,7 +171,7 @@ export default function PremiumExpertSlideV2() {
                 <ArrowRight size={20} style={{ color: "hsl(var(--pres-accent) / 0.5)", flexShrink: 0 }} />
 
                 {/* FREE bonus badge */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 500, color: "hsl(var(--pres-text-muted))" }}>
                   You get
                 </span>
                 <span
@@ -194,9 +194,9 @@ export default function PremiumExpertSlideV2() {
                   className="rounded-full ml-auto"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-text-dim))",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-text))",
                     background: "hsl(var(--pres-accent) / 0.1)",
                     padding: "4px 12px",
                     whiteSpace: "nowrap",
