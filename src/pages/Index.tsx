@@ -14,6 +14,7 @@ import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 
 
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
+import StarterTierSlideV9Clone from "@/slides/StarterTierSlideV9Clone";
 import StarterTierDetailSlide from "@/slides/StarterTierDetailSlide";
 import StarterTierDetailSlideV2 from "@/slides/StarterTierDetailSlideV2";
 import PricingCTASlide from "@/slides/PricingCTASlide";
