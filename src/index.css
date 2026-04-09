@@ -59,6 +59,25 @@
 }
 
 .slide-content { font-family: 'Poppins', sans-serif; }
+
+/* Feature comparison scrollbar — extra wide to stay visible after scale() */
+.tier-scroll::-webkit-scrollbar {
+  width: 14px;
+}
+.tier-scroll::-webkit-scrollbar-track {
+  background: hsl(var(--pres-accent) / 0.08);
+  border-radius: 7px;
+}
+.tier-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--pres-accent) / 0.45);
+  border-radius: 7px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.tier-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--pres-accent) / 0.7);
+  background-clip: padding-box;
+}
 .slide-content h1, .slide-content h2, .slide-content h3,
 .slide-content h4, .slide-content h5, .slide-content h6 {
   font-family: 'Ubuntu', sans-serif;
