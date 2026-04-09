@@ -117,66 +117,75 @@ export default function PremiumExpertSlideV2() {
         {/* FREE Bonus per tier — no totals, no confusion */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[120px] top-[690px] z-10 rounded-2xl"
+          className="absolute left-[120px] top-[680px] z-10 rounded-2xl"
           style={{
             width: 840,
             background: "hsl(var(--pres-bg-surface))",
-            border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
-            padding: "20px 28px",
+            border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
+            padding: "24px 32px 20px",
           }}
         >
-          <div className="flex items-center gap-2 mb-4">
-            <Gift size={16} style={{ color: "hsl(var(--pres-accent))" }} />
-            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(var(--pres-accent))", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Free Expert Bonus Included With Every Tier
-            </p>
+          {/* Panel heading — high emphasis */}
+          <div className="flex items-center gap-3 mb-2">
+            <div
+              className="flex items-center justify-center rounded-lg"
+              style={{ width: 36, height: 36, background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.7))" }}
+            >
+              <Gift size={20} style={{ color: "hsl(var(--pres-bg))" }} />
+            </div>
+            <h2 style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 22, fontWeight: 700, color: "hsl(var(--pres-text))" }}>
+              🎁 FREE Expert Bonus — Included With Every Tier
+            </h2>
           </div>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", marginBottom: 16, fontStyle: "italic" }}>
+            You pay for execution. Expert oversight is included at no extra cost.
+          </p>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             {tierBonuses.map((t, i) => (
               <motion.div
                 key={t.tier}
                 {...fade(i + 6)}
                 className="flex items-center rounded-xl"
                 style={{
-                  background: "hsl(var(--pres-accent) / 0.04)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.1)",
-                  padding: "10px 16px",
-                  gap: 12,
+                  background: "hsl(var(--pres-accent) / 0.05)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.12)",
+                  padding: "14px 20px",
+                  gap: 16,
                 }}
               >
                 {/* Tier name */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 600, color: "hsl(var(--pres-text-muted))", minWidth: 180 }}>
+                <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 17, fontWeight: 700, color: "hsl(var(--pres-text))", minWidth: 200 }}>
                   {t.tier}
                 </span>
 
-                {/* You Pay label */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "hsl(var(--pres-text-dim))" }}>
+                {/* You Pay */}
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
                   You pay
                 </span>
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 100 }}>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 110 }}>
                   {t.price}
                 </span>
 
                 {/* Arrow → */}
-                <ArrowRight size={18} style={{ color: "hsl(var(--pres-accent) / 0.4)", flexShrink: 0 }} />
+                <ArrowRight size={20} style={{ color: "hsl(var(--pres-accent) / 0.5)", flexShrink: 0 }} />
 
                 {/* FREE bonus badge */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "hsl(var(--pres-text-dim))" }}>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
                   You get
                 </span>
                 <span
                   className="rounded-full flex items-center gap-2"
                   style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 15,
+                    fontFamily: "'Ubuntu', sans-serif",
+                    fontSize: 17,
                     fontWeight: 700,
-                    color: "hsl(130 60% 40%)",
-                    background: "hsl(130 60% 40% / 0.12)",
-                    padding: "4px 14px",
+                    color: "hsl(130 60% 45%)",
+                    background: "hsl(130 60% 40% / 0.14)",
+                    padding: "6px 18px",
                   }}
                 >
-                  <Gift size={13} style={{ color: "hsl(130 60% 40%)" }} />
+                  <Gift size={15} style={{ color: "hsl(130 60% 45%)" }} />
                   {t.bonus} FREE
                 </span>
 
@@ -185,11 +194,11 @@ export default function PremiumExpertSlideV2() {
                   className="rounded-full ml-auto"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight: 600,
                     color: "hsl(var(--pres-text-dim))",
-                    background: "hsl(var(--pres-accent) / 0.08)",
-                    padding: "3px 10px",
+                    background: "hsl(var(--pres-accent) / 0.1)",
+                    padding: "4px 12px",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -198,7 +207,7 @@ export default function PremiumExpertSlideV2() {
 
                 {/* Limited badge for Starter */}
                 {(t as any).limited && (
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "hsl(0 80% 55%)", fontWeight: 700, whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "hsl(0 80% 55%)", fontWeight: 700, whiteSpace: "nowrap" }}>
                     ⏳ 2 months only
                   </span>
                 )}
@@ -206,15 +215,6 @@ export default function PremiumExpertSlideV2() {
             ))}
           </div>
         </motion.div>
-
-        {/* Bottom tagline */}
-        <motion.p
-          {...fade(9)}
-          className="absolute top-[960px] left-0 right-0 text-center z-10"
-          style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, color: "hsl(var(--pres-text-dim))", fontStyle: "italic" }}
-        >
-          "Your investment covers the developer — Alim's expert guidance is our gift to you."
-        </motion.p>
       </div>
     </ScaledSlide>
   );
