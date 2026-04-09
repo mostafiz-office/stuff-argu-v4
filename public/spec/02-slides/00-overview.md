@@ -1,54 +1,37 @@
-# Slides — Overview
+# 02-Slides — Overview
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09
-
----
-
-## Purpose
-
-Per-slide specifications for the 11-slide RiseUp Asia pricing deck. Each spec documents layout coordinates, content data, animation timing, and component dependencies.
+**Scope:** 11 active pricing deck slides (from `Index.tsx`)
 
 ---
 
-## Slide Order (as rendered in Index.tsx)
+## Slide Index
 
-| # | Spec File | Component | Description |
-|---|-----------|-----------|-------------|
-| 01 | [01-cover-v3.md](./01-cover-v3.md) | `PricingCoverV3` | Bold cover — hero photo, hover cards, testimonials |
-| 02 | [02-cover-v1.md](./02-cover-v1.md) | `PricingCoverV1` | Minimal cover — floating badges, photo, testimonials |
-| 03 | [03-pricing-tiers.md](./03-pricing-tiers.md) | `PricingTiersSlide` | 3-column tier card overview with pricing |
-| 04 | [04-feature-comparison.md](./04-feature-comparison.md) | `TierDetailSlide` | 4-column feature comparison table with scroll |
-| 05 | [05-premium-expert.md](./05-premium-expert.md) | `PremiumExpertSlideV2` | Alim expert bonus value breakdown |
-| 06 | [06-cost-savings.md](./06-cost-savings.md) | `PricingSavingsSlide` | US vs RiseUp cost comparison with animated bars |
-| 07 | [07-whats-included.md](./07-whats-included.md) | `WhatsIncludedSlide` | 3×2 grid of included guarantees |
-| 08 | [08-how-it-works.md](./08-how-it-works.md) | `PricingHowItWorksSlide` | 4-step timeline process |
-| 09 | [09-starter-tier-detail.md](./09-starter-tier-detail.md) | `StarterTierDetailSlide` | Starter tier feature checklist table |
-| 10 | [10-starter-tier-v9.md](./10-starter-tier-v9.md) | `StarterTierSlideV9` | Starter risk reversal — pricing card + guarantees |
-| 11 | [11-cta.md](./11-cta.md) | `PricingCTASlide` | Call-to-action with QR code and contact |
-
----
-
-## Cover Variant System
-
-Slides 01 and 02 are **cover variants** — only one is shown per session:
-
-- `?cover=1` → PricingCoverV3 (Bold)
-- `?cover=2` → PricingCoverV1 (Minimal)
-- No param → Random selection (50/50)
+| # | Folder | Component | Purpose |
+|---|--------|-----------|---------|
+| 01 | [01-cover-v3/](01-cover-v3/) | `PricingCoverV3` | Bold hero cover with hover cards |
+| 02 | [02-cover-v1/](02-cover-v1/) | `PricingCoverV1` | Clean minimal cover with floating badges |
+| 03 | [03-pricing-tiers/](03-pricing-tiers/) | `PricingTiersSlide` | Three-column tier card overview |
+| 04 | [04-feature-comparison/](04-feature-comparison/) | `TierDetailSlide` | 4-column scrollable feature table |
+| 05 | [05-premium-expert/](05-premium-expert/) | `PremiumExpertSlideV2` | Alim expert oversight bonus |
+| 06 | [06-cost-savings/](06-cost-savings/) | `PricingSavingsSlide` | US vs RiseUp rate bars |
+| 07 | [07-whats-included/](07-whats-included/) | `WhatsIncludedSlide` | 3×2 guarantee card grid |
+| 08 | [08-how-it-works/](08-how-it-works/) | `PricingHowItWorksSlide` | 4-step timeline |
+| 09 | [09-starter-tier-detail/](09-starter-tier-detail/) | `StarterTierDetailSlide` | Starter feature checklist |
+| 10 | [10-starter-tier-v9/](10-starter-tier-v9/) | `StarterTierSlideV9` | Starter risk-reversal conversion |
+| 11 | [11-cta/](11-cta/) | `PricingCTASlide` | Final CTA with QR code |
 
 ---
 
-## Shared Structure
+## Per-Slide File Convention
 
-Every slide follows this component hierarchy:
+Each slide folder contains:
 
-```tsx
-<ScaledSlide>
-  <div className="slide-dark-bg relative w-full h-full overflow-hidden">
-    <SlideHeader />
-    {/* Background effects (z-[1]) */}
-    {/* Content (z-10) */}
-  </div>
-</ScaledSlide>
-```
+| File | Scope |
+|------|-------|
+| `00-overview.md` | Purpose, component reference, sub-spec index |
+| `01-layout.md` | Zone map, absolute positions, z-index stack |
+| `02-content-data.md` | All text, data tables, card content |
+| `03-animations.md` | Entry sequence, hover effects, loops |
+| `04-visual-spec.md` | Typography, colors, card/row styling |
+| `05-dependencies.md` | Components, icons, assets |
+| `99-consistency-report.md` | Audit status, drift checks |
