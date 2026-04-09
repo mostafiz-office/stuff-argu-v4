@@ -120,7 +120,7 @@ export default function StarterTierSlideV9() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
 
-              <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+              
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
