@@ -1,0 +1,9 @@
+{
+  "slide":"11","component":"PricingCTASlide",
+  "label":"Ready to Start?",
+  "headline":{"line1":"Let's Build Your","line2":"Dream Team"},
+  "body":"Schedule a 15-minute call. We'll match you with the right talent within days.",
+  "cta":{"text":"Schedule a Call","url":"https://client.rasia.pro/hiring-v1","icon":"CalendarCheck"},
+  "contact":{"email":"contact@riseup-asia.com","phone":"+1 (567) 978 1833"},
+  "qr":{"image":"qr-code.png","caption":"Scan to connect"}
+}

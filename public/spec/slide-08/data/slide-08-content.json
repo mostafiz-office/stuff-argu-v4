@@ -1,0 +1,10 @@
+{
+  "slide":"08","component":"PricingHowItWorksSlide",
+  "title":"How It Works","subtitle":"From first call to productive developer — in under 2 weeks.",
+  "steps":[
+    {"icon":"MessageSquare","step":"01","title":"Discovery Call","desc":"Share your requirements, tech stack, and team culture. We'll recommend the right tier.","time":"Day 1"},
+    {"icon":"UserCheck","step":"02","title":"7-Stage Vetting","desc":"We present candidates who passed our 7-stage assessment. You interview & select.","time":"As fast as 20 min"},
+    {"icon":"Rocket","step":"03","title":"Onboarding","desc":"Your new team member joins your tools, attends standups, and starts contributing.","time":"Day 6–14"},
+    {"icon":"HeartHandshake","step":"04","title":"Ongoing Support","desc":"Continuous performance monitoring, monthly check-ins, and scaling as needed.","time":"Ongoing"}
+  ]
+}

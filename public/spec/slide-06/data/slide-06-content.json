@@ -1,0 +1,12 @@
+{
+  "slide":"06","component":"PricingSavingsSlide",
+  "headline":{"line1":"Get Up To","line2":"4× Value"},
+  "body":"Compare the value you receive: more output, more expertise than US market alternatives.",
+  "metric":{"value":"4×","label":"More Value","sub":"vs. hiring directly in the US"},
+  "comparisons":[
+    {"role":"Starter Developer","tier":"Tier 1","us":"$6,000–$8,000","riseup":"$1,900","saving":"Up to 76%","barRiseup":24},
+    {"role":"Mid-Level Developer","tier":"Tier 2","us":"$10,000–$15,000","riseup":"$4,299","saving":"Up to 71%","barRiseup":29},
+    {"role":"Skilled Expert","tier":"Tier 3.A","us":"$18,000–$25,000","riseup":"$6,800–$8,000","saving":"Up to 68%","barRiseup":32},
+    {"role":"Tech Leadership","tier":"Tier 3.B","us":"$22,000–$30,000","riseup":"$7,500–$10,000","saving":"Up to 67%","barRiseup":33}
+  ]
+}
