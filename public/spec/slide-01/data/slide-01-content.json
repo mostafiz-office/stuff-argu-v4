@@ -1,0 +1,59 @@
+{
+  "slide": "01",
+  "component": "PricingCoverV3",
+  "title": "Cover V3 — Bold Statement",
+  "category": {
+    "label": "Staff Augmentation",
+    "url": "riseup-asia.com",
+    "icon": "Users"
+  },
+  "headline": {
+    "line1": "<accent>Elite</accent> Engineers",
+    "line2": "On Demand"
+  },
+  "body": "Pre-vetted <strong>top 5% engineers</strong> ready to join your team. No recruitment delays. No hidden fees.",
+  "keywords": [
+    { "label": "Top 5% Talent" },
+    { "label": "Hire in 20 Min" },
+    { "label": "7-Stage Vetted" },
+    { "label": "60% Cost Savings" }
+  ],
+  "hoverCards": [
+    {
+      "title": "<accent>20+ Years</accent> in Software Engineering",
+      "hoverText": "Two decades of hands-on experience across startups, enterprises, and everything in between — from architecture to deployment."
+    },
+    {
+      "title": "Led <accent>50+ Enterprise</accent> Projects",
+      "hoverText": "From Fortune 500 platforms to high-growth SaaS — proven delivery across healthcare, fintech, e-commerce, and more."
+    },
+    {
+      "title": "<accent>Chief Software Engineer</accent> & Your Dedicated Expert",
+      "hoverText": "Not a manager watching from the sidelines — Alim reviews your code, guides architecture, and mentors your developer directly.",
+      "fontSize": 20
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "Konstantinos P.",
+      "title": "Senior Serverless Engineer",
+      "quote": "\"Solid and high quality work... the smoothest on-boarding process I have had in my whole career.\"",
+      "image": "konstantinos-p.png",
+      "x": 70,
+      "y": 860
+    },
+    {
+      "name": "Claudio C.",
+      "title": "Engineering Leader | AI-Powered Platforms",
+      "quote": "\"A skillful professional and kind communicator.\"",
+      "image": "claudio-c.png",
+      "x": 1200,
+      "y": 120
+    }
+  ],
+  "cta": {
+    "primary": { "text": "Explore Plans", "icon": "ArrowRight" },
+    "secondary": { "text": "View Tiers", "icon": "Sparkles" }
+  },
+  "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+}
