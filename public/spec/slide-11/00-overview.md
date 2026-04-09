@@ -1,4 +1,4 @@
-# Slide 11 — Call to Action
-**Component**: `PricingCTASlide` → `src/slides/PricingCTASlide.tsx`
+# Slide 11 — Starter Tier (Risk Reversal)
+**Component**: `StarterTierSlideV9` → `src/slides/StarterTierSlideV9.tsx`
 ## Overview
-Final CTA slide. Centered layout: left has "Ready to Start?" label, headline "Let's Build Your Dream Team", body text, CTA button "Schedule a Call", and contact info (email + phone). Right has QR code. Dot pattern + large glow background.
+Two-column conversion slide: Left has full Starter pricing card with features, RocketAnimation, and Alim expert upsell section. Right has 3 metric cards with tooltips, 3 guarantee cards, and urgency CTA.

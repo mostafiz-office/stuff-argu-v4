@@ -30,5 +30,6 @@
 | 26 | `slide-07/` | What's Included |
 | 27 | `slide-08/` | How It Works |
 | 28 | `slide-09/` | Starter Tier Detail |
-| 29 | `slide-10/` | Starter Risk Reversal |
-| 30 | `slide-11/` | CTA |
+| 29 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
+| 30 | `slide-11/` | Starter Risk Reversal |
+| 31 | `slide-12/` | CTA |

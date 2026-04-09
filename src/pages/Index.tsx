@@ -15,6 +15,7 @@ import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
 import StarterTierDetailSlide from "@/slides/StarterTierDetailSlide";
+import StarterTierDetailSlideV2 from "@/slides/StarterTierDetailSlideV2";
 import PricingCTASlide from "@/slides/PricingCTASlide";
 
 const coverVariants = [
@@ -48,6 +49,7 @@ export default function Index() {
       
       
       <StarterTierDetailSlide key="starter-detail" />,
+      <StarterTierDetailSlideV2 key="starter-detail-v2" />,
       <StarterTierSlideV9 key="10d" />,
       <PricingCTASlide key="12" />,
     ];

@@ -1,1 +1,1 @@
-# Slide 11 — See `data/slide-11-content.json`.
+# Slide 10 — See `data/slide-10-content.json`.
