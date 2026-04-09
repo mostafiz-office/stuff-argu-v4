@@ -442,6 +442,59 @@ function fetchUser(id: string): Promise<UserResponse> { ... }
 2. **Logger variadic params** — `map[string]any` for structured fields (internal only)
 3. **Third-party interfaces** — when a library requires `interface{}`
 
+### Discriminated Unions — Named Interfaces Required
+
+Every variant in a discriminated union **must** be a named interface — inline `{ type: ...; payload: ... }` blocks are prohibited. Enum values must use **PascalCase** and be accessed via **dot notation** only.
+
+| Rule | ❌ Prohibited | ✅ Required |
+|------|-------------|------------|
+| Union variants | Inline `{ type: ...; }` | Named interface per variant |
+| Enum values | `ADD_TOAST`, `REMOVE_TOAST` | `AddToast`, `RemoveToast` |
+| Enum access | `ActionType["AddToast"]` | `ActionType.AddToast` |
+
+```typescript
+// ❌ PROHIBITED — inline types in union
+type ToastAction =
+  | { type: "ADD_TOAST"; toast: ToasterToast }
+  | { type: "REMOVE_TOAST"; toastId?: string };
+
+// ✅ REQUIRED — named interfaces with PascalCase enum
+enum ActionType {
+  AddToast = "AddToast",
+  UpdateToast = "UpdateToast",
+  DismissToast = "DismissToast",
+  RemoveToast = "RemoveToast",
+}
+
+interface AddToastAction {
+  type: ActionType.AddToast;
+  toast: ToasterToast;
+}
+
+interface UpdateToastAction {
+  type: ActionType.UpdateToast;
+  toast: Partial<ToasterToast>;
+}
+
+interface DismissToastAction {
+  type: ActionType.DismissToast;
+  toastId?: string;
+}
+
+interface RemoveToastAction {
+  type: ActionType.RemoveToast;
+  toastId?: string;
+}
+
+type ToastAction =
+  | AddToastAction
+  | UpdateToastAction
+  | DismissToastAction
+  | RemoveToastAction;
+```
+
+> **Rule:** If you're writing `| { type: ... }` inline — stop and extract a named interface.
+
 ---
 
 ## 9. Parallel Execution
@@ -655,6 +708,7 @@ useQuery({
 - [ ] Go errors use `apperror` with stack trace
 - [ ] Independent async calls use `Promise.all` / goroutines
 - [ ] No `any`/`interface{}`/`unknown` in business logic
+- [ ] Discriminated unions use named interfaces — no inline variants
 - [ ] DB tables/columns/keys in PascalCase
 - [ ] Primary keys: `{TableName}Id` + `INTEGER AUTOINCREMENT`
 - [ ] SQL parameterized — no string concatenation

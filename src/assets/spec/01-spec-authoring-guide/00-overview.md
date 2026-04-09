@@ -341,15 +341,56 @@ See [07-memory-folder-guide.md](./07-memory-folder-guide.md) for the complete me
 
 ## Quick Start for AI Agents
 
-1. **Read this overview** to understand the file inventory, scoring, and conventions
-2. **Read [01-folder-structure.md](./01-folder-structure.md)** for the tree layout
-3. **Read [02-naming-conventions.md](./02-naming-conventions.md)** for naming rules
-4. **Read [03-required-files.md](./03-required-files.md)** for mandatory file checklist
-5. **Choose a template**: [04-cli-module-template.md](./04-cli-module-template.md), [05-app-project-template.md](./05-app-project-template.md), or [06-non-cli-module-template.md](./06-non-cli-module-template.md)
-6. **Check [09-exceptions.md](./09-exceptions.md)** for edge cases before creating files
-7. **Score the module** — set AI Confidence and Ambiguity percentages in `00-overview.md`
-8. **Validate cross-references** — run the link scanner and fix any broken links
-9. **Check `.lovable/memories/`** — read relevant memories before writing new specs
+1. **Read [`folder-structure-root.md`](../folder-structure-root.md)** — understand the required root folder structure first
+2. **Read this overview** to understand the file inventory, scoring, and conventions
+3. **Read [01-folder-structure.md](./01-folder-structure.md)** for the tree layout
+4. **Read [02-naming-conventions.md](./02-naming-conventions.md)** for naming rules
+5. **Read [03-required-files.md](./03-required-files.md)** for mandatory file checklist
+6. **Choose a template**: [04-cli-module-template.md](./04-cli-module-template.md), [05-app-project-template.md](./05-app-project-template.md), or [06-non-cli-module-template.md](./06-non-cli-module-template.md)
+7. **Check [09-exceptions.md](./09-exceptions.md)** for edge cases before creating files
+8. **Score the module** — set AI Confidence and Ambiguity percentages in `00-overview.md`
+9. **Validate cross-references** — run the link scanner and fix any broken links
+10. **Check `.lovable/memories/`** — read relevant memories before writing new specs
+
+---
+
+## Folder Structure Enforcement
+
+When asked to "follow the spec authoring guideline and fix the folder structure," an AI agent MUST perform these steps in order:
+
+### Step 1 — Verify Root Structure
+
+1. Read [`folder-structure-root.md`](../folder-structure-root.md)
+2. Confirm all seven required root folders (01–07) exist
+3. Confirm they are correctly numbered and named
+4. If any are missing, create them with at least `00-overview.md`
+
+### Step 2 — Verify Folder Ordering
+
+1. No folders may exist before the required base folders (01–07)
+2. All additional folders must use numbers 08 and above
+3. Numbering must be sequential (gaps are acceptable for historical reasons)
+
+### Step 3 — Verify Naming Conventions
+
+1. All folders use lowercase kebab-case: `{NN}-{kebab-case-name}/`
+2. All files use lowercase kebab-case: `{NN}-{kebab-case-name}.md`
+3. No spaces, underscores, or camelCase anywhere
+
+### Step 4 — Verify Required Files
+
+1. Every folder has `00-overview.md`
+2. Top-level folders have `99-consistency-report.md`
+3. Root `spec/` has `00-overview.md`, `folder-structure-root.md`, and `99-consistency-report.md`
+
+### Step 5 — Update Cross-References
+
+1. If any folder was renamed, renumbered, or moved, grep for all old references
+2. Update every broken reference to the new path
+3. Run the link scanner: `node scripts/generate-dashboard-data.cjs`
+4. Confirm zero broken links
+
+> **This process is NOT optional.** If inconsistencies exist, they MUST be fixed before any new spec work begins.
 
 ---
 
@@ -366,9 +407,9 @@ See [07-memory-folder-guide.md](./07-memory-folder-guide.md) for the complete me
 
 | Reference | Location |
 |-----------|----------|
+| Folder Structure Root | `../folder-structure-root.md` |
 | Master Index | `../00-overview.md` |
-| Folder Structure Guideline | `../00-folder-structure-guideline.md` |
-| Coding Guidelines | `../03-coding-guidelines/00-overview.md` |
+| Coding Guidelines | `../02-coding-guidelines/00-overview.md` |
 | Memory Index | `../../.lovable/memories/00-memory-index.md` |
 | Reliability Reports | `../validation-reports/` |
 | Required Files | `./03-required-files.md` |

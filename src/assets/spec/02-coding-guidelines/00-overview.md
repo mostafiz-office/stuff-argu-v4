@@ -24,18 +24,7 @@ Central hub for all coding standards and guidelines across Go, TypeScript, PHP, 
 
 ## Consolidation Status
 
-✅ **Complete.** All unique content from 5 legacy sources has been merged into `03-coding-guidelines-spec/`. Legacy folders archived in `_archive/` for reference only.
-
-### Archived Sources
-
-| Folder | Original Purpose | Status |
-|--------|-----------------|--------|
-| `_archive/01-pre-code-review-guides/` | Practical review notes | Merged → cross-language guidelines |
-| `_archive/04-coding-guidelines-wpon/` | WPOnboard format guidelines | Merged → language-specific files |
-| `_archive/05-coding-guidelines-workflowy/` | WorkFlowy master guidelines | Merged → master + AI optimization |
-| `_archive/06-enum-spec/` | Go enum specification | Merged → Go enum specification |
-
-> **Do not reference archived files in new specs.** All canonical paths are under `03-coding-guidelines-spec/`.
+✅ **Complete.** All unique content from 5 legacy sources has been merged into `03-coding-guidelines-spec/`.
 
 ---
 
@@ -43,7 +32,6 @@ Central hub for all coding standards and guidelines across Go, TypeScript, PHP, 
 
 - [Spec Authoring Guide](../01-spec-authoring-guide/00-overview.md)
 - [Error Management Spec](../03-error-manage-spec/04-error-manage-spec/00-overview.md)
-- Consolidation Plan — see `_archive/consolidation-plan.md` *(pending creation)*
 
 ---
 
