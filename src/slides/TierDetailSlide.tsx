@@ -1,7 +1,8 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, X } from "lucide-react";
+import { Award, CheckCircle, X, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -35,6 +36,20 @@ const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; 
 ];
 
 export default function TierDetailSlide() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollDown, setCanScrollDown] = useState(true);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const check = () => {
+      setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+    };
+    check();
+    el.addEventListener("scroll", check);
+    return () => el.removeEventListener("scroll", check);
+  }, []);
+
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
@@ -152,7 +167,8 @@ export default function TierDetailSlide() {
           </div>
 
           {/* Feature rows — scrollable */}
-          <div className="flex flex-col flex-1 overflow-y-auto pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--pres-accent) / 0.3) transparent" }}>
+          <div className="relative flex-1">
+            <div ref={scrollRef} className="absolute inset-0 overflow-y-auto pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--pres-accent) / 0.3) transparent" }}>
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
@@ -207,6 +223,37 @@ export default function TierDetailSlide() {
                 })}
               </motion.div>
             ))}
+            </div>
+            {/* Fade gradient + scroll indicator */}
+            {canScrollDown && (
+              <div
+                className="absolute bottom-0 left-0 right-0 flex flex-col items-center pointer-events-none"
+                style={{ zIndex: 5 }}
+              >
+                <div
+                  className="w-full"
+                  style={{
+                    height: 60,
+                    background: "linear-gradient(to top, hsl(var(--pres-bg)), hsl(var(--pres-bg) / 0))",
+                  }}
+                />
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  className="flex items-center gap-2 -mt-6"
+                  style={{
+                    color: "hsl(var(--pres-accent))",
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 16,
+                    fontWeight: 600,
+                  }}
+                >
+                  <ChevronDown size={20} />
+                  Scroll for more
+                  <ChevronDown size={20} />
+                </motion.div>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
