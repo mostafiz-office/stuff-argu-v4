@@ -168,7 +168,7 @@ export default function TierDetailSlide() {
 
           {/* Feature rows — scrollable */}
           <div className="relative flex-1">
-            <div ref={scrollRef} className="absolute inset-0 overflow-y-scroll pr-1" style={{ scrollbarWidth: "auto", scrollbarColor: "hsl(var(--pres-accent) / 0.5) hsl(var(--pres-accent) / 0.08)" }}>
+            <div ref={scrollRef} className="absolute inset-0 overflow-y-scroll pr-1 tier-scroll" style={{ scrollbarWidth: "auto", scrollbarColor: "hsl(var(--pres-accent) / 0.45) hsl(var(--pres-accent) / 0.08)" }}>
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
