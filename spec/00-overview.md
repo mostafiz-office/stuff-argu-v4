@@ -1,47 +1,41 @@
-# RiseUp Asia Presentation
+# Specification Root
 
 **Version:** 1.0.0  
-**Updated:** 2026-04-04  
-**Status:** Active  
+**Updated:** 2026-04-05  
 **AI Confidence:** Production-Ready  
 **Ambiguity:** None
 
 ---
 
-## Overview
+## Purpose
 
-This is the specification for the **RiseUp Asia Presentation** — a single-page React web application that renders an interactive, animated slide deck for RiseUp Asia's client-facing sales pitch. The app is fully client-side, built on React 18, Vite 5, Tailwind CSS, and Framer Motion. Content is driven by a centralized JSON configuration, making it easy to customize per-client without code changes.
-
-The presentation includes 40+ slides covering company introduction, leadership, services, case studies, testimonials, pricing, and contact information. It supports PDF and image export, animated slide transitions, responsive scaling, and asset preloading.
+Root index for the entire specification tree. Each top-level folder contains a domain-specific specification module with its own overview, acceptance criteria, and consistency report.
 
 ---
 
-## Keywords
+## Module Inventory
 
-`presentation` · `slide-deck` · `react` · `vite` · `framer-motion` · `tailwindcss` · `pdf-export` · `html2canvas` · `jspdf` · `riseup-asia` · `sales-deck` · `client-side`
+| # | Module | Description |
+|---|--------|-------------|
+| 01 | [Spec Authoring Guide](./01-spec-authoring-guide/00-overview.md) | Rules for writing and maintaining spec documents |
+| 02 | [Coding Guidelines](./02-coding-guidelines/00-overview.md) | Cross-language coding standards (Go, TS, PHP, Rust, C#) |
+| 03 | [Error Management](./03-error-manage-spec/04-error-manage-spec/00-overview.md) | Error capture, modal UI, and resolution workflows |
+| 04 | [Split DB Architecture](./04-split-db-architecture/00-overview.md) | SQLite partitioning and migration patterns |
+| 05 | [Seedable Config](./05-seedable-config-architecture/00-overview.md) | Configuration seeding and feature management |
+| 06 | [Design System](./06-design-system/00-overview.md) | Theme variables, typography, spacing, and component patterns |
+| 07 | [Docs Viewer UI](./07-docs-viewer-ui/00-overview.md) | Specification viewer React application |
+| 08 | [Code Block System](./08-code-block-system/00-overview.md) | Rich code block rendering — syntax highlighting, interactions, styling |
 
 ---
 
-## Scoring
+## Supporting Files
 
-| Metric | Value |
-|--------|-------|
-| AI Confidence | Production-Ready |
-| Ambiguity | None |
-| Health Score | 100/100 |
-
----
-
-## Files
-
-| # | File | Category | Description |
-|---|------|----------|-------------|
-| 00 | [00-overview.md](./00-overview.md) | Overview | This file — master index |
-| 01 | [01-fundamentals.md](./01-fundamentals.md) | Architecture | Core architecture, tech stack, design system, data flow |
-| 02 | [02-features/00-overview.md](./02-features/00-overview.md) | Features | Feature index and specifications |
-| 03 | [03-issues/00-overview.md](./03-issues/00-overview.md) | Issues | Issue tracking index |
-| 97 | [97-acceptance-criteria.md](./97-acceptance-criteria.md) | Testing | Testable acceptance criteria |
-| 99 | [99-consistency-report.md](./99-consistency-report.md) | Meta | Structural health report |
+| File | Purpose |
+|------|---------|
+| [folder-structure-root.md](./folder-structure-root.md) | Mandatory root folder structure — AI instruction (read first) |
+| [spec-index.md](./spec-index.md) | Auto-generated flat index of all spec files |
+| [health-dashboard.md](./health-dashboard.md) | Spec tree health metrics and broken link report |
+| [dashboard-data.json](./dashboard-data.json) | Machine-readable health data |
 
 ---
 
@@ -49,6 +43,7 @@ The presentation includes 40+ slides covering company introduction, leadership, 
 
 | Reference | Location |
 |-----------|----------|
-| Spec Authoring Guide | `src/assets/spec/01-spec-authoring-guide/00-overview.md` |
-| Coding Guidelines | `src/assets/spec/02-coding-guidelines/00-overview.md` |
-| Presentation Config | `src/data/presentation-config.json` |
+| Spec Authoring Guide | `./01-spec-authoring-guide/00-overview.md` |
+| Coding Guidelines | `./02-coding-guidelines/00-overview.md` |
+| Error Management | `./03-error-manage-spec/00-overview.md` |
+| Design System | `./06-design-system/00-overview.md` |

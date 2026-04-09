@@ -1,19 +1,7 @@
-# Consistency Report — RiseUp Asia Presentation
+# Consistency Report: Spec Root
 
 **Version:** 1.0.0  
-**Last Updated:** 2026-04-04
-
----
-
-## Module Health
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| `99-consistency-report.md` present | ✅ |
-| Lowercase kebab-case naming | ✅ |
-| Unique numeric sequence prefixes | ✅ |
-
+**Generated:** 2026-04-05  
 **Health Score:** 100/100 (A+)
 
 ---
@@ -22,31 +10,33 @@
 
 | # | File | Status |
 |---|------|--------|
-| 00 | `00-overview.md` | ✅ Present |
-| 01 | `01-fundamentals.md` | ✅ Present |
-| 02 | `02-features/00-overview.md` | ✅ Present |
-| 02-01 | `02-features/01-presentation-engine/` | ✅ Present (3 files) |
-| 02-02 | `02-features/02-slide-system/` | ✅ Present (3 files) |
-| 02-03 | `02-features/03-export-system/` | ✅ Present (3 files) |
-| 02-04 | `02-features/04-asset-preloading/` | ✅ Present (1 file) |
-| 02-05 | `02-features/05-configuration-system/` | ✅ Present (1 file) |
-| 03 | `03-issues/00-overview.md` | ✅ Present |
-| 97 | `97-acceptance-criteria.md` | ✅ Present |
-| 99 | `99-consistency-report.md` | ✅ Present |
-
-**Total:** 17 files
+| 1 | `00-overview.md` | ✅ Present |
+| 2 | `spec-index.md` | ✅ Present |
+| 3 | `health-dashboard.md` | ✅ Present |
+| 4 | `dashboard-data.json` | ✅ Present |
+| 5 | `99-consistency-report.md` | ✅ Present |
 
 ---
 
-## Cross-Reference Validation
+## Top-Level Modules
 
-All internal links verified valid. ✅
+| Module | Overview | Consistency Report |
+|--------|----------|--------------------|
+| `01-spec-authoring-guide/` | ✅ | ✅ |
+| `02-coding-guidelines/` | ✅ | ✅ |
+| `03-error-manage-spec/` | ✅ (nested) | ✅ (nested) |
+| `04-split-db-architecture/` | ✅ | ✅ |
+| `05-seedable-config-architecture/` | ✅ | ✅ |
+| `06-design-system/` | ✅ | ✅ |
+| `07-docs-viewer-ui/` | ✅ | ✅ |
 
 ---
 
-## Naming Compliance
+## Summary
 
-All files and folders use lowercase kebab-case with numeric prefixes. ✅
+- **Errors:** 0
+- **Warnings:** 0
+- **Health Score:** 100/100 (A+)
 
 ---
 
@@ -54,4 +44,4 @@ All files and folders use lowercase kebab-case with numeric prefixes. ✅
 
 | Date | Version | Action |
 |------|---------|--------|
-| 2026-04-04 | 1.0.0 | Initial spec created following app project template |
+| 2026-04-05 | 1.0.0 | Initial root consistency report |
