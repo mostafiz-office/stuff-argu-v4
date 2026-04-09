@@ -114,56 +114,101 @@ export default function PremiumExpertSlideV2() {
           ))}
         </div>
 
-        {/* Tier value comparison table */}
+        {/* Tier value comparison — horizontal equation rows */}
         <motion.div
           {...fade(5)}
-          className="absolute left-[120px] top-[720px] right-[120px] z-10 rounded-2xl"
+          className="absolute left-[120px] top-[700px] right-[120px] z-10 rounded-2xl"
           style={{
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
-            padding: "28px 32px",
+            padding: "24px 36px",
           }}
         >
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-5">
             <Sparkles size={16} style={{ color: "hsl(var(--pres-accent))" }} />
-            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 700, color: "hsl(var(--pres-accent))", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(var(--pres-accent))", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Total Value You Receive
             </p>
           </div>
 
-          <div className="grid grid-cols-4 gap-4">
+          <div className="flex flex-col gap-2">
             {tierValues.map((t, i) => (
               <motion.div
                 key={t.tier}
                 {...fade(i + 6)}
-                className="rounded-xl"
+                className="flex items-center rounded-xl"
                 style={{
-                  background: "hsl(var(--pres-accent) / 0.05)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                  padding: "14px 16px",
+                  background: "hsl(var(--pres-accent) / 0.04)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.1)",
+                  padding: "12px 20px",
+                  gap: 16,
                 }}
               >
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 600, color: "hsl(var(--pres-text-dim))", marginBottom: 6 }}>
+                {/* Tier name */}
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 600, color: "hsl(var(--pres-text-muted))", minWidth: 200 }}>
                   {t.tier}
-                </p>
-                <div className="flex items-center gap-2 mb-1">
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))" }}>{t.price}</span>
-                  <span style={{ fontSize: 14, color: "hsl(var(--pres-text-dim))" }}>+</span>
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 600, color: "hsl(var(--pres-accent))" }}>{t.bonus} bonus</span>
-                </div>
-                <div className="flex items-center justify-between mt-2">
-                  <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-text))" }}>{t.total}</span>
-                  <span
-                    className="rounded-full px-2 py-0.5"
-                    style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, fontWeight: 700, color: "hsl(var(--pres-accent))", background: "hsl(var(--pres-accent) / 0.12)" }}
-                  >
-                    {t.savings}
-                  </span>
-                </div>
+                </span>
+
+                {/* You Pay */}
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 500, color: "hsl(var(--pres-text))", minWidth: 110 }}>
+                  {t.price}
+                </span>
+
+                {/* Plus sign */}
+                <span style={{ fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-accent) / 0.6)" }}>+</span>
+
+                {/* Bonus pill */}
+                <span
+                  className="rounded-full"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    color: "hsl(var(--pres-accent))",
+                    background: "hsl(var(--pres-accent) / 0.14)",
+                    padding: "4px 16px",
+                    minWidth: 130,
+                    textAlign: "center",
+                  }}
+                >
+                  {t.bonus} bonus
+                </span>
+
+                {/* Arrow */}
+                <ArrowRight size={22} style={{ color: "hsl(var(--pres-accent) / 0.5)", flexShrink: 0 }} />
+
+                {/* Total */}
+                <span style={{
+                  fontFamily: "'Ubuntu', sans-serif",
+                  fontSize: 24,
+                  fontWeight: 800,
+                  color: "hsl(var(--pres-accent))",
+                  minWidth: 130,
+                }}>
+                  {t.total}/mo
+                </span>
+
+                {/* Hours badge */}
+                <span
+                  className="rounded-full ml-auto"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-text-dim))",
+                    background: "hsl(var(--pres-accent) / 0.08)",
+                    padding: "3px 12px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {t.savings}
+                </span>
+
+                {/* Limited badge for Starter */}
                 {(t as any).limited && (
-                  <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "hsl(0 80% 55%)", marginTop: 4, fontWeight: 600 }}>
-                    ⏳ Limited time offer
-                  </p>
+                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "hsl(0 80% 55%)", fontWeight: 700, whiteSpace: "nowrap" }}>
+                    ⏳ 2 months
+                  </span>
                 )}
               </motion.div>
             ))}
