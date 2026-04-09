@@ -14,6 +14,7 @@ import PricingHowItWorksSlide from "@/slides/PricingHowItWorksSlide";
 
 
 import StarterTierSlideV9 from "@/slides/StarterTierSlideV9";
+import StarterTierSlideV9Clone from "@/slides/StarterTierSlideV9Clone";
 import StarterTierDetailSlide from "@/slides/StarterTierDetailSlide";
 import StarterTierDetailSlideV2 from "@/slides/StarterTierDetailSlideV2";
 import PricingCTASlide from "@/slides/PricingCTASlide";
@@ -51,6 +52,7 @@ export default function Index() {
       <StarterTierDetailSlide key="starter-detail" />,
       <StarterTierDetailSlideV2 key="starter-detail-v2" />,
       <StarterTierSlideV9 key="10d" />,
+      <StarterTierSlideV9Clone key="10e" />,
       <PricingCTASlide key="12" />,
     ];
   }, [coverParam]);
