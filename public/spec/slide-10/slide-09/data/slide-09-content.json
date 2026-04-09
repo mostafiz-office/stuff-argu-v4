@@ -1,0 +1,19 @@
+{
+  "slide":"09","component":"StarterTierDetailSlide","price":"$2,499/mo",
+  "features":[
+    {"label":"Dedicated developer · 160 hrs/mo","included":true},
+    {"label":"Weekly progress reports","included":true},
+    {"label":"Daily standups","included":false},
+    {"label":"Sprint participation","included":false},
+    {"label":"Task breakdown & delegation","included":false},
+    {"label":"Team management","included":false},
+    {"label":"Architecture decisions","included":false},
+    {"label":"Project management","included":false},
+    {"label":"CTO-level oversight","included":false},
+    {"label":"Priority Slack · 24/7 SLA","included":false},
+    {"label":"QA Engineers","included":false},
+    {"label":"Alim Expert Oversight","included":"2 hrs/wk*"},
+    {"label":"Min. Developer Experience","included":"2+ yrs"},
+    {"label":"Onboarding Deposit","included":"$2K"}
+  ]
+}
