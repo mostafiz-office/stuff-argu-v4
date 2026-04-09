@@ -1,0 +1,51 @@
+{
+  "slide": "03",
+  "component": "PricingTiersSlide",
+  "title": "Choose Your Plan",
+  "subtitle": "All plans include 160 dedicated hours/month. Scale anytime.",
+  "tiers": [
+    {
+      "name": "Tier 2 — Growth",
+      "experience": "2-3+ Years Experience",
+      "price": "$4,299",
+      "per": "/mo",
+      "hours": "160 hrs/month",
+      "features": [
+        "Fluent, autonomous coder",
+        "Breaks down & delegates tasks",
+        "Full sprint participation",
+        "Daily standups & Slack access"
+      ],
+      "youtubeId": "uveR9C5CgSY"
+    },
+    {
+      "name": "Tier 3.A — Skilled",
+      "experience": "7-15+ Years Experience",
+      "price": "$6,800–$8,000",
+      "per": "/mo",
+      "hours": "160 hrs/month",
+      "features": [
+        "Best-in-class developer",
+        "Deep expertise in their stack",
+        "Manages 3-5 team members",
+        "Architecture & code quality"
+      ],
+      "bestValue": true,
+      "youtubeId": "uveR9C5CgSY"
+    },
+    {
+      "name": "Tier 3.B — Leadership",
+      "experience": "7-15+ Years Experience",
+      "price": "$7,500–$10,000",
+      "per": "/mo",
+      "hours": "160 hrs/month",
+      "features": [
+        "Project management focus",
+        "Manages up to 15 developers",
+        "CTO-level strategic oversight",
+        "24/7 SLA & priority support"
+      ],
+      "youtubeId": "uveR9C5CgSY"
+    }
+  ]
+}
