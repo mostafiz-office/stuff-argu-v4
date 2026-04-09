@@ -32,7 +32,7 @@ const features: { label: string; starter: boolean | string; growth: boolean | st
 const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color: string; bgTint: string; tagline?: string }[] = [
   { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo", color: "hsl(var(--pres-accent))", bgTint: "hsl(var(--pres-accent) / 0.06)" },
   { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 70% 45%)", bgTint: "hsl(142 70% 45% / 0.08)" },
-  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 60% 60%)", bgTint: "hsl(280 60% 60% / 0.08)", tagline: "Impossible to say no" },
+  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 60% 60%)", bgTint: "hsl(280 60% 60% / 0.08)" },
 ];
 
 export default function TierDetailSlide() {
@@ -168,7 +168,7 @@ export default function TierDetailSlide() {
 
           {/* Feature rows — scrollable */}
           <div className="relative flex-1">
-            <div ref={scrollRef} className="absolute inset-0 overflow-y-auto pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--pres-accent) / 0.3) transparent" }}>
+            <div ref={scrollRef} className="absolute inset-0 overflow-y-scroll pr-1" style={{ scrollbarWidth: "auto", scrollbarColor: "hsl(var(--pres-accent) / 0.5) hsl(var(--pres-accent) / 0.08)" }}>
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
