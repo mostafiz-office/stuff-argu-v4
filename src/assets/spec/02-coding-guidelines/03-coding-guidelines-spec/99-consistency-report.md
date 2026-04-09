@@ -54,7 +54,7 @@
 
 ## Consolidation Summary
 
-All 5 legacy sources merged into single canonical spec. 4 folders archived to `_archive/`.
+All 5 legacy sources merged into single canonical spec. Archives removed.
 
 | Phase | Status |
 |-------|--------|

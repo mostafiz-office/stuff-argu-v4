@@ -62,6 +62,8 @@
   - ❌ `func(): { text: string; store: Record<string, string> }`
   - ✅ `type ChecklistResult = { text: string; store: Record<string, string> }` → `func(): ChecklistResult`
 - `unknown` only at parse/deserialization boundaries with type guard
+- **No inline types in discriminated unions** — extract named interface per variant, use generic `TypedAction<T, P>` for shared shapes
+- **Enum values: PascalCase only** — `AddToast`, never `ADD_TOAST`; dot notation only (`ActionType.AddToast`), never index access (`ActionType["AddToast"]`)
 - `interface{}` / `any` only: SQL args, logger fields, third-party interfaces
 
 ### Go Generic Pattern — `Result[T]`

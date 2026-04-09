@@ -11,13 +11,34 @@ The `spec/` directory is the canonical location for all project specifications. 
 
 ---
 
+## ⚠️ Root Folder Structure — Mandatory Base
+
+> **AI INSTRUCTION:** Before creating, reorganizing, or validating ANY spec folder, read [`folder-structure-root.md`](../folder-structure-root.md) first. The required root folders (01–07) are fixed and mandatory.
+
+The following seven folders form the **structural anchor** of the spec system and MUST always exist in this exact order:
+
+| # | Folder | Purpose |
+|---|--------|---------|
+| 01 | `01-spec-authoring-guide/` | Meta-guide — how to write and maintain specs |
+| 02 | `02-coding-guidelines/` | Cross-language and language-specific coding standards |
+| 03 | `03-error-manage-spec/` | Error management, error codes, error architecture |
+| 04 | `04-split-db-architecture/` | Split database pattern (operational + config DBs) |
+| 05 | `05-seedable-config-architecture/` | Seedable configuration with versioning |
+| 06 | `06-design-system/` | Design system tokens, components, theming |
+| 07 | `07-docs-viewer-ui/` | Documentation viewer UI specifications |
+
+**All additional folders (CLI tools, plugins, research, etc.) MUST start at number 08 or above.** No folder may be inserted before or between the required base folders unless `folder-structure-root.md` is explicitly updated.
+
+See [`folder-structure-root.md`](../folder-structure-root.md) for the full AI instruction, validation checklist, and enforcement rules.
+
+---
+
 ## Root-Level Tree
 
 ```
 spec/
 ├── 00-overview.md                          # Master index — links every module
-├── 00-folder-structure-guideline.md        # Legacy structure guide (see this guide instead)
-├── 02-prefix-disambiguation.md            # Historical prefix duplication note
+├── folder-structure-root.md                # ← STRUCTURAL ANCHOR — read first
 ├── 99-consistency-report.md               # Root-level consistency report
 │
 ├── 01-spec-authoring-guide/                 # THIS GUIDE — how to write specs
@@ -25,7 +46,8 @@ spec/
 ├── 03-error-manage-spec/                   # Error management, codes, architecture
 ├── 04-split-db-architecture/               # Split database pattern
 ├── 05-seedable-config-architecture/        # Seedable configuration with versioning
-
+├── 06-design-system/                       # Design system tokens, components, theming
+├── 07-docs-viewer-ui/                      # Documentation viewer UI specifications
 │
 ├── 09-gsearch-cli/                         # CLI: Google/Bing search + BI suite
 ├── 10-brun-cli/                            # CLI: Build runner
