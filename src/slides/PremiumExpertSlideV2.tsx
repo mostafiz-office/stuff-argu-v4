@@ -119,7 +119,7 @@ export default function PremiumExpertSlideV2() {
           {...fade(5)}
           className="absolute left-[120px] top-[680px] z-10 rounded-2xl"
           style={{
-            width: 840,
+            width: 1148,
             background: "hsl(var(--pres-bg-surface))",
             border: "1.5px solid hsl(var(--pres-accent) / 0.25)",
             padding: "24px 32px 20px",
@@ -155,7 +155,7 @@ export default function PremiumExpertSlideV2() {
                 }}
               >
                 {/* Tier name */}
-                <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 17, fontWeight: 700, color: "hsl(var(--pres-text))", minWidth: 200 }}>
+                 <span style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 17, fontWeight: 700, color: "hsl(var(--pres-text))", minWidth: 220 }}>
                   {t.tier}
                 </span>
 
@@ -163,7 +163,7 @@ export default function PremiumExpertSlideV2() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
                   You pay
                 </span>
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 110 }}>
+                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 120 }}>
                   {t.price}
                 </span>
 

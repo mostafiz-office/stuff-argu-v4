@@ -7,7 +7,7 @@ ScaledSlide
     ├── motion.div (title block)
     ├── motion.div (Alim photo card)
     ├── div (value stat cards × 3)
-    └── motion.div (FREE bonus panel, width: 840px)
+    └── motion.div (FREE bonus panel, width: 1148px; right edge aligned to the upper "Up to $10K" card)
         ├── div (heading row: Gift icon-box + h2 "🎁 FREE Expert Bonus — Included With Every Tier")
         ├── p (subtitle: "You pay for execution. Expert oversight is included at no extra cost.")
         └── div (flex-col gap-3)
@@ -22,5 +22,6 @@ ScaledSlide
                 └── span? (⏳ limited badge, Starter only)
 ```
 ## Layout: Each tier row shows "You pay X → You get Y FREE" — NO totals shown
+## Width alignment: Bonus panel must extend from left 120px to the same right edge as the upper right value card; do not make it narrower than the card group above
 ## IMPORTANT: Never show combined totals (price + bonus) — it creates false impression that customer pays more
 ## The tagline/message is INSIDE the bonus panel header, NOT a separate footer element — prevents overlap issues
