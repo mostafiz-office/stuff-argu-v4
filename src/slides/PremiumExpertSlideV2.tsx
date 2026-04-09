@@ -16,11 +16,11 @@ const valueStats = [
   { icon: Gift, value: "Up to $10K", sub: "Monthly value — BONUS with your tier", highlight: true },
 ];
 
-const tierValues = [
-  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$5,000", total: "$6,900", savings: "2 hrs/wk · 2 months only", limited: true },
-  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$5,000", total: "$9,299", savings: "2 hrs/wk" },
-  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$7,500", total: "$14,300", savings: "3 hrs/wk" },
-  { tier: "Tier 3.B — Leadership", price: "$7,500/mo", bonus: "$10,000", total: "$17,500", savings: "4 hrs/wk" },
+const tierBonuses = [
+  { tier: "Tier 1 — Starter", price: "$1,900/mo", bonus: "$5,000/mo", hours: "2 hrs/wk", limited: true },
+  { tier: "Tier 2 — Growth", price: "$4,299/mo", bonus: "$5,000/mo", hours: "2 hrs/wk" },
+  { tier: "Tier 3.A — Skilled", price: "$6,800/mo", bonus: "$7,500/mo", hours: "3 hrs/wk" },
+  { tier: "Tier 3.B — Leadership", price: "$7,500/mo", bonus: "$10,000/mo", hours: "4 hrs/wk" },
 ];
 
 export default function PremiumExpertSlideV2() {
@@ -114,7 +114,7 @@ export default function PremiumExpertSlideV2() {
           ))}
         </div>
 
-        {/* Tier value comparison — horizontal equation rows */}
+        {/* FREE Bonus per tier — no totals, no confusion */}
         <motion.div
           {...fade(5)}
           className="absolute left-[120px] top-[700px] right-[120px] z-10 rounded-2xl"
@@ -125,14 +125,14 @@ export default function PremiumExpertSlideV2() {
           }}
         >
           <div className="flex items-center gap-2 mb-5">
-            <Sparkles size={16} style={{ color: "hsl(var(--pres-accent))" }} />
+            <Gift size={16} style={{ color: "hsl(var(--pres-accent))" }} />
             <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(var(--pres-accent))", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Total Value You Receive
+              Free Expert Bonus Included With Every Tier
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            {tierValues.map((t, i) => (
+            {tierBonuses.map((t, i) => (
               <motion.div
                 key={t.tier}
                 {...fade(i + 6)}
@@ -149,43 +149,34 @@ export default function PremiumExpertSlideV2() {
                   {t.tier}
                 </span>
 
-                {/* You Pay */}
-                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 500, color: "hsl(var(--pres-text))", minWidth: 110 }}>
+                {/* You Pay label */}
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
+                  You pay
+                </span>
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 600, color: "hsl(var(--pres-text))", minWidth: 110 }}>
                   {t.price}
                 </span>
 
-                {/* Plus sign */}
-                <span style={{ fontSize: 20, fontWeight: 700, color: "hsl(var(--pres-accent) / 0.6)" }}>+</span>
+                {/* Arrow → */}
+                <ArrowRight size={20} style={{ color: "hsl(var(--pres-accent) / 0.4)", flexShrink: 0 }} />
 
-                {/* Bonus pill */}
+                {/* FREE bonus badge */}
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>
+                  You get
+                </span>
                 <span
-                  className="rounded-full"
+                  className="rounded-full flex items-center gap-2"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
                     fontSize: 16,
                     fontWeight: 700,
-                    color: "hsl(var(--pres-accent))",
-                    background: "hsl(var(--pres-accent) / 0.14)",
-                    padding: "4px 16px",
-                    minWidth: 130,
-                    textAlign: "center",
+                    color: "hsl(130 60% 40%)",
+                    background: "hsl(130 60% 40% / 0.12)",
+                    padding: "5px 18px",
                   }}
                 >
-                  {t.bonus} bonus
-                </span>
-
-                {/* Arrow */}
-                <ArrowRight size={22} style={{ color: "hsl(var(--pres-accent) / 0.5)", flexShrink: 0 }} />
-
-                {/* Total */}
-                <span style={{
-                  fontFamily: "'Ubuntu', sans-serif",
-                  fontSize: 24,
-                  fontWeight: 800,
-                  color: "hsl(var(--pres-accent))",
-                  minWidth: 130,
-                }}>
-                  {t.total}/mo
+                  <Gift size={14} style={{ color: "hsl(130 60% 40%)" }} />
+                  {t.bonus} FREE
                 </span>
 
                 {/* Hours badge */}
@@ -201,13 +192,13 @@ export default function PremiumExpertSlideV2() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {t.savings}
+                  {t.hours}
                 </span>
 
                 {/* Limited badge for Starter */}
                 {(t as any).limited && (
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "hsl(0 80% 55%)", fontWeight: 700, whiteSpace: "nowrap" }}>
-                    ⏳ 2 months
+                    ⏳ 2 months only
                   </span>
                 )}
               </motion.div>
