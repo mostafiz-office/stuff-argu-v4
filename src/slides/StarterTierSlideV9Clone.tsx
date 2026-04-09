@@ -3,6 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
 import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import { CheckCircle, Crown, Shield, Clock, Flame, ArrowUpRight, BadgeCheck } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -40,6 +41,19 @@ const results = [
 ];
 
 export default function StarterTierSlideV9Clone() {
+  const [showRocket, setShowRocket] = useState(false);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      setShowRocket(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
@@ -120,7 +134,7 @@ export default function StarterTierSlideV9Clone() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
 
-              <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />
+              {showRocket && <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />}
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
