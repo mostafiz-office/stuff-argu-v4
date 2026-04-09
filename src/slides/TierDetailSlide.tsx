@@ -56,7 +56,7 @@ export default function TierDetailSlide() {
         {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col" style={{ bottom: 40 }}
+          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col" style={{ bottom: 100 }}
         >
           {/* Header row */}
           <div
@@ -151,8 +151,8 @@ export default function TierDetailSlide() {
             ))}
           </div>
 
-          {/* Feature rows */}
-          <div className="flex flex-col flex-1 justify-evenly">
+          {/* Feature rows — scrollable */}
+          <div className="flex flex-col flex-1 overflow-y-auto pr-1" style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--pres-accent) / 0.3) transparent" }}>
             {features.map((feat, i) => (
               <motion.div
                 key={feat.label}
