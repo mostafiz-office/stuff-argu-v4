@@ -1,1 +1,1 @@
-# Slide 11 — No slide-specific hover effects.
+# Slide 10 — Hover: HoverVideoPreview on pricing card. Tooltip on metric cards.

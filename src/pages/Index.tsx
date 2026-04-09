@@ -49,6 +49,7 @@ export default function Index() {
       
       
       <StarterTierDetailSlide key="starter-detail" />,
+      <StarterTierDetailSlideV2 key="starter-detail-v2" />,
       <StarterTierSlideV9 key="10d" />,
       <PricingCTASlide key="12" />,
     ];

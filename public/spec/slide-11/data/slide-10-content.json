@@ -1,0 +1,15 @@
+{
+  "slide":"10","component":"StarterTierSlideV9","price":"$1,900/mo",
+  "features":["3+ yrs coding, 1+ yr industry exp","160 dedicated hours/month","Tech-stack specific developer","Task guidance from senior lead","Daily standups & Slack access","Weekly progress reports"],
+  "results":[
+    {"metric":"3x","label":"Faster than hiring"},
+    {"metric":"160h","label":"Pure dev time/mo"},
+    {"metric":"$11,999","label":"Expert bonus included"}
+  ],
+  "guarantees":[
+    {"icon":"Shield","title":"Zero Risk","desc":"Cancel anytime. No lock-in contracts."},
+    {"icon":"Clock","title":"20 Min Onboarding","desc":"Developer matched & shipping in under an hour."},
+    {"icon":"BadgeCheck","title":"Top 5% Engineers","desc":"Rigorously vetted. Only the best pass."}
+  ],
+  "urgency":{"title":"Limited Slots This Quarter","desc":"We cap clients to maintain quality. Start today before spots fill."}
+}
