@@ -1,0 +1,38 @@
+{
+  "slide": "02",
+  "component": "PricingCoverV1",
+  "title": "Cover V1 — Clean & Minimal",
+  "category": {
+    "label": "Staff Augmentation",
+    "icon": "Users"
+  },
+  "headline": {
+    "line1": "<accent>Elite</accent> Engineers",
+    "line2": "On Demand"
+  },
+  "body": "<strong>Top 5% vetted</strong> talent. Hire in as fast as <strong>20 minutes</strong>.\n60% savings vs US/UK rates — no hidden fees.",
+  "keywords": [
+    { "label": "Top 5% Talent", "x": 1420, "y": 160 },
+    { "label": "Hire in 20 Minutes", "x": 780, "y": 640 },
+    { "label": "7-Stage Vetted", "x": 1420, "y": 420 }
+  ],
+  "recommendations": [
+    {
+      "name": "Konstantinos P.",
+      "title": "Senior Serverless Engineer",
+      "quote": "\"Solid and high quality work... the smoothest on-boarding process I have had in my whole career.\"",
+      "image": "konstantinos-p.png",
+      "x": 460, "y": 60
+    },
+    {
+      "name": "Claudio C.",
+      "title": "Engineering Leader | AI-Powered Platforms",
+      "quote": "\"A skillful professional and kind communicator.\"",
+      "image": "claudio-c.png",
+      "x": 1150, "y": 780
+    }
+  ],
+  "cta": { "text": "Explore Plans", "icon": "ArrowRight" },
+  "websiteUrl": "riseup-asia.com",
+  "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+}
