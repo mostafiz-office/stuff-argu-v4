@@ -248,7 +248,7 @@ export default function StarterTierDetailSlide() {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </ScaledSlide>
   );
