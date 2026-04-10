@@ -35,19 +35,39 @@ const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; 
   { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 60% 60%)", bgTint: "hsl(280 60% 60% / 0.08)" },
 ];
 
+const MIN_RAIL_THUMB_HEIGHT = 72;
+
 export default function TierDetailSlide() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollDown, setCanScrollDown] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [railThumbHeight, setRailThumbHeight] = useState(MIN_RAIL_THUMB_HEIGHT);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+
     const check = () => {
+      const maxScroll = Math.max(el.scrollHeight - el.clientHeight, 1);
+      const nextProgress = Math.min(el.scrollTop / maxScroll, 1);
+      const nextThumbHeight = Math.max(
+        (el.clientHeight / Math.max(el.scrollHeight, el.clientHeight)) * el.clientHeight,
+        MIN_RAIL_THUMB_HEIGHT,
+      );
+
       setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+      setScrollProgress(nextProgress);
+      setRailThumbHeight(nextThumbHeight);
     };
+
     check();
     el.addEventListener("scroll", check);
-    return () => el.removeEventListener("scroll", check);
+    window.addEventListener("resize", check);
+
+    return () => {
+      el.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   return (
@@ -68,12 +88,11 @@ export default function TierDetailSlide() {
           Feature <span style={{ color: "hsl(var(--pres-accent))" }}>Comparison</span>
         </motion.h1>
 
-        {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col" style={{ bottom: 100 }}
+          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col"
+          style={{ bottom: 100 }}
         >
-          {/* Header row */}
           <div
             className="grid items-end pb-3"
             style={{
@@ -133,7 +152,7 @@ export default function TierDetailSlide() {
                     fontSize: 28,
                     fontWeight: 700,
                     color: col.color,
-                    marginTop: (col.bestValue || col.premium) ? 14 : 0,
+                    marginTop: col.bestValue || col.premium ? 14 : 0,
                   }}
                 >
                   {col.name}
@@ -166,65 +185,94 @@ export default function TierDetailSlide() {
             ))}
           </div>
 
-          {/* Feature rows — scrollable */}
           <div className="relative flex-1">
-            <div ref={scrollRef} className="absolute inset-0 overflow-y-scroll pr-1 tier-scroll" style={{ scrollbarWidth: "auto", scrollbarColor: "hsl(var(--pres-accent) / 0.45) hsl(var(--pres-accent) / 0.08)" }}>
-            {features.map((feat, i) => (
-              <motion.div
-                key={feat.label}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
-                className="grid items-center"
-                style={{
-                  gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
-                  padding: "6px 0",
-                  borderBottom: "1px solid hsl(var(--border) / 0.5)",
-                }}
-              >
-                <span
+            <div
+              ref={scrollRef}
+              className="absolute inset-0 overflow-y-scroll tier-scroll"
+              style={{
+                paddingRight: 32,
+                scrollbarWidth: "auto",
+                scrollbarColor: "hsl(var(--pres-accent) / 0.45) hsl(var(--pres-accent) / 0.08)",
+              }}
+            >
+              {features.map((feat, i) => (
+                <motion.div
+                  key={feat.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
+                  className="grid items-center"
                   style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 18,
-                    color: "hsl(var(--pres-text-muted))",
+                    gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
+                    padding: "6px 0",
+                    borderBottom: "1px solid hsl(var(--border) / 0.5)",
                   }}
                 >
-                  {feat.label}
-                </span>
-                {columns.map((col) => {
-                  const val = feat[col.key];
-                  return (
-                    <div
-                      key={col.key}
-                      className="flex justify-center"
-                      style={{
-                        background: col.bgTint,
-                        padding: "8px 0",
-                      }}
-                    >
-                      {val === true ? (
-                        <CheckCircle size={26} style={{ color: col.color }} />
-                      ) : val === false ? (
-                        <X size={26} style={{ color: "hsl(0 80% 55%)" }} />
-                      ) : (
-                        <span
-                          style={{
-                            fontFamily: "'Poppins', sans-serif",
-                            fontSize: 18,
-                            fontWeight: 600,
-                            color: col.color,
-                          }}
-                        >
-                          {val}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-              </motion.div>
-            ))}
+                  <span
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 18,
+                      color: "hsl(var(--pres-text-muted))",
+                    }}
+                  >
+                    {feat.label}
+                  </span>
+                  {columns.map((col) => {
+                    const val = feat[col.key];
+                    return (
+                      <div
+                        key={col.key}
+                        className="flex justify-center"
+                        style={{
+                          background: col.bgTint,
+                          padding: "8px 0",
+                        }}
+                      >
+                        {val === true ? (
+                          <CheckCircle size={26} style={{ color: col.color }} />
+                        ) : val === false ? (
+                          <X size={26} style={{ color: "hsl(0 80% 55%)" }} />
+                        ) : (
+                          <span
+                            style={{
+                              fontFamily: "'Poppins', sans-serif",
+                              fontSize: 18,
+                              fontWeight: 600,
+                              color: col.color,
+                            }}
+                          >
+                            {val}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </motion.div>
+              ))}
             </div>
-            {/* Fade gradient + scroll indicator */}
+
+            <div
+              aria-hidden="true"
+              className="absolute right-2 top-0 bottom-0 pointer-events-none"
+              style={{ width: 14, zIndex: 4 }}
+            >
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{ background: "hsl(var(--pres-accent) / 0.12)" }}
+              />
+              <motion.div
+                className="absolute left-0 right-0 rounded-full"
+                animate={{ y: scrollProgress * Math.max(0, 1) }}
+                style={{
+                  height: railThumbHeight,
+                  top: `calc(${scrollProgress * 100}% - ${scrollProgress * railThumbHeight}px)`,
+                  background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.85), hsl(var(--pres-accent) / 0.45))",
+                  boxShadow: "0 0 18px hsl(var(--pres-accent) / 0.28)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.35)",
+                }}
+              />
+            </div>
+
             {canScrollDown && (
               <div
                 className="absolute bottom-0 left-0 right-0 flex flex-col items-center pointer-events-none"
