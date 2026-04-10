@@ -52,6 +52,7 @@ export default function SlideNavigation({
 
   const goNext = useCallback(() => {
     // Check if the current slide has a navigation gate (e.g. rocket animation)
+    const gate = (window as any).__slideNavigationGate;
     if (gate?.active) {
       gate.trigger();
       return;
