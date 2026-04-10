@@ -100,9 +100,10 @@ export default function StarterTierDetailSlide() {
           $2,499/mo
         </motion.p>
 
+        {/* Table header — absolute positioned */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[140px] z-10 flex flex-col min-h-0"
+          className="absolute left-[80px] right-[80px] top-[240px] z-10"
         >
           <div
             className="grid items-end pb-3"
@@ -133,8 +134,14 @@ export default function StarterTierDetailSlide() {
               Starter
             </span>
           </div>
+        </motion.div>
 
-          <div className="relative flex-1 min-h-0">
+        {/* Scrollable feature rows — explicit bounds */}
+        <div
+          className="absolute left-[80px] right-[80px] z-10"
+          style={{ top: 300, bottom: 140 }}
+        >
+          <div className="relative w-full h-full">
             <div
               ref={scrollRef}
               className="absolute inset-0 overflow-y-scroll tier-scroll"
