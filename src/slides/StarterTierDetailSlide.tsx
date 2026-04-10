@@ -28,7 +28,6 @@ const features: { label: string; included: boolean | string }[] = [
 ];
 
 const MIN_RAIL_THUMB_HEIGHT = 72;
-const SCROLL_WINDOW_HEIGHT = 580;
 
 export default function StarterTierDetailSlide() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -57,10 +56,15 @@ export default function StarterTierDetailSlide() {
     };
 
     check();
+    const timer = setTimeout(check, 1200);
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
     el.addEventListener("scroll", check);
     window.addEventListener("resize", check);
 
     return () => {
+      clearTimeout(timer);
+      ro.disconnect();
       el.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
@@ -99,7 +103,7 @@ export default function StarterTierDetailSlide() {
         <motion.div
           {...fade(1)}
           className="absolute left-[80px] right-[80px] top-[240px] z-10 flex flex-col"
-          style={{ bottom: 100 }}
+          style={{ bottom: 200 }}
         >
           <div
             className="grid items-end pb-3"
@@ -131,67 +135,64 @@ export default function StarterTierDetailSlide() {
             </span>
           </div>
 
-          <div className="relative flex-1 pt-4">
+          <div className="relative overflow-hidden flex-1">
             <div
               ref={scrollRef}
-              className="absolute left-0 right-0 top-0 overflow-y-scroll tier-scroll"
+              className="absolute inset-0 overflow-y-scroll tier-scroll"
               style={{
-                height: SCROLL_WINDOW_HEIGHT,
                 paddingRight: 40,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
               }}
             >
-              <div style={{ minHeight: SCROLL_WINDOW_HEIGHT + 240 }}>
-                {features.map((feat, i) => (
-                  <motion.div
-                    key={feat.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
-                    className="grid items-center"
+              {features.map((feat, i) => (
+                <motion.div
+                  key={feat.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
+                  className="grid items-center"
+                  style={{
+                    gridTemplateColumns: "1fr 200px",
+                    padding: "10px 0",
+                    borderBottom: "1px solid hsl(var(--border) / 0.5)",
+                  }}
+                >
+                  <span
                     style={{
-                      gridTemplateColumns: "1fr 200px",
-                      padding: "10px 0",
-                      borderBottom: "1px solid hsl(var(--border) / 0.5)",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 24,
+                      color: "hsl(var(--pres-text-muted))",
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 24,
-                        color: "hsl(var(--pres-text-muted))",
-                      }}
-                    >
-                      {feat.label}
-                    </span>
-                    <div className="flex justify-center">
-                      {feat.included === true ? (
-                        <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
-                      ) : feat.included === false ? (
-                        <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
-                      ) : (
-                        <span
-                          style={{
-                            fontFamily: "'Poppins', sans-serif",
-                            fontSize: 20,
-                            fontWeight: 600,
-                            color: "hsl(var(--pres-accent))",
-                          }}
-                        >
-                          {feat.included}
-                        </span>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    {feat.label}
+                  </span>
+                  <div className="flex justify-center">
+                    {feat.included === true ? (
+                      <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
+                    ) : feat.included === false ? (
+                      <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
+                    ) : (
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 20,
+                          fontWeight: 600,
+                          color: "hsl(var(--pres-accent))",
+                        }}
+                      >
+                        {feat.included}
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <div
               aria-hidden="true"
-              className="absolute top-0 pointer-events-none"
-              style={{ right: 6, width: 18, height: SCROLL_WINDOW_HEIGHT, zIndex: 4 }}
+              className="absolute top-0 bottom-0 pointer-events-none"
+              style={{ right: 6, width: 18, zIndex: 4 }}
             >
               <div
                 className="absolute inset-0 rounded-full"
