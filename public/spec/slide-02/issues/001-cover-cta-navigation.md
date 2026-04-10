@@ -1,15 +1,16 @@
-# Issue 001 — Cover CTA Navigation Must Use Router-Safe Slide Jumps
+# Issue 001 — Cover CTA "Explore Tiers" Navigation Blocked by Sync-Back Race
 
 ## Problem
-The secondary CTA on the clean cover slide (`Explore Tiers`) did not reliably navigate to slide 2 because it was implemented as a clickable `div` and updated query params by mutating the existing `URLSearchParams` instance.
+Clicking the "Explore Tiers" button on both cover slide variants (V1 and V3) did not navigate to slide 2. The slide stayed on slide 1.
 
 ## Root Cause
-React Router navigation is less reliable when route state is updated through in-place search-param mutation. A semantic interactive element and a fresh params object are required for predictable navigation.
+A race condition in `PresentationEngine.tsx` between two `useEffect` hooks:
+
+1. **Effect 1** (searchParams → currentIndex): When `searchParams` changed to `slide=2`, it scheduled `setCurrentIndex(1)`.
+2. **Effect 2** (currentIndex → URL sync): Ran in the same render cycle while `currentIndex` was still `0`. It saw `slideNumber = "1" ≠ searchParams("slide") = "2"` and **overwrote the URL back to `slide=1`**, undoing the navigation.
 
 ## Fix
-- Use a semantic `button` for the secondary CTA
-- Create a fresh `URLSearchParams` instance on click
-- Set `slide=2` and pass the new object to `setSearchParams`
+Added a `useRef` guard (`prevIndexRef`) to Effect 2 so it only syncs to URL when `currentIndex` has actually changed — not when `searchParams` changed externally.
 
 ## Rule
-All slide-jump CTAs must use router-safe navigation with semantic interactive elements. Do not use clickable `div`s for primary navigation actions.
+When a component has bidirectional state sync (state ↔ URL), always guard the sync-back direction with a ref to prevent overwrite races.
