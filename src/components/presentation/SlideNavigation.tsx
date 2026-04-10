@@ -61,7 +61,7 @@ export default function SlideNavigation({
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (isEditing) return;
-      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " " || e.key === "Enter") {
         e.preventDefault();
         goNext();
       } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
