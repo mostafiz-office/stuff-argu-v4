@@ -204,14 +204,15 @@ export default function PricingCoverV3() {
             </motion.div>
 
             <motion.div {...fade(4)} className="flex items-center gap-4 mt-10">
-              <div className="pointer-events-auto cursor-pointer"
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-bg))", background: "hsl(var(--pres-accent))", padding: "14px 36px", borderRadius: 50, display: "flex", alignItems: "center", gap: 10 }}>
-                Explore Plans <ArrowRight size={20} />
-              </div>
+              <a href="https://client.rasia.pro/hiring-v1" target="_blank" rel="noopener noreferrer" className="pointer-events-auto cursor-pointer"
+                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-bg))", background: "hsl(var(--pres-accent))", padding: "14px 36px", borderRadius: 50, display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+                Book a Call <ArrowRight size={20} />
+              </a>
               <div className="pointer-events-auto cursor-pointer flex items-center gap-2"
+                onClick={() => { const params = new URLSearchParams(window.location.search); params.set("slide", "2"); window.history.pushState({}, "", `?${params.toString()}`); window.dispatchEvent(new PopStateEvent("popstate")); }}
                 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 500, color: "hsl(var(--pres-accent))", padding: "14px 24px", borderRadius: 50, border: "1.5px solid hsl(var(--pres-accent) / 0.3)" }}>
                 <Sparkles size={16} />
-                View Tiers
+                Explore Tiers
               </div>
             </motion.div>
           </div>
