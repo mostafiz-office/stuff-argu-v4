@@ -77,6 +77,7 @@ export default function StarterTierSlideV9Clone() {
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
+        {showRocket && <RocketAnimation intensity={1} profile="default" flyingLabel="Growth booster" />}
 
         <div
           className="absolute z-[1]"
