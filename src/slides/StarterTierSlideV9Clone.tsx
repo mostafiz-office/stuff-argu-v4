@@ -2,8 +2,8 @@ import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
 import RocketAnimation from "@/components/presentation/RocketAnimation";
-import { motion } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useEffect, useCallback } from "react";
 import { CheckCircle, Crown, Shield, Clock, Flame, ArrowUpRight, BadgeCheck } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -41,16 +41,33 @@ const results = [
 ];
 
 export default function StarterTierSlideV9Clone() {
+  const [showAlimBox, setShowAlimBox] = useState(false);
   const [showRocket, setShowRocket] = useState(false);
+  const gateStep = React.useRef(0);
 
-  // Register navigation gate — first "next" triggers rocket, second advances slide
+  // Two-step navigation gate:
+  // Step 0 → 1st next: reveal Alim box
+  // Step 1 → 2nd next: trigger rocket animation
+  // Step 2 → 3rd next: advance slide (gate inactive)
   useEffect(() => {
+    gateStep.current = 0;
+    setShowAlimBox(false);
+    setShowRocket(false);
+
     (window as any).__slideNavigationGate = {
       active: true,
-      trigger: () => setShowRocket(true),
+      trigger: () => {
+        if (gateStep.current === 0) {
+          setShowAlimBox(true);
+          gateStep.current = 1;
+        } else if (gateStep.current === 1) {
+          setShowRocket(true);
+          gateStep.current = 2;
+          // Deactivate gate so next press advances
+          (window as any).__slideNavigationGate.active = false;
+        }
+      },
     };
-    // Reset rocket state when re-entering this slide
-    setShowRocket(false);
     return () => {
       delete (window as any).__slideNavigationGate;
     };
@@ -147,20 +164,35 @@ export default function StarterTierSlideV9Clone() {
                 ))}
               </div>
 
-              <div className="mt-3 rounded-2xl relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(45 90% 55% / 0.15), hsl(45 90% 55% / 0.05))", border: "2px solid hsl(45 90% 55% / 0.5)", padding: "20px 22px", boxShadow: "0 0 30px hsl(45 90% 55% / 0.1)" }}>
-                <div className="absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none" style={{ background: "radial-gradient(circle at 90% 50%, hsl(45 90% 55% / 0.12), transparent 70%)" }} />
-                <div className="flex items-center gap-2 mb-2">
-                  <Crown size={20} style={{ color: "hsl(45 90% 55%)" }} />
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 700, color: "hsl(45 90% 55%)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Want Alim's Direct Support?</span>
-                </div>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 600, color: "hsl(var(--pres-text))", lineHeight: 1.4 }}>Alim Ul Karim — Chief Software Engineer</p>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", lineHeight: 1.4, marginTop: 4 }}>
-                  4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(45 90% 55%)", fontSize: 16 }}>$11,999/mo</strong> value
-                </p>
-                <div className="mt-3 flex items-center gap-2 rounded-lg px-4 py-2" style={{ background: "hsl(45 90% 55% / 0.15)", border: "1.5px solid hsl(45 90% 55% / 0.35)", width: "fit-content" }}>
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(45 90% 55%)" }}>↑ Upgrade to Tier 2 or 3 to unlock</span>
-                </div>
-              </div>
+              <AnimatePresence>
+                {showAlimBox && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.92 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                    className="mt-3 rounded-2xl relative overflow-hidden"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(210 80% 55% / 0.15), hsl(260 70% 55% / 0.08))",
+                      border: "2px solid hsl(210 80% 60% / 0.5)",
+                      padding: "20px 22px",
+                      boxShadow: "0 0 30px hsl(210 80% 55% / 0.12)",
+                    }}
+                  >
+                    <div className="absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none" style={{ background: "radial-gradient(circle at 90% 50%, hsl(260 70% 55% / 0.12), transparent 70%)" }} />
+                    <div className="flex items-center gap-2 mb-2">
+                      <Crown size={20} style={{ color: "hsl(210 80% 65%)" }} />
+                      <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 700, color: "hsl(210 80% 65%)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Want Alim's Direct Support?</span>
+                    </div>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 600, color: "hsl(var(--pres-text))", lineHeight: 1.4 }}>Alim Ul Karim — Chief Software Engineer</p>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", lineHeight: 1.4, marginTop: 4 }}>
+                      4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(210 80% 65%)", fontSize: 16 }}>$11,999/mo</strong> value
+                    </p>
+                    <div className="mt-3 flex items-center gap-2 rounded-lg px-4 py-2" style={{ background: "hsl(210 80% 55% / 0.15)", border: "1.5px solid hsl(210 80% 60% / 0.35)", width: "fit-content" }}>
+                      <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(210 80% 65%)" }}>↑ Upgrade to Tier 2 or 3 to unlock</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </HoverVideoPreview>
 
