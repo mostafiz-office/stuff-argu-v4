@@ -17,9 +17,9 @@ const comparisons = [
     saving: "Up to 76%",
     barUs: 100,
     barRiseup: 24,
-    usColor: "#ef4444",
+    usColor: "hsl(220 70% 55%)",
     riseupColor: "hsl(var(--pres-accent))",
-    usGradient: "linear-gradient(90deg, #ef4444, #f87171)",
+    usGradient: "linear-gradient(90deg, hsl(220 70% 55%), hsl(220 60% 65%))",
     riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
   },
   {
@@ -30,10 +30,10 @@ const comparisons = [
     saving: "Up to 71%",
     barUs: 100,
     barRiseup: 29,
-    usColor: "#f97316",
-    riseupColor: "hsl(142 71% 45%)",
-    usGradient: "linear-gradient(90deg, #f97316, #fb923c)",
-    riseupGradient: "linear-gradient(90deg, hsl(142 71% 45%), hsl(160 60% 50%))",
+    usColor: "hsl(280 50% 55%)",
+    riseupColor: "hsl(var(--pres-accent))",
+    usGradient: "linear-gradient(90deg, hsl(280 50% 55%), hsl(280 40% 65%))",
+    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
   },
   {
     role: "Skilled Expert",
@@ -43,10 +43,10 @@ const comparisons = [
     saving: "Up to 68%",
     barUs: 100,
     barRiseup: 32,
-    usColor: "#7c3aed",
-    riseupColor: "#a78bfa",
-    usGradient: "linear-gradient(90deg, #7c3aed, #a78bfa)",
-    riseupGradient: "linear-gradient(90deg, #a78bfa, #c4b5fd)",
+    usColor: "hsl(340 55% 55%)",
+    riseupColor: "hsl(var(--pres-accent))",
+    usGradient: "linear-gradient(90deg, hsl(340 55% 55%), hsl(340 45% 65%))",
+    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
   },
   {
     role: "Tech Leadership",
@@ -56,10 +56,10 @@ const comparisons = [
     saving: "Up to 67%",
     barUs: 100,
     barRiseup: 33,
-    usColor: "#ec4899",
-    riseupColor: "#f472b6",
-    usGradient: "linear-gradient(90deg, #ec4899, #f472b6)",
-    riseupGradient: "linear-gradient(90deg, #f472b6, #f9a8d4)",
+    usColor: "hsl(200 60% 50%)",
+    riseupColor: "hsl(var(--pres-accent))",
+    usGradient: "linear-gradient(90deg, hsl(200 60% 50%), hsl(200 50% 60%))",
+    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
   },
 ];
 
@@ -223,8 +223,8 @@ export default function PricingSavingsSlide() {
                       fontFamily: "'Poppins', sans-serif",
                       fontSize: 14,
                       fontWeight: 700,
-                      color: "#fff",
-                      background: c.usColor,
+                      color: "hsl(var(--pres-bg))",
+                      background: "hsl(var(--pres-accent))",
                     }}
                   >
                     {c.saving}
