@@ -24,7 +24,7 @@ const costComparisons = [
   { label: "US Full-Time Dev", cost: "$8,000–$12,000/mo", saved: true },
   { label: "US Freelancer", cost: "$9,600/mo", detail: "($60/hr × 160h)", saved: true },
   { label: "Offshore Agency", cost: "$4,000–$6,000/mo", saved: true },
-  { label: "RiseUp Starter", cost: "$1,900/mo", saved: false, highlight: true },
+  { label: "Riseup-Asia Starter", cost: "$1,900/mo", saved: false, highlight: true },
 ];
 
 export default function StarterTierSlideV8() {
@@ -70,7 +70,7 @@ export default function StarterTierSlideV8() {
             maxWidth: 700,
           }}
         >
-          Same output. Fraction of the cost. Here's how RiseUp stacks up against every alternative.
+          Same output. Fraction of the cost. Here's how Riseup-Asia stacks up against every alternative.
         </motion.p>
 
         <div className="absolute left-[80px] right-[80px] top-[224px] bottom-[60px] flex gap-8 z-10">

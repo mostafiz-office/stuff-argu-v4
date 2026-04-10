@@ -7,7 +7,7 @@ const fade = (i: number) => ({ initial: { opacity: 0, y: 24 }, animate: { opacit
 const support = [
   { emoji: "🔍", title: "Performance Monitoring", desc: "Regular performance check-ins & reporting" },
   { emoji: "📚", title: "Skill Development", desc: "Ongoing training to upgrade talent capabilities" },
-  { emoji: "👤", title: "Monthly CEO Review", desc: "1:1 client check-ins with Riseup CEO" },
+  { emoji: "👤", title: "Monthly CEO Review", desc: "1:1 client check-ins with Riseup-Asia CEO" },
   { emoji: "🔄", title: "Talent Replacement", desc: "Free fast replacement in rare cases" },
   { emoji: "📞", title: "Dedicated Support", desc: "Account manager for urgent help" },
   { emoji: "📊", title: "Quarterly Reviews", desc: "Project health & alignment check" },

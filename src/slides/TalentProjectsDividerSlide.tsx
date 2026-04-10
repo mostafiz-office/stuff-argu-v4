@@ -65,7 +65,7 @@ export default function TalentProjectsDividerSlide() {
           className="absolute bottom-[40px] right-[60px] z-10"
         >
           <span className="px-5 py-2 rounded-full text-[14px] font-medium" style={{ fontFamily: "'Poppins', sans-serif", background: 'hsl(var(--pres-accent) / 0.15)', color: 'hsl(var(--pres-accent))', border: '1px solid hsl(var(--pres-accent) / 0.3)' }}>
-            Not Directly Riseup Has Worked With
+            Not Directly Riseup-Asia Has Worked With
           </span>
         </motion.div>
       </div>
