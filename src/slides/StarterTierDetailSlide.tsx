@@ -135,11 +135,12 @@ export default function StarterTierDetailSlide() {
             </span>
           </div>
 
-          <div className="relative flex-1 pt-4">
+          <div className="relative" style={{ height: 500 }}>
             <div
               ref={scrollRef}
-              className="absolute inset-0 overflow-y-scroll tier-scroll"
+              className="overflow-y-scroll tier-scroll"
               style={{
+                height: 500,
                 paddingRight: 40,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
