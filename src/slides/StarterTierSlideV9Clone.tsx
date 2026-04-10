@@ -43,16 +43,18 @@ const results = [
 export default function StarterTierSlideV9Clone() {
   const [showRocket, setShowRocket] = useState(false);
 
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Enter") {
-      setShowRocket(true);
-    }
-  }, []);
-
+  // Register navigation gate — first "next" triggers rocket, second advances slide
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+    (window as any).__slideNavigationGate = {
+      active: true,
+      trigger: () => setShowRocket(true),
+    };
+    // Reset rocket state when re-entering this slide
+    setShowRocket(false);
+    return () => {
+      delete (window as any).__slideNavigationGate;
+    };
+  }, []);
 
   return (
     <ScaledSlide>
