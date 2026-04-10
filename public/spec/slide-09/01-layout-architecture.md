@@ -7,4 +7,4 @@
 ## Custom scroll rail: right-2, 14px wide, with gradient thumb
 ## "Scroll for more" prompt: bottom fade gradient + pulsing chevrons, auto-hides at end
 ## Navigation clearance: 100px bottom ensures 24px+ gap above navigation dots
-## IMPORTANT: The visible slide is `StarterTierDetailSlideV2.tsx` — `StarterTierDetailSlide.tsx` is hidden via `hiddenSlides: [8]` in presentation-config.json
+## HIDDEN: Both `StarterTierDetailSlide.tsx` (slide 8) and `StarterTierDetailSlideV2.tsx` (slide 9) are hidden via `hiddenSlides: [8, 9]` in presentation-config.json
