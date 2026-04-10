@@ -45,7 +45,7 @@ const ALIM_LINK = "https://www.linkedin.com/in/alimkarim/details/recommendations
  * Removed dot pattern, updated pills to hiring copy, slightly smaller Alim image
  */
 export default function PricingCoverV1() {
-
+  const [, setSearchParams] = useSearchParams();
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">

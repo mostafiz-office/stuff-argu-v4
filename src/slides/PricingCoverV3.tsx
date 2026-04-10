@@ -87,6 +87,7 @@ const ALIM_LINK = "https://www.linkedin.com/in/alimkarim/details/recommendations
  * Large centered headline, Alim on right smaller, inline pill row, testimonials in corners
  */
 export default function PricingCoverV3() {
+  const [, setSearchParams] = useSearchParams();
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
