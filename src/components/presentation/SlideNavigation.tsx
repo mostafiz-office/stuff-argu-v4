@@ -55,7 +55,6 @@ export default function SlideNavigation({
     const gate = (window as any).__slideNavigationGate;
     if (gate?.active) {
       gate.trigger();
-      gate.active = false;
       return;
     }
     if (current < total - 1) onNavigate(current + 1);
