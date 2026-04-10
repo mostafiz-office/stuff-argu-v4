@@ -182,7 +182,7 @@ export default function PricingCoverV1() {
                 Book a Call <ArrowRight size={20} />
               </a>
               <div className="pointer-events-auto cursor-pointer flex items-center gap-2"
-                onClick={() => { const params = new URLSearchParams(window.location.search); params.set("slide", "2"); window.history.pushState({}, "", `?${params.toString()}`); window.dispatchEvent(new PopStateEvent("popstate")); }}
+                onClick={() => setSearchParams(prev => { prev.set("slide", "2"); return prev; })}
                 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 500, color: "hsl(var(--pres-accent))", padding: "14px 24px", borderRadius: 50, border: "1.5px solid hsl(var(--pres-accent) / 0.3)" }}>
                 <Sparkles size={16} />
                 Explore Tiers
