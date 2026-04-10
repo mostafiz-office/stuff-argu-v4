@@ -41,16 +41,33 @@ const results = [
 ];
 
 export default function StarterTierSlideV9Clone() {
+  const [showAlimBox, setShowAlimBox] = useState(false);
   const [showRocket, setShowRocket] = useState(false);
+  const gateStep = React.useRef(0);
 
-  // Register navigation gate — first "next" triggers rocket, second advances slide
+  // Two-step navigation gate:
+  // Step 0 → 1st next: reveal Alim box
+  // Step 1 → 2nd next: trigger rocket animation
+  // Step 2 → 3rd next: advance slide (gate inactive)
   useEffect(() => {
+    gateStep.current = 0;
+    setShowAlimBox(false);
+    setShowRocket(false);
+
     (window as any).__slideNavigationGate = {
       active: true,
-      trigger: () => setShowRocket(true),
+      trigger: () => {
+        if (gateStep.current === 0) {
+          setShowAlimBox(true);
+          gateStep.current = 1;
+        } else if (gateStep.current === 1) {
+          setShowRocket(true);
+          gateStep.current = 2;
+          // Deactivate gate so next press advances
+          (window as any).__slideNavigationGate.active = false;
+        }
+      },
     };
-    // Reset rocket state when re-entering this slide
-    setShowRocket(false);
     return () => {
       delete (window as any).__slideNavigationGate;
     };
