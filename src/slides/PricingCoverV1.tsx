@@ -2,6 +2,7 @@ import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
 import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 import alimPhoto from "@/assets/alim-updated.png";
 import claudioImg from "@/assets/testimonials/claudio-c.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
