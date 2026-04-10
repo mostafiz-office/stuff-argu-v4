@@ -313,7 +313,6 @@ export default function SlideNavigation({
                   {slideLabels[i] || `Slide ${i + 1}`}
                 </p>
               </TooltipContent>
-              </TooltipContent>
             </Tooltip>
           ))}
         </div>
