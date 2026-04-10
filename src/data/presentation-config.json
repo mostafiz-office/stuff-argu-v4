@@ -91,7 +91,7 @@
   },
   "features": {
     "exportEnabled": true,
-    "hiddenSlides": [8]
+    "hiddenSlides": [8, 9]
   },
   "customization": {
     "clientName": "",
