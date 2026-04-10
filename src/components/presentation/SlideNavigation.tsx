@@ -193,11 +193,12 @@ export default function SlideNavigation({
           </div>
         ) : (
           <span
-            className="text-white/70 font-body text-sm min-w-[3rem] text-center cursor-text select-none hover:text-white/90 transition-colors"
+            className="font-body text-sm min-w-[3rem] text-center cursor-text select-none hover:text-white/90 transition-colors"
             onClick={handleDoubleClick}
             title="Click to jump to a slide"
           >
-            {current + 1}/{total}
+            <span style={{ color: "hsl(var(--pres-accent))", fontWeight: 700 }}>{current + 1}</span>
+            <span className="text-white/50">/{total}</span>
           </span>
         )}
 
@@ -307,10 +308,11 @@ export default function SlideNavigation({
                 />
               </TooltipTrigger>
               <TooltipContent side="top" className="bg-black/90 border-white/10 text-white px-3 py-1.5">
-                <p className="text-xs font-semibold">Slide {i + 1}</p>
-                {slideLabels[i] && (
-                  <p className="text-[11px] text-white/70">{slideLabels[i]}</p>
-                )}
+                <p className="text-xs font-semibold">
+                  <span style={{ color: "hsl(var(--pres-accent))", fontWeight: 700 }}>{i + 1}.</span>{" "}
+                  {slideLabels[i] || `Slide ${i + 1}`}
+                </p>
+              </TooltipContent>
               </TooltipContent>
             </Tooltip>
           ))}
