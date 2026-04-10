@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactElement } from "react";
+import { useState, useEffect, useRef, type ReactElement } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { usePresentation } from "@/context/PresentationContext";
@@ -114,7 +114,12 @@ export default function PresentationEngine({ slides }: PresentationEngineProps) 
     });
   }, [searchParams, visibleSlides.length]);
 
+  // Sync currentIndex → URL (only when currentIndex actually changed, not on external searchParam changes)
+  const prevIndexRef = useRef(currentIndex);
   useEffect(() => {
+    if (prevIndexRef.current === currentIndex) return;
+    prevIndexRef.current = currentIndex;
+
     const slideNumber = String(currentIndex + 1);
     if (searchParams.get("slide") === slideNumber) return;
 
