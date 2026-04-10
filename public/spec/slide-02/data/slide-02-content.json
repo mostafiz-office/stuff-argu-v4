@@ -32,7 +32,10 @@
       "x": 1150, "y": 780
     }
   ],
-  "cta": { "text": "Explore Plans", "icon": "ArrowRight" },
+  "cta": [
+    { "text": "Book a Call", "icon": "ArrowRight", "url": "https://client.rasia.pro/hiring-v1" },
+    { "text": "Explore Tiers", "icon": "Sparkles", "action": "navigate-slide-2" }
+  ],
   "websiteUrl": "riseup-asia.com",
   "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
 }

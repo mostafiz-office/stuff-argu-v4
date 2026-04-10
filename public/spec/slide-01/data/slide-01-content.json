@@ -52,8 +52,8 @@
     }
   ],
   "cta": {
-    "primary": { "text": "Explore Plans", "icon": "ArrowRight" },
-    "secondary": { "text": "View Tiers", "icon": "Sparkles" }
+    "primary": { "text": "Book a Call", "icon": "ArrowRight", "url": "https://client.rasia.pro/hiring-v1" },
+    "secondary": { "text": "Explore Tiers", "icon": "Sparkles", "action": "navigate-slide-2" }
   },
   "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
 }
