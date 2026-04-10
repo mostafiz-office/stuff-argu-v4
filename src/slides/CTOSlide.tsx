@@ -108,7 +108,7 @@ export default function CTOSlide() {
               >
                 CTO &amp; Co-Founder,
                 <br />
-                Riseup-asia.
+                Riseup-Asia.
               </p>
 
               <p

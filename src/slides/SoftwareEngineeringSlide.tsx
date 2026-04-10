@@ -99,7 +99,7 @@ export default function SoftwareEngineeringSlide() {
                 color: "hsl(var(--pres-text-dim))",
               }}
             >
-              Riseup-asia · Engineering Division (2005–2025)
+              Riseup-Asia · Engineering Division (2005–2025)
             </motion.p>
           </div>
         </div>
