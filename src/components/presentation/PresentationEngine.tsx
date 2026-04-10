@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactElement } from "react";
+import { useState, useEffect, useRef, type ReactElement } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { usePresentation } from "@/context/PresentationContext";
