@@ -192,8 +192,8 @@ export default function StarterTierDetailSlide() {
 
             <div
               aria-hidden="true"
-              className="absolute top-0 bottom-0 pointer-events-none"
-              style={{ right: 6, width: 18, zIndex: 4 }}
+              className="absolute top-0 pointer-events-none"
+              style={{ right: 6, width: 18, height: 500, zIndex: 4 }}
             >
               <div
                 className="absolute inset-0 rounded-full"
