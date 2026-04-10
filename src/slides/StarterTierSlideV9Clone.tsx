@@ -153,8 +153,6 @@ export default function StarterTierSlideV9Clone() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
 
-              {showRocket && <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />}
-
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
                   <motion.div key={feature} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }} className="flex items-start gap-2">
