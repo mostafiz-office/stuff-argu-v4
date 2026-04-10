@@ -62,6 +62,7 @@
 
 /* Feature comparison scrollbar — extra wide to stay visible after scale() */
 .tier-scroll::-webkit-scrollbar {
+  display: block !important;
   width: 14px;
 }
 .tier-scroll::-webkit-scrollbar-track {
@@ -77,6 +78,9 @@
 .tier-scroll::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--pres-accent) / 0.7);
   background-clip: padding-box;
+}
+.tier-scroll {
+  scrollbar-width: auto !important;
 }
 .slide-content h1, .slide-content h2, .slide-content h3,
 .slide-content h4, .slide-content h5, .slide-content h6 {
