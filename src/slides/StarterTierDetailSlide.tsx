@@ -28,7 +28,6 @@ const features: { label: string; included: boolean | string }[] = [
 ];
 
 const MIN_RAIL_THUMB_HEIGHT = 72;
-const SCROLL_WINDOW_HEIGHT = 400;
 
 export default function StarterTierDetailSlide() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -187,8 +186,8 @@ export default function StarterTierDetailSlide() {
 
             <div
               aria-hidden="true"
-              className="absolute top-0 pointer-events-none"
-              style={{ right: 6, width: 18, height: SCROLL_WINDOW_HEIGHT, zIndex: 4 }}
+              className="absolute top-0 bottom-0 pointer-events-none"
+              style={{ right: 6, width: 18, zIndex: 4 }}
             >
               <div
                 className="absolute inset-0 rounded-full"
