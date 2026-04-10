@@ -28,7 +28,7 @@ const features: { label: string; included: boolean | string }[] = [
 ];
 
 const MIN_RAIL_THUMB_HEIGHT = 72;
-const SCROLL_WINDOW_HEIGHT = 520;
+const SCROLL_WINDOW_HEIGHT = 580;
 
 export default function StarterTierDetailSlide() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -98,7 +98,8 @@ export default function StarterTierDetailSlide() {
 
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[240px] z-10 flex flex-col"
+          style={{ bottom: 100 }}
         >
           <div
             className="grid items-end pb-3"
@@ -151,7 +152,7 @@ export default function StarterTierDetailSlide() {
                     className="grid items-center"
                     style={{
                       gridTemplateColumns: "1fr 200px",
-                      padding: "14px 0",
+                      padding: "10px 0",
                       borderBottom: "1px solid hsl(var(--border) / 0.5)",
                     }}
                   >
