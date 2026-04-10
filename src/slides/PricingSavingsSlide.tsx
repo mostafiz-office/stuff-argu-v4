@@ -236,9 +236,10 @@ export default function PricingSavingsSlide() {
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      color: "hsl(var(--pres-text-dim))",
-                      width: 68,
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: c.usColor,
+                      width: 78,
                       flexShrink: 0,
                     }}
                   >
@@ -292,9 +293,10 @@ export default function PricingSavingsSlide() {
                   <span
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      color: "hsl(var(--pres-text-dim))",
-                      width: 68,
+                      fontSize: 15,
+                      fontWeight: 700,
+                      color: "hsl(var(--pres-accent))",
+                      width: 78,
                       flexShrink: 0,
                     }}
                   >
