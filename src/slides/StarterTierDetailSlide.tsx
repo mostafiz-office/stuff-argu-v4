@@ -102,7 +102,7 @@ export default function StarterTierDetailSlide() {
 
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[200px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[240px] bottom-[140px] z-10 flex flex-col min-h-0"
         >
           <div
             className="grid items-end pb-3"
@@ -134,7 +134,7 @@ export default function StarterTierDetailSlide() {
             </span>
           </div>
 
-          <div className="relative flex-1">
+          <div className="relative flex-1 min-h-0">
             <div
               ref={scrollRef}
               className="absolute inset-0 overflow-y-scroll tier-scroll"
