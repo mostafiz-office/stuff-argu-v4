@@ -43,6 +43,7 @@ const results = [
 export default function StarterTierSlideV9Clone() {
   const [showAlimBox, setShowAlimBox] = useState(false);
   const [showRocket, setShowRocket] = useState(false);
+  const [rocketCycle, setRocketCycle] = useState(0);
   const gateStep = React.useRef(0);
 
   // Two-step navigation gate:
@@ -61,6 +62,7 @@ export default function StarterTierSlideV9Clone() {
           setShowAlimBox(true);
           gateStep.current = 1;
         } else if (gateStep.current === 1) {
+          setRocketCycle((prev) => prev + 1);
           setShowRocket(true);
           gateStep.current = 2;
           // Deactivate gate so next press advances
@@ -153,7 +155,7 @@ export default function StarterTierSlideV9Clone() {
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
 
-              {showRocket && <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />}
+              {showRocket && <RocketAnimation key={rocketCycle} intensity={1} profile="compact" flyingLabel="Growth booster" />}
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
