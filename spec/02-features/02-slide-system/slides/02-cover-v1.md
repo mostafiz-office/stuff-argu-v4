@@ -47,10 +47,11 @@ Top 5% vetted talent. Hire in as fast as 20 minutes.
 | Hire in 20 Minutes | 780, 640 |
 | 7-Stage Vetted | 1420, 420 |
 
-### CTA Button
-| Label | Style |
-|-------|-------|
-| Explore Plans → | Filled accent, pill shape |
+### CTA Buttons
+| Label | Style | Action |
+|-------|-------|--------|
+| Book a Call → | Filled accent, pill shape | Opens `https://client.rasia.pro/hiring-v1` |
+| ✨ Explore Tiers | Outlined accent, pill shape | Navigates to slide 2 (`?slide=2`) via router-safe button action |
 
 ### Testimonials (2)
 | Name | Title | Quote | Position (x, y) |

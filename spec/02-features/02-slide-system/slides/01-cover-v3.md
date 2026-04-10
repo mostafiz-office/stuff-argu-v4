@@ -59,10 +59,10 @@ Pre-vetted top 5% engineers ready to join your team. No recruitment delays. No h
 | **Chief Software Engineer** & Your Dedicated Expert | Not a manager watching from the sidelines — Alim reviews your code, guides architecture, and mentors your developer directly. |
 
 ### CTA Buttons
-| Label | Style |
-|-------|-------|
-| Explore Plans → | Filled accent, pill shape |
-| ✨ View Tiers | Outlined accent, pill shape |
+| Label | Style | Action |
+|-------|-------|--------|
+| Book a Call → | Filled accent, pill shape | Opens `https://client.rasia.pro/hiring-v1` |
+| ✨ Explore Tiers | Outlined accent, pill shape | Navigates to slide 2 (`?slide=2`) via router-safe button action |
 
 ### Testimonials (2)
 | Name | Title | Quote | LinkedIn Badge |
