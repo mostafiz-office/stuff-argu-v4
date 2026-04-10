@@ -191,8 +191,8 @@ export default function TierDetailSlide() {
               className="absolute inset-0 overflow-y-scroll tier-scroll"
               style={{
                 paddingRight: 32,
-                scrollbarWidth: "auto",
-                scrollbarColor: "hsl(var(--pres-accent) / 0.45) hsl(var(--pres-accent) / 0.08)",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
               }}
             >
               {features.map((feat, i) => (
