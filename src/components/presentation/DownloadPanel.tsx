@@ -238,7 +238,7 @@ export default function DownloadPanel({
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Riseup-asia Animated Presentation</title>
+    <title>Riseup-Asia Animated Presentation</title>
     <style>
       html, body { margin: 0; height: 100%; background: #090913; color: #f5f5f5; font-family: system-ui, sans-serif; }
       .wrap { display: flex; align-items: center; justify-content: center; height: 100%; }

@@ -92,7 +92,7 @@ export default function StaffAugmentationSlide() {
               maxWidth: 560,
             }}
           >
-            Extend your engineering capacity with Riseup-asia's pre-vetted,
+             Extend your engineering capacity with Riseup-Asia's pre-vetted,
             dedicated professionals — integrated seamlessly into your existing teams.
           </motion.p>
         </div>

@@ -95,7 +95,7 @@ export default function AIDevelopmentSlide() {
                 color: "hsl(var(--pres-text-dim))",
               }}
             >
-              Riseup-asia · AI Division (2025–2026)
+              Riseup-Asia · AI Division (2025–2026)
             </motion.p>
           </div>
         </div>

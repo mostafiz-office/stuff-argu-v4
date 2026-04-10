@@ -101,7 +101,7 @@ export default function ContactSlide() {
                   lineHeight: 1.1,
                 }}
               >
-                Riseup<span style={{ color: "hsl(var(--pres-accent))" }}>Asia</span>
+                Riseup-<span style={{ color: "hsl(var(--pres-accent))" }}>Asia</span>
               </h2>
               <div
                 style={{

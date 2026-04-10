@@ -288,7 +288,7 @@ export default function PricingSavingsSlide() {
                   </span>
                 </div>
 
-                {/* RiseUp bar */}
+                {/* Riseup-Asia bar */}
                 <div className="flex items-center gap-4">
                   <span
                     style={{
@@ -300,7 +300,7 @@ export default function PricingSavingsSlide() {
                       flexShrink: 0,
                     }}
                   >
-                    RiseUp
+                    Riseup-Asia
                   </span>
                   <div
                     className="flex-1 rounded-full overflow-hidden"
