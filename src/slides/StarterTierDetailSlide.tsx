@@ -135,12 +135,11 @@ export default function StarterTierDetailSlide() {
             </span>
           </div>
 
-          <div className="relative" style={{ height: 500 }}>
+          <div className="relative overflow-hidden flex-1">
             <div
               ref={scrollRef}
-              className="overflow-y-scroll tier-scroll"
+              className="absolute inset-0 overflow-y-scroll tier-scroll"
               style={{
-                height: 500,
                 paddingRight: 40,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
@@ -192,8 +191,8 @@ export default function StarterTierDetailSlide() {
 
             <div
               aria-hidden="true"
-              className="absolute top-0 pointer-events-none"
-              style={{ right: 6, width: 18, height: 500, zIndex: 4 }}
+              className="absolute top-0 bottom-0 pointer-events-none"
+              style={{ right: 6, width: 18, zIndex: 4 }}
             >
               <div
                 className="absolute inset-0 rounded-full"
