@@ -134,58 +134,55 @@ export default function StarterTierDetailSlide() {
           <div className="relative flex-1 pt-4">
             <div
               ref={scrollRef}
-              className="absolute left-0 right-0 top-0 overflow-y-scroll tier-scroll"
+              className="absolute inset-0 overflow-y-scroll tier-scroll"
               style={{
-                height: SCROLL_WINDOW_HEIGHT,
                 paddingRight: 40,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
               }}
             >
-              <div style={{ minHeight: SCROLL_WINDOW_HEIGHT + 240 }}>
-                {features.map((feat, i) => (
-                  <motion.div
-                    key={feat.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
-                    className="grid items-center"
+              {features.map((feat, i) => (
+                <motion.div
+                  key={feat.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
+                  className="grid items-center"
+                  style={{
+                    gridTemplateColumns: "1fr 200px",
+                    padding: "10px 0",
+                    borderBottom: "1px solid hsl(var(--border) / 0.5)",
+                  }}
+                >
+                  <span
                     style={{
-                      gridTemplateColumns: "1fr 200px",
-                      padding: "10px 0",
-                      borderBottom: "1px solid hsl(var(--border) / 0.5)",
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 24,
+                      color: "hsl(var(--pres-text-muted))",
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 24,
-                        color: "hsl(var(--pres-text-muted))",
-                      }}
-                    >
-                      {feat.label}
-                    </span>
-                    <div className="flex justify-center">
-                      {feat.included === true ? (
-                        <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
-                      ) : feat.included === false ? (
-                        <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
-                      ) : (
-                        <span
-                          style={{
-                            fontFamily: "'Poppins', sans-serif",
-                            fontSize: 20,
-                            fontWeight: 600,
-                            color: "hsl(var(--pres-accent))",
-                          }}
-                        >
-                          {feat.included}
-                        </span>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    {feat.label}
+                  </span>
+                  <div className="flex justify-center">
+                    {feat.included === true ? (
+                      <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
+                    ) : feat.included === false ? (
+                      <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
+                    ) : (
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 20,
+                          fontWeight: 600,
+                          color: "hsl(var(--pres-accent))",
+                        }}
+                      >
+                        {feat.included}
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <div
