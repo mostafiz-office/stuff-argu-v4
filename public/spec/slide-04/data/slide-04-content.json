@@ -14,7 +14,7 @@
     {"label":"Sprint participation","growth":true,"skilled":true,"leadership":true},
     {"label":"Task breakdown & delegation","growth":true,"skilled":true,"leadership":true},
     {"label":"Team management","growth":"Up to 2","skilled":"3–5","leadership":"Up to 15"},
-    {"label":"Architecture decisions","growth":true,"skilled":true,"leadership":true},
+    {"label":"Architecture decisions","growth":"Limited","skilled":true,"leadership":true},
     {"label":"Project management","growth":false,"skilled":false,"leadership":true},
     {"label":"CTO-level oversight","growth":false,"skilled":false,"leadership":true},
     {"label":"Priority Slack · 24/7 SLA","growth":"Slack only","skilled":true,"leadership":"Versatile"},
