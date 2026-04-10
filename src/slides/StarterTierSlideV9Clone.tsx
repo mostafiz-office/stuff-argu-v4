@@ -77,7 +77,6 @@ export default function StarterTierSlideV9Clone() {
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
         <SlideHeader />
-        {showRocket && <RocketAnimation intensity={1} profile="default" flyingLabel="Growth booster" />}
 
         <div
           className="absolute z-[1]"
@@ -153,6 +152,8 @@ export default function StarterTierSlideV9Clone() {
                 </div>
                 <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-dim))" }}>+ $2K onboarding deposit</span>
               </div>
+
+              {showRocket && <RocketAnimation intensity={1} profile="compact" flyingLabel="Growth booster" />}
 
               <div className="mt-3 space-y-3 flex-1">
                 {features.map((feature, i) => (
