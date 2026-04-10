@@ -56,10 +56,15 @@ export default function StarterTierDetailSlide() {
     };
 
     check();
+    const timer = setTimeout(check, 1200);
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
     el.addEventListener("scroll", check);
     window.addEventListener("resize", check);
 
     return () => {
+      clearTimeout(timer);
+      ro.disconnect();
       el.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
