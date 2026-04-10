@@ -152,7 +152,7 @@ export default function StarterTierDetailSlide() {
                     className="grid items-center"
                     style={{
                       gridTemplateColumns: "1fr 200px",
-                      padding: "14px 0",
+                      padding: "10px 0",
                       borderBottom: "1px solid hsl(var(--border) / 0.5)",
                     }}
                   >
