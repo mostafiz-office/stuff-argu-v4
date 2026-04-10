@@ -239,7 +239,8 @@ export default function PricingSavingsSlide() {
                       fontSize: 15,
                       fontWeight: 600,
                       color: c.usColor,
-                      width: 78,
+                      width: 100,
+                      whiteSpace: "nowrap",
                       flexShrink: 0,
                     }}
                   >
@@ -296,7 +297,8 @@ export default function PricingSavingsSlide() {
                       fontSize: 15,
                       fontWeight: 700,
                       color: "hsl(var(--pres-accent))",
-                      width: 78,
+                      width: 100,
+                      whiteSpace: "nowrap",
                       flexShrink: 0,
                     }}
                   >
