@@ -28,7 +28,7 @@ const features: { label: string; included: boolean | string }[] = [
 ];
 
 const MIN_RAIL_THUMB_HEIGHT = 72;
-const SCROLL_WINDOW_HEIGHT = 580;
+const SCROLL_WINDOW_HEIGHT = 460;
 
 export default function StarterTierDetailSlide() {
   const scrollRef = useRef<HTMLDivElement>(null);
