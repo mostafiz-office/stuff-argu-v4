@@ -98,7 +98,8 @@ export default function StarterTierDetailSlide() {
 
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[240px] z-10 flex flex-col"
+          style={{ bottom: 100 }}
         >
           <div
             className="grid items-end pb-3"
