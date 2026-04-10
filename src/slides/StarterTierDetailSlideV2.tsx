@@ -1,7 +1,8 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, X, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -26,7 +27,46 @@ const features: { label: string; included: boolean | string }[] = [
   { label: "Onboarding Deposit", included: "$2K" },
 ];
 
+const MIN_RAIL_THUMB_HEIGHT = 72;
+
 export default function StarterTierDetailSlideV2() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollDown, setCanScrollDown] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [railThumbHeight, setRailThumbHeight] = useState(MIN_RAIL_THUMB_HEIGHT);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const check = () => {
+      const maxScroll = Math.max(el.scrollHeight - el.clientHeight, 1);
+      const nextProgress = Math.min(el.scrollTop / maxScroll, 1);
+      const nextThumbHeight = Math.max(
+        (el.clientHeight / Math.max(el.scrollHeight, el.clientHeight)) * el.clientHeight,
+        MIN_RAIL_THUMB_HEIGHT,
+      );
+
+      setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+      setScrollProgress(nextProgress);
+      setRailThumbHeight(nextThumbHeight);
+    };
+
+    check();
+    const timer = setTimeout(check, 1200);
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    el.addEventListener("scroll", check);
+    window.addEventListener("resize", check);
+
+    return () => {
+      clearTimeout(timer);
+      ro.disconnect();
+      el.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, []);
+
   return (
     <ScaledSlide>
       <div className="slide-dark-bg relative w-full h-full overflow-hidden">
@@ -57,12 +97,11 @@ export default function StarterTierDetailSlideV2() {
           $2,499/mo
         </motion.p>
 
-        {/* Table */}
         <motion.div
           {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] z-10 flex flex-col"
+          className="absolute left-[80px] right-[80px] top-[240px] z-10 flex flex-col"
+          style={{ bottom: 100 }}
         >
-          {/* Header row */}
           <div
             className="grid items-end pb-3"
             style={{
@@ -93,50 +132,118 @@ export default function StarterTierDetailSlideV2() {
             </span>
           </div>
 
-          {/* Feature rows */}
-          <div className="flex flex-col flex-1 justify-evenly">
-            {features.map((feat, i) => (
-              <motion.div
-                key={feat.label}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
-                className="grid items-center"
-                style={{
-                  gridTemplateColumns: "1fr 200px",
-                  padding: "12px 0",
-                  borderBottom: "1px solid hsl(var(--border) / 0.5)",
-                }}
-              >
-                <span
+          {/* Scrollable rows — matches Slide 3 pattern */}
+          <div className="relative flex-1">
+            <div
+              ref={scrollRef}
+              className="absolute inset-0 overflow-y-scroll tier-scroll"
+              style={{
+                paddingRight: 32,
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              {features.map((feat, i) => (
+                <motion.div
+                  key={feat.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
+                  className="grid items-center"
                   style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 24,
-                    color: "hsl(var(--pres-text-muted))",
+                    gridTemplateColumns: "1fr 200px",
+                    padding: "14px 0",
+                    borderBottom: "1px solid hsl(var(--border) / 0.5)",
                   }}
                 >
-                  {feat.label}
-                </span>
-                <div className="flex justify-center">
-                  {feat.included === true ? (
-                    <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
-                  ) : feat.included === false ? (
-                    <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
-                  ) : (
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 20,
-                        fontWeight: 600,
-                        color: "hsl(var(--pres-accent))",
-                      }}
-                    >
-                      {feat.included}
-                    </span>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                  <span
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                      fontSize: 24,
+                      color: "hsl(var(--pres-text-muted))",
+                    }}
+                  >
+                    {feat.label}
+                  </span>
+                  <div className="flex justify-center">
+                    {feat.included === true ? (
+                      <CheckCircle size={30} style={{ color: "hsl(var(--pres-accent))" }} />
+                    ) : feat.included === false ? (
+                      <X size={30} style={{ color: "hsl(0 80% 55%)" }} />
+                    ) : (
+                      <span
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          fontSize: 20,
+                          fontWeight: 600,
+                          color: "hsl(var(--pres-accent))",
+                        }}
+                      >
+                        {feat.included}
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Custom scroll rail */}
+            <div
+              aria-hidden="true"
+              className="absolute top-0 bottom-0 right-[6px] pointer-events-none"
+              style={{ width: 18, zIndex: 4 }}
+            >
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.2), hsl(var(--pres-accent) / 0.08))",
+                  border: "1px solid hsl(var(--pres-accent) / 0.2)",
+                  boxShadow: "inset 0 0 0 1px hsl(var(--pres-accent) / 0.06)",
+                }}
+              />
+              <motion.div
+                className="absolute left-[2px] right-[2px] rounded-full"
+                style={{
+                  height: railThumbHeight,
+                  top: `calc(${scrollProgress * 100}% - ${scrollProgress * railThumbHeight}px)`,
+                  background: "linear-gradient(180deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.52))",
+                  boxShadow: "0 0 24px hsl(var(--pres-accent) / 0.4)",
+                  border: "1px solid hsl(var(--pres-accent) / 0.55)",
+                }}
+              />
+            </div>
+
+            {/* Scroll prompt */}
+            {canScrollDown && (
+              <div
+                className="absolute left-0 right-0 flex flex-col items-center pointer-events-none"
+                style={{ bottom: 0, zIndex: 5 }}
+              >
+                <div
+                  className="w-full"
+                  style={{
+                    height: 84,
+                    background: "linear-gradient(to top, hsl(var(--pres-bg)) 15%, hsl(var(--pres-bg) / 0))",
+                  }}
+                />
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  className="flex items-center gap-2 -mt-7"
+                  style={{
+                    color: "hsl(var(--pres-accent))",
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    textShadow: "0 0 18px hsl(var(--pres-accent) / 0.25)",
+                  }}
+                >
+                  <ChevronDown size={20} />
+                  Scroll for more
+                  <ChevronDown size={20} />
+                </motion.div>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
