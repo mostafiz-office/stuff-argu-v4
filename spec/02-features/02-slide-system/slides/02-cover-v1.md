@@ -1,7 +1,7 @@
 # Slide 02 — Cover V1 (Clean & Minimal)
 
-**Version:** 1.1.0  
-**Updated:** 2026-09-23  
+**Version:** 1.2.0  
+**Updated:** 2026-09-23 (photo swap)  
 **Component:** `PricingCoverV1`  
 **File:** `src/slides/PricingCoverV1.tsx`
 
