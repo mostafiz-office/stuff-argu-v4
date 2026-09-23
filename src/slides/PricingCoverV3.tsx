@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import alimPhoto from "@/assets/alim-updated.png";
+import marekPhoto from "@/assets/marek.png";
 import claudioImg from "@/assets/testimonials/claudio-c.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
 
@@ -115,15 +115,15 @@ export default function PricingCoverV3() {
           }}
         />
 
-        {/* Alim photo — right side, smaller */}
+        {/* Marek photo — right side */}
         <div
           className="absolute z-[4] flex items-end justify-center pointer-events-none"
-          style={{ left: 680, bottom: 0, width: 1100, height: "135%" }}
+          style={{ left: 720, bottom: 0, width: 760, height: 900 }}
         >
           <img
-            src={alimPhoto} alt="Alim UL Karim" loading="eager" fetchPriority="high"
-            className="h-full object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.7))", transform: "scale(1.0)", opacity: 0.85 }}
+            src={marekPhoto} alt="Marek Flejszman" loading="eager" fetchPriority="high"
+            className="h-full w-full object-contain object-bottom"
+            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.7))", opacity: 0.92 }}
           />
         </div>
 

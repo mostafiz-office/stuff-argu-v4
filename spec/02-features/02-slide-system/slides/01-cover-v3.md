@@ -1,7 +1,7 @@
 # Slide 01 — Cover V3 (Bold Statement)
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-09-23  
 **Component:** `PricingCoverV3`  
 **File:** `src/slides/PricingCoverV3.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Bold, high-impact cover slide. Full-bleed Alim photo on the right with interactive hover cards showcasing expertise. LinkedIn-verified testimonial cards in corners. Left side features large headline, keyword pills, and dual CTA buttons.
+Bold, high-impact cover slide. Marek's portrait appears on the right with interactive hover cards showcasing expertise. LinkedIn-verified testimonial cards sit in the corners. The left side features the headline, keyword pills, and dual CTA buttons.
 
 ---
 
@@ -19,7 +19,7 @@ Bold, high-impact cover slide. Full-bleed Alim photo on the right with interacti
 |------|----------|---------|
 | Background | Full slide | `.slide-dark-bg` + diagonal accent stripe (bottom-left, blurred) + center radial glow |
 | Left content | `left: 80px, top: 100px, w: 700px` | Icon badge, subtitle, headline, body text, keyword pills, CTA buttons |
-| Right photo | `left: 680px, bottom: 0, h: 135%` | Alim photo (full-height, `opacity: 0.85`, drop-shadow) |
+| Right photo | `left: 720px, bottom: 0, 760×900px` | Marek photo (contained at bottom, `opacity: 0.92`, drop-shadow) |
 | Hover cards | `right: 60px, top: 340px` | 3 interactive `HoverCard` components |
 | Testimonials | Absolute positioned | 2 LinkedIn recommendation cards (bottom-left at `70,860` and top-right at `1200,120`) |
 | Bottom accent | `bottom: 0` | 4px gradient line (transparent → accent → transparent) |
@@ -100,7 +100,7 @@ Testimonial cards link to: `https://www.linkedin.com/in/alimkarim/details/recomm
 | `HoverCard` (local) | Defined inline in component |
 
 ### Assets
-- `alim-updated.png` — Alim photo
+- `marek.png` — Marek portrait used by the visible cover variant
 - `testimonials/claudio-c.png` — Claudio headshot
 - `testimonials/konstantinos-p.png` — Konstantinos headshot
 
