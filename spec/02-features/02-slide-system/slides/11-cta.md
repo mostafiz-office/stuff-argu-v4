@@ -1,7 +1,7 @@
 # Slide 11 — CTA (Call to Action)
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-09-23  
 **Component:** `PricingCTASlide`  
 **File:** `src/slides/PricingCTASlide.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Final slide. Large headline CTA with "Schedule a Call" button linking to the hiring form. QR code on the right for quick mobile access. Contact email and phone displayed below the CTA.
+Final slide. Large headline CTA with "Schedule a Call" linking to the meeting page. QR code appears on the right. Contact email and a separate "Call Now" hiring action appear below the CTA.
 
 ---
 
@@ -45,13 +45,13 @@ Schedule a 15-minute call. We'll match you with the right talent within days.
 ### CTA Button
 | Label | URL | Style |
 |-------|-----|-------|
-| 📅 Schedule a Call → | `https://client.rasia.pro/hiring-v1` | Filled accent pill, 20px, opens new tab |
+| 📅 Schedule a Call → | `https://meet.rasia.pro/intro-call` | Filled accent pill, 20px, opens new tab |
 
 ### Contact Info
 | Channel | Value |
 |---------|-------|
 | Email | contact@riseup-asia.com |
-| Phone | +1 (567) 978 1833 |
+| Call Now | `https://client.rasia.pro/hiring-v1` |
 
 ### QR Code
 - Image: `src/assets/qr-code.png`

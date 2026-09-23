@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
 import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-import alimPhoto from "@/assets/alim-updated.png";
+import marekPhoto from "@/assets/marek.png";
 import claudioImg from "@/assets/testimonials/claudio-c.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
 
@@ -142,15 +142,15 @@ export default function PricingCoverV1() {
           </div>
         ))}
 
-        {/* Alim photo — slightly smaller */}
+        {/* Marek photo */}
         <div
           className="absolute z-[5] flex items-end justify-center pointer-events-none"
-          style={{ left: 620, bottom: -14, width: 1300, height: "145%" }}
+          style={{ left: 720, bottom: 0, width: 760, height: 900 }}
         >
           <img
-            src={alimPhoto} alt="Alim UL Karim" loading="eager" fetchPriority="high"
-            className="h-full object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.6))", transform: "scale(1.1)" }}
+            src={marekPhoto} alt="Marek Flejszman" loading="eager" fetchPriority="high"
+            className="h-full w-full object-contain object-bottom"
+            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.6))" }}
           />
         </div>
 

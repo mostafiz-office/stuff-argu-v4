@@ -88,7 +88,7 @@ export default function PricingCTASlide() {
               {/* CTA button */}
               <motion.a
                 {...fade(3)}
-                href="https://client.rasia.pro/hiring-v1"
+                href="https://meet.rasia.pro/intro-call"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 mt-8"
@@ -116,12 +116,25 @@ export default function PricingCTASlide() {
                     contact@riseup-asia.com
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <a
+                  href="https://client.rasia.pro/hiring-v1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 17,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-bg))",
+                    background: "hsl(var(--pres-accent))",
+                    padding: "10px 22px",
+                    borderRadius: 50,
+                    textDecoration: "none",
+                  }}
+                >
                   <Phone size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-muted))" }}>
-                    +1 (567) 978 1833
-                  </span>
-                </div>
+                  <span>Call Now</span>
+                </a>
               </motion.div>
             </div>
 
