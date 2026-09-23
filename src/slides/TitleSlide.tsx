@@ -3,7 +3,7 @@ import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Linkedin, MoveRight } from "lucide-react";
 import alimPhoto from "@/assets/alim-updated.png";
-import marekImg from "@/assets/testimonials/marek-f.png";
+import marekImg from "@/assets/marek.png";
 import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
 import { usePresentation } from "@/context/PresentationContext";
 
