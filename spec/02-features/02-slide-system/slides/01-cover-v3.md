@@ -100,7 +100,7 @@ Testimonial cards link to: `https://www.linkedin.com/in/alimkarim/details/recomm
 | `HoverCard` (local) | Defined inline in component |
 
 ### Assets
-- `marek.png` — Marek portrait used by the visible cover variant
+- `marek.png` — Marek portrait (881×1122, transparent background, high-resolution source photo swapped in 2026-09-23; cropped to subject bounds). Must stay a transparent cutout so the bottom-aligned drop-shadow presentation works on the dark slide background.
 - `testimonials/claudio-c.png` — Claudio headshot
 - `testimonials/konstantinos-p.png` — Konstantinos headshot
 

@@ -87,7 +87,7 @@ Top 5% vetted talent. Hire in as fast as 20 minutes.
 | `SlideHeader` | `@/components/presentation/SlideHeader` |
 
 ### Assets
-- `marek.png`, `testimonials/claudio-c.png`, `testimonials/konstantinos-p.png`
+- `marek.png` — Marek portrait (881×1122, transparent background, high-resolution source photo swapped in 2026-09-23; cropped to subject bounds). Both cover variants import this single file — swapping it updates both.
 
 ### Icons (lucide-react)
 `Users`, `ArrowRight`, `CheckCircle`, `Linkedin`, `MoveRight`
