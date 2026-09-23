@@ -165,7 +165,13 @@ export default function ContactSlide() {
                 </p>
               </motion.div>
 
-              <motion.div {...fade(4)} className="flex items-center gap-5">
+              <motion.a
+                {...fade(4)}
+                href="https://call.rasia.pro/riseup-offical-v1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 hover:opacity-80 transition-opacity"
+              >
                 <div
                   style={{
                     width: 48,
@@ -180,10 +186,20 @@ export default function ContactSlide() {
                 >
                   <Phone size={24} style={{ color: "hsl(var(--pres-accent))" }} />
                 </div>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 24, color: "hsl(var(--pres-text-muted))" }}>
-                  +1 (567) 978 1833
-                </p>
-              </motion.div>
+                <div
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 22,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-bg))",
+                    background: "hsl(var(--pres-accent))",
+                    padding: "12px 32px",
+                    borderRadius: 12,
+                  }}
+                >
+                  Call Now
+                </div>
+              </motion.a>
 
               <motion.a
                 {...fade(5)}
