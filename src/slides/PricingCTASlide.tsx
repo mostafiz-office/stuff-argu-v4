@@ -85,56 +85,64 @@ export default function PricingCTASlide() {
                 Schedule a 15-minute call. We'll match you with the right talent within days.
               </motion.p>
 
-              {/* CTA button */}
-              <motion.a
+              {/* Contact block — vertical stack: email → Schedule a Call → Call Now */}
+              <motion.div
                 {...fade(3)}
-                href="https://meet.rasia.pro/intro-call"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 mt-8"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 20,
-                  fontWeight: 600,
-                  color: "hsl(var(--pres-bg))",
-                  background: "hsl(var(--pres-accent))",
-                  padding: "16px 40px",
-                  borderRadius: 50,
-                  textDecoration: "none",
-                }}
+                className="flex flex-col items-start mt-8"
+                style={{ gap: 20 }}
               >
-                <CalendarCheck size={22} />
-                Schedule a Call
-                <ArrowRight size={20} />
-              </motion.a>
-
-              {/* Contact info */}
-              <motion.div {...fade(4)} className="flex items-center gap-8 mt-8">
+                {/* Email row */}
                 <div className="flex items-center gap-2">
                   <Mail size={18} style={{ color: "hsl(var(--pres-accent))" }} />
                   <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-muted))" }}>
                     contact@riseup-asia.com
                   </span>
                 </div>
-                <a
-                  href="https://client.rasia.pro/hiring-v1"
+
+                {/* Schedule a Call */}
+                <motion.a
+                  {...fade(4)}
+                  href="https://meet.rasia.pro/intro-call"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="inline-flex items-center gap-3"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
-                    fontSize: 17,
+                    fontSize: 20,
                     fontWeight: 600,
                     color: "hsl(var(--pres-bg))",
                     background: "hsl(var(--pres-accent))",
-                    padding: "10px 22px",
+                    padding: "16px 40px",
                     borderRadius: 50,
                     textDecoration: "none",
                   }}
                 >
-                  <Phone size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-                  <span>Call Now</span>
-                </a>
+                  <CalendarCheck size={22} />
+                  Schedule a Call
+                  <ArrowRight size={20} />
+                </motion.a>
+
+                {/* Call Now — same size as Schedule a Call, visible left-side icon */}
+                <motion.a
+                  {...fade(5)}
+                  href="https://client.rasia.pro/hiring-v1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3"
+                  style={{
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: 20,
+                    fontWeight: 600,
+                    color: "hsl(var(--pres-bg))",
+                    background: "hsl(var(--pres-accent))",
+                    padding: "16px 40px",
+                    borderRadius: 50,
+                    textDecoration: "none",
+                  }}
+                >
+                  <Phone size={22} style={{ color: "hsl(var(--pres-bg))" }} />
+                  Call Now
+                </motion.a>
               </motion.div>
             </div>
 
