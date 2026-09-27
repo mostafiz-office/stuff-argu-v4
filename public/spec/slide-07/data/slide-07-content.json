@@ -1,12 +1,39 @@
 {
-  "slide":"07","component":"WhatsIncludedSlide",
-  "title":"What's Included","subtitle":"Every plan comes with these guarantees — no extra charges.",
-  "items":[
-    {"icon":"Clock","title":"160 hrs/month","desc":"Guaranteed dedicated hours — full-time commitment to your project."},
-    {"icon":"Shield","title":"7-Stage Vetting","desc":"Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass."},
-    {"icon":"MessageSquare","title":"Direct Communication","desc":"Slack, Teams, or your preferred tool — no middlemen, no delays."},
-    {"icon":"Zap","title":"Hire in 20 Minutes","desc":"Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days."},
-    {"icon":"Users","title":"Flexible Scaling","desc":"Add or reduce team members as your project evolves. No lock-in."},
-    {"icon":"RefreshCw","title":"Free Replacement","desc":"Not satisfied? We'll replace the developer at no extra cost."}
-  ]
+  "slide": "07",
+  "component": "WhatsIncludedSlide",
+  "title": "What's Included",
+  "subtitle": "Every plan comes with these guarantees — no extra charges.",
+  "items": [
+    {
+      "icon": "Clock",
+      "title": "160 hrs/month",
+      "desc": "Guaranteed dedicated hours — full-time commitment to your project."
+    },
+    {
+      "icon": "Shield",
+      "title": "7-Stage Vetting",
+      "desc": "Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass."
+    },
+    {
+      "icon": "MessageSquare",
+      "title": "Direct Communication",
+      "desc": "Slack, Teams, or your preferred tool — no middlemen, no delays."
+    },
+    {
+      "icon": "Zap",
+      "title": "Hire in 20 Minutes",
+      "desc": "Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days."
+    },
+    {
+      "icon": "Users",
+      "title": "Flexible Scaling",
+      "desc": "Add or reduce team members as your project evolves. No lock-in."
+    },
+    {
+      "icon": "RefreshCw",
+      "title": "Free Replacement",
+      "desc": "Not satisfied? We'll replace the developer at no extra cost."
+    }
+  ],
+  "trialNote": "14-day trial with money-back guarantee (conditions apply)."
 }
