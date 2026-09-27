@@ -4,7 +4,7 @@
   "results":[
     {"metric":"3x","label":"Faster than hiring"},
     {"metric":"160h","label":"Pure dev time/mo"},
-    {"metric":"$11,999","label":"Expert bonus included"}
+    {"metric":"$9,999","label":"Expert bonus included"}
   ],
   "guarantees":[
     {"icon":"Shield","title":"Zero Risk","desc":"Cancel anytime. No lock-in contracts."},
