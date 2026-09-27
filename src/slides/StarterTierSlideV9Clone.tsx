@@ -35,8 +35,8 @@ const results = [
   { metric: "160h", label: "Pure dev time/mo", tooltip: (
     <><span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>160 dedicated hours</span> per month, <span style={{ background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.3), hsl(var(--pres-accent) / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(var(--pres-accent))" }}>fully focused</span> on your project</>
   )},
-  { metric: "$11,999", label: "Expert bonus included", tooltip: (
-    <>Alim's expert oversight valued at <span style={{ background: "linear-gradient(135deg, hsl(45 90% 55% / 0.3), hsl(45 90% 55% / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(45 90% 55%)" }}>$11,999/mo</span> — included as a <span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>bonus</span> with your tier</>
+  { metric: "$9,999", label: "Expert bonus included", tooltip: (
+    <>Alim's expert oversight valued at <span style={{ background: "linear-gradient(135deg, hsl(45 90% 55% / 0.3), hsl(45 90% 55% / 0.15))", borderRadius: 4, padding: "1px 5px", fontWeight: 700, color: "hsl(45 90% 55%)" }}>$9,999/mo</span> — included as a <span style={{ fontWeight: 700, color: "hsl(var(--pres-accent))" }}>bonus</span> with your tier</>
   )},
 ];
 
@@ -187,7 +187,7 @@ export default function StarterTierSlideV9Clone() {
                     </div>
                     <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 600, color: "hsl(var(--pres-text))", lineHeight: 1.4 }}>Alim Ul Karim — Chief Software Engineer</p>
                     <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-muted))", lineHeight: 1.4, marginTop: 4 }}>
-                      4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(210 80% 65%)", fontSize: 16 }}>$11,999/mo</strong> value
+                      4h/day · <strong style={{ color: "hsl(var(--pres-accent))", fontSize: 16 }}>$625/hr</strong> · <strong style={{ color: "hsl(210 80% 65%)", fontSize: 16 }}>$9,999/mo</strong> value
                     </p>
                     <div className="mt-3 flex items-center gap-2 rounded-lg px-4 py-2" style={{ background: "hsl(210 80% 55% / 0.15)", border: "1.5px solid hsl(210 80% 60% / 0.35)", width: "fit-content" }}>
                       <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 700, color: "hsl(210 80% 65%)" }}>↑ Upgrade to Tier 2 or 3 to unlock</span>
