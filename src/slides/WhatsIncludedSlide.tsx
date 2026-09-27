@@ -61,7 +61,7 @@ export default function WhatsIncludedSlide() {
         </motion.p>
 
         {/* 3×2 grid */}
-        <div className="absolute left-[80px] right-[80px] top-[260px] bottom-[60px] grid grid-cols-3 grid-rows-2 gap-6 z-10">
+        <div className="absolute left-[80px] right-[80px] top-[260px] bottom-[175px] grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-4 z-10">
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
