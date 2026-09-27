@@ -56,9 +56,9 @@ export default function PremiumExpertSlideV2() {
           <h1 style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 46, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.25 }}>
             Buy Any Tier, Get a{" "}
             <span
+              className="pres-dark-safe-accent"
               style={{
                 background: "linear-gradient(135deg, hsl(var(--pres-accent)), hsl(var(--pres-accent) / 0.85))",
-                color: "hsl(var(--pres-bg))",
                 padding: "2px 14px",
                 borderRadius: 8,
                 fontWeight: 800,

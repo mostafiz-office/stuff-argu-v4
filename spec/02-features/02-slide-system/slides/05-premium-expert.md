@@ -1,7 +1,7 @@
 # Slide 05 — Premium Expert Bonus
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-09-27  
 **Component:** `PremiumExpertSlideV2`  
 **File:** `src/slides/PremiumExpertSlideV2.tsx`
 
@@ -32,6 +32,10 @@ Communicates the Alim Expert Oversight bonus included with every tier. Shows mar
 ```
 Buy Any Tier, Get a $10K/mo Expert Bonus
 ```
+
+The `$10K/mo Expert` amber highlight uses the shared `pres-dark-safe-accent`
+style. Its near-black text fill and amber background must remain unchanged in
+mobile browsers that automatically darken web pages.
 
 ### Alim Card
 - Name: Alim Ul Karim
@@ -96,3 +100,4 @@ Buy Any Tier, Get a $10K/mo Expert Bonus
 |-----------|----------|
 | Pricing Tiers | [03-pricing-tiers.md](./03-pricing-tiers.md) |
 | Starter Tier V9 | [10-starter-tier-v9.md](./10-starter-tier-v9.md) |
+| Forced-dark contrast issue | `public/spec/slide-05/issues/005-mobile-forced-dark-highlight-contrast.md` |
