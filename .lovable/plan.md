@@ -1,23 +1,24 @@
-# Add 14-Day Trial Line — Slide 6 "What's Included"
+# Add 14-Day Trial Note — Slide 6 "What's Included"
 
 ## Goal
-On the "What's Included" slide (6 of 9), append the disclaimer to the last paragraph of the slide — the subtitle under the title.
+Add the line "14-day trial with money-back guarantee (conditions apply)." as a note **below all six cards** on the "What's Included" slide (6 of 9) — not in the subtitle. Free space for it by slightly reducing the cards' height and the gap between the two rows.
 
-## Change
-In `src/slides/WhatsIncludedSlide.tsx` (subtitle paragraph, line ~60):
-
-Current:
-    Every plan comes with these guarantees — no extra charges.
+## Layout Change (src/slides/WhatsIncludedSlide.tsx)
+Current card grid: `top-[260px] bottom-[60px]`, gap 24px both axes.
 
 New:
-    Every plan comes with these guarantees — no extra charges. 14-day trial with money-back guarantee (conditions apply).
-
-The line stays in the same style (Poppins 22px, muted text color, same fade-in animation) — no layout or styling changes.
+1. Card grid becomes `top-[260px] bottom-[175px]` — every card gets slightly shorter, same width.
+2. Row gap reduced slightly (24px → 16px vertical), column gap unchanged.
+3. New note line below the cards, centered, same fade-in animation as the rest:
+   - Text: `14-day trial with money-back guarantee (conditions apply).`
+   - Style: Poppins 20px, muted text color token (`--pres-text-muted`), optionally with a small shield icon in the accent color to match the deck's note style.
+   - Positioned in the freed bottom band, inside the canvas boundary (nothing touches the bottom edge — respects the fixed-canvas rule from the earlier audit).
+4. Subtitle stays exactly as is: "Every plan comes with these guarantees — no extra charges."
 
 ## Documentation
-- Update `public/spec/slide-07/data/slide-07-content.json` subtitle field to match.
-- Update `public/spec/slide-07/00-overview.md` where the subtitle is quoted.
+- `public/spec/slide-07/data/slide-07-content.json` — add a `trialNote` field with the line.
+- `public/spec/slide-07/00-overview.md` — add the note to the slide description.
 
 ## Verification
-- Check the build log shows OK.
-- Playwright: open `/?slide=6`, screenshot, confirm the full sentence renders on one/two clean lines without colliding with the card grid below (subtitle is absolute-positioned at top 178px; grid starts at 260px — sentence stays on a single wrapped line region).
+- Build log OK.
+- Playwright on `/?slide=6`: screenshot confirms the note sits below all six cards, cards remain comfortably taller than their text, nothing touches the bottom edge.
