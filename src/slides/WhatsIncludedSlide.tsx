@@ -1,7 +1,7 @@
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import SlideHeader from "@/components/presentation/SlideHeader";
 import { motion } from "framer-motion";
-import { Clock, Shield, MessageSquare, Zap, Users, RefreshCw } from "lucide-react";
+import { Clock, Shield, ShieldCheck, MessageSquare, Zap, Users, RefreshCw } from "lucide-react";
 
 const fade = (i: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -109,6 +109,20 @@ export default function WhatsIncludedSlide() {
             );
           })}
         </div>
+
+        {/* Trial note below all cards */}
+        <motion.p
+          {...fade(8)}
+          className="absolute left-[80px] right-[80px] bottom-[82px] z-10 flex items-center justify-center gap-2"
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: 20,
+            color: "hsl(var(--pres-text-muted))",
+          }}
+        >
+          <ShieldCheck size={20} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
+          14-day trial with money-back guarantee (conditions apply).
+        </motion.p>
       </div>
     </ScaledSlide>
   );
