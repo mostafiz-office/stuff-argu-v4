@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    color-scheme: dark;
+
     /* Presentation Design System — Rise Up Asia (#FFAD01 amber) */
     --pres-bg: 240 20% 4%;
     --pres-bg-surface: 240 17% 8%;
@@ -89,6 +91,16 @@
   inset: 0;
   background: hsl(var(--pres-bg));
   overflow: hidden;
+  color-scheme: dark;
+}
+
+/* Preserve intentional dark-on-amber labels when mobile browsers auto-darken pages. */
+.pres-dark-safe-accent {
+  color: hsl(var(--pres-bg));
+  -webkit-text-fill-color: hsl(var(--pres-bg));
+  forced-color-adjust: none;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 /* Scaled slide wrapper */
