@@ -1,40 +1,41 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { SLIDE_WIDTH, SLIDE_HEIGHT } from "@/constants/presentation";
+import React, { useEffect, useState } from "react";
 
 interface ScaledSlideProps {
-  children: ReactNode;
-  className?: string;
+  children: React.ReactNode;
 }
 
-export default function ScaledSlide({ children, className = "" }: ScaledSlideProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+export const ScaledSlide: React.FC<ScaledSlideProps> = ({ children }) => {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    const updateScale = () => {
-      if (!containerRef.current) return;
-
-      const parent = containerRef.current.parentElement;
-      if (!parent) return;
-
-      const { clientWidth: parentWidth, clientHeight: parentHeight } = parent;
-      setScale(Math.min(parentWidth / SLIDE_WIDTH, parentHeight / SLIDE_HEIGHT));
+    const handleResize = () => {
+      const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      setScale(factor);
     };
 
-    updateScale();
-    window.addEventListener("resize", updateScale);
-
-    return () => window.removeEventListener("resize", updateScale);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div className="relative w-screen h-screen overflow-hidden bg-pres-bg flex items-center justify-center">
       <div
-        className={`slide-scaler slide-content ${className}`}
-        style={{ transform: `scale(${scale})` }}
+        style={{
+          width: "1920px",
+          height: "1080px",
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          marginLeft: "-960px",
+          marginTop: "-540px",
+        }}
+        className="select-none"
       >
         {children}
       </div>
     </div>
   );
-}
+};

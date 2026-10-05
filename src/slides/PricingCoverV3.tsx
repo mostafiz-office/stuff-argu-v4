@@ -1,277 +1,276 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import marekPhoto from "@/assets/marek.png";
-import claudioImg from "@/assets/testimonials/claudio-c.png";
-import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
+import { Users, ArrowRight, CheckCircle, Sparkles, Linkedin } from "lucide-react";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
+import marekImg from "@/assets/marek.png";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.2 * i, duration: 0.7, ease: "easeOut" as const },
-});
-
-function HoverCard({ delay, title, hoverText, fontSize = 22 }: { delay: number; title: React.ReactNode; hoverText: string; fontSize?: number }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.7, ease: "easeOut" }}
-      className="rounded-xl cursor-pointer"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: hovered ? "hsl(var(--pres-accent) / 0.12)" : "hsl(var(--pres-bg) / 0.85)",
-        border: `1.5px solid ${hovered ? "hsl(var(--pres-accent) / 0.7)" : "hsl(var(--pres-accent) / 0.4)"}`,
-        backdropFilter: "blur(12px)",
-        padding: "14px 22px",
-        maxWidth: 360,
-        transition: "background 0.35s ease, border-color 0.35s ease",
-      }}
-    >
-      <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.3 }}>
-        {title}
-      </p>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateRows: hovered ? "1fr" : "0fr",
-          opacity: hovered ? 1 : 0,
-          transition: "grid-template-rows 0.35s ease, opacity 0.3s ease",
-        }}
-      >
-        <div style={{ overflow: "hidden" }}>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-muted))", lineHeight: 1.5, paddingTop: 8 }}>
-            {hoverText}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
+interface PricingCoverV3Props {
+  onNavigate?: (index: number) => void;
 }
 
-const keywords = [
-  { label: "Top 5% Talent" },
-  { label: "Hire in 20 Min" },
-  { label: "7-Stage Vetted" },
-  { label: "60% Cost Savings" },
-];
+export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({ onNavigate }) => {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-const recommendations = [
-  {
-    name: "Konstantinos P.",
-    title: "Senior Serverless Engineer",
-    quote: '"Solid and high quality work... the smoothest on-boarding process I have had in my whole career."',
-    image: konstantinosImg,
-    x: 70,
-    y: 860,
-  },
-  {
-    name: "Claudio C.",
-    title: "Engineering Leader | AI-Powered Platforms",
-    quote: '"A skillful professional and kind communicator."',
-    image: claudioImg,
-    x: 1200,
-    y: 120,
-  },
-];
+  const hoverCards = [
+    {
+      title: "<span class='text-pres-accent font-bold'>20+ Years</span> in Software Engineering",
+      desc: "Two decades of hands-on experience across startups, enterprises, and everything in between — from architecture to deployment.",
+    },
+    {
+      title: "Led <span class='text-pres-accent font-bold'>50+ Enterprise</span> Projects",
+      desc: "From Fortune 500 platforms to high-growth SaaS — proven delivery across healthcare, fintech, e-commerce, and more.",
+    },
+    {
+      title: "<span class='text-pres-accent font-bold'>Chief Software Engineer</span> & Your Dedicated Expert",
+      desc: "Not a manager watching from the sidelines — Alim reviews your code, guides architecture, and mentors your developer directly.",
+    },
+  ];
 
-const ALIM_LINK = "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0";
+  const handleExploreTiers = () => {
+    if (onNavigate) {
+      onNavigate(1);
+    }
+  };
 
-/**
- * VERSION 3 — Bold Statement
- * Large centered headline, Alim on right smaller, inline pill row, testimonials in corners
- */
-export default function PricingCoverV3() {
-  const [, setSearchParams] = useSearchParams();
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        {/* Diagonal accent stripe */}
-        <div
-          className="absolute z-[1] pointer-events-none"
-          style={{
-            left: -100, bottom: -200, width: 1200, height: 400,
-            background: "linear-gradient(135deg, hsl(var(--pres-accent) / 0.04) 0%, transparent 60%)",
-            transform: "rotate(-8deg)",
-            filter: "blur(40px)",
-          }}
-        />
+        {/* Ambient radial glows */}
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-pres-accent/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[700px] h-[500px] rounded-full bg-amber-500/10 blur-[150px] pointer-events-none" />
 
-        {/* Center glow */}
-        <div
-          className="absolute z-[1]"
-          style={{
-            left: "40%", top: "40%", width: 800, height: 500,
-            transform: "translate(-50%, -50%)",
-            background: "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.06) 0%, transparent 60%)",
-            filter: "blur(60px)",
-          }}
-        />
+        {/* Left Content Area - Vertically Centered (top-1/2 -translate-y-1/2) */}
+        <div className="absolute left-[80px] top-1/2 -translate-y-1/2 w-[660px] z-10 flex flex-col justify-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-3.5 mb-4"
+          >
+            <div className="w-[46px] h-[46px] rounded-xl bg-black/40 border border-white/15 flex items-center justify-center text-pres-accent shadow-sm">
+              <Users className="w-5 h-5 text-pres-accent" />
+            </div>
+            <div>
+              <span className="text-[11px] font-semibold tracking-widest uppercase text-white/50 block">
+                Engineering Relief · riseup-asia.com
+              </span>
+              <span className="text-xs text-pres-accent font-medium block">
+                Stop Losing Sleep Over Tech Debt
+              </span>
+            </div>
+          </motion.div>
 
-        {/* Marek photo — right side */}
-        <div
-          className="absolute z-[4] flex items-end justify-center pointer-events-none"
-          style={{ left: 720, bottom: 0, width: 760, height: 900 }}
-        >
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-[66px] leading-[1.08] font-bold font-heading mb-4 tracking-tight"
+          >
+            Losing Sleep Over
+            <br />
+            <span className="text-pres-accent">Engineering Debt?</span>
+          </motion.h1>
+
+          {/* Body */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-[18px] leading-[1.5] text-pres-text-muted mb-5 max-w-[620px]"
+          >
+            Stop waking up at midnight to fix fragile vibe-code and hallucinated AI bugs. Get battle-tested top 5% engineers supervised by a 20+ year Chief Architect — ready in 20 minutes.
+          </motion.p>
+
+          {/* Keyword Pills */}
+          <div className="flex flex-wrap gap-2.5 mb-6">
+            {[
+              "Top 5% Talent",
+              "Hire in 20 Min",
+              "7-Stage Vetted",
+              "60% Cost Savings",
+            ].map((kw, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 180,
+                  damping: 14,
+                  delay: 0.3 + i * 0.05,
+                }}
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/15 text-white/90 font-medium text-xs backdrop-blur-sm"
+              >
+                <CheckCircle className="w-3.5 h-3.5 text-pres-accent shrink-0" />
+                <span>{kw}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Dual CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <a
+              href="https://client.rasia.pro/hiring-v1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer"
+            >
+              <span>Book a Call</span>
+              <ArrowRight className="w-4 h-4 text-pres-bg pres-dark-safe-accent" />
+            </a>
+
+            <button
+              onClick={handleExploreTiers}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Explore Tiers</span>
+            </button>
+          </motion.div>
+
+          {/* Marek Recommendation Card 1 (Below the two buttons on the left) */}
+          <motion.a
+            href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="relative block w-full max-w-[540px] p-4 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md hover:border-white/30 hover:bg-black/80 transition-all duration-300 group cursor-pointer shadow-xl"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-zinc-900 shrink-0">
+                  <img
+                    src={marekImg}
+                    alt="Marek K."
+                    className="w-full h-full object-cover object-[center_12%] scale-135"
+                  />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-[15px] font-heading leading-tight">
+                    Marek K.
+                  </div>
+                  <div className="text-[12px] text-white/50 leading-tight">
+                    Tech Founder &amp; CEO · Client Partner
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[11px] font-medium tracking-wide">
+                <Linkedin className="w-3 h-3 fill-current text-blue-400" />
+                <span>Verified</span>
+              </div>
+            </div>
+            <p className="text-[13px] text-white/80 italic leading-relaxed">
+              "Solid and high quality work... the smoothest on-boarding process I have had in my whole career."
+            </p>
+            <div className="text-right text-white/40 group-hover:text-pres-accent group-hover:translate-x-1 transition-all text-xs mt-1">
+              →
+            </div>
+          </motion.a>
+        </div>
+
+        {/* Center Photo: Marek Portrait - Clean executive presence anchored to floor */}
+        <div className="absolute left-[650px] bottom-0 w-[780px] h-[920px] z-4 pointer-events-none flex items-end justify-center overflow-visible">
           <img
-            src={marekPhoto} alt="Marek Flejszman" loading="eager" fetchPriority="high"
-            className="h-full w-full object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.7))", opacity: 0.92 }}
+            src={marekImg}
+            alt="Marek K."
+            className="max-w-full max-h-full object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)] scale-105 origin-bottom"
           />
         </div>
 
-        {/* Highlighted expertise text — right side */}
-        <div className="absolute z-[6]" style={{ right: 60, top: 340 }}>
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
-            className="flex flex-col gap-4"
+        {/* Right Content Area - Vertically Centered (top-1/2 -translate-y-1/2) matching left side balance */}
+        <div className="absolute right-[80px] top-1/2 -translate-y-1/2 w-[440px] z-20 flex flex-col justify-between h-[640px]">
+          {/* Marek Recommendation Card 2 (In the head area, matching screenshot layout) */}
+          <motion.a
+            href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="relative block w-full p-4 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md hover:border-white/30 hover:bg-black/80 transition-all duration-300 group cursor-pointer shadow-xl"
           >
-            <HoverCard
-              delay={1.0}
-              title={<><span style={{ color: "hsl(var(--pres-accent))" }}>20+ Years</span> in Software Engineering</>}
-              hoverText="Two decades of hands-on experience across startups, enterprises, and everything in between — from architecture to deployment."
-            />
-            <HoverCard
-              delay={1.25}
-              title={<>Led <span style={{ color: "hsl(var(--pres-accent))" }}>50+ Enterprise</span> Projects</>}
-              hoverText="From Fortune 500 platforms to high-growth SaaS — proven delivery across healthcare, fintech, e-commerce, and more."
-            />
-            <HoverCard
-              delay={1.5}
-              title={<><span style={{ color: "hsl(var(--pres-accent))" }}>Chief Software Engineer</span> & Your Dedicated Expert</>}
-              hoverText="Not a manager watching from the sidelines — Alim reviews your code, guides architecture, and mentors your developer directly."
-              fontSize={20}
-            />
-          </motion.div>
-        </div>
-
-        {/* LEFT — Bold content block */}
-        <div className="pointer-events-none absolute left-[80px] top-[100px] bottom-[80px] z-10 flex w-[700px] items-center">
-          <div>
-            <motion.div {...fade(0)} className="flex items-center gap-3 mb-6">
-              <div className="flex items-center justify-center rounded-2xl"
-                style={{ width: 60, height: 60, background: "hsl(var(--pres-accent) / 0.12)", border: "1px solid hsl(var(--pres-accent) / 0.25)" }}>
-                <Users size={30} style={{ color: "hsl(var(--pres-accent))" }} />
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-zinc-900 shrink-0">
+                  <img
+                    src={marekImg}
+                    alt="Marek K."
+                    className="w-full h-full object-cover object-[center_12%] scale-135"
+                  />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-[15px] font-heading leading-tight">
+                    Marek K.
+                  </div>
+                  <div className="text-[12px] text-white/50 leading-tight">
+                    Engineering Leader | AI-Powered Platforms
+                  </div>
+                </div>
               </div>
-              <div>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "hsl(var(--pres-text-dim))", textTransform: "uppercase", letterSpacing: "0.2em" }}>
-                  Staff Augmentation
-                </p>
-                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-accent))", fontWeight: 600 }}>
-                  riseup-asia.com
-                </p>
+              <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[11px] font-medium tracking-wide">
+                <Linkedin className="w-3 h-3 fill-current text-blue-400" />
+                <span>Verified</span>
               </div>
-            </motion.div>
+            </div>
+            <p className="text-[13px] text-white/80 italic leading-relaxed">
+              "A skillful professional and kind communicator."
+            </p>
+            <div className="text-right text-white/40 group-hover:text-pres-accent group-hover:translate-x-1 transition-all text-xs mt-1">
+              →
+            </div>
+          </motion.a>
 
-            <motion.h1 {...fade(1)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 80, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
-              <span style={{ color: "hsl(var(--pres-accent))" }}>Elite</span> Engineers
-              <br />On Demand
-            </motion.h1>
-
-            <motion.p {...fade(2)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 22, color: "hsl(var(--pres-text-muted))", marginTop: 20, maxWidth: 560, lineHeight: 1.65 }}>
-              Pre-vetted <strong style={{ color: "hsl(var(--pres-accent))" }}>top 5% engineers</strong> ready to join your team. No recruitment delays. No hidden fees.
-            </motion.p>
-
-            {/* Inline pill row */}
-            <motion.div {...fade(3)} className="flex flex-wrap gap-3 mt-8">
-              {keywords.map((kw, i) => (
-                <motion.span
-                  key={kw.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.7 + i * 0.1, type: "spring", stiffness: 200, damping: 16 }}
-                  className="flex items-center gap-2"
-                  style={{
-                    padding: "8px 18px", fontSize: 16, fontWeight: 600,
-                    fontFamily: "'Poppins', sans-serif",
-                    color: "hsl(var(--pres-text))",
-                    background: "hsl(var(--pres-bg-surface) / 0.9)",
-                    border: "1px solid hsl(var(--pres-text-muted) / 0.25)",
-                    borderRadius: 20, whiteSpace: "nowrap",
-                  }}
+          {/* Hover Cards Stack on Right (Bottom half of right column, matching screenshot design) */}
+          <div className="flex flex-col gap-3.5 w-full">
+            {hoverCards.map((card, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 + idx * 0.12 }}
+                onMouseEnter={() => setHoveredCard(idx)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`p-4 rounded-xl border transition-all duration-300 backdrop-blur-md cursor-pointer ${
+                  hoveredCard === idx
+                    ? "bg-black/75 border-pres-accent shadow-[0_0_25px_rgba(255,173,1,0.25)]"
+                    : "bg-black/40 border-white/15 hover:border-pres-accent/40"
+                }`}
+              >
+                <h2
+                  className="text-[16px] font-medium font-heading text-white leading-snug"
+                  dangerouslySetInnerHTML={{ __html: card.title }}
+                />
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    hoveredCard === idx ? "grid-rows-[1fr] mt-2 opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
                 >
-                  <CheckCircle size={15} />
-                  {kw.label}
-                </motion.span>
-              ))}
-            </motion.div>
-
-            <motion.div {...fade(4)} className="flex items-center gap-4 mt-10">
-              <a href="https://client.rasia.pro/hiring-v1" target="_blank" rel="noopener noreferrer" className="pointer-events-auto cursor-pointer"
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-bg))", background: "hsl(var(--pres-accent))", padding: "14px 36px", borderRadius: 50, display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-                Book a Call <ArrowRight size={20} />
-              </a>
-              <button
-                type="button"
-                className="pointer-events-auto cursor-pointer flex items-center gap-2"
-                onClick={() => {
-                  const nextParams = new URLSearchParams(window.location.search);
-                  nextParams.set("slide", "2");
-                  setSearchParams(nextParams);
-                }}
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 500, color: "hsl(var(--pres-accent))", padding: "14px 24px", borderRadius: 50, border: "1.5px solid hsl(var(--pres-accent) / 0.3)", background: "transparent" }}>
-                <Sparkles size={16} />
-                Explore Tiers
-              </button>
-            </motion.div>
+                  <div className="overflow-hidden">
+                    <p className="text-xs text-pres-text-muted leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
-        {/* Testimonial cards in corners */}
-        {recommendations.map((rec, i) => (
-          <div
-            key={rec.name}
-            className="absolute z-[8] pointer-events-auto"
-            style={{
-              left: rec.x, top: rec.y,
-              width: i === 0 ? 520 : 480,
-              opacity: 0,
-              animation: `recCardFadeIn 0.6s ${0.8 + i * 0.15}s cubic-bezier(0.25,0.46,0.45,0.94) forwards`,
-            }}
-          >
-            <a href={ALIM_LINK} target="_blank" rel="noopener noreferrer" className="rec-card group block"
-              style={{
-                padding: "18px 22px", borderRadius: 16,
-                background: "hsl(var(--pres-bg) / 0.8)",
-                border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                backdropFilter: "blur(14px)",
-                boxShadow: "0 8px 32px hsl(var(--pres-bg) / 0.5)",
-                textDecoration: "none", display: "block",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-                <div style={{ width: 42, height: 42, borderRadius: "50%", overflow: "hidden", border: "2px solid hsl(var(--pres-accent) / 0.3)", flexShrink: 0 }}>
-                  <img src={rec.image} alt={rec.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 18, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.2 }}>{rec.name}</p>
-                  <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: "hsl(var(--pres-text-muted))", lineHeight: 1.3 }}>{rec.title}</p>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 10px", borderRadius: 16, background: "hsl(210 90% 55% / 0.12)", border: "1px solid hsl(210 90% 55% / 0.25)", flexShrink: 0 }}>
-                  <Linkedin size={13} style={{ color: "hsl(210 90% 55%)" }} />
-                  <span style={{ fontSize: 11, fontWeight: 600, color: "hsl(210 90% 55%)" }}>Verified</span>
-                </div>
-              </div>
-              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, lineHeight: 1.5, color: "hsl(var(--pres-text-muted))", fontStyle: "italic" }}>{rec.quote}</p>
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 6, opacity: 0.5 }}>
-                <MoveRight size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-              </div>
-            </a>
-          </div>
-        ))}
-
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: 4, background: "linear-gradient(90deg, transparent 0%, hsl(var(--pres-accent)) 50%, transparent 100%)" }} />
+        {/* Bottom Accent Line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
   );
-}
+};

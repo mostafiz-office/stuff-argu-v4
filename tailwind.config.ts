@@ -1,9 +1,10 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
-  prefix: "",
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -44,35 +45,22 @@ export default {
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(var(--popover, var(--card)))",
+          foreground: "hsl(var(--popover-foreground, var(--card-foreground)))",
         },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Presentation-specific semantic tokens
-        pres: {
-          bg: "hsl(var(--pres-bg))",
-          surface: "hsl(var(--pres-bg-surface))",
-          card: "hsl(var(--pres-bg-card))",
-          accent: "hsl(var(--pres-accent))",
-          "accent-glow": "hsl(var(--pres-accent-glow))",
-          "accent-dark": "hsl(var(--pres-accent-dark))",
-          text: "hsl(var(--pres-text))",
-          "text-muted": "hsl(var(--pres-text-muted))",
-          "text-dim": "hsl(var(--pres-text-dim))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        "pres-bg": "hsl(var(--pres-bg))",
+        "pres-surface": "hsl(var(--pres-bg-surface))",
+        "pres-card": "hsl(var(--pres-bg-card))",
+        "pres-accent": "hsl(var(--pres-accent))",
+        "pres-accent-glow": "hsl(var(--pres-accent-glow))",
+        "pres-accent-dark": "hsl(var(--pres-accent-dark))",
+        "pres-text": "hsl(var(--pres-text))",
+        "pres-text-muted": "hsl(var(--pres-text-muted))",
+        "pres-text-dim": "hsl(var(--pres-text-dim))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -88,12 +76,17 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        recCardFadeIn: {
+          from: { opacity: "0", transform: "scale(0.85) translateY(20px)" },
+          to: { opacity: "1", transform: "scale(1) translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "rec-card": "recCardFadeIn 0.6s ease-out forwards",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate, typography],
 } satisfies Config;

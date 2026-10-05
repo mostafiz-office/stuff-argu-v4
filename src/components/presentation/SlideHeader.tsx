@@ -1,17 +1,14 @@
-import logo from "@/assets/riseup-asia-logo.png";
+import React from "react";
+import logoImg from "@/assets/riseup-asia-logo.png";
 
-interface SlideHeaderProps {
-  dark?: boolean; // true = dark bg (white logo), false = accent bg (dark logo)
-}
-
-export default function SlideHeader({ dark = true }: SlideHeaderProps) {
+export const SlideHeader: React.FC = () => {
   return (
-    <div className="pointer-events-none absolute top-0 left-0 right-0 z-20 flex items-center px-[60px] py-[36px]">
+    <header className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-[60px] py-[36px] flex items-center justify-between">
       <img
-        src={logo}
-        alt="Riseup-Asia"
-        className={`h-[48px] object-contain ${dark ? "opacity-80" : "opacity-60 brightness-0"}`}
+        src={logoImg}
+        alt="RiseUp Asia"
+        className="h-[48px] w-auto opacity-80 object-contain"
       />
-    </div>
+    </header>
   );
-}
+};

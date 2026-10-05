@@ -1,190 +1,142 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React from "react";
 import { motion } from "framer-motion";
 import { CalendarCheck, Mail, Phone, ArrowRight } from "lucide-react";
-import qrCode from "@/assets/qr-code.png";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
+import qrCodeImg from "@/assets/qr-code.png";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.2 * i, duration: 0.7, ease: "easeOut" as const },
-});
+interface PricingCTASlideProps {
+  onNavigate?: (index: number) => void;
+}
 
-export default function PricingCTASlide() {
+export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
         <SlideHeader />
 
-        {/* Dot pattern */}
+        {/* Dot pattern background */}
         <div
-          className="absolute inset-0 z-[1]"
+          className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: "radial-gradient(circle 1.2px at center, hsl(var(--pres-accent) / 0.06) 1px, transparent 1px)",
-            backgroundSize: "14px 14px",
-            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 65%)",
-            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 65%)",
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--pres-accent) / 0.15) 1.5px, transparent 1.5px)",
+            backgroundSize: "28px 28px",
           }}
         />
 
-        {/* Large glow */}
-        <div
-          className="absolute z-[1]"
-          style={{
-            left: "50%", top: "40%", width: 1000, height: 700,
-            transform: "translate(-50%, -50%)",
-            background: "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.1) 0%, transparent 60%)",
-            filter: "blur(80px)",
-          }}
-        />
+        {/* Ambient center glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-full bg-pres-accent/8 blur-[180px] pointer-events-none" />
 
-        {/* Main content */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="flex items-center gap-20">
-            {/* Left: CTA text */}
-            <div style={{ maxWidth: 700 }}>
-              <motion.p
-                {...fade(0)}
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
-                  color: "hsl(var(--pres-text-dim))",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.2em",
-                  marginBottom: 16,
-                }}
-              >
-                Ready to Start?
-              </motion.p>
+        {/* Center Content Flex (Left: Text & CTAs, Right: QR Code) */}
+        <div className="relative z-10 flex items-center justify-between w-[1500px] gap-20">
+          {/* Left Block */}
+          <div className="flex-1 max-w-[850px] flex flex-col items-start">
+            {/* Pre-headline */}
+            <motion.span
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-[18px] font-semibold text-pres-accent tracking-[0.2em] uppercase mb-4 block"
+            >
+              Ready For Engineering Relief?
+            </motion.span>
 
-              <motion.h1
-                {...fade(1)}
-                style={{
-                  fontFamily: "'Ubuntu', sans-serif",
-                  fontSize: 72,
-                  fontWeight: 700,
-                  color: "hsl(var(--pres-text))",
-                  lineHeight: 1.1,
-                }}
-              >
-                Let's Build Your
-                <br />
-                <span style={{ color: "hsl(var(--pres-accent))" }}>Dream Team</span>
-              </motion.h1>
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-[72px] font-bold font-heading leading-[1.08] tracking-tight text-white mb-6"
+            >
+              Reclaim Your Nights &
+              <br />
+              <span className="text-pres-accent">End Engineering Debt</span>
+            </motion.h1>
 
-              <motion.p
-                {...fade(2)}
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 22,
-                  color: "hsl(var(--pres-text-muted))",
-                  marginTop: 24,
-                  lineHeight: 1.6,
-                }}
-              >
-                Schedule a 15-minute call. We'll match you with the right talent within days.
-              </motion.p>
+            {/* Body */}
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-[22px] leading-[1.5] text-pres-text-muted mb-10 max-w-[680px]"
+            >
+              Schedule a 15-minute call. Stop debugging alone at midnight and have battle-tested senior engineers shipping real production code this week.
+            </motion.p>
 
-              {/* Contact block — vertical stack: email → Schedule a Call → Call Now */}
-              <motion.div
-                {...fade(3)}
-                className="flex flex-col items-start mt-8"
-                style={{ gap: 20 }}
+            {/* Contact Block: Left-aligned vertical stack in exact specified order */}
+            <div className="flex flex-col items-start gap-5 w-full">
+              {/* 1. Email Row */}
+              <motion.a
+                href="mailto:contact@riseup-asia.com"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="flex items-center gap-3 text-[17px] text-pres-text-muted hover:text-white transition-colors"
               >
-                {/* Email row */}
-                <div className="flex items-center gap-2">
-                  <Mail size={18} style={{ color: "hsl(var(--pres-accent))" }} />
-                  <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, color: "hsl(var(--pres-text-muted))" }}>
-                    contact@riseup-asia.com
-                  </span>
+                <div className="w-8 h-8 rounded-full bg-pres-accent/15 flex items-center justify-center text-pres-accent">
+                  <Mail className="w-4 h-4" />
                 </div>
+                <span>contact@riseup-asia.com</span>
+              </motion.a>
 
-                {/* Schedule a Call */}
-                <motion.a
-                  {...fade(4)}
-                  href="https://meet.rasia.pro/intro-call"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3"
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 20,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-bg))",
-                    background: "hsl(var(--pres-accent))",
-                    padding: "16px 40px",
-                    borderRadius: 50,
-                    textDecoration: "none",
-                  }}
-                >
-                  <CalendarCheck size={22} />
-                  Schedule a Call
-                  <ArrowRight size={20} />
-                </motion.a>
+              {/* 2. Schedule a Call Button */}
+              <motion.a
+                href="https://meet.rasia.pro/intro-call"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.8 }}
+                className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[20px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] min-w-[340px]"
+              >
+                <CalendarCheck className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0" />
+                <span>Schedule a Call</span>
+                <ArrowRight className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0 ml-1" />
+              </motion.a>
 
-                {/* Call Now — same size as Schedule a Call, visible left-side icon */}
-                <motion.a
-                  {...fade(5)}
-                  href="https://client.rasia.pro/hiring-v1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3"
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 20,
-                    fontWeight: 600,
-                    color: "hsl(var(--pres-bg))",
-                    background: "hsl(var(--pres-accent))",
-                    padding: "16px 40px",
-                    borderRadius: 50,
-                    textDecoration: "none",
-                  }}
-                >
-                  <Phone size={22} style={{ color: "hsl(var(--pres-bg))" }} />
-                  Call Now
-                </motion.a>
-              </motion.div>
+              {/* 3. Call Now Button (Same size as Schedule a Call) */}
+              <motion.a
+                href="https://client.rasia.pro/hiring-v1"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 1.0 }}
+                className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[20px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] min-w-[340px]"
+              >
+                <Phone className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0 fill-current" />
+                <span>Call Now</span>
+              </motion.a>
             </div>
-
-            {/* Right: QR code */}
-            <motion.div {...fade(3)} className="flex-shrink-0">
-              <div
-                style={{
-                  padding: 14,
-                  borderRadius: 20,
-                  background: "hsl(var(--pres-bg-card) / 0.5)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.2)",
-                }}
-              >
-                <img
-                  src={qrCode}
-                  alt="QR Code"
-                  style={{ width: 280, height: 280, borderRadius: 12, background: "#fff", padding: 8 }}
-                />
-              </div>
-              <p
-                className="text-center mt-3"
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 15,
-                  color: "hsl(var(--pres-text-dim))",
-                }}
-              >
-                Scan to connect
-              </p>
-            </motion.div>
           </div>
+
+          {/* Right Block: QR Code */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="flex flex-col items-center p-8 rounded-3xl bg-pres-surface/80 border border-pres-accent/25 shadow-2xl backdrop-blur-md"
+          >
+            <div className="w-[280px] h-[280px] bg-white rounded-2xl p-4 flex items-center justify-center shadow-inner mb-4">
+              <img
+                src={qrCodeImg}
+                alt="QR Code"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="text-base font-semibold text-white tracking-wide">
+              Scan to connect
+            </span>
+            <span className="text-xs text-pres-text-dim mt-1">
+              Direct mobile booking & details
+            </span>
+          </motion.div>
         </div>
 
-        {/* Bottom accent line */}
-        <div
-          className="absolute bottom-0 left-0 right-0 z-10"
-          style={{
-            height: 4,
-            background: "linear-gradient(90deg, transparent 0%, hsl(var(--pres-accent)) 50%, transparent 100%)",
-          }}
-        />
+        {/* Bottom Accent Line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
   );
-}
+};

@@ -1,149 +1,57 @@
-import { useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import { Play } from "lucide-react";
 
-const HOVER_VIDEO_ENABLED = false; // Set to true to re-enable hover video previews
-
 interface HoverVideoPreviewProps {
-  youtubeId: string;
+  videoId?: string;
+  position?: "left" | "center" | "right";
   children: React.ReactNode;
-  position?: "left" | "right" | "center";
+  className?: string;
 }
 
-export default function HoverVideoPreview({
-  youtubeId,
+export const HoverVideoPreview: React.FC<HoverVideoPreviewProps> = ({
+  videoId = "uveR9C5CgSY",
+  position = "center",
   children,
-}: HoverVideoPreviewProps) {
+  className = "",
+}) => {
   const [isHovered, setIsHovered] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = useCallback(() => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setIsHovered(true);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    timeoutRef.current = setTimeout(() => setIsHovered(false), 300);
-  }, []);
-
-  if (!HOVER_VIDEO_ENABLED) {
-    return <>{children}</>;
-  }
 
   return (
     <div
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{ zIndex: isHovered ? 50 : 1 }}
+      className={`relative group ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Play icon indicator */}
-      {!isHovered && (
-        <div
-          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full px-3 py-1.5 pointer-events-none"
-          style={{
-            background: "hsl(var(--pres-accent) / 0.15)",
-            border: "1px solid hsl(var(--pres-accent) / 0.3)",
-          }}
-        >
-          <Play
-            size={14}
-            style={{ color: "hsl(var(--pres-accent))", fill: "hsl(var(--pres-accent))" }}
-          />
-          <span
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 13,
-              fontWeight: 600,
-              color: "hsl(var(--pres-accent))",
-            }}
-          >
-            Hover to preview
-          </span>
-        </div>
-      )}
-
       {children}
 
-      {/* Video overlay — fills the entire card like DesignMonks style */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 z-[100] flex items-center justify-center"
-            style={{
-              borderRadius: 16,
-              overflow: "hidden",
-              background: "hsl(var(--pres-bg-deep) / 0.97)",
-            }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Accent border glow */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                borderRadius: 16,
-                border: "2px solid hsl(var(--pres-accent) / 0.5)",
-                boxShadow: "inset 0 0 40px hsl(var(--pres-accent) / 0.06), 0 0 30px hsl(var(--pres-accent) / 0.08)",
-              }}
-            />
-
-            {/* Video fills most of the card in 9:16 portrait */}
-            <div
-              style={{
-                width: "90%",
-                maxWidth: 400,
-                aspectRatio: "9/16",
-                borderRadius: 18,
-                overflow: "hidden",
-                border: "3px solid hsl(var(--pres-bg-surface) / 0.6)",
-                boxShadow: "0 12px 40px rgba(0,0,0,0.6), 0 0 20px hsl(var(--pres-accent) / 0.15)",
-                position: "relative",
-              }}
-            >
-              {/* Phone notch */}
-              <div
-                className="absolute top-1.5 left-1/2 -translate-x-1/2 z-20 rounded-full"
-                style={{
-                  width: 48,
-                  height: 6,
-                  background: "hsl(var(--pres-bg-surface) / 0.8)",
-                }}
+      {/* Floating video preview card on hover */}
+      {isHovered && videoId && (
+        <div
+          className={`absolute -top-36 z-50 pointer-events-none transition-all duration-300 opacity-0 group-hover:opacity-100 ${
+            position === "left"
+              ? "left-0"
+              : position === "right"
+              ? "right-0"
+              : "left-1/2 -translate-x-1/2"
+          }`}
+        >
+          <div className="w-56 bg-pres-surface/95 border border-pres-accent/40 rounded-xl overflow-hidden shadow-2xl p-1.5 backdrop-blur-md">
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-black flex items-center justify-center">
+              <img
+                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                alt="Video preview"
+                className="w-full h-full object-cover opacity-80"
               />
-              <iframe
-                src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                title="Video preview"
-              />
+              <div className="absolute w-8 h-8 rounded-full bg-pres-accent/90 flex items-center justify-center text-pres-bg shadow-md">
+                <Play className="w-4 h-4 ml-0.5 fill-current" />
+              </div>
             </div>
-
-            {/* Label */}
-            <div
-              className="absolute bottom-4 left-0 right-0 text-center pointer-events-none"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: 12,
-                fontWeight: 600,
-                color: "hsl(var(--pres-accent) / 0.6)",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-              }}
-            >
-              Live Preview
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <p className="text-[10px] text-center text-pres-text-muted mt-1.5 font-medium">
+              Client Story & Overview
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};

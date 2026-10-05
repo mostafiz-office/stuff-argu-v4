@@ -1,209 +1,251 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React from "react";
 import { motion } from "framer-motion";
-import { Users, ArrowRight, CheckCircle, Linkedin, MoveRight, Sparkles } from "lucide-react";
-import { useSearchParams } from "react-router-dom";
-import marekPhoto from "@/assets/marek.png";
-import claudioImg from "@/assets/testimonials/claudio-c.png";
-import konstantinosImg from "@/assets/testimonials/konstantinos-p.png";
+import { Users, ArrowRight, CheckCircle, Sparkles, Linkedin } from "lucide-react";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
+import marekImg from "@/assets/marek.png";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.2 * i, duration: 0.7, ease: "easeOut" as const },
-});
+interface PricingCoverV1Props {
+  onNavigate?: (index: number) => void;
+}
 
-const keywords = [
-  { label: "Top 5% Talent", x: 1420, y: 160 },
-  { label: "Hire in 20 Minutes", x: 780, y: 640 },
-  { label: "7-Stage Vetted", x: 1420, y: 420 },
-];
+export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({ onNavigate }) => {
+  const handleExploreTiers = () => {
+    if (onNavigate) {
+      onNavigate(1);
+    }
+  };
 
-const recommendations = [
-  {
-    name: "Konstantinos P.",
-    title: "Senior Serverless Engineer",
-    quote: '"Solid and high quality work... the smoothest on-boarding process I have had in my whole career."',
-    image: konstantinosImg,
-    x: 460,
-    y: 60,
-  },
-  {
-    name: "Claudio C.",
-    title: "Engineering Leader | AI-Powered Platforms",
-    quote: '"A skillful professional and kind communicator."',
-    image: claudioImg,
-    x: 1150,
-    y: 780,
-  },
-];
-
-const ALIM_LINK = "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0";
-
-/**
- * VERSION 1 — Clean & Minimal
- * Removed dot pattern, updated pills to hiring copy, slightly smaller Alim image
- */
-export default function PricingCoverV1() {
-  const [, setSearchParams] = useSearchParams();
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        {/* Left glow — subtle warm accent */}
-        <div
-          className="absolute z-[1]"
-          style={{
-            left: 40,
-            top: 180,
-            width: 680,
-            height: 500,
-            background: "radial-gradient(ellipse at 40% 50%, hsl(var(--pres-accent) / 0.06) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
+        {/* Ambient radial glow */}
+        <div className="absolute top-1/3 left-1/5 w-[650px] h-[650px] rounded-full bg-pres-accent/8 blur-[140px] pointer-events-none" />
 
-
-        {/* Skill keyword badges */}
-        {keywords.map((kw, i) => (
+        {/* Left Content Area - Vertically Centered (top-1/2 -translate-y-1/2) */}
+        <div className="absolute left-[80px] top-1/2 -translate-y-1/2 w-[660px] z-10 flex flex-col justify-center">
+          {/* Icon Badge */}
           <motion.div
-            key={kw.label}
-            initial={{ opacity: 0, scale: 0.3, y: 20 }}
-            animate={{
-              opacity: 1, scale: 1, y: [0, -6, 0],
-              boxShadow: [
-                "0 0 8px hsl(var(--pres-accent) / 0.15)",
-                "0 0 20px hsl(var(--pres-accent) / 0.35)",
-                "0 0 8px hsl(var(--pres-accent) / 0.15)",
-              ],
-            }}
-            whileHover={{ scale: 1.18, y: -10, boxShadow: "0 0 35px hsl(var(--pres-accent) / 0.55)" }}
-            transition={{
-              delay: 0.5 + i * 0.12,
-              type: "spring", stiffness: 180, damping: 14,
-              y: { delay: 1.2 + i * 0.3, duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "loop" },
-              boxShadow: { delay: 1.3 + i * 0.25, duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatType: "loop" },
-            }}
-            className="absolute z-[7] cursor-pointer flex items-center"
-            style={{
-              left: kw.x, top: kw.y,
-              padding: "10px 26px", fontSize: 20, fontWeight: 600,
-              fontFamily: "'Poppins', sans-serif",
-              color: "hsl(var(--pres-accent))",
-              background: "hsl(var(--pres-accent) / 0.1)",
-              border: "1.5px solid hsl(var(--pres-accent) / 0.3)",
-              borderRadius: 24, backdropFilter: "blur(8px)", whiteSpace: "nowrap",
-            }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-[46px] h-[46px] rounded-xl bg-black/40 border border-white/15 flex items-center justify-center text-pres-accent shadow-sm mb-4"
           >
-            <CheckCircle size={19} style={{ marginRight: 6, flexShrink: 0 }} />
-            {kw.label}
+            <Users className="w-5 h-5 text-pres-accent" />
           </motion.div>
-        ))}
 
-        {/* Recommendation cards */}
-        {recommendations.map((rec, i) => (
-          <div
-            key={rec.name}
-            className="absolute z-[8] pointer-events-auto"
-            style={{
-              left: rec.x, top: rec.y, width: 500, opacity: 0,
-              animation: `recCardFadeIn 0.6s ${0.65 + i * 0.15}s cubic-bezier(0.25,0.46,0.45,0.94) forwards`,
-            }}
+          {/* Subtitle / Category */}
+          <motion.span
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-[11px] font-semibold tracking-widest uppercase text-white/50 mb-2.5 block"
           >
-            <a href={ALIM_LINK} target="_blank" rel="noopener noreferrer" className="rec-card group block"
-              style={{
-                padding: "22px 26px", borderRadius: 18,
-                background: "hsl(var(--pres-bg) / 0.75)",
-                border: "1.5px solid hsl(var(--pres-accent) / 0.2)",
-                backdropFilter: "blur(14px)",
-                boxShadow: "0 8px 32px hsl(var(--pres-bg) / 0.5)",
-                textDecoration: "none", display: "block",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
-                <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", border: "2px solid hsl(var(--pres-accent) / 0.3)", flexShrink: 0 }}>
-                  <img src={rec.image} alt={rec.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 21, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.2 }}>{rec.name}</p>
-                  <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, color: "hsl(var(--pres-text-muted))", lineHeight: 1.3 }}>{rec.title}</p>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 12px", borderRadius: 20, background: "hsl(210 90% 55% / 0.12)", border: "1px solid hsl(210 90% 55% / 0.25)", flexShrink: 0 }}>
-                  <Linkedin size={15} style={{ color: "hsl(210 90% 55%)" }} />
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "hsl(210 90% 55%)" }}>Verified</span>
-                </div>
-              </div>
-              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 19, lineHeight: 1.6, color: "hsl(var(--pres-text-muted))", fontStyle: "italic" }}>{rec.quote}</p>
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 8, opacity: 0.6 }}>
-                <MoveRight size={20} style={{ color: "hsl(var(--pres-accent))" }} />
-              </div>
-            </a>
-          </div>
-        ))}
+            Engineering Relief · riseup-asia.com
+          </motion.span>
 
-        {/* Marek photo */}
-        <div
-          className="absolute z-[5] flex items-end justify-center pointer-events-none"
-          style={{ left: 720, bottom: 0, width: 760, height: 900 }}
-        >
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-[68px] leading-[1.05] font-bold font-heading mb-4 tracking-tight"
+          >
+            Losing Sleep Over
+            <br />
+            <span className="text-pres-accent">Engineering Debt?</span>
+          </motion.h1>
+
+          {/* Body */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-[18px] leading-[1.5] text-pres-text-muted mb-5 max-w-[580px]"
+          >
+            Stop waking up at midnight to fix fragile vibe-code and AI bugs.
+            <br />
+            Save 80% hiring drag with top 5% engineers ready in 20 minutes.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <a
+              href="https://client.rasia.pro/hiring-v1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer"
+            >
+              <span>Book a Call</span>
+              <ArrowRight className="w-4 h-4 text-pres-bg pres-dark-safe-accent" />
+            </a>
+
+            <button
+              onClick={handleExploreTiers}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Explore Tiers</span>
+            </button>
+          </motion.div>
+
+          {/* Marek Recommendation Card 1 (Below the two buttons on the left) */}
+          <motion.a
+            href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="relative block w-full max-w-[540px] p-4 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md hover:border-white/30 hover:bg-black/80 transition-all duration-300 group cursor-pointer shadow-xl"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-zinc-900 shrink-0">
+                  <img
+                    src={marekImg}
+                    alt="Marek K."
+                    className="w-full h-full object-cover object-[center_12%] scale-135"
+                  />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-[15px] font-heading leading-tight">
+                    Marek K.
+                  </div>
+                  <div className="text-[12px] text-white/50 leading-tight">
+                    Tech Founder &amp; CEO · Client Partner
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[11px] font-medium tracking-wide">
+                <Linkedin className="w-3 h-3 fill-current text-blue-400" />
+                <span>Verified</span>
+              </div>
+            </div>
+            <p className="text-[13px] text-white/80 italic leading-relaxed">
+              "Solid and high quality work... the smoothest on-boarding process I have had in my whole career."
+            </p>
+            <div className="text-right text-white/40 group-hover:text-pres-accent group-hover:translate-x-1 transition-all text-xs mt-1">
+              →
+            </div>
+          </motion.a>
+        </div>
+
+        {/* Center Photo: Marek Portrait */}
+        <div className="absolute left-[650px] bottom-0 w-[780px] h-[920px] z-4 pointer-events-none flex items-end justify-center overflow-visible">
           <img
-            src={marekPhoto} alt="Marek Flejszman" loading="eager" fetchPriority="high"
-            className="h-full w-full object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 60px hsl(var(--pres-bg) / 0.6))" }}
+            src={marekImg}
+            alt="Marek K."
+            className="max-w-full max-h-full object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)] scale-105 origin-bottom"
           />
         </div>
 
-        {/* LEFT — Pricing content */}
-        <div className="pointer-events-none absolute left-[80px] top-[100px] bottom-[80px] z-10 flex w-[680px] items-center">
-          <div>
-            <motion.div {...fade(0)} className="flex items-center justify-center rounded-2xl"
-              style={{ width: 70, height: 70, background: "hsl(var(--pres-accent) / 0.12)", border: "1px solid hsl(var(--pres-accent) / 0.25)", marginBottom: 28 }}>
-              <Users size={36} style={{ color: "hsl(var(--pres-accent))" }} />
+        {/* Right Content Area - Vertically Centered (top-1/2 -translate-y-1/2) matching left side balance */}
+        <div className="absolute right-[80px] top-1/2 -translate-y-1/2 w-[440px] z-20 flex flex-col justify-between h-[640px]">
+          {/* Marek Recommendation Card 2 (In the head area on the right) */}
+          <motion.a
+            href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="relative block w-full p-4 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md hover:border-white/30 hover:bg-black/80 transition-all duration-300 group cursor-pointer shadow-xl"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-zinc-900 shrink-0">
+                  <img
+                    src={marekImg}
+                    alt="Marek K."
+                    className="w-full h-full object-cover object-[center_12%] scale-135"
+                  />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-[15px] font-heading leading-tight">
+                    Marek K.
+                  </div>
+                  <div className="text-[12px] text-white/50 leading-tight">
+                    Engineering Leader | AI-Powered Platforms
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[11px] font-medium tracking-wide">
+                <Linkedin className="w-3 h-3 fill-current text-blue-400" />
+                <span>Verified</span>
+              </div>
+            </div>
+            <p className="text-[13px] text-white/80 italic leading-relaxed">
+              "A skillful professional and kind communicator."
+            </p>
+            <div className="text-right text-white/40 group-hover:text-pres-accent group-hover:translate-x-1 transition-all text-xs mt-1">
+              →
+            </div>
+          </motion.a>
+
+          {/* Floating Keyword Badges */}
+          <div className="flex flex-col gap-3.5 w-full">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.7 }}
+              className="flex items-center gap-3 p-3.5 rounded-xl bg-black/60 border border-white/15 text-white backdrop-blur-md"
+            >
+              <CheckCircle className="w-5 h-5 text-pres-accent shrink-0" />
+              <div>
+                <p className="text-sm font-bold font-heading">Top 5% Talent</p>
+                <p className="text-xs text-white/60">Strict 7-stage vetting process</p>
+              </div>
             </motion.div>
 
-            <motion.p {...fade(1)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, color: "hsl(var(--pres-text-dim))", textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 14 }}>
-              Staff Augmentation
-            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+              className="flex items-center gap-3 p-3.5 rounded-xl bg-black/60 border border-white/15 text-white backdrop-blur-md"
+            >
+              <CheckCircle className="w-5 h-5 text-pres-accent shrink-0" />
+              <div>
+                <p className="text-sm font-bold font-heading">Hire in 20 Minutes</p>
+                <p className="text-xs text-white/60">Pre-vetted bench engineers ready</p>
+              </div>
+            </motion.div>
 
-            <motion.h1 {...fade(2)} style={{ fontFamily: "'Ubuntu', sans-serif", fontSize: 82, fontWeight: 700, color: "hsl(var(--pres-text))", lineHeight: 1.05 }}>
-              <span style={{ color: "hsl(var(--pres-accent))" }}>Elite</span> Engineers
-              <br />On Demand
-            </motion.h1>
-
-            <motion.p {...fade(3)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 24, color: "hsl(var(--pres-text-muted))", marginTop: 24, maxWidth: 600, lineHeight: 1.6 }}>
-              <strong style={{ color: "hsl(var(--pres-accent))" }}>Top 5% vetted</strong> talent. Hire in as fast as <strong style={{ color: "hsl(var(--pres-accent))" }}>20 minutes</strong>.
-              <br />60% savings vs US/UK rates — no hidden fees.
-            </motion.p>
-
-            <motion.div {...fade(4)} className="flex items-center gap-4 mt-10">
-              <a href="https://client.rasia.pro/hiring-v1" target="_blank" rel="noopener noreferrer" className="pointer-events-auto cursor-pointer"
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 18, fontWeight: 600, color: "hsl(var(--pres-bg))", background: "hsl(var(--pres-accent))", padding: "14px 36px", borderRadius: 50, display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-                Book a Call <ArrowRight size={20} />
-              </a>
-              <button
-                type="button"
-                className="pointer-events-auto cursor-pointer flex items-center gap-2"
-                onClick={() => {
-                  const nextParams = new URLSearchParams(window.location.search);
-                  nextParams.set("slide", "2");
-                  setSearchParams(nextParams);
-                }}
-                style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 500, color: "hsl(var(--pres-accent))", padding: "14px 24px", borderRadius: 50, border: "1.5px solid hsl(var(--pres-accent) / 0.3)", background: "transparent" }}>
-                <Sparkles size={16} />
-                Explore Tiers
-              </button>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.9 }}
+              className="flex items-center gap-3 p-3.5 rounded-xl bg-black/60 border border-white/15 text-white backdrop-blur-md"
+            >
+              <CheckCircle className="w-5 h-5 text-pres-accent shrink-0" />
+              <div>
+                <p className="text-sm font-bold font-heading">60% Cost Savings</p>
+                <p className="text-xs text-white/60">Compared to direct US hiring</p>
+              </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: 4, background: "linear-gradient(90deg, transparent 0%, hsl(var(--pres-accent)) 50%, transparent 100%)" }} />
-
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.6 }} className="absolute bottom-[42px] left-[80px] z-10">
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 19, color: "hsl(var(--pres-text-dim))" }}>riseup-asia.com</p>
+        {/* Footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="absolute bottom-[42px] left-[80px] z-10 text-xs text-pres-text-dim tracking-wider font-mono"
+        >
+          riseup-asia.com
         </motion.div>
+
+        {/* Bottom Accent Line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
   );
-}
+};

@@ -1,129 +1,118 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React from "react";
 import { motion } from "framer-motion";
-import { Clock, Shield, ShieldCheck, MessageSquare, Zap, Users, RefreshCw } from "lucide-react";
+import { Clock, Shield, MessageSquare, Zap, Users, RefreshCw } from "lucide-react";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.15 * i, duration: 0.6, ease: "easeOut" as const },
-});
+interface WhatsIncludedSlideProps {
+  onNavigate?: (index: number) => void;
+}
 
-const items = [
-  { icon: Clock, title: "160 hrs/month", desc: "Guaranteed dedicated hours — full-time commitment to your project." },
-  { icon: Shield, title: "7-Stage Vetting", desc: "Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass." },
-  { icon: MessageSquare, title: "Direct Communication", desc: "Slack, Teams, or your preferred tool — no middlemen, no delays." },
-  { icon: Zap, title: "Hire in 20 Minutes", desc: "Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days." },
-  { icon: Users, title: "Flexible Scaling", desc: "Add or reduce team members as your project evolves. No lock-in." },
-  { icon: RefreshCw, title: "Free Replacement", desc: "Not satisfied? We'll replace the developer at no extra cost." },
-];
+export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
+  const guarantees = [
+    {
+      icon: Clock,
+      title: "160 hrs/month",
+      desc: "Guaranteed dedicated hours — full-time commitment to your project.",
+    },
+    {
+      icon: Shield,
+      title: "7-Stage Vetting",
+      desc: "Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass.",
+    },
+    {
+      icon: MessageSquare,
+      title: "Direct Communication",
+      desc: "Slack, Teams, or your preferred tool — no middlemen, no delays.",
+    },
+    {
+      icon: Zap,
+      title: "Hire in 20 Minutes",
+      desc: "Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days.",
+    },
+    {
+      icon: Users,
+      title: "Flexible Scaling",
+      desc: "Add or reduce team members as your project evolves. No lock-in.",
+    },
+    {
+      icon: RefreshCw,
+      title: "Free Replacement",
+      desc: "Not satisfied? We'll replace the developer at no extra cost.",
+    },
+  ];
 
-export default function WhatsIncludedSlide() {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        {/* Glow */}
-        <div
-          className="absolute z-[1]"
-          style={{
-            left: "50%", top: "50%", width: 800, height: 600,
-            transform: "translate(-50%, -50%)",
-            background: "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.05) 0%, transparent 65%)",
-            filter: "blur(60px)",
-          }}
-        />
+        {/* Ambient center glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
 
-        <motion.h1
-          {...fade(0)}
-          className="absolute left-[80px] top-[90px] z-10"
-          style={{
-            fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 68,
-            fontWeight: 700,
-            color: "hsl(var(--pres-text))",
-          }}
-        >
-          What's <span style={{ color: "hsl(var(--pres-accent))" }}>Included</span>
-        </motion.h1>
+        {/* Title Area */}
+        <div className="absolute left-[80px] top-[70px] z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-[56px] font-bold font-heading tracking-tight text-white mb-1.5"
+          >
+            What's <span className="text-pres-accent">Included</span>
+          </motion.h1>
 
-        <motion.p
-          {...fade(1)}
-          className="absolute left-[80px] top-[178px] z-10"
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 22,
-            color: "hsl(var(--pres-text-muted))",
-          }}
-        >
-          Every plan comes with these guarantees — no extra charges.
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-[19px] text-pres-text-muted"
+          >
+            Every plan comes with these guarantees — no extra charges.
+          </motion.p>
+        </div>
 
-        {/* 3×2 grid */}
-        <div className="absolute left-[80px] right-[80px] top-[260px] bottom-[175px] grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-4 z-10">
-          {items.map((item, i) => {
+        {/* 3×2 Grid of Guarantee Cards */}
+        <div className="absolute left-[80px] right-[80px] top-[215px] bottom-[210px] z-10 grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-4">
+          {guarantees.map((item, idx) => {
             const Icon = item.icon;
             return (
               <motion.div
-                key={item.title}
-                {...fade(i + 2)}
-                className="rounded-2xl flex flex-col"
-                style={{
-                  background: "hsl(var(--pres-bg-surface))",
-                  border: "1px solid hsl(var(--pres-accent) / 0.1)",
-                  padding: "32px 28px",
-                }}
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 + idx * 0.08 }}
+                className="bg-pres-surface/80 border border-pres-accent/15 hover:border-pres-accent/40 rounded-2xl p-6 flex items-start gap-4 backdrop-blur-md transition-all hover:bg-pres-surface"
               >
-                <div
-                  className="flex items-center justify-center rounded-xl mb-4"
-                  style={{
-                    width: 52, height: 52,
-                    background: "hsl(var(--pres-accent) / 0.12)",
-                  }}
-                >
-                  <Icon size={26} style={{ color: "hsl(var(--pres-accent))" }} />
+                <div className="w-[48px] h-[48px] rounded-xl bg-pres-accent/12 border border-pres-accent/25 flex items-center justify-center text-pres-accent shrink-0 shadow-sm">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <p
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: "hsl(var(--pres-text))",
-                    marginBottom: 8,
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 17,
-                    color: "hsl(var(--pres-text-muted))",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {item.desc}
-                </p>
+
+                <div>
+                  <h2 className="text-xl font-bold font-heading text-white mb-1.5">
+                    {item.title}
+                  </h2>
+                  <p className="text-[14px] text-pres-text-muted leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Trial note below all cards */}
-        <motion.p
-          {...fade(8)}
-          className="absolute left-[80px] right-[80px] bottom-[82px] z-10 flex items-center justify-center gap-2"
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 20,
-            color: "hsl(var(--pres-text-muted))",
-          }}
+        {/* Bottom Trial Note - Strict 145px clearance ending at bottom-[145px] */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.75 }}
+          className="absolute bottom-[145px] left-1/2 -translate-x-1/2 z-10 flex items-center gap-3 px-6 py-2.5 rounded-full bg-pres-surface/90 border border-pres-accent/25 backdrop-blur-md shadow-lg"
         >
-          <ShieldCheck size={20} style={{ color: "hsl(var(--pres-accent))", flexShrink: 0 }} />
-          14-day trial with money-back guarantee (conditions apply).
-        </motion.p>
+          <Shield className="w-4 h-4 text-pres-accent shrink-0" />
+          <span className="text-[17px] text-pres-text-muted font-medium">
+            14-day trial with money-back guarantee (conditions apply).
+          </span>
+        </motion.div>
       </div>
     </ScaledSlide>
   );
-}
+};

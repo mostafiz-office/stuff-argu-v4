@@ -1,178 +1,174 @@
-import { useState, useEffect, useRef, type ReactElement } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import { usePresentation } from "@/context/PresentationContext";
-import { useAssetPreloader } from "@/hooks/useAssetPreloader";
-import { isExportEnabled, isValidSlideNumber } from "@/utils/guards";
-import {
-  TransitionStyleType,
-  TRANSITION_STYLES,
-  TRANSITION_DURATION_S,
-  TRANSITION_EASE,
-  TRANSITION_PERSPECTIVE_PX,
-  ZOOM_SCALE_IN,
-  ZOOM_SCALE_OUT,
-  FLIP_ANGLE_DEG,
-  FLIP_SCALE,
-  RISE_OFFSET_PX,
-  RISE_SCALE,
-} from "@/constants/presentation";
-import SlideNavigation from "./SlideNavigation";
-import DownloadPanel from "./DownloadPanel";
+import { motion, AnimatePresence } from "framer-motion";
+import { SlideNavigation } from "./SlideNavigation";
+
+type TransitionStyle = "slide" | "fade" | "zoom" | "flip" | "rise";
+const TRANSITION_STYLES: TransitionStyle[] = ["slide", "fade", "zoom", "flip", "rise"];
 
 interface PresentationEngineProps {
-  slides: ReactElement[];
+  slides: React.ComponentType<{ onNavigate?: (slideIndex: number) => void }>[];
+  currentIndex?: number;
+  direction?: number;
+  onNavigate?: (newIndex: number) => void;
+  onNext?: () => void;
+  onPrev?: () => void;
 }
 
-/* ── Transition logic ────────────────────────────────── */
-
-const getTransitionStyle = (index: number): TransitionStyleType =>
-  TRANSITION_STYLES[index % TRANSITION_STYLES.length];
-
-const getEnterVariant = (style: TransitionStyleType, direction: number) => {
-  switch (style) {
-    case TransitionStyleType.Fade:
-      return { opacity: 0 };
-    case TransitionStyleType.Zoom:
-      return { scale: direction > 0 ? ZOOM_SCALE_IN : ZOOM_SCALE_OUT, opacity: 0 };
-    case TransitionStyleType.Flip:
-      return { rotateY: direction > 0 ? FLIP_ANGLE_DEG : -FLIP_ANGLE_DEG, opacity: 0, scale: FLIP_SCALE };
-    case TransitionStyleType.Rise:
-      return { y: direction > 0 ? RISE_OFFSET_PX : -RISE_OFFSET_PX, opacity: 0, scale: RISE_SCALE };
-    default:
-      return { x: direction > 0 ? "100%" : "-100%", opacity: 0 };
-  }
-};
-
-const getExitVariant = (style: TransitionStyleType, direction: number) => {
-  switch (style) {
-    case TransitionStyleType.Fade:
-      return { opacity: 0 };
-    case TransitionStyleType.Zoom:
-      return { scale: direction > 0 ? ZOOM_SCALE_OUT : ZOOM_SCALE_IN, opacity: 0 };
-    case TransitionStyleType.Flip:
-      return { rotateY: direction > 0 ? -FLIP_ANGLE_DEG : FLIP_ANGLE_DEG, opacity: 0, scale: FLIP_SCALE };
-    case TransitionStyleType.Rise:
-      return { y: direction > 0 ? -RISE_OFFSET_PX : RISE_OFFSET_PX, opacity: 0, scale: RISE_SCALE };
-    default:
-      return { x: direction > 0 ? "-100%" : "100%", opacity: 0 };
-  }
-};
-
-const CENTER_VARIANT = { x: 0, y: 0, opacity: 1, scale: 1, rotateY: 0 };
-
-const getVariants = (style: TransitionStyleType) => ({
-  enter: (direction: number) => getEnterVariant(style, direction),
-  center: CENTER_VARIANT,
-  exit: (direction: number) => getExitVariant(style, direction),
-});
-
-const parseSlideIndex = (slideParam: string | null, totalSlides: number): number => {
-  const parsed = Number.parseInt(slideParam ?? "1", 10);
-  const safeSlide = isValidSlideNumber(parsed) ? parsed : 1;
-
-  return Math.max(0, Math.min(totalSlides - 1, safeSlide - 1));
-};
-
-
-export default function PresentationEngine({ slides }: PresentationEngineProps) {
-  const presentation = usePresentation();
-  const hiddenSlideIndices = new Set(
-    presentation.features.hiddenSlides?.map((n) => n - 1) ?? []
-  );
-  const visibleSlides = slides.filter((_, index) => !hiddenSlideIndices.has(index));
-
+export const PresentationEngine: React.FC<PresentationEngineProps> = ({
+  slides,
+  currentIndex: controlledIndex,
+  direction: controlledDirection,
+  onNavigate: controlledOnNavigate,
+  onNext: controlledOnNext,
+  onPrev: controlledOnPrev,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentIndex, setCurrentIndex] = useState(() =>
-    parseSlideIndex(searchParams.get("slide"), visibleSlides.length)
-  );
-  const [direction, setDirection] = useState(0);
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+  const totalSlides = slides.length;
 
-  useAssetPreloader();
+  const isControlled = typeof controlledIndex === "number" && typeof controlledOnNavigate === "function";
 
-  const exportParam = searchParams.get("export");
-  const isExportActive = exportParam !== null && isExportEnabled(exportParam);
-
-  const navigate = (newIndex: number) => {
-    const clamped = Math.max(0, Math.min(visibleSlides.length - 1, newIndex));
-    if (clamped === currentIndex) return;
-
-    setDirection(clamped > currentIndex ? 1 : -1);
-    setCurrentIndex(clamped);
+  // Fallback internal state if not controlled from Index
+  const getInitialIndex = () => {
+    const slideParam = searchParams.get("slide");
+    if (slideParam) {
+      const parsed = parseInt(slideParam, 10);
+      if (!isNaN(parsed) && parsed >= 1 && parsed <= totalSlides) {
+        return parsed - 1;
+      }
+    }
+    return 0;
   };
 
+  const [internalIndex, setInternalIndex] = useState<number>(getInitialIndex);
+  const [internalDirection, setInternalDirection] = useState<number>(1);
+  const prevIndexRef = useRef<number>(internalIndex);
+
+  const currentIndex = isControlled ? controlledIndex! : internalIndex;
+  const direction = isControlled && typeof controlledDirection === "number" ? controlledDirection : internalDirection;
+
+  // Internal URL sync if running uncontrolled
   useEffect(() => {
-    const targetIndex = parseSlideIndex(searchParams.get("slide"), visibleSlides.length);
-
-    setCurrentIndex((previousIndex) => {
-      if (targetIndex === previousIndex) return previousIndex;
-
-      setDirection(targetIndex > previousIndex ? 1 : -1);
-
-      return targetIndex;
-    });
-  }, [searchParams, visibleSlides.length]);
-
-  // Sync currentIndex → URL (only when currentIndex actually changed, not on external searchParam changes)
-  const prevIndexRef = useRef(currentIndex);
-  useEffect(() => {
-    if (prevIndexRef.current === currentIndex) return;
-    prevIndexRef.current = currentIndex;
-
-    const slideNumber = String(currentIndex + 1);
-    if (searchParams.get("slide") === slideNumber) return;
-
-    const nextParams = new URLSearchParams(searchParams);
-    nextParams.set("slide", slideNumber);
-    setSearchParams(nextParams, { replace: true });
-  }, [currentIndex, searchParams, setSearchParams]);
-
-  useEffect(() => {
-    if (!isExportActive && isDownloadOpen) {
-      setIsDownloadOpen(false);
+    if (!isControlled) {
+      const slideParam = searchParams.get("slide");
+      if (slideParam) {
+        const parsed = parseInt(slideParam, 10);
+        if (!isNaN(parsed) && parsed >= 1 && parsed <= totalSlides) {
+          const targetIndex = parsed - 1;
+          if (targetIndex !== internalIndex) {
+            setInternalDirection(targetIndex > internalIndex ? 1 : -1);
+            setInternalIndex(targetIndex);
+            prevIndexRef.current = targetIndex;
+          }
+        }
+      }
     }
-  }, [isExportActive, isDownloadOpen]);
+  }, [isControlled, searchParams, totalSlides, internalIndex]);
+
+  useEffect(() => {
+    if (!isControlled && prevIndexRef.current !== internalIndex) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("slide", (internalIndex + 1).toString());
+      setSearchParams(newParams, { replace: true });
+      prevIndexRef.current = internalIndex;
+    }
+  }, [isControlled, internalIndex, searchParams, setSearchParams]);
+
+  const handleNavigate = useCallback(
+    (newIndex: number) => {
+      if (controlledOnNavigate) {
+        controlledOnNavigate(newIndex);
+      } else {
+        if (newIndex >= 0 && newIndex < totalSlides && newIndex !== internalIndex) {
+          setInternalDirection(newIndex > internalIndex ? 1 : -1);
+          setInternalIndex(newIndex);
+        }
+      }
+    },
+    [controlledOnNavigate, totalSlides, internalIndex]
+  );
+
+  const transitionType = TRANSITION_STYLES[currentIndex % TRANSITION_STYLES.length];
+
+  const getVariants = (type: TransitionStyle) => ({
+    enter: (dir: number) => {
+      switch (type) {
+        case "fade":
+          return { opacity: 0, x: 0, y: 0, rotateY: 0, scale: 1 };
+        case "zoom":
+          return { scale: 0.85, opacity: 0, x: 0, y: 0, rotateY: 0 };
+        case "flip":
+          return { rotateY: dir > 0 ? 45 : -45, opacity: 0, scale: 0.92, x: 0, y: 0 };
+        case "rise":
+          return { y: dir > 0 ? 80 : -80, opacity: 0, scale: 0.96, x: 0, rotateY: 0 };
+        case "slide":
+        default:
+          return { x: dir > 0 ? "100%" : "-100%", opacity: 0, y: 0, rotateY: 0, scale: 1 };
+      }
+    },
+    center: {
+      x: 0,
+      y: 0,
+      rotateY: 0,
+      scale: 1,
+      opacity: 1,
+    },
+    exit: (dir: number) => {
+      switch (type) {
+        case "fade":
+          return { opacity: 0, x: 0, y: 0, rotateY: 0, scale: 1 };
+        case "zoom":
+          return { scale: 1.15, opacity: 0, x: 0, y: 0, rotateY: 0 };
+        case "flip":
+          return { rotateY: dir > 0 ? -45 : 45, opacity: 0, scale: 0.92, x: 0, y: 0 };
+        case "rise":
+          return { y: dir > 0 ? -80 : 80, opacity: 0, scale: 0.96, x: 0, rotateY: 0 };
+        case "slide":
+        default:
+          return { x: dir > 0 ? "-100%" : "100%", opacity: 0, y: 0, rotateY: 0, scale: 1 };
+      }
+    },
+  });
+
+  const variants = getVariants(transitionType);
+  const CurrentSlideComponent = slides[currentIndex];
 
   return (
-    <div className="presentation-viewport">
-      <div className="noise-overlay" />
+    <div className="relative w-screen h-screen overflow-hidden bg-pres-bg">
+      {/* Global Noise Overlay Grain */}
+      <div className="noise-overlay pointer-events-none" />
 
-      <AnimatePresence initial={false} custom={direction} mode="wait">
-        <motion.div
-          key={currentIndex}
-          custom={direction}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          variants={getVariants(getTransitionStyle(currentIndex))}
-          transition={{ duration: TRANSITION_DURATION_S, ease: [...TRANSITION_EASE] }}
-          className="absolute inset-0"
-          style={{ perspective: TRANSITION_PERSPECTIVE_PX }}
-        >
-          {visibleSlides[currentIndex]}
-        </motion.div>
-      </AnimatePresence>
+      {/* Main Slide Presentation Canvas with 3D Perspective */}
+      <div className="relative w-full h-full overflow-hidden select-none" style={{ perspective: "1200px" }}>
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              duration: 0.45,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+            className="w-full h-full flex items-center justify-center"
+          >
+            {CurrentSlideComponent && <CurrentSlideComponent onNavigate={handleNavigate} />}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <SlideNavigation
-        total={visibleSlides.length}
-        current={currentIndex}
-        onNavigate={navigate}
-        showDownload={isExportActive}
-        onOpenDownload={isExportActive ? () => setIsDownloadOpen(true) : undefined}
-        slideLabels={presentation.slideLabels as string[] ?? []}
-      />
-
-      {isExportActive && (
-        <DownloadPanel
-          open={isDownloadOpen}
-          onClose={() => setIsDownloadOpen(false)}
-          slides={visibleSlides}
-          currentSlide={currentIndex}
-          onNavigate={navigate}
-          allowHtmlDownload
+      {/* Global Navigation HUD - High z-index, outside 3D perspective context */}
+      <div className="relative z-[200] pointer-events-auto">
+        <SlideNavigation
+          currentIndex={currentIndex}
+          totalSlides={totalSlides}
+          onNavigate={handleNavigate}
+          onNext={controlledOnNext}
+          onPrev={controlledOnPrev}
         />
-      )}
+      </div>
     </div>
   );
-}
+};

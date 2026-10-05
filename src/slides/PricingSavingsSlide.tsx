@@ -1,359 +1,179 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React from "react";
 import { motion } from "framer-motion";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.18 * i, duration: 0.7, ease: "easeOut" as const },
-});
+interface PricingSavingsSlideProps {
+  onNavigate?: (index: number) => void;
+}
 
-const comparisons = [
-  {
-    role: "Starter Developer",
-    tier: "Tier 1",
-    us: "$6,000–$8,000",
-    riseup: "$1,900",
-    saving: "Up to 76%",
-    barUs: 100,
-    barRiseup: 24,
-    usColor: "hsl(220 70% 55%)",
-    riseupColor: "hsl(var(--pres-accent))",
-    usGradient: "linear-gradient(90deg, hsl(220 70% 55%), hsl(220 60% 65%))",
-    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
-  },
-  {
-    role: "Mid-Level Developer",
-    tier: "Tier 2",
-    us: "$10,000–$15,000",
-    riseup: "$4,299",
-    saving: "Up to 71%",
-    barUs: 100,
-    barRiseup: 29,
-    usColor: "hsl(280 50% 55%)",
-    riseupColor: "hsl(var(--pres-accent))",
-    usGradient: "linear-gradient(90deg, hsl(280 50% 55%), hsl(280 40% 65%))",
-    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
-  },
-  {
-    role: "Skilled Expert",
-    tier: "Tier 3.A",
-    us: "$18,000–$25,000",
-    riseup: "$6,800–$8,000",
-    saving: "Up to 68%",
-    barUs: 100,
-    barRiseup: 32,
-    usColor: "hsl(340 55% 55%)",
-    riseupColor: "hsl(var(--pres-accent))",
-    usGradient: "linear-gradient(90deg, hsl(340 55% 55%), hsl(340 45% 65%))",
-    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
-  },
-  {
-    role: "Tech Leadership",
-    tier: "Tier 3.B",
-    us: "$22,000–$30,000",
-    riseup: "$7,500–$10,000",
-    saving: "Up to 67%",
-    barUs: 100,
-    barRiseup: 33,
-    usColor: "hsl(200 60% 50%)",
-    riseupColor: "hsl(var(--pres-accent))",
-    usGradient: "linear-gradient(90deg, hsl(200 60% 50%), hsl(200 50% 60%))",
-    riseupGradient: "linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)))",
-  },
-];
+export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
+  const comparisons = [
+    {
+      role: "Starter Developer",
+      tier: "Tier 1",
+      usRate: "$6,000–$8,000/mo",
+      riseUpRate: "$1,900/mo",
+      savings: "Up to 76% Savings",
+      riseUpWidth: "24%",
+      color: "from-red-500 to-rose-600",
+      accentBg: "bg-red-500/10",
+      accentText: "text-red-400",
+    },
+    {
+      role: "Mid-Level Developer",
+      tier: "Tier 2",
+      usRate: "$10,000–$15,000/mo",
+      riseUpRate: "$4,299/mo",
+      savings: "Up to 71% Savings",
+      riseUpWidth: "29%",
+      color: "from-amber-500 to-yellow-500",
+      accentBg: "bg-amber-500/10",
+      accentText: "text-amber-400",
+    },
+    {
+      role: "Skilled Expert",
+      tier: "Tier 3.A",
+      usRate: "$18,000–$25,000/mo",
+      riseUpRate: "$6,800–$8,000/mo",
+      savings: "Up to 68% Savings",
+      riseUpWidth: "32%",
+      color: "from-purple-500 to-indigo-600",
+      accentBg: "bg-purple-500/10",
+      accentText: "text-purple-400",
+    },
+    {
+      role: "Tech Leadership",
+      tier: "Tier 3.B",
+      usRate: "$22,000–$30,000/mo",
+      riseUpRate: "$7,500–$10,000/mo",
+      savings: "Up to 67% Savings",
+      riseUpWidth: "33%",
+      color: "from-pink-500 to-rose-500",
+      accentBg: "bg-pink-500/10",
+      accentText: "text-pink-400",
+    },
+  ];
 
-export default function PricingSavingsSlide() {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        {/* Subtle glow */}
-        <div
-          className="absolute z-[1]"
-          style={{
-            right: 200,
-            top: "50%",
-            width: 700,
-            height: 500,
-            transform: "translateY(-50%)",
-            background:
-              "radial-gradient(ellipse at center, hsl(var(--pres-accent) / 0.05) 0%, transparent 65%)",
-            filter: "blur(60px)",
-          }}
-        />
+        {/* Ambient right glow */}
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[600px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
 
-        {/* LEFT COLUMN */}
-        <div
-          className="absolute z-10 flex flex-col justify-center"
-          style={{ left: 80, top: 80, bottom: 60, maxWidth: 640 }}
-        >
-          <motion.h1
-            {...fade(0)}
-            style={{
-              fontFamily: "'Ubuntu', sans-serif",
-              fontSize: 76,
-              fontWeight: 700,
-              fontStyle: "italic",
-              color: "hsl(var(--pres-text))",
-              lineHeight: 1.05,
-            }}
-          >
-            <span style={{ color: "hsl(var(--pres-text))" }}>Get Up To</span>
-            <br />
-            <span style={{ color: "hsl(var(--pres-accent))" }}>4× Value</span>
-          </motion.h1>
-
-          <motion.div {...fade(1)} className="accent-bar mt-5" style={{ width: 80 }} />
-
-          <motion.p
-            {...fade(2)}
-            className="mt-6"
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 21,
-              color: "hsl(var(--pres-text-muted))",
-              lineHeight: 1.7,
-              maxWidth: 480,
-            }}
-          >
-            Compare the value you receive: {" "}
-            <strong style={{ color: "hsl(var(--pres-accent))" }}>
-              more output, more expertise
-            </strong>{" "}
-            than US market alternatives.
-          </motion.p>
-
-          {/* Value callout */}
-          <motion.div
-            {...fade(3)}
-            className="glass-card mt-8 px-7 py-5 inline-flex items-center gap-5"
-          >
-            <span
-              className="metric-glow"
-              style={{
-                fontFamily: "'Ubuntu', sans-serif",
-                fontSize: 48,
-                fontWeight: 700,
-              }}
+        {/* Left Column (Content & Value Callout) - Strict 145px clearance ending at bottom-[145px] */}
+        <div className="absolute left-[80px] top-[80px] bottom-[145px] max-w-[620px] z-10 flex flex-col justify-between">
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-[56px] font-bold font-heading italic tracking-tight text-white mb-3"
             >
+              The Real Cost of <span className="text-pres-accent not-italic">Stalled Projects</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="w-28 h-1 accent-bar rounded-full origin-left mb-5"
+            />
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-[20px] leading-[1.5] text-pres-text-muted"
+            >
+              A delayed sprint or bad hire bleeds $20,000+/mo in burned runway. Stop paying US inflated rates for unvetted promises.
+            </motion.p>
+          </div>
+
+          {/* Value Callout Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="p-7 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[460px]"
+          >
+            <div className="text-[84px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1.5">
               4×
-            </span>
-            <div>
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 18,
-                  fontWeight: 600,
-                  color: "hsl(var(--pres-text))",
-                }}
-              >
-                More Value
-              </p>
-              <p
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  fontSize: 15,
-                  color: "hsl(var(--pres-text-dim))",
-                }}
-              >
-                vs. hiring directly in the US
-              </p>
             </div>
+            <div className="text-xl font-bold font-heading text-white mb-1">
+              More Value
+            </div>
+            <p className="text-sm text-pres-text-muted">
+              vs. hiring directly in the US with equivalent experience and vetted oversight.
+            </p>
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN — resized to match reference proportions */}
-        <motion.div
-          {...fade(2)}
-          className="absolute right-[80px] z-10 flex flex-col justify-center"
-          style={{ width: 780, top: 110, bottom: 60 }}
-        >
-          <div className="space-y-8">
-            {comparisons.map((c, i) => (
-              <motion.div
-                key={c.role}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  delay: 0.3 + i * 0.15,
-                  duration: 0.6,
-                  ease: "easeOut",
-                }}
-              >
-                {/* Label row */}
-                <div
-                  className="flex items-center justify-between"
-                  style={{ marginBottom: 10 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      style={{
-                        width: 8,
-                        height: 8,
-                        borderRadius: "50%",
-                        background: c.usColor,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 20,
-                        fontWeight: 600,
-                        color: c.usColor,
-                      }}
-                    >
-                      {c.role}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
-                        color: "hsl(var(--pres-text-dim))",
-                      }}
-                    >
-                      {c.tier}
-                    </span>
-                  </div>
-                  <span
-                    className="rounded-full px-3 py-0.5"
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: "hsl(var(--pres-bg))",
-                      background: "hsl(var(--pres-accent))",
-                    }}
-                  >
-                    {c.saving}
+        {/* Right Column (4 Comparison Bar Groups) - Strict 145px clearance ending at bottom-[145px] */}
+        <div className="absolute right-[80px] w-[980px] top-[80px] bottom-[145px] z-10 flex flex-col justify-evenly">
+          {comparisons.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 + idx * 0.12 }}
+              className="p-5 rounded-2xl bg-pres-surface/60 border border-white/10 backdrop-blur-md"
+            >
+              {/* Header row of card */}
+              <div className="flex items-center justify-between mb-2.5">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base font-bold font-heading text-white">
+                    {item.role}
+                  </span>
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-white/10 text-white/80">
+                    {item.tier}
                   </span>
                 </div>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${item.accentBg} ${item.accentText}`}>
+                  {item.savings}
+                </span>
+              </div>
 
-                {/* US bar */}
-                <div className="flex items-center gap-4 mb-3">
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 15,
-                      fontWeight: 600,
-                      color: c.usColor,
-                      width: 100,
-                      whiteSpace: "nowrap",
-                      flexShrink: 0,
-                    }}
-                  >
-                    US Rate
-                  </span>
-                  <div
-                    className="flex-1 rounded-full overflow-hidden"
-                    style={{
-                      height: 18,
-                      background: "hsl(var(--pres-bg-surface) / 0.55)",
-                      border: "1px solid hsl(var(--pres-text-dim) / 0.12)",
-                    }}
-                  >
+              {/* Bars container */}
+              <div className="space-y-2.5">
+                {/* US Market Bar */}
+                <div>
+                  <div className="flex justify-between text-[11px] text-pres-text-dim mb-1 font-mono">
+                    <span>US Direct Market Rate</span>
+                    <span className="text-white/70 font-semibold">{item.usRate}</span>
+                  </div>
+                  <div className="w-full h-3.5 bg-white/5 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={{ width: `${c.barUs}%` }}
-                      transition={{
-                        delay: 0.5 + i * 0.12,
-                        duration: 0.8,
-                      }}
-                      className="h-full rounded-full"
-                      style={{ background: c.usGradient }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 0.7, delay: 0.4 + idx * 0.1 }}
+                      className="h-full bg-white/20 rounded-full"
                     />
                   </div>
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 18,
-                      fontWeight: 600,
-                      color: c.usColor,
-                      width: 190,
-                      textAlign: "right",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {c.us}
-                    <span
-                      style={{
-                        fontSize: 15,
-                        fontWeight: 400,
-                        color: "hsl(var(--pres-text-dim))",
-                      }}
-                    >
-                      /mo
-                    </span>
-                  </span>
                 </div>
 
-                {/* Riseup-Asia bar */}
-                <div className="flex items-center gap-4">
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 15,
-                      fontWeight: 700,
-                      color: "hsl(var(--pres-accent))",
-                      width: 100,
-                      whiteSpace: "nowrap",
-                      flexShrink: 0,
-                    }}
-                  >
-                    Riseup-Asia
-                  </span>
-                  <div
-                    className="flex-1 rounded-full overflow-hidden"
-                    style={{
-                      height: 18,
-                      background: "hsl(var(--pres-bg-surface) / 0.55)",
-                      border: "1px solid hsl(var(--pres-text-dim) / 0.12)",
-                    }}
-                  >
+                {/* RiseUp Bar */}
+                <div>
+                  <div className="flex justify-between text-[11px] text-pres-accent mb-1 font-mono">
+                    <span>RiseUp Dedicated Talent</span>
+                    <span className="text-pres-accent font-bold text-xs">{item.riseUpRate}</span>
+                  </div>
+                  <div className="w-full h-3.5 bg-white/5 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={{ width: `${c.barRiseup}%` }}
-                      transition={{
-                        delay: 0.6 + i * 0.12,
-                        duration: 0.8,
-                      }}
-                      className="h-full rounded-full"
-                      style={{
-                        background: c.riseupGradient,
-                        boxShadow: `0 0 16px ${c.riseupColor}40`,
-                      }}
+                      animate={{ width: item.riseUpWidth }}
+                      transition={{ duration: 0.7, delay: 0.5 + idx * 0.1 }}
+                      className={`h-full bg-gradient-to-r ${item.color} rounded-full shadow-[0_0_15px_rgba(255,173,1,0.4)]`}
                     />
                   </div>
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 18,
-                      fontWeight: 700,
-                      color: c.riseupColor,
-                      width: 190,
-                      textAlign: "right",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {c.riseup}
-                    <span
-                      style={{
-                        fontSize: 15,
-                        fontWeight: 400,
-                        color: "hsl(var(--pres-text-dim))",
-                      }}
-                    >
-                      /mo
-                    </span>
-                  </span>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </ScaledSlide>
   );
-}
+};

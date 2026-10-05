@@ -1,310 +1,170 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
+import React from "react";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, X, ChevronDown } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { CheckCircle, X } from "lucide-react";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.15 * i, duration: 0.6, ease: "easeOut" as const },
-});
+interface TierDetailSlideProps {
+  onNavigate?: (index: number) => void;
+}
 
-type ColKey = "starter" | "growth" | "skilled" | "leadership";
+export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
+  const columns = [
+    {
+      name: "Tier 2 — Growth",
+      price: "$4,299/mo",
+      color: "hsl(var(--pres-accent))",
+      textColor: "text-pres-accent",
+      bgColor: "bg-pres-accent/[0.06]",
+      borderColor: "border-pres-accent/30",
+      badge: null,
+      tagline: null,
+    },
+    {
+      name: "Tier 3.A — Skilled",
+      price: "$6,800–8K/mo",
+      color: "#22c55e",
+      textColor: "text-green-400",
+      bgColor: "bg-green-500/[0.06]",
+      borderColor: "border-green-500/30",
+      badge: "⭐ BEST VALUE",
+      tagline: null,
+    },
+    {
+      name: "Tier 3.B — Leadership",
+      price: "$7.5K–10K/mo",
+      color: "#c084fc",
+      textColor: "text-purple-400",
+      bgColor: "bg-purple-500/[0.06]",
+      borderColor: "border-purple-500/30",
+      badge: "👑 PREMIUM",
+      tagline: "✨ Impossible to say no",
+    },
+  ];
 
-const features: { label: string; starter: boolean | string; growth: boolean | string; skilled: boolean | string; leadership: boolean | string }[] = [
-  { label: "Dedicated developer · 160 hrs/mo", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "Weekly progress reports", starter: true, growth: true, skilled: true, leadership: true },
-  { label: "Daily standups", starter: false, growth: true, skilled: true, leadership: true },
-  { label: "Sprint participation", starter: false, growth: true, skilled: true, leadership: true },
-  { label: "Task breakdown & delegation", starter: false, growth: true, skilled: true, leadership: true },
-  { label: "Team management", starter: false, growth: "Up to 2", skilled: "3–5", leadership: "Up to 15" },
-  { label: "Architecture decisions", starter: false, growth: "Limited", skilled: true, leadership: true },
-  { label: "Project management", starter: false, growth: false, skilled: true, leadership: true },
-  { label: "CTO-level oversight", starter: false, growth: false, skilled: false, leadership: true },
-  { label: "Priority Slack · 24/7 SLA", starter: false, growth: "Slack only", skilled: true, leadership: "Versatile" },
-  { label: "QA Engineers", starter: false, growth: false, skilled: false, leadership: "2" },
-  { label: "Alim Expert Oversight", starter: "2 hrs/wk*", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
-  { label: "Min. Developer Experience", starter: "2+ yrs", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
-  { label: "Onboarding Deposit", starter: "$2K", growth: "$2K", skilled: "$2K", leadership: "$2K" },
-];
+  type FeatureRow = {
+    feature: string;
+    growth: boolean | string;
+    skilled: boolean | string;
+    leadership: boolean | string;
+  };
 
-const columns: { key: ColKey; name: string; price: string; bestValue?: boolean; premium?: boolean; color: string; bgTint: string; tagline?: string }[] = [
-  { key: "growth", name: "Tier 2 — Growth", price: "$4,299/mo", color: "hsl(var(--pres-accent))", bgTint: "hsl(var(--pres-accent) / 0.06)" },
-  { key: "skilled", name: "Tier 3.A — Skilled", price: "$6,800–8K/mo", bestValue: true, color: "hsl(142 70% 45%)", bgTint: "hsl(142 70% 45% / 0.08)" },
-  { key: "leadership", name: "Tier 3.B — Leadership", price: "$7.5K–10K/mo", premium: true, color: "hsl(280 60% 60%)", bgTint: "hsl(280 60% 60% / 0.08)" },
-];
+  const rows: FeatureRow[] = [
+    { feature: "Dedicated developer · 160 hrs/mo", growth: true, skilled: true, leadership: true },
+    { feature: "Weekly progress reports", growth: true, skilled: true, leadership: true },
+    { feature: "Daily standups", growth: true, skilled: true, leadership: true },
+    { feature: "Sprint participation", growth: true, skilled: true, leadership: true },
+    { feature: "Task breakdown & delegation", growth: true, skilled: true, leadership: true },
+    { feature: "Team management", growth: "Up to 2", skilled: "3–5", leadership: "Up to 15" },
+    { feature: "Architecture decisions", growth: true, skilled: true, leadership: true },
+    { feature: "Project management", growth: false, skilled: false, leadership: true },
+    { feature: "CTO-level oversight", growth: false, skilled: false, leadership: true },
+    { feature: "Priority Slack · 24/7 SLA", growth: "Slack only", skilled: true, leadership: "Versatile" },
+    { feature: "QA Engineers", growth: false, skilled: false, leadership: "2" },
+    { feature: "Alim Expert Oversight", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
+    { feature: "Min. Developer Experience", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
+    { feature: "Onboarding Deposit", growth: "$2K", skilled: "$2K", leadership: "$2K" },
+  ];
 
-const MIN_RAIL_THUMB_HEIGHT = 72;
-
-export default function TierDetailSlide() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollDown, setCanScrollDown] = useState(true);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [railThumbHeight, setRailThumbHeight] = useState(MIN_RAIL_THUMB_HEIGHT);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const check = () => {
-      const maxScroll = Math.max(el.scrollHeight - el.clientHeight, 1);
-      const nextProgress = Math.min(el.scrollTop / maxScroll, 1);
-      const nextThumbHeight = Math.max(
-        (el.clientHeight / Math.max(el.scrollHeight, el.clientHeight)) * el.clientHeight,
-        MIN_RAIL_THUMB_HEIGHT,
-      );
-
-      setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
-      setScrollProgress(nextProgress);
-      setRailThumbHeight(nextThumbHeight);
-    };
-
-    check();
-    el.addEventListener("scroll", check);
-    window.addEventListener("resize", check);
-
-    return () => {
-      el.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, []);
+  const renderCell = (val: boolean | string, colColor: string) => {
+    if (val === true) {
+      return <CheckCircle className="w-4 h-4 mx-auto" style={{ color: colColor }} />;
+    }
+    if (val === false) {
+      return <X className="w-4 h-4 mx-auto text-red-500/80" />;
+    }
+    return (
+      <span className="font-bold text-[15px]" style={{ color: colColor }}>
+        {val}
+      </span>
+    );
+  };
 
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        <motion.h1
-          {...fade(0)}
-          className="absolute left-[80px] top-[90px] z-10"
-          style={{
-            fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 64,
-            fontWeight: 700,
-            color: "hsl(var(--pres-text))",
-          }}
-        >
-          Feature <span style={{ color: "hsl(var(--pres-accent))" }}>Comparison</span>
-        </motion.h1>
+        {/* Ambient Glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-pres-accent/5 blur-[150px] pointer-events-none" />
 
-        <motion.div
-          {...fade(1)}
-          className="absolute left-[80px] right-[80px] top-[180px] z-10 flex flex-col"
-          style={{ bottom: 100 }}
-        >
-          <div
-            className="grid items-end pb-3"
-            style={{
-              gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
-              borderBottom: "2px solid hsl(var(--pres-accent) / 0.3)",
-            }}
+        {/* Title */}
+        <div className="absolute left-[80px] top-[65px] z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-[48px] font-bold font-heading tracking-tight text-white"
           >
-            <div />
-            {columns.map((col, i) => (
+            Feature <span className="text-pres-accent">Comparison</span>
+          </motion.h1>
+        </div>
+
+        {/* Table Container - Strict 145px clearance ending at bottom-[145px] */}
+        <div className="absolute left-[80px] right-[80px] top-[145px] bottom-[145px] z-10 flex flex-col justify-between">
+          {/* Header Row */}
+          <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2.5 border-b border-white/10">
+            <div className="text-left font-heading font-semibold text-base text-pres-text-dim uppercase tracking-wider pl-4">
+              Features
+            </div>
+            {columns.map((col, idx) => (
               <motion.div
-                key={col.key}
-                initial={{ opacity: 0, y: 16 }}
+                key={idx}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
-                className="text-center relative"
-                style={{
-                  background: col.bgTint,
-                  borderRadius: "12px 12px 0 0",
-                  padding: "14px 8px",
-                }}
+                transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                className={`text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
               >
-                {col.bestValue && (
-                  <div
-                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{
-                      background: col.color,
-                      color: "hsl(var(--pres-bg))",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    <Award size={13} /> BEST VALUE
-                  </div>
+                {col.badge && (
+                  <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
+                    {col.badge}
+                  </span>
                 )}
-                {col.premium && (
-                  <div
-                    className="absolute -top-1 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full"
-                    style={{
-                      background: "linear-gradient(135deg, hsl(280 60% 60%), hsl(320 60% 55%))",
-                      color: "hsl(0 0% 100%)",
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      letterSpacing: "0.05em",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    👑 PREMIUM
-                  </div>
-                )}
-                <p
-                  style={{
-                    fontFamily: "'Ubuntu', sans-serif",
-                    fontSize: 28,
-                    fontWeight: 700,
-                    color: col.color,
-                    marginTop: col.bestValue || col.premium ? 14 : 0,
-                  }}
-                >
-                  {col.name}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 18,
-                    color: "hsl(var(--pres-text-dim))",
-                    marginTop: 3,
-                  }}
-                >
-                  {col.price}
-                </p>
+                <div className="font-heading font-bold text-base text-white">{col.name}</div>
+                <div className={`text-sm font-semibold ${col.textColor}`}>{col.price}</div>
                 {col.tagline && (
-                  <p
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      fontStyle: "italic",
-                      color: col.color,
-                      marginTop: 4,
-                    }}
-                  >
-                    ✨ {col.tagline}
-                  </p>
+                  <div className="text-[10px] text-purple-300 italic">{col.tagline}</div>
                 )}
               </motion.div>
             ))}
           </div>
 
-          <div className="relative flex-1">
-            <div
-              ref={scrollRef}
-              className="absolute inset-0 overflow-y-scroll tier-scroll"
-              style={{
-                paddingRight: 32,
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {features.map((feat, i) => (
-                <motion.div
-                  key={feat.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + i * 0.05, duration: 0.4 }}
-                  className="grid items-center"
-                  style={{
-                    gridTemplateColumns: "1.8fr 1fr 1fr 1fr",
-                    padding: "6px 0",
-                    borderBottom: "1px solid hsl(var(--border) / 0.5)",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 18,
-                      color: "hsl(var(--pres-text-muted))",
-                    }}
-                  >
-                    {feat.label}
-                  </span>
-                  {columns.map((col) => {
-                    const val = feat[col.key];
-                    return (
-                      <div
-                        key={col.key}
-                        className="flex justify-center"
-                        style={{
-                          background: col.bgTint,
-                          padding: "8px 0",
-                        }}
-                      >
-                        {val === true ? (
-                          <CheckCircle size={26} style={{ color: col.color }} />
-                        ) : val === false ? (
-                          <X size={26} style={{ color: "hsl(0 80% 55%)" }} />
-                        ) : (
-                          <span
-                            style={{
-                              fontFamily: "'Poppins', sans-serif",
-                              fontSize: 18,
-                              fontWeight: 600,
-                              color: col.color,
-                            }}
-                          >
-                            {val}
-                          </span>
-                        )}
-                      </div>
-                    );
-                  })}
-                </motion.div>
-              ))}
-            </div>
-
-            <div
-              aria-hidden="true"
-              className="absolute right-2 top-0 bottom-0 pointer-events-none"
-              style={{ width: 14, zIndex: 4 }}
-            >
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{ background: "hsl(var(--pres-accent) / 0.12)" }}
-              />
+          {/* Rows */}
+          <div className="flex-1 flex flex-col justify-evenly">
+            {rows.map((row, rIdx) => (
               <motion.div
-                className="absolute left-0 right-0 rounded-full"
-                animate={{ y: scrollProgress * Math.max(0, 1) }}
-                style={{
-                  height: railThumbHeight,
-                  top: `calc(${scrollProgress * 100}% - ${scrollProgress * railThumbHeight}px)`,
-                  background: "linear-gradient(180deg, hsl(var(--pres-accent) / 0.85), hsl(var(--pres-accent) / 0.45))",
-                  boxShadow: "0 0 18px hsl(var(--pres-accent) / 0.28)",
-                  border: "1px solid hsl(var(--pres-accent) / 0.35)",
-                }}
-              />
-            </div>
-
-            {canScrollDown && (
-              <div
-                className="absolute bottom-0 left-0 right-0 flex flex-col items-center pointer-events-none"
-                style={{ zIndex: 5 }}
+                key={rIdx}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.35, delay: 0.3 + rIdx * 0.025 }}
+                className={`grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 hover:bg-white/[0.02] transition-colors rounded ${
+                  rIdx % 2 === 0 ? "bg-white/[0.01]" : ""
+                }`}
               >
-                <div
-                  className="w-full"
-                  style={{
-                    height: 60,
-                    background: "linear-gradient(to top, hsl(var(--pres-bg)), hsl(var(--pres-bg) / 0))",
-                  }}
-                />
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                  className="flex items-center gap-2 -mt-6"
-                  style={{
-                    color: "hsl(var(--pres-accent))",
-                    fontFamily: "'Poppins', sans-serif",
-                    fontSize: 16,
-                    fontWeight: 600,
-                  }}
-                >
-                  <ChevronDown size={20} />
-                  Scroll for more
-                  <ChevronDown size={20} />
-                </motion.div>
-              </div>
-            )}
+                {/* Feature Label */}
+                <div className="text-left font-medium text-[15px] text-white/90 pl-4">
+                  {row.feature}
+                </div>
+
+                {/* Growth */}
+                <div className="text-center mx-1 py-0.5">
+                  {renderCell(row.growth, columns[0].color)}
+                </div>
+
+                {/* Skilled */}
+                <div className="text-center mx-1 py-0.5">
+                  {renderCell(row.skilled, columns[1].color)}
+                </div>
+
+                {/* Leadership */}
+                <div className="text-center mx-1 py-0.5">
+                  {renderCell(row.leadership, columns[2].color)}
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </ScaledSlide>
   );
-}
+};

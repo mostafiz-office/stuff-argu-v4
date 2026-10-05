@@ -1,287 +1,184 @@
-import ScaledSlide from "@/components/presentation/ScaledSlide";
-import SlideHeader from "@/components/presentation/SlideHeader";
-import HoverVideoPreview from "@/components/presentation/HoverVideoPreview";
-import RocketAnimation from "@/components/presentation/RocketAnimation";
+import React from "react";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, Star, Plus, Crown } from "lucide-react";
+import { Award, CheckCircle, Clock } from "lucide-react";
+import { ScaledSlide } from "@/components/presentation/ScaledSlide";
+import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { HoverVideoPreview } from "@/components/presentation/HoverVideoPreview";
 
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.18 * i, duration: 0.7, ease: "easeOut" as const },
-});
+interface PricingTiersSlideProps {
+  onNavigate?: (index: number) => void;
+}
 
-const tiers = [
-  {
-    name: "Tier 2 — Growth",
-    experience: "2-3+ Years Experience",
-    price: "$4,299",
-    per: "/mo",
-    hours: "160 hrs/month",
-    features: [
-      "Fluent, autonomous coder",
-      "Breaks down & delegates tasks",
-      "Full sprint participation",
-      "Daily standups & Slack access",
-    ],
-    featured: false,
-    youtubeId: "uveR9C5CgSY",
-  },
-  {
-    name: "Tier 3.A — Skilled",
-    experience: "7-15+ Years Experience",
-    price: "$6,800–$8,000",
-    per: "/mo",
-    hours: "160 hrs/month",
-    features: [
-      "Best-in-class developer",
-      "Deep expertise in their stack",
-      "Manages 3-5 team members",
-      "Architecture & code quality",
-    ],
-    featured: false,
-    bestValue: true,
-    youtubeId: "uveR9C5CgSY",
-  },
-  {
-    name: "Tier 3.B — Leadership",
-    experience: "7-15+ Years Experience",
-    price: "$7,500–$10,000",
-    per: "/mo",
-    hours: "160 hrs/month",
-    features: [
-      "Project management focus",
-      "Manages up to 15 developers",
-      "CTO-level strategic oversight",
-      "24/7 SLA & priority support",
-    ],
-    featured: false,
-    premium: false,
-    youtubeId: "uveR9C5CgSY",
-  },
-];
+export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
+  const tiers = [
+    {
+      name: "Tier 2 — Growth",
+      experience: "2-3+ Years",
+      price: "$4,299",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
+      badge: null,
+      highlight: false,
+      position: "left" as const,
+      features: [
+        "Fluent, autonomous coder",
+        "Breaks down & delegates tasks",
+        "Full sprint participation",
+        "Daily standups & Slack access",
+      ],
+    },
+    {
+      name: "Tier 3.A — Skilled",
+      experience: "7-15+ Years",
+      price: "$6,800–$8,000",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
+      badge: "BEST VALUE",
+      highlight: true,
+      position: "center" as const,
+      features: [
+        "Best-in-class developer",
+        "Deep expertise in their stack",
+        "Manages 3-5 team members",
+        "Architecture & code quality",
+      ],
+    },
+    {
+      name: "Tier 3.B — Leadership",
+      experience: "7-15+ Years",
+      price: "$7,500–$10,000",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
+      badge: null,
+      highlight: false,
+      position: "right" as const,
+      features: [
+        "Project management focus",
+        "Manages up to 15 developers",
+        "CTO-level strategic oversight",
+        "24/7 SLA & priority support",
+      ],
+    },
+  ];
 
-export default function PricingTiersSlide() {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-full h-full overflow-hidden">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
         <SlideHeader />
 
-        {/* Background texture */}
+        {/* 45 degree repeating line texture */}
         <div
-          className="absolute inset-0 z-[1]"
+          className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 28px, hsl(var(--pres-accent) / 0.03) 28px, hsl(var(--pres-accent) / 0.03) 29px)`,
+            backgroundImage:
+              "repeating-linear-gradient(45deg, transparent, transparent 18px, hsl(var(--pres-accent) / 0.08) 18px, hsl(var(--pres-accent) / 0.08) 19px)",
           }}
         />
 
-        <motion.h1
-          {...fade(0)}
-          className="absolute left-[80px] top-[90px] z-10"
-          style={{
-            fontFamily: "'Ubuntu', sans-serif",
-            fontSize: 52,
-            fontWeight: 700,
-            color: "hsl(var(--pres-text))",
-          }}
-        >
-          Choose Your <span style={{ color: "hsl(var(--pres-accent))" }}>Plan</span>
-        </motion.h1>
+        {/* Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
 
-        <motion.p
-          {...fade(1)}
-          className="absolute left-[80px] top-[178px] z-10"
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 18,
-            color: "hsl(var(--pres-text-muted))",
-          }}
-        >
-          All plans include 160 dedicated hours/month. Scale anytime.
-        </motion.p>
+        {/* Title Area */}
+        <div className="absolute left-[80px] top-[70px] z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[50px] font-bold font-heading tracking-tight text-white mb-1.5"
+          >
+            End Stalled Projects: <span className="text-pres-accent">Guaranteed Engineering Relief</span>
+          </motion.h1>
 
-        {/* Tier cards — 3 columns */}
-        <div className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] grid grid-cols-3 gap-8 z-10">
-          {tiers.map((tier, index) => {
-            const isFeatured = tier.featured;
-            const isBestValue = 'bestValue' in tier && tier.bestValue;
-            const isPremium = 'premium' in tier && tier.premium;
-            const videoPosition = index === 0 ? "right" : index === 2 ? "left" : "center";
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-[19px] text-pres-text-muted"
+          >
+            Stop letting tech debt bottleneck your roadmap. 160 dedicated hours/month of senior execution, bench-ready in 20 minutes.
+          </motion.p>
+        </div>
 
-            return (
-              <HoverVideoPreview
-                key={tier.name}
-                youtubeId={tier.youtubeId}
-                position={videoPosition as "left" | "right" | "center"}
+        {/* 3-Column Tier Cards - Strict 150px clearance ending at bottom-[150px] */}
+        <div className="absolute left-[80px] right-[80px] top-[210px] bottom-[150px] z-10 grid grid-cols-3 gap-8">
+          {tiers.map((tier, idx) => (
+            <HoverVideoPreview
+              key={idx}
+              videoId="uveR9C5CgSY"
+              position={tier.position}
+              className="h-full flex flex-col"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 + idx * 0.1 }}
+                className={`relative flex flex-col justify-between h-full p-7 rounded-3xl border transition-all duration-300 backdrop-blur-md ${
+                  tier.highlight
+                    ? "bg-pres-surface/90 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
+                    : "bg-pres-surface/60 border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/80"
+                }`}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.12, duration: 0.6 }}
-                  className="rounded-2xl flex flex-col relative overflow-hidden h-full"
-                  style={{
-                    background: (isFeatured || isBestValue || isPremium)
-                      ? "linear-gradient(180deg, hsl(var(--pres-accent) / 0.1) 0%, hsl(var(--pres-bg-surface)) 100%)"
-                      : "hsl(var(--pres-bg-surface))",
-                    border: `2px solid ${(isFeatured || isBestValue || isPremium) ? "hsl(var(--pres-accent) / 0.4)" : "hsl(var(--border))"}`,
-                    padding: "28px 24px",
-                  }}
-                >
+                {/* Best Value Badge */}
+                {tier.badge && (
+                  <div className="absolute -top-3.5 right-8 px-4 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-xs font-bold font-heading flex items-center gap-1.5 shadow-lg">
+                    <Award className="w-3.5 h-3.5 fill-current" />
+                    <span>{tier.badge}</span>
+                  </div>
+                )}
 
-                  {isFeatured && (
-                    <div
-                      className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
-                      style={{
-                        background: "hsl(var(--pres-accent))",
-                        color: "hsl(var(--pres-bg))",
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
-                        fontWeight: 700,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      <Star size={14} /> MOST POPULAR
-                    </div>
-                  )}
-
-                  {isBestValue && (
-                    <div
-                      className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
-                      style={{
-                        background: "hsl(var(--pres-accent))",
-                        color: "hsl(var(--pres-bg))",
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
-                        fontWeight: 700,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      <Award size={14} /> BEST VALUE
-                    </div>
-                  )}
-
-                  {isPremium && (
-                    <div
-                      className="absolute top-0 right-0 flex items-center gap-2 px-4 py-2 rounded-bl-xl"
-                      style={{
-                        background: "hsl(var(--pres-accent))",
-                        color: "hsl(var(--pres-bg))",
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 14,
-                        fontWeight: 700,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      <Crown size={14} /> PREMIUM
-                    </div>
-                  )}
-
-                  {/* Tier name */}
-                  <p
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 16,
-                      fontWeight: 600,
-                      color: "hsl(var(--pres-text-dim))",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
+                <div>
+                  {/* Tier Name */}
+                  <h3 className="text-2xl font-bold font-heading text-white mb-0.5">
                     {tier.name}
-                  </p>
+                  </h3>
 
                   {/* Experience */}
-                  <p
-                    style={{
-                      fontFamily: "'Poppins', sans-serif",
-                      fontSize: 18,
-                      color: "hsl(var(--pres-accent))",
-                      fontWeight: 500,
-                      marginTop: 8,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {tier.experience}
+                  <p className="text-xs font-medium text-pres-text-dim uppercase tracking-wider mb-4">
+                    {tier.experience} Experience
                   </p>
 
                   {/* Price */}
-                  <div className="mt-5">
-                    <span
-                      style={{
-                        fontFamily: "'Ubuntu', sans-serif",
-                        fontSize: tier.price.length > 8 ? 36 : 48,
-                        fontWeight: 700,
-                        color: "hsl(var(--pres-text))",
-                      }}
-                    >
+                  <div className="flex items-baseline gap-1 mb-4">
+                    <span className="text-[40px] font-bold font-heading text-pres-accent leading-none">
                       {tier.price}
                     </span>
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 20,
-                        color: "hsl(var(--pres-text-dim))",
-                      }}
-                    >
-                      {tier.per}
+                    <span className="text-base text-pres-text-muted font-medium">
+                      {tier.priceSuffix}
                     </span>
                   </div>
 
-                  {/* Hours badge */}
-                  <div
-                    className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5"
-                    style={{
-                      background: "hsl(var(--pres-accent) / 0.08)",
-                      border: "1px solid hsl(var(--pres-accent) / 0.15)",
-                      width: "fit-content",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "'Poppins', sans-serif",
-                        fontSize: 16,
-                        fontWeight: 600,
-                        color: "hsl(var(--pres-accent))",
-                      }}
-                    >
-                      {tier.hours}
-                    </span>
+                  {/* Hours Badge */}
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-xs font-semibold mb-5">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>{tier.hours}</span>
                   </div>
 
-                  {/* Features */}
-                  <div className="mt-3 space-y-2.5 flex-1">
-                    {tier.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-3">
-                        <CheckCircle
-                          size={18}
-                          style={{
-                            color: "hsl(var(--pres-accent))",
-                            flexShrink: 0,
-                            marginTop: 3,
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontFamily: "'Poppins', sans-serif",
-                            fontSize: 18,
-                            color: "hsl(var(--pres-text-muted))",
-                            lineHeight: 1.4,
-                          }}
-                        >
+                  {/* Divider */}
+                  <div className="w-full h-[1px] bg-white/10 mb-4" />
+
+                  {/* Features List */}
+                  <ul className="space-y-3">
+                    {tier.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2.5">
+                        <CheckCircle className="w-4 h-4 text-pres-accent shrink-0 mt-0.5" />
+                        <span className="text-[15px] text-pres-text-muted leading-snug">
                           {feature}
                         </span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+                </div>
 
-
-
-                </motion.div>
-              </HoverVideoPreview>
-            );
-          })}
+                {/* Card Footer prompt */}
+                <div className="pt-4 text-xs text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
+                  <span>Hover card for video overview</span>
+                  <span className="text-pres-accent opacity-80">▶ Preview</span>
+                </div>
+              </motion.div>
+            </HoverVideoPreview>
+          ))}
         </div>
       </div>
     </ScaledSlide>
   );
-}
+};
