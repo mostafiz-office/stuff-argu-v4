@@ -81,9 +81,9 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
                 <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
                   <div>
                     <p className="font-bold text-white text-[17px]">Alim Ul Karim</p>
-                    <p className="text-[14px] text-pres-accent font-semibold">Chief Software Engineer</p>
+                    <p className="text-[15px] text-pres-accent font-semibold">Chief Software Engineer</p>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-pres-accent/20 border border-pres-accent/30 text-pres-accent text-[14px] font-mono font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-pres-accent/20 border border-pres-accent/30 text-pres-accent text-[15px] font-mono font-bold">
                     20+ Yrs Exp
                   </span>
                 </div>
@@ -135,7 +135,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-white/5 flex items-center gap-1.5 text-[14px] font-semibold text-pres-accent">
+                    <div className="pt-3 mt-3 border-t border-white/5 flex items-center gap-1.5 text-[15px] font-semibold text-pres-accent">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>Included 100% Free In Your Tier</span>
                     </div>

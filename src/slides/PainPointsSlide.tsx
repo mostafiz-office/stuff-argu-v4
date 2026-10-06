@@ -95,7 +95,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center border shadow-md ${item.accentBadge}`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[14px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
+                    <span className="text-[15px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
                       {item.badge}
                     </span>
                   </div>
@@ -115,7 +115,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-1.5">
                         <TrendingDown className="w-3.5 h-3.5 text-red-400" />
-                        <span className="text-[13px] font-bold uppercase tracking-wider text-pres-text-dim">
+                        <span className="text-[15px] font-bold uppercase tracking-wider text-pres-text-dim">
                           {item.statLabel}
                         </span>
                       </div>

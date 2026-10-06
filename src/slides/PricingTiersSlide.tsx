@@ -126,7 +126,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     </h3>
 
                     {/* Experience */}
-                    <p className="text-[14px] font-medium text-pres-text-dim uppercase tracking-wider mb-3">
+                    <p className="text-[15px] font-medium text-pres-text-dim uppercase tracking-wider mb-3">
                       {tier.experience} Experience
                     </p>
 
@@ -163,7 +163,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   </div>
 
                   {/* Card Footer prompt */}
-                  <div className="pt-3.5 text-[14px] text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
+                  <div className="pt-3.5 text-[15px] text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
                     <span>Hover card for video overview</span>
                     <span className="text-pres-accent opacity-80 font-semibold">▶ Preview</span>
                   </div>

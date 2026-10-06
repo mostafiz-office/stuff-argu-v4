@@ -99,7 +99,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     </div>
 
                     {/* Step Label */}
-                    <span className="text-[14px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
+                    <span className="text-[15px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
                       {step.num}
                     </span>
 

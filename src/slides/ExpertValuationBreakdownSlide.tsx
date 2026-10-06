@@ -116,7 +116,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[14px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/10 text-pres-text-dim">
+                      <span className="text-[15px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/10 text-pres-text-dim">
                         STEP {st.step}
                       </span>
                       <div
@@ -130,7 +130,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                       </div>
                     </div>
 
-                    <p className="text-[14px] font-semibold uppercase tracking-wider text-pres-text-dim mb-1">
+                    <p className="text-[15px] font-semibold uppercase tracking-wider text-pres-text-dim mb-1">
                       {st.title}
                     </p>
                     <div
@@ -140,7 +140,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                     >
                       {st.value}
                     </div>
-                    <p className="text-[14px] font-medium text-pres-accent mb-1.5">{st.sub}</p>
+                    <p className="text-[15px] font-medium text-pres-accent mb-1.5">{st.sub}</p>
                     <p className="text-[15px] text-pres-text-muted leading-relaxed">{st.detail}</p>
                   </div>
                 </motion.div>
@@ -156,10 +156,10 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
             className="p-5 rounded-3xl bg-pres-surface/90 border border-white/10 shadow-2xl backdrop-blur-md w-full"
           >
             <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-white/10">
-              <span className="text-[14px] font-bold uppercase tracking-wider text-white">
+              <span className="text-[15px] font-bold uppercase tracking-wider text-white">
                 Tier-by-Tier Architecture Allocation &amp; Exact Monthly Value
               </span>
-              <span className="text-[14px] text-green-400 font-semibold flex items-center gap-1.5">
+              <span className="text-[15px] text-green-400 font-semibold flex items-center gap-1.5">
                 <CheckCircle className="w-3.5 h-3.5 text-green-400" />
                 <span>Supervised Directly by Alim Ul Karim (Chief Software Engineer)</span>
               </span>
@@ -176,12 +176,12 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[14px] font-bold text-white font-heading">{row.name}</span>
-                    <span className="text-[14px] text-pres-accent font-mono font-semibold">{row.price}</span>
+                    <span className="text-[15px] font-bold text-white font-heading">{row.name}</span>
+                    <span className="text-[15px] text-pres-accent font-mono font-semibold">{row.price}</span>
                   </div>
-                  <div className="text-[14px] text-pres-text-muted mb-2">{row.hours}</div>
+                  <div className="text-[15px] text-pres-text-muted mb-2">{row.hours}</div>
                   <div className="p-2.5 rounded-xl bg-black/40 border border-white/5">
-                    <div className="text-[13px] text-pres-text-dim mb-0.5">{row.formula}</div>
+                    <div className="text-[15px] text-pres-text-dim mb-0.5">{row.formula}</div>
                     <div className="text-[16px] font-bold text-green-400 font-mono">{row.value}</div>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
             {/* Why We Do This Callout */}
             <div className="p-3 rounded-2xl bg-white/5 border border-white/5 flex items-center gap-3">
               <HelpCircle className="w-4 h-4 text-pres-accent shrink-0" />
-              <p className="text-[14px] text-pres-text-muted leading-relaxed">
+              <p className="text-[15px] text-pres-text-muted leading-relaxed">
                 <strong className="text-white">Why is this included for free?</strong> Proactive senior architecture eliminates bugs before deployment, maintains our 99% client retention, and ensures our engineers deliver 3x faster without accumulating technical debt.
               </p>
             </div>

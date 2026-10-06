@@ -121,11 +121,11 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                     <span className="text-[19px] font-bold font-heading text-white">
                       {item.role}
                     </span>
-                    <span className="text-[14px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
+                    <span className="text-[15px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
                       {item.tier}
                     </span>
                   </div>
-                  <span className={`text-[14px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
+                  <span className={`text-[15px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
                     {item.savings}
                   </span>
                 </div>
@@ -134,7 +134,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 <div className="space-y-2">
                   {/* US Market Bar */}
                   <div>
-                    <div className="flex justify-between text-[14px] text-pres-text-dim mb-1 font-mono">
+                    <div className="flex justify-between text-[15px] text-pres-text-dim mb-1 font-mono">
                       <span>US Direct Market Rate</span>
                       <span className="text-white/70 font-semibold">{item.usRate}</span>
                     </div>
@@ -150,7 +150,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
 
                   {/* RiseUp Bar */}
                   <div>
-                    <div className="flex justify-between text-[14px] text-pres-accent mb-1 font-mono">
+                    <div className="flex justify-between text-[15px] text-pres-accent mb-1 font-mono">
                       <span>RiseUp Dedicated Talent</span>
                       <span className="text-pres-accent font-bold">{item.riseUpRate}</span>
                     </div>
