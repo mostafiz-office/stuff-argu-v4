@@ -118,7 +118,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   className={`text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
                 >
                   {col.badge && (
-                    <span className="inline-block text-[13px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
+                    <span className="inline-block text-[15px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
                       {col.badge}
                     </span>
                   )}

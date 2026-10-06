@@ -31,7 +31,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
         <div className="absolute bottom-0 right-1/4 w-[700px] h-[500px] rounded-full bg-amber-500/10 blur-[150px] pointer-events-none" />
 
         {/* Center Photo: Marek Portrait */}
-        <div className="absolute left-[650px] bottom-0 w-[780px] h-[920px] z-4 pointer-events-none flex items-end justify-center overflow-visible">
+        <div className="absolute left-[920px] bottom-0 w-[480px] h-[860px] z-4 pointer-events-none flex items-end justify-center overflow-visible">
           <img
             src={marekImg}
             alt="Marek K."
@@ -42,7 +42,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
         {/* Main Content Layout: Flexbox Centered (justify-content: center; align-items: center;) */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex items-center justify-between">
           {/* Left Content Area (w-[680px]) */}
-          <div className="w-[820px] flex flex-col justify-center">
+          <div className="w-[840px] max-w-[840px] shrink-0 flex flex-col justify-center">
             {/* Badge with Cover Variant indicator & Switch button */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -55,18 +55,6 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-[14px] font-semibold tracking-widest uppercase text-white/50 block">
-                    Cover V1 · Direct Execution
-                  </span>
-                  {onToggleCover && (
-                    <button
-                      onClick={onToggleCover}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-pres-accent/15 hover:bg-pres-accent/25 text-pres-accent border border-pres-accent/30 text-[13px] font-mono transition-all cursor-pointer"
-                      title="Click to alternate to Cover V3"
-                    >
-                      <span>⇄ Switch to Cover V3</span>
-                    </button>
-                  )}
                 </div>
                 <span className="text-[16px] text-pres-accent font-medium block">
                   Cut 80% Off Your Developer Hiring Timeline
@@ -79,7 +67,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-[72px] leading-[1.08] font-bold font-heading mb-5 tracking-tight"
+              className="text-[60px] leading-[1.08] font-bold font-heading mb-5 tracking-tight"
             >
               <span className="block whitespace-nowrap">Cut 80% Off Your</span>
               <span className="block text-pres-accent whitespace-nowrap">Developer Hiring Timeline.</span>
@@ -123,7 +111,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
 
             {/* Marek Recommendation Card 1 (Below the two buttons on the left) */}
             <motion.a
-              href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+              href="https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 16 }}
@@ -167,7 +155,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
           <div className="w-[440px] flex flex-col justify-center">
             {/* Marek Recommendation Card 2 (In the upper head area on the right) */}
             <motion.a
-              href="https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+              href="https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: -16 }}

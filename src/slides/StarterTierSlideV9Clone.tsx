@@ -141,27 +141,27 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pres-accent opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pres-accent"></span>
                   </span>
-                  <span className="text-[14px] font-bold font-heading uppercase tracking-wider text-pres-accent">
+                  <span className="text-[15px] font-bold font-heading uppercase tracking-wider text-pres-accent">
                     {gateStep === 0 && "Step 1 of 2: Interactive Perk"}
                     {gateStep === 1 && "Step 2 of 2: Booster Rocket"}
                     {gateStep === 2 && "Perks Unlocked"}
                   </span>
                 </div>
                 <div className="h-3.5 w-[1px] bg-white/20" />
-                <span className="text-[14px] font-medium text-white flex items-center gap-1.5">
+                <span className="text-[15px] font-medium text-white flex items-center gap-1.5">
                   {gateStep === 0 && (
                     <>
-                      👉 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[13px] font-bold">Next ▶</kbd> to reveal Chief Architect Bonus card
+                      👉 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[15px] font-bold">Next ▶</kbd> to reveal Chief Architect Bonus card
                     </>
                   )}
                   {gateStep === 1 && (
                     <>
-                      🚀 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[13px] font-bold">Next ▶</kbd> to launch Rocket &amp; activate Guarantee
+                      🚀 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[15px] font-bold">Next ▶</kbd> to launch Rocket &amp; activate Guarantee
                     </>
                   )}
                   {gateStep === 2 && (
                     <>
-                      ✅ All perks active! Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-green-400 font-mono text-[13px] font-bold">Next ▶</kbd> to advance →
+                      ✅ All perks active! Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-green-400 font-mono text-[15px] font-bold">Next ▶</kbd> to advance →
                     </>
                   )}
                 </span>
@@ -192,12 +192,12 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       <span className="text-[15px] font-bold tracking-wider text-pres-accent uppercase">
                         Tier 1
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[14px] font-bold font-heading">
+                      <span className="px-2.5 py-0.5 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[15px] font-bold font-heading">
                         STARTER
                       </span>
                     </div>
 
-                    <p className="text-[14px] text-pres-text-dim uppercase tracking-wider mb-2">
+                    <p className="text-[15px] text-pres-text-dim uppercase tracking-wider mb-2">
                       3+ Years Coding · 1+ Year Industry
                     </p>
 
@@ -208,7 +208,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       <span className="text-base text-pres-text-muted font-medium">/mo</span>
                     </div>
 
-                    <div className="flex items-center gap-2.5 text-[14px] text-pres-text-dim mb-3 font-medium">
+                    <div className="flex items-center gap-2.5 text-[15px] text-pres-text-dim mb-3 font-medium">
                       <span>160 dedicated hours/month</span>
                       <span>•</span>
                       <span>+ $2K onboarding deposit</span>
@@ -241,7 +241,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         className="p-3.5 rounded-2xl bg-amber-500/10 border border-pres-accent/40 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[14px] font-bold text-pres-accent uppercase tracking-wider">
+                          <span className="text-[15px] font-bold text-pres-accent uppercase tracking-wider">
                             Chief Architect Bonus Included
                           </span>
                           <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
@@ -249,10 +249,10 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         <p className="text-[15px] font-bold text-white mb-0.5">
                           Alim Ul Karim — 20+ Yr Enterprise Veteran
                         </p>
-                        <p className="text-[14px] text-pres-text-muted mb-1.5">
+                        <p className="text-[15px] text-pres-text-muted mb-1.5">
                           Kickoff audit included · <strong className="text-pres-accent font-bold">$2,500/mo</strong> value FREE
                         </p>
-                        <div className="text-[13px] font-semibold text-pres-accent/90 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
+                        <div className="text-[15px] font-semibold text-pres-accent/90 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
                           Upgrade to Tier 2 or 3 for ongoing weekly architecture hours
                         </div>
                       </motion.div>
@@ -292,12 +292,12 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           <div className="text-[15px] font-semibold text-white/90">
                             {res.label}
                           </div>
-                          <span className="text-[13px] text-pres-text-dim block mt-0.5 group-hover:text-pres-accent transition-colors">
+                          <span className="text-[15px] text-pres-text-dim block mt-0.5 group-hover:text-pres-accent transition-colors">
                             Hover for detail
                           </span>
                         </motion.div>
                       </TooltipTrigger>
-                      <TooltipContent side="top" className="max-w-[320px] p-3 text-center text-[14px]">
+                      <TooltipContent side="top" className="max-w-[320px] p-3 text-center text-[15px]">
                         {res.tooltip}
                       </TooltipContent>
                     </Tooltip>
@@ -323,7 +323,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           <h4 className="text-[17px] font-bold font-heading text-white">
                             {item.title}
                           </h4>
-                          <p className="text-[14px] text-pres-text-muted mt-0.5">
+                          <p className="text-[15px] text-pres-text-muted mt-0.5">
                             {item.desc}
                           </p>
                         </div>
@@ -333,7 +333,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 </div>
 
                 {/* Bottom Guarantee Banner */}
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between text-[14px] text-pres-text-dim">
+                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between text-[15px] text-pres-text-dim">
                   <span>Backed by RiseUp 14-Day Money-Back Guarantee</span>
                   <span className="text-pres-accent font-semibold font-mono">100% Risk Free</span>
                 </div>

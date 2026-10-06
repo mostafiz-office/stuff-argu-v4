@@ -17,19 +17,17 @@ import "@/types/navigation";
 const Index = () => {
   // Alternate between the two available covers on every full page load.
   const [coverVariant, setCoverVariant] = useState<"1" | "2">(() => {
-    try {
-      return localStorage.getItem("riseup_last_cover") === "1" ? "2" : "1";
-    } catch {
-      return "1";
-    }
+    let last: string | null = null;
+    try { last = localStorage.getItem("riseup_last_cover"); } catch { /* blocked */ }
+    if (!last) { try { last = sessionStorage.getItem("riseup_last_cover"); } catch { /* blocked */ } }
+    if (!last) { const m = /riseup_cover_(1|2)/.exec(window.name || ""); if (m) last = m[1]; }
+    return last === "1" ? "2" : "1";
   });
 
   useEffect(() => {
-    try {
-      localStorage.setItem("riseup_last_cover", coverVariant);
-    } catch {
-      // Ignore storage restrictions; the manual switch still works in memory.
-    }
+    try { localStorage.setItem("riseup_last_cover", coverVariant); } catch { /* blocked */ }
+    try { sessionStorage.setItem("riseup_last_cover", coverVariant); } catch { /* blocked */ }
+    try { window.name = `riseup_cover_${coverVariant}`; } catch { /* blocked */ }
   }, [coverVariant]);
 
   // Manual interactive switcher between the two cover designs
