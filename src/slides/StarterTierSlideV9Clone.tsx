@@ -205,7 +205,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       <span className="text-[56px] font-bold font-heading text-white leading-none">
                         $1,900
                       </span>
-                      <span className="text-base text-pres-text-muted font-medium">/mo</span>
+                      <span className="text-[22px] text-pres-text-muted font-medium">/mo</span>
                     </div>
 
                     <div className="flex items-center gap-2.5 text-[19px] text-pres-text-dim mb-3 font-medium">

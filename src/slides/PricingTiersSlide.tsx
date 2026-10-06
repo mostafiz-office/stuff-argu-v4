@@ -113,7 +113,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                 >
                   {/* Best Value Badge */}
                   {tier.badge && (
-                    <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-xs font-bold font-heading flex items-center gap-1.5 shadow-lg">
+                    <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[18px] font-bold font-heading flex items-center gap-1.5 shadow-lg">
                       <Award className="w-3.5 h-3.5 fill-current" />
                       <span>{tier.badge}</span>
                     </div>
