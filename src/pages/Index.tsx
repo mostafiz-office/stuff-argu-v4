@@ -15,10 +15,22 @@ import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
 
 const Index = () => {
-  // Randomly select between the two available first slides on every page load:
+  // Alternate between the two available covers on every full page load.
   const [coverVariant, setCoverVariant] = useState<"1" | "2">(() => {
-    return Math.random() < 0.5 ? "1" : "2";
+    try {
+      return localStorage.getItem("riseup_last_cover") === "1" ? "2" : "1";
+    } catch {
+      return "1";
+    }
   });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("riseup_last_cover", coverVariant);
+    } catch {
+      // Ignore storage restrictions; the manual switch still works in memory.
+    }
+  }, [coverVariant]);
 
   // Manual interactive switcher between the two cover designs
   const handleToggleCover = useCallback(() => {
@@ -26,8 +38,7 @@ const Index = () => {
       const next: "1" | "2" = prev === "2" ? "1" : "2";
       try {
         window.name = `riseup_cover_${next}`;
-        localStorage.setItem("riseup_active_cover", next);
-        sessionStorage.setItem("riseup_active_cover", next);
+        localStorage.setItem("riseup_last_cover", next);
       } catch {
         // Ignore storage restrictions
       }

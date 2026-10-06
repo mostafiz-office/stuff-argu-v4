@@ -65,7 +65,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[52px] font-bold font-heading tracking-tight text-white"
+              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               How It <span className="text-pres-accent">Works</span>
             </motion.h1>
@@ -99,22 +99,22 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     </div>
 
                     {/* Step Label */}
-                    <span className="text-[11px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
+                    <span className="text-[14px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
                       {step.num}
                     </span>
 
                     {/* Title */}
-                    <h2 className="text-[20px] font-bold font-heading text-white mb-2 leading-snug">
+                    <h2 className="text-[25px] font-bold font-heading text-white mb-2 leading-snug">
                       {step.title}
                     </h2>
 
                     {/* Description */}
-                    <p className="text-[13.5px] text-pres-text-muted leading-[1.45] mb-4 min-h-[40px]">
+                    <p className="text-[17px] text-pres-text-muted leading-[1.45] mb-4 min-h-[74px]">
                       {step.desc}
                     </p>
 
                     {/* Time Badge */}
-                    <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-xs font-semibold">
+                    <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-[15px] font-semibold">
                       {step.time}
                     </div>
                   </motion.div>

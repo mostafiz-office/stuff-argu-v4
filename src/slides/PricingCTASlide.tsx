@@ -37,7 +37,7 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="text-[46px] font-bold font-heading leading-[1.18] tracking-tight text-white mb-4"
+              className="text-[60px] font-bold font-heading leading-[1.12] tracking-tight text-white mb-5"
             >
               <span className="block whitespace-nowrap">Stop Debugging Alone at Midnight.</span>
               <span className="block whitespace-nowrap">Fix Fragile Vibe Code.</span>
@@ -48,7 +48,7 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-[17px] text-pres-text-muted mb-7 max-w-[650px] leading-relaxed"
+              className="text-[21px] text-pres-text-muted mb-7 max-w-[720px] leading-relaxed"
             >
               Save 80% hiring effort. Book a 15-minute intro call to unblock your roadmap with dedicated senior talent.
             </motion.p>
@@ -93,12 +93,12 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.45 }}
-                className="inline-flex items-center gap-3 text-[17px] text-pres-text-muted hover:text-white transition-colors cursor-pointer group pt-1"
+                className="inline-flex items-center gap-3 text-[20px] text-pres-text-muted hover:text-white transition-colors cursor-pointer group pt-1"
               >
                 <div className="w-8 h-8 rounded-full bg-pres-accent/15 group-hover:bg-pres-accent/25 flex items-center justify-center text-pres-accent transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="font-mono text-[16px]">contact@riseup-asia.com</span>
+                <span className="font-mono text-[19px]">contact@riseup-asia.com</span>
               </motion.a>
             </div>
           </div>
@@ -117,10 +117,10 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-base font-semibold text-white tracking-wide">
+            <span className="text-[19px] font-semibold text-white tracking-wide">
               Scan to connect
             </span>
-            <span className="text-xs text-pres-text-dim mt-1">
+            <span className="text-[15px] text-pres-text-dim mt-1">
               Direct mobile booking &amp; details
             </span>
           </motion.div>
