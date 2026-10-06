@@ -74,7 +74,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
       return <X className="w-4 h-4 mx-auto text-red-500/80" />;
     }
     return (
-      <span className="font-bold text-[25px]" style={{ color: colColor }}>
+      <span className="font-bold text-[21px]" style={{ color: colColor }}>
         {val}
       </span>
     );
@@ -96,7 +96,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="text-[60px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               Feature <span className="text-pres-accent">Comparison</span>
             </motion.h1>
@@ -106,7 +106,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
           <div className="flex-1 flex flex-col justify-between">
             {/* Header Row */}
             <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2 border-b border-white/10">
-              <div className="text-left font-heading font-semibold text-[25px] text-pres-text-dim uppercase tracking-wider pl-4">
+              <div className="text-left font-heading font-semibold text-[19px] text-pres-text-dim uppercase tracking-wider pl-4">
                 Features &amp; Deliverables
               </div>
               {columns.map((col, idx) => (
@@ -141,7 +141,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   }`}
                 >
                   {/* Feature Label */}
-                  <div className="text-left font-medium text-[25px] text-white/90 pl-4">
+                  <div className="text-left font-medium text-[21px] text-white/90 pl-4">
                     {row.feature}
                   </div>
 

@@ -106,14 +106,14 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
           </div>
 
           {/* Right Column (4 Comparison Bar Groups) */}
-          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-4">
+          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-3 pt-[80px]">
             {comparisons.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-                className="p-5 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
+                className="px-5 py-4 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
               >
                 {/* Header row of card */}
                 <div className="flex items-center justify-between mb-2.5">
@@ -131,7 +131,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 </div>
 
                 {/* Bars container */}
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {/* US Market Bar */}
                   <div>
                     <div className="flex justify-between text-[25px] text-pres-text-dim mb-1 font-mono">
