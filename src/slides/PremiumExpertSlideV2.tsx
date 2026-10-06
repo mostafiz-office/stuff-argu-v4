@@ -57,7 +57,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[52px] font-bold font-heading tracking-tight text-white"
+              className="text-[62px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               Executive Oversight: <span className="text-pres-accent">Chief Software Engineer</span> Included
             </motion.h1>
@@ -80,32 +80,32 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
                 />
                 <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
                   <div>
-                    <p className="font-bold text-white text-sm">Alim Ul Karim</p>
-                    <p className="text-[11px] text-pres-accent font-semibold">Chief Software Engineer</p>
+                    <p className="font-bold text-white text-[17px]">Alim Ul Karim</p>
+                    <p className="text-[14px] text-pres-accent font-semibold">Chief Software Engineer</p>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-pres-accent/20 border border-pres-accent/30 text-pres-accent text-[11px] font-mono font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-pres-accent/20 border border-pres-accent/30 text-pres-accent text-[14px] font-mono font-bold">
                     20+ Yrs Exp
                   </span>
                 </div>
               </div>
 
               <div className="space-y-2 mb-3.5">
-                <div className="flex items-center gap-2 text-xs text-pres-text">
+                <div className="flex items-center gap-2 text-[15px] text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
                   <span>Enterprise Architect for 10M+ Concurrent User Systems</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-pres-text">
+                <div className="flex items-center gap-2 text-[15px] text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
                   <span>Led Architecture Across 50+ High-Stakes Tech Platforms</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-pres-text">
+                <div className="flex items-center gap-2 text-[15px] text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
                   <span>Personally Vets &amp; Supervises Every Single Engineer</span>
                 </div>
               </div>
 
               <div className="p-3 rounded-xl bg-black/40 border border-white/10">
-                <p className="text-[11.5px] text-pres-text-muted italic leading-relaxed">
+                <p className="text-[15px] text-pres-text-muted italic leading-relaxed">
                   "Our clients don't just get code. They get architecture that scales and peace of mind at 2 AM."
                 </p>
               </div>
@@ -127,15 +127,15 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
                       <div className="w-10 h-10 rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent mb-3 shadow-md">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h3 className="text-[19px] font-bold font-heading text-white mb-1.5 leading-snug">
+                      <h3 className="text-[24px] font-bold font-heading text-white mb-1.5 leading-snug">
                         {pillar.title}
                       </h3>
-                      <p className="text-[13px] text-pres-text-muted leading-relaxed">
+                      <p className="text-[16px] text-pres-text-muted leading-relaxed">
                         {pillar.desc}
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-semibold text-pres-accent">
+                    <div className="pt-3 mt-3 border-t border-white/5 flex items-center gap-1.5 text-[14px] font-semibold text-pres-accent">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>Included 100% Free In Your Tier</span>
                     </div>

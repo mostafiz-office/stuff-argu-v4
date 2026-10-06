@@ -86,7 +86,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-[52px] font-bold font-heading tracking-tight text-white"
+              className="text-[64px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               End Stalled Projects: <span className="text-pres-accent">Guaranteed Engineering Relief</span>
             </motion.h1>
@@ -121,27 +121,27 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
                   <div>
                     {/* Tier Name */}
-                    <h3 className="text-[22px] font-bold font-heading text-white mb-0.5">
+                    <h3 className="text-[27px] font-bold font-heading text-white mb-0.5">
                       {tier.name}
                     </h3>
 
                     {/* Experience */}
-                    <p className="text-[11px] font-medium text-pres-text-dim uppercase tracking-wider mb-3">
+                    <p className="text-[14px] font-medium text-pres-text-dim uppercase tracking-wider mb-3">
                       {tier.experience} Experience
                     </p>
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1 mb-3">
-                      <span className="text-[38px] font-bold font-heading text-pres-accent leading-none">
+                      <span className="text-[44px] font-bold font-heading text-pres-accent leading-none">
                         {tier.price}
                       </span>
-                      <span className="text-sm text-pres-text-muted font-medium">
+                      <span className="text-[17px] text-pres-text-muted font-medium">
                         {tier.priceSuffix}
                       </span>
                     </div>
 
                     {/* Hours Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-xs font-semibold mb-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[15px] font-semibold mb-4">
                       <Clock className="w-3.5 h-3.5" />
                       <span>{tier.hours}</span>
                     </div>
@@ -154,7 +154,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                       {tier.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2.5">
                           <CheckCircle className="w-4 h-4 text-pres-accent shrink-0 mt-0.5" />
-                          <span className="text-[14px] text-pres-text-muted leading-snug">
+                          <span className="text-[17px] text-pres-text-muted leading-snug">
                             {feature}
                           </span>
                         </li>
@@ -163,7 +163,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   </div>
 
                   {/* Card Footer prompt */}
-                  <div className="pt-3.5 text-xs text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
+                  <div className="pt-3.5 text-[14px] text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
                     <span>Hover card for video overview</span>
                     <span className="text-pres-accent opacity-80 font-semibold">▶ Preview</span>
                   </div>
