@@ -19,39 +19,39 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
   const painPoints = [
     {
       icon: Flame,
-      title: "Engineering Burnout",
-      badge: "The 2 AM Panic",
+      title: "The 2 AM Outage Panic",
+      badge: "Midnight Firefights",
       accentBorder: "border-red-500/30",
       accentBg: "bg-red-500/5",
       accentBadge: "bg-red-500/15 text-red-400 border-red-500/30",
-      hook: "Waking up at midnight to fix fragile code alone in the dark while customers churn.",
+      hook: "Waking up at midnight to fix fragile production crashes alone while customers churn.",
       statMetric: "$18,500/mo",
       statLabel: "Outage & Churn Bleed",
-      solution: "Pre-vetted seniors guard production & eliminate bug firefights.",
+      solution: "Pre-vetted seniors actively guard production so you sleep through the night.",
     },
     {
       icon: Layers,
-      title: "Technical Debt Trap",
-      badge: "Compounding Fragility",
+      title: "Fragile Vibe Code & AI Defects",
+      badge: "Brittle Architecture",
       accentBorder: "border-amber-500/35",
       accentBg: "bg-amber-500/5",
       accentBadge: "bg-pres-accent/15 text-pres-accent border-pres-accent/30",
-      hook: "Top engineers stuck babysitting junior PRs and spaghetti code instead of shipping your roadmap.",
+      hook: "AI-generated code and unreviewed vibe coding slip into production, breaking edge cases and compounding debt.",
       statMetric: "3× Slower",
-      statLabel: "Delivery Velocity Bleed",
-      solution: "Chief Architect reviews enforce clean, scalable architecture from day 1.",
+      statLabel: "Velocity & Bug Bleed",
+      solution: "Chief Architect audits turn brittle hacks into clean, scalable architecture before deployment.",
     },
     {
       icon: UserX,
-      title: "Recruitment Exhaustion",
-      badge: "The 90-Day Sinkhole",
+      title: "The 90-Day Hiring Sinkhole",
+      badge: "Recruitment Drag",
       accentBorder: "border-orange-500/30",
       accentBg: "bg-orange-500/5",
       accentBadge: "bg-orange-500/15 text-orange-400 border-orange-500/30",
-      hook: "Screening 200+ resumes and running 15 interviews, only to be burned by bad contractor hires.",
-      statMetric: "$32,000+",
-      statLabel: "Wasted Per Bad Hire",
-      solution: "Top 5% vetted engineers onboard and deliver in as fast as 20 minutes.",
+      hook: "Sifting through 200+ resumes and burning 3 months interviewing unvetted contractors who fail to deliver.",
+      statMetric: "Save 80%",
+      statLabel: "Recruiting Time Saved",
+      solution: "Save 80% hiring effort — top 5% bench-ready talent shipping in as fast as 20 minutes.",
     },
   ];
 
@@ -74,7 +74,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
               transition={{ duration: 0.5 }}
               className="text-[52px] font-bold font-heading tracking-tight text-white"
             >
-              Losing Sleep to <span className="text-pres-accent">Technical Debt &amp; Burnout?</span>
+              Stop Debugging at 2 AM. <span className="text-pres-accent">Fix Fragile Vibe Code &amp; AI Defects.</span>
             </motion.h1>
           </div>
 

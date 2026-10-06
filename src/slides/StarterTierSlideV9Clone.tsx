@@ -64,46 +64,46 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
   }, [gateStep]);
 
   const features = [
-    "Full-stack engineer (3+ yrs coding)",
-    "Fluent English · async & real-time",
-    "Works in your timezone & tools",
-    "Daily standups & commit updates",
+    "Fixes fragile vibe-code & AI bugs",
+    "Saves 80% hiring effort (starts in 20m)",
+    "Stops waking at night for outage fires",
+    "Works in your timezone & stack",
     "Direct Slack, GitHub & Jira access",
   ];
 
   const results = [
     {
-      metric: "20m",
-      label: "Matching to hire",
-      tooltip: "Skip 3-month hiring cycles — your developer starts in 20 minutes",
+      metric: "80%",
+      label: "Hiring effort saved",
+      tooltip: "Save 80% hiring effort — skip 3-month recruiting cycles, start in 20 minutes",
     },
     {
       metric: "160h",
-      label: "Pure dev time/mo",
-      tooltip: "160 dedicated hours per month, fully focused on your project",
+      label: "Pure senior dev/mo",
+      tooltip: "160 dedicated hours per month fixing fragile vibe-code and shipping roadmap features",
     },
     {
       metric: "$10,000",
-      label: "Expert bonus value",
-      tooltip: "Alim's expert oversight valued at up to $10,000/mo ($625/hr standard consulting) — architecture review included",
+      label: "Chief Architect Bonus",
+      tooltip: "Alim's expert oversight valued at up to $10,000/mo ($625/hr standard consulting) — fixes AI hallucinations",
     },
   ];
 
   const guarantees = [
     {
-      icon: Shield,
-      title: "Zero Risk",
-      desc: "Cancel anytime. No lock-in contracts.",
+      icon: Clock,
+      title: "Save 80% Hiring Effort",
+      desc: "Developer matched & shipping in under 20 minutes.",
     },
     {
-      icon: Clock,
-      title: "20 Min Onboarding",
-      desc: "Developer matched & shipping in under an hour.",
+      icon: Shield,
+      title: "Fix Fragile Vibe Code",
+      desc: "Architectural guardrails eliminate fragile vibe-code & AI hallucinations.",
     },
     {
       icon: BadgeCheck,
-      title: "Top 5% Engineers",
-      desc: "Rigorously vetted. Only the best pass.",
+      title: "Stop Waking at Night",
+      desc: "Senior engineering defense ensures stable production & restful nights.",
     },
   ];
 
@@ -126,7 +126,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 transition={{ duration: 0.6 }}
                 className="text-[50px] font-bold font-heading tracking-tight text-white"
               >
-                Stop Losing Sleep Over <span className="text-pres-accent">Engineering Debt</span>
+                Still Waking at Night? <span className="text-pres-accent">Fix Fragile Vibe Code &amp; AI Bugs</span>
               </motion.h1>
 
               {/* Interactive Step Guide Banner */}

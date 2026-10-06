@@ -41,8 +41,8 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
 
         {/* Main Content Layout: Flexbox Centered (justify-content: center; align-items: center;) */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex items-center justify-between">
-          {/* Left Content Area (w-[650px]) */}
-          <div className="w-[650px] flex flex-col justify-center">
+          {/* Left Content Area (w-[680px]) */}
+          <div className="w-[680px] flex flex-col justify-center">
             {/* Badge with Cover Variant indicator & Switch button */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -69,21 +69,20 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
                   )}
                 </div>
                 <span className="text-xs text-pres-accent font-medium block">
-                  Stop Losing Sleep Over Tech Debt
+                  Cut 80% Off Your Developer Hiring Timeline
                 </span>
               </div>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline: Option 6 — Exactly 2 Clean Lines (8 words total) */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-[60px] leading-[1.08] font-bold font-heading mb-3 tracking-tight"
+              className="text-[48px] leading-[1.15] font-bold font-heading mb-3 tracking-tight"
             >
-              Stop Losing Sleep
-              <br />
-              <span className="text-pres-accent">Over Tech Debt.</span>
+              <span className="block whitespace-nowrap">Cut 80% Off Your</span>
+              <span className="block text-pres-accent whitespace-nowrap">Developer Hiring Timeline.</span>
             </motion.h1>
 
             {/* Body */}
@@ -93,23 +92,21 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-[17px] leading-[1.48] text-pres-text-muted mb-4 max-w-[580px]"
             >
-              Stop waking up at midnight to fix fragile vibe-code and AI bugs.
-              <br />
-              Save 80% hiring drag with top 5% engineers ready in 20 minutes.
+              Stop burning months on unvetted contractors. Pre-vetted top 5% senior engineers ready to deploy in 20 minutes under a 20+ year Enterprise Chief Architect.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Side by Side */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex items-center gap-4 mb-4"
+              className="flex items-center gap-4 mb-4 flex-nowrap"
             >
               <a
                 href="https://client.rasia.pro/hiring-v1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer"
+                className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <span>Book a Call</span>
                 <ArrowRight className="w-4 h-4 text-pres-bg pres-dark-safe-accent" />
@@ -117,7 +114,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
 
               <button
                 onClick={handleExploreTiers}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Explore Tiers</span>
@@ -220,7 +217,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
                 <div className="w-8 h-8 rounded-lg bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center shrink-0">
                   <Check className="w-4 h-4 text-pres-accent" />
                 </div>
-                <p className="text-[15px] font-bold font-heading">Top 5% Vetted Talent</p>
+                <p className="text-[15px] font-bold font-heading">Cut 80% Hiring Timeline</p>
               </motion.div>
 
               <motion.div
@@ -232,7 +229,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
                 <div className="w-8 h-8 rounded-lg bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center shrink-0">
                   <Check className="w-4 h-4 text-pres-accent" />
                 </div>
-                <p className="text-[15px] font-bold font-heading">Hire in 20 Minutes</p>
+                <p className="text-[15px] font-bold font-heading">Deploy in 20 Minutes</p>
               </motion.div>
 
               <motion.div
@@ -244,7 +241,7 @@ export const PricingCoverV1: React.FC<PricingCoverV1Props> = ({
                 <div className="w-8 h-8 rounded-lg bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center shrink-0">
                   <Check className="w-4 h-4 text-pres-accent" />
                 </div>
-                <p className="text-[15px] font-bold font-heading">Zero Risk Guarantee</p>
+                <p className="text-[15px] font-bold font-heading">Enterprise Architect Supervised</p>
               </motion.div>
             </div>
           </div>

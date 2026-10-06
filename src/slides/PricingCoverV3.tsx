@@ -56,8 +56,8 @@ export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({
 
         {/* Main Content Layout: Flexbox Centered (justify-content: center; align-items: center;) */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex items-center justify-between">
-          {/* Left Column (w-[650px]) */}
-          <div className="w-[650px] flex flex-col justify-center">
+          {/* Left Column (w-[680px]) */}
+          <div className="w-[680px] flex flex-col justify-center">
             {/* Badge with Cover Variant indicator & Switch button */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -84,21 +84,20 @@ export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({
                   )}
                 </div>
                 <span className="text-xs text-pres-accent font-medium block">
-                  Stop Losing Sleep Over Tech Debt
+                  Cut 80% Off Your Developer Hiring Timeline
                 </span>
               </div>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline: Option 6 — Exactly 2 Clean Lines (8 words total) */}
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-[60px] leading-[1.08] font-bold font-heading mb-3 tracking-tight"
+              className="text-[48px] leading-[1.15] font-bold font-heading mb-3 tracking-tight"
             >
-              Losing Sleep Over
-              <br />
-              <span className="text-pres-accent">Engineering Debt?</span>
+              <span className="block whitespace-nowrap">Cut 80% Off Your</span>
+              <span className="block text-pres-accent whitespace-nowrap">Developer Hiring Timeline.</span>
             </motion.h1>
 
             {/* Body */}
@@ -108,16 +107,16 @@ export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-[17px] leading-[1.48] text-pres-text-muted mb-4 max-w-[620px]"
             >
-              Stop waking up at midnight to fix fragile vibe-code and hallucinated AI bugs. Get battle-tested top 5% engineers supervised by a 20+ year Chief Architect — ready in 20 minutes.
+              Skip 3-month recruiting cycles. Pre-vetted top 5% senior engineers ready to deploy in 20 minutes under a 20+ year Enterprise Chief Architect.
             </motion.p>
 
             {/* Keyword Pills */}
             <div className="flex flex-wrap gap-2.5 mb-5">
               {[
-                "Top 5% Talent",
-                "Hire in 20 Min",
-                "7-Stage Vetted",
-                "60% Cost Savings",
+                "Cut 80% Hiring Drag",
+                "Hire in 20 Minutes",
+                "Top 5% Senior Talent",
+                "Zero Recruiting Risk",
               ].map((kw, i) => (
                 <motion.div
                   key={i}
@@ -137,18 +136,18 @@ export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({
               ))}
             </div>
 
-            {/* Dual CTA Buttons */}
+            {/* Dual CTA Buttons - Side by Side */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex items-center gap-4 mb-4"
+              className="flex items-center gap-4 mb-4 flex-nowrap"
             >
               <a
                 href="https://client.rasia.pro/hiring-v1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer"
+                className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-base transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)] cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <span>Book a Call</span>
                 <ArrowRight className="w-4 h-4 text-pres-bg pres-dark-safe-accent" />
@@ -156,7 +155,7 @@ export const PricingCoverV3: React.FC<PricingCoverV3Props> = ({
 
               <button
                 onClick={handleExploreTiers}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pres-accent/40 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-base transition-all transform hover:scale-105 cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Explore Tiers</span>

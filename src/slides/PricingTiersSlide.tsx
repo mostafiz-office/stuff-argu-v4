@@ -21,10 +21,10 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       highlight: false,
       position: "left" as const,
       features: [
-        "Fluent, autonomous coder",
-        "Breaks down & delegates tasks",
-        "Full sprint participation",
-        "Daily standups & Slack access",
+        "Fixes fragile vibe-code & debt",
+        "Saves 80% hiring efforts (160 hrs/mo)",
+        "Daily standups, Slack & sprint sync",
+        "Fluent, autonomous senior execution",
       ],
     },
     {
@@ -37,10 +37,10 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       highlight: true,
       position: "center" as const,
       features: [
-        "Best-in-class developer",
-        "Deep expertise in their stack",
-        "Manages 3-5 team members",
-        "Architecture & code quality",
+        "Fixes AI hallucinations & fragile logic",
+        "Saves 80% hiring efforts (ready in 20m)",
+        "Architectural review stops 2 AM panic",
+        "Best-in-class deep stack leadership",
       ],
     },
     {
@@ -53,10 +53,10 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       highlight: false,
       position: "right" as const,
       features: [
-        "Project management focus",
-        "Manages up to 15 developers",
-        "CTO-level strategic oversight",
-        "24/7 SLA & priority support",
+        "CTO-level architecture oversight",
+        "Audits complex AI systems & scale",
+        "Saves 80% hiring drag across teams",
+        "24/7 SLA & priority senior response",
       ],
     },
   ];

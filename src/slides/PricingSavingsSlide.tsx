@@ -75,7 +75,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 transition={{ duration: 0.6 }}
                 className="text-[52px] font-bold font-heading italic tracking-tight text-white mb-3"
               >
-                The Real Cost of <span className="text-pres-accent not-italic">Stalled Projects</span>
+                Save 80% Hiring Efforts: <span className="text-pres-accent not-italic">End Fragile Vibe Code</span>
               </motion.h1>
 
               <motion.div
@@ -94,13 +94,13 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
               className="p-7 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[440px]"
             >
               <div className="text-[76px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1">
-                4×
+                80%
               </div>
               <div className="text-xl font-bold font-heading text-white mb-1.5">
-                More Value
+                Hiring Effort &amp; Cost Saved
               </div>
               <p className="text-sm text-pres-text-muted leading-relaxed">
-                vs. hiring directly in the US with equivalent experience and vetted oversight.
+                Save 80% hiring efforts vs US recruiting. Stop waking at night with seniors who fix fragile vibe-code &amp; AI hallucinations.
               </p>
             </motion.div>
           </div>

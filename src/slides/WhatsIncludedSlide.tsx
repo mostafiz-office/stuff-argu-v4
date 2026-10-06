@@ -11,34 +11,34 @@ interface WhatsIncludedSlideProps {
 export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
   const guarantees = [
     {
-      icon: Clock,
-      title: "160 hrs/month",
-      desc: "Guaranteed dedicated hours — full-time senior commitment to your codebase.",
+      icon: Zap,
+      title: "Save 80% Hiring Effort",
+      desc: "Pre-screened senior bench ready to ship in 20 minutes — zero recruiter drag.",
     },
     {
       icon: Shield,
-      title: "7-Stage Vetting",
-      desc: "Live coding, architecture testing, culture fit & fluency — only top 5% qualify.",
-    },
-    {
-      icon: MessageSquare,
-      title: "Direct Slack Access",
-      desc: "Embedded in your Slack, Teams, and Jira — zero middlemen, zero delays.",
-    },
-    {
-      icon: Zap,
-      title: "Hire in 20 Minutes",
-      desc: "Pre-vetted bench talent ready to ship immediately without hiring drag.",
-    },
-    {
-      icon: Users,
-      title: "Flexible Scaling",
-      desc: "Scale up or down smoothly as your roadmap evolves. Zero lock-in.",
+      title: "Fix Fragile Vibe Code",
+      desc: "Strict PR reviews transform quick-hack code into clean, scalable architecture.",
     },
     {
       icon: RefreshCw,
-      title: "Free Replacement",
-      desc: "Not 100% satisfied? We swap the engineer immediately at zero extra cost.",
+      title: "AI Hallucination Defense",
+      desc: "Automated tests and architect reviews catch hallucinated logic before production.",
+    },
+    {
+      icon: Clock,
+      title: "Sleep Through the Night",
+      desc: "Enterprise oversight stops emergency firefights and weekend production outages.",
+    },
+    {
+      icon: Users,
+      title: "160 Dedicated Hours/Mo",
+      desc: "Full-time senior execution embedded directly in your Slack, GitHub, and Jira.",
+    },
+    {
+      icon: MessageSquare,
+      title: "Zero-Risk Replacement",
+      desc: "If an engineer isn't a 100% fit, we replace them immediately at zero extra cost.",
     },
   ];
 

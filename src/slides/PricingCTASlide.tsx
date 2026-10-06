@@ -32,49 +32,44 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
         <div className="relative z-10 flex items-center justify-between w-[1500px] gap-20">
           {/* Left Block */}
           <div className="flex-1 max-w-[850px] flex flex-col items-start justify-center">
-            {/* Headline */}
+            {/* Headline: Exactly 3 Clean, High-Impact Lines */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-[68px] font-bold font-heading leading-[1.08] tracking-tight text-white mb-8"
+              transition={{ duration: 0.55 }}
+              className="text-[46px] font-bold font-heading leading-[1.18] tracking-tight text-white mb-4"
             >
-              Reclaim Your Nights &amp;
-              <br />
-              <span className="text-pres-accent">End Engineering Debt</span>
+              <span className="block whitespace-nowrap">Stop Debugging Alone at Midnight.</span>
+              <span className="block whitespace-nowrap">Fix Fragile Vibe Code.</span>
+              <span className="block text-pres-accent whitespace-nowrap">Deploy Senior Engineers This Week.</span>
             </motion.h1>
 
-            {/* Contact Block: Email Row on top, Buttons side-by-side */}
-            <div className="flex flex-col items-start gap-5 w-full">
-              {/* 1. Email Row */}
-              <motion.a
-                href="mailto:contact@riseup-asia.com"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-center gap-3 text-[18px] text-pres-text-muted hover:text-white transition-colors"
-              >
-                <div className="w-8 h-8 rounded-full bg-pres-accent/15 flex items-center justify-center text-pres-accent">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <span>contact@riseup-asia.com</span>
-              </motion.a>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-[17px] text-pres-text-muted mb-7 max-w-[650px] leading-relaxed"
+            >
+              Save 80% hiring effort. Book a 15-minute intro call to unblock your roadmap with dedicated senior talent.
+            </motion.p>
 
-              {/* 2. Side-by-Side Action Buttons */}
-              <div className="flex items-center gap-4 flex-wrap">
+            {/* Contact Block: Action Buttons Side-by-Side, with Email below */}
+            <div className="flex flex-col items-start gap-5 w-full">
+              {/* 1. Side-by-Side Action Buttons */}
+              <div className="flex flex-row items-center gap-4 flex-nowrap">
                 {/* Schedule a Call Button */}
                 <motion.a
                   href="https://meet.rasia.pro/intro-call"
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.35 }}
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[19px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] min-w-[250px]"
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[19px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] shrink-0 whitespace-nowrap cursor-pointer"
                 >
                   <CalendarCheck className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0" />
                   <span>Schedule a Call</span>
-                  <ArrowRight className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0 ml-1" />
+                  <ArrowRight className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0 ml-0.5" />
                 </motion.a>
 
                 {/* Call Now Button */}
@@ -82,15 +77,29 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => {
                   href="https://client.rasia.pro/hiring-v1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.45 }}
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[19px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] min-w-[250px]"
+                  transition={{ duration: 0.5, delay: 0.35 }}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[19px] transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] shrink-0 whitespace-nowrap cursor-pointer"
                 >
                   <Phone className="w-5 h-5 text-pres-bg pres-dark-safe-accent shrink-0 fill-current" />
                   <span>Call Now</span>
                 </motion.a>
               </div>
+
+              {/* 2. Direct Email Contact Link */}
+              <motion.a
+                href="mailto:contact@riseup-asia.com"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                className="inline-flex items-center gap-3 text-[17px] text-pres-text-muted hover:text-white transition-colors cursor-pointer group pt-1"
+              >
+                <div className="w-8 h-8 rounded-full bg-pres-accent/15 group-hover:bg-pres-accent/25 flex items-center justify-center text-pres-accent transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <span className="font-mono text-[16px]">contact@riseup-asia.com</span>
+              </motion.a>
             </div>
           </div>
 

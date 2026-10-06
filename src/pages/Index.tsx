@@ -15,41 +15,9 @@ import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
 
 const Index = () => {
-  // Deterministic & Dynamic Cover Slide Rotation on Every Reload:
-  // Rotates between PricingCoverV3 and PricingCoverV1 on every reload/visit
+  // Randomly select between the two available first slides on every page load:
   const [coverVariant, setCoverVariant] = useState<"1" | "2">(() => {
-    let lastVariant: string | null = null;
-    try {
-      lastVariant =
-        localStorage.getItem("riseup_active_cover") ||
-        sessionStorage.getItem("riseup_active_cover");
-    } catch {
-      // Storage restricted
-    }
-
-    if (!lastVariant) {
-      try {
-        if (window.name === "riseup_cover_1" || window.name === "riseup_cover_2") {
-          lastVariant = window.name.replace("riseup_cover_", "");
-        }
-      } catch {
-        // Window name restricted
-      }
-    }
-
-    // Toggle: if last was "1" -> "2", if last was "2" -> "1", else random 50/50
-    const next: "1" | "2" =
-      lastVariant === "1" ? "2" : lastVariant === "2" ? "1" : Math.random() < 0.5 ? "1" : "2";
-
-    try {
-      localStorage.setItem("riseup_active_cover", next);
-      sessionStorage.setItem("riseup_active_cover", next);
-      window.name = `riseup_cover_${next}`;
-    } catch {
-      // Ignore
-    }
-
-    return next;
+    return Math.random() < 0.5 ? "1" : "2";
   });
 
   // Manual interactive switcher between the two cover designs
