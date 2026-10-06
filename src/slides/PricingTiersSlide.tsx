@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Award, CheckCircle, Clock } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { HoverVideoPreview } from "@/components/presentation/HoverVideoPreview";
 
 interface PricingTiersSlideProps {
   onNavigate?: (index: number) => void;
@@ -22,9 +21,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       position: "left" as const,
       features: [
         "Fixes fragile vibe-code & debt",
-        "Saves 80% hiring efforts (160 hrs/mo)",
-        "Daily standups, Slack & sprint sync",
-        "Fluent, autonomous senior execution",
+        "Saves 80% hiring effort",
+        "Daily standups & Slack sync",
       ],
     },
     {
@@ -37,10 +35,9 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       highlight: true,
       position: "center" as const,
       features: [
-        "Fixes AI hallucinations & fragile logic",
-        "Saves 80% hiring efforts (ready in 20m)",
-        "Architectural review stops 2 AM panic",
-        "Best-in-class deep stack leadership",
+        "Fixes AI & fragile logic",
+        "Ready in 20 minutes",
+        "Deep stack leadership",
       ],
     },
     {
@@ -54,9 +51,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       position: "right" as const,
       features: [
         "CTO-level architecture oversight",
-        "Audits complex AI systems & scale",
-        "Saves 80% hiring drag across teams",
-        "24/7 SLA & priority senior response",
+        "Audits complex AI systems",
+        "24/7 priority SLA",
       ],
     },
   ];
@@ -81,31 +77,26 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
         {/* Flexbox Centered Main Content Wrapper */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
           {/* Title Area - Clean, focused headline without redundant explanation */}
-          <div className="mb-8">
+          <div className="mb-12">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
-              End Stalled Projects: <span className="text-pres-accent">Guaranteed Engineering Relief</span>
+              End Stalled Projects: <span className="text-pres-accent">Pick Your Tier</span>
             </motion.h1>
           </div>
 
           {/* 3-Column Tier Cards Grid */}
           <div className="grid grid-cols-3 gap-8 w-full">
             {tiers.map((tier, idx) => (
-              <HoverVideoPreview
-                key={idx}
-                videoId="uveR9C5CgSY"
-                position={tier.position}
-                className="flex flex-col"
-              >
+              <div key={idx} className="flex flex-col">
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 + idx * 0.1 }}
-                  className={`relative flex flex-col p-6 rounded-3xl border transition-all duration-300 backdrop-blur-md shadow-2xl ${
+                  className={`relative flex flex-col h-full p-10 rounded-3xl border transition-all duration-300 backdrop-blur-md shadow-2xl ${
                     tier.highlight
                       ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
                       : "bg-pres-surface/75 border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/90"
@@ -113,62 +104,56 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                 >
                   {/* Best Value Badge */}
                   {tier.badge && (
-                    <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[25px] font-bold font-heading flex items-center gap-1.5 shadow-lg">
+                    <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[18px] font-bold font-heading flex items-center gap-1.5 shadow-lg">
                       <Award className="w-3.5 h-3.5 fill-current" />
                       <span>{tier.badge}</span>
                     </div>
                   )}
 
-                  <div>
+                  <div className="flex flex-col">
                     {/* Tier Name */}
-                    <h3 className="text-[34px] font-bold font-heading text-white mb-0.5">
+                    <h3 className="text-[32px] font-bold font-heading text-white mb-1">
                       {tier.name}
                     </h3>
 
                     {/* Experience */}
-                    <p className="text-[25px] font-medium text-pres-text-dim uppercase tracking-wider mb-3">
+                    <p className="text-[18px] font-medium text-pres-text-dim uppercase tracking-wider mb-6">
                       {tier.experience} Experience
                     </p>
 
                     {/* Price */}
-                    <div className="flex items-baseline gap-1 mb-3">
-                      <span className="text-[49px] font-bold font-heading text-pres-accent leading-none">
+                    <div className="flex items-baseline gap-1 mb-5">
+                      <span className="text-[56px] font-bold font-heading text-pres-accent leading-none">
                         {tier.price}
                       </span>
-                      <span className="text-[25px] text-pres-text-muted font-medium">
+                      <span className="text-[22px] text-pres-text-muted font-medium">
                         {tier.priceSuffix}
                       </span>
                     </div>
 
                     {/* Hours Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[25px] font-semibold mb-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[20px] font-semibold mb-6 self-start">
                       <Clock className="w-3.5 h-3.5" />
                       <span>{tier.hours}</span>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-full h-[1px] bg-white/10 mb-3.5" />
+                    <div className="w-full h-[1px] bg-white/10 mb-6" />
 
                     {/* Features List */}
-                    <ul className="space-y-2.5 mb-4">
+                    <ul className="space-y-4">
                       {tier.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2.5">
-                          <CheckCircle className="w-4 h-4 text-pres-accent shrink-0 mt-0.5" />
-                          <span className="text-[25px] text-pres-text-muted leading-snug">
+                          <CheckCircle className="w-6 h-6 text-pres-accent shrink-0 mt-0.5" />
+                          <span className="text-[22px] text-pres-text-muted leading-snug">
                             {feature}
                           </span>
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  {/* Card Footer prompt */}
-                  <div className="pt-3.5 text-[25px] text-pres-text-dim font-medium tracking-wide flex items-center justify-between border-t border-white/5">
-                    <span>Hover card for video overview</span>
-                    <span className="text-pres-accent opacity-80 font-semibold">▶ Preview</span>
-                  </div>
                 </motion.div>
-              </HoverVideoPreview>
+              </div>
             ))}
           </div>
         </div>
