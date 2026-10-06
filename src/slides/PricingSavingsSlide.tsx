@@ -68,101 +68,49 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
           {/* Left Column (Title & Value Callout) */}
           <div className="w-[650px] flex flex-col justify-center">
             {/* Title Area - Clean, focused headline without redundant explanation */}
-            <div className="mb-8">
+            <div className="mb-10">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-[68px] leading-[1.08] font-bold font-heading italic tracking-tight text-white mb-3"
+                className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight text-white mb-4"
               >
-                Save 80% Hiring Efforts: <span className="text-pres-accent not-italic">End Fragile Vibe Code</span>
+                Pay Less. <span className="text-pres-accent">Ship More.</span>
               </motion.h1>
-
-              <motion.div
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="w-24 h-1 accent-bar rounded-full origin-left"
-              />
+              <p className="text-[26px] text-pres-text-muted">Same senior talent, a fraction of US rates.</p>
             </div>
 
-            {/* Value Callout Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-7 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[440px]"
+              className="p-9 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[480px]"
             >
-              <div className="text-[76px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1">
-                80%
-              </div>
-              <div className="text-[37px] font-bold font-heading text-white mb-1.5">
-                Hiring Effort &amp; Cost Saved
-              </div>
-              <p className="text-[25px] text-pres-text-muted leading-relaxed">
-                Save 80% hiring efforts vs US recruiting. Stop waking at night with seniors who fix fragile vibe-code &amp; AI hallucinations.
-              </p>
+              <div className="text-[64px] font-bold font-heading text-pres-accent metric-glow leading-none mb-3">80%</div>
+              <div className="text-[30px] font-bold font-heading text-white mb-2">Hiring effort saved</div>
+              <p className="text-[22px] text-pres-text-muted">Compared with recruiting in the US.</p>
             </motion.div>
           </div>
 
-          {/* Right Column (4 Comparison Bar Groups) */}
-          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-3 pt-[80px]">
+          <div className="flex-1 max-w-[960px] flex flex-col justify-center gap-5">
             {comparisons.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-                className="px-5 py-4 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
+                className="px-7 py-5 rounded-2xl bg-pres-surface/70 border border-white/10 backdrop-blur-md shadow-lg"
               >
-                {/* Header row of card */}
-                <div className="flex items-center justify-between mb-2.5">
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-[28px] font-bold font-heading text-white">
-                      {item.role}
-                    </span>
-                    <span className="text-[25px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
-                      {item.tier}
-                    </span>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[30px] font-bold font-heading text-white">{item.role}</span>
+                    <span className="text-[18px] font-semibold px-3 py-1 rounded-full bg-white/10 text-white/80">{item.tier}</span>
                   </div>
-                  <span className={`text-[25px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
-                    {item.savings}
-                  </span>
+                  <span className={`text-[20px] font-bold px-4 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>{item.savings}</span>
                 </div>
-
-                {/* Bars container */}
-                <div className="space-y-1">
-                  {/* US Market Bar */}
-                  <div>
-                    <div className="flex justify-between text-[25px] text-pres-text-dim mb-1 font-mono">
-                      <span>US Direct Market Rate</span>
-                      <span className="text-white/70 font-semibold">{item.usRate}</span>
-                    </div>
-                    <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: 0.7, delay: 0.35 + idx * 0.08 }}
-                        className="h-full bg-white/20 rounded-full"
-                      />
-                    </div>
-                  </div>
-
-                  {/* RiseUp Bar */}
-                  <div>
-                    <div className="flex justify-between text-[25px] text-pres-accent mb-1 font-mono">
-                      <span>RiseUp Dedicated Talent</span>
-                      <span className="text-pres-accent font-bold">{item.riseUpRate}</span>
-                    </div>
-                    <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: item.riseUpWidth }}
-                        transition={{ duration: 0.7, delay: 0.45 + idx * 0.08 }}
-                        className={`h-full bg-gradient-to-r ${item.color} rounded-full`}
-                      />
-                    </div>
-                  </div>
+                <div className="flex items-center justify-between text-[22px]">
+                  <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>
+                  <span className="text-pres-accent font-bold">RiseUp {item.riseUpRate}</span>
                 </div>
               </motion.div>
             ))}
