@@ -74,7 +74,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
       return <X className="w-4 h-4 mx-auto text-red-500/80" />;
     }
     return (
-      <span className="font-bold text-[20px]" style={{ color: colColor }}>
+      <span className="font-bold text-[25px]" style={{ color: colColor }}>
         {val}
       </span>
     );
@@ -106,7 +106,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
           <div className="flex-1 flex flex-col justify-between">
             {/* Header Row */}
             <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2 border-b border-white/10">
-              <div className="text-left font-heading font-semibold text-[20px] text-pres-text-dim uppercase tracking-wider pl-4">
+              <div className="text-left font-heading font-semibold text-[25px] text-pres-text-dim uppercase tracking-wider pl-4">
                 Features &amp; Deliverables
               </div>
               {columns.map((col, idx) => (
@@ -118,12 +118,12 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   className={`text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
                 >
                   {col.badge && (
-                    <span className="inline-block text-[19px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
+                    <span className="inline-block text-[25px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
                       {col.badge}
                     </span>
                   )}
-                  <div className="font-heading font-bold text-[21px] text-white">{col.name}</div>
-                  <div className={`text-[19px] font-semibold ${col.textColor}`}>{col.price}</div>
+                  <div className="font-heading font-bold text-[25px] text-white">{col.name}</div>
+                  <div className={`text-[25px] font-semibold ${col.textColor}`}>{col.price}</div>
                 </motion.div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   }`}
                 >
                   {/* Feature Label */}
-                  <div className="text-left font-medium text-[20px] text-white/90 pl-4">
+                  <div className="text-left font-medium text-[25px] text-white/90 pl-4">
                     {row.feature}
                   </div>
 

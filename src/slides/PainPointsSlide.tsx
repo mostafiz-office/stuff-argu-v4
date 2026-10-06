@@ -95,7 +95,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center border shadow-md ${item.accentBadge}`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[19px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
+                    <span className="text-[25px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
                       {item.badge}
                     </span>
                   </div>
@@ -106,7 +106,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                   </h3>
 
                   {/* Emotional Hook */}
-                  <p className="text-[21px] text-pres-text leading-relaxed mb-4 min-h-[76px]">
+                  <p className="text-[25px] text-pres-text leading-relaxed mb-4 min-h-[76px]">
                     {item.hook}
                   </p>
 
@@ -115,7 +115,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-1.5">
                         <TrendingDown className="w-3.5 h-3.5 text-red-400" />
-                        <span className="text-[19px] font-bold uppercase tracking-wider text-pres-text-dim">
+                        <span className="text-[25px] font-bold uppercase tracking-wider text-pres-text-dim">
                           {item.statLabel}
                         </span>
                       </div>
@@ -128,7 +128,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                   {/* RiseUp Relief Solution Banner */}
                   <div className="pt-3.5 border-t border-white/10 flex items-start gap-2.5">
                     <ShieldCheck className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-[19px] text-green-300 font-medium leading-snug">
+                    <p className="text-[25px] text-green-300 font-medium leading-snug">
                       {item.solution}
                     </p>
                   </div>
