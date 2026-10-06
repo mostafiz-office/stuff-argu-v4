@@ -2,12 +2,11 @@ import React from "react";
 import { PricingCoverShared, CoverCopy } from "./PricingCoverShared";
 
 const COPY_A: CoverCopy = {
-  label: "Pre-vetted senior engineers, on demand",
-  line1: "Cut 80% Off Your",
-  line2: "Developer Hiring Timeline.",
-  body: "Stop burning months on unvetted contractors. Top 5% senior engineers ready to deploy in 20 minutes under a 20+ year Enterprise Chief Architect.",
-  chips: ["Cut 80% Hiring Drag", "Hire in 20 Minutes", "Top 5% Talent"],
-  stats: ["Cut 80% Hiring Timeline", "Deploy in 20 Minutes", "Enterprise Architect Supervised"],
+  label: "Elite Engineers",
+  line1: "Cut 80% Off",
+  line2: "Hiring Time.",
+  body: "Pre-vetted top 5% engineers ready to join your team this week.",
+  chips: ["Top 5% Talent", "Hire in 20 Min", "No Hidden Fees"],
 };
 
 interface Props {

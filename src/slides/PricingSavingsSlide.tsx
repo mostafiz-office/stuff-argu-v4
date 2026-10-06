@@ -73,7 +73,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-[64px] leading-[1.08] font-bold font-heading italic tracking-tight text-white mb-3"
+                className="text-[68px] leading-[1.08] font-bold font-heading italic tracking-tight text-white mb-3"
               >
                 Save 80% Hiring Efforts: <span className="text-pres-accent not-italic">End Fragile Vibe Code</span>
               </motion.h1>
@@ -96,45 +96,45 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
               <div className="text-[76px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1">
                 80%
               </div>
-              <div className="text-[25px] font-bold font-heading text-white mb-1.5">
+              <div className="text-[37px] font-bold font-heading text-white mb-1.5">
                 Hiring Effort &amp; Cost Saved
               </div>
-              <p className="text-[17px] text-pres-text-muted leading-relaxed">
+              <p className="text-[25px] text-pres-text-muted leading-relaxed">
                 Save 80% hiring efforts vs US recruiting. Stop waking at night with seniors who fix fragile vibe-code &amp; AI hallucinations.
               </p>
             </motion.div>
           </div>
 
           {/* Right Column (4 Comparison Bar Groups) */}
-          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-4">
+          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-3 pt-[80px]">
             {comparisons.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-                className="p-5 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
+                className="px-5 py-4 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
               >
                 {/* Header row of card */}
                 <div className="flex items-center justify-between mb-2.5">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[19px] font-bold font-heading text-white">
+                    <span className="text-[28px] font-bold font-heading text-white">
                       {item.role}
                     </span>
-                    <span className="text-[15px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
+                    <span className="text-[25px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
                       {item.tier}
                     </span>
                   </div>
-                  <span className={`text-[15px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
+                  <span className={`text-[25px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
                     {item.savings}
                   </span>
                 </div>
 
                 {/* Bars container */}
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {/* US Market Bar */}
                   <div>
-                    <div className="flex justify-between text-[15px] text-pres-text-dim mb-1 font-mono">
+                    <div className="flex justify-between text-[25px] text-pres-text-dim mb-1 font-mono">
                       <span>US Direct Market Rate</span>
                       <span className="text-white/70 font-semibold">{item.usRate}</span>
                     </div>
@@ -150,7 +150,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
 
                   {/* RiseUp Bar */}
                   <div>
-                    <div className="flex justify-between text-[15px] text-pres-accent mb-1 font-mono">
+                    <div className="flex justify-between text-[25px] text-pres-accent mb-1 font-mono">
                       <span>RiseUp Dedicated Talent</span>
                       <span className="text-pres-accent font-bold">{item.riseUpRate}</span>
                     </div>

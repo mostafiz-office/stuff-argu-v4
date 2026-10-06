@@ -99,22 +99,22 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     </div>
 
                     {/* Step Label */}
-                    <span className="text-[15px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
+                    <span className="text-[25px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
                       {step.num}
                     </span>
 
                     {/* Title */}
-                    <h2 className="text-[25px] font-bold font-heading text-white mb-2 leading-snug">
+                    <h2 className="text-[37px] font-bold font-heading text-white mb-2 leading-snug">
                       {step.title}
                     </h2>
 
                     {/* Description */}
-                    <p className="text-[17px] text-pres-text-muted leading-[1.45] mb-4 min-h-[74px]">
+                    <p className="text-[25px] text-pres-text-muted leading-[1.45] mb-4 min-h-[74px]">
                       {step.desc}
                     </p>
 
                     {/* Time Badge */}
-                    <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-[15px] font-semibold">
+                    <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-[25px] font-semibold">
                       {step.time}
                     </div>
                   </motion.div>

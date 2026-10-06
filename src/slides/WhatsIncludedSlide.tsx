@@ -81,10 +81,10 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-[24px] font-bold font-heading text-white mb-1 leading-snug">
+                    <h2 className="text-[35px] font-bold font-heading text-white mb-1 leading-snug">
                       {item.title}
                     </h2>
-                    <p className="text-[17px] text-pres-text-muted leading-relaxed">
+                    <p className="text-[25px] text-pres-text-muted leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -101,7 +101,7 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
             className="self-center flex items-center gap-3 px-6 py-2.5 rounded-full bg-pres-surface/90 border border-pres-accent/30 backdrop-blur-md shadow-lg"
           >
             <Shield className="w-4 h-4 text-pres-accent shrink-0" />
-            <span className="text-[18px] text-pres-text-muted font-medium">
+            <span className="text-[25px] text-pres-text-muted font-medium">
               14-day trial with money-back guarantee (conditions apply).
             </span>
           </motion.div>
