@@ -73,7 +73,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-[64px] leading-[1.08] font-bold font-heading italic tracking-tight text-white mb-3"
+                className="text-[68px] leading-[1.08] font-bold font-heading italic tracking-tight text-white mb-3"
               >
                 Save 80% Hiring Efforts: <span className="text-pres-accent not-italic">End Fragile Vibe Code</span>
               </motion.h1>
@@ -96,10 +96,10 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
               <div className="text-[76px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1">
                 80%
               </div>
-              <div className="text-[25px] font-bold font-heading text-white mb-1.5">
+              <div className="text-[31px] font-bold font-heading text-white mb-1.5">
                 Hiring Effort &amp; Cost Saved
               </div>
-              <p className="text-[17px] text-pres-text-muted leading-relaxed">
+              <p className="text-[21px] text-pres-text-muted leading-relaxed">
                 Save 80% hiring efforts vs US recruiting. Stop waking at night with seniors who fix fragile vibe-code &amp; AI hallucinations.
               </p>
             </motion.div>
@@ -118,14 +118,14 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 {/* Header row of card */}
                 <div className="flex items-center justify-between mb-2.5">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[19px] font-bold font-heading text-white">
+                    <span className="text-[24px] font-bold font-heading text-white">
                       {item.role}
                     </span>
-                    <span className="text-[15px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
+                    <span className="text-[19px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
                       {item.tier}
                     </span>
                   </div>
-                  <span className={`text-[15px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
+                  <span className={`text-[19px] font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
                     {item.savings}
                   </span>
                 </div>
@@ -134,7 +134,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 <div className="space-y-2">
                   {/* US Market Bar */}
                   <div>
-                    <div className="flex justify-between text-[15px] text-pres-text-dim mb-1 font-mono">
+                    <div className="flex justify-between text-[19px] text-pres-text-dim mb-1 font-mono">
                       <span>US Direct Market Rate</span>
                       <span className="text-white/70 font-semibold">{item.usRate}</span>
                     </div>
@@ -150,7 +150,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
 
                   {/* RiseUp Bar */}
                   <div>
-                    <div className="flex justify-between text-[15px] text-pres-accent mb-1 font-mono">
+                    <div className="flex justify-between text-[19px] text-pres-accent mb-1 font-mono">
                       <span>RiseUp Dedicated Talent</span>
                       <span className="text-pres-accent font-bold">{item.riseUpRate}</span>
                     </div>

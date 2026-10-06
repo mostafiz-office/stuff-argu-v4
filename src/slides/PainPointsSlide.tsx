@@ -72,7 +72,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[64px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               Stop Debugging at 2 AM. <span className="text-pres-accent">Fix Fragile Vibe Code &amp; AI Defects.</span>
             </motion.h1>
@@ -95,18 +95,18 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className={`w-11 h-11 rounded-xl flex items-center justify-center border shadow-md ${item.accentBadge}`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[15px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
+                    <span className="text-[19px] font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-pres-text-dim uppercase tracking-wider">
                       {item.badge}
                     </span>
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="text-[27px] font-bold font-heading text-white mb-2.5 leading-snug">
+                  <h3 className="text-[34px] font-bold font-heading text-white mb-2.5 leading-snug">
                     {item.title}
                   </h3>
 
                   {/* Emotional Hook */}
-                  <p className="text-[17px] text-pres-text leading-relaxed mb-4 min-h-[76px]">
+                  <p className="text-[21px] text-pres-text leading-relaxed mb-4 min-h-[76px]">
                     {item.hook}
                   </p>
 
@@ -115,12 +115,12 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-1.5">
                         <TrendingDown className="w-3.5 h-3.5 text-red-400" />
-                        <span className="text-[15px] font-bold uppercase tracking-wider text-pres-text-dim">
+                        <span className="text-[19px] font-bold uppercase tracking-wider text-pres-text-dim">
                           {item.statLabel}
                         </span>
                       </div>
                     </div>
-                    <div className="text-[30px] font-bold font-heading text-white tracking-tight">
+                    <div className="text-[38px] font-bold font-heading text-white tracking-tight">
                       {item.statMetric}
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                   {/* RiseUp Relief Solution Banner */}
                   <div className="pt-3.5 border-t border-white/10 flex items-start gap-2.5">
                     <ShieldCheck className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-[15px] text-green-300 font-medium leading-snug">
+                    <p className="text-[19px] text-green-300 font-medium leading-snug">
                       {item.solution}
                     </p>
                   </div>
