@@ -83,8 +83,8 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
         </motion.div>
 
         <motion.h1 {...fade(0.1)} className="text-[84px] leading-[1.05] font-bold font-heading mb-6 tracking-tight">
-          <span className="block whitespace-nowrap">{copy.line1}</span>
-          <span className="block text-pres-accent whitespace-nowrap">{copy.line2}</span>
+          <span className="block">{copy.line1}</span>
+          <span className="block text-pres-accent">{copy.line2}</span>
         </motion.h1>
 
         <motion.p {...fade(0.25)} className="text-[25px] leading-[1.45] text-pres-text-muted mb-6 max-w-[780px]">
