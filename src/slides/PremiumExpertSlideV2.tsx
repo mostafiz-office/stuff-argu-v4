@@ -22,93 +22,63 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
     {
       icon: Cpu,
       title: "Architecture & Scale Strategy",
-      desc: "High-scale system design, database modeling, and eliminating technical debt before a single line of fragile code is written.",
+      desc: "High-scale system design and database modeling to stop technical debt before code is written.",
     },
     {
       icon: ShieldCheck,
       title: "Strict Code & Security Audits",
-      desc: "Weekly pull request reviews, automated CI/CD guardrails, and enterprise security hardening to guarantee bulletproof delivery.",
+      desc: "Weekly pull request reviews, automated CI/CD guardrails, and enterprise security hardening.",
     },
     {
       icon: Code2,
-      title: "24/7 Complex Bug Unblocking",
-      desc: "When race conditions, AI hallucinations, or production bottlenecks strike, a 20+ year veteran steps in directly to resolve them.",
+      title: "Rapid Blocker Resolution",
+      desc: "Direct veteran intervention whenever complex concurrency bugs or production edge cases strike.",
     },
     {
       icon: Users,
-      title: "Engineering Team Mentorship",
-      desc: "Continuous technical coaching and standards enforcement so your assigned engineers consistently perform at a 10x senior level.",
+      title: "Senior Engineer Mentorship",
+      desc: "Continuous technical guidance so your dedicated engineer consistently delivers at a 10x standard.",
     },
   ];
 
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
         <SlideHeader />
 
         {/* Ambient atmospheric glow */}
-        <div className="absolute top-1/3 left-1/4 w-[850px] h-[520px] rounded-full bg-pres-accent/8 blur-[170px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[850px] h-[480px] rounded-full bg-pres-accent/8 blur-[170px] pointer-events-none" />
 
-        {/* Title Area */}
-        <div className="absolute left-[80px] top-[65px] z-10">
-          <div className="flex items-center gap-3 mb-2">
-            <motion.div
+        {/* Flexbox Centered Main Content Wrapper */}
+        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
+          {/* Title Area - Clean, focused headline without redundant explanation */}
+          <div className="mb-8">
+            <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 px-3 py-1 rounded-full bg-pres-accent/15 border border-pres-accent/30 text-pres-accent text-xs font-semibold uppercase tracking-widest w-fit"
+              className="text-[52px] font-bold font-heading tracking-tight text-white"
             >
-              <Award className="w-3.5 h-3.5 text-pres-accent" />
-              <span>Executive Benefit · Included Free</span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-semibold uppercase tracking-wider"
-            >
-              <DollarSign className="w-3.5 h-3.5 text-green-400" />
-              <span>$5,000 – $10,000/mo Consulting Value Included</span>
-            </motion.div>
+              Executive Oversight: <span className="text-pres-accent">Chief Software Engineer</span> Included
+            </motion.h1>
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-[48px] font-bold font-heading tracking-tight text-white mb-1.5"
-          >
-            Executive Oversight: <span className="text-pres-accent">Chief Software Engineer</span> Included
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] text-pres-text-muted max-w-[1100px]"
-          >
-            Most agencies assign unvetted contractors and walk away. Every RiseUp engineer is actively supervised by our 20+ year Enterprise Chief Software Engineer (2 to 4 hrs/wk) at zero extra cost.
-          </motion.p>
-        </div>
-
-        {/* Main Content Layout: Left Profile (w: 440px), Right 4 Responsibilities (w: 1240px) - Strict 145px bottom clearance */}
-        <div className="absolute left-[80px] right-[80px] top-[205px] bottom-[145px] z-10 flex gap-8">
-          {/* Left: Alim Ul Karim Executive Profile Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-[440px] h-full p-6 rounded-3xl bg-pres-surface/90 border border-pres-accent/30 shadow-2xl backdrop-blur-md flex flex-col justify-between"
-          >
-            <div>
-              <div className="relative w-full h-[300px] rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black/50 shadow-inner group">
+          {/* Main Content Layout: Left Profile & Right 4 Pillars */}
+          <div className="flex gap-8 w-full">
+            {/* Left: Alim Executive Profile Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="w-[430px] p-5 rounded-3xl bg-pres-surface/90 border border-pres-accent/30 shadow-2xl backdrop-blur-md flex flex-col justify-between"
+            >
+              <div className="relative w-full h-[240px] rounded-2xl overflow-hidden mb-3.5 border border-white/10 bg-black/50 shadow-inner group">
                 <img
                   src={alimImg}
                   alt="Alim Ul Karim"
-                  className="w-full h-full object-cover object-top filter grayscale-15 contrast-105 group-hover:scale-102 transition-transform duration-500"
+                  className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-102 transition-transform duration-500"
                 />
-                <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
                   <div>
                     <p className="font-bold text-white text-sm">Alim Ul Karim</p>
                     <p className="text-[11px] text-pres-accent font-semibold">Chief Software Engineer</p>
@@ -119,62 +89,65 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => {
                 </div>
               </div>
 
-              <div className="space-y-2.5">
-                <div className="flex items-center gap-2.5 text-xs text-pres-text">
+              <div className="space-y-2 mb-3.5">
+                <div className="flex items-center gap-2 text-xs text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
-                  <span>Former Tech Lead for Enterprise Scale Platforms</span>
+                  <span>Enterprise Architect for 10M+ Concurrent User Systems</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-pres-text">
+                <div className="flex items-center gap-2 text-xs text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
-                  <span>Architected Systems for 10M+ Concurrent Users</span>
+                  <span>Led Architecture Across 50+ High-Stakes Tech Platforms</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-pres-text">
+                <div className="flex items-center gap-2 text-xs text-pres-text">
                   <div className="w-1.5 h-1.5 rounded-full bg-pres-accent shrink-0" />
-                  <span>Personally Vets and Supervises Every Single Engineer</span>
+                  <span>Personally Vets &amp; Supervises Every Single Engineer</span>
                 </div>
               </div>
-            </div>
 
-            <div className="p-3 rounded-xl bg-black/40 border border-white/10 mt-2">
-              <p className="text-[11px] text-pres-text-muted italic leading-relaxed">
-                "Our clients don't just get code. They get architecture that scales, code that passes enterprise audits, and peace of mind at 2 AM."
-              </p>
-            </div>
-          </motion.div>
+              <div className="p-3 rounded-xl bg-black/40 border border-white/10">
+                <p className="text-[11.5px] text-pres-text-muted italic leading-relaxed">
+                  "Our clients don't just get code. They get architecture that scales and peace of mind at 2 AM."
+                </p>
+              </div>
+            </motion.div>
 
-          {/* Right: 4 Core Oversight Responsibilities */}
-          <div className="flex-1 grid grid-cols-2 gap-5 h-full">
-            {pillars.map((pillar, idx) => {
-              const Icon = pillar.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.35 + idx * 0.1 }}
-                  className="p-6 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md flex flex-col justify-between transition-all hover:bg-pres-surface/90 shadow-xl"
-                >
-                  <div>
-                    <div className="w-11 h-11 rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent mb-3.5 shadow-md">
-                      <Icon className="w-5 h-5" />
+            {/* Right: 4 Core Pillars (2x2 Grid) */}
+            <div className="flex-1 grid grid-cols-2 gap-5">
+              {pillars.map((pillar, idx) => {
+                const Icon = pillar.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.35 + idx * 0.08 }}
+                    className="p-5 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md flex flex-col justify-between transition-all hover:bg-pres-surface/90 shadow-xl"
+                  >
+                    <div>
+                      <div className="w-10 h-10 rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent mb-3 shadow-md">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-[19px] font-bold font-heading text-white mb-1.5 leading-snug">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-[13px] text-pres-text-muted leading-relaxed">
+                        {pillar.desc}
+                      </p>
                     </div>
-                    <h3 className="text-[20px] font-bold font-heading text-white mb-2 leading-tight">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-[14px] text-pres-text-muted leading-relaxed">
-                      {pillar.desc}
-                    </p>
-                  </div>
 
-                  <div className="pt-3 border-t border-white/5 flex items-center gap-2 text-[11px] font-semibold text-pres-accent">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Included in every active tier engagement</span>
-                  </div>
-                </motion.div>
-              );
-            })}
+                    <div className="pt-3 mt-3 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-semibold text-pres-accent">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>Included 100% Free In Your Tier</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
+
+        {/* Bottom subtle accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
   );

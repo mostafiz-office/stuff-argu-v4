@@ -1,5 +1,4 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
 import { PresentationEngine } from "@/components/presentation/PresentationEngine";
 import { PricingCoverV3 } from "@/slides/PricingCoverV3";
 import { PricingCoverV1 } from "@/slides/PricingCoverV1";
@@ -16,15 +15,107 @@ import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
 
 const Index = () => {
-  const [searchParams] = useSearchParams();
+  // Deterministic & Dynamic Cover Slide Rotation on Every Reload:
+  // Rotates between PricingCoverV3 and PricingCoverV1 on every reload/visit
+  const [coverVariant, setCoverVariant] = useState<"1" | "2">(() => {
+    let lastVariant: string | null = null;
+    try {
+      lastVariant =
+        localStorage.getItem("riseup_active_cover") ||
+        sessionStorage.getItem("riseup_active_cover");
+    } catch {
+      // Storage restricted
+    }
 
-  // Cover slide selection: ?cover=1 (V3) or ?cover=2 (V1), defaults to V3
-  const coverVariant = searchParams.get("cover");
-  const CoverComponent = coverVariant === "2" ? PricingCoverV1 : PricingCoverV3;
+    if (!lastVariant) {
+      try {
+        if (window.name === "riseup_cover_1" || window.name === "riseup_cover_2") {
+          lastVariant = window.name.replace("riseup_cover_", "");
+        }
+      } catch {
+        // Window name restricted
+      }
+    }
+
+    // Toggle: if last was "1" -> "2", if last was "2" -> "1", else random 50/50
+    const next: "1" | "2" =
+      lastVariant === "1" ? "2" : lastVariant === "2" ? "1" : Math.random() < 0.5 ? "1" : "2";
+
+    try {
+      localStorage.setItem("riseup_active_cover", next);
+      sessionStorage.setItem("riseup_active_cover", next);
+      window.name = `riseup_cover_${next}`;
+    } catch {
+      // Ignore
+    }
+
+    return next;
+  });
+
+  // Manual interactive switcher between the two cover designs
+  const handleToggleCover = useCallback(() => {
+    setCoverVariant((prev) => {
+      const next: "1" | "2" = prev === "2" ? "1" : "2";
+      try {
+        window.name = `riseup_cover_${next}`;
+        localStorage.setItem("riseup_active_cover", next);
+        sessionStorage.setItem("riseup_active_cover", next);
+      } catch {
+        // Ignore storage restrictions
+      }
+      return next;
+    });
+  }, []);
+
+  // Clean URL parameters on initial mount so reloads never get trapped
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      let changed = false;
+      if (params.has("slide")) {
+        params.delete("slide");
+        changed = true;
+      }
+      if (params.has("cover")) {
+        params.delete("cover");
+        changed = true;
+      }
+      if (changed) {
+        const cleanQuery = params.toString();
+        const cleanUrl = cleanQuery ? `${window.location.pathname}?${cleanQuery}` : window.location.pathname;
+        window.history.replaceState(null, "", cleanUrl);
+      }
+    } catch {
+      // Ignore sandboxed iframe history security restrictions
+    }
+  }, []);
+
+  // Cover Component wrapper passing interactive toggle and variant indicator
+  const CoverWrapper = useCallback(
+    (props: { onNavigate?: (index: number) => void }) => {
+      if (coverVariant === "2") {
+        return (
+          <PricingCoverV1
+            {...props}
+            coverVariant="1"
+            onToggleCover={handleToggleCover}
+          />
+        );
+      }
+      return (
+        <PricingCoverV3
+          {...props}
+          coverVariant="3"
+          onToggleCover={handleToggleCover}
+        />
+      );
+    },
+    [coverVariant, handleToggleCover]
+  );
 
   const slides = useMemo(() => {
     return [
-      CoverComponent,
+      CoverWrapper,
       PainPointsSlide,
       PricingTiersSlide,
       TierDetailSlide,
@@ -36,76 +127,26 @@ const Index = () => {
       PricingSavingsSlide,
       PricingCTASlide,
     ];
-  }, [CoverComponent]);
+  }, [CoverWrapper]);
 
   const totalSlides = slides.length;
 
-  // Resolve initial index from URL query param
-  const getIndexFromUrl = () => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const slideParam = params.get("slide");
-      if (slideParam) {
-        const parsed = parseInt(slideParam, 10);
-        if (!isNaN(parsed) && parsed >= 1 && parsed <= totalSlides) {
-          return parsed - 1;
-        }
-      }
-    } catch {
-      // Fallback if URLSearchParams is restricted
-    }
-    return 0;
-  };
-
-  const [currentIndex, setCurrentIndex] = useState<number>(getIndexFromUrl);
+  // Always initialize on Slide 1 (Index 0) on fresh visit and page reload
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
 
-  // Core navigation handler: updates state and syncs URL without triggering React state loop
+  // Core navigation handler: updates state cleanly in memory
   const handleNavigate = useCallback(
     (newIndex: number) => {
       if (newIndex >= 0 && newIndex < totalSlides && newIndex !== currentIndex) {
         setDirection(newIndex > currentIndex ? 1 : -1);
         setCurrentIndex(newIndex);
-
-        try {
-          const params = new URLSearchParams(window.location.search);
-          params.set("slide", (newIndex + 1).toString());
-          const newUrl = `${window.location.pathname}?${params.toString()}`;
-          window.history.replaceState(null, "", newUrl);
-        } catch {
-          // Ignore sandboxed iframe history security restrictions
-        }
       }
     },
     [totalSlides, currentIndex]
   );
 
-  // Listen to browser back/forward buttons
-  useEffect(() => {
-    const handlePopState = () => {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const slideParam = params.get("slide");
-        if (slideParam) {
-          const parsed = parseInt(slideParam, 10);
-          if (!isNaN(parsed) && parsed >= 1 && parsed <= totalSlides) {
-            const target = parsed - 1;
-            if (target !== currentIndex) {
-              setDirection(target > currentIndex ? 1 : -1);
-              setCurrentIndex(target);
-            }
-          }
-        }
-      } catch {
-        // Fallback
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [totalSlides, currentIndex]);
-
-  // Next slide handler (incorporates navigation gate)
+  // Next slide handler (incorporates interactive navigation gate)
   const handleNext = useCallback(() => {
     const gate = window.__slideNavigationGate;
     if (gate && typeof gate.trigger === "function") {

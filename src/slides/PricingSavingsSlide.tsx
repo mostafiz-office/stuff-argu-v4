@@ -57,122 +57,120 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
 
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
         <SlideHeader />
 
         {/* Ambient right glow */}
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[600px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
 
-        {/* Left Column (Content & Value Callout) - Strict 145px clearance ending at bottom-[145px] */}
-        <div className="absolute left-[80px] top-[80px] bottom-[145px] max-w-[620px] z-10 flex flex-col justify-between">
-          <div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-[56px] font-bold font-heading italic tracking-tight text-white mb-3"
-            >
-              The Real Cost of <span className="text-pres-accent not-italic">Stalled Projects</span>
-            </motion.h1>
+        {/* Flexbox Centered Main Content Wrapper */}
+        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex items-center justify-between gap-16">
+          {/* Left Column (Title & Value Callout) */}
+          <div className="w-[580px] flex flex-col justify-center">
+            {/* Title Area - Clean, focused headline without redundant explanation */}
+            <div className="mb-8">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-[52px] font-bold font-heading italic tracking-tight text-white mb-3"
+              >
+                The Real Cost of <span className="text-pres-accent not-italic">Stalled Projects</span>
+              </motion.h1>
 
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="w-24 h-1 accent-bar rounded-full origin-left"
+              />
+            </div>
+
+            {/* Value Callout Card */}
             <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="w-28 h-1 accent-bar rounded-full origin-left mb-5"
-            />
-
-            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-[20px] leading-[1.5] text-pres-text-muted"
+              className="p-7 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[440px]"
             >
-              A delayed sprint or bad hire bleeds $20,000+/mo in burned runway. Stop paying US inflated rates for unvetted promises.
-            </motion.p>
+              <div className="text-[76px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1">
+                4×
+              </div>
+              <div className="text-xl font-bold font-heading text-white mb-1.5">
+                More Value
+              </div>
+              <p className="text-sm text-pres-text-muted leading-relaxed">
+                vs. hiring directly in the US with equivalent experience and vetted oversight.
+              </p>
+            </motion.div>
           </div>
 
-          {/* Value Callout Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="p-7 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[460px]"
-          >
-            <div className="text-[84px] font-bold font-heading text-pres-accent metric-glow leading-none mb-1.5">
-              4×
-            </div>
-            <div className="text-xl font-bold font-heading text-white mb-1">
-              More Value
-            </div>
-            <p className="text-sm text-pres-text-muted">
-              vs. hiring directly in the US with equivalent experience and vetted oversight.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Right Column (4 Comparison Bar Groups) - Strict 145px clearance ending at bottom-[145px] */}
-        <div className="absolute right-[80px] w-[980px] top-[80px] bottom-[145px] z-10 flex flex-col justify-evenly">
-          {comparisons.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 + idx * 0.12 }}
-              className="p-5 rounded-2xl bg-pres-surface/60 border border-white/10 backdrop-blur-md"
-            >
-              {/* Header row of card */}
-              <div className="flex items-center justify-between mb-2.5">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base font-bold font-heading text-white">
-                    {item.role}
-                  </span>
-                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-white/10 text-white/80">
-                    {item.tier}
+          {/* Right Column (4 Comparison Bar Groups) */}
+          <div className="flex-1 max-w-[980px] flex flex-col justify-center gap-4">
+            {comparisons.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
+                className="p-5 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/30 backdrop-blur-md transition-all shadow-lg"
+              >
+                {/* Header row of card */}
+                <div className="flex items-center justify-between mb-2.5">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-base font-bold font-heading text-white">
+                      {item.role}
+                    </span>
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-white/80">
+                      {item.tier}
+                    </span>
+                  </div>
+                  <span className={`text-xs font-bold px-3 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>
+                    {item.savings}
                   </span>
                 </div>
-                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${item.accentBg} ${item.accentText}`}>
-                  {item.savings}
-                </span>
-              </div>
 
-              {/* Bars container */}
-              <div className="space-y-2.5">
-                {/* US Market Bar */}
-                <div>
-                  <div className="flex justify-between text-[11px] text-pres-text-dim mb-1 font-mono">
-                    <span>US Direct Market Rate</span>
-                    <span className="text-white/70 font-semibold">{item.usRate}</span>
+                {/* Bars container */}
+                <div className="space-y-2">
+                  {/* US Market Bar */}
+                  <div>
+                    <div className="flex justify-between text-xs text-pres-text-dim mb-1 font-mono">
+                      <span>US Direct Market Rate</span>
+                      <span className="text-white/70 font-semibold">{item.usRate}</span>
+                    </div>
+                    <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 0.7, delay: 0.35 + idx * 0.08 }}
+                        className="h-full bg-white/20 rounded-full"
+                      />
+                    </div>
                   </div>
-                  <div className="w-full h-3.5 bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 0.7, delay: 0.4 + idx * 0.1 }}
-                      className="h-full bg-white/20 rounded-full"
-                    />
+
+                  {/* RiseUp Bar */}
+                  <div>
+                    <div className="flex justify-between text-xs text-pres-accent mb-1 font-mono">
+                      <span>RiseUp Dedicated Talent</span>
+                      <span className="text-pres-accent font-bold">{item.riseUpRate}</span>
+                    </div>
+                    <div className="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: item.riseUpWidth }}
+                        transition={{ duration: 0.7, delay: 0.45 + idx * 0.08 }}
+                        className={`h-full bg-gradient-to-r ${item.color} rounded-full`}
+                      />
+                    </div>
                   </div>
                 </div>
-
-                {/* RiseUp Bar */}
-                <div>
-                  <div className="flex justify-between text-[11px] text-pres-accent mb-1 font-mono">
-                    <span>RiseUp Dedicated Talent</span>
-                    <span className="text-pres-accent font-bold text-xs">{item.riseUpRate}</span>
-                  </div>
-                  <div className="w-full h-3.5 bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: item.riseUpWidth }}
-                      transition={{ duration: 0.7, delay: 0.5 + idx * 0.1 }}
-                      className={`h-full bg-gradient-to-r ${item.color} rounded-full shadow-[0_0_15px_rgba(255,173,1,0.4)]`}
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom subtle accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
   );
