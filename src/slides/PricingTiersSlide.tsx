@@ -28,7 +28,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     {
       name: "Tier 3.A — Skilled",
       experience: "7-15+ Years",
-      price: "$6,800–$8,000",
+      price: "$6.8K–$8K",
       priceSuffix: "/mo",
       hours: "160 hrs/month",
       badge: "BEST VALUE",
@@ -43,7 +43,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     {
       name: "Tier 3.B — Leadership",
       experience: "7-15+ Years",
-      price: "$7,500–$10,000",
+      price: "$7.5K–$10K",
       priceSuffix: "/mo",
       hours: "160 hrs/month",
       badge: null,
