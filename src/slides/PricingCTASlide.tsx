@@ -16,7 +16,7 @@ const fade = (delay: number) => ({
 });
 
 const btn =
-  "inline-flex items-center gap-4 px-11 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[30px] transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] whitespace-nowrap";
+  "inline-flex items-center gap-4 px-9 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] whitespace-nowrap";
 
 export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
   <ScaledSlide>
@@ -29,17 +29,17 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
           <motion.p {...fade(0)} className="text-[22px] tracking-[0.25em] uppercase text-pres-text-dim mb-6">
             Ready to start?
           </motion.p>
-          <motion.h1 {...fade(0.1)} className="text-[104px] font-bold font-heading leading-[1.08] tracking-tight mb-7">
+          <motion.h1 {...fade(0.1)} className="text-[80px] font-bold font-heading leading-[1.08] tracking-tight mb-7">
             <span className="block">Let's Build Your</span>
             <span className="block text-pres-accent">Dream Team</span>
           </motion.h1>
-          <motion.p {...fade(0.2)} className="text-[30px] leading-[1.5] text-pres-text-muted mb-9">
+          <motion.p {...fade(0.2)} className="text-[26px] leading-[1.5] text-pres-text-muted mb-9">
             Schedule a 15-minute call. We'll match you with the right talent within days.
           </motion.p>
           <motion.a
             {...fade(0.3)}
             href="mailto:contact@riseup-asia.com"
-            className="inline-flex items-center gap-3 text-[26px] text-pres-text-muted hover:text-white mb-9"
+            className="inline-flex items-center gap-3 text-[22px] text-pres-text-muted hover:text-white mb-9"
           >
             <Mail className="w-7 h-7 text-pres-accent" />
             contact@riseup-asia.com
@@ -64,11 +64,11 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
           className="flex flex-col items-center gap-5"
         >
           <div className="p-5 rounded-[32px] bg-pres-surface/80 border border-white/10">
-            <div className="w-[400px] h-[400px] bg-white rounded-2xl p-5">
+            <div className="w-[340px] h-[340px] bg-white rounded-2xl p-5">
               <img src={qrCodeImg} alt="QR code to contact RiseUp Asia" className="w-full h-full object-contain" />
             </div>
           </div>
-          <span className="text-[22px] text-pres-text-dim">Scan to connect</span>
+          <span className="text-[18px] text-pres-text-dim">Scan to connect</span>
         </motion.div>
       </div>
 
