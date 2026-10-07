@@ -1,6 +1,6 @@
 # Pricing Deck — Slide Specifications
 
-**Version:** 2.1.0  
+**Version:** 2.2.0  
 **Updated:** 2026-10-07  
 **Status:** Active
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-Per-slide specifications for the 13-slide Staff Augmentation Pricing deck. The cover alternates between two variants, and the three core problems each receive a dedicated slide.
+Per-slide specifications for the 14-slide Staff Augmentation Pricing deck. The cover alternates between two variants, the three core problems each receive a dedicated slide, and a title-only solution bridge introduces pricing.
 
 ---
 
@@ -20,15 +20,16 @@ Per-slide specifications for the 13-slide Staff Augmentation Pricing deck. The c
 | 02 | Outage Panic | — | `OutagePanicSlide` |
 | 03 | Fragile AI Code | — | `FragileCodeSlide` |
 | 04 | Hiring Sinkhole | — | `HiringSinkholeSlide` |
-| 05 | Pricing Tiers | [03-pricing-tiers.md](./03-pricing-tiers.md) | `PricingTiersSlide` |
-| 06 | Features Comparison | [04-feature-comparison.md](./04-feature-comparison.md) | `TierDetailSlide` |
-| 07 | Premium Expert Bonus | [05-premium-expert.md](./05-premium-expert.md) | `PremiumExpertSlideV2` |
-| 08 | Architect Value | — | `ExpertValuationBreakdownSlide` |
-| 09 | What's Included | [07-whats-included.md](./07-whats-included.md) | `WhatsIncludedSlide` |
-| 10 | How It Works | [08-how-it-works.md](./08-how-it-works.md) | `PricingHowItWorksSlide` |
-| 11 | Starter Tier | [10-starter-tier-v9.md](./10-starter-tier-v9.md) | `StarterTierSlideV9Clone` |
-| 12 | Cost Savings | [06-cost-savings.md](./06-cost-savings.md) | `PricingSavingsSlide` |
-| 13 | CTA | [11-cta.md](./11-cta.md) | `PricingCTASlide` |
+| 05 | We Have a Solution for You | — | `SolutionTransitionSlide` |
+| 06 | Pricing Tiers | [03-pricing-tiers.md](./03-pricing-tiers.md) | `PricingTiersSlide` |
+| 07 | Features Comparison | [04-feature-comparison.md](./04-feature-comparison.md) | `TierDetailSlide` |
+| 08 | Premium Expert Bonus | [05-premium-expert.md](./05-premium-expert.md) | `PremiumExpertSlideV2` |
+| 09 | Architect Value | — | `ExpertValuationBreakdownSlide` |
+| 10 | What's Included | [07-whats-included.md](./07-whats-included.md) | `WhatsIncludedSlide` |
+| 11 | How It Works | [08-how-it-works.md](./08-how-it-works.md) | `PricingHowItWorksSlide` |
+| 12 | Starter Tier | [10-starter-tier-v9.md](./10-starter-tier-v9.md) | `StarterTierSlideV9Clone` |
+| 13 | Cost Savings | [06-cost-savings.md](./06-cost-savings.md) | `PricingSavingsSlide` |
+| 14 | CTA | [11-cta.md](./11-cta.md) | `PricingCTASlide` |
 
 > **Note:** Slide 1 deterministically alternates between the V1 and V3 cover designs on reload.
 
@@ -53,15 +54,16 @@ All slides share:
 2. Outage Panic
 3. Fragile AI Code
 4. Hiring Sinkhole
-5. Pricing Tiers
-6. Features Comparison
-7. Premium Expert Bonus
-8. Architect Value
-9. What's Included
-10. How It Works
-11. Starter Tier
-12. Cost Savings
-13. CTA
+5. We Have a Solution for You
+6. Pricing Tiers
+7. Features Comparison
+8. Premium Expert Bonus
+9. Architect Value
+10. What's Included
+11. How It Works
+12. Starter Tier
+13. Cost Savings
+14. CTA
 
 ---
 
