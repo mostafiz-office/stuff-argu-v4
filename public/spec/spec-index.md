@@ -24,13 +24,14 @@
 | 20 | `global/19-favicon.md` | Favicon storage and ZIP guarantee |
 | 21 | `slide-01/` | Cover V3 (Bold) |
 | 22 | `slide-02/` | Problem story sequence (slides 2–4) |
-| 23 | `slide-03/` | Pricing Tiers (runtime slide 5) |
-| 24 | `slide-04/` | Features Comparison (runtime slide 6) |
-| 25 | `slide-05/` | Premium Expert |
-| 26 | `slide-06/` | Cost Savings |
-| 27 | `slide-07/` | What's Included |
-| 28 | `slide-08/` | How It Works |
-| 29 | `slide-09/` | Starter Tier Detail |
-| 30 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
-| 31 | `slide-11/` | Starter Risk Reversal |
-| 32 | `slide-12/` | CTA |
+| 23 | `slide-13/` | Solution Transition (runtime slide 5) |
+| 24 | `slide-03/` | Pricing Tiers (runtime slide 6) |
+| 25 | `slide-04/` | Features Comparison (runtime slide 7) |
+| 26 | `slide-05/` | Premium Expert |
+| 27 | `slide-06/` | Cost Savings |
+| 28 | `slide-07/` | What's Included |
+| 29 | `slide-08/` | How It Works |
+| 30 | `slide-09/` | Starter Tier Detail |
+| 31 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
+| 32 | `slide-11/` | Starter Risk Reversal |
+| 33 | `slide-12/` | CTA |

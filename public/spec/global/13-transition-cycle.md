@@ -10,9 +10,9 @@ type PresentationTransition = "slide" | "fade" | "zoom" | "rise";
 
 ## 2. Cycle Order
 
-The 13 slides use this deliberate sequence:
+The 14 slides use this deliberate sequence:
 
-`fade → rise → slide → fade → zoom → rise → fade → slide → zoom → rise → fade → zoom → rise`
+`fade → rise → slide → fade → zoom → rise → fade → slide → zoom → rise → fade → zoom → rise → fade`
 
 The deck does not use 3D flip transitions.
 
