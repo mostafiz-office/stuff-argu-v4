@@ -13,6 +13,7 @@ import { PricingHowItWorksSlide } from "@/slides/PricingHowItWorksSlide";
 import { StarterTierSlideV9Clone } from "@/slides/StarterTierSlideV9Clone";
 import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
+import { presentationSound } from "@/lib/presentationSound";
 
 const Index = () => {
   // Alternate between the two available covers on every full page load.
@@ -134,6 +135,7 @@ const Index = () => {
     }
 
     if (currentIndex < totalSlides - 1) {
+      presentationSound.play("transition");
       handleNavigate(currentIndex + 1);
     }
   }, [currentIndex, totalSlides, handleNavigate]);
@@ -141,6 +143,7 @@ const Index = () => {
   // Previous slide handler
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
+      presentationSound.play("transition");
       handleNavigate(currentIndex - 1);
     }
   }, [currentIndex, handleNavigate]);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check, Volume2, VolumeX } from "lucide-react";
 import { toast } from "sonner";
+import { presentationSound } from "@/lib/presentationSound";
 
 import "@/types/navigation";
 
@@ -22,6 +23,9 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [gateTooltip, setGateTooltip] = useState<string | null>(null);
+  const [soundMuted, setSoundMuted] = useState(() => presentationSound.isMuted());
+
+  useEffect(() => presentationSound.subscribe(setSoundMuted), []);
 
   // Poll for interactive gate tooltip state
   useEffect(() => {
@@ -43,6 +47,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const canGoNext = currentIndex < totalSlides - 1;
 
   const goPrev = useCallback(() => {
+    presentationSound.play("click");
     if (onPrev) {
       onPrev();
       return;
@@ -53,6 +58,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   }, [canGoPrev, currentIndex, onNavigate, onPrev]);
 
   const goNext = useCallback(() => {
+    presentationSound.play("click");
     if (onNext) {
       onNext();
       return;
@@ -72,6 +78,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
   // Fullscreen toggle
   const toggleFullscreen = useCallback(() => {
+    presentationSound.play("click");
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
@@ -140,6 +147,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
   // Share handler
   const handleShare = () => {
+    presentationSound.play("click");
     const url = window.location.href;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url);
@@ -149,10 +157,16 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
     }
   };
 
+  const toggleSound = () => {
+    const nextMuted = !soundMuted;
+    presentationSound.setMuted(nextMuted);
+    if (!nextMuted) presentationSound.play("reveal");
+  };
+
   return (
     <>
       {/* Top-Right Control Bar */}
-      <div className="fixed top-6 right-6 z-[250] pointer-events-auto flex items-center gap-1 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-2xl text-white">
+      <div className="presentation-controls fixed top-6 right-6 z-[250] pointer-events-auto flex items-center gap-1 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-2xl text-white">
         {/* Previous */}
         <button
           type="button"
@@ -181,6 +195,18 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
         </button>
 
         {/* Divider */}
+        <div className="w-[1px] h-4 bg-white/20 mx-1" />
+
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={soundMuted ? "Enable presentation sound" : "Mute presentation sound"}
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
+          title={soundMuted ? "Enable sound" : "Mute sound"}
+        >
+          {soundMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
+
         <div className="w-[1px] h-4 bg-white/20 mx-1" />
 
         {/* Share */}
@@ -228,7 +254,8 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
               type="button"
               onClick={() => onNavigate(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
+              title={`${idx + 1}. ${["Welcome", "Pain Points", "Pricing Tiers", "Features Comparison", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Starter Tier", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+              className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
                 isActive
                   ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
                   : "w-2 h-2 bg-white/30 hover:bg-white/70"
