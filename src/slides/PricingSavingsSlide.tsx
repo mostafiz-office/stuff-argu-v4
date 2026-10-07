@@ -72,7 +72,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
             <div className="mb-10">
               <motion.h1
                 {...fadeUp(0)}
-                className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight text-white mb-4"
+                className="pres-title font-bold font-heading tracking-tight text-white mb-4"
               >
                 Pay Less. <span className="text-pres-accent">Ship More.</span>
               </motion.h1>

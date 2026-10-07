@@ -57,7 +57,7 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
           <div className="mb-8">
             <motion.h1
               {...fadeUp(0)}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="pres-title font-bold font-heading tracking-tight text-white"
             >
               What's <span className="text-pres-accent">Included</span>
             </motion.h1>

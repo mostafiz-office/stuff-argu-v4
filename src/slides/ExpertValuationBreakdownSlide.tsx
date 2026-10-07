@@ -31,7 +31,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
       <div className="relative z-10 w-full px-[100px] pt-[60px] flex flex-col">
         <motion.h1
           {...fadeUp(0)}
-          className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight mb-10"
+          className="pres-title font-bold font-heading tracking-tight mb-10"
         >
           What The <span className="text-pres-accent">Chief Architect</span> Is Worth
         </motion.h1>

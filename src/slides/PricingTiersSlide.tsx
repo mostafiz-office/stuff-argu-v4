@@ -81,7 +81,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
           <div className="mb-12">
             <motion.h1
               {...fadeUp(0)}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="pres-title font-bold font-heading tracking-tight text-white"
             >
               End Stalled Projects: <span className="text-pres-accent">Pick Your Tier</span>
             </motion.h1>

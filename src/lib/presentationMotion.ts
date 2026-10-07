@@ -2,7 +2,7 @@ import type { Transition, Variants } from "framer-motion";
 
 export const presentationEase = [0.22, 1, 0.36, 1] as const;
 
-export const entranceTransition = (delay = 0, duration = 0.52): Transition => ({
+export const entranceTransition = (delay = 0, duration = 0.38): Transition => ({
   delay,
   duration,
   ease: presentationEase,
@@ -27,7 +27,7 @@ export const scaleIn = (delay = 0): {
 } => ({
   initial: { opacity: 0, scale: 0.94 },
   animate: { opacity: 1, scale: 1 },
-  transition: { delay, type: "spring", stiffness: 180, damping: 20 },
+  transition: { delay, duration: 0.4, ease: presentationEase },
 });
 
 export const staggerDelay = (index: number, start = 0.18, step = 0.07) => start + index * step;

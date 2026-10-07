@@ -124,7 +124,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
             <div className="flex items-start justify-between gap-8 mb-10">
               <motion.h1
                 {...fadeUp(0)}
-                className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight text-white whitespace-nowrap"
+                className="pres-title font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
                 Zero Risk. <span className="text-pres-accent">All Upside.</span>
                 <span className="block text-[26px] font-normal font-sans text-pres-text-muted tracking-normal mt-3">No contracts. No hiring risk. Just results.</span>

@@ -27,7 +27,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
         <div className="flex items-end justify-between mb-10">
           <motion.h1
             {...fadeUp(0)}
-            className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight"
+            className="pres-title font-bold font-heading tracking-tight"
           >
             Chief Architect <span className="text-pres-accent">Included</span>
           </motion.h1>

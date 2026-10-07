@@ -64,7 +64,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
           <div className="mb-12 text-center">
             <motion.h1
               {...fadeUp(0)}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="pres-title font-bold font-heading tracking-tight text-white"
             >
               How It <span className="text-pres-accent">Works</span>
             </motion.h1>

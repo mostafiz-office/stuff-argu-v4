@@ -120,6 +120,31 @@
                0 0 60px hsl(var(--pres-accent) / 0.15);
 }
 
+.pres-title {
+  font-size: var(--pres-title);
+  line-height: 1.06;
+}
+
+.pres-title-compact {
+  font-size: var(--pres-title-compact);
+  line-height: 1.08;
+}
+
+.pres-body {
+  font-size: var(--pres-body);
+  line-height: 1.5;
+}
+
+.pres-card-title {
+  font-size: var(--pres-card-title);
+  line-height: 1.15;
+}
+
+.pres-card-body {
+  font-size: var(--pres-card-body);
+  line-height: 1.45;
+}
+
 .accent-bar {
   background: linear-gradient(90deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-glow)));
 }

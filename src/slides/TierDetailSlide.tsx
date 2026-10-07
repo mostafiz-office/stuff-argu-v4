@@ -96,7 +96,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
           <div className="mb-4">
             <motion.h1
               {...fadeUp(0)}
-              className="text-[60px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              className="pres-title-compact font-bold font-heading tracking-tight text-white"
             >
               Features <span className="text-pres-accent">Comparison</span>
             </motion.h1>
