@@ -35,7 +35,7 @@ export const BrandLogoSlide: React.FC = () => (
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 max-h-[420px] max-w-[1200px] object-contain"
+        className="relative z-10 h-auto w-[1100px] object-contain"
       />
     </section>
   </ScaledSlide>
