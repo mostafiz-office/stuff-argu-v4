@@ -5,14 +5,16 @@
 ## 1. Transition Style Enum
 
 ```ts
-type TransitionStyle = "slide" | "fade" | "zoom" | "flip" | "rise";
+type PresentationTransition = "slide" | "fade" | "zoom" | "rise";
 ```
 
 ## 2. Cycle Order
 
-Transitions cycle through: `slide → fade → zoom → flip → rise → slide → ...`
+The 11 slides use this deliberate sequence:
 
-Each slide index maps to a transition: `transitionStyles[index % 5]`.
+`fade → rise → slide → fade → zoom → rise → fade → slide → zoom → rise → fade`
+
+The deck does not use 3D flip transitions.
 
 ## 3. Direction Logic
 
@@ -26,6 +28,7 @@ Each slide index maps to a transition: `transitionStyles[index % 5]`.
 | Property | Value |
 |----------|-------|
 | Duration | `0.45s` |
-| Easing | `[0.4, 0, 0.2, 1]` |
-| Perspective | `1200px` (for flip/zoom) |
+| Easing | `[0.22, 1, 0.36, 1]` |
 | AnimatePresence mode | `"wait"` |
+
+With reduced motion enabled, the transition duration is `0.01s`.

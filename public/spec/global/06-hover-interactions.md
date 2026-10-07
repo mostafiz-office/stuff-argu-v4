@@ -50,6 +50,8 @@ Expandable card with grid-template-rows animation:
 | Default | `hsl(0 0% 100% / 0.9)` | Transparent |
 | Hover | `hsl(var(--pres-accent))` | `hsl(0 0% 100% / 0.1)` |
 
+HUD controls also move up by `1px` on hover and scale to `0.92` while pressed. Navigation dots enlarge to `1.35×`. All keyboard-focusable controls use a visible amber `3px` focus ring.
+
 ## 4. Keyword Badge Hover (Cover V1 — Framer Motion)
 
 | Property | Default | Hover |
@@ -57,3 +59,7 @@ Expandable card with grid-template-rows animation:
 | Scale | 1.0 | 1.18 |
 | Y offset | 0 | -10px |
 | Box Shadow | `0 0 8px hsl(var(--pres-accent) / 0.15)` | `0 0 35px hsl(var(--pres-accent) / 0.55)` |
+
+## 5. Presentation Actions
+
+`.presentation-action` is the shared CTA treatment. It lifts by `3px` and scales to `1.015` on hover, then compresses to `0.98` while pressed. Informational cards use restrained border, background, and shadow responses; video playback must never be triggered by hover.

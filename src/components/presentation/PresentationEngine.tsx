@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionConfig, useReducedMotion } from "framer-motion";
 import { SlideNavigation } from "./SlideNavigation";
 import { presentationEase, slideTransitionVariants, type PresentationTransition } from "@/lib/presentationMotion";
 import { presentationSound } from "@/lib/presentationSound";
@@ -37,6 +37,7 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
   onPrev: controlledOnPrev,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const reduceMotion = useReducedMotion();
   const totalSlides = slides.length;
 
   const isControlled = typeof controlledIndex === "number" && typeof controlledOnNavigate === "function";
@@ -106,6 +107,7 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
   const CurrentSlideComponent = slides[currentIndex];
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="relative w-screen h-screen overflow-hidden bg-pres-bg">
       {/* Global Noise Overlay Grain */}
       <div className="noise-overlay pointer-events-none" />
@@ -121,7 +123,7 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
             animate="center"
             exit="exit"
             transition={{
-              duration: 0.45,
+              duration: reduceMotion ? 0.01 : 0.45,
               ease: presentationEase,
             }}
             className="w-full h-full flex items-center justify-center"
@@ -142,5 +144,6 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
         />
       </div>
     </div>
+    </MotionConfig>
   );
 };
