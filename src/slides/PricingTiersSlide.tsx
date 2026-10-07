@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
+import { TierPlanDetail } from "@/slides/TierPlanDetail";
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Clock, ArrowLeft, Columns3 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
@@ -12,7 +13,9 @@ interface PricingTiersSlideProps {
 }
 
 export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
-  const [compareOpen, setCompareOpen] = useState(false);
+  const [overlay, setOverlay] = useState<null | "compare" | number>(null);
+  const compareOpen = overlay !== null;
+  const setCompareOpen = (open: boolean) => setOverlay(open ? "compare" : null);
 
   useEffect(() => {
     window.__comparisonOpen = compareOpen;
@@ -29,6 +32,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       window.__comparisonOpen = false;
     };
   }, [compareOpen]);
+
   const tiers = [
     {
       name: "Tier 2 — Growth",
@@ -112,13 +116,17 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
             {tiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <motion.div
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View ${tier.name} details`}
+                  onClick={(e) => { e.stopPropagation(); setOverlay(idx); }}
                   {...fadeUp(staggerDelay(idx, 0.18, 0.08))}
                   whileHover={{ y: -6, scale: 1.012 }}
                   whileTap={{ scale: 0.99 }}
-                  className={`relative flex flex-col h-full p-10 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
+                  className={`group cursor-pointer relative flex flex-col h-full p-10 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
                     tier.highlight
                       ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
-                      : "bg-pres-surface/75 border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/90"
+                      : "bg-pres-surface/75 border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                   }`}
                 >
                   {/* Best Value Badge */}
@@ -170,6 +178,9 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-6 font-heading text-[20px] font-semibold text-pres-accent opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
+                      View details →
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -197,11 +208,20 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Features comparison"
+          aria-label={overlay === "compare" ? "Features comparison" : "Plan details"}
           className="fixed inset-0 z-[200] bg-pres-bg"
           onClick={(e) => e.stopPropagation()}
         >
-          <TierDetailSlide />
+          {overlay === "compare" ? (
+            <TierDetailSlide />
+          ) : (
+            <TierPlanDetail
+              tiers={tiers}
+              index={overlay as number}
+              onSelect={(i) => setOverlay(i)}
+              onCompare={() => setOverlay("compare")}
+            />
+          )}
           <button
             type="button"
             autoFocus
