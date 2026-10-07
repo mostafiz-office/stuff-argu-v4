@@ -6,14 +6,12 @@
 - **Motion**: color and brightness transitions complete in 200ms without moving the table.
 
 ## Scrollbar
-- **Class**: `.tier-scroll` on the feature-rows container
-- **Width**: 14px (compensates for slide scale-down)
-- **Track**: `hsl(var(--pres-accent) / 0.08)`, 7px border-radius
-- **Thumb**: `hsl(var(--pres-accent) / 0.45)`, 7px border-radius, 2px inset
-- **Thumb hover**: `hsl(var(--pres-accent) / 0.7)`
-- **Firefox**: `scrollbar-width: auto`, `scrollbar-color` matching above
-- **Always visible**: `overflow-y: scroll` (not auto)
+- **Viewport**: `.comparison-scroll`, native scrollbar hidden
+- **Rail**: persistent 14px custom control at the right edge
+- **Thumb**: 112px high with live position derived from scroll progress
+- **Input**: wheel, trackpad, touch, Arrow Up/Down, Page Up/Down, Home/End, and pointer dragging on the rail
+- **Containment**: vertical input is contained by the comparison viewport and does not change slides
 
 ## Scroll fade indicator
-- Bottom gradient fade (60px) + bouncing chevrons when more content below
+- Bottom gradient fade (92px) + “Scroll for more” cue when more content remains
 - Hidden once user scrolls to bottom
