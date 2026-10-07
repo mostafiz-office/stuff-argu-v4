@@ -1,3 +1,4 @@
+import "@/types/navigation";
 import React, { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check, Volume2, VolumeX } from "lucide-react";
 import { toast } from "sonner";
