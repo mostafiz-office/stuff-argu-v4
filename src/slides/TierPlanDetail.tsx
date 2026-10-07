@@ -65,7 +65,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   key={t.name}
                   type="button"
                   onClick={() => onSelect(i)}
-                  className="rounded-full border border-pres-text/20 px-5 py-2.5 font-heading text-[18px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
+                  className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
                 >
                   {t.name.split(" — ")[1]}
                 </button>
@@ -74,14 +74,14 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
             <button
               type="button"
               onClick={onCompare}
-              className="rounded-full border border-pres-accent/60 px-5 py-2.5 font-heading text-[18px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg"
+              className="rounded-full border border-pres-accent/60 px-6 py-3 font-heading text-[22px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg"
             >
               Compare all plans
             </button>
           </div>
         </motion.div>
 
-        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[140px] flex flex-col justify-between">
+        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[56px]">
           {TIER_FEATURE_GROUPS.map((group, gi) => (
             <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.12, 0.08), 20)}>
               <div className="mb-3 font-heading text-[20px] font-bold uppercase tracking-[0.2em] text-pres-accent">
@@ -94,16 +94,16 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   return (
                     <div
                       key={row.feature}
-                      className={`flex items-center gap-3 border-b border-pres-text/10 py-[11px] ${off ? "opacity-45" : ""}`}
+                      className={`flex items-center gap-3 border-b border-pres-text/10 py-[14px] ${off ? "opacity-45" : ""}`}
                     >
                       {off ? (
-                        <X className="h-6 w-6 shrink-0 text-pres-text-dim" aria-label="Not included" />
+                        <X className="h-7 w-7 shrink-0 text-pres-text-dim" aria-label="Not included" />
                       ) : (
-                        <CheckCircle className="h-6 w-6 shrink-0 text-pres-accent" aria-label="Included" />
+                        <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
                       )}
-                      <span className="flex-1 text-[22px] leading-tight">{row.feature}</span>
+                      <span className="flex-1 text-[26px] leading-tight">{row.feature}</span>
                       {typeof v === "string" && (
-                        <span className="font-heading text-[22px] font-bold text-pres-accent">{v}</span>
+                        <span className="font-heading text-[26px] font-bold text-pres-accent">{v}</span>
                       )}
                     </div>
                   );
