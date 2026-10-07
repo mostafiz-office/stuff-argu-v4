@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, ChevronDown, X } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeIn, fadeUp, staggerDelay } from "@/lib/presentationMotion";
@@ -11,36 +11,25 @@ interface TierDetailSlideProps {
 
 export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
   const [hoveredColumn, setHoveredColumn] = useState<number | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
   const columns = [
     {
       name: "Tier 2 — Growth",
       price: "$4,299/mo",
-      color: "hsl(var(--pres-accent))",
-      textColor: "text-pres-accent",
-      bgColor: "bg-pres-accent/[0.06]",
-      borderColor: "border-pres-accent/30",
       badge: null,
-      tagline: null,
     },
     {
       name: "Tier 3.A — Skilled",
       price: "$6,800–8K/mo",
-      color: "#22c55e",
-      textColor: "text-green-400",
-      bgColor: "bg-green-500/[0.06]",
-      borderColor: "border-green-500/30",
       badge: "BEST VALUE",
-      tagline: null,
     },
     {
       name: "Tier 3.B — Leadership",
       price: "$7.5K–10K/mo",
-      color: "#c084fc",
-      textColor: "text-purple-400",
-      bgColor: "bg-purple-500/[0.06]",
-      borderColor: "border-purple-500/30",
       badge: "PREMIUM",
-      tagline: "Full Tech Management",
     },
   ];
 
@@ -51,32 +40,87 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
     leadership: boolean | string;
   };
 
-  const rows: FeatureRow[] = [
-    { feature: "Dedicated developer · 160 hrs/mo", growth: true, skilled: true, leadership: true },
-    { feature: "Weekly progress reports", growth: true, skilled: true, leadership: true },
-    { feature: "Daily standups & sync", growth: true, skilled: true, leadership: true },
-    { feature: "Sprint participation", growth: true, skilled: true, leadership: true },
-    { feature: "Task breakdown & delegation", growth: true, skilled: true, leadership: true },
-    { feature: "Team management scope", growth: "Up to 2", skilled: "3–5", leadership: "Up to 15" },
-    { feature: "Architecture decisions", growth: true, skilled: true, leadership: true },
-    { feature: "Dedicated project management", growth: false, skilled: false, leadership: true },
-    { feature: "CTO-level strategic oversight", growth: false, skilled: false, leadership: true },
-    { feature: "Priority Slack · 24/7 SLA", growth: "Slack only", skilled: true, leadership: "Versatile" },
-    { feature: "QA Automation Engineers", growth: false, skilled: false, leadership: "2" },
-    { feature: "Alim Expert Oversight", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
-    { feature: "Min. Developer Experience", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
-    { feature: "Onboarding Deposit", growth: "$2K", skilled: "$2K", leadership: "$2K" },
+  const groups: Array<{ label: string; rows: FeatureRow[] }> = [
+    {
+      label: "Delivery",
+      rows: [
+        { feature: "Dedicated developer · 160 hrs/mo", growth: true, skilled: true, leadership: true },
+        { feature: "Weekly progress reports", growth: true, skilled: true, leadership: true },
+        { feature: "Daily standups & sync", growth: true, skilled: true, leadership: true },
+        { feature: "Sprint participation", growth: true, skilled: true, leadership: true },
+        { feature: "Task breakdown & delegation", growth: true, skilled: true, leadership: true },
+      ],
+    },
+    {
+      label: "Team & Leadership",
+      rows: [
+        { feature: "Team management scope", growth: "Up to 2", skilled: "3–5", leadership: "Up to 15" },
+        { feature: "Architecture decisions", growth: "Limited", skilled: true, leadership: true },
+        { feature: "Dedicated project management", growth: false, skilled: false, leadership: true },
+        { feature: "CTO-level strategic oversight", growth: false, skilled: false, leadership: true },
+        { feature: "QA Automation Engineers", growth: false, skilled: false, leadership: "2" },
+      ],
+    },
+    {
+      label: "Support & Assurance",
+      rows: [
+        { feature: "Priority Slack · 24/7 SLA", growth: "Slack only", skilled: true, leadership: "Versatile" },
+        { feature: "Alim Expert Oversight", growth: "2 hrs/wk", skilled: "3 hrs/wk", leadership: "4 hrs/wk" },
+        { feature: "Min. Developer Experience", growth: "4+ yrs", skilled: "6+ yrs", leadership: "8+ yrs" },
+        { feature: "Onboarding Deposit", growth: "$2K", skilled: "$2K", leadership: "$2K" },
+      ],
+    },
   ];
 
-  const renderCell = (val: boolean | string, colColor: string) => {
+  const updateScrollState = useCallback(() => {
+    const node = scrollRef.current;
+    if (!node) return;
+    const available = node.scrollHeight - node.clientHeight;
+    setScrollProgress(available > 0 ? node.scrollTop / available : 0);
+    setCanScroll(available > 1 && node.scrollTop < available - 2);
+  }, []);
+
+  const setScrollFromPointer = useCallback((clientY: number) => {
+    const node = scrollRef.current;
+    const rail = railRef.current;
+    if (!node || !rail) return;
+    const bounds = rail.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (clientY - bounds.top) / bounds.height));
+    node.scrollTop = ratio * (node.scrollHeight - node.clientHeight);
+  }, []);
+
+  const handleRailPointer = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setScrollFromPointer(event.clientY);
+  }, [setScrollFromPointer]);
+
+  const handleScrollKey = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    const node = scrollRef.current;
+    if (!node) return;
+    const increments: Record<string, number> = {
+      ArrowDown: 92,
+      ArrowUp: -92,
+      PageDown: node.clientHeight * 0.8,
+      PageUp: node.clientHeight * -0.8,
+      Home: -node.scrollHeight,
+      End: node.scrollHeight,
+    };
+    const amount = increments[event.key];
+    if (amount === undefined) return;
+    event.preventDefault();
+    event.stopPropagation();
+    node.scrollBy({ top: amount, behavior: "smooth" });
+  }, []);
+
+  const renderCell = (val: boolean | string, column: number) => {
     if (val === true) {
-      return <CheckCircle className="w-4 h-4 mx-auto" style={{ color: colColor }} />;
+      return <CheckCircle className="comparison-value-icon mx-auto" aria-label="Included" />;
     }
     if (val === false) {
-      return <X className="w-4 h-4 mx-auto text-red-500/80" />;
+      return <X className="comparison-value-icon comparison-value-negative mx-auto" aria-label="Not included" />;
     }
     return (
-      <span className="font-bold text-[21px]" style={{ color: colColor }}>
+      <span className="comparison-value-text font-bold" data-column-value={column}>
         {val}
       </span>
     );
@@ -84,97 +128,130 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
 
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
+      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-pres-text font-sans flex items-center justify-center">
         <SlideHeader />
 
         {/* Ambient Glow */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-pres-accent/5 blur-[150px] pointer-events-none" />
 
-        {/* Flexbox Centered Main Content Wrapper */}
-        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center h-[820px]">
+        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col h-[890px] pt-[24px]">
           {/* Title Area */}
-          <div className="mb-4">
+          <div className="mb-5">
             <motion.h1
               {...fadeUp(0)}
-              className="pres-title-compact font-bold font-heading tracking-tight text-white"
+              className="pres-title-compact font-bold font-heading text-pres-text"
             >
               Features <span className="text-pres-accent">Comparison</span>
             </motion.h1>
           </div>
 
-          {/* Table Container */}
           <div
-            className="comparison-table flex-1 flex flex-col justify-between"
+            className="comparison-table relative flex-1 min-h-0 flex flex-col"
             data-hovered-column={hoveredColumn ?? "none"}
             onMouseLeave={() => setHoveredColumn(null)}
           >
-            {/* Header Row */}
-            <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2 border-b border-white/10">
-              <div className="text-left font-heading font-semibold text-[19px] text-pres-text-dim uppercase tracking-wider pl-4">
-                Features &amp; Deliverables
+            <div className="comparison-header grid grid-cols-[1.35fr_repeat(3,1fr)] items-stretch border-b border-pres-text/10">
+              <div className="flex flex-col justify-end pb-5 pl-6">
+                <span className="font-heading font-semibold text-[21px] text-pres-text-dim uppercase">
+                  Compare what you get
+                </span>
+                <span className="mt-2 text-[18px] text-pres-text-muted">Scroll to explore all 14 features</span>
               </div>
               {columns.map((col, idx) => (
                 <motion.div
-                  key={idx}
+                  key={col.name}
                   {...fadeUp(staggerDelay(idx, 0.12, 0.05), 12)}
                   onMouseEnter={() => setHoveredColumn(idx)}
                   data-column={idx}
-                  className={`tier-column text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
+                  className="tier-column comparison-tier-header relative flex flex-col items-center justify-end text-center px-6 pb-5 pt-3 mx-2 border-x border-t"
                 >
                   {col.badge && (
-                    <span className="inline-block text-[25px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
+                    <span className="comparison-tier-badge inline-flex items-center h-[30px] text-[14px] font-bold px-3 mb-2">
                       {col.badge}
                     </span>
                   )}
-                  <div className="font-heading font-bold text-[25px] text-white">{col.name}</div>
-                  <div className={`text-[25px] font-semibold ${col.textColor}`}>{col.price}</div>
+                  <div className="font-heading font-bold text-[31px] leading-tight text-pres-text">{col.name}</div>
+                  <div className="comparison-tier-price text-[28px] font-semibold mt-2">{col.price}</div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Rows */}
-            <div className="flex-1 flex flex-col justify-evenly">
-              {rows.map((row, rIdx) => (
-                <motion.div
-                  key={rIdx}
-                  {...fadeIn(staggerDelay(rIdx, 0.18, 0.018))}
-                  className={`comparison-row grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 rounded ${
-                    rIdx % 2 === 0 ? "bg-white/[0.01]" : ""
-                  }`}
-                >
-                  {/* Feature Label */}
-                  <div className="text-left font-medium text-[21px] text-white/90 pl-4">
-                    {row.feature}
-                  </div>
+            <div className="relative flex-1 min-h-0 pr-7">
+              <div
+                ref={scrollRef}
+                className="comparison-scroll h-full overflow-y-auto overscroll-contain outline-none"
+                tabIndex={0}
+                role="region"
+                aria-label="Scrollable tier features comparison"
+                onScroll={updateScrollState}
+                onWheel={(event) => event.stopPropagation()}
+                onTouchMove={(event) => event.stopPropagation()}
+                onKeyDown={handleScrollKey}
+              >
+                {groups.map((group, groupIndex) => (
+                  <section key={group.label} aria-labelledby={`comparison-group-${groupIndex}`}>
+                    <div
+                      id={`comparison-group-${groupIndex}`}
+                      className="comparison-group-label sticky top-0 z-10 flex items-center h-[58px] px-6 font-heading font-bold text-[22px] uppercase"
+                    >
+                      {group.label}
+                    </div>
+                    {group.rows.map((row, rowIndex) => (
+                      <motion.div
+                        key={row.feature}
+                        {...fadeIn(staggerDelay(groupIndex * 5 + rowIndex, 0.18, 0.018))}
+                        className="comparison-row grid grid-cols-[1.35fr_repeat(3,1fr)] items-stretch min-h-[86px] border-b border-pres-text/5"
+                      >
+                        <div className="flex items-center text-left font-medium text-[24px] leading-snug text-pres-text/90 px-6">
+                          {row.feature}
+                        </div>
+                        {([row.growth, row.skilled, row.leadership] as Array<boolean | string>).map((value, columnIndex) => (
+                          <div
+                            key={columnIndex}
+                            onMouseEnter={() => setHoveredColumn(columnIndex)}
+                            data-column={columnIndex}
+                            className="tier-column comparison-value-cell flex items-center justify-center text-center mx-2 px-3"
+                          >
+                            {renderCell(value, columnIndex)}
+                          </div>
+                        ))}
+                      </motion.div>
+                    ))}
+                  </section>
+                ))}
+              </div>
 
-                  {/* Growth */}
-                  <div
-                    onMouseEnter={() => setHoveredColumn(0)}
-                    data-column="0"
-                    className="tier-column text-center mx-1 py-0.5 rounded"
-                  >
-                    {renderCell(row.growth, columns[0].color)}
-                  </div>
+              <div
+                ref={railRef}
+                className="comparison-scroll-rail absolute top-4 bottom-4 right-1 w-[14px] cursor-pointer"
+                role="scrollbar"
+                aria-label="Feature comparison scroll position"
+                aria-orientation="vertical"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={Math.round(scrollProgress * 100)}
+                tabIndex={0}
+                onPointerDown={handleRailPointer}
+                onPointerMove={(event) => {
+                  if (event.currentTarget.hasPointerCapture(event.pointerId)) setScrollFromPointer(event.clientY);
+                }}
+                onKeyDown={handleScrollKey}
+              >
+                <div
+                  className="comparison-scroll-thumb absolute left-[2px] right-[2px] h-[112px]"
+                  style={{ top: `calc(${scrollProgress * 100}% - ${scrollProgress * 112}px)` }}
+                />
+              </div>
 
-                  {/* Skilled */}
-                  <div
-                    onMouseEnter={() => setHoveredColumn(1)}
-                    data-column="1"
-                    className="tier-column text-center mx-1 py-0.5 rounded"
-                  >
-                    {renderCell(row.skilled, columns[1].color)}
+              <div className="comparison-scroll-fade pointer-events-none absolute inset-x-0 bottom-0 h-[92px]" />
+              {canScroll && (
+                <div className="absolute bottom-3 left-[14%] right-0 flex justify-center pointer-events-none">
+                  <div className="comparison-scroll-cue flex items-center gap-2 px-4 py-2 text-[17px] font-semibold">
+                    <ChevronDown className="w-5 h-5" />
+                    Scroll for more
                   </div>
-
-                  {/* Leadership */}
-                  <div
-                    onMouseEnter={() => setHoveredColumn(2)}
-                    data-column="2"
-                    className="tier-column text-center mx-1 py-0.5 rounded"
-                  >
-                    {renderCell(row.leadership, columns[2].color)}
-                  </div>
-                </motion.div>
-              ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
