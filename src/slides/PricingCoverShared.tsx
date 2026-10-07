@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Check, Linkedin } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import marekImg from "@/assets/marek.png";
+import marekImg from "@/assets/marek.webp";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 
 export const MAREK_URL =

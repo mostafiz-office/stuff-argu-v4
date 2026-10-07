@@ -13,6 +13,9 @@ import { PricingHowItWorksSlide } from "@/slides/PricingHowItWorksSlide";
 import { StarterTierSlideV9Clone } from "@/slides/StarterTierSlideV9Clone";
 import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
+import { preloadSlideImages } from "@/lib/preloadImages";
+
+preloadSlideImages();
 
 const Index = () => {
   // Alternate between the two available covers on every full page load.

@@ -1,23 +1,18 @@
 # Global Asset Preloading
 
 ## 1. Strategy
+All slide images are listed in `src/lib/preloadImages.ts` and downloaded + decoded as soon as the deck loads, so later slides (e.g. slide 5 Alim photo) show instantly. Any new slide image must be added to that list.
 
-Images imported via ES6 `import` are bundled by Vite and automatically optimized.
+## 2. Images
+| Asset | Path | Used On | Size |
+|-------|------|---------|------|
+| Marek portrait | `src/assets/marek.webp` | Cover (slide 1) | ~100 KB |
+| Company logo | `src/assets/riseup-asia-logo.png` | Every slide | ~40 KB |
+| Alim photo | `src/assets/alim-updated.webp` (1200×800) | Slide 5 | ~48 KB (was 1.4 MB PNG) |
+| QR code | `src/assets/qr-code.png` | Slide 11 | ~34 KB |
 
-## 2. Critical Images
+## 3. Priority
+Cover portrait and logo load with high priority; the rest follow in the background.
 
-| Asset | Import Path | Used On |
-|-------|-------------|---------|
-| Company logo | `src/assets/riseup-asia-logo.png` | Every slide (SlideHeader) |
-| CEO portrait | `src/assets/alim-updated.png` | Cover V3, Cover V1, Premium Expert |
-| QR Code | `src/assets/qr-code.png` | CTA slide |
-| Claudio photo | `src/assets/testimonials/claudio-c.png` | Cover V3, Cover V1 |
-| Konstantinos photo | `src/assets/testimonials/konstantinos-p.png` | Cover V3, Cover V1 |
-
-## 3. Loading Priority
-
-Cover slide images use `loading="eager"` and `fetchPriority="high"` for instant display.
-
-## 4. Image Optimization
-
-All images are PNG with transparency. Vite handles content hashing for cache busting.
+## 4. Caching
+`public/.htaccess` caches images for 1 year. Vite hashes filenames per build, so updated images still appear.
