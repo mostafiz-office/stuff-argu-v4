@@ -10,6 +10,8 @@ import {
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { RocketAnimation } from "@/components/presentation/RocketAnimation";
+import { presentationSound } from "@/lib/presentationSound";
+import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 import {
   Tooltip,
   TooltipContent,
@@ -41,11 +43,13 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
     window.__slideNavigationGate = {
       trigger: () => {
         if (gateStep === 0) {
+          presentationSound.play("reveal");
           setShowAlimUpsell(true);
           setGateStep(1);
           return true; // handled / blocked advance
         }
         if (gateStep === 1) {
+          presentationSound.play("launch");
           setRocketActive(true);
           setGateStep(2);
           return true; // handled / blocked advance
@@ -119,9 +123,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
             {/* Header row with Title and Step Guide */}
             <div className="flex items-start justify-between gap-8 mb-10">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                {...fadeUp(0)}
                 className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
                 Zero Risk. <span className="text-pres-accent">All Upside.</span>
@@ -171,9 +173,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
             <div className="flex gap-10 w-full items-start">
               {/* Left Column: Pricing Card (w: 520px) */}
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.25 }}
+                {...fadeUp(0.18)}
                 className="w-[600px] flex-shrink-0"
               >
                 <div>
@@ -221,7 +221,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           key={fIdx}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.35, delay: 0.35 + fIdx * 0.05 }}
+                          transition={{ duration: 0.35, delay: staggerDelay(fIdx, 0.28, 0.045) }}
                           className="flex items-center gap-2.5"
                         >
                           <CheckCircle className="w-6 h-6 text-pres-accent shrink-0" />
@@ -274,14 +274,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     <Tooltip key={idx}>
                       <TooltipTrigger asChild>
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.85 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 220,
-                            damping: 18,
-                            delay: 0.35 + idx * 0.1,
-                          }}
+                          {...scaleIn(staggerDelay(idx, 0.22, 0.07))}
                           className="py-7 px-4 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md transition-all cursor-pointer group text-center shadow-lg"
                         >
                           <div className="text-[56px] font-bold font-heading text-pres-accent metric-glow leading-none mb-3">
@@ -308,7 +301,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         key={idx}
                         initial={{ opacity: 0, x: 16 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 }}
+                        transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
                         className="px-6 py-5 rounded-2xl bg-pres-surface/60 border border-white/10 flex items-center gap-3.5 backdrop-blur-md"
                       >
                         <div className="w-12 h-12 rounded-xl bg-pres-accent/15 border border-pres-accent/25 flex items-center justify-center text-pres-accent shrink-0">

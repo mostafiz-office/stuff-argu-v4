@@ -31,7 +31,7 @@ export const RocketAnimation: React.FC<RocketAnimationProps> = ({
   return (
     <AnimatePresence>
       {isPlaying && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-30 flex items-center justify-center">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-30 flex items-end justify-end pr-6 pb-8">
           {/* Flame / spark particles */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, y: 100 }}
@@ -41,7 +41,7 @@ export const RocketAnimation: React.FC<RocketAnimationProps> = ({
               y: [100, 50, 0, -150],
             }}
             transition={{ duration: 2.2, ease: "easeOut" }}
-            className="absolute bottom-10 w-24 h-24 rounded-full bg-gradient-to-t from-amber-500/40 via-orange-500/20 to-transparent blur-xl"
+            className="absolute bottom-8 right-10 w-24 h-24 rounded-full bg-gradient-to-t from-amber-500/40 via-orange-500/20 to-transparent blur-xl"
           />
 
           {/* Flying Rocket Container */}

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PricingSavingsSlideProps {
   onNavigate?: (index: number) => void;
@@ -70,9 +71,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
             {/* Title Area - Clean, focused headline without redundant explanation */}
             <div className="mb-10">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                {...fadeUp(0)}
                 className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight text-white mb-4"
               >
                 Pay Less. <span className="text-pres-accent">Ship More.</span>
@@ -81,9 +80,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              {...fadeUp(0.2)}
               className="p-9 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[480px]"
             >
               <div className="text-[64px] font-bold font-heading text-pres-accent metric-glow leading-none mb-3">80%</div>
@@ -96,10 +93,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
             {comparisons.map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-                className="px-7 py-5 rounded-2xl bg-pres-surface/70 border border-white/10 backdrop-blur-md shadow-lg"
+                {...fadeUp(staggerDelay(idx, 0.18, 0.07), 14)}
+                className="px-7 py-5 rounded-2xl bg-pres-surface/70 border border-white/10 hover:border-pres-accent/25 backdrop-blur-md shadow-lg transition-[border-color,background-color] duration-200"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
