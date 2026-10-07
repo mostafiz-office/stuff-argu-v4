@@ -47,7 +47,6 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const canGoNext = currentIndex < totalSlides - 1;
 
   const goPrev = useCallback(() => {
-    presentationSound.play("click");
     if (onPrev) {
       onPrev();
       return;
@@ -58,7 +57,6 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   }, [canGoPrev, currentIndex, onNavigate, onPrev]);
 
   const goNext = useCallback(() => {
-    presentationSound.play("click");
     if (onNext) {
       onNext();
       return;
