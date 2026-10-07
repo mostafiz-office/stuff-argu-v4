@@ -25,8 +25,8 @@
 | 21 | `slide-01/` | Cover V3 (Bold) |
 | 22 | `slide-02/` | Problem story sequence (slides 2–4) |
 | 23 | `slide-13/` | Solution Transition (runtime slide 5) |
-| 24 | `slide-03/` | Pricing Tiers (runtime slide 6) |
-| 25 | `slide-04/` | Features Comparison (runtime slide 7) |
+| 24 | `slide-03/` | Pricing Tiers (runtime slide 9) |
+| 25 | `slide-04/` | Features Comparison (runtime slide 10) |
 | 26 | `slide-05/` | Premium Expert |
 | 27 | `slide-06/` | Cost Savings |
 | 28 | `slide-07/` | What's Included |
@@ -35,3 +35,6 @@
 | 31 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
 | 32 | `slide-11/` | Starter Risk Reversal |
 | 33 | `slide-12/` | CTA |
+| 34 | `slide-14/` | Talent Pyramid (runtime slide 6) |
+| 35 | `slide-15/` | Delivery Promises (runtime slide 7) |
+| 36 | `slide-16/` | Product Health (runtime slide 8) |

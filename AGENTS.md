@@ -7,3 +7,4 @@
 - Keep dense feature comparisons inside a dedicated scroll region with persistent tier context; this preserves readable presentation-scale type without expanding the slide canvas.
 - Present the three core customer problems as separate photo-led slides; one dominant problem per slide keeps the sales narrative focused and readable.
 - Place a title-only solution bridge immediately after the three problem slides; the pause separates problem framing from pricing.
+- Keep the post-pyramid promises as two slides of three stacked statement bands, one claim each; extra paragraphs or icons would repeat the dense-text problem the deck already fixed.
