@@ -1,5 +1,10 @@
 # Slide 04 — Hover & Scroll Interactions
 
+## Comparison highlighting
+- **Row hover**: raises the full feature row to a clearly visible neutral surface tint.
+- **Column hover**: hovering a tier header or any cell highlights the corresponding header and all cells in that tier color.
+- **Motion**: color and brightness transitions complete in 200ms without moving the table.
+
 ## Scrollbar
 - **Class**: `.tier-scroll` on the feature-rows container
 - **Width**: 14px (compensates for slide scale-down)
