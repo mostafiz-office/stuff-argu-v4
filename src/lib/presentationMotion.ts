@@ -20,10 +20,14 @@ export const fadeIn = (delay = 0) => ({
   transition: entranceTransition(delay, 0.42),
 });
 
-export const scaleIn = (delay = 0) => ({
+export const scaleIn = (delay = 0): {
+  initial: { opacity: number; scale: number };
+  animate: { opacity: number; scale: number };
+  transition: Transition;
+} => ({
   initial: { opacity: 0, scale: 0.94 },
   animate: { opacity: 1, scale: 1 },
-  transition: { ...entranceTransition(delay, 0.48), type: "spring", stiffness: 180, damping: 20 },
+  transition: { delay, type: "spring", stiffness: 180, damping: 20 },
 });
 
 export const staggerDelay = (index: number, start = 0.18, step = 0.07) => start + index * step;

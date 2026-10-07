@@ -43,7 +43,9 @@ export const presentationSound = {
   isMuted: () => muted,
   subscribe(listener: (nextMuted: boolean) => void) {
     listeners.add(listener);
-    return () => listeners.delete(listener);
+    return () => {
+      listeners.delete(listener);
+    };
   },
   setMuted(nextMuted: boolean) {
     muted = nextMuted;
