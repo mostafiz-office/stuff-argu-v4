@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Award, CheckCircle, Clock } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PricingTiersSlideProps {
   onNavigate?: (index: number) => void;
@@ -79,9 +80,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
           {/* Title Area - Clean, focused headline without redundant explanation */}
           <div className="mb-12">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              {...fadeUp(0)}
               className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               End Stalled Projects: <span className="text-pres-accent">Pick Your Tier</span>
@@ -93,10 +92,10 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
             {tiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.25 + idx * 0.1 }}
-                  className={`relative flex flex-col h-full p-10 rounded-3xl border transition-all duration-300 backdrop-blur-md shadow-2xl ${
+                  {...fadeUp(staggerDelay(idx, 0.18, 0.08))}
+                  whileHover={{ y: -6, scale: 1.012 }}
+                  whileTap={{ scale: 0.99 }}
+                  className={`relative flex flex-col h-full p-10 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
                     tier.highlight
                       ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
                       : "bg-pres-surface/75 border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/90"

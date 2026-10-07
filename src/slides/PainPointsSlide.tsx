@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PainPointsSlideProps {
   onNavigate?: (index: number) => void;
@@ -68,9 +69,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
           <div className="mb-12">
             <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              {...fadeUp(0)}
               className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
               Stop Debugging at 2 AM. <span className="text-pres-accent">Fix It For Good.</span>
@@ -84,10 +83,8 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.25 + idx * 0.1 }}
-                  className={`p-9 rounded-3xl border ${item.accentBorder} ${item.accentBg} backdrop-blur-md flex flex-col shadow-2xl`}
+                  {...fadeUp(staggerDelay(idx, 0.18, 0.08))}
+                  className={`p-9 rounded-3xl border ${item.accentBorder} ${item.accentBg} backdrop-blur-md flex flex-col shadow-2xl transition-[border-color,background-color,box-shadow] duration-200 hover:border-pres-accent/40 hover:shadow-[0_18px_45px_hsl(var(--pres-bg)/0.45)]`}
                 >
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border mb-5 ${item.accentBadge}`}>
                     <Icon className="w-8 h-8" />
