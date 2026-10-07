@@ -1,4 +1,4 @@
-# Slide 04 — Feature Comparison
+# Slide 04 — Features Comparison
 **Component**: `TierDetailSlide` → `src/slides/TierDetailSlide.tsx`
 ## Overview
-4-column scrollable feature table comparing Growth, Skilled, and Leadership tiers across 14 features. Uses a persistent custom right-edge scroll rail with a live thumb as the required always-visible scroll indicator, while the native browser scrollbar stays hidden to avoid duplicate rails, plus the "Scroll for more" prompt and bottom fade gradient.
+4-column feature table comparing Growth, Skilled, and Leadership tiers across 14 features. Tier labels use text-only badges. Hovering a row highlights the full row, while hovering a tier header or cell highlights that tier's complete column.

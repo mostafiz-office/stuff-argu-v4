@@ -78,7 +78,7 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
             <p className="text-[26px] text-pres-text-muted mt-3">Three problems that quietly drain your team every month.</p>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-3 gap-10 w-full items-stretch">
             {painPoints.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -87,14 +87,14 @@ export const PainPointsSlide: React.FC<PainPointsSlideProps> = () => {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 + idx * 0.1 }}
-                  className={`p-10 rounded-3xl border ${item.accentBorder} ${item.accentBg} backdrop-blur-md flex flex-col shadow-2xl min-h-[440px]`}
+                  className={`p-9 rounded-3xl border ${item.accentBorder} ${item.accentBg} backdrop-blur-md flex flex-col shadow-2xl`}
                 >
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border mb-7 ${item.accentBadge}`}>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border mb-5 ${item.accentBadge}`}>
                     <Icon className="w-8 h-8" />
                   </div>
-                  <h3 className="text-[32px] font-bold font-heading text-white mb-3 leading-tight">{item.title}</h3>
+                  <h3 className="text-[32px] font-bold font-heading text-white mb-2 leading-tight">{item.title}</h3>
                   <p className="text-[22px] text-pres-text-muted leading-snug">{item.short}</p>
-                  <div className="mt-auto pt-8">
+                  <div className="mt-8 pt-6 border-t border-white/5">
                     <div className="text-[60px] font-bold font-heading text-pres-accent leading-none">{item.statMetric}</div>
                     <div className="text-[18px] uppercase tracking-wider text-pres-text-dim mt-2">{item.statLabel}</div>
                   </div>

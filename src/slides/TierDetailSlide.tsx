@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, X } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
@@ -9,6 +9,7 @@ interface TierDetailSlideProps {
 }
 
 export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
+  const [hoveredColumn, setHoveredColumn] = useState<number | null>(null);
   const columns = [
     {
       name: "Tier 2 — Growth",
@@ -27,7 +28,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
       textColor: "text-green-400",
       bgColor: "bg-green-500/[0.06]",
       borderColor: "border-green-500/30",
-      badge: "⭐ BEST VALUE",
+      badge: "BEST VALUE",
       tagline: null,
     },
     {
@@ -37,8 +38,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
       textColor: "text-purple-400",
       bgColor: "bg-purple-500/[0.06]",
       borderColor: "border-purple-500/30",
-      badge: "👑 PREMIUM",
-      tagline: "✨ Full Tech Management",
+      badge: "PREMIUM",
+      tagline: "Full Tech Management",
     },
   ];
 
@@ -98,12 +99,16 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
               transition={{ duration: 0.5 }}
               className="text-[60px] leading-[1.08] font-bold font-heading tracking-tight text-white"
             >
-              Feature <span className="text-pres-accent">Comparison</span>
+              Features <span className="text-pres-accent">Comparison</span>
             </motion.h1>
           </div>
 
           {/* Table Container */}
-          <div className="flex-1 flex flex-col justify-between">
+          <div
+            className="comparison-table flex-1 flex flex-col justify-between"
+            data-hovered-column={hoveredColumn ?? "none"}
+            onMouseLeave={() => setHoveredColumn(null)}
+          >
             {/* Header Row */}
             <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2 border-b border-white/10">
               <div className="text-left font-heading font-semibold text-[19px] text-pres-text-dim uppercase tracking-wider pl-4">
@@ -115,7 +120,9 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
-                  className={`text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
+                  onMouseEnter={() => setHoveredColumn(idx)}
+                  data-column={idx}
+                  className={`tier-column text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
                 >
                   {col.badge && (
                     <span className="inline-block text-[25px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
@@ -136,7 +143,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.35, delay: 0.25 + rIdx * 0.02 }}
-                  className={`grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 hover:bg-white/[0.02] transition-colors rounded ${
+                  className={`comparison-row grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 rounded ${
                     rIdx % 2 === 0 ? "bg-white/[0.01]" : ""
                   }`}
                 >
@@ -146,17 +153,29 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   </div>
 
                   {/* Growth */}
-                  <div className="text-center mx-1 py-0.5">
+                  <div
+                    onMouseEnter={() => setHoveredColumn(0)}
+                    data-column="0"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
+                  >
                     {renderCell(row.growth, columns[0].color)}
                   </div>
 
                   {/* Skilled */}
-                  <div className="text-center mx-1 py-0.5">
+                  <div
+                    onMouseEnter={() => setHoveredColumn(1)}
+                    data-column="1"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
+                  >
                     {renderCell(row.skilled, columns[1].color)}
                   </div>
 
                   {/* Leadership */}
-                  <div className="text-center mx-1 py-0.5">
+                  <div
+                    onMouseEnter={() => setHoveredColumn(2)}
+                    data-column="2"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
+                  >
                     {renderCell(row.leadership, columns[2].color)}
                   </div>
                 </motion.div>
