@@ -12,6 +12,8 @@ const TRANSITION_STYLES: PresentationTransition[] = [
   "fade",
   "zoom",
   "rise",
+  "fade",
+  "zoom",
   "slide",
   "fade",
   "slide",

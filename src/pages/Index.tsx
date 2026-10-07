@@ -5,6 +5,7 @@ import { PricingCoverV1 } from "@/slides/PricingCoverV1";
 import { OutagePanicSlide, FragileCodeSlide, HiringSinkholeSlide } from "@/slides/PainPointsSlide";
 import { SolutionTransitionSlide } from "@/slides/SolutionTransitionSlide";
 import { TalentPyramidSlide } from "@/slides/TalentPyramidSlide";
+import { DeliveryPromisesSlide, ProductHealthSlide } from "@/slides/PromiseBandsSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
@@ -103,6 +104,8 @@ const Index = () => {
       HiringSinkholeSlide,
       SolutionTransitionSlide,
       TalentPyramidSlide,
+      DeliveryPromisesSlide,
+      ProductHealthSlide,
       PricingTiersSlide,
       TierDetailSlide,
       PremiumExpertSlideV2,

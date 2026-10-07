@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Root index for the RiseUp Asia pricing deck presentation specification. This spec tree documents every visual element, animation, layout coordinate, and content data structure used across the 14-slide pricing deck built with React 18, Vite, Tailwind CSS, and Framer Motion.
+Root index for the RiseUp Asia pricing deck presentation specification. This spec tree documents every visual element, animation, layout coordinate, and content data structure used across the 17-slide pricing deck built with React 18, Vite, Tailwind CSS, and Framer Motion.
 
 ---
 
