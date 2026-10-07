@@ -8,5 +8,6 @@ export interface SlideNavigationGate {
 declare global {
   interface Window {
     __slideNavigationGate?: SlideNavigationGate;
+    __comparisonOpen?: boolean;
   }
 }

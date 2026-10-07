@@ -7,7 +7,7 @@ import { SolutionTransitionSlide } from "@/slides/SolutionTransitionSlide";
 import { TalentPyramidSlide } from "@/slides/TalentPyramidSlide";
 import { DeliveryPromisesSlide, ProductHealthSlide } from "@/slides/PromiseBandsSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
-import { TierDetailSlide } from "@/slides/TierDetailSlide";
+import { WhoWeAreSlide, BrandLogoSlide } from "@/slides/IdentitySlides";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
 import { ExpertValuationBreakdownSlide } from "@/slides/ExpertValuationBreakdownSlide";
 import { PricingSavingsSlide } from "@/slides/PricingSavingsSlide";
@@ -106,8 +106,9 @@ const Index = () => {
       TalentPyramidSlide,
       DeliveryPromisesSlide,
       ProductHealthSlide,
+      WhoWeAreSlide,
+      BrandLogoSlide,
       PricingTiersSlide,
-      TierDetailSlide,
       PremiumExpertSlideV2,
       ExpertValuationBreakdownSlide,
       WhatsIncludedSlide,

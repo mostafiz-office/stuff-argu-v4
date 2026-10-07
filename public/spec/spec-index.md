@@ -38,3 +38,8 @@
 | 34 | `slide-14/` | Talent Pyramid (runtime slide 6) |
 | 35 | `slide-15/` | Delivery Promises (runtime slide 7) |
 | 36 | `slide-16/` | Product Health (runtime slide 8) |
+
+## 2026-10-07 — Identity slides + comparison on demand (18 slides)
+- Slide 9 "Who we are?" (giant amber question mark), slide 10 Riseup Asia logo.
+- Features Comparison removed from the slide sequence; opened only via the "Compare pricing" button on slide 11 (Pricing Tiers) as a full-screen overlay. Esc / "Back to pricing" closes; deck keys are suspended while open.
+- Starter Tier gate now at slide 16.
