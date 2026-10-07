@@ -110,7 +110,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 </div>
                 <div className="flex items-center justify-between text-[22px]">
                   <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>
-                  <span className="text-pres-accent font-bold">RiseUp {item.riseUpRate}</span>
+                  <span className="text-pres-accent font-bold">Riseup Asia LLC {item.riseUpRate}</span>
                 </div>
               </motion.div>
             ))}
