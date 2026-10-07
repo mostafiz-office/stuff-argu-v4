@@ -412,9 +412,11 @@
 }
 
 .promise-band-rule {
+  display: block;
+  flex: 0 0 1px;
   width: 1px;
   height: 58px;
-  background: hsl(var(--pres-text) / 0.22);
+  background: hsl(var(--pres-text) / 0.3);
 }
 
 @media (prefers-reduced-motion: reduce) {

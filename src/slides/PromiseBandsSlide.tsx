@@ -44,7 +44,7 @@ const PromiseBands: React.FC<PromiseBandsProps> = ({ eyebrow, title, bands }) =>
           {bands.map((band, i) => (
             <motion.div
               key={band.index}
-              {...fadeUp(staggerDelay(i, 0.2, 0.08), 26)}
+              {...fadeUp(staggerDelay(i, 0.16, 0.07), 26)}
               className="promise-band"
             >
               <span className="promise-band-index font-heading">{band.index}</span>
