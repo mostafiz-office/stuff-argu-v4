@@ -1,41 +1,38 @@
 {
-  "slide": "02",
-  "component": "PricingCoverV1",
-  "title": "Cover V1 — Clean & Minimal",
-  "category": {
-    "label": "Staff Augmentation",
-    "icon": "Users"
-  },
-  "headline": {
-    "line1": "<accent>Elite</accent> Engineers",
-    "line2": "On Demand"
-  },
-  "body": "<strong>Top 5% vetted</strong> talent. Hire in as fast as <strong>20 minutes</strong>.\n60% savings vs US/UK rates — no hidden fees.",
-  "keywords": [
-    { "label": "Top 5% Talent", "x": 1420, "y": 160 },
-    { "label": "Hire in 20 Minutes", "x": 780, "y": 640 },
-    { "label": "7-Stage Vetted", "x": 1420, "y": 420 }
-  ],
-  "recommendations": [
+  "sequence": "problem-story",
+  "slides": [
     {
-      "name": "Konstantinos P.",
-      "title": "Senior Serverless Engineer",
-      "quote": "\"Solid and high quality work... the smoothest on-boarding process I have had in my whole career.\"",
-      "image": "konstantinos-p.png",
-      "x": 460, "y": 60
+      "runtimeSlide": 2,
+      "eyebrow": "Problem 01 · Production Risk",
+      "lead": "The 2 AM",
+      "emphasis": "Outage Panic",
+      "short": "Production breaks while you sleep.",
+      "metric": "$18,500/mo",
+      "metricLabel": "Outage & Churn Bleed",
+      "consequence": "One incident can erase months of engineering savings.",
+      "image": "problem-outage.jpg"
     },
     {
-      "name": "Claudio C.",
-      "title": "Engineering Leader | AI-Powered Platforms",
-      "quote": "\"A skillful professional and kind communicator.\"",
-      "image": "claudio-c.png",
-      "x": 1150, "y": 780
+      "runtimeSlide": 3,
+      "eyebrow": "Problem 02 · Technical Debt",
+      "lead": "Fragile Vibe &",
+      "emphasis": "AI Code",
+      "short": "Unreviewed AI code piles up debt.",
+      "metric": "3× Slower",
+      "metricLabel": "Velocity & Bug Bleed",
+      "consequence": "Fast shortcuts become slow releases when architecture is ignored.",
+      "image": "problem-fragile-code.jpg"
+    },
+    {
+      "runtimeSlide": 4,
+      "eyebrow": "Problem 03 · Hiring Drag",
+      "lead": "The 90-Day",
+      "emphasis": "Hiring Sinkhole",
+      "short": "Three months lost to unvetted hires.",
+      "metric": "Save 80%",
+      "metricLabel": "Recruiting Time Saved",
+      "consequence": "Every empty engineering seat delays the roadmap.",
+      "image": "problem-hiring.jpg"
     }
-  ],
-  "cta": [
-    { "text": "Book a Call", "icon": "ArrowRight", "url": "https://client.rasia.pro/hiring-v1" },
-    { "text": "Explore Tiers", "icon": "Sparkles", "action": "navigate-slide-2" }
-  ],
-  "websiteUrl": "riseup-asia.com",
-  "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+  ]
 }

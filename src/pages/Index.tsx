@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { PresentationEngine } from "@/components/presentation/PresentationEngine";
 import { PricingCoverV3 } from "@/slides/PricingCoverV3";
 import { PricingCoverV1 } from "@/slides/PricingCoverV1";
-import { PainPointsSlide } from "@/slides/PainPointsSlide";
+import { OutagePanicSlide, FragileCodeSlide, HiringSinkholeSlide } from "@/slides/PainPointsSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
@@ -96,7 +96,9 @@ const Index = () => {
   const slides = useMemo(() => {
     return [
       CoverWrapper,
-      PainPointsSlide,
+      OutagePanicSlide,
+      FragileCodeSlide,
+      HiringSinkholeSlide,
       PricingTiersSlide,
       TierDetailSlide,
       PremiumExpertSlideV2,

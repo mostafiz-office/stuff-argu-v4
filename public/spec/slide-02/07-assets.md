@@ -1,17 +1,10 @@
-# Slide 02 — Cover V1 · Assets
+# Slides 02–04 — Problem Story · Assets
 
 ## Image Assets
 | Asset | Import Path | Notes |
 |-------|-------------|-------|
-| CEO Portrait | `src/assets/alim-updated.png` | scale 1.1 |
-| Claudio Photo | `src/assets/testimonials/claudio-c.png` | 48px avatar |
-| Konstantinos Photo | `src/assets/testimonials/konstantinos-p.png` | 48px avatar |
+| Outage photograph | `src/assets/problem-outage.jpg` | Slide 2, late-night production incident |
+| Fragile-code photograph | `src/assets/problem-fragile-code.jpg` | Slide 3, unstable code review |
+| Hiring photograph | `src/assets/problem-hiring.jpg` | Slide 4, empty engineering seat |
 
-## Icons (Lucide)
-| Icon | Size | Usage |
-|------|------|-------|
-| `Users` | 36px | Category icon |
-| `ArrowRight` | 20px | CTA |
-| `CheckCircle` | 19px | Keyword badges |
-| `Linkedin` | 15px | Verified badge |
-| `MoveRight` | 20px | Card arrow |
+All three are generated 1920×1088 JPEGs with dark negative space on the left and subjects on the right. They are preloaded at deck startup.

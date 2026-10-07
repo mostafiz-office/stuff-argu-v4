@@ -17,6 +17,8 @@ const TRANSITION_STYLES: PresentationTransition[] = [
   "zoom",
   "rise",
   "fade",
+  "zoom",
+  "rise",
 ];
 
 interface PresentationEngineProps {

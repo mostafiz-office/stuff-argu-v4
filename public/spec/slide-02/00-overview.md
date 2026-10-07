@@ -1,17 +1,18 @@
-# Slide 02 — Cover V1 (Clean & Minimal)
+# Slides 02–04 — Problem Story Sequence
 
-**Version:** 1.0.0 · **Updated:** 2026-04-09 · **Status:** Active
+**Version:** 2.0.0 · **Updated:** 2026-10-07 · **Status:** Active
 
 > **Inherits Global**: [`../global/`](../global/00-overview.md)
 
 ## Overview
-Clean minimal cover. Floating keyword badges with spring animations, recommendation cards, Alim photo (slightly smaller), and single CTA. No HoverCards — simpler than V3.
+Three consecutive photo-led slides turn the former pain-point card grid into a focused sales narrative. Each slide communicates one problem through one dominant highlighted statement, one supporting line, one metric, and one consequence.
 
-## Component: `PricingCoverV1` → `src/slides/PricingCoverV1.tsx`
+## Components
+`OutagePanicSlide`, `FragileCodeSlide`, and `HiringSinkholeSlide` → `src/slides/PainPointsSlide.tsx`
 
 ## File Inventory
 | # | File | Category |
 |---|------|----------|
 | 00–08 | Standard spec files | See folder |
-| — | `data/slide-02-content.json` | Structured content |
+| — | `data/slide-02-content.json` | Structured sequence content |
 | 99 | `99-consistency-report.md` | Audit |

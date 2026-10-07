@@ -156,6 +156,16 @@
   background: linear-gradient(180deg, hsl(var(--pres-accent)), hsl(var(--pres-accent-dark)));
 }
 
+.problem-story-overlay {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--pres-bg) / 0.98) 0%,
+    hsl(var(--pres-bg) / 0.94) 35%,
+    hsl(var(--pres-bg) / 0.48) 58%,
+    hsl(var(--pres-bg) / 0.08) 82%
+  );
+}
+
 .comparison-row,
 .tier-column {
   transition: background-color 200ms ease, border-color 200ms ease, filter 200ms ease;
