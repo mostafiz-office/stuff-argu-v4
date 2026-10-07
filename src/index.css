@@ -356,6 +356,67 @@
   outline-offset: 3px;
 }
 
+/* Promise band rows — Delivery Promises & Product Health slides */
+.promise-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 26px 34px 26px 26px;
+  border-bottom: 1px solid hsl(var(--pres-text) / 0.12);
+  border-radius: 12px;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), background-color 220ms ease,
+    box-shadow 260ms ease;
+}
+
+.promise-band:last-child {
+  border-bottom-color: transparent;
+}
+
+.promise-band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 56%;
+  border-radius: 3px;
+  background: hsl(var(--pres-accent));
+  opacity: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 0 24px hsl(var(--pres-accent) / 0.45);
+  transition: opacity 200ms ease;
+}
+
+.promise-band:hover {
+  background-color: hsl(var(--pres-text) / 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px hsl(var(--pres-bg) / 0.55);
+}
+
+.promise-band:hover::before {
+  opacity: 1;
+}
+
+.promise-band-index {
+  min-width: 74px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: hsl(var(--pres-accent) / 0.75);
+  transition: color 200ms ease;
+}
+
+.promise-band:hover .promise-band-index {
+  color: hsl(var(--pres-accent));
+}
+
+.promise-band-rule {
+  width: 1px;
+  height: 58px;
+  background: hsl(var(--pres-text) / 0.22);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
