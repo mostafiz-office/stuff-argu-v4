@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, Clock } from "lucide-react";
+import { Award, CheckCircle, Clock, ArrowLeft, Columns3 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
@@ -10,6 +12,23 @@ interface PricingTiersSlideProps {
 }
 
 export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
+  const [compareOpen, setCompareOpen] = useState(false);
+
+  useEffect(() => {
+    window.__comparisonOpen = compareOpen;
+    if (!compareOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setCompareOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.__comparisonOpen = false;
+    };
+  }, [compareOpen]);
   const tiers = [
     {
       name: "Tier 2 — Growth",
@@ -59,6 +78,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
   ];
 
   return (
+    <>
     <ScaledSlide>
       <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
         <SlideHeader />
@@ -155,11 +175,45 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
               </div>
             ))}
           </div>
+
+          <motion.div {...fadeUp(0.42)} className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setCompareOpen(true); }}
+              className="inline-flex items-center gap-3 rounded-full border-2 border-pres-accent px-10 py-4 font-heading text-[26px] font-bold text-pres-accent transition-colors duration-200 hover:bg-pres-accent hover:text-pres-bg"
+            >
+              <Columns3 className="h-7 w-7" />
+              Compare pricing
+            </button>
+          </motion.div>
         </div>
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
       </div>
     </ScaledSlide>
+    {compareOpen &&
+      createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Features comparison"
+          className="fixed inset-0 z-[200] bg-pres-bg"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <TierDetailSlide />
+          <button
+            type="button"
+            autoFocus
+            onClick={() => setCompareOpen(false)}
+            className="fixed right-6 top-5 z-[210] inline-flex items-center gap-2 rounded-full border border-pres-accent/60 bg-pres-surface/90 px-5 py-2.5 font-heading text-[16px] font-semibold text-pres-accent hover:bg-pres-accent hover:text-pres-bg"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to pricing
+          </button>
+        </div>,
+        document.body
+      )}
+    </>
   );
 };
