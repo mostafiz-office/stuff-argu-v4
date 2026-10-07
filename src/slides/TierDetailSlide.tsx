@@ -104,7 +104,11 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
           </div>
 
           {/* Table Container */}
-          <div className="flex-1 flex flex-col justify-between">
+          <div
+            className="comparison-table flex-1 flex flex-col justify-between"
+            data-hovered-column={hoveredColumn ?? "none"}
+            onMouseLeave={() => setHoveredColumn(null)}
+          >
             {/* Header Row */}
             <div className="grid grid-cols-[1.8fr_1fr_1fr_1fr] items-end pb-2 border-b border-white/10">
               <div className="text-left font-heading font-semibold text-[19px] text-pres-text-dim uppercase tracking-wider pl-4">
@@ -117,10 +121,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
                   onMouseEnter={() => setHoveredColumn(idx)}
-                  onMouseLeave={() => setHoveredColumn(null)}
-                  className={`text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor} transition-all duration-200 ${
-                    hoveredColumn === idx ? "bg-white/[0.1] brightness-125" : ""
-                  }`}
+                  data-column={idx}
+                  className={`tier-column text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
                 >
                   {col.badge && (
                     <span className="inline-block text-[25px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-white mb-1 shadow-sm">
@@ -141,7 +143,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.35, delay: 0.25 + rIdx * 0.02 }}
-                  className={`group grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 hover:bg-white/[0.07] hover:border-white/15 transition-colors rounded ${
+                  className={`comparison-row grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 rounded ${
                     rIdx % 2 === 0 ? "bg-white/[0.01]" : ""
                   }`}
                 >
@@ -153,8 +155,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   {/* Growth */}
                   <div
                     onMouseEnter={() => setHoveredColumn(0)}
-                    onMouseLeave={() => setHoveredColumn(null)}
-                    className={`text-center mx-1 py-0.5 rounded transition-colors ${hoveredColumn === 0 ? "bg-pres-accent/[0.12]" : ""}`}
+                    data-column="0"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
                   >
                     {renderCell(row.growth, columns[0].color)}
                   </div>
@@ -162,8 +164,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   {/* Skilled */}
                   <div
                     onMouseEnter={() => setHoveredColumn(1)}
-                    onMouseLeave={() => setHoveredColumn(null)}
-                    className={`text-center mx-1 py-0.5 rounded transition-colors ${hoveredColumn === 1 ? "bg-green-500/[0.12]" : ""}`}
+                    data-column="1"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
                   >
                     {renderCell(row.skilled, columns[1].color)}
                   </div>
@@ -171,8 +173,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                   {/* Leadership */}
                   <div
                     onMouseEnter={() => setHoveredColumn(2)}
-                    onMouseLeave={() => setHoveredColumn(null)}
-                    className={`text-center mx-1 py-0.5 rounded transition-colors ${hoveredColumn === 2 ? "bg-purple-500/[0.12]" : ""}`}
+                    data-column="2"
+                    className="tier-column text-center mx-1 py-0.5 rounded"
                   >
                     {renderCell(row.leadership, columns[2].color)}
                   </div>
