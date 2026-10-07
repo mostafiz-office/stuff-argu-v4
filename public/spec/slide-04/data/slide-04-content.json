@@ -8,19 +8,19 @@
     {"key":"leadership","name":"Tier 3.B — Leadership","price":"$7.5K–10K/mo","premium":true,"color":"hsl(280 60% 60%)","tagline":"Impossible to say no"}
   ],
   "features": [
-    {"label":"Dedicated developer · 160 hrs/mo","growth":true,"skilled":true,"leadership":true},
-    {"label":"Weekly progress reports","growth":true,"skilled":true,"leadership":true},
-    {"label":"Daily standups","growth":true,"skilled":true,"leadership":true},
-    {"label":"Sprint participation","growth":true,"skilled":true,"leadership":true},
-    {"label":"Task breakdown & delegation","growth":true,"skilled":true,"leadership":true},
-    {"label":"Team management","growth":"Up to 2","skilled":"3–5","leadership":"Up to 15"},
+    {"label":"Dedicated developer · 160 hrs/mo","group":"Delivery","growth":true,"skilled":true,"leadership":true},
+    {"label":"Weekly progress reports","group":"Delivery","growth":true,"skilled":true,"leadership":true},
+    {"label":"Daily standups","group":"Delivery","growth":true,"skilled":true,"leadership":true},
+    {"label":"Sprint participation","group":"Delivery","growth":true,"skilled":true,"leadership":true},
+    {"label":"Task breakdown & delegation","group":"Delivery","growth":true,"skilled":true,"leadership":true},
+    {"label":"Team management","group":"Team & Leadership","growth":"Up to 2","skilled":"3–5","leadership":"Up to 15"},
     {"label":"Architecture decisions","group":"Team & Leadership","growth":"Limited","skilled":true,"leadership":true},
-    {"label":"Project management","growth":false,"skilled":false,"leadership":true},
-    {"label":"CTO-level oversight","growth":false,"skilled":false,"leadership":true},
-    {"label":"Priority Slack · 24/7 SLA","growth":"Slack only","skilled":true,"leadership":"Versatile"},
-    {"label":"QA Engineers","growth":false,"skilled":false,"leadership":"2"},
-    {"label":"Alim Expert Oversight","growth":"2 hrs/wk","skilled":"3 hrs/wk","leadership":"4 hrs/wk"},
-    {"label":"Min. Developer Experience","growth":"4+ yrs","skilled":"6+ yrs","leadership":"8+ yrs"},
-    {"label":"Onboarding Deposit","growth":"$2K","skilled":"$2K","leadership":"$2K"}
+    {"label":"Project management","group":"Team & Leadership","growth":false,"skilled":false,"leadership":true},
+    {"label":"CTO-level oversight","group":"Team & Leadership","growth":false,"skilled":false,"leadership":true},
+    {"label":"QA Engineers","group":"Team & Leadership","growth":false,"skilled":false,"leadership":"2"},
+    {"label":"Priority Slack · 24/7 SLA","group":"Support & Assurance","growth":"Slack only","skilled":true,"leadership":"Versatile"},
+    {"label":"Alim Expert Oversight","group":"Support & Assurance","growth":"2 hrs/wk","skilled":"3 hrs/wk","leadership":"4 hrs/wk"},
+    {"label":"Min. Developer Experience","group":"Support & Assurance","growth":"4+ yrs","skilled":"6+ yrs","leadership":"8+ yrs"},
+    {"label":"Onboarding Deposit","group":"Support & Assurance","growth":"$2K","skilled":"$2K","leadership":"$2K"}
   ]
 }

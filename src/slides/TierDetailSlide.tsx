@@ -243,14 +243,16 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                 />
               </div>
 
-              <div className="comparison-scroll-fade pointer-events-none absolute inset-x-0 bottom-0 h-[92px]" />
               {canScroll && (
-                <div className="absolute bottom-3 left-[14%] right-0 flex justify-center pointer-events-none">
-                  <div className="comparison-scroll-cue flex items-center gap-2 px-4 py-2 text-[17px] font-semibold">
-                    <ChevronDown className="w-5 h-5" />
-                    Scroll for more
+                <>
+                  <div className="comparison-scroll-fade pointer-events-none absolute inset-x-0 bottom-0 h-[92px]" />
+                  <div className="absolute z-20 bottom-3 left-[14%] right-0 flex justify-center pointer-events-none">
+                    <div className="comparison-scroll-cue flex items-center gap-2 px-4 py-2 text-[17px] font-semibold">
+                      <ChevronDown className="w-5 h-5" />
+                      Scroll for more
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             </div>
           </div>
