@@ -80,14 +80,14 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => (
 
       <div className="relative z-10 h-full flex flex-col justify-center pl-[100px] pr-[980px] pt-[40px]">
         <motion.p
-          {...fadeUp(0.08, 14)}
+          {...fadeUp(0.03, 14)}
           className="text-[20px] font-semibold uppercase text-pres-text-muted"
         >
           {problem.eyebrow}
         </motion.p>
 
         <motion.h1
-          {...fadeUp(0.15, 24)}
+          {...fadeUp(0.08, 24)}
           className="mt-5 font-heading font-bold text-[96px] leading-[0.96]"
         >
           <span className="block text-pres-text">{problem.lead}</span>
@@ -97,13 +97,13 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => (
         </motion.h1>
 
         <motion.p
-          {...fadeUp(0.23, 20)}
+          {...fadeUp(0.13, 20)}
           className="mt-7 text-[30px] leading-snug text-pres-text/90"
         >
           {problem.short}
         </motion.p>
 
-        <motion.div {...fadeUp(0.31, 18)} className="mt-11 flex items-end gap-7">
+        <motion.div {...fadeUp(0.18, 18)} className="mt-11 flex items-end gap-7">
           <div>
             <div className="font-heading font-bold text-[66px] leading-none text-pres-accent">
               {problem.metric}
