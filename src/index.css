@@ -14,6 +14,12 @@
     --pres-text: 0 0% 100%;
     --pres-text-muted: 218 11% 65%;
     --pres-text-dim: 220 9% 46%;
+    --pres-title: 72px;
+    --pres-title-compact: 64px;
+    --pres-body: 24px;
+    --pres-card-title: 30px;
+    --pres-card-body: 22px;
+    --pres-label: 18px;
 
     --background: 240 20% 4%;
     --foreground: 0 0% 100%;
@@ -145,4 +151,62 @@
 .comparison-table[data-hovered-column="2"] .tier-column[data-column="2"] {
   background-color: hsl(280 60% 60% / 0.12);
   filter: brightness(1.2);
+}
+
+.presentation-controls {
+  transition: border-color 200ms ease, box-shadow 250ms ease, background-color 200ms ease;
+}
+
+.presentation-controls:hover {
+  border-color: hsl(var(--pres-accent) / 0.35);
+  box-shadow: 0 12px 32px hsl(var(--pres-bg) / 0.7), 0 0 22px hsl(var(--pres-accent) / 0.08);
+}
+
+.presentation-control {
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.presentation-control:hover {
+  background-color: hsl(var(--pres-text) / 0.1);
+  transform: translateY(-1px);
+}
+
+.presentation-control:active {
+  transform: scale(0.92);
+}
+
+.presentation-dot:hover {
+  transform: scale(1.35);
+}
+
+.presentation-action {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms ease,
+    background-color 200ms ease, box-shadow 250ms ease;
+}
+
+.presentation-action:hover {
+  transform: translateY(-3px) scale(1.015);
+}
+
+.presentation-action:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.presentation-focus:focus-visible,
+.presentation-action:focus-visible,
+.presentation-control:focus-visible,
+.presentation-dot:focus-visible {
+  outline: 3px solid hsl(var(--pres-accent) / 0.9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

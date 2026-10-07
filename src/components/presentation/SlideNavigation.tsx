@@ -173,7 +173,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           onClick={goPrev}
           disabled={!canGoPrev}
           aria-label="Previous slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -189,7 +189,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           onClick={goNext}
           disabled={!canGoNext}
           aria-label="Next slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
@@ -214,7 +214,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           type="button"
           onClick={handleShare}
           aria-label="Share slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
           title="Copy link"
         >
           {copied ? <Check className="w-4 h-4 text-green-400" /> : <Share2 className="w-4 h-4" />}
@@ -228,7 +228,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           type="button"
           onClick={toggleFullscreen}
           aria-label="Toggle fullscreen"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
           title="Fullscreen (F)"
         >
           {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}

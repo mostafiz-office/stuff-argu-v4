@@ -39,7 +39,7 @@ const QuoteCard: React.FC<{ role: string; quote: string; className?: string; del
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`block p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 transition-all shadow-xl ${className ?? ""}`}
+    className={`presentation-action presentation-focus block p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
   >
     <div className="flex items-center justify-between mb-3">
       <div className="flex items-center gap-3">
@@ -99,13 +99,13 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
             href="https://client.rasia.pro/hiring-v1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] transition-all hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)]"
+            className="presentation-action presentation-focus inline-flex items-center gap-3 px-10 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] shadow-[0_0_25px_rgba(255,173,1,0.35)]"
           >
             Book a Call <ArrowRight className="w-6 h-6" />
           </a>
           <button
             onClick={() => onNavigate?.(1)}
-            className="inline-flex items-center gap-2 px-9 py-5 rounded-full border border-pres-accent/50 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-[24px] transition-all hover:scale-105"
+            className="presentation-action presentation-focus inline-flex items-center gap-2 px-9 py-5 rounded-full border border-pres-accent/50 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-[24px]"
           >
             <Sparkles className="w-6 h-6" /> Explore Tiers
           </button>

@@ -16,7 +16,7 @@ const fade = (delay: number) => ({
 });
 
 const btn =
-  "inline-flex items-center gap-4 px-9 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,173,1,0.35)] whitespace-nowrap";
+  "presentation-action presentation-focus inline-flex items-center gap-4 px-9 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] shadow-[0_0_30px_rgba(255,173,1,0.35)] whitespace-nowrap";
 
 export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
   <ScaledSlide>
