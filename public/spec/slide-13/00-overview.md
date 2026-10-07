@@ -9,12 +9,12 @@ Bridge the three customer-problem slides into the pricing solution with one deci
 
 ## Content
 
-The slide contains only the title “We have a solution for you.” The word “solution” uses the presentation accent.
+The slide contains only the title “We have solutions for you.” The word “solutions” uses the presentation accent.
 
 ## Layout and motion
 
 - Fixed 1920×1080 dark presentation canvas with the shared Riseup header.
-- Large centered 132px heading with generous horizontal bounds.
-- Restrained amber center line, ambient accent, and bottom rule support the title without adding another message.
-- Entrance uses the shared `fadeUp` helper; the rule follows with a short scale reveal.
+- Large centered 124px heading, held on a single line with 60px side bounds.
+- Ambient accent glow behind the title and a short amber bar below it; no line crosses the headline.
+- Entrance uses the shared `fadeUp` helper; the bar follows with a short scale reveal.
 - Global reduced-motion handling remains active through the presentation engine.

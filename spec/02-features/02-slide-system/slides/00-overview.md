@@ -20,7 +20,7 @@ Per-slide specifications for the 14-slide Staff Augmentation Pricing deck. The c
 | 02 | Outage Panic | — | `OutagePanicSlide` |
 | 03 | Fragile AI Code | — | `FragileCodeSlide` |
 | 04 | Hiring Sinkhole | — | `HiringSinkholeSlide` |
-| 05 | We Have a Solution for You | — | `SolutionTransitionSlide` |
+| 05 | We Have Solutions for You | — | `SolutionTransitionSlide` |
 | 06 | Pricing Tiers | [03-pricing-tiers.md](./03-pricing-tiers.md) | `PricingTiersSlide` |
 | 07 | Features Comparison | [04-feature-comparison.md](./04-feature-comparison.md) | `TierDetailSlide` |
 | 08 | Premium Expert Bonus | [05-premium-expert.md](./05-premium-expert.md) | `PremiumExpertSlideV2` |
@@ -54,7 +54,7 @@ All slides share:
 2. Outage Panic
 3. Fragile AI Code
 4. Hiring Sinkhole
-5. We Have a Solution for You
+5. We Have Solutions for You
 6. Pricing Tiers
 7. Features Comparison
 8. Premium Expert Bonus

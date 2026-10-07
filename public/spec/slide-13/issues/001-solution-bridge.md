@@ -6,6 +6,6 @@ Add a title-only slide between the three problem stories and the pricing plans.
 
 ## Resolution
 
-- Added runtime slide 5 with the exact title “We have a solution for you.”
+- Added runtime slide 5 with the exact title “We have solutions for you.”
 - Kept the composition intentionally minimal and free of supporting copy.
 - Shifted Pricing Tiers and every following slide forward by one position.
