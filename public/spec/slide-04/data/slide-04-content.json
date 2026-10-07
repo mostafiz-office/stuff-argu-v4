@@ -1,7 +1,7 @@
 {
   "slide": "04",
   "component": "TierDetailSlide",
-  "title": "Feature Comparison",
+  "title": "Features Comparison",
   "columns": [
     {"key":"growth","name":"Tier 2 — Growth","price":"$4,299/mo","color":"hsl(var(--pres-accent))"},
     {"key":"skilled","name":"Tier 3.A — Skilled","price":"$6,800–8K/mo","bestValue":true,"color":"hsl(142 70% 45%)"},
@@ -14,7 +14,7 @@
     {"label":"Sprint participation","growth":true,"skilled":true,"leadership":true},
     {"label":"Task breakdown & delegation","growth":true,"skilled":true,"leadership":true},
     {"label":"Team management","growth":"Up to 2","skilled":"3–5","leadership":"Up to 15"},
-    {"label":"Architecture decisions","growth":"Limited","skilled":true,"leadership":true},
+    {"label":"Architecture decisions","group":"Team & Leadership","growth":"Limited","skilled":true,"leadership":true},
     {"label":"Project management","growth":false,"skilled":false,"leadership":true},
     {"label":"CTO-level oversight","growth":false,"skilled":false,"leadership":true},
     {"label":"Priority Slack · 24/7 SLA","growth":"Slack only","skilled":true,"leadership":"Versatile"},

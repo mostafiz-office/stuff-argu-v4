@@ -1,7 +1,7 @@
 # Slide 04 — Features Comparison
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-10-07  
 **Component:** `TierDetailSlide`  
 **File:** `src/slides/TierDetailSlide.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled, Leadership). Color-coded columns: amber (Growth), green (Skilled), purple (Leadership). Tier badges use clean text without emoji. Rows and tier columns provide coordinated hover highlighting.
+Apple-inspired comparison experience showing 14 features across Growth, Skilled, and Leadership. Large tier headers remain visible while grouped feature rows scroll beneath them. Color-coded columns, text-only badges, and coordinated row/column highlighting keep the matrix easy to scan at presentation scale.
 
 ---
 
@@ -19,7 +19,8 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 |------|----------|---------|
 | Background | Full slide | `.slide-dark-bg` |
 | Title | `left: 80px, top: 90px` | "Features **Comparison**" (60px Ubuntu) |
-| Table | `left: 80, right: 80, top: 180, bottom: 40` | 4-column grid (1.8fr label + 3× 1fr tier columns) |
+| Comparison header | `left: 80, right: 80` | Persistent 156px band; 1.35fr label + 3 equal tier columns |
+| Feature viewport | Beneath header to bottom safe area | Independently scrolling grouped rows with 86px minimum height |
 
 ### Column Color Coding
 
@@ -35,7 +36,7 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 |--------|-------|-------|---------|
 | Growth | $4,299/mo | — | — |
 | Skilled | $6,800–8K/mo | BEST VALUE (green pill) | — |
-| Leadership | $7.5K–10K/mo | PREMIUM (purple pill) | Full Tech Management |
+| Leadership | $7.5K–10K/mo | PREMIUM (text badge) | — |
 
 ---
 
@@ -49,7 +50,7 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 | Sprint participation | ✅ | ✅ | ✅ |
 | Task breakdown & delegation | ✅ | ✅ | ✅ |
 | Team management | Up to 2 | 3–5 | Up to 15 |
-| Architecture decisions | ✅ | ✅ | ✅ |
+| Architecture decisions | Limited | ✅ | ✅ |
 | Project management | ❌ | ❌ | ✅ |
 | CTO-level oversight | ❌ | ❌ | ✅ |
 | Priority Slack · 24/7 SLA | Slack only | ✅ | Versatile |
@@ -77,15 +78,22 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 - Hovering a tier header or tier cell highlights that tier's header and cells across the matrix.
 - Hover feedback changes color and brightness only; the table does not shift.
 
+## Scroll behavior
+
+- The tier-header band remains fixed while all 14 features scroll vertically in the viewport below.
+- Feature groups are Delivery, Team & Leadership, and Support & Assurance; each group label sticks to the top of the viewport while its rows pass beneath it.
+- A persistent custom rail and live thumb expose scroll position; a bottom fade and cue remain until the final row is reached.
+- Wheel, trackpad, touch, keyboard, and rail dragging work inside the viewport without advancing the deck.
+
 ---
 
 ## Cell Rendering Logic
 
 | Value | Render |
 |-------|--------|
-| `true` | `<CheckCircle>` in column color |
-| `false` | `<X>` in red `hsl(0 80% 55%)` |
-| `string` | Text in column color, 18px, bold |
+| `true` | 30px `<CheckCircle>` in column color |
+| `false` | 30px `<X>` in semantic danger color |
+| `string` | Text in column color, 24px, bold |
 
 ---
 
