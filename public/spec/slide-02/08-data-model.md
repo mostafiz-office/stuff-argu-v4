@@ -1,11 +1,6 @@
-# Slide 02 — Cover V1 · Data Model
+# Slides 02–04 — Problem Story · Data Model
 
 ## Content Source
-All content hardcoded in `PricingCoverV1.tsx`. See `data/slide-02-content.json`.
+`PainPointsSlide.tsx` defines three `Problem` records containing eyebrow, lead phrase, highlighted phrase, short line, metric, metric label, consequence, image, alt text, and highlight tone.
 
-## Key Differences from Cover V3
-- 3 floating keyword badges (vs 4 inline pills)
-- No HoverCards
-- Single CTA button (no secondary)
-- Website URL at bottom-left
-- Slightly different headline body text
+See `data/slide-02-content.json` for the matching editorial content.

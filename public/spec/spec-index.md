@@ -23,9 +23,9 @@
 | 19 | `global/17-asset-preloading.md` | Asset preloading |
 | 20 | `global/19-favicon.md` | Favicon storage and ZIP guarantee |
 | 21 | `slide-01/` | Cover V3 (Bold) |
-| 22 | `slide-02/` | Cover V1 (Minimal) |
-| 23 | `slide-03/` | Pricing Tiers |
-| 24 | `slide-04/` | Feature Comparison |
+| 22 | `slide-02/` | Problem story sequence (slides 2–4) |
+| 23 | `slide-03/` | Pricing Tiers (runtime slide 5) |
+| 24 | `slide-04/` | Features Comparison (runtime slide 6) |
 | 25 | `slide-05/` | Premium Expert |
 | 26 | `slide-06/` | Cost Savings |
 | 27 | `slide-07/` | What's Included |

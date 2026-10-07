@@ -1,5 +1,5 @@
-# Slide 02 — Cover V1 · Consistency Report
-**Last Audit:** 2026-04-09 · **Status:** ✅ Consistent
+# Slides 02–04 — Problem Story · Consistency Report
+**Last Audit:** 2026-10-07 · **Status:** Consistent
 
 | Check | Status |
 |-------|--------|
@@ -8,6 +8,8 @@
 | Uses `ScaledSlide` | ✅ |
 | Colors use `--pres-*` tokens | ✅ |
 | Fonts match global | ✅ |
-| Uses `fade(i)` helper | ✅ |
-| Rec cards use `.rec-card` | ✅ |
-| Images imported via ES6 | ✅ |
+| Uses centralized motion helpers | ✅ |
+| One problem per slide | ✅ |
+| Full-bleed photo with protected text area | ✅ |
+| Images imported via ES6 and preloaded | ✅ |
+| Main statement is presentation-scale | ✅ |

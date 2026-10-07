@@ -1,19 +1,8 @@
-# Slide 02 — Cover V1 · Color Tokens
+# Slides 02–04 — Problem Story · Color Tokens
 
 > **Inherits**: [`global/01-color-tokens.md`](../global/01-color-tokens.md)  
-> **Overrides**: LinkedIn Blue
-
-## Slide-Specific Colors
-| Color | HSL | Usage |
-|-------|-----|-------|
-| LinkedIn Blue | `210 90% 55%` | Verified badge |
-
-## Opacity Map
-| Element | Opacity |
-|---------|---------|
-| Left glow | 6% accent |
-| Card bg | 75% pres-bg |
-| Card border (default) | 20% accent |
-| Badge bg | 10% accent |
-| Badge border | 30% accent |
-| Photo shadow | 60% pres-bg |
+## Roles
+- Primary text: `--pres-text`
+- Supporting copy: `--pres-text-muted`
+- Highlighted problem/metric: `--pres-accent`; outage problem may use `--destructive`
+- Readability overlay: `--pres-bg` from 98% opacity to 8%
