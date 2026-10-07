@@ -1,6 +1,6 @@
 # Specification Root — RiseUp Asia Pricing Deck
 
-**Version:** 1.1.0  
+**Version:** 1.2.0  
 **Updated:** 2026-10-07  
 **AI Confidence:** Production-Ready  
 **Ambiguity:** None
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Root index for the RiseUp Asia pricing deck presentation specification. This spec tree documents every visual element, animation, layout coordinate, and content data structure used across the 13-slide pricing deck built with React 18, Vite, Tailwind CSS, and Framer Motion.
+Root index for the RiseUp Asia pricing deck presentation specification. This spec tree documents every visual element, animation, layout coordinate, and content data structure used across the 14-slide pricing deck built with React 18, Vite, Tailwind CSS, and Framer Motion.
 
 ---
 
@@ -18,7 +18,7 @@ Root index for the RiseUp Asia pricing deck presentation specification. This spe
 | # | Module | Description |
 |---|--------|-------------|
 | 01 | [Design System](./01-design-system/00-overview.md) | Theme variables, typography, motion patterns, slide components |
-| 02 | [Slides](./02-slides/00-overview.md) | Per-slide specifications for all 13 active pricing deck slides |
+| 02 | [Slides](./02-slides/00-overview.md) | Per-slide specifications for all 14 active pricing deck slides |
 
 ---
 
