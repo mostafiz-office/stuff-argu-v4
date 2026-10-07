@@ -21,15 +21,16 @@
 | 17 | `global/15-toast-system.md` | Toast notifications |
 | 18 | `global/16-animation-rules.md` | Animation rules |
 | 19 | `global/17-asset-preloading.md` | Asset preloading |
-| 20 | `slide-01/` | Cover V3 (Bold) |
-| 21 | `slide-02/` | Cover V1 (Minimal) |
-| 22 | `slide-03/` | Pricing Tiers |
-| 23 | `slide-04/` | Feature Comparison |
-| 24 | `slide-05/` | Premium Expert |
-| 25 | `slide-06/` | Cost Savings |
-| 26 | `slide-07/` | What's Included |
-| 27 | `slide-08/` | How It Works |
-| 28 | `slide-09/` | Starter Tier Detail |
-| 29 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
-| 30 | `slide-11/` | Starter Risk Reversal |
-| 31 | `slide-12/` | CTA |
+| 20 | `global/19-favicon.md` | Favicon storage and ZIP guarantee |
+| 21 | `slide-01/` | Cover V3 (Bold) |
+| 22 | `slide-02/` | Cover V1 (Minimal) |
+| 23 | `slide-03/` | Pricing Tiers |
+| 24 | `slide-04/` | Feature Comparison |
+| 25 | `slide-05/` | Premium Expert |
+| 26 | `slide-06/` | Cost Savings |
+| 27 | `slide-07/` | What's Included |
+| 28 | `slide-08/` | How It Works |
+| 29 | `slide-09/` | Starter Tier Detail |
+| 30 | `slide-10/` | Starter Tier Detail V2 (Duplicate) |
+| 31 | `slide-11/` | Starter Risk Reversal |
+| 32 | `slide-12/` | CTA |
