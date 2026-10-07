@@ -1,4 +1,4 @@
-# Slide 04 — Feature Comparison
+# Slide 04 — Features Comparison
 
 **Version:** 1.0.0  
 **Updated:** 2026-04-09  
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled, Leadership). Color-coded columns: amber (Growth), green (Skilled), purple (Leadership). Leadership column has a "👑 PREMIUM" gradient badge.
+Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled, Leadership). Color-coded columns: amber (Growth), green (Skilled), purple (Leadership). Tier badges use clean text without emoji. Rows and tier columns provide coordinated hover highlighting.
 
 ---
 
@@ -18,7 +18,7 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 | Zone | Position | Content |
 |------|----------|---------|
 | Background | Full slide | `.slide-dark-bg` |
-| Title | `left: 80px, top: 90px` | "Feature **Comparison**" (64px Ubuntu) |
+| Title | `left: 80px, top: 90px` | "Features **Comparison**" (60px Ubuntu) |
 | Table | `left: 80, right: 80, top: 180, bottom: 40` | 4-column grid (1.8fr label + 3× 1fr tier columns) |
 
 ### Column Color Coding
@@ -34,8 +34,8 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 | Column | Price | Badge | Tagline |
 |--------|-------|-------|---------|
 | Growth | $4,299/mo | — | — |
-| Skilled | $6,800–8K/mo | ⭐ BEST VALUE (green pill) | — |
-| Leadership | $7.5K–10K/mo | 👑 PREMIUM (purple-pink gradient pill) | ✨ Impossible to say no |
+| Skilled | $6,800–8K/mo | BEST VALUE (green pill) | — |
+| Leadership | $7.5K–10K/mo | PREMIUM (purple pill) | Full Tech Management |
 
 ---
 
@@ -70,6 +70,12 @@ Full comparison matrix table showing 14 features across 3 tiers (Growth, Skilled
 | Table container | fade(1) | 0.15s | 0.6s |
 | Column headers | y: 16→0 | 0.3s + i×0.08s | 0.5s |
 | Feature rows | x: -10→0 | 0.4s + i×0.05s | 0.4s |
+
+## Hover feedback
+
+- Hovering a feature row highlights the complete row.
+- Hovering a tier header or tier cell highlights that tier's header and cells across the matrix.
+- Hover feedback changes color and brightness only; the table does not shift.
 
 ---
 
