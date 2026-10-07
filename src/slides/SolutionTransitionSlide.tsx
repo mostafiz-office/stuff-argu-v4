@@ -17,7 +17,7 @@ export const SolutionTransitionSlide: React.FC = () => {
           {...fadeUp(0.08, 28)}
           className="relative z-10 max-w-[1580px] px-[80px] text-center font-heading text-[132px] font-bold leading-[1.02] tracking-normal text-pres-text"
         >
-          We have a <span className="text-pres-accent">solution</span> for you.
+          We have <span className="text-pres-accent">solutions</span> for you.
         </motion.h1>
 
         <motion.div

@@ -9,7 +9,7 @@ Bridge the three customer-problem slides into the pricing solution with one deci
 
 ## Content
 
-The slide contains only the title “We have a solution for you.” The word “solution” uses the presentation accent.
+The slide contains only the title “We have solutions for you.” The word “solutions” uses the presentation accent.
 
 ## Layout and motion
 
