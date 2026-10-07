@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check, Volume2, VolumeX } from "lucide-react";
 import { toast } from "sonner";
+import { presentationSound } from "@/lib/presentationSound";
 
 import "@/types/navigation";
 
@@ -22,6 +23,9 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [gateTooltip, setGateTooltip] = useState<string | null>(null);
+  const [soundMuted, setSoundMuted] = useState(() => presentationSound.isMuted());
+
+  useEffect(() => presentationSound.subscribe(setSoundMuted), []);
 
   // Poll for interactive gate tooltip state
   useEffect(() => {
@@ -72,6 +76,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
   // Fullscreen toggle
   const toggleFullscreen = useCallback(() => {
+    presentationSound.play("click");
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
@@ -140,6 +145,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
   // Share handler
   const handleShare = () => {
+    presentationSound.play("click");
     const url = window.location.href;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url);
@@ -149,17 +155,23 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
     }
   };
 
+  const toggleSound = () => {
+    const nextMuted = !soundMuted;
+    presentationSound.setMuted(nextMuted);
+    if (!nextMuted) presentationSound.play("reveal");
+  };
+
   return (
     <>
       {/* Top-Right Control Bar */}
-      <div className="fixed top-6 right-6 z-[250] pointer-events-auto flex items-center gap-1 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-2xl text-white">
+      <div className="presentation-controls fixed top-6 right-6 z-[250] pointer-events-auto flex items-center gap-1 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 shadow-2xl text-white">
         {/* Previous */}
         <button
           type="button"
           onClick={goPrev}
           disabled={!canGoPrev}
           aria-label="Previous slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -175,7 +187,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           onClick={goNext}
           disabled={!canGoNext}
           aria-label="Next slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white/90 hover:text-pres-accent cursor-pointer"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
@@ -183,12 +195,24 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
         {/* Divider */}
         <div className="w-[1px] h-4 bg-white/20 mx-1" />
 
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={soundMuted ? "Enable presentation sound" : "Mute presentation sound"}
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
+          title={soundMuted ? "Enable sound" : "Mute sound"}
+        >
+          {soundMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </button>
+
+        <div className="w-[1px] h-4 bg-white/20 mx-1" />
+
         {/* Share */}
         <button
           type="button"
           onClick={handleShare}
           aria-label="Share slide"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
           title="Copy link"
         >
           {copied ? <Check className="w-4 h-4 text-green-400" /> : <Share2 className="w-4 h-4" />}
@@ -202,7 +226,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           type="button"
           onClick={toggleFullscreen}
           aria-label="Toggle fullscreen"
-          className="p-1.5 rounded-full hover:bg-white/10 transition-colors text-white/90 hover:text-pres-accent cursor-pointer"
+          className="presentation-control p-1.5 rounded-full text-white/90 hover:text-pres-accent cursor-pointer"
           title="Fullscreen (F)"
         >
           {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
@@ -228,7 +252,8 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
               type="button"
               onClick={() => onNavigate(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
+              title={`${idx + 1}. ${["Welcome", "Pain Points", "Pricing Tiers", "Features Comparison", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Starter Tier", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+              className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
                 isActive
                   ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
                   : "w-2 h-2 bg-white/30 hover:bg-white/70"

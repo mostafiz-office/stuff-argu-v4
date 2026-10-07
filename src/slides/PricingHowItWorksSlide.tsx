@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MessageSquare, UserCheck, Rocket, HeartHandshake } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PricingHowItWorksSlideProps {
   onNavigate?: (index: number) => void;
@@ -62,10 +63,8 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
           {/* Title Area - Clean, focused headline without redundant explanation */}
           <div className="mb-12 text-center">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              {...fadeUp(0)}
+              className="pres-title font-bold font-heading tracking-tight text-white"
             >
               How It <span className="text-pres-accent">Works</span>
             </motion.h1>
@@ -77,7 +76,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.7, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="absolute left-[120px] right-[120px] top-[56px] h-[3px] bg-gradient-to-r from-pres-accent/20 via-pres-accent to-pres-accent/20 origin-left z-0"
             />
 
@@ -88,10 +87,8 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                 return (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + idx * 0.08 }}
-                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md transition-all shadow-xl"
+                    {...fadeUp(staggerDelay(idx, 0.16, 0.08))}
+                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/95 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl"
                   >
                     {/* Circle Icon */}
                     <div className="w-[66px] h-[66px] rounded-full bg-pres-surface border-[3px] border-pres-accent flex items-center justify-center text-pres-accent mb-3.5 shadow-[0_0_25px_rgba(255,173,1,0.3)] z-10">

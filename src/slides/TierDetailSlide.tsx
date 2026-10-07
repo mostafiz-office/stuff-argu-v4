@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, X } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeIn, fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface TierDetailSlideProps {
   onNavigate?: (index: number) => void;
@@ -94,10 +95,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
           {/* Title Area */}
           <div className="mb-4">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-[60px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              {...fadeUp(0)}
+              className="pres-title-compact font-bold font-heading tracking-tight text-white"
             >
               Features <span className="text-pres-accent">Comparison</span>
             </motion.h1>
@@ -117,9 +116,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
               {columns.map((col, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
+                  {...fadeUp(staggerDelay(idx, 0.12, 0.05), 12)}
                   onMouseEnter={() => setHoveredColumn(idx)}
                   data-column={idx}
                   className={`tier-column text-center py-2 px-3 mx-1 rounded-t-xl ${col.bgColor} border-t border-x ${col.borderColor}`}
@@ -140,9 +137,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
               {rows.map((row, rIdx) => (
                 <motion.div
                   key={rIdx}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.35, delay: 0.25 + rIdx * 0.02 }}
+                  {...fadeIn(staggerDelay(rIdx, 0.18, 0.018))}
                   className={`comparison-row grid grid-cols-[1.8fr_1fr_1fr_1fr] items-center py-1.5 px-1 border-b border-white/5 rounded ${
                     rIdx % 2 === 0 ? "bg-white/[0.01]" : ""
                   }`}

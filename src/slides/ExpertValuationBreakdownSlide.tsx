@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Clock, DollarSign, Gift } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 
 interface ExpertValuationBreakdownSlideProps {
   onNavigate?: (index: number) => void;
@@ -29,10 +30,8 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
 
       <div className="relative z-10 w-full px-[100px] pt-[60px] flex flex-col">
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight mb-10"
+          {...fadeUp(0)}
+          className="pres-title font-bold font-heading tracking-tight mb-10"
         >
           What The <span className="text-pres-accent">Chief Architect</span> Is Worth
         </motion.h1>
@@ -43,9 +42,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
             return (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                {...scaleIn(staggerDelay(i, 0.16, 0.08))}
                 className={`p-8 rounded-3xl border shadow-xl ${
                   s.highlight ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.25)]" : "bg-pres-surface/75 border-white/10"
                 }`}
@@ -66,9 +63,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          {...fadeUp(0.42)}
           className="grid grid-cols-4 gap-6"
         >
           {tiers.map((t) => (

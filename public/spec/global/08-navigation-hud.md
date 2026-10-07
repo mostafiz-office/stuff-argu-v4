@@ -17,12 +17,14 @@
 ### Button Order (left to right)
 
 1. ◀ Previous — disabled on first slide
-2. Slide counter — `{current}/{total}`
+2. Slide counter — `{current} / {total}`
 3. ▶ Next — disabled on last slide
 4. │ divider
-5. Share — dropdown
+5. Sound — muted by default; preference persists locally
 6. │ divider
-7. Fullscreen — toggle
+7. Share — copies the current URL
+8. │ divider
+9. Fullscreen — toggle
 
 ## 2. Bottom Dot Navigation
 
@@ -32,6 +34,8 @@
 | Layout | `flex items-center gap-2` |
 | Inactive dot | `8px × 8px` circle |
 | Active dot | `32px × 8px` pill, amber |
+
+Each dot exposes a numbered title in the format `N. Slide title`, without a “Slide” prefix.
 
 ## 3. SlideHeader
 
@@ -48,7 +52,9 @@
 
 | Key | Action |
 |-----|--------|
-| → / Space | Next slide |
-| ← | Previous slide |
+| → / ↓ / Space / Enter | Next slide or trigger the active slide gate |
+| ← / ↑ | Previous slide |
 | Escape | Exit fullscreen |
 | F | Toggle fullscreen |
+
+Slide 9 preserves its three-step Next gate: reveal the architect bonus, launch the contained rocket, then advance.

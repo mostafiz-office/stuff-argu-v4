@@ -1,10 +1,23 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionConfig, useReducedMotion } from "framer-motion";
 import { SlideNavigation } from "./SlideNavigation";
+import { presentationEase, slideTransitionVariants, type PresentationTransition } from "@/lib/presentationMotion";
+import { presentationSound } from "@/lib/presentationSound";
 
-type TransitionStyle = "slide" | "fade" | "zoom" | "flip" | "rise";
-const TRANSITION_STYLES: TransitionStyle[] = ["slide", "fade", "zoom", "flip", "rise"];
+const TRANSITION_STYLES: PresentationTransition[] = [
+  "fade",
+  "rise",
+  "slide",
+  "fade",
+  "zoom",
+  "rise",
+  "fade",
+  "slide",
+  "zoom",
+  "rise",
+  "fade",
+];
 
 interface PresentationEngineProps {
   slides: React.ComponentType<{ onNavigate?: (slideIndex: number) => void }>[];
@@ -24,6 +37,7 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
   onPrev: controlledOnPrev,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const reduceMotion = useReducedMotion();
   const totalSlides = slides.length;
 
   const isControlled = typeof controlledIndex === "number" && typeof controlledOnNavigate === "function";
@@ -76,70 +90,30 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
 
   const handleNavigate = useCallback(
     (newIndex: number) => {
+      if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentIndex) return;
+      presentationSound.play("transition");
       if (controlledOnNavigate) {
         controlledOnNavigate(newIndex);
       } else {
-        if (newIndex >= 0 && newIndex < totalSlides && newIndex !== internalIndex) {
-          setInternalDirection(newIndex > internalIndex ? 1 : -1);
-          setInternalIndex(newIndex);
-        }
+        setInternalDirection(newIndex > internalIndex ? 1 : -1);
+        setInternalIndex(newIndex);
       }
     },
-    [controlledOnNavigate, totalSlides, internalIndex]
+    [controlledOnNavigate, totalSlides, currentIndex, internalIndex]
   );
 
-  const transitionType = TRANSITION_STYLES[currentIndex % TRANSITION_STYLES.length];
-
-  const getVariants = (type: TransitionStyle) => ({
-    enter: (dir: number) => {
-      switch (type) {
-        case "fade":
-          return { opacity: 0, x: 0, y: 0, rotateY: 0, scale: 1 };
-        case "zoom":
-          return { scale: 0.85, opacity: 0, x: 0, y: 0, rotateY: 0 };
-        case "flip":
-          return { rotateY: dir > 0 ? 45 : -45, opacity: 0, scale: 0.92, x: 0, y: 0 };
-        case "rise":
-          return { y: dir > 0 ? 80 : -80, opacity: 0, scale: 0.96, x: 0, rotateY: 0 };
-        case "slide":
-        default:
-          return { x: dir > 0 ? "100%" : "-100%", opacity: 0, y: 0, rotateY: 0, scale: 1 };
-      }
-    },
-    center: {
-      x: 0,
-      y: 0,
-      rotateY: 0,
-      scale: 1,
-      opacity: 1,
-    },
-    exit: (dir: number) => {
-      switch (type) {
-        case "fade":
-          return { opacity: 0, x: 0, y: 0, rotateY: 0, scale: 1 };
-        case "zoom":
-          return { scale: 1.15, opacity: 0, x: 0, y: 0, rotateY: 0 };
-        case "flip":
-          return { rotateY: dir > 0 ? -45 : 45, opacity: 0, scale: 0.92, x: 0, y: 0 };
-        case "rise":
-          return { y: dir > 0 ? -80 : 80, opacity: 0, scale: 0.96, x: 0, rotateY: 0 };
-        case "slide":
-        default:
-          return { x: dir > 0 ? "-100%" : "100%", opacity: 0, y: 0, rotateY: 0, scale: 1 };
-      }
-    },
-  });
-
-  const variants = getVariants(transitionType);
+  const transitionType = TRANSITION_STYLES[currentIndex] ?? "fade";
+  const variants = slideTransitionVariants(transitionType);
   const CurrentSlideComponent = slides[currentIndex];
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="relative w-screen h-screen overflow-hidden bg-pres-bg">
       {/* Global Noise Overlay Grain */}
       <div className="noise-overlay pointer-events-none" />
 
       {/* Main Slide Presentation Canvas with 3D Perspective */}
-      <div className="relative w-full h-full overflow-hidden select-none" style={{ perspective: "1200px" }}>
+      <div className="relative w-full h-full overflow-hidden select-none">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentIndex}
@@ -149,8 +123,8 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
             animate="center"
             exit="exit"
             transition={{
-              duration: 0.45,
-              ease: [0.4, 0, 0.2, 1],
+              duration: reduceMotion ? 0.01 : 0.45,
+              ease: presentationEase,
             }}
             className="w-full h-full flex items-center justify-center"
           >
@@ -170,5 +144,6 @@ export const PresentationEngine: React.FC<PresentationEngineProps> = ({
         />
       </div>
     </div>
+    </MotionConfig>
   );
 };

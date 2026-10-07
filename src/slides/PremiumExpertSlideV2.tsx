@@ -4,6 +4,7 @@ import { ShieldCheck, Code2, Cpu, Users, Sparkles } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import alimImg from "@/assets/alim-updated.png";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PremiumExpertSlideV2Props {
   onNavigate?: (index: number) => void;
@@ -25,10 +26,8 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
       <div className="relative z-10 w-full px-[100px] pt-[60px] flex flex-col">
         <div className="flex items-end justify-between mb-10">
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-[72px] leading-[1.05] font-bold font-heading tracking-tight"
+            {...fadeUp(0)}
+            className="pres-title font-bold font-heading tracking-tight"
           >
             Chief Architect <span className="text-pres-accent">Included</span>
           </motion.h1>
@@ -39,9 +38,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
 
         <div className="flex gap-10">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            {...fadeUp(0.16)}
             className="w-[520px] p-6 rounded-3xl bg-pres-surface/90 border border-pres-accent/30 shadow-2xl"
           >
             <div className="w-full h-[400px] rounded-2xl overflow-hidden mb-5 bg-black/50">
@@ -61,10 +58,8 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
               return (
                 <motion.div
                   key={p.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-                  className="p-8 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/40 flex flex-col justify-center shadow-xl"
+                  {...fadeUp(staggerDelay(i, 0.24, 0.07))}
+                  className="p-8 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/90 flex flex-col justify-center shadow-xl transition-[border-color,background-color,box-shadow] duration-200"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent mb-5">
                     <Icon className="w-8 h-8" />

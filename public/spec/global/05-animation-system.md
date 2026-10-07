@@ -4,53 +4,30 @@
 
 ## 1. Slide Transitions (Framer Motion)
 
-Managed by `PresentationEngine.tsx`. Transition styles cycle per slide index.
+Managed by `PresentationEngine.tsx` and `src/lib/presentationMotion.ts`. Each slide has an intentional transition assignment.
 
 ### Transition Types
 
 | Type | Enter (forward) | Exit (forward) |
 |------|-----------------|----------------|
-| `slide` | `x: "100%", opacity: 0` | `x: "-100%", opacity: 0` |
+| `slide` | `x: "12%", opacity: 0` | `x: "-10%", opacity: 0` |
 | `fade` | `opacity: 0` | `opacity: 0` |
-| `zoom` | `scale: 0.85, opacity: 0` | `scale: 1.15, opacity: 0` |
-| `flip` | `rotateY: 45deg, opacity: 0, scale: 0.92` | `rotateY: -45deg, opacity: 0, scale: 0.92` |
-| `rise` | `y: 80px, opacity: 0, scale: 0.96` | `y: -80px, opacity: 0, scale: 0.96` |
+| `zoom` | `scale: 0.96, opacity: 0` | `scale: 1.025, opacity: 0` |
+| `rise` | `y: 48px, opacity: 0` | `y: -36px, opacity: 0` |
 
 ### Transition Timing
 
 | Property | Value |
 |----------|-------|
 | Duration | `0.45s` |
-| Easing | `[0.4, 0, 0.2, 1]` (cubic-bezier) |
-| Perspective | `1200px` |
+| Easing | `[0.22, 1, 0.36, 1]` |
 | Mode | `AnimatePresence mode="wait"` |
 
-## 2. Standard Fade Helper `fade(i)`
+## 2. Shared Entrance Helpers
 
-Used across all slides for staggered element entrance:
+`fadeUp`, `fadeIn`, `scaleIn`, `staggerDelay`, and `entranceTransition` are centralized in `src/lib/presentationMotion.ts`. Standard entrances settle in about `0.38s` after their delay, use the shared easing, and keep stagger steps restrained.
 
-```tsx
-const fade = (i: number) => ({
-  initial: { opacity: 0, y: 24–30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: 0.15–0.2 * i, duration: 0.6–0.7, ease: "easeOut" },
-});
-```
-
-Variants per slide:
-| Slide | y offset | delay multiplier | duration |
-|-------|----------|-------------------|----------|
-| Cover V3 | 30 | 0.2 | 0.7 |
-| Cover V1 | 30 | 0.2 | 0.7 |
-| Pricing Tiers | 24 | 0.18 | 0.7 |
-| Feature Comparison | 24 | 0.15 | 0.6 |
-| Premium Expert | 24 | 0.15 | 0.7 |
-| Cost Savings | 24 | 0.18 | 0.7 |
-| What's Included | 24 | 0.15 | 0.6 |
-| How It Works | 24 | 0.2 | 0.7 |
-| Starter Detail | 24 | 0.15 | 0.6 |
-| Starter V9 | 24 | 0.18 | 0.7 |
-| CTA | 24 | 0.2 | 0.7 |
+Slide content must use these helpers rather than introducing unrelated easing or long stagger chains.
 
 ## 3. Spring Presets
 
@@ -100,3 +77,7 @@ boxShadow: { delay: 1.3, duration: 2.5, ease: "easeInOut", repeat: Infinity, rep
 | `will-change` | Applied to `.rec-card` for transform/shadow |
 | `translateZ(0)` | Forces GPU layer on animated cards |
 | `pointer-events: none` | On decorative overlays |
+
+## 8. Reduced Motion
+
+`MotionConfig reducedMotion="user"` honors the operating-system preference. The outer slide transition drops to `0.01s`, and CSS transitions and keyframes are similarly shortened. Content remains fully visible and interactive.

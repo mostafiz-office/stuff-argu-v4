@@ -14,3 +14,7 @@ The rocket animation for Slide 10 must render inside the left pricing card only.
 
 ## Implementation note
 Keep `RocketAnimation` mounted inside the pricing card container and use the compact flight profile so the animation remains clipped to the card bounds by design.
+
+## Resolution
+
+The contained animation is anchored to the card's upper-right lane with a compact rocket and label. Its path avoids the revealed Chief Architect Bonus text while remaining clipped by the pricing card.

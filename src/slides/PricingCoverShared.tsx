@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Check, Linkedin } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import marekImg from "@/assets/marek.png";
+import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 
 export const MAREK_URL =
   "https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0";
@@ -21,12 +22,6 @@ interface Props {
   onNavigate?: (index: number) => void;
 }
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay },
-});
-
 const highlights = [
   { a: "20+ Years", b: " in Software Engineering" },
   { a: "50+ Enterprise", b: " Projects Led" },
@@ -35,11 +30,11 @@ const highlights = [
 
 const QuoteCard: React.FC<{ role: string; quote: string; className?: string; delay: number }> = ({ role, quote, className, delay }) => (
   <motion.a
-    {...fade(delay)}
+    {...fadeUp(delay, 12)}
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`block p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 transition-all shadow-xl ${className ?? ""}`}
+    className={`presentation-action presentation-focus block p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
   >
     <div className="flex items-center justify-between mb-3">
       <div className="flex items-center gap-3">
@@ -76,17 +71,17 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
 
       {/* Left column */}
       <div className="absolute left-[80px] top-[130px] bottom-[60px] w-[720px] z-10 flex flex-col justify-center">
-        <motion.p {...fade(0)} className="text-[22px] tracking-[0.2em] uppercase text-pres-accent font-semibold mb-5">
+        <motion.p {...fadeUp(0, 12)} className="text-[22px] tracking-[0.2em] uppercase text-pres-accent font-semibold mb-5">
           {copy.label}
         </motion.p>
-        <motion.h1 {...fade(0.1)} className="text-[90px] leading-[1.04] whitespace-nowrap font-bold font-heading mb-6 tracking-tight">
+        <motion.h1 {...fadeUp(0.08)} className="text-[90px] leading-[1.04] whitespace-nowrap font-bold font-heading mb-6 tracking-tight">
           <span className="block">{copy.line1}</span>
           <span className="block text-pres-accent">{copy.line2}</span>
         </motion.h1>
-        <motion.p {...fade(0.2)} className="text-[28px] leading-[1.45] text-pres-text-muted mb-7 max-w-[640px]">
+        <motion.p {...fadeUp(0.16)} className="text-[28px] leading-[1.45] text-pres-text-muted mb-7 max-w-[640px]">
           {copy.body}
         </motion.p>
-        <motion.div {...fade(0.3)} className="flex flex-wrap gap-3 mb-8">
+        <motion.div {...fadeUp(0.24, 12)} className="flex flex-wrap gap-3 mb-8">
           {copy.chips.map((c) => (
             <span key={c} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 border border-white/15 text-[20px] font-medium">
               <Check className="w-5 h-5 text-pres-accent" />
@@ -94,18 +89,18 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
             </span>
           ))}
         </motion.div>
-        <motion.div {...fade(0.4)} className="flex items-center gap-4 mb-8">
+        <motion.div {...fadeUp(0.32, 12)} className="flex items-center gap-4 mb-8">
           <a
             href="https://client.rasia.pro/hiring-v1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] transition-all hover:scale-105 shadow-[0_0_25px_rgba(255,173,1,0.35)]"
+            className="presentation-action presentation-focus inline-flex items-center gap-3 px-10 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] shadow-[0_0_25px_rgba(255,173,1,0.35)]"
           >
             Book a Call <ArrowRight className="w-6 h-6" />
           </a>
           <button
             onClick={() => onNavigate?.(1)}
-            className="inline-flex items-center gap-2 px-9 py-5 rounded-full border border-pres-accent/50 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-[24px] transition-all hover:scale-105"
+            className="presentation-action presentation-focus inline-flex items-center gap-2 px-9 py-5 rounded-full border border-pres-accent/50 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-[24px]"
           >
             <Sparkles className="w-6 h-6" /> Explore Tiers
           </button>
@@ -124,9 +119,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
         {highlights.map((h, i) => (
           <motion.div
             key={h.a}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
+            {...scaleIn(staggerDelay(i, 0.54, 0.07))}
             className="px-6 py-5 rounded-2xl bg-black/55 border border-pres-accent/30 backdrop-blur-md text-[24px] font-bold font-heading"
           >
             <span className="text-pres-accent">{h.a}</span>

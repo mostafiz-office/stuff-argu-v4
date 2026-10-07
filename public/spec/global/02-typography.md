@@ -40,6 +40,19 @@ All sizes are in `px` within the 1920×1080 coordinate space.
 | `body-sm` | 13–14 | Nav counter, tooltips, badges |
 | `caption` | 11–12 | Meta labels, sub-captions |
 
+### Shared presentation tokens
+
+The live deck now exposes reusable CSS tokens instead of requiring every slide to invent its own headline scale:
+
+| Token / utility | Size | Purpose |
+|---|---:|---|
+| `--pres-title` / `.pres-title` | `72px` | Primary slide titles |
+| `--pres-title-compact` / `.pres-title-compact` | `64px` | Dense comparison titles |
+| `--pres-body` / `.pres-body` | `24px` | Prominent body copy |
+| `--pres-card-title` / `.pres-card-title` | `30px` | Card headings |
+| `--pres-card-body` / `.pres-card-body` | `22px` | Card descriptions |
+| `--pres-label` | `18px` | Labels and compact metadata |
+
 ## 4. Line Height
 
 | Context | Line Height |

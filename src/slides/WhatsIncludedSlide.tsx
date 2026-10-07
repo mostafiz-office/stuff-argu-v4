@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Clock, Shield, MessageSquare, Zap, Users, RefreshCw } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
+import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface WhatsIncludedSlideProps {
   onNavigate?: (index: number) => void;
@@ -55,10 +56,8 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
           {/* Title Area - Clean, focused headline without redundant explanation */}
           <div className="mb-8">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-[68px] leading-[1.08] font-bold font-heading tracking-tight text-white"
+              {...fadeUp(0)}
+              className="pres-title font-bold font-heading tracking-tight text-white"
             >
               What's <span className="text-pres-accent">Included</span>
             </motion.h1>
@@ -71,10 +70,8 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + idx * 0.06 }}
-                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/50 rounded-2xl p-5 flex items-start gap-4 backdrop-blur-md transition-all hover:bg-pres-surface shadow-xl"
+                  {...fadeUp(staggerDelay(idx, 0.16, 0.055))}
+                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/50 rounded-2xl p-5 flex items-start gap-4 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 hover:bg-pres-surface shadow-xl"
                 >
                   <div className="w-[44px] h-[44px] rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent shrink-0 shadow-sm">
                     <Icon className="w-5 h-5" />
@@ -95,9 +92,7 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
 
           {/* Trial Note Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            {...fadeUp(0.5, 12)}
             className="self-center flex items-center gap-3 px-6 py-2.5 rounded-full bg-pres-surface/90 border border-pres-accent/30 backdrop-blur-md shadow-lg"
           >
             <Shield className="w-4 h-4 text-pres-accent shrink-0" />
