@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Code2, Cpu, Users, Sparkles } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import alimImg from "@/assets/alim-updated.png";
+import alimImg from "@/assets/alim-updated.webp";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 
 interface PremiumExpertSlideV2Props {
