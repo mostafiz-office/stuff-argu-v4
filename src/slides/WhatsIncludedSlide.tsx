@@ -14,32 +14,32 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
     {
       icon: Zap,
       title: "Save 80% Hiring Effort",
-      desc: "Pre-screened senior bench ready to ship in 20 minutes — zero recruiter drag.",
+      desc: "Seniors ready to ship in 20 minutes.",
     },
     {
       icon: Shield,
       title: "Fix Fragile Vibe Code",
-      desc: "Strict PR reviews transform quick-hack code into clean, scalable architecture.",
+      desc: "PR reviews turn hacks into clean architecture.",
     },
     {
       icon: RefreshCw,
       title: "AI Hallucination Defense",
-      desc: "Automated tests and architect reviews catch hallucinated logic before production.",
+      desc: "Tests and reviews catch bad logic early.",
     },
     {
       icon: Clock,
       title: "Sleep Through the Night",
-      desc: "Enterprise oversight stops emergency firefights and weekend production outages.",
+      desc: "Oversight stops midnight firefights.",
     },
     {
       icon: Users,
       title: "160 Dedicated Hours/Mo",
-      desc: "Full-time senior execution embedded directly in your Slack, GitHub, and Jira.",
+      desc: "Embedded in your Slack, GitHub, and Jira.",
     },
     {
       icon: MessageSquare,
       title: "Zero-Risk Replacement",
-      desc: "If an engineer isn't a 100% fit, we replace them immediately at zero extra cost.",
+      desc: "Not a fit? Free instant replacement.",
     },
   ];
 
