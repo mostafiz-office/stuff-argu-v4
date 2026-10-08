@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import rocketEmoji from "@/assets/rocket-emoji.svg";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 interface RocketAnimationProps {
   active?: boolean;
@@ -10,20 +9,54 @@ interface RocketAnimationProps {
   onComplete?: () => void;
 }
 
+/** Upright rocket drawn pointing exactly straight up (no rotation needed). */
+const UprightRocket: React.FC = () => (
+  <svg viewBox="0 0 100 200" className="h-[220px] w-[110px]" aria-hidden="true">
+    <defs>
+      <linearGradient id="rk-body" x1="0" x2="1">
+        <stop offset="0" stopColor="hsl(var(--pres-text))" stopOpacity="0.75" />
+        <stop offset="0.5" stopColor="hsl(var(--pres-text))" />
+        <stop offset="1" stopColor="hsl(var(--pres-text))" stopOpacity="0.7" />
+      </linearGradient>
+      <linearGradient id="rk-flame" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="hsl(var(--pres-accent))" />
+        <stop offset="1" stopColor="hsl(var(--pres-accent))" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    {/* flame */}
+    <path d="M38 150 Q50 205 62 150 Z" fill="url(#rk-flame)">
+      <animate attributeName="d" dur="0.18s" repeatCount="indefinite"
+        values="M38 150 Q50 205 62 150 Z;M40 150 Q50 190 60 150 Z;M38 150 Q50 205 62 150 Z" />
+    </path>
+    {/* fins */}
+    <path d="M30 110 L12 150 L30 145 Z" fill="hsl(var(--pres-accent))" />
+    <path d="M70 110 L88 150 L70 145 Z" fill="hsl(var(--pres-accent))" />
+    {/* body */}
+    <path d="M50 8 C72 30 72 80 70 148 L30 148 C28 80 28 30 50 8 Z" fill="url(#rk-body)" />
+    {/* nose */}
+    <path d="M50 8 C60 18 65 30 67 40 L33 40 C35 30 40 18 50 8 Z" fill="hsl(var(--pres-accent))" />
+    {/* window */}
+    <circle cx="50" cy="72" r="11" fill="hsl(var(--pres-bg))" stroke="hsl(var(--pres-accent))" strokeWidth="4" />
+    {/* center fin */}
+    <rect x="47" y="118" width="6" height="32" rx="3" fill="hsl(var(--pres-accent))" />
+  </svg>
+);
+
 export const RocketAnimation: React.FC<RocketAnimationProps> = ({
   active = false,
   flyingLabel = "Growth booster",
   onComplete,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (active) {
       setIsPlaying(true);
       const timer = setTimeout(() => {
         setIsPlaying(false);
-        if (onComplete) onComplete();
-      }, 2500);
+        onComplete?.();
+      }, 2600);
       return () => clearTimeout(timer);
     }
   }, [active, onComplete]);
@@ -31,38 +64,20 @@ export const RocketAnimation: React.FC<RocketAnimationProps> = ({
   return (
     <AnimatePresence>
       {isPlaying && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
-          {/* Flame / spark particles */}
+        <div className="pointer-events-none absolute inset-0 z-40 overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, y: 100 }}
-            animate={{
-              opacity: [0, 1, 0.8, 0],
-              scale: [0.5, 1.2, 1.5, 0],
-              y: [80, 35, 0, -80],
-            }}
-            transition={{ duration: 2.2, ease: "easeOut" }}
-            className="absolute right-4 top-[190px] w-20 h-20 rounded-full bg-gradient-to-t from-amber-500/40 via-orange-500/20 to-transparent blur-xl"
-          />
-
-          {/* Flying Rocket Container */}
-          <motion.div
-            initial={{ y: 200, scale: 0.8, opacity: 0 }}
-            animate={{
-              y: [90, 20, -25, -115],
-              scale: [0.72, 0.95, 0.9, 0.72],
-              opacity: [0, 1, 1, 0],
-            }}
-            transition={{ duration: 2.2, times: [0, 0.2, 0.7, 1], ease: "easeInOut" }}
-            className="absolute right-3 top-[155px] flex flex-col items-center gap-1.5 w-[110px]"
+            initial={reduce ? { opacity: 0 } : { y: 1180 }}
+            animate={reduce ? { opacity: [0, 1, 1, 0] } : { y: [1180, 640, 380, -420] }}
+            transition={{ duration: 2.4, times: [0, 0.35, 0.6, 1], ease: "easeInOut" }}
+            className="absolute left-1/2 top-0 -ml-[110px] flex w-[220px] flex-col items-center"
           >
-            {/* Rocket Graphic */}
-            <div className="w-12 h-12 drop-shadow-[0_0_20px_rgba(255,173,1,0.8)] filter">
-              <img src={rocketEmoji} alt="Rocket" className="w-full h-full object-contain -rotate-45" />
+            <div className="drop-shadow-[0_0_40px_hsl(var(--pres-accent)/0.7)]">
+              <UprightRocket />
             </div>
-
-            {/* Flying Label Pill */}
+            {/* smoke trail */}
+            <div className="-mt-6 h-[260px] w-[46px] rounded-full bg-gradient-to-b from-pres-accent/50 via-pres-accent/10 to-transparent blur-xl" />
             {flyingLabel && (
-              <span className="px-2 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[10px] font-bold font-heading shadow-lg uppercase whitespace-nowrap">
+              <span className="pres-dark-safe-accent absolute top-[90px] left-[190px] whitespace-nowrap rounded-full bg-pres-accent px-4 py-1.5 font-heading text-[22px] font-bold uppercase text-pres-bg shadow-lg">
                 {flyingLabel}
               </span>
             )}

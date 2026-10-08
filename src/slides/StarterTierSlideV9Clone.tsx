@@ -113,6 +113,11 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
     <TooltipProvider>
       <ScaledSlide>
         <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
+          <RocketAnimation
+            active={rocketActive}
+            flyingLabel="Growth booster"
+            onComplete={() => setRocketActive(false)}
+          />
           <SlideHeader />
 
           {/* Ambient center glow */}
@@ -178,13 +183,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
               >
                 <div>
                   <div className="relative p-9 rounded-3xl bg-pres-surface/90 border border-pres-accent/40 shadow-2xl backdrop-blur-md overflow-hidden">
-                    {/* Contained Rocket Animation */}
-                    <RocketAnimation
-                      active={rocketActive}
-                      flyingLabel="Growth booster"
-                      profile="compact"
-                      onComplete={() => setRocketActive(false)}
-                    />
 
                     {/* Card Header */}
                     <div className="flex items-center justify-between mb-1">
