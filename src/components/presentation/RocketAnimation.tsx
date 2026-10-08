@@ -69,7 +69,7 @@ export const RocketAnimation: React.FC<RocketAnimationProps> = ({
             initial={reduce ? { opacity: 0 } : { y: 1180 }}
             animate={reduce ? { opacity: [0, 1, 1, 0] } : { y: [1180, 640, 380, -420] }}
             transition={{ duration: 2.4, times: [0, 0.35, 0.6, 1], ease: "easeInOut" }}
-            className="absolute left-1/2 top-0 -ml-[110px] flex w-[220px] flex-col items-center"
+            className="absolute left-[34%] top-0 -ml-[110px] flex w-[220px] flex-col items-center"
           >
             <div className="drop-shadow-[0_0_40px_hsl(var(--pres-accent)/0.7)]">
               <UprightRocket />
