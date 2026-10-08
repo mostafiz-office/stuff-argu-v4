@@ -1,17 +1,13 @@
-# Slide 01 — Cover V3 · Data Model
+# Slide 01 — Alternating Covers · Data Model
 
 ## Content Source
 
-All content is hardcoded in `PricingCoverV3.tsx`. See `data/slide-01-content.json` for structured extract.
+Cover copy is defined in `PricingCoverV1.tsx` and `PricingCoverV3.tsx`. Shared layout and verified recommendation data live in `PricingCoverShared.tsx`. See `data/slide-01-content.json` for the structured extract.
 
 ## Static Data
 
 ### Keywords (Inline Pills)
-4 keyword pills displayed horizontally:
-- "Top 5% Talent"
-- "Hire in 20 Min"
-- "7-Stage Vetted"
-- "60% Cost Savings"
+Each cover displays three concise benefit pills supplied by its cover copy.
 
 ### HoverCards (Right Side)
 3 expandable cards with title + hover description:
@@ -20,10 +16,14 @@ All content is hardcoded in `PricingCoverV3.tsx`. See `data/slide-01-content.jso
 3. "Chief Software Engineer & Your Dedicated Expert"
 
 ### Recommendations
-2 LinkedIn recommendation cards with name, title, quote, and avatar image.
+Three verified recommendations about Marek are distributed without duplication:
+- Cover V1: Cristian Stancalău and Jakub Szubarga.
+- Cover V3: Adam Lewkowicz.
+
+Each compact card shows the real recommender portrait, name, role, an exact shortened excerpt, and one restrained highlighted phrase. Alim Ul Karim's recommendation is intentionally excluded.
 
 ### External Link
 
 ```
-https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0
+https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0
 ```
