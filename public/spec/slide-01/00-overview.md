@@ -1,6 +1,6 @@
 # Slide 01 — Cover V3 (Bold Statement)
 
-**Version:** 1.3.0  
+**Version:** 1.4.0  
 **Updated:** 2026-10-08  
 **Status:** Active
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-Slide 1 alternates deterministically between two concise cover messages while sharing the same Marek portrait and layout. Cover V1 shows verified recommendations from Cristian Stancalău and Jakub Szubarga; Cover V3 shows Adam Lewkowicz. Each compact card identifies its real author and links to Marek's LinkedIn recommendations page.
+Slide 1 alternates deterministically between two concise cover messages while sharing the same Marek portrait and layout. Cover V1 shows verified recommendations from Cristian Stancalău and Jakub Szubarga; Cover V3 shows Adam Lewkowicz and repeats Cristian as the shared recommendation. Each compact card identifies its real author and links to Marek's LinkedIn recommendations page.
 
 ## File Inventory
 

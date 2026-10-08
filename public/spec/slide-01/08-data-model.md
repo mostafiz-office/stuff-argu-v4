@@ -16,9 +16,9 @@ Each cover displays three concise benefit pills supplied by its cover copy.
 3. "Chief Software Engineer & Your Dedicated Expert"
 
 ### Recommendations
-Three verified recommendations about Marek are distributed without duplication:
+Three verified recommendations about Marek are assigned across two covers, with Cristian intentionally shared:
 - Cover V1: Cristian Stancalău and Jakub Szubarga.
-- Cover V3: Adam Lewkowicz.
+- Cover V3: Adam Lewkowicz and Cristian Stancalău.
 
 Each compact card shows the real recommender portrait, name, role, an exact shortened excerpt, and one restrained highlighted phrase. Alim Ul Karim's recommendation is intentionally excluded.
 
