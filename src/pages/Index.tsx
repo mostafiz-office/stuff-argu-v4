@@ -76,7 +76,6 @@ const Index = () => {
         <PricingCoverV3
           {...props}
           coverVariant="3"
-          onToggleCover={handleToggleCover}
         />
       );
     },
