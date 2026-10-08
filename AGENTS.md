@@ -2,7 +2,7 @@
 
 - Mark the presentation as natively dark and use `pres-dark-safe-accent` for dark text on amber highlights, preventing mobile browser auto-darkening from reducing contrast.
 - Alternate the two Slide 1 covers deterministically from the last persisted cover, on reload and on every return to slide 1; randomness can repeat and appear broken.
-- Centralize presentation motion and optional audio cues; consistent timing and muted-by-default sound keep the deck polished and meeting-safe.
+- Centralize presentation motion and optional audio cues; consistent timing and sound on by default with a visible mute button keep the deck polished and meeting-safe.
 - The Riseup favicon master lives at `public/spec/assets/favicon.ico` and the live icon at `public/favicon.ico`; every deploy ZIP must contain both (Vite copies `public/` into `dist/` automatically).
 - Keep dense feature comparisons inside a dedicated scroll region with persistent tier context; this preserves readable presentation-scale type without expanding the slide canvas.
 - Present the three core customer problems as separate photo-led slides; one dominant problem per slide keeps the sales narrative focused and readable.

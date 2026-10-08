@@ -3,14 +3,20 @@ export type PresentationSound = "transition" | "click" | "reveal" | "launch";
 const STORAGE_KEY = "riseup-presentation-sound";
 const listeners = new Set<(muted: boolean) => void>();
 let context: AudioContext | null = null;
-let muted = true;
+let muted = false;
 
 if (typeof window !== "undefined") {
   try {
-    muted = window.localStorage.getItem(STORAGE_KEY) !== "on";
+    muted = window.localStorage.getItem(STORAGE_KEY) === "off";
   } catch {
-    muted = true;
+    muted = false;
   }
+  // Browsers block audio until the first user gesture; unlock it then.
+  const unlock = () => {
+    if (!muted) getContext()?.resume().catch(() => undefined);
+  };
+  window.addEventListener("pointerdown", unlock, { once: true });
+  window.addEventListener("keydown", unlock, { once: true });
 }
 
 const getContext = () => {

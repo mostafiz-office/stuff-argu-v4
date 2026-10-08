@@ -81,10 +81,10 @@ const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; 
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`presentation-action presentation-focus block p-5 rounded-xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
+    className={`presentation-action presentation-focus block overflow-hidden p-5 rounded-xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
   >
     <div className="flex items-center justify-between gap-3 mb-3">
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
         <div className="w-12 h-12 shrink-0 rounded-full overflow-hidden border-2 border-pres-accent/50 bg-pres-surface">
           <img src={recommendation.image} alt={recommendation.name} className="w-full h-full object-cover" />
         </div>
