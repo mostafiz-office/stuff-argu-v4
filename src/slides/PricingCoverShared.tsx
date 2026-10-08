@@ -4,6 +4,9 @@ import { ArrowRight, Sparkles, Check, Linkedin } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import marekImg from "@/assets/marek.webp";
+import cristianAsset from "@/assets/recommendations/cristian-stancalau.png.asset.json";
+import jakubAsset from "@/assets/recommendations/jakub-szubarga.png.asset.json";
+import adamAsset from "@/assets/recommendations/adam-lewkowicz.png.asset.json";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 
 export const MAREK_URL =
@@ -17,8 +20,49 @@ export interface CoverCopy {
   chips: string[];
 }
 
+export interface Recommendation {
+  name: string;
+  role: string;
+  image: string;
+  quoteBefore: string;
+  highlight: string;
+  quoteAfter: string;
+}
+
+export const COVER_RECOMMENDATIONS = {
+  v1: [
+    {
+      name: "Cristian Stancalău",
+      role: "Expert Java Engineer · Best Practices · Reliability",
+      image: cristianAsset.url,
+      quoteBefore: "Our code review team had the privilege of being managed by Marek, who ",
+      highlight: "successfully led us through troubled times",
+      quoteAfter: "… so the team could focus on daily activities with minimum stress until our targets were reached.",
+    },
+    {
+      name: "Jakub Szubarga",
+      role: "Platform Systems Engineer · .NET · TS · Architecture",
+      image: jakubAsset.url,
+      quoteBefore: "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. ",
+      highlight: "He was excellent at performing tasks associated with these roles.",
+      quoteAfter: "",
+    },
+  ],
+  v3: [
+    {
+      name: "Adam Lewkowicz",
+      role: "Founder & CTO at Vercom S.A. · CPaaS",
+      image: adamAsset.url,
+      quoteBefore: "Marek is a high level professional, qualified and well organised person. ",
+      highlight: "Marek is a kind of person you can rely on!",
+      quoteAfter: "",
+    },
+  ],
+} satisfies Record<"v1" | "v3", Recommendation[]>;
+
 interface Props {
   copy: CoverCopy;
+  recommendations: Recommendation[];
   onNavigate?: (index: number) => void;
 }
 
@@ -28,33 +72,35 @@ const highlights = [
   { a: "Chief Architect", b: " Included" },
 ];
 
-const QuoteCard: React.FC<{ role: string; quote: string; className?: string; delay: number }> = ({ role, quote, className, delay }) => (
+const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; delay: number }> = ({ recommendation, className, delay }) => (
   <motion.a
     {...fadeUp(delay, 12)}
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`presentation-action presentation-focus block p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
+    className={`presentation-action presentation-focus block p-5 rounded-xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
   >
-    <div className="flex items-center justify-between mb-3">
+    <div className="flex items-center justify-between gap-3 mb-3">
       <div className="flex items-center gap-3">
-        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-pres-accent/50 bg-zinc-900">
-          <img src={marekImg} alt="Marek F." className="w-full h-full object-cover object-[center_12%] scale-135" />
+        <div className="w-12 h-12 shrink-0 rounded-full overflow-hidden border-2 border-pres-accent/50 bg-pres-surface">
+          <img src={recommendation.image} alt={recommendation.name} className="w-full h-full object-cover" />
         </div>
-        <div>
-          <div className="font-bold text-[24px] font-heading leading-tight">Marek F.</div>
-          <div className="text-[18px] text-white/55">{role}</div>
+        <div className="min-w-0">
+          <div className="font-bold text-[20px] font-heading leading-tight">{recommendation.name}</div>
+          <div className="text-[15px] text-pres-text-muted truncate">{recommendation.role}</div>
         </div>
       </div>
-      <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-pres-accent/15 border border-pres-accent/40 text-pres-accent text-[17px] font-semibold">
-        <Linkedin className="w-4 h-4 fill-current" /> Verified
+      <span className="flex shrink-0 items-center gap-1.5 px-2.5 py-1 rounded-full bg-pres-accent/15 border border-pres-accent/40 text-pres-accent text-[14px] font-semibold">
+        <Linkedin className="w-3.5 h-3.5 fill-current" /> LinkedIn
       </span>
     </div>
-    <p className="text-[22px] text-white/85 italic leading-snug">{quote}</p>
+    <p className="text-[18px] text-pres-text italic leading-snug">
+      “{recommendation.quoteBefore}<span className="not-italic font-semibold text-pres-accent">{recommendation.highlight}</span>{recommendation.quoteAfter}”
+    </p>
   </motion.a>
 );
 
-export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
+export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onNavigate }) => (
   <ScaledSlide>
     <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans">
       <SlideHeader />
@@ -105,17 +151,14 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, onNavigate }) => (
             <Sparkles className="w-6 h-6" /> Explore Tiers
           </button>
         </motion.div>
-        <QuoteCard
-          delay={0.5}
-          className="max-w-[640px]"
-          role="Tech Founder & CEO"
-          quote={`"The smoothest on-boarding process I have had in my whole career."`}
-        />
+        {recommendations[0] && (
+          <QuoteCard recommendation={recommendations[0]} delay={0.5} className="max-w-[640px]" />
+        )}
       </div>
 
       {/* Right column */}
       <div className="absolute right-[80px] top-[130px] bottom-[60px] w-[420px] z-10 flex flex-col justify-center gap-5">
-        <QuoteCard delay={0.6} role="Engineering Leader" quote={`"A skillful professional and kind communicator."`} />
+        {recommendations[1] && <QuoteCard recommendation={recommendations[1]} delay={0.6} />}
         {highlights.map((h, i) => (
           <motion.div
             key={h.a}

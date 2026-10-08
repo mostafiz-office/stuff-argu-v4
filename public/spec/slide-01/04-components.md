@@ -8,30 +8,29 @@ ScaledSlide
     ├── SlideHeader (logo, z-20)
     ├── div (diagonal accent stripe, z-1)
     ├── div (center glow, z-1)
-    ├── div (Alim photo container, z-4)
-    ├── div (HoverCard stack, z-6)
-    │   ├── HoverCard × 3
+    ├── div (Marek photo container, z-4)
     ├── div (left content block, z-10)
     │   ├── div (icon + category label)
     │   ├── h1 (headline)
     │   ├── p (body)
     │   ├── div (keyword pills × 4)
     │   └── div (CTA buttons × 2)
-    ├── div (rec card Konstantinos, z-8)
-    ├── div (rec card Claudio, z-8)
+    ├── RecommendationCard × 1–2 (variant-specific)
+    ├── div (three expertise highlights)
     └── div (bottom accent line, z-10)
 ```
 
-## HoverCard Component
+## RecommendationCard Component
 
-Custom component with expandable content on hover:
+Compact linked card showing the actual recommender and a shortened verified excerpt:
 
 | Property | Value |
 |----------|-------|
 | Border radius | `rounded-xl` |
 | Backdrop filter | `blur(12px)` |
-| Max width | `360px` |
-| Expand animation | `gridTemplateRows: 0fr → 1fr` over `0.35s ease` |
+| Avatar | 48px circular uploaded portrait |
+| Quote | 18px italic; one amber highlighted phrase |
+| Link | Marek's LinkedIn recommendations page |
 
 ## Icon Container (Category)
 

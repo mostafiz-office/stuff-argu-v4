@@ -1,7 +1,7 @@
 # Slide 02 — Cover V1 (Clean & Minimal)
 
-**Version:** 1.2.0  
-**Updated:** 2026-09-23 (photo swap)  
+**Version:** 1.3.0  
+**Updated:** 2026-10-08 (verified Marek recommendations)  
 **Component:** `PricingCoverV1`  
 **File:** `src/slides/PricingCoverV1.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Clean, minimal cover variant. Marek's portrait is the centerpiece with floating animated keyword badges. Two LinkedIn testimonial cards are positioned asymmetrically. The left side has the icon, headline, body text, and dual CTAs.
+Clean, minimal alternating cover. Marek's portrait is the centerpiece with two compact, correctly attributed LinkedIn recommendations from Cristian Stancalău and Jakub Szubarga.
 
 ---
 
@@ -21,7 +21,7 @@ Clean, minimal cover variant. Marek's portrait is the centerpiece with floating 
 | Left content | `left: 80px, top: 100px, w: 680px` | Users icon (70×70), "Staff Augmentation" label, headline, body, CTA button |
 | Center photo | `left: 720px, bottom: 0, 760×900px` | Marek photo (contained at bottom, drop-shadow) |
 | Keyword badges | Absolute | 3 floating pills with bob + glow animation |
-| Testimonials | Absolute | 2 LinkedIn recommendation cards |
+| Recommendations | Left and right columns | 2 compact LinkedIn recommendation cards |
 | Footer | `bottom: 42px, left: 80px` | `riseup-asia.com` |
 | Bottom accent | `bottom: 0` | 4px gradient line |
 
@@ -53,11 +53,13 @@ Top 5% vetted talent. Hire in as fast as 20 minutes.
 | Book a Call → | Filled accent, pill shape | Opens `https://client.rasia.pro/hiring-v1` |
 | ✨ Explore Tiers | Outlined accent, pill shape | Navigates to slide 2 (`?slide=2`) via router-safe button action |
 
-### Testimonials (2)
-| Name | Title | Quote | Position (x, y) |
-|------|-------|-------|-----------------|
-| Konstantinos P. | Senior Serverless Engineer | "Solid and high quality work..." | 460, 60 |
-| Claudio C. | Engineering Leader · AI-Powered Platforms | "A skillful professional..." | 1150, 780 |
+### Recommendations (2)
+| Name | Title | Exact shortened excerpt | Highlight |
+|------|-------|-------------------------|-----------|
+| Cristian Stancalău | Expert Java Engineer · Best Practices · Reliability | "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached." | "successfully led us through troubled times" |
+| Jakub Szubarga | Platform Systems Engineer · .NET · TS · Architecture | "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. He was excellent at performing tasks associated with these roles." | "He was excellent at performing tasks associated with these roles." |
+
+Both cards link to Marek's LinkedIn recommendations page. Alim Ul Karim's visible recommendation is intentionally excluded.
 
 ---
 
@@ -87,8 +89,9 @@ Top 5% vetted talent. Hire in as fast as 20 minutes.
 | `SlideHeader` | `@/components/presentation/SlideHeader` |
 
 ### Assets
-- `marek.png` — Marek portrait (881×1122, transparent background, high-resolution source photo swapped in 2026-09-23; cropped to subject bounds). Both cover variants import this single file — swapping it updates both.
-- `testimonials/claudio-c.png`, `testimonials/konstantinos-p.png`
+- `marek.webp` — Marek portrait shared by both cover variants.
+- `recommendations/cristian-stancalau.png.asset.json` — Cristian's uploaded portrait.
+- `recommendations/jakub-szubarga.png.asset.json` — Jakub's uploaded portrait.
 
 ### Icons (lucide-react)
 `Users`, `ArrowRight`, `CheckCircle`, `Linkedin`, `MoveRight`

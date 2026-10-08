@@ -4,9 +4,10 @@
 
 | Asset | Import Path | Format | Notes |
 |-------|-------------|--------|-------|
-| CEO Portrait | `src/assets/alim-updated.png` | PNG (transparent) | 85% opacity, scale 1.0 |
-| Claudio Photo | `src/assets/testimonials/claudio-c.png` | PNG | 42px avatar circle |
-| Konstantinos Photo | `src/assets/testimonials/konstantinos-p.png` | PNG | 42px avatar circle |
+| Marek portrait | `src/assets/marek.webp` | WEBP | Full-height cover portrait |
+| Cristian Stancalău | `src/assets/recommendations/cristian-stancalau.png.asset.json` | CDN PNG | Recommendation avatar |
+| Jakub Szubarga | `src/assets/recommendations/jakub-szubarga.png.asset.json` | CDN PNG | Recommendation avatar |
+| Adam Lewkowicz | `src/assets/recommendations/adam-lewkowicz.png.asset.json` | CDN PNG | Recommendation avatar |
 
 ## Icons (Lucide)
 
@@ -16,5 +17,4 @@
 | `ArrowRight` | 20px | Primary CTA |
 | `Sparkles` | 16px | Secondary CTA |
 | `CheckCircle` | 15px | Keyword pills |
-| `Linkedin` | 13px | Verified badge |
-| `MoveRight` | 18px | Card arrow |
+| `Linkedin` | 14px | Recommendation source badge |

@@ -35,25 +35,33 @@
   ],
   "recommendations": [
     {
-      "name": "Konstantinos P.",
-      "title": "Senior Serverless Engineer",
-      "quote": "\"Solid and high quality work... the smoothest on-boarding process I have had in my whole career.\"",
-      "image": "konstantinos-p.png",
-      "x": 70,
-      "y": 860
+      "cover": "v1",
+      "name": "Cristian Stancalău",
+      "title": "Expert Java Engineer · Best Practices · Reliability",
+      "quote": "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached.",
+      "highlight": "successfully led us through troubled times",
+      "image": "cristian-stancalau.png.asset.json"
     },
     {
-      "name": "Claudio C.",
-      "title": "Engineering Leader | AI-Powered Platforms",
-      "quote": "\"A skillful professional and kind communicator.\"",
-      "image": "claudio-c.png",
-      "x": 1200,
-      "y": 120
+      "cover": "v1",
+      "name": "Jakub Szubarga",
+      "title": "Platform Systems Engineer · .NET · TS · Architecture",
+      "quote": "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. He was excellent at performing tasks associated with these roles.",
+      "highlight": "He was excellent at performing tasks associated with these roles.",
+      "image": "jakub-szubarga.png.asset.json"
+    },
+    {
+      "cover": "v3",
+      "name": "Adam Lewkowicz",
+      "title": "Founder & CTO at Vercom S.A. · CPaaS",
+      "quote": "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!",
+      "highlight": "Marek is a kind of person you can rely on!",
+      "image": "adam-lewkowicz.png.asset.json"
     }
   ],
   "cta": {
     "primary": { "text": "Book a Call", "icon": "ArrowRight", "url": "https://client.rasia.pro/hiring-v1" },
     "secondary": { "text": "Explore Tiers", "icon": "Sparkles", "action": "navigate-slide-2" }
   },
-  "linkedinUrl": "https://www.linkedin.com/in/alimkarim/details/recommendations/?detailScreenTabIndex=0"
+  "linkedinUrl": "https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0"
 }

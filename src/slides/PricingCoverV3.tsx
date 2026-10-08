@@ -1,5 +1,5 @@
 import React from "react";
-import { PricingCoverShared, CoverCopy } from "./PricingCoverShared";
+import { COVER_RECOMMENDATIONS, PricingCoverShared, CoverCopy } from "./PricingCoverShared";
 
 const COPY_B: CoverCopy = {
   label: "Staff Augmentation",
@@ -16,5 +16,5 @@ interface Props {
 }
 
 export const PricingCoverV3: React.FC<Props> = ({ onNavigate }) => (
-  <PricingCoverShared copy={COPY_B} onNavigate={onNavigate} />
+  <PricingCoverShared copy={COPY_B} recommendations={COVER_RECOMMENDATIONS.v3} onNavigate={onNavigate} />
 );
