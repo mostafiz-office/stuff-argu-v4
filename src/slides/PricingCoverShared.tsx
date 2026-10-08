@@ -33,7 +33,7 @@ export const COVER_RECOMMENDATIONS = {
   v1: [
     {
       name: "Cristian Stancalău",
-      role: "Expert Java Engineer",
+      role: "Expert Java Engineer · Reliability & Scalability",
       image: cristianAsset.url,
       quoteBefore: "Our code review team had the privilege of being managed by Marek, who ",
       highlight: "successfully led us through troubled times",
@@ -41,7 +41,7 @@ export const COVER_RECOMMENDATIONS = {
     },
     {
       name: "Jakub Szubarga",
-      role: "Platform Systems Engineer",
+      role: "Platform Systems Engineer · .NET · TS · DevOps",
       image: jakubAsset.url,
       quoteBefore: "I witnessed him as software developer, designer, solution architect, speaker, scrum master and team leader. ",
       highlight: "He was excellent at performing tasks associated with these roles.",
@@ -51,7 +51,7 @@ export const COVER_RECOMMENDATIONS = {
   v3: [
     {
       name: "Adam Lewkowicz",
-      role: "Founder & CTO at Vercom S.A.",
+      role: "Founder & CTO at Vercom S.A. · CPaaS",
       image: adamAsset.url,
       quoteBefore: "Marek is a high level professional, qualified and well organised person. ",
       highlight: "Marek is a kind of person you can rely on!",

@@ -67,7 +67,7 @@ Pre-vetted top 5% engineers ready to join your team. No recruitment delays. No h
 ### Recommendation (1)
 | Name | Title | Exact shortened excerpt | Highlight |
 |------|-------|-------------------------|-----------|
-| Adam Lewkowicz | Founder & CTO at Vercom S.A. | "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!" | "Marek is a kind of person you can rely on!" |
+| Adam Lewkowicz | Founder & CTO at Vercom S.A. · CPaaS | "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!" | "Marek is a kind of person you can rely on!" |
 
 The card links to: `https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0`
 
