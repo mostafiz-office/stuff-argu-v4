@@ -1,7 +1,7 @@
 # Slide 07 — What's Included
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-10-08  
 **Component:** `WhatsIncludedSlide`  
 **File:** `src/slides/WhatsIncludedSlide.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Showcases 6 guarantees/benefits included with every plan in a 3×2 card grid. Each card has an icon, title, and description.
+Showcases 6 guarantees/benefits included with every plan in a 3×2 card grid. Each card has an icon, title, and a single one-line description (shortened 2026-10-08 — each description is one punchy line, no wrapping). A trial pill sits centered below the grid.
 
 ---
 
@@ -24,16 +24,18 @@ Showcases 6 guarantees/benefits included with every plan in a 3×2 card grid. Ea
 
 ---
 
-## Content Data — Guarantee Cards (6)
+## Content Data — Guarantee Cards (6, one-line descriptions)
 
 | Icon | Title | Description |
 |------|-------|-------------|
-| Clock | 160 hrs/month | Guaranteed dedicated hours — full-time commitment to your project. |
-| Shield | 7-Stage Vetting | Technical tests, live coding, English fluency, culture fit, and 4 more stages — only top 5% pass. |
-| MessageSquare | Direct Communication | Slack, Teams, or your preferred tool — no middlemen, no delays. |
-| Zap | Hire in 20 Minutes | Pre-vetted bench talent ready to start immediately. Niche roles filled within 30 days. |
-| Users | Flexible Scaling | Add or reduce team members as your project evolves. No lock-in. |
-| RefreshCw | Free Replacement | Not satisfied? We'll replace the developer at no extra cost. |
+| Zap | Save 80% Hiring Effort | Seniors ready to ship in 20 minutes. |
+| Shield | Fix Fragile Vibe Code | PR reviews turn hacks into clean architecture. |
+| RefreshCw | AI Hallucination Defense | Tests and reviews catch bad logic early. |
+| Clock | Sleep Through the Night | Oversight stops midnight firefights. |
+| Users | 160 Dedicated Hours/Mo | Embedded in your Slack, GitHub, and Jira. |
+| MessageSquare | Zero-Risk Replacement | Not a fit? Free instant replacement. |
+
+Trial pill (below grid): "14-day trial with money-back guarantee (conditions apply)."
 
 ---
 
