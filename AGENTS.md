@@ -8,3 +8,4 @@
 - Present the three core customer problems as separate photo-led slides; one dominant problem per slide keeps the sales narrative focused and readable.
 - Place a title-only solution bridge immediately after the three problem slides; the pause separates problem framing from pricing.
 - Keep the post-pyramid promises as two slides of three stacked statement bands, one claim each; extra paragraphs or icons would repeat the dense-text problem the deck already fixed.- Show the Features Comparison only as an overlay opened from the pricing slide, never in the slide sequence; it is reference detail, not part of the narrative flow.
+- Keep cover recommendations typed and variant-specific in the shared cover module; one source prevents duplicate or misattributed testimonial content across the alternating covers.

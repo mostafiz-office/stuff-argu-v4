@@ -1,7 +1,7 @@
 # Slide 01 — Cover V3 (Bold Statement)
 
-**Version:** 1.2.0  
-**Updated:** 2026-09-23 (photo swap)  
+**Version:** 1.3.0  
+**Updated:** 2026-10-08 (verified Marek recommendation)  
 **Component:** `PricingCoverV3`  
 **File:** `src/slides/PricingCoverV3.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Bold, high-impact cover slide. Marek's portrait appears on the right with interactive hover cards showcasing expertise. LinkedIn-verified testimonial cards sit in the corners. The left side features the headline, keyword pills, and dual CTA buttons.
+Bold, high-impact alternating cover. Marek's portrait anchors the center while a compact, correctly attributed LinkedIn recommendation from Adam Lewkowicz provides social proof.
 
 ---
 
@@ -21,7 +21,7 @@ Bold, high-impact cover slide. Marek's portrait appears on the right with intera
 | Left content | `left: 80px, top: 100px, w: 700px` | Icon badge, subtitle, headline, body text, keyword pills, CTA buttons |
 | Right photo | `left: 720px, bottom: 0, 760×900px` | Marek photo (contained at bottom, `opacity: 0.92`, drop-shadow) |
 | Hover cards | `right: 60px, top: 340px` | 3 interactive `HoverCard` components |
-| Testimonials | Absolute positioned | 2 LinkedIn recommendation cards (bottom-left at `70,860` and top-right at `1200,120`) |
+| Recommendation | Left column | 1 compact LinkedIn recommendation card from Adam Lewkowicz |
 | Bottom accent | `bottom: 0` | 4px gradient line (transparent → accent → transparent) |
 
 ---
@@ -64,13 +64,12 @@ Pre-vetted top 5% engineers ready to join your team. No recruitment delays. No h
 | Book a Call → | Filled accent, pill shape | Opens `https://client.rasia.pro/hiring-v1` |
 | ✨ Explore Tiers | Outlined accent, pill shape | Navigates to slide 2 (`?slide=2`) via router-safe button action |
 
-### Testimonials (2)
-| Name | Title | Quote | LinkedIn Badge |
-|------|-------|-------|----------------|
-| Konstantinos P. | Senior Serverless Engineer | "Solid and high quality work... the smoothest on-boarding process I have had in my whole career." | ✅ Verified |
-| Claudio C. | Engineering Leader · AI-Powered Platforms | "A skillful professional and kind communicator." | ✅ Verified |
+### Recommendation (1)
+| Name | Title | Exact shortened excerpt | Highlight |
+|------|-------|-------------------------|-----------|
+| Adam Lewkowicz | Founder & CTO at Vercom S.A. | "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!" | "Marek is a kind of person you can rely on!" |
 
-Testimonial cards link to: `https://www.linkedin.com/in/alimkarim/details/recommendations/`
+The card links to: `https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0`
 
 ---
 
@@ -100,9 +99,8 @@ Testimonial cards link to: `https://www.linkedin.com/in/alimkarim/details/recomm
 | `HoverCard` (local) | Defined inline in component |
 
 ### Assets
-- `marek.png` — Marek portrait (881×1122, transparent background, high-resolution source photo swapped in 2026-09-23; cropped to subject bounds). Must stay a transparent cutout so the bottom-aligned drop-shadow presentation works on the dark slide background.
-- `testimonials/claudio-c.png` — Claudio headshot
-- `testimonials/konstantinos-p.png` — Konstantinos headshot
+- `marek.webp` — Marek portrait, preloaded and shared by both cover variants.
+- `recommendations/adam-lewkowicz.png.asset.json` — Adam's uploaded portrait served through the project asset flow.
 
 ### Icons (lucide-react)
 `Users`, `ArrowRight`, `CheckCircle`, `Linkedin`, `MoveRight`, `Sparkles`

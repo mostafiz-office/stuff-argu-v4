@@ -1,14 +1,14 @@
 # Slide 01 — Cover V3 (Bold Statement)
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.3.0  
+**Updated:** 2026-10-08  
 **Status:** Active
 
 > **Inherits Global**: All shared design tokens from [`../global/`](../global/00-overview.md). This spec documents only slide-specific details.
 
 ## Overview
 
-Bold cover slide with large centered headline, Alim photo on the right (smaller), expandable HoverCards showing expertise details, inline keyword pills, and LinkedIn recommendation cards in corners. Two CTA buttons: "Explore Plans" and "View Tiers".
+Slide 1 alternates deterministically between two concise cover messages while sharing the same Marek portrait and layout. Cover V1 shows verified recommendations from Cristian Stancalău and Jakub Szubarga; Cover V3 shows Adam Lewkowicz. Each compact card identifies its real author and links to Marek's LinkedIn recommendations page.
 
 ## File Inventory
 
