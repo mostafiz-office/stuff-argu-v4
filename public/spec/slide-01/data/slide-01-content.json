@@ -35,7 +35,7 @@
   ],
   "recommendations": [
     {
-      "cover": "v1",
+      "covers": ["v1", "v3"],
       "name": "Cristian Stancalău",
       "title": "Expert Java Engineer · Best Practices · Reliability",
       "quote": "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached.",
@@ -43,7 +43,7 @@
       "image": "cristian-stancalau.png.asset.json"
     },
     {
-      "cover": "v1",
+      "covers": ["v1"],
       "name": "Jakub Szubarga",
       "title": "Platform Systems Engineer · .NET · TS · Architecture",
       "quote": "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. He was excellent at performing tasks associated with these roles.",
@@ -51,7 +51,7 @@
       "image": "jakub-szubarga.png.asset.json"
     },
     {
-      "cover": "v3",
+      "covers": ["v3"],
       "name": "Adam Lewkowicz",
       "title": "Founder & CTO at Vercom S.A. · CPaaS",
       "quote": "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!",

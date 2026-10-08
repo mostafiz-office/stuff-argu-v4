@@ -29,16 +29,18 @@ export interface Recommendation {
   quoteAfter: string;
 }
 
+const CRISTIAN_RECOMMENDATION: Recommendation = {
+  name: "Cristian Stancalău",
+  role: "Expert Java Engineer · Best Practices · Reliability",
+  image: cristianAsset.url,
+  quoteBefore: "Our code review team had the privilege of being managed by Marek, who ",
+  highlight: "successfully led us through troubled times",
+  quoteAfter: "… so the team could focus on daily activities with minimum stress until our targets were reached.",
+};
+
 export const COVER_RECOMMENDATIONS = {
   v1: [
-    {
-      name: "Cristian Stancalău",
-      role: "Expert Java Engineer · Best Practices · Reliability",
-      image: cristianAsset.url,
-      quoteBefore: "Our code review team had the privilege of being managed by Marek, who ",
-      highlight: "successfully led us through troubled times",
-      quoteAfter: "… so the team could focus on daily activities with minimum stress until our targets were reached.",
-    },
+    CRISTIAN_RECOMMENDATION,
     {
       name: "Jakub Szubarga",
       role: "Platform Systems Engineer · .NET · TS · Architecture",
@@ -57,6 +59,7 @@ export const COVER_RECOMMENDATIONS = {
       highlight: "Marek is a kind of person you can rely on!",
       quoteAfter: "",
     },
+    CRISTIAN_RECOMMENDATION,
   ],
 } satisfies Record<"v1" | "v3", Recommendation[]>;
 

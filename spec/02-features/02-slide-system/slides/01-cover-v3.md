@@ -1,7 +1,7 @@
 # Slide 01 — Cover V3 (Bold Statement)
 
-**Version:** 1.3.0  
-**Updated:** 2026-10-08 (verified Marek recommendation)  
+**Version:** 1.4.0  
+**Updated:** 2026-10-08 (Cristian shared across both covers)  
 **Component:** `PricingCoverV3`  
 **File:** `src/slides/PricingCoverV3.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Bold, high-impact alternating cover. Marek's portrait anchors the center while a compact, correctly attributed LinkedIn recommendation from Adam Lewkowicz provides social proof.
+Bold, high-impact alternating cover. Marek's portrait anchors the center while compact, correctly attributed LinkedIn recommendations from Adam Lewkowicz and Cristian Stancalău provide social proof.
 
 ---
 
@@ -21,7 +21,7 @@ Bold, high-impact alternating cover. Marek's portrait anchors the center while a
 | Left content | `left: 80px, top: 100px, w: 700px` | Icon badge, subtitle, headline, body text, keyword pills, CTA buttons |
 | Right photo | `left: 720px, bottom: 0, 760×900px` | Marek photo (contained at bottom, `opacity: 0.92`, drop-shadow) |
 | Hover cards | `right: 60px, top: 340px` | 3 interactive `HoverCard` components |
-| Recommendation | Left column | 1 compact LinkedIn recommendation card from Adam Lewkowicz |
+| Recommendations | Left and right columns | 2 compact LinkedIn recommendation cards from Adam Lewkowicz and Cristian Stancalău |
 | Bottom accent | `bottom: 0` | 4px gradient line (transparent → accent → transparent) |
 
 ---
@@ -64,10 +64,11 @@ Pre-vetted top 5% engineers ready to join your team. No recruitment delays. No h
 | Book a Call → | Filled accent, pill shape | Opens `https://client.rasia.pro/hiring-v1` |
 | ✨ Explore Tiers | Outlined accent, pill shape | Navigates to slide 2 (`?slide=2`) via router-safe button action |
 
-### Recommendation (1)
+### Recommendations (2)
 | Name | Title | Exact shortened excerpt | Highlight |
 |------|-------|-------------------------|-----------|
 | Adam Lewkowicz | Founder & CTO at Vercom S.A. · CPaaS | "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!" | "Marek is a kind of person you can rely on!" |
+| Cristian Stancalău | Expert Java Engineer · Best Practices · Reliability | "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached." | "successfully led us through troubled times" |
 
 The card links to: `https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0`
 
@@ -101,6 +102,7 @@ The card links to: `https://www.linkedin.com/in/marekflejszman/details/recommend
 ### Assets
 - `marek.webp` — Marek portrait, preloaded and shared by both cover variants.
 - `recommendations/adam-lewkowicz.png.asset.json` — Adam's uploaded portrait served through the project asset flow.
+- `recommendations/cristian-stancalau.png.asset.json` — Cristian's uploaded portrait shared by both covers.
 
 ### Icons (lucide-react)
 `Users`, `ArrowRight`, `CheckCircle`, `Linkedin`, `MoveRight`, `Sparkles`
