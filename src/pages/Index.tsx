@@ -36,19 +36,6 @@ const Index = () => {
     try { window.name = `riseup_cover_${coverVariant}`; } catch { /* blocked */ }
   }, [coverVariant]);
 
-  // Manual interactive switcher between the two cover designs
-  const handleToggleCover = useCallback(() => {
-    setCoverVariant((prev) => {
-      const next: "1" | "2" = prev === "2" ? "1" : "2";
-      try {
-        window.name = `riseup_cover_${next}`;
-        localStorage.setItem("riseup_last_cover", next);
-      } catch {
-        // Ignore storage restrictions
-      }
-      return next;
-    });
-  }, []);
 
   // Clean URL parameters on initial mount so reloads never get trapped
   useEffect(() => {
@@ -129,6 +116,8 @@ const Index = () => {
   const handleNavigate = useCallback(
     (newIndex: number) => {
       if (newIndex >= 0 && newIndex < totalSlides && newIndex !== currentIndex) {
+        // Returning to slide 1 from any other slide shows the other cover.
+        if (newIndex === 0) setCoverVariant((prev) => nextCoverOnReturn(prev));
         setDirection(newIndex > currentIndex ? 1 : -1);
         setCurrentIndex(newIndex);
       }
