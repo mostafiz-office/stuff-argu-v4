@@ -56,8 +56,8 @@ Top 5% vetted talent. Hire in as fast as 20 minutes.
 ### Recommendations (2)
 | Name | Title | Exact shortened excerpt | Highlight |
 |------|-------|-------------------------|-----------|
-| Cristian Stancalău | Expert Java Engineer · Reliability & Scalability | "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached." | "successfully led us through troubled times" |
-| Jakub Szubarga | Platform Systems Engineer · .NET · TS · DevOps | "I witnessed him as software developer, designer, solution architect, speaker, scrum master and team leader. He was excellent at performing tasks associated with these roles." | "He was excellent at performing tasks associated with these roles." |
+| Cristian Stancalău | Expert Java Engineer · Best Practices · Reliability | "Our code review team had the privilege of being managed by Marek, who successfully led us through troubled times… so the team could focus on daily activities with minimum stress until our targets were reached." | "successfully led us through troubled times" |
+| Jakub Szubarga | Platform Systems Engineer · .NET · TS · Architecture | "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. He was excellent at performing tasks associated with these roles." | "He was excellent at performing tasks associated with these roles." |
 
 Both cards link to Marek's LinkedIn recommendations page. Alim Ul Karim's visible recommendation is intentionally excluded.
 
