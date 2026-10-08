@@ -1,7 +1,7 @@
 # Slide 07 — What's Included
 
-**Version:** 1.0.0  
-**Updated:** 2026-04-09  
+**Version:** 1.1.0  
+**Updated:** 2026-10-08  
 **Component:** `WhatsIncludedSlide`  
 **File:** `src/slides/WhatsIncludedSlide.tsx`
 
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Showcases 6 guarantees/benefits included with every plan in a 3×2 card grid. Each card has an icon, title, and description.
+Showcases 6 guarantees/benefits included with every plan in a 3×2 card grid. Each card has an icon, title, and a single one-line description (shortened 2026-10-08 — each description is one punchy line, no wrapping). A trial pill sits centered below the grid.
 
 ---
 
