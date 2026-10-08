@@ -44,3 +44,4 @@
 - Features Comparison removed from the slide sequence; opened only via the "Compare pricing" button on slide 11 (Pricing Tiers) as a full-screen overlay. Esc / "Back to pricing" closes; deck keys are suspended while open.
 - Starter Tier gate now at slide 16.
 - Tier cards on slide 11 are clickable: each opens a full-screen plan details overlay (features from `src/data/tierFeatures.ts`), with plan switcher and "Compare all plans". Not part of the slide sequence.
+- 2026-10-08: Slide 16 rocket redrawn as an upright amber SVG (exactly vertical), ~220px, flying bottom→top across the whole slide; no longer clipped inside the pricing card.
