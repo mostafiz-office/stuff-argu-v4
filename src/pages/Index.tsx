@@ -17,6 +17,7 @@ import { StarterTierSlideV9Clone } from "@/slides/StarterTierSlideV9Clone";
 import { PricingCTASlide } from "@/slides/PricingCTASlide";
 import "@/types/navigation";
 import { preloadSlideImages } from "@/lib/preloadImages";
+import { nextCoverOnReturn } from "@/lib/coverRotation";
 
 preloadSlideImages();
 
@@ -68,7 +69,6 @@ const Index = () => {
           <PricingCoverV1
             {...props}
             coverVariant="1"
-            onToggleCover={handleToggleCover}
           />
         );
       }
@@ -80,7 +80,7 @@ const Index = () => {
         />
       );
     },
-    [coverVariant, handleToggleCover]
+    [coverVariant]
   );
 
   const slides = useMemo(() => {
