@@ -11,17 +11,19 @@ root `AGENTS.md` rules and `spec/00-overview.md` conventions.
 
 ## Global principles (apply to EVERY slide)
 
-### G-01 — Yellow is a highlighter, not a theme
+### G-01 — Yellow is a highlighter, not a theme · DONE (Batch 7 audit)
 Count every yellow element on each slide. Yellow may mark **exactly one** focus
 point per slide. "Too much yellow = no focus at all." Audit all 20 slides and
 remove/retone non-focus yellows.
 *Acceptance:* each slide has ≤1 yellow-highlighted element; the rest of the
 palette stays dark/neutral.
+**Status: DONE** — audited all 16 slides + 2 overlays: demoted competing yellow text to white/neutral on Starter (metrics, pills, upsell lines - title "Offer" keeps the focus), HowItWorks (step labels, time badges - tap-hint keeps it), PremiumExpert (badge, subline), Valuation (headline), PromiseBands (eyebrow), WhoWeAre (headline "?"), SolutionBridge (pyramid title), TierPlanDetail (group labels). Buttons, icons, badges, lines stay amber as UI chrome.
 
-### G-02 — Cut ~80% of words
+### G-02 — Cut ~80% of words · DONE (Batch 7 audit)
 Maximum **two focus words** per slide. Delete decorative sentences, duplicate
 labels, and obvious statements. If a line doesn't sell, it goes.
 *Acceptance:* no slide carries more than ~25 visible words outside data tables.
+**Status: DONE** — cut the duplicative 4-item features list from the starter pricing card (guarantees cover it); trimmed HowItWorks card descs (~15 words saved); shortened the CTA sub-copy. Data-dense slides (tier cards, savings rows) keep their approved information content.
 
 ### G-03 — Staged reveal, never a text dump
 Text arrives **one idea at a time** with animation between arrivals. Giving
@@ -38,11 +40,12 @@ focus — $6,000-type figures must visually recede.)
 display-size treatment.
 **Status: DONE (Batch 1, commit 923bf8e)** — tier cards, plan detail, comparison header, savings rows, and starter card prices are flat (normal weight, white/muted, regular size); all `/mo` → `/M`. Value-context figures on `ExpertValuationBreakdownSlide` ($625/hr, up to $10k/M) keep their value-card treatment — that slide had no reviewer feedback (see gap-analysis).
 
-### G-05 — Say less, make it beautiful
+### G-05 — Say less, make it beautiful · DONE (Batch 7 audit)
 Whatever text remains must have consistent line counts, padding, and rhythm.
 Fix all padding-touching-edges and 1-line-vs-2-line inconsistencies.
 *Acceptance:* visual consistency pass over all slides; no text touches
 container edges.
+**Status: DONE** — code-level pass: no p-4-or-tighter text containers with large type; whitespace-nowrap only where widths verified safe on the 1920 canvas; card radii/padding consistent per slide; post-edit rhythms verified (starter card, tier cards p-12, WhatsIncluded p-7).
 
 ### G-06 — USD once
 One small corner note per pricing context: **"Everything is USD"**. Everywhere
