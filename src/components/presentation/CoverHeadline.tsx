@@ -91,7 +91,7 @@ export const CoverHeadline: React.FC<{
 
   return (
     <h1
-      className={`font-heading font-bold tracking-tight leading-[1.04] whitespace-nowrap ${className}`}
+      className={`font-cover font-bold tracking-tight leading-[1.04] whitespace-nowrap ${className}`}
     >
       {renderLine(line1, 0.15)}
       {renderLine(line2, 0.9)}

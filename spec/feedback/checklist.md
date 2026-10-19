@@ -23,7 +23,7 @@
 |----|-------|-----|--------|------|--------|
 | FB-01 | Cover | Cut copy, single yellow focus | ✅ | `CoverHeadline.tsx` | `58a9ef2` |
 | FB-02 | Cover | Water-fill + label-drop animation | ✅ | `CoverHeadline.tsx` | `58a9ef2` |
-| FB-03 | Cover | Copy reference font CSS exactly | ⏳ | — | needs bootcamp page URL |
+| FB-03 | Cover | Copy reference font CSS exactly | ✅ | `CoverHeadline.tsx`, `tailwind.config.ts`, `index.html` | Batch 11 — owner sent the designed image; reference is Plus Jakarta Sans (verified via riseup-pro.com Google Fonts + letterform match); cover headline now `font-cover` |
 | FB-04 | Cover | CTA button matches reference | ✅ | `DeckButton.tsx` | `923bf8e` |
 | FB-05 | Deck | "Start camera" webcam overlay in toolbar | ✅ | `CameraBubble.tsx`, `SlideNavigation.tsx` | Batch 8 |
 | FB-06 | Pain | New copywriting | ✅ | `PainPointsSlide.tsx` | Batch 10 — plain human copy (confirm on review) |
@@ -71,7 +71,7 @@
 
 ## Blocked on owner (nothing to build until these arrive)
 
-1. FB-03: send the bootcamp image you designed (better than the URL for font matching) — skipped for now.
+1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
 2. FB-27: confirm keeping the "In 20 min" vetting badge on Step 02.
 3. FB-35: point to the "previous" CTA design if a different one was meant.
 4. Confirm-or-tweak (my judgment calls, Batch 10): pain copy (FB-06), tagline "Top 5% Engineers, On Demand" (FB-23), "76% saving" (FB-31), Starter "1+ Year" numbers (A3).

@@ -11,7 +11,7 @@ feedback was applied, and CURRENT issues with exact fix instructions.
 
 **Files:** `src/slides/PricingCoverShared.tsx`, `src/components/presentation/CoverHeadline.tsx`
 **Applied:** FB-01 (cut copy, single yellow focus "80%"), FB-02 (water-fill + label-drop), FB-04 (CTA button).
-**Blocked:** FB-03 (owner will send the bootcamp image he designed instead of the URL — skipped for now).
+**Applied:** FB-03 (Batch 11 — cover headline now Plus Jakarta Sans, the reference font: verified via the site's Google Fonts link + letterform match on the designed image).
 
 **Issues:**
 1. **[A4 — fixed Batch 10]** Returning to the cover swapped variants with the new headline

@@ -17,6 +17,8 @@ export default {
       fontFamily: {
         heading: ["Ubuntu", "sans-serif"],
         body: ["Poppins", "sans-serif"],
+        /* FB-03: cover headline matches the RiseupPro Bootcamp Feedback reference */
+        cover: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
