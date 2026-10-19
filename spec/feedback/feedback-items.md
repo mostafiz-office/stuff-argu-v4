@@ -125,14 +125,15 @@ consistently placed and styled.
   continue with layout/animation work.
 - *Acceptance:* copy slots ready; final copy swapped in when the owner delivers.
 
-### FB-07 — Pain slides: keep the imagery · TODO
+### FB-07 — Pain slides: keep the imagery · DONE (Batch 3, commit a66395c)
 - **Video:** [05:11–05:17](https://www.youtube.com/watch?v=xC5kyb477TY&t=311s) · **Files:** `src/slides/PainPointsSlide.tsx`
 - **Now:** photographic backgrounds that read as AI-generated.
 - **Change:** **Keep them.** They look professional — "definitely can't throw
   away." No image replacement work needed.
 - *Acceptance:* no change; recorded so no AI "fixes" it later.
+**Status: DONE (Batch 3)** — imagery untouched in the rewrite; same three photo assets.
 
-### FB-08 — Pain slides: 3-segment text treatment · TODO
+### FB-08 — Pain slides: 3-segment text treatment · DONE (Batch 3, commit a66395c)
 - **Video:** [05:21–06:34](https://www.youtube.com/watch?v=xC5kyb477TY&t=321s) · **Files:** `src/slides/PainPointsSlide.tsx`, `src/index.css`
 - **Now:** flat stacked text.
 - **Change:** (1) First line **in English**, as its own segment; (2) a **light
@@ -141,8 +142,9 @@ consistently placed and styled.
   writing lands first; (4) the middle segment's highlight color is
   **configurable** (yellow or red) via props/config.
 - *Acceptance:* 3-step reveal; shadow matches reference; color configurable.
+**Status: DONE (Batch 3, commit a66395c)** — new `PainBeats` component: eyebrow as its own English segment, then beats arrive staged (big beat first); `.pain-headline-shadow` in index.css gives the light cinematic shadow; highlight color is a per-slide `highlight: "yellow" | "red"` config (Outage=red, others=yellow).
 
-### FB-09 — Pain slides: Narrative Institute animation reference · TODO
+### FB-09 — Pain slides: Narrative Institute animation reference · DONE (Batch 3, commit a66395c)
 - **Video:** [06:34–09:15](https://www.youtube.com/watch?v=xC5kyb477TY&t=394s) · **Files:** `src/slides/PainPointsSlide.tsx`, `src/lib/presentationMotion.ts`
 - **Now:** basic fade/slide animations.
 - **Change:** Study the **Narrative Institute** video (search by company name —
@@ -150,8 +152,9 @@ consistently placed and styled.
   text arrival. The *style of arrival* matters, not the words; use brand yellow
   instead of their red. Implement per G-03/G-07 as reusable reveal components.
 - *Acceptance:* pain-slide text animation evokes the reference rhythm.
+**Status: DONE (Batch 3, commit a66395c)** — beats arrive cinematic-style (drift up + resolve from blur, 0.55s stagger) via the reusable `CinematicLine`/`PainBeats` components; brand yellow used instead of red, red kept only where the pain tone calls for it (Outage). Note: the reference video itself wasn't retrievable (screenshot shows the reviewer's OneNote, not the video), so the rhythm is built from the spec's written description.
 
-### FB-10 — "Outage Panic" slide: staged headline sequence · TODO
+### FB-10 — "Outage Panic" slide: staged headline sequence · DONE (Batch 3, commit a66395c)
 - **Video:** [09:15–10:34](https://www.youtube.com/watch?v=xC5kyb477TY&t=555s) · **Files:** `src/slides/PainPointsSlide.tsx` → `OutagePanicSlide`
 - **Now:** "The 2 AM / Outage Panic / Production breaks while you sleep / $18,500/mo" all visible at once.
 - **Change:** Staged sequence: **"Outage Panic"** arrives first (big) → **"2 AM"**
@@ -159,8 +162,9 @@ consistently placed and styled.
   viewer absorbs the story beat by beat. (FB-06 copy replaces words later; keep
   the staging structure.)
 - *Acceptance:* three distinct arrival beats; works with swapped copy.
+**Status: DONE (Batch 3, commit a66395c)** — Outage slide now stages "Outage Panic" (big, marker highlight) → "2 AM" → "Production Break" (big) at 0.15/0.70/1.25s. Beats are data (`Problem.beats`), so FB-06 copy swaps in without touching the staging.
 
-### FB-11 — Pain slides 2–3: mirror layouts, varied highlights · TODO
+### FB-11 — Pain slides 2–3: mirror layouts, varied highlights · DONE (Batch 3, commit a66395c)
 - **Video:** [10:34–13:42](https://www.youtube.com/watch?v=xC5kyb477TY&t=634s) · **Files:** `src/slides/PainPointsSlide.tsx`
 - **Now:** all three pain slides share the same layout.
 - **Change:** **Mirror the layout** between consecutive pain slides (image
@@ -170,6 +174,7 @@ consistently placed and styled.
   (incl. the "mouse drags and pulls a reveal" concept).
 - *Acceptance:* no two pain slides share layout orientation; ≥2 highlight
   styles exist as reusable components.
+**Status: DONE (Batch 3, commit a66395c)** — layouts alternate left/right/left with a mirrored overlay gradient (`problem-story-overlay-right`); three reusable highlight styles in `reveal.tsx`: `MarkerHighlight` (Outage), `UnderlineSweep` (Fragile), `DragReveal` — the drag-to-reveal concept (Hiring).
 
 ---
 
