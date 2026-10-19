@@ -290,6 +290,9 @@ consistently placed and styled.
   **complimentary benefit** itself; keep surrounding text normal; **hover**
   reveals the benefit detail.
 - *Acceptance:* gift block ≤ 2 lines + visual; hover explains.
+- *Ambiguity (gap-analysis 2026-10-19):* at 27:38–28:06 the screen showed the
+  "Chief Architect" slide — verify whether the confusing gift block lives on the
+  pricing slide or the architect slide before editing.
 
 ---
 
@@ -320,6 +323,9 @@ consistently placed and styled.
 - **Change:** **Delete the "20 minutes" label.** The Discovery Call detail shows
   **3 segments** instead.
 - *Acceptance:* no "20 minutes" text; 3 segments in the detail view.
+- *Ambiguity (gap-analysis 2026-10-19):* audio at 29:38–29:53 is garbled — alternate
+  reading is "the discovery call is 20 minutes across 3 segments." If the owner
+  confirms a 20-minute call, show "20 min · 3 segments" in the detail view instead.
 
 ---
 
@@ -350,6 +356,9 @@ consistently placed and styled.
 - **Change:** Per G-03: **first part shows, then items arrive one by one**; all
   text starts flat white. **"RISE UP" appears big, uppercase** as its own beat.
 - *Acceptance:* sequential arrival; RISE UP beat present.
+- *Note (gap-analysis 2026-10-19):* reviewer may have been describing the current
+  state ("is in big uppercase") rather than requesting a change — if it's already
+  so, keep it; the staged arrival is the actual change.
 
 ---
 
@@ -362,12 +371,15 @@ consistently placed and styled.
   — not "up to 7%", just "7% saving". Everything else becomes normal writing.
 - *Acceptance:* one yellow element ("7% saving"); rest flat.
 
-### FB-32 — "Pay Less." / "Ship More." stacking · TODO
+### FB-32 — "Pay Less." / "Ship More." stacking (no yellow) · TODO
 - **Video:** [32:53–33:06](https://www.youtube.com/watch?v=xC5kyb477TY&t=1973s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
-- **Now:** "Pay Less. Ship More." on one line.
-- **Change:** **"Pay Less." highlighted**, **"Ship More." on the line below** it
-  (stacked, not inline).
-- *Acceptance:* stacked layout as specified.
+- **Now:** "Pay Less. Ship More." on one line, both yellow.
+- **Change:** Stack them: **"Pay Less."** on its own line, **"Ship More."** on the
+  line below — as the headline, in **normal (non-yellow) text**. Per FB-31, the
+  slide's ONE yellow highlight stays **"7% saving"**; the reviewer's "these two
+  would be highlighted" was hypothetical ("যদি হাইলাইট করতাম" — *if* I were
+  highlighting). Do not yellow-highlight Pay Less / Ship More.
+- *Acceptance:* stacked headline, no yellow on it; "7% saving" remains the sole highlight.
 
 ### FB-33 — Clarify "80%"; staged summary; numbers not names · TODO
 - **Video:** [33:06–33:32](https://www.youtube.com/watch?v=xC5kyb477TY&t=1986s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
@@ -395,6 +407,9 @@ consistently placed and styled.
   everything"). Alignment rule: **centered** text is fine as-is; **left**-aligned
   text must align its supporting elements with the writing.
 - *Acceptance:* CTA matches `fb_3330_cta_good.jpg`; alignment rule applied.
+- *Ambiguity (gap-analysis 2026-10-19):* reviewer said "the previous contact page…
+  the one on the left" — mapping to the "Let's Build Your Dream Team" version is
+  best-effort. Confirm with the owner before deleting the current card.
 
 ---
 

@@ -25,6 +25,7 @@ source of truth for *intent*; the items are the source of truth for *what to bui
 | `transcript_en.md` | English translation, grouped into ~30 time blocks. Read this if you don't read Bangla. |
 | `slide-map.md` | Video timestamp → deck slide → repo file path mapping. |
 | `feedback-items.md` | **The spec.** 35 numbered feedback items (FB-01…FB-35) + 8 global principles (G-01…G-08). Each item: timestamp, affected slide + repo file, current state, exact requested change, acceptance criteria, dependencies. |
+| `gap-analysis.md` | Second-pass verification (2026-10-19): every video statement checked against the spec — 1 defect fixed, 4 ambiguities flagged, coverage checklist. Read before implementing. |
 | `screenshots/` | 18 timestamped screenshots from the video (what the reviewer was looking at). |
 
 ## Counts
