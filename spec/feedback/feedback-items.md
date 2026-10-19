@@ -189,6 +189,7 @@ consistently placed and styled.
   near-3D transition. The viewer must **feel no slide change**.
 - *Acceptance:* single continuous transition; pyramid + shrunken solution line
   coexist; slide count reduced by one.
+**Status: DONE (Batch 4, commit a0563ba)** — new `src/slides/SolutionBridgeSlide.tsx` replaces both standalone slides: the solution line opens big and centered, then on Next shrinks/glides left (scale 0.32, near-3D rotateY) while the pyramid rises on the right — one continuous transition, same elements, no slide change. Uses the deck navigation-gate pattern (4 gated beats). Slide count 18 → 16; per-slide transitions in `PresentationEngine` re-aligned with comments.
 
 ### FB-13 — Solution: three staged phrases on the right · TODO
 - **Video:** [15:02–16:33](https://www.youtube.com/watch?v=xC5kyb477TY&t=902s) · **Files:** `src/slides/TalentPyramidSlide.tsx`
@@ -200,6 +201,7 @@ consistently placed and styled.
   3. **"Save Time Hiring"** — focus **"Hiring"**
   Few words total; each phrase gets its own arrival beat.
 - *Acceptance:* three beats, correct focus words, logo persists.
+**Status: DONE (Batch 4, commit a0563ba)** — after the split, three gated Next presses reveal: "Find Top 5% Talent" ("5%" in yellow marker), "Avoid Missing Deadlines" ("Missing" in red underline), "Save Time Hiring" ("Hiring" bold white, no yellow per G-01). Riseup logo persists via `SlideHeader`.
 
 ### FB-14 — Remove standalone logo slide · TODO
 - **Video:** [16:56](https://www.youtube.com/watch?v=xC5kyb477TY&t=1016s) · **Files:** `src/slides/IdentitySlides.tsx` → `BrandLogoSlide`, `src/pages/Index.tsx`
@@ -207,6 +209,7 @@ consistently placed and styled.
 - **Change:** **Delete it** ("logo দরকার নাই" — not needed). Remove from the
   slide array in `Index.tsx`; keep the logo mark inside other slides' headers.
 - *Acceptance:* deck flows without a logo-only beat.
+**Status: DONE (Batch 4, commit a0563ba)** — `BrandLogoSlide` removed from the `Index.tsx` slide array (import dropped too); logo remains in every slide header. Note: `src/slides/IdentitySlides.tsx` still exports `BrandLogoSlide` and the old `SolutionTransitionSlide.tsx`/`TalentPyramidSlide.tsx` files remain unreferenced — harmless dead code (bundler tree-shakes them); owner can delete the files in the Lovable UI if desired.
 
 ---
 
