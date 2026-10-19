@@ -97,19 +97,24 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
   const guarantees = [
     {
+      icon: BadgeCheck,
+      title: "1+ Year Industry Experience",
+      desc: "3+ years coding, 4 in industry.",
+      tooltip:
+        "Doing coding for 3 years and joined industry — 4 years of industrial experience. A real engineer, not a trainee.",
+    },
+    {
       icon: Clock,
-      title: "Save 80% Hiring Effort",
-      desc: "Matched and shipping in 20 minutes.",
+      title: "Startup Benefit",
+      desc: "Senior output at a startup price.",
+      tooltip:
+        "80% less hiring effort — matched and shipping fast, no recruiting cycle.",
     },
     {
       icon: Shield,
-      title: "Fix Fragile Vibe Code",
-      desc: "Architecture guardrails stop AI bugs.",
-    },
-    {
-      icon: BadgeCheck,
       title: "Stop Waking at Night",
       desc: "Seniors keep production stable.",
+      tooltip: "Architecture guardrails stop AI bugs before they reach production.",
     },
   ];
 
@@ -161,9 +166,24 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       </span>
                     </div>
 
-                    <p className="text-[22px] text-pres-accent mb-5">
-                      3+ Years Coding · 1+ Year Industry
-                    </p>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="mb-5 rounded-2xl border border-pres-accent/30 bg-pres-accent/[0.07] px-5 py-4 cursor-pointer">
+                          <p className="text-[26px] font-bold font-heading text-white leading-tight">
+                            1+ Year <span className="text-pres-accent">Industry Experience</span>
+                          </p>
+                          <p className="text-[20px] text-pres-text-muted mt-1">
+                            3+ years engineering · production teams
+                          </p>
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
+                        <div className="text-[16px] text-pres-text-muted">
+                          Doing coding for 3 years and joined industry — 4 years of
+                          industrial experience. A real engineer, not a trainee.
+                        </div>
+                      </TooltipContent>
+                    </Tooltip>
 
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="text-[56px] font-medium font-heading text-white leading-none">
@@ -262,25 +282,33 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                   {guarantees.map((item, idx) => {
                     const Icon = item.icon;
                     return (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: 16 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
-                        className="px-6 py-5 rounded-2xl bg-pres-surface/60 border border-white/10 flex items-center gap-3.5 backdrop-blur-md"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-pres-accent/15 border border-pres-accent/25 flex items-center justify-center text-pres-accent shrink-0">
-                          <Icon className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <h4 className="text-[30px] font-bold font-heading text-white">
-                            {item.title}
-                          </h4>
-                          <p className="text-[22px] text-pres-text-muted mt-1">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </motion.div>
+                      <Tooltip key={idx}>
+                        <TooltipTrigger asChild>
+                          <motion.div
+                            initial={{ opacity: 0, x: 16 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
+                            className="px-6 py-5 rounded-2xl bg-pres-surface/60 border border-white/10 hover:border-pres-accent/40 flex items-center gap-3.5 backdrop-blur-md cursor-pointer transition-colors"
+                          >
+                            <div className="w-12 h-12 rounded-xl bg-pres-accent/15 border border-pres-accent/25 flex items-center justify-center text-pres-accent shrink-0">
+                              <Icon className="w-6 h-6" />
+                            </div>
+                            <div>
+                              <h4 className="text-[30px] font-bold font-heading text-white">
+                                {item.title}
+                              </h4>
+                              <p className="text-[22px] text-pres-text-muted mt-1">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </motion.div>
+                        </TooltipTrigger>
+                        <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
+                          <div className="text-[16px] text-pres-text-muted">
+                            {item.tooltip}
+                          </div>
+                        </TooltipContent>
+                      </Tooltip>
                     );
                   })}
                 </div>
