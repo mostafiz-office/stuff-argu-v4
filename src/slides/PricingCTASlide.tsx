@@ -5,13 +5,11 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import qrCodeImg from "@/assets/qr-code.png";
 import { fadeUp, scaleIn } from "@/lib/presentationMotion";
+import { DeckButton } from "@/components/presentation/DeckButton";
 
 interface PricingCTASlideProps {
   onNavigate?: (index: number) => void;
 }
-
-const btn =
-  "presentation-action presentation-focus inline-flex items-center gap-4 px-9 py-4 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] shadow-[0_0_30px_rgba(255,173,1,0.35)] whitespace-nowrap";
 
 export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
   <ScaledSlide>
@@ -40,15 +38,19 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
             contact@riseup-asia.com
           </motion.a>
           <div className="flex flex-col items-start gap-6">
-            <motion.a {...fadeUp(0.32, 12)} href="https://meet.rasia.pro/intro-call" target="_blank" rel="noopener noreferrer" className={btn}>
-              <CalendarCheck className="w-8 h-8" />
-              Schedule a Call
-              <ArrowRight className="w-7 h-7" />
-            </motion.a>
-            <motion.a {...fadeUp(0.4, 12)} href="https://call.rasia.pro/riseup-offical-v1" target="_blank" rel="noopener noreferrer" className={btn}>
-              <Phone className="w-8 h-8" />
-              Call Now
-            </motion.a>
+            <motion.div {...fadeUp(0.32, 12)}>
+              <DeckButton href="https://meet.rasia.pro/intro-call" target="_blank" rel="noopener noreferrer">
+                <CalendarCheck className="w-8 h-8" />
+                Schedule a Call
+                <ArrowRight className="w-7 h-7" />
+              </DeckButton>
+            </motion.div>
+            <motion.div {...fadeUp(0.4, 12)}>
+              <DeckButton href="https://call.rasia.pro/riseup-offical-v1" target="_blank" rel="noopener noreferrer">
+                <Phone className="w-8 h-8" />
+                Call Now
+              </DeckButton>
+            </motion.div>
           </div>
         </div>
 

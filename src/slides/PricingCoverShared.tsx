@@ -8,6 +8,7 @@ import cristianAsset from "@/assets/recommendations/cristian-stancalau.png.asset
 import jakubAsset from "@/assets/recommendations/jakub-szubarga.png.asset.json";
 import adamAsset from "@/assets/recommendations/adam-lewkowicz.png.asset.json";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
+import { DeckButton } from "@/components/presentation/DeckButton";
 
 export const MAREK_URL =
   "https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0";
@@ -139,20 +140,16 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
           ))}
         </motion.div>
         <motion.div {...fadeUp(0.32, 12)} className="flex items-center gap-4 mb-8">
-          <a
+          <DeckButton
             href="https://client.rasia.pro/hiring-v1"
             target="_blank"
             rel="noopener noreferrer"
-            className="presentation-action presentation-focus inline-flex items-center gap-3 px-10 py-5 rounded-full bg-pres-accent hover:bg-pres-accent-glow text-pres-bg pres-dark-safe-accent font-semibold text-[24px] shadow-[0_0_25px_rgba(255,173,1,0.35)]"
           >
             Book a Call <ArrowRight className="w-6 h-6" />
-          </a>
-          <button
-            onClick={() => onNavigate?.(1)}
-            className="presentation-action presentation-focus inline-flex items-center gap-2 px-9 py-5 rounded-full border border-pres-accent/50 hover:border-pres-accent hover:bg-pres-accent/10 text-pres-accent font-medium text-[24px]"
-          >
+          </DeckButton>
+          <DeckButton variant="outline" onClick={() => onNavigate?.(1)}>
             <Sparkles className="w-6 h-6" /> Explore Tiers
-          </button>
+          </DeckButton>
         </motion.div>
         {recommendations[0] && (
           <QuoteCard recommendation={recommendations[0]} delay={0.5} className="max-w-[640px]" />

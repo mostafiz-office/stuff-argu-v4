@@ -12,6 +12,7 @@ import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { RocketAnimation } from "@/components/presentation/RocketAnimation";
 import { presentationSound } from "@/lib/presentationSound";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
+import { UsdNote } from "@/components/presentation/UsdNote";
 import {
   Tooltip,
   TooltipContent,
@@ -78,16 +79,19 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
       metric: "80%",
       label: "Hiring effort saved",
       tooltip: "Save 80% hiring effort — skip 3-month recruiting cycles, start in 20 minutes",
+      flat: false,
     },
     {
       metric: "160h",
-      label: "Pure senior dev/mo",
+      label: "Pure senior dev/M",
       tooltip: "160 dedicated hours per month fixing fragile vibe-code and shipping roadmap features",
+      flat: false,
     },
     {
       metric: "$10,000",
       label: "Chief Architect Bonus",
-      tooltip: "Alim's expert oversight valued at up to $10,000/mo ($625/hr standard consulting) — fixes AI hallucinations",
+      tooltip: "Alim's expert oversight valued at up to $10,000/M ($625/hr standard consulting) — fixes AI hallucinations",
+      flat: true,
     },
   ];
 
@@ -199,14 +203,14 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     </p>
 
                     <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-[64px] font-bold font-heading text-white leading-none">
+                      <span className="text-[56px] font-medium font-heading text-white leading-none">
                         $1,900
                       </span>
-                      <span className="text-[26px] text-pres-text-muted font-medium">/mo</span>
+                      <span className="text-[26px] text-pres-text-muted font-medium">/M</span>
                     </div>
 
                     <div className="flex items-center gap-3 text-[18px] text-pres-text-dim mt-4 mb-5 font-medium">
-                      <span className="px-3 py-1 rounded-lg border border-pres-accent/40 text-pres-accent text-[20px] font-semibold">160 hrs/month</span>
+                      <span className="px-3 py-1 rounded-lg border border-pres-accent/40 text-pres-accent text-[20px] font-semibold">160 hrs/M</span>
                       <span>+ $2K onboarding deposit</span>
                     </div>
 
@@ -246,7 +250,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           Alim Ul Karim — 20+ Yr Enterprise Veteran
                         </p>
                         <p className="text-[20px] text-pres-text-muted mb-1.5">
-                          Kickoff audit included · <strong className="text-pres-accent font-bold">$2,500/mo</strong> value FREE
+                          Kickoff audit included · <span className="text-white">$2,500/M</span> value FREE
                         </p>
                         <div className="text-[20px] font-semibold text-pres-accent/90 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
                           Upgrade to Tier 2 or 3 for ongoing weekly architecture hours
@@ -275,7 +279,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           {...scaleIn(staggerDelay(idx, 0.22, 0.07))}
                           className="py-7 px-4 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md transition-all cursor-pointer group text-center shadow-lg"
                         >
-                          <div className="text-[56px] font-bold font-heading text-pres-accent metric-glow leading-none mb-3">
+                          <div className={`text-[56px] font-heading leading-none mb-3 ${res.flat ? "font-medium text-white" : "font-bold text-pres-accent metric-glow"}`}>
                             {res.metric}
                           </div>
                           <div className="text-[20px] font-medium text-white/80">
@@ -326,6 +330,8 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
               </div>
             </div>
           </div>
+
+          <UsdNote />
 
           {/* Bottom subtle accent line */}
           <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />

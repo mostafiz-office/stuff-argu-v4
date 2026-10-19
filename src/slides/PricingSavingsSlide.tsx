@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface PricingSavingsSlideProps {
   onNavigate?: (index: number) => void;
@@ -13,8 +14,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Starter Developer",
       tier: "Tier 1",
-      usRate: "$6,000–$8,000/mo",
-      riseUpRate: "$1,900/mo",
+      usRate: "$6,000–$8,000/M",
+      riseUpRate: "$1,900/M",
       savings: "Up to 76% Savings",
       riseUpWidth: "24%",
       color: "from-red-500 to-rose-600",
@@ -24,8 +25,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Mid-Level Developer",
       tier: "Tier 2",
-      usRate: "$10,000–$15,000/mo",
-      riseUpRate: "$4,299/mo",
+      usRate: "$10,000–$15,000/M",
+      riseUpRate: "$4,299/M",
       savings: "Up to 71% Savings",
       riseUpWidth: "29%",
       color: "from-amber-500 to-yellow-500",
@@ -35,8 +36,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Skilled Expert",
       tier: "Tier 3.A",
-      usRate: "$18,000–$25,000/mo",
-      riseUpRate: "$6,800–$8,000/mo",
+      usRate: "$18,000–$25,000/M",
+      riseUpRate: "$6,800–$8,000/M",
       savings: "Up to 68% Savings",
       riseUpWidth: "32%",
       color: "from-purple-500 to-indigo-600",
@@ -46,8 +47,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Tech Leadership",
       tier: "Tier 3.B",
-      usRate: "$22,000–$30,000/mo",
-      riseUpRate: "$7,500–$10,000/mo",
+      usRate: "$22,000–$30,000/M",
+      riseUpRate: "$7,500–$10,000/M",
       savings: "Up to 67% Savings",
       riseUpWidth: "33%",
       color: "from-pink-500 to-rose-500",
@@ -105,12 +106,14 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 </div>
                 <div className="flex items-center justify-between text-[22px]">
                   <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>
-                  <span className="text-pres-accent font-bold">Riseup Asia LLC {item.riseUpRate}</span>
+                  <span className="text-white font-medium">Riseup Asia LLC {item.riseUpRate}</span>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        <UsdNote />
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />

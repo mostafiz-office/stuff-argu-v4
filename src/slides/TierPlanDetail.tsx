@@ -50,7 +50,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
             {tier.experience} Experience
           </p>
           <div className="mt-8 flex items-baseline gap-2">
-            <span className="font-heading text-[88px] font-bold leading-none text-pres-accent">{tier.price}</span>
+            <span className="font-heading text-[64px] font-medium leading-none text-white">{tier.price}</span>
             <span className="text-[28px] font-medium text-pres-text-muted">{tier.priceSuffix}</span>
           </div>
           <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-pres-accent/20 bg-pres-accent/10 px-4 py-1.5 text-[22px] font-semibold text-pres-accent">

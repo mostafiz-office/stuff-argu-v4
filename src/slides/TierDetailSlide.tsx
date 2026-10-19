@@ -5,6 +5,7 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { TIER_FEATURE_GROUPS as groups } from "@/data/tierFeatures";
 import { fadeIn, fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface TierDetailSlideProps {
   onNavigate?: (index: number) => void;
@@ -19,17 +20,17 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
   const columns = [
     {
       name: "Tier 2 — Growth",
-      price: "$4,299/mo",
+      price: "$4,299/M",
       badge: null,
     },
     {
       name: "Tier 3.A — Skilled",
-      price: "$6,800–8K/mo",
+      price: "$6,800–8K/M",
       badge: "BEST VALUE",
     },
     {
       name: "Tier 3.B — Leadership",
-      price: "$7.5K–10K/mo",
+      price: "$7.5K–10K/M",
       badge: "PREMIUM",
     },
   ];
@@ -133,7 +134,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                     </span>
                   )}
                   <div className="font-heading font-bold text-[31px] leading-tight text-pres-text">{col.name}</div>
-                  <div className="comparison-tier-price text-[28px] font-semibold mt-2">{col.price}</div>
+                  <div className="comparison-tier-price text-[24px] font-normal text-pres-text-muted mt-2">{col.price}</div>
                 </motion.div>
               ))}
             </div>
@@ -219,6 +220,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
             </div>
           </div>
         </div>
+
+        <UsdNote />
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />

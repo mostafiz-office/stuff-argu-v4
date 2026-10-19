@@ -7,6 +7,7 @@ import { Award, CheckCircle, Clock, ArrowLeft, Columns3 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface PricingTiersSlideProps {
   onNavigate?: (index: number) => void;
@@ -38,7 +39,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 2 — Growth",
       experience: "2-3+ Years",
       price: "$4,299",
-      priceSuffix: "/mo",
+      priceSuffix: "/M",
       hours: "160 hrs/month",
       badge: null,
       highlight: false,
@@ -53,7 +54,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 3.A — Skilled",
       experience: "7-15+ Years",
       price: "$6.8K–$8K",
-      priceSuffix: "/mo",
+      priceSuffix: "/M",
       hours: "160 hrs/month",
       badge: "BEST VALUE",
       highlight: true,
@@ -68,7 +69,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 3.B — Leadership",
       experience: "7-15+ Years",
       price: "$7.5K–$10K",
-      priceSuffix: "/mo",
+      priceSuffix: "/M",
       hours: "160 hrs/month",
       badge: null,
       highlight: false,
@@ -150,7 +151,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1 mb-5">
-                      <span className="text-[56px] font-bold font-heading text-pres-accent leading-none">
+                      <span className="text-[44px] font-medium font-heading text-white leading-none">
                         {tier.price}
                       </span>
                       <span className="text-[22px] text-pres-text-muted font-medium">
@@ -198,6 +199,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
             </button>
           </motion.div>
         </div>
+
+        <UsdNote />
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />

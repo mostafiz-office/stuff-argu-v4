@@ -12,7 +12,7 @@ interface ExpertValuationBreakdownSlideProps {
 const steps = [
   { icon: DollarSign, title: "Market Rate", value: "$625 / hr", sub: "Enterprise CTO standard" },
   { icon: Clock, title: "Dedicated Hours", value: "2–4 hrs / wk", sub: "8–16 hrs per month" },
-  { icon: Gift, title: "Your Value", value: "Up to $10k / mo", sub: "100% free with your tier", highlight: true },
+  { icon: Gift, title: "Your Value", value: "Up to $10k / M", sub: "100% free with your tier", highlight: true },
 ];
 
 const tiers = [
@@ -73,7 +73,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
             >
               <div className="text-[24px] font-bold font-heading mb-2">{t.name}</div>
               <div className="text-[34px] font-bold text-green-400 font-mono">
-                {t.value}<span className="text-[22px]"> / mo FREE</span>
+                {t.value}<span className="text-[22px]"> / M FREE</span>
               </div>
             </div>
           ))}
