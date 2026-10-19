@@ -9,6 +9,12 @@ import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 import { TIER_DIFFERENTIATORS, TierKey } from "@/data/tierFeatures";
 import { PRICING_OFFER } from "@/lib/pricingConfig";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface PricingTiersSlideProps {
@@ -40,6 +46,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     {
       name: "Tier 2 Growth",
       key: "growth" as TierKey,
+      meaning: "A full-time developer who clears your backlog.",
       experience: "2-3+ Years",
       price: "$4,299",
       priceSuffix: "/M",
@@ -56,6 +63,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     {
       name: "Tier 3.A Skilled",
       key: "skilled" as TierKey,
+      meaning: "A mentor-grade developer with architecture oversight.",
       experience: "7-15+ Years",
       price: "$6.8K–$8K",
       priceSuffix: "/M",
@@ -72,6 +80,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     {
       name: "Tier 3.B Leadership",
       key: "leadership" as TierKey,
+      meaning: "A tech lead managing up to 15 engineers.",
       experience: "7-15+ Years",
       price: "$7.5K–$10K",
       priceSuffix: "/M",
@@ -108,9 +117,12 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
         {/* Flexbox Centered Main Content Wrapper */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
           {/* 3-Column Tier Cards Grid */}
+          <TooltipProvider>
           <div className="grid grid-cols-3 gap-10 w-full">
             {tiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
+                <Tooltip>
+                <TooltipTrigger asChild>
                 <motion.div
                   role="button"
                   tabIndex={0}
@@ -204,9 +216,17 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     </div>
                   </div>
                 </motion.div>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="max-w-[300px] p-4 text-left">
+                  <div className="font-heading text-[18px] font-bold text-white">{tier.name}</div>
+                  <div className="mt-1 text-[15px] text-pres-text-muted">{tier.meaning}</div>
+                  <div className="mt-2 text-[15px] text-white">{tier.price}{tier.priceSuffix}</div>
+                </TooltipContent>
+                </Tooltip>
               </div>
             ))}
           </div>
+          </TooltipProvider>
 
           <motion.div {...fadeUp(0.42)} className="mt-12 flex justify-center">
             <button
