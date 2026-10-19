@@ -4,6 +4,12 @@ import { Clock, DollarSign, Gift } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ExpertValuationBreakdownSlideProps {
   onNavigate?: (index: number) => void;
@@ -23,6 +29,7 @@ const tiers = [
 ];
 
 export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSlideProps> = () => (
+  <TooltipProvider>
   <ScaledSlide>
     <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
       <SlideHeader />
@@ -39,25 +46,57 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
         <div className="grid grid-cols-3 gap-8 mb-8">
           {steps.map((s, i) => {
             const Icon = s.icon;
-            return (
-              <motion.div
-                key={s.title}
-                {...scaleIn(staggerDelay(i, 0.16, 0.08))}
-                className={`p-8 rounded-3xl border shadow-xl ${
-                  s.highlight ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.25)]" : "bg-pres-surface/75 border-white/10"
-                }`}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${s.highlight ? "bg-pres-accent text-pres-bg pres-dark-safe-accent" : "bg-pres-accent/15 text-pres-accent"}`}>
-                    <Icon className="w-6 h-6" />
+            if (!s.highlight) {
+              return (
+                <motion.div
+                  key={s.title}
+                  {...scaleIn(staggerDelay(i, 0.16, 0.08))}
+                  className="p-8 rounded-3xl border shadow-xl bg-pres-surface/75 border-white/10"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-pres-accent/15 text-pres-accent">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[22px] font-semibold uppercase tracking-wider text-pres-text-dim">
+                      {i + 1}. {s.title}
+                    </span>
                   </div>
-                  <span className="text-[22px] font-semibold uppercase tracking-wider text-pres-text-dim">
-                    {i + 1}. {s.title}
-                  </span>
-                </div>
-                <div className={`text-[56px] font-bold font-heading leading-tight mb-2 ${s.highlight ? "text-pres-accent" : ""}`}>{s.value}</div>
-                <p className="text-[24px] text-pres-text-muted">{s.sub}</p>
-              </motion.div>
+                  <div className="text-[56px] font-bold font-heading leading-tight mb-2">{s.value}</div>
+                  <p className="text-[24px] text-pres-text-muted">{s.sub}</p>
+                </motion.div>
+              );
+            }
+            // FB-24: gift block — benefit focus (≤2 lines + visual), hover reveals detail
+            return (
+              <Tooltip key={s.title}>
+                <TooltipTrigger asChild>
+                  <motion.div
+                    {...scaleIn(staggerDelay(i, 0.16, 0.08))}
+                    className="p-8 rounded-3xl border shadow-xl bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.25)] cursor-pointer"
+                  >
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-pres-accent text-pres-bg pres-dark-safe-accent shadow-[0_0_20px_rgba(255,173,1,0.4)]">
+                        <Icon className="w-8 h-8" />
+                      </div>
+                      <span className="text-[22px] font-semibold uppercase tracking-wider text-pres-text-dim">
+                        {i + 1}. {s.title}
+                      </span>
+                    </div>
+                    <div className="text-[40px] font-bold font-heading text-white leading-tight">
+                      Chief Architect
+                    </div>
+                    <div className="text-[30px] font-bold font-heading text-pres-accent">
+                      FREE with your tier
+                    </div>
+                  </motion.div>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="max-w-[320px] p-4 text-center">
+                  <div className="text-[16px] text-pres-text-muted">
+                    Up to $10k/M in architecture oversight ($625/hr value) — included
+                    with your tier at no extra cost.
+                  </div>
+                </TooltipContent>
+              </Tooltip>
             );
           })}
         </div>
@@ -83,4 +122,5 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
       <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
     </div>
   </ScaledSlide>
+  </TooltipProvider>
 );
