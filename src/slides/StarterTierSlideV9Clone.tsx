@@ -129,53 +129,16 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
           {/* Flexbox Centered Main Content Wrapper */}
           <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
-            {/* Header row with Title and Step Guide */}
-            <div className="flex items-start justify-between gap-8 mb-10">
+            {/* Header row */}
+            <div className="mb-10">
               <motion.h1
                 {...fadeUp(0)}
                 className="pres-title font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
-                Zero Risk. <span className="text-pres-accent">All Upside.</span>
+                Startup <span className="text-pres-accent">Offer</span>
                 <span className="block text-[26px] font-normal font-sans text-pres-text-muted tracking-normal mt-3">No contracts. No hiring risk. Just results.</span>
               </motion.h1>
 
-              {/* Interactive Step Guide Banner */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="hidden whitespace-nowrap mt-[40px] flex items-center gap-3 px-4.5 py-2 rounded-2xl bg-pres-surface/90 border border-pres-accent/40 shadow-[0_0_30px_rgba(255,173,1,0.2)] backdrop-blur-md"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pres-accent opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-pres-accent"></span>
-                  </span>
-                  <span className="text-[18px] font-bold font-heading uppercase tracking-wider text-pres-accent">
-                    {gateStep === 0 && "Step 1 of 2: Interactive Perk"}
-                    {gateStep === 1 && "Step 2 of 2: Booster Rocket"}
-                    {gateStep === 2 && "Perks Unlocked"}
-                  </span>
-                </div>
-                <div className="h-3.5 w-[1px] bg-white/20" />
-                <span className="text-[18px] font-medium text-white flex items-center gap-1.5">
-                  {gateStep === 0 && (
-                    <>
-                      👉 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[18px] font-bold">Next ▶</kbd> to reveal Chief Architect Bonus card
-                    </>
-                  )}
-                  {gateStep === 1 && (
-                    <>
-                      🚀 Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-pres-accent font-mono text-[18px] font-bold">Next ▶</kbd> to launch Rocket &amp; activate Guarantee
-                    </>
-                  )}
-                  {gateStep === 2 && (
-                    <>
-                      ✅ All perks active! Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-green-400 font-mono text-[18px] font-bold">Next ▶</kbd> to advance →
-                    </>
-                  )}
-                </span>
-              </motion.div>
             </div>
 
             {/* Main 2-Column Content */}
