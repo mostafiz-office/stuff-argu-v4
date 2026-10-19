@@ -1,8 +1,9 @@
 import "@/types/navigation";
 import React, { useEffect, useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check, Volume2, VolumeX } from "lucide-react";
+import { ChevronLeft, ChevronRight, Share2, Maximize, Minimize, Check, Volume2, VolumeX, Video, VideoOff, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import { presentationSound } from "@/lib/presentationSound";
+import { CameraBubble } from "@/components/presentation/CameraBubble";
 
 import "@/types/navigation";
 
@@ -25,8 +26,20 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const [copied, setCopied] = useState(false);
   const [gateTooltip, setGateTooltip] = useState<string | null>(null);
   const [soundMuted, setSoundMuted] = useState(() => presentationSound.isMuted());
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const [cameraError, setCameraError] = useState(false);
 
   useEffect(() => presentationSound.subscribe(setSoundMuted), []);
+
+  // Stop the webcam if the navigation unmounts while it is live
+  useEffect(() => {
+    return () => {
+      setCameraStream((s) => {
+        if (s) s.getTracks().forEach((tr) => tr.stop());
+        return null;
+      });
+    };
+  }, []);
 
   // Poll for interactive gate tooltip state
   useEffect(() => {
@@ -164,6 +177,35 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
     if (!nextMuted) presentationSound.play("reveal");
   };
 
+  // FB-05: "Start camera" presenter webcam overlay (mirrors the reference deck).
+  // Not a recorder: opens the device webcam as a draggable bubble over the slides.
+  const toggleCamera = useCallback(async () => {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach((tr) => tr.stop());
+      setCameraStream(null);
+      return;
+    }
+    setCameraError(false);
+    try {
+      if (!navigator.mediaDevices?.getUserMedia) throw new Error("unsupported");
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: { ideal: 640 }, height: { ideal: 480 } },
+        audio: false,
+      });
+      stream.getVideoTracks()[0]?.addEventListener("ended", () => setCameraStream(null));
+      setCameraStream(stream);
+    } catch {
+      setCameraError(true);
+    }
+  }, [cameraStream]);
+
+  const stopCamera = useCallback(() => {
+    setCameraStream((s) => {
+      if (s) s.getTracks().forEach((tr) => tr.stop());
+      return null;
+    });
+  }, []);
+
   return (
     <>
       {/* Top-Right Control Bar */}
@@ -208,6 +250,19 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           {soundMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
         </button>
 
+        {/* Camera (FB-05) */}
+        <button
+          type="button"
+          onClick={toggleCamera}
+          aria-label={cameraStream ? "Stop camera" : "Start camera"}
+          className={`presentation-control p-1.5 rounded-full cursor-pointer ${
+            cameraStream ? "text-red-400 hover:text-red-300" : "text-white/90 hover:text-pres-accent"
+          }`}
+          title={cameraStream ? "Stop camera" : "Start camera"}
+        >
+          {cameraStream ? <VideoOff className="w-4 h-4" /> : <Video className="w-4 h-4" />}
+        </button>
+
         <div className="w-[1px] h-4 bg-white/20 mx-1" />
 
         {/* Share */}
@@ -241,6 +296,38 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
         <div className="fixed top-[74px] right-6 z-[250] pointer-events-none animate-bounce">
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-xs font-bold font-heading shadow-[0_0_25px_rgba(255,173,1,0.6)] border border-white/30">
             <span>{gateTooltip}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Camera bubble overlay */}
+      {cameraStream && <CameraBubble stream={cameraStream} onClose={stopCamera} />}
+
+      {/* Camera unavailable notice (mirrors the reference deck) */}
+      {cameraError && (
+        <div className="fixed bottom-8 left-1/2 z-[300] -translate-x-1/2 pointer-events-auto">
+          <div className="flex items-center gap-4 rounded-2xl border border-white/15 bg-pres-surface/95 px-6 py-4 shadow-2xl backdrop-blur-md">
+            <ShieldAlert className="h-8 w-8 shrink-0 text-pres-accent" />
+            <div>
+              <div className="font-heading text-[18px] font-bold text-white">Camera unavailable</div>
+              <div className="text-[15px] text-pres-text-muted">No camera found on this device.</div>
+            </div>
+            <div className="flex items-center gap-2 pl-2">
+              <button
+                type="button"
+                onClick={toggleCamera}
+                className="rounded-full bg-pres-accent px-4 py-1.5 text-[15px] font-bold text-pres-bg pres-dark-safe-accent cursor-pointer"
+              >
+                Try again
+              </button>
+              <button
+                type="button"
+                onClick={() => setCameraError(false)}
+                className="rounded-full border border-white/20 px-4 py-1.5 text-[15px] font-semibold text-white/80 hover:text-white cursor-pointer"
+              >
+                Dismiss
+              </button>
+            </div>
           </div>
         </div>
       )}
