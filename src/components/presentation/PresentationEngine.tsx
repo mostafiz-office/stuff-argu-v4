@@ -6,24 +6,22 @@ import { presentationEase, slideTransitionVariants, type PresentationTransition 
 import { presentationSound } from "@/lib/presentationSound";
 
 const TRANSITION_STYLES: PresentationTransition[] = [
-  "fade",
-  "rise",
-  "slide",
-  "fade",
-  "zoom",
-  "rise",
-  "fade",
-  "zoom",
-  "slide",
-  "fade",
-  "slide",
-  "zoom",
-  "rise",
-  "fade",
-  "zoom",
-  "rise",
-  "fade",
-  "zoom",
+  "fade", // Cover
+  "rise", // OutagePanic
+  "slide", // FragileCode
+  "fade", // HiringSinkhole
+  "rise", // SolutionBridge
+  "fade", // DeliveryPromises
+  "zoom", // ProductHealth
+  "slide", // WhoWeAre
+  "slide", // PricingTiers
+  "zoom", // PremiumExpert
+  "rise", // ExpertValuation
+  "fade", // WhatsIncluded
+  "zoom", // HowItWorks
+  "rise", // StarterTier
+  "fade", // Savings
+  "zoom", // CTA
 ];
 
 interface PresentationEngineProps {
