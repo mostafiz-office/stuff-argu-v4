@@ -94,6 +94,7 @@ consistently placed and styled.
   apply it verbatim to the cover headline. Do not approximate; copy it.
   (Reference lives on the owner's bootcamp site — ask the owner for its URL if
   the screenshot is insufficient.)
+**Status: BLOCKED ON OWNER (Batch 2)** — the exact font CSS cannot be copied from the `fb_0300_bootcamp_ref.jpg` screenshot alone ("do not approximate"). Checked riseup-pro.com homepage + sitemap and ran a web search — the Bootcamp Feedback page was not findable. Need the page URL; will copy the CSS verbatim once received.
 - *Acceptance:* cover typography pixel-matches the reference treatment.
 
 ### FB-04 — Cover: CTA button matches reference · DONE (Batch 1, commit 923bf8e)
