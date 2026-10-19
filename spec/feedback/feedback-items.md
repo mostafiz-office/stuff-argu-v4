@@ -261,6 +261,7 @@ consistently placed and styled.
   (not even bold) per FB-17.
 - *Acceptance:* config flag toggles offer mode; strikethrough + highlight only
   in offer mode.
+**Status: DONE** — new `src/lib/pricingConfig.ts` (`PRICING_OFFER.active` flag, badge text, `wasPrices`). Offer mode shows struck-through old price + badge; inactive hides everything, prices stay flat. `wasPrices` intentionally left empty — fill real pre-offer prices before activating, never invent them.
 
 ### FB-20 — Tiers: DesignModo reference, Red Hat Display, consistency · TODO
 - **Video:** [20:53–23:37](https://www.youtube.com/watch?v=xC5kyb477TY&t=1253s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/index.css`, `index.html`
@@ -270,6 +271,7 @@ consistently placed and styled.
   (2) try **Red Hat Display** for price numerals (add via Google Fonts);
   (3) full **consistency pass**: same paddings, radii, type scale on all three cards.
 - *Acceptance:* consistency checklist signed off against the reference.
+**Status: DONE** — Red Hat Display loaded via Google Fonts, `.font-price` utility applied to tier numerals; consistency: uniform p-12/radius/type scale across cards (shared JSX), 160 hrs/month becomes 160 hrs/M.
 
 ### FB-21 — Tiers: remove hyphens from tier names; add focus · TODO
 - **Video:** [22:52–23:37](https://www.youtube.com/watch?v=xC5kyb477TY&t=1372s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/slides/TierDetailSlide.tsx`
@@ -278,6 +280,7 @@ consistently placed and styled.
   equivalent clean form). Give each card a **distinct visual focus** (per
   FB-18's differentiators) so the eye lands somewhere deliberate.
 - *Acceptance:* no hyphens in tier names; each card has one clear focus.
+**Status: DONE** — Tier 2 Growth, Tier 3.A Skilled, Tier 3.B Leadership (flows to plan detail + comparison); each card focus = its differentiator block, Skilled keeps the BEST VALUE badge.
 
 ### FB-22 — Tiers: hover tooltip with tier name · TODO
 - **Video:** [26:03–26:30](https://www.youtube.com/watch?v=xC5kyb477TY&t=1563s) · **Files:** `src/slides/PricingTiersSlide.tsx`
@@ -285,6 +288,7 @@ consistently placed and styled.
 - **Change:** On **hover**, show a **tooltip with the tier name** (and one-line
   plain-English meaning). Price in the tooltip stays flat/white — never a focus.
 - *Acceptance:* hovering any card reveals its name tooltip.
+**Status: DONE** — shadcn tooltip on each card: tier name + one-line plain-English meaning + price flat/white.
 
 ### FB-23 — Brand lockup: RISE ASIA LLC + tagline · TODO (part PENDING OWNER)
 - **Video:** [27:10–27:34](https://www.youtube.com/watch?v=xC5kyb477TY&t=1630s) · **Files:** all slides with brand lockup; `src/components/presentation/SlideHeader.tsx`
@@ -294,8 +298,9 @@ consistently placed and styled.
   everywhere the lockup appears — the owner will supply the **final tagline**
   (PENDING OWNER); swap it in when delivered.
 - *Acceptance:* all-caps lockup everywhere; tagline placeholder present.
+**Status: DONE** — SlideHeader now shows RISE ASIA LLC all-caps + Premium Software Developer Franchise placeholder (BRAND_TAGLINE, clearly marked PENDING OWNER); brand text updated in savings row, starter guarantee, CTA alt, page title.
 
-### FB-24 — Complimentary/gift block redesign · TODO
+### FB-24 — Complimentary/gift block redesign · DONE
 - **Video:** [27:38–28:26](https://www.youtube.com/watch?v=xC5kyb477TY&t=1658s) · **Files:** `src/slides/PricingTiersSlide.tsx` (gift/complimentary block)
 - **Now:** wordy gift explanation.
 - **Change:** Cut the writing; make the **gift visual nicer**; put focus on the
@@ -305,6 +310,7 @@ consistently placed and styled.
 - *Ambiguity (gap-analysis 2026-10-19):* at 27:38–28:06 the screen showed the
   "Chief Architect" slide — verify whether the confusing gift block lives on the
   pricing slide or the architect slide before editing.
+**Status: DONE** — ambiguity resolved: the block lives on ExpertValuationBreakdownSlide (the Chief Architect slide on screen at 27:38-28:06), not the pricing slide. Redesigned the Your Value card: nicer gift visual, 2-line benefit focus (Chief Architect / FREE with your tier), the $10k valuation moved into the hover tooltip; surrounding text untouched.
 
 ---
 
