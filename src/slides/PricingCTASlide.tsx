@@ -22,9 +22,9 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
           <motion.p {...fadeUp(0, 14)} className="text-[22px] tracking-[0.25em] uppercase text-pres-text-dim mb-6">
             Ready to start?
           </motion.p>
-          <motion.h1 {...fadeUp(0.08)} className="text-[80px] font-bold font-heading leading-[1.08] tracking-tight mb-7">
+          <motion.h1 {...fadeUp(0.08)} className="text-[80px] font-bold font-heading leading-[1.08] tracking-tight mb-7 text-white">
             <span className="block">Let's Build Your</span>
-            <span className="block text-pres-accent">Dream Team</span>
+            <span className="block">Dream Team</span>
           </motion.h1>
           <motion.p {...fadeUp(0.16)} className="text-[26px] leading-[1.5] text-pres-text-muted mb-9">
             Schedule a 15-minute call. We'll match you with the right talent within days.
