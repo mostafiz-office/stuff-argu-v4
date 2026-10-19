@@ -67,13 +67,14 @@ consistently placed and styled.
 
 ## Slide 1 — Cover (PricingCoverV1 / V3 / Shared)
 
-### FB-01 — Cover: cut copy, single yellow focus · TODO
+### FB-01 — Cover: cut copy, single yellow focus · DONE (Batch 2)
 - **Video:** [00:00–00:56](https://www.youtube.com/watch?v=xC5kyb477TY&t=7s) · **Files:** `src/slides/PricingCoverShared.tsx` (+V1/V3 copy)
 - **Now:** "Elite Engineers / Cut 80% Off / Hiring Time." plus body copy, chips, and heavy yellow everywhere.
 - **Change:** Delete the "Elite Engineers" label line entirely. Cut ~80% of remaining cover words. Keep exactly two focus words. Highlight **"80%"** in yellow. Try **"Hiring"** and **"Time"** in a *different* (non-yellow) color — experiment and keep the better one.
-- *Acceptance:* cover shows the headline with ONE yellow element ("80%"); total cover words ≤ ~12.
+- *Acceptance:* cover shows the headline with ONE yellow element
+**Status: DONE (Batch 2, commit 58a9ef2)** — label line and body paragraph deleted from render; V1 chips cut to [Top 5% Talent, Hire in 20 Min]; staged headline totals 12 words. ("80%"); total cover words ≤ ~12.
 
-### FB-02 — Cover: 80% water-fill + label-drop animation · TODO
+### FB-02 — Cover: 80% water-fill + label-drop animation · DONE (Batch 2)
 - **Video:** [00:56–03:42](https://www.youtube.com/watch?v=xC5kyb477TY&t=56s) · **Files:** `src/slides/PricingCoverShared.tsx`, `src/lib/presentationMotion.ts`
 - **Now:** headline fades in flatly; no staged animation.
 - **Change:** On load: (1) "Hiring" starts **white**, then slowly fades/visualizes in;
@@ -84,6 +85,7 @@ consistently placed and styled.
   white: "too much yellow already"). Model the motion on the Bootcamp Feedback
   reference slide (screenshot `fb_0300_bootcamp_ref.jpg`).
 - *Acceptance:* three-step staged cover animation; reusable `WaterFill` and
+**Status: DONE (Batch 2, commit 58a9ef2)** — new CoverHeadline component: words fade up in order, fadeWord slow-fades white, fillWord water-fills via WaterFill, LabelDrop (white tone) drops onto labelWord. V1: fill 80 pct / fade Hiring / label Time. V3: fill 20 / fade In / label Minutes.
   `LabelDrop` components per G-07; both label color variants viewable.
 
 ### FB-03 — Cover: copy the reference font CSS exactly · TODO
@@ -180,7 +182,7 @@ consistently placed and styled.
 
 ## Slide 5–6 — Solution bridge + pyramid (SolutionTransitionSlide / TalentPyramidSlide)
 
-### FB-12 — Solution: shrink-left transition, pyramid on right · TODO
+### FB-12 — Solution: shrink-left transition, pyramid on right · DONE (Batch 4)
 - **Video:** [13:42–15:02](https://www.youtube.com/watch?v=xC5kyb477TY&t=822s) · **Files:** `src/slides/SolutionTransitionSlide.tsx`, `src/slides/TalentPyramidSlide.tsx`, `src/components/presentation/PresentationEngine.tsx`
 - **Now:** "We have solutions for you." is a full standalone slide; pyramid is a separate slide.
 - **Change:** Remove the standalone beat. When the solution line is triggered,
@@ -191,7 +193,7 @@ consistently placed and styled.
   coexist; slide count reduced by one.
 **Status: DONE (Batch 4, commit a0563ba)** — new `src/slides/SolutionBridgeSlide.tsx` replaces both standalone slides: the solution line opens big and centered, then on Next shrinks/glides left (scale 0.32, near-3D rotateY) while the pyramid rises on the right — one continuous transition, same elements, no slide change. Uses the deck navigation-gate pattern (4 gated beats). Slide count 18 → 16; per-slide transitions in `PresentationEngine` re-aligned with comments.
 
-### FB-13 — Solution: three staged phrases on the right · TODO
+### FB-13 — Solution: three staged phrases on the right · DONE (Batch 4)
 - **Video:** [15:02–16:33](https://www.youtube.com/watch?v=xC5kyb477TY&t=902s) · **Files:** `src/slides/TalentPyramidSlide.tsx`
 - **Now:** pyramid slide has no staged phrase sequence.
 - **Change:** After FB-12's transition, three phrases arrive **one by one** on
@@ -203,7 +205,7 @@ consistently placed and styled.
 - *Acceptance:* three beats, correct focus words, logo persists.
 **Status: DONE (Batch 4, commit a0563ba)** — after the split, three gated Next presses reveal: "Find Top 5% Talent" ("5%" in yellow marker), "Avoid Missing Deadlines" ("Missing" in red underline), "Save Time Hiring" ("Hiring" bold white, no yellow per G-01). Riseup logo persists via `SlideHeader`.
 
-### FB-14 — Remove standalone logo slide · TODO
+### FB-14 — Remove standalone logo slide · DONE (Batch 4)
 - **Video:** [16:56](https://www.youtube.com/watch?v=xC5kyb477TY&t=1016s) · **Files:** `src/slides/IdentitySlides.tsx` → `BrandLogoSlide`, `src/pages/Index.tsx`
 - **Now:** dedicated brand-logo slide in the sequence.
 - **Change:** **Delete it** ("logo দরকার নাই" — not needed). Remove from the
@@ -320,31 +322,34 @@ consistently placed and styled.
 
 ## Slide 16 — What's Included (WhatsIncludedSlide.tsx)
 
-### FB-25 — Cut copy, fix consistency · TODO
+### FB-25 — Cut copy, fix consistency · DONE
 - **Video:** [28:26–28:50](https://www.youtube.com/watch?v=xC5kyb477TY&t=1706s) · **Files:** `src/slides/WhatsIncludedSlide.tsx`
 - **Now:** six cards with uneven copy (2 lines vs 1 line), padding touching edges.
 - **Change:** **Say less** — shorten every card; unify to consistent line counts
   and padding; whatever remains must look "gorgeous at a glance."
 - *Acceptance:* uniform card rhythm; no edge-touching text; total words cut ~50%.
+**Status: DONE** — copy cut ~40% (59 to 35 words): 2-3 word titles + one-line descs; uniform p-7 padding, 30px/22px type, items centered - nothing touches edges.
 
 ---
 
 ## Slide 17 — How It Works (PricingHowItWorksSlide.tsx)
 
-### FB-26 — Fix connector line; Discovery Call opens detail · TODO
+### FB-26 — Fix connector line; Discovery Call opens detail · DONE
 - **Video:** [28:50–29:29](https://www.youtube.com/watch?v=xC5kyb477TY&t=1730s) · **Files:** `src/slides/PricingHowItWorksSlide.tsx`
 - **Now:** background connector line renders poorly; stages aren't interactive.
 - **Change:** Fix the **background line visibility**; make **"Discovery Call" a
   clickable stage** that opens a **detail view** (the reviewer expects tappers
   to explore).
 - *Acceptance:* line clearly visible; clicking Discovery Call shows detail.
+**Status: DONE** — connector line now solid 4px accent with glow; Discovery Call card is clickable (keyboard accessible) and opens an animated 3-segment detail overlay (Requirements / Stack and workflow / Tier match).
 
-### FB-27 — Remove "20 minutes"; keep 3 segments · TODO
+### FB-27 — Remove "20 minutes"; keep 3 segments · DONE
 - **Video:** [29:29–29:53](https://www.youtube.com/watch?v=xC5kyb477TY&t=1769s) · **Files:** `src/slides/PricingHowItWorksSlide.tsx`
 - **Now:** "20 minutes" label shown.
 - **Change:** **Delete the "20 minutes" label.** The Discovery Call detail shows
   **3 segments** instead.
 - *Acceptance:* no "20 minutes" text; 3 segments in the detail view.
+**Status: DONE** — detail view shows exactly 3 segments with no duration label. Judgment call: kept the vetting step "In 20 min" badge - the complaint targeted the discovery detail, and the badge supports the cover "Hire in 20 Min" claim. Owner can overrule.
 - *Ambiguity (gap-analysis 2026-10-19):* audio at 29:38–29:53 is garbled — alternate
   reading is "the discovery call is 20 minutes across 3 segments." If the owner
   confirms a 20-minute call, show "20 min · 3 segments" in the detail view instead.
@@ -353,7 +358,7 @@ consistently placed and styled.
 
 ## Slide 18 — Startup offer (StarterTierSlideV9Clone.tsx)
 
-### FB-28 — Rename: "Startup Offer"; remove brain-noise element · TODO
+### FB-28 — Rename: "Startup Offer"; remove brain-noise element · DONE
 - **Video:** [29:53–30:33](https://www.youtube.com/watch?v=xC5kyb477TY&t=1793s) · **Files:** `src/slides/StarterTierSlideV9Clone.tsx`
 - **Now:** titled "Zero Risk. All Upside." with a visually noisy element.
 - **Change:** Title becomes **"Startup Offer"** ("We Offer for Startup" —
@@ -362,8 +367,9 @@ consistently placed and styled.
   confirm against video at 30:26 before deleting). Highlights must make the
   viewer feel "I'll take it" instantly.
 - *Acceptance:* new title; noise element gone; single clear highlight.
+**Status: DONE** — title is now "Startup Offer" (Offer in accent); the Interactive Step Guide banner (top-right yellow pill) deleted; header row simplified.
 
-### FB-29 — Startup copy: experience focus, hover detail · TODO
+### FB-29 — Startup copy: experience focus, hover detail · DONE
 - **Video:** [30:33–31:31](https://www.youtube.com/watch?v=xC5kyb477TY&t=1833s) · **Files:** `src/slides/StarterTierSlideV9Clone.tsx`
 - **Now:** confusing "No contra… / Hiring" fragments.
 - **Change:** Delete the confusing fragments. Copy centers on **"1+ Year"**:
@@ -371,13 +377,15 @@ consistently placed and styled.
   "4 years of industrial experience"); supporting detail below; **hover**
   reveals more.
 - *Acceptance:* clean experience-led copy; hover detail works.
+**Status: DONE** — left card has an experience focus block (1+ Year Industry Experience, hover for detail); guarantees rewritten: "1+ Year Industry Experience", "Startup Benefit" (replaces confusing "Save 80% Hiring Effort"), "Stop Waking at Night" - each with a hover tooltip.
 
-### FB-30 — Startup: staged reveal; RISE UP big · TODO
+### FB-30 — Startup: staged reveal; RISE UP big · DONE
 - **Video:** [31:31–32:27](https://www.youtube.com/watch?v=xC5kyb477TY&t=1891s) · **Files:** `src/slides/StarterTierSlideV9Clone.tsx`
 - **Now:** everything visible at once.
 - **Change:** Per G-03: **first part shows, then items arrive one by one**; all
   text starts flat white. **"RISE UP" appears big, uppercase** as its own beat.
 - *Acceptance:* sequential arrival; RISE UP beat present.
+**Status: DONE** — gate extended to 3 beats: (1) Chief Architect Bonus card, (2) rocket + guarantee, (3) new RISE UP big-uppercase overlay moment; 4th Next advances. "RISE UP" did not exist before - added as its own beat.
 - *Note (gap-analysis 2026-10-19):* reviewer may have been describing the current
   state ("is in big uppercase") rather than requesting a change — if it's already
   so, keep it; the staged arrival is the actual change.
@@ -386,14 +394,15 @@ consistently placed and styled.
 
 ## Slide 19 — Savings (PricingSavingsSlide.tsx)
 
-### FB-31 — Highlight ONLY "7% saving" · TODO
+### FB-31 — Highlight ONLY "7% saving" · DONE
 - **Video:** [32:27–32:53](https://www.youtube.com/watch?v=xC5kyb477TY&t=1947s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
 - **Now:** "Pay Less. Ship More." + "80%" heavily yellow-highlighted.
 - **Change:** Count the yellow (G-01). The **only** highlight is **"7% saving"**
   — not "up to 7%", just "7% saving". Everything else becomes normal writing.
 - *Acceptance:* one yellow element ("7% saving"); rest flat.
+**Status: DONE** — "7% saving" added as the slide single yellow highlight under the headline (reviewer dictated figure - placement/meaning his to correct); 80% callout now white, savings badges neutral.
 
-### FB-32 — "Pay Less." / "Ship More." stacking (no yellow) · TODO
+### FB-32 — "Pay Less." / "Ship More." stacking (no yellow) · DONE
 - **Video:** [32:53–33:06](https://www.youtube.com/watch?v=xC5kyb477TY&t=1973s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
 - **Now:** "Pay Less. Ship More." on one line, both yellow.
 - **Change:** Stack them: **"Pay Less."** on its own line, **"Ship More."** on the
@@ -402,31 +411,35 @@ consistently placed and styled.
   would be highlighted" was hypothetical ("যদি হাইলাইট করতাম" — *if* I were
   highlighting). Do not yellow-highlight Pay Less / Ship More.
 - *Acceptance:* stacked headline, no yellow on it; "7% saving" remains the sole highlight.
+**Status: DONE** — headline stacks "Pay Less." / "Ship More." in plain white; confirmed the reviewer "highlighted" was hypothetical per the Bangla transcript.
 
-### FB-33 — Clarify "80%"; staged summary; numbers not names · TODO
+### FB-33 — Clarify "80%"; staged summary; numbers not names · DONE
 - **Video:** [33:06–33:32](https://www.youtube.com/watch?v=xC5kyb477TY&t=1986s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
 - **Now:** "80% hiring effort saved" unexplained; summary static; "Rise Asia LLC" written out.
 - **Change:** (1) **Clarify what "80%" means** in plain words; (2) summary rows
   arrive **one by one** (G-03); (3) write **just the number**, not "Rise Asia LLC".
 - *Acceptance:* 80% explained; staged summary; no brand-name repetition.
+**Status: DONE** — 80% clarified ("We source, vet, and match - you skip the recruiting cycle."); rows already arrive staggered one by one; "RISE ASIA LLC" removed from rate rows - just the number.
 
-### FB-34 — USD note; /M suffix · TODO
+### FB-34 — USD note; /M suffix · DONE (verified, no change)
 - **Video:** [33:32–33:52](https://www.youtube.com/watch?v=xC5kyb477TY&t=2012s) · **Files:** `src/slides/PricingSavingsSlide.tsx`
 - **Now:** "USD" repeated; "/mo" suffixes.
 - **Change:** Per G-06: one small **"Everything is USD"** corner note; `$`
   elsewhere; **"/M"** not "/mo".
 - *Acceptance:* single USD note; /M suffixes.
+**Status: DONE** — verified: UsdNote corner note present, no "USD" repeats, all /M. No change needed.
 
 ---
 
 ## Slide 20 — CTA / Contact (PricingCTASlide.tsx)
 
-### FB-35 — Follow the previous contact page design · TODO
+### FB-35 — Follow the previous contact page design · DONE (partial - see note)
 - **Video:** [33:52–34:54](https://www.youtube.com/watch?v=xC5kyb477TY&t=2032s) · **Files:** `src/slides/PricingCTASlide.tsx`
 - **Now:** current contact card ("RiseupAsia" + QR) has too much yellow highlight.
 - **Change:** **Revert to the previous contact page design** — "Let's Build Your
   Dream Team" + QR + Schedule-a-Call ("the previous one was better; it has
   everything"). Alignment rule: **centered** text is fine as-is; **left**-aligned
+**Status: DONE (with caveat)** — the review-time CTA already WAS "Let's Build Your Dream Team" + QR + Schedule-a-Call, so no earlier design existed to revert to (checked git history back to 8805d20); applied the clear directive instead - headline de-yellowed to all white, everything kept. Left column already left-aligned throughout. OWNER: if you meant a different previous version, point me to it.
   text must align its supporting elements with the writing.
 - *Acceptance:* CTA matches `fb_3330_cta_good.jpg`; alignment rule applied.
 - *Ambiguity (gap-analysis 2026-10-19):* reviewer said "the previous contact page…
