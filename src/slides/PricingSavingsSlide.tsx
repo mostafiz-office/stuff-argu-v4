@@ -75,18 +75,26 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 {...fadeUp(0)}
                 className="pres-title font-bold font-heading tracking-tight text-white mb-4"
               >
-                Pay Less. <span className="text-pres-accent">Ship More.</span>
+                Pay Less.
+                <br />
+                Ship More.
               </motion.h1>
               <p className="text-[26px] text-pres-text-muted">Same senior talent, a fraction of US rates.</p>
+              {/* FB-31: the slide's ONE yellow highlight */}
+              <motion.div {...fadeUp(0.12)} className="mt-6 inline-block">
+                <span className="font-heading text-[34px] font-bold text-pres-accent">
+                  7% saving
+                </span>
+              </motion.div>
             </div>
 
             <motion.div
               {...fadeUp(0.2)}
               className="p-9 rounded-3xl bg-pres-surface/80 border border-pres-accent/30 shadow-2xl backdrop-blur-md max-w-[480px]"
             >
-              <div className="text-[64px] font-bold font-heading text-pres-accent metric-glow leading-none mb-3">80%</div>
+              <div className="text-[64px] font-bold font-heading text-white leading-none mb-3">80%</div>
               <div className="text-[30px] font-bold font-heading text-white mb-2">Hiring effort saved</div>
-              <p className="text-[22px] text-pres-text-muted">Compared with recruiting in the US.</p>
+              <p className="text-[22px] text-pres-text-muted">We source, vet, and match — you skip the recruiting cycle.</p>
             </motion.div>
           </div>
 
@@ -102,11 +110,11 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                     <span className="text-[30px] font-bold font-heading text-white">{item.role}</span>
                     <span className="text-[18px] font-semibold px-3 py-1 rounded-full bg-white/10 text-white/80">{item.tier}</span>
                   </div>
-                  <span className={`text-[20px] font-bold px-4 py-1 rounded-full ${item.accentBg} ${item.accentText}`}>{item.savings}</span>
+                  <span className="text-[20px] font-medium px-4 py-1 rounded-full bg-white/10 text-white/70">{item.savings}</span>
                 </div>
                 <div className="flex items-center justify-between text-[22px]">
                   <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>
-                  <span className="text-white font-medium">RISE ASIA LLC {item.riseUpRate}</span>
+                  <span className="text-white font-medium">{item.riseUpRate}</span>
                 </div>
               </motion.div>
             ))}
