@@ -177,6 +177,12 @@
   );
 }
 
+/* FB-15: subtle dot texture for tier cards (DesignModo reference) */
+.tier-card-dots {
+  background-image: radial-gradient(hsl(var(--pres-text) / 0.08) 1.2px, transparent 1.3px);
+  background-size: 22px 22px;
+}
+
 /* FB-08: light cinematic text-shadow for pain headlines over imagery */
 .pain-headline-shadow {
   text-shadow:

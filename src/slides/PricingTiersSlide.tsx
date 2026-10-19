@@ -121,8 +121,10 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   tabIndex={0}
                   aria-label={`View ${tier.name} details`}
                   onClick={(e) => { e.stopPropagation(); setOverlay(idx); }}
-                  {...fadeUp(staggerDelay(idx, 0.18, 0.08))}
-                  whileHover={{ y: -6, scale: 1.012 }}
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: staggerDelay(idx, 0.22, 0.1), duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
                   whileTap={{ scale: 0.99 }}
                   className={`group cursor-pointer relative flex flex-col h-full p-10 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
                     tier.highlight
@@ -130,6 +132,9 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                       : "bg-pres-surface/75 border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                   }`}
                 >
+                  {/* FB-15: subtle dot texture */}
+                  <div aria-hidden className="tier-card-dots pointer-events-none absolute inset-0 rounded-3xl" />
+
                   {/* Best Value Badge */}
                   {tier.badge && (
                     <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[18px] font-bold font-heading flex items-center gap-1.5 shadow-lg">
