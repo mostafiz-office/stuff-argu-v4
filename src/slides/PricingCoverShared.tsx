@@ -9,6 +9,7 @@ import jakubAsset from "@/assets/recommendations/jakub-szubarga.png.asset.json";
 import adamAsset from "@/assets/recommendations/adam-lewkowicz.png.asset.json";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 import { DeckButton } from "@/components/presentation/DeckButton";
+import { CoverHeadline, CoverHeadlineConfig } from "@/components/presentation/CoverHeadline";
 
 export const MAREK_URL =
   "https://www.linkedin.com/in/marekflejszman/details/recommendations/?detailScreenTabIndex=0";
@@ -19,6 +20,8 @@ export interface CoverCopy {
   line2: string;
   body: string;
   chips: string[];
+  /** FB-02 staged headline animation config */
+  headline: CoverHeadlineConfig;
 }
 
 export interface Recommendation {
@@ -121,16 +124,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
 
       {/* Left column */}
       <div className="absolute left-[80px] top-[130px] bottom-[60px] w-[720px] z-10 flex flex-col justify-center">
-        <motion.p {...fadeUp(0, 12)} className="text-[22px] tracking-[0.2em] uppercase text-pres-accent font-semibold mb-5">
-          {copy.label}
-        </motion.p>
-        <motion.h1 {...fadeUp(0.08)} className="text-[90px] leading-[1.04] whitespace-nowrap font-bold font-heading mb-6 tracking-tight">
-          <span className="block">{copy.line1}</span>
-          <span className="block text-pres-accent">{copy.line2}</span>
-        </motion.h1>
-        <motion.p {...fadeUp(0.16)} className="text-[28px] leading-[1.45] text-pres-text-muted mb-7 max-w-[640px]">
-          {copy.body}
-        </motion.p>
+        <CoverHeadline config={copy.headline} className="text-[90px] mb-6" />
         <motion.div {...fadeUp(0.24, 12)} className="flex flex-wrap gap-3 mb-8">
           {copy.chips.map((c) => (
             <span key={c} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 border border-white/15 text-[20px] font-medium">

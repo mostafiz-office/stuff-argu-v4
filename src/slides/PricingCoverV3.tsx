@@ -7,6 +7,15 @@ const COPY_B: CoverCopy = {
   line2: "In 20 Minutes.",
   body: "Skip 3-month hiring cycles. Get a proven engineer shipping now.",
   chips: ["No Recruiting Risk", "Your Timezone", "Chief Architect"],
+  headline: {
+    line1: "Senior Engineers",
+    line2: "In 20 Minutes.",
+    fillWord: "20",
+    fillPercent: 20,
+    fadeWord: "In",
+    labelWord: "Minutes.",
+    labelTone: "white",
+  },
 };
 
 interface Props {

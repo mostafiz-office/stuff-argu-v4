@@ -6,7 +6,16 @@ const COPY_A: CoverCopy = {
   line1: "Cut 80% Off",
   line2: "Hiring Time.",
   body: "Pre-vetted top 5% engineers ready to join your team this week.",
-  chips: ["Top 5% Talent", "Hire in 20 Min", "No Hidden Fees"],
+  chips: ["Top 5% Talent", "Hire in 20 Min"],
+  headline: {
+    line1: "Cut 80% Off",
+    line2: "Hiring Time.",
+    fillWord: "80%",
+    fillPercent: 80,
+    fadeWord: "Hiring",
+    labelWord: "Time.",
+    labelTone: "white",
+  },
 };
 
 interface Props {
