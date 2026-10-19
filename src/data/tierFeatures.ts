@@ -9,7 +9,7 @@ export const TIER_FEATURE_GROUPS: Array<{ label: string; rows: FeatureRow[] }> =
   {
     label: "Delivery",
     rows: [
-      { feature: "Dedicated developer · 160 hrs/mo", growth: true, skilled: true, leadership: true },
+      { feature: "Dedicated developer · 160 hrs/M", growth: true, skilled: true, leadership: true },
       { feature: "Weekly progress reports", growth: true, skilled: true, leadership: true },
       { feature: "Daily standups & sync", growth: true, skilled: true, leadership: true },
       { feature: "Sprint participation", growth: true, skilled: true, leadership: true },
@@ -36,3 +36,35 @@ export const TIER_FEATURE_GROUPS: Array<{ label: string; rows: FeatureRow[] }> =
     ],
   },
 ];
+
+export type TierKey = "growth" | "skilled" | "leadership";
+
+export type TierDifferentiator = {
+  /** full line of copy */
+  text: string;
+  /** substring of `text` to emphasize (e.g. "up to 15") — omit for none */
+  highlight?: string;
+};
+
+/**
+ * FB-18: each tier's 2–3 unique differentiators — the "why this price"
+ * focus block on the tier card. Distinct from TIER_FEATURE_GROUPS, which
+ * powers the full comparison table overlay.
+ */
+export const TIER_DIFFERENTIATORS: Record<TierKey, TierDifferentiator[]> = {
+  growth: [
+    { text: "Full-time dedicated developer" },
+    { text: "Clears backlog and fragile code" },
+    { text: "No mentor overhead — honest scope" },
+  ],
+  skilled: [
+    { text: "Mid-level architecture oversight" },
+    { text: "Mentor-grade developers" },
+    { text: "Owns complex features end-to-end" },
+  ],
+  leadership: [
+    { text: "Manages up to 15 engineers", highlight: "up to 15" },
+    { text: "CTO-level architecture oversight" },
+    { text: "24/7 priority SLA" },
+  ],
+};

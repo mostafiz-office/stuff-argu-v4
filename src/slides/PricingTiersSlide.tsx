@@ -3,10 +3,11 @@ import { createPortal } from "react-dom";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { TierPlanDetail } from "@/slides/TierPlanDetail";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, Clock, ArrowLeft, Columns3 } from "lucide-react";
+import { Award, Clock, ArrowLeft, Columns3 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { TIER_DIFFERENTIATORS, TierKey } from "@/data/tierFeatures";
 import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface PricingTiersSlideProps {
@@ -37,6 +38,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
   const tiers = [
     {
       name: "Tier 2 — Growth",
+      key: "growth" as TierKey,
       experience: "2-3+ Years",
       price: "$4,299",
       priceSuffix: "/M",
@@ -52,6 +54,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     },
     {
       name: "Tier 3.A — Skilled",
+      key: "skilled" as TierKey,
       experience: "7-15+ Years",
       price: "$6.8K–$8K",
       priceSuffix: "/M",
@@ -67,6 +70,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     },
     {
       name: "Tier 3.B — Leadership",
+      key: "leadership" as TierKey,
       experience: "7-15+ Years",
       price: "$7.5K–$10K",
       priceSuffix: "/M",
@@ -163,13 +167,21 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     {/* Divider */}
                     <div className="w-full h-[1px] bg-white/10 mb-6" />
 
-                    {/* Features List */}
+                    {/* FB-18: differentiator focus block — the "why this price" */}
                     <ul className="space-y-4">
-                      {tier.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5">
-                          <CheckCircle className="w-6 h-6 text-pres-accent shrink-0 mt-0.5" />
-                          <span className="text-[22px] text-pres-text-muted leading-snug">
-                            {feature}
+                      {TIER_DIFFERENTIATORS[tier.key].map((d, dIdx) => (
+                        <li key={dIdx} className="flex items-start gap-3">
+                          <span className="mt-[10px] h-[8px] w-[8px] shrink-0 rounded-full bg-pres-accent" />
+                          <span className="text-[24px] font-medium text-white leading-snug">
+                            {d.highlight ? (
+                              <>
+                                {d.text.split(d.highlight)[0]}
+                                <span className="text-pres-accent font-semibold">{d.highlight}</span>
+                                {d.text.split(d.highlight)[1]}
+                              </>
+                            ) : (
+                              d.text
+                            )}
                           </span>
                         </li>
                       ))}
