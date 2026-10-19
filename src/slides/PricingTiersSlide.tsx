@@ -102,18 +102,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
         {/* Flexbox Centered Main Content Wrapper */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
-          {/* Title Area - Clean, focused headline without redundant explanation */}
-          <div className="mb-12">
-            <motion.h1
-              {...fadeUp(0)}
-              className="pres-title font-bold font-heading tracking-tight text-white"
-            >
-              End Stalled Projects: <span className="text-pres-accent">Pick Your Tier</span>
-            </motion.h1>
-          </div>
-
           {/* 3-Column Tier Cards Grid */}
-          <div className="grid grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-3 gap-10 w-full">
             {tiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <motion.div
@@ -126,7 +116,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   transition={{ delay: staggerDelay(idx, 0.22, 0.1), duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
                   whileTap={{ scale: 0.99 }}
-                  className={`group cursor-pointer relative flex flex-col h-full p-10 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
+                  className={`group cursor-pointer relative flex flex-col h-full p-12 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
                     tier.highlight
                       ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
                       : "bg-pres-surface/75 border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
@@ -145,7 +135,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
                   <div className="flex flex-col">
                     {/* Tier Name */}
-                    <h3 className="text-[32px] font-bold font-heading text-white mb-1">
+                    <h3 className="text-[36px] font-bold font-heading text-white mb-1">
                       {tier.name}
                     </h3>
 
