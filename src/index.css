@@ -166,6 +166,24 @@
   );
 }
 
+/* FB-11: mirrored overlay for right-aligned pain slides */
+.problem-story-overlay-right {
+  background: linear-gradient(
+    270deg,
+    hsl(var(--pres-bg) / 0.98) 0%,
+    hsl(var(--pres-bg) / 0.94) 35%,
+    hsl(var(--pres-bg) / 0.48) 58%,
+    hsl(var(--pres-bg) / 0.08) 82%
+  );
+}
+
+/* FB-08: light cinematic text-shadow for pain headlines over imagery */
+.pain-headline-shadow {
+  text-shadow:
+    0 2px 18px hsl(var(--pres-bg) / 0.75),
+    0 1px 4px hsl(var(--pres-bg) / 0.9);
+}
+
 .comparison-row,
 .tier-column {
   transition: background-color 200ms ease, border-color 200ms ease, filter 200ms ease;

@@ -101,3 +101,89 @@ export const MarkerHighlight: React.FC<{
     <span className="relative z-10">{children}</span>
   </span>
 );
+
+/**
+ * UnderlineSweep — an underline draws itself left→right under the text.
+ * Pain-slide highlight variant #2 (FB-11), brand colors via colorClassName.
+ */
+export const UnderlineSweep: React.FC<{
+  children: React.ReactNode;
+  colorClassName?: string;
+  delay?: number;
+  duration?: number;
+  className?: string;
+}> = ({
+  children,
+  colorClassName = "bg-pres-accent",
+  delay = 0,
+  duration = 0.6,
+  className = "",
+}) => (
+  <span className={`relative inline-block ${className}`}>
+    <span className="relative z-10">{children}</span>
+    <motion.span
+      aria-hidden
+      className={`absolute left-[0.05em] right-[0.05em] -bottom-[0.1em] h-[0.12em] origin-left rounded-full ${colorClassName}`}
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ delay, duration, ease: presentationEase }}
+    />
+  </span>
+);
+
+/**
+ * DragReveal — a solid cover panel is "dragged" aside, pulling a reveal
+ * across the text (the "mouse drags and pulls a reveal" concept, FB-11).
+ * Pain-slide highlight variant #3.
+ */
+export const DragReveal: React.FC<{
+  children: React.ReactNode;
+  coverClassName?: string;
+  delay?: number;
+  duration?: number;
+  className?: string;
+}> = ({
+  children,
+  coverClassName = "bg-pres-bg",
+  delay = 0,
+  duration = 0.9,
+  className = "",
+}) => (
+  <span className={`relative inline-block overflow-hidden align-bottom ${className}`}>
+    <motion.span
+      className="relative z-10 inline-block"
+      initial={{ opacity: 0.25 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: delay + duration * 0.4, duration: 0.4, ease: presentationEase }}
+    >
+      {children}
+    </motion.span>
+    <motion.span
+      aria-hidden
+      className={`absolute inset-0 z-20 ${coverClassName}`}
+      initial={{ x: "0%" }}
+      animate={{ x: "102%" }}
+      transition={{ delay, duration, ease: presentationEase }}
+    />
+  </span>
+);
+
+/**
+ * CinematicLine — a single line arriving the "cinematic" way (FB-09,
+ * Narrative Institute rhythm): drifts up while resolving from blur.
+ */
+export const CinematicLine: React.FC<{
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+  className?: string;
+}> = ({ children, delay = 0, duration = 0.85, className = "" }) => (
+  <motion.span
+    className={`block ${className}`}
+    initial={{ opacity: 0, y: 34, filter: "blur(8px)" }}
+    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    transition={{ delay, duration, ease: presentationEase }}
+  >
+    {children}
+  </motion.span>
+);
