@@ -31,7 +31,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
           >
             Chief Architect <span className="text-pres-accent">Included</span>
           </motion.h1>
-          <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pres-accent/15 border border-pres-accent/40 text-pres-accent text-[24px] font-semibold whitespace-nowrap">
+          <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white/80 text-[24px] font-semibold whitespace-nowrap">
             <Sparkles className="w-6 h-6" /> 100% free in every tier
           </span>
         </div>
@@ -45,7 +45,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
               <img src={alimImg} alt="Alim Ul Karim" className="w-full h-full object-cover object-top" />
             </div>
             <p className="font-bold text-[32px] font-heading leading-tight">Alim Ul Karim</p>
-            <p className="text-[24px] text-pres-accent font-semibold mb-4">Chief Software Engineer · 20+ yrs</p>
+            <p className="text-[24px] text-white font-semibold mb-4">Chief Software Engineer · 20+ yrs</p>
             <ul className="space-y-2 text-[22px] text-pres-text">
               <li>• Architect for 10M+ user systems</li>
               <li>• Vets every engineer personally</li>

@@ -133,7 +133,7 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
             transition={{ duration: 0.9, ease: presentationEase }}
           >
             <h2 className="font-heading text-[44px] font-bold text-white">
-              How We Find the <span className="text-pres-accent">Top 5%</span>
+              How We Find the Top 5%
             </h2>
             <div className="mt-8 flex items-start gap-14">
               <PyramidVisual className="w-[560px] shrink-0" />

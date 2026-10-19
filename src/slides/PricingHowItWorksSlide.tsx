@@ -123,7 +123,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     </div>
 
                     {/* Step Label */}
-                    <span className="text-[25px] font-semibold text-pres-accent tracking-[0.15em] mb-1 uppercase">
+                    <span className="text-[25px] font-semibold text-white tracking-[0.15em] mb-1 uppercase">
                       {step.num}
                     </span>
 
@@ -138,12 +138,12 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     </p>
 
                     {/* Time Badge */}
-                    <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-[25px] font-semibold">
+                    <div className="px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/70 text-[25px] font-semibold">
                       {step.time}
                     </div>
 
                     {isDiscovery && (
-                      <div className="mt-3 flex items-center gap-2 text-[19px] text-pres-text-muted">
+                      <div className="mt-3 flex items-center gap-2 text-[19px] font-semibold text-pres-accent">
                         <MousePointerClick className="w-4 h-4 text-pres-accent" />
                         Tap for detail
                       </div>

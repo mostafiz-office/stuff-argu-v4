@@ -84,7 +84,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
         <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[56px]">
           {TIER_FEATURE_GROUPS.map((group, gi) => (
             <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.12, 0.08), 20)}>
-              <div className="mb-3 font-heading text-[20px] font-bold uppercase tracking-[0.2em] text-pres-accent">
+              <div className="mb-3 font-heading text-[20px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
                 {group.label}
               </div>
               <div className="grid grid-cols-2 gap-x-8">

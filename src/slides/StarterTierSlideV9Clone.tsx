@@ -180,7 +180,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       <TooltipTrigger asChild>
                         <div className="mb-5 rounded-2xl border border-pres-accent/30 bg-pres-accent/[0.07] px-5 py-4 cursor-pointer">
                           <p className="text-[26px] font-bold font-heading text-white leading-tight">
-                            1+ Year <span className="text-pres-accent">Industry Experience</span>
+                            1+ Year Industry Experience
                           </p>
                           <p className="text-[20px] text-pres-text-muted mt-1">
                             3+ years engineering · production teams
@@ -203,7 +203,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     </div>
 
                     <div className="flex items-center gap-3 text-[18px] text-pres-text-dim mt-4 mb-5 font-medium">
-                      <span className="px-3 py-1 rounded-lg border border-pres-accent/40 text-pres-accent text-[20px] font-semibold">160 hrs/M</span>
+                      <span className="px-3 py-1 rounded-lg border border-white/20 text-white/80 text-[20px] font-semibold">160 hrs/M</span>
                       <span>+ $2K onboarding deposit</span>
                     </div>
 
@@ -234,7 +234,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         className="p-3.5 rounded-2xl bg-amber-500/10 border border-pres-accent/40 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[20px] font-bold text-pres-accent uppercase tracking-wider">
+                          <span className="text-[20px] font-bold text-white uppercase tracking-wider">
                             Chief Architect Bonus Included
                           </span>
                           <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
@@ -245,7 +245,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         <p className="text-[20px] text-pres-text-muted mb-1.5">
                           Kickoff audit included · <span className="text-white">$2,500/M</span> value FREE
                         </p>
-                        <div className="text-[20px] font-semibold text-pres-accent/90 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
+                        <div className="text-[20px] font-semibold text-pres-text-muted bg-white/5 px-2 py-0.5 rounded-lg text-center">
                           Upgrade to Tier 2 or 3 for ongoing weekly architecture hours
                         </div>
                       </motion.div>
@@ -272,7 +272,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           {...scaleIn(staggerDelay(idx, 0.22, 0.07))}
                           className="py-7 px-4 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-pres-accent/40 backdrop-blur-md transition-all cursor-pointer group text-center shadow-lg"
                         >
-                          <div className={`text-[56px] font-heading leading-none mb-3 ${res.flat ? "font-medium text-white" : "font-bold text-pres-accent metric-glow"}`}>
+                          <div className="text-[56px] font-heading leading-none mb-3 font-medium text-white">
                             {res.metric}
                           </div>
                           <div className="text-[20px] font-medium text-white/80">
@@ -326,7 +326,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 {/* Bottom Guarantee Banner */}
                 <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between text-[18px] text-pres-text-dim">
                   <span>Backed by RISE ASIA LLC 14-Day Money-Back Guarantee</span>
-                  <span className="text-pres-accent font-semibold font-mono">100% Risk Free</span>
+                  <span className="text-white/80 font-semibold font-mono">100% Risk Free</span>
                 </div>
               </div>
             </div>

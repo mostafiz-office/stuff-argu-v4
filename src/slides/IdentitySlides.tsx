@@ -19,7 +19,7 @@ export const WhoWeAreSlide: React.FC = () => (
         ?
       </motion.div>
       <motion.h1 {...fadeUp(0.35, 24)} className="relative z-10 mt-6 font-heading text-[110px] font-bold leading-none">
-        Who we are<span className="text-pres-accent">?</span>
+        Who we are?
       </motion.h1>
     </section>
   </ScaledSlide>

@@ -28,7 +28,7 @@ const PromiseBands: React.FC<PromiseBandsProps> = ({ eyebrow, title, bands }) =>
         <div className="absolute left-[80px] top-[146px] z-20">
           <motion.div
             {...fadeUp(0.03, 16)}
-            className="font-body text-[22px] font-semibold uppercase tracking-[0.3em] text-pres-accent"
+            className="font-body text-[22px] font-semibold uppercase tracking-[0.3em] text-pres-text-muted"
           >
             {eyebrow}
           </motion.div>

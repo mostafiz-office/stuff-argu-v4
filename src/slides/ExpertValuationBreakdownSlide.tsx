@@ -40,7 +40,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
           {...fadeUp(0)}
           className="pres-title font-bold font-heading tracking-tight mb-10"
         >
-          What The <span className="text-pres-accent">Chief Architect</span> Is Worth
+          What The Chief Architect Is Worth
         </motion.h1>
 
         <div className="grid grid-cols-3 gap-8 mb-8">
