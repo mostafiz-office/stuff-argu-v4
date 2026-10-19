@@ -36,6 +36,7 @@ never enlarged for emphasis. (Only a shockingly low price would ever earn
 focus — $6,000-type figures must visually recede.)
 *Acceptance:* no price figure anywhere uses highlight color, bold, or
 display-size treatment.
+**Status: DONE (Batch 1, commit 923bf8e)** — tier cards, plan detail, comparison header, savings rows, and starter card prices are flat (normal weight, white/muted, regular size); all `/mo` → `/M`. Value-context figures on `ExpertValuationBreakdownSlide` ($625/hr, up to $10k/M) keep their value-card treatment — that slide had no reviewer feedback (see gap-analysis).
 
 ### G-05 — Say less, make it beautiful
 Whatever text remains must have consistent line counts, padding, and rhythm.
@@ -48,12 +49,14 @@ One small corner note per pricing context: **"Everything is USD"**. Everywhere
 else the `$` symbol alone suffices — never repeat "USD". Write `/M`, not `/mo`
 ("everyone understands M").
 *Acceptance:* single USD note; `$` only; `/M` suffixes.
+**Status: DONE (Batch 1, commit 923bf8e)** — `<UsdNote />` ("Everything is USD") placed on PricingTiers, TierDetail, Savings, Starter slides; all `/mo` in src → `/M`; zero `/mo` tokens remain in src.
 
 ### G-07 — Reusable animation patterns
 Build each new reveal/highlight effect (marker stroke, drag-reveal, water-fill,
 label-drop) as a **reusable component/spec sample** so it can be reused on
 other slides and projects.
 *Acceptance:* effects live in shared modules, not inline in one slide.
+**Status: DONE (Batch 1, commit 923bf8e)** — `src/components/presentation/reveal.tsx` ships `WaterFill`, `LabelDrop` (amber + white tones), `MarkerHighlight`; `DeckButton.tsx` is the single shared CTA per FB-04/G-08.
 
 ### G-08 — Slide-like navigation
 Deck advances on **button press**, never automatically. Keep Next/CTA buttons
@@ -93,7 +96,7 @@ consistently placed and styled.
   the screenshot is insufficient.)
 - *Acceptance:* cover typography pixel-matches the reference treatment.
 
-### FB-04 — Cover: CTA button matches reference · TODO
+### FB-04 — Cover: CTA button matches reference · DONE (Batch 1, commit 923bf8e)
 - **Video:** [04:06–04:13](https://www.youtube.com/watch?v=xC5kyb477TY&t=246s) · **Files:** `src/slides/PricingCoverShared.tsx`
 - **Now:** "Book a Call" button style differs from the reference.
 - **Change:** Restyle the cover CTA button to **exactly match the professional
