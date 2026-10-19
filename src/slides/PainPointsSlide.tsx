@@ -19,8 +19,8 @@ interface ProblemSlideProps {
 
 type Problem = {
   eyebrow: string;
-  /** FB-06: owner to supply final copywriting. Beats are the staging
-   *  structure — words below are placeholders mapped from the old copy. */
+  /** FB-06: plain human copywriting (owner direction Oct 19: write it, confirm on review).
+   *  Beats are the staging structure — headline fragments below stay as-is. */
   beats: PainBeat[];
   short: string;
   metric: string;
@@ -45,10 +45,10 @@ const problems: Problem[] = [
       { text: "2 AM", size: "md" },
       { text: "Production Break", size: "xl" },
     ],
-    short: "Production breaks while you sleep.",
+    short: "Your customers find the bug before you do.",
     metric: "$18,500/M",
     metricLabel: "Outage & Churn Bleed",
-    resolution: "One incident can erase months of engineering savings.",
+    resolution: "Every hour down loses customers you paid to win.",
     image: outageImage,
     imageAlt: "A technology leader responding to a late-night production incident",
     highlight: "red",
@@ -62,10 +62,10 @@ const problems: Problem[] = [
       { text: "Fragile Vibe &", size: "xl" },
       { text: "AI Code", size: "xl" },
     ],
-    short: "Unreviewed AI code piles up debt.",
+    short: "Nobody can explain what the AI wrote.",
     metric: "3× Slower",
     metricLabel: "Velocity & Bug Bleed",
-    resolution: "Fast shortcuts become slow releases when architecture is ignored.",
+    resolution: "Shortcuts today, stalled releases tomorrow.",
     image: fragileCodeImage,
     imageAlt: "Software engineers investigating unstable code on office monitors",
     highlight: "yellow",
@@ -79,10 +79,10 @@ const problems: Problem[] = [
       { text: "The 90-Day", size: "xl" },
       { text: "Hiring Sinkhole", size: "xl" },
     ],
-    short: "Three months lost to unvetted hires.",
+    short: "Three months to hire. Zero guarantee they deliver.",
     metric: "Save 80%",
     metricLabel: "Recruiting Time Saved",
-    resolution: "Every empty engineering seat delays the roadmap.",
+    resolution: "Every empty seat pushes the roadmap back.",
     image: hiringImage,
     imageAlt: "A hiring manager beside an empty engineering workstation",
     highlight: "yellow",

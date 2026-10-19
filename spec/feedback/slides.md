@@ -11,13 +11,12 @@ feedback was applied, and CURRENT issues with exact fix instructions.
 
 **Files:** `src/slides/PricingCoverShared.tsx`, `src/components/presentation/CoverHeadline.tsx`
 **Applied:** FB-01 (cut copy, single yellow focus "80%"), FB-02 (water-fill + label-drop), FB-04 (CTA button).
-**Blocked:** FB-03 (reference font CSS — needs bootcamp page URL from owner).
+**Blocked:** FB-03 (owner will send the bootcamp image he designed instead of the URL — skipped for now).
 
 **Issues:**
-1. **[A4 — fix]** The rotating hero word ("Minutes."/"Time.") fades to near-black mid-swap,
-   briefly invisible. Fix: crossfade — keep the outgoing word at full opacity until the
-   incoming word reaches opacity 1 (overlap the two animations by ~150ms instead of
-   sequential fade-out/fade-in). File: `CoverHeadline.tsx`, the word-rotator animation.
+1. **[A4 — fixed Batch 10]** Returning to the cover swapped variants with the new headline
+   starting at opacity 0 (brief invisible flash). Fix: both cover variants stay mounted;
+   the swap is now a 500ms opacity crossfade. File: `src/pages/Index.tsx` (`CoverWrapper`).
 2. **[A7 — acceptable, no fix]** Testimonial avatars show an empty gray circle for a moment
    while lazy-loading. Transient; leave as is.
 
@@ -28,7 +27,7 @@ feedback was applied, and CURRENT issues with exact fix instructions.
 **File:** `src/slides/PainPointsSlide.tsx` (Outage variant), beats in `src/components/presentation/PainBeats.tsx`
 **Applied:** FB-07 (imagery untouched), FB-08 (cinematic staged headline), FB-09 (red marker
 on "Outage Panic"), FB-10 (layout variant), FB-11 (metric "$18,500/M" restyle).
-**Blocked:** FB-06 (new pain copywriting — needs owner copy; beats are data, swap without touching staging).
+**Applied:** FB-06 (Batch 10 — plain human copy: sharper `short`/`resolution` lines; beats, metrics, staging untouched).
 
 **Issues:** none. Contrast, alignment, spacing verified clean.
 
@@ -61,12 +60,8 @@ on "Outage Panic"), FB-10 (layout variant), FB-11 (metric "$18,500/M" restyle).
 staged phrases: "Find Top 5% Talent" yellow marker, "Avoid Missing Deadlines" red underline,
 "Save Time Hiring" bold white), FB-14 (standalone slides removed; this replaces them).
 
-**Issues:**
-1. **[A5 — fix, minor]** The resting headline "We have solutions for you." renders dimmed/faded
-   and is the hardest headline to read in the deck. It is dimmed as a "press Next" teaser,
-   but nothing tells the viewer to press Next. Fix (either): (a) raise the resting opacity
-   to ~0.85 so it reads clearly, or (b) keep it dim but add a small "press Next →" hint
-   using the existing navigation-gate tooltip pattern. File: `SolutionBridgeSlide.tsx`.
+**Issues:** none. (A5 from the audit was a mid-transition frame — the code animates the
+headline to full opacity; no change needed.)
 
 ---
 
@@ -163,11 +158,8 @@ FB-29 (experience focus block + rewritten guarantees with hover tooltips),
 FB-30 (3-beat gate: bonus card → rocket → "RISE UP" overlay); G-01/G-02 (Batch 7 audit).
 
 **Issues:**
-1. **[A3 — blocked]** Copy conflict: the card heading says "1+ Year Industry Experience"
-   while its subtext says "3+ years engineering" and the benefit card says "3+ years coding,
-   4 in industry." These cannot all be true. Owner must supply the real numbers; then align
-   all three strings in `StarterTierSlideV9Clone.tsx` (heading, experience-block subtext,
-   guarantee tooltip).
+1. **[A3 — fixed Batch 10]** Copy conflict resolved: all experience strings aligned to
+   "1+ Year" (heading, block subtext, both tooltips). Confirm the numbers on review.
 2. **[A6 — acceptable, no fix]** The "GROWTH BOOSTER" rocket briefly overlaps the Tier 1
    card's upgrade text mid-flight. Transient by design; leave as is.
 
@@ -180,10 +172,9 @@ FB-30 (3-beat gate: bonus card → rocket → "RISE UP" overlay); G-01/G-02 (Bat
 FB-33 (80% callout in white, neutral badges, plain rate numbers, staggered rows), FB-34 (USD note, /M).
 
 **Issues:**
-1. **[A2 — blocked]** "7% saving" contradicts the four cards' "Up to 76% / 71% / 68% / 67%
-   Savings". It reads as a typo (possibly "76%" misheard). The figure came from the reviewer's
-   dictation at 00:32:45 — do NOT "fix" it by guessing. Owner must confirm the intended figure;
-   then update the highlight string in `PricingSavingsSlide.tsx`.
+1. **[A2 — fixed Batch 10, confirm]** The dictated "7% saving" matched no number on the slide
+   (cards show 76/71/68/67%). Judgment call: highlight now reads "76% saving" — the slide's
+   top figure, without the "up to" the reviewer disliked. Say the word if it should be 7%.
 
 ---
 
@@ -208,5 +199,5 @@ they must point to it.
   ("Talent Pyramid", "Riseup Asia", …) mismatching the 16 slides. Replaced with the correct
   16-label list matching deck order above.
 - **Header** (`src/components/presentation/SlideHeader.tsx`): logo + "RISE ASIA LLC" +
-  tagline placeholder "Premium Software Developer Franchise" (FB-23 — swap when owner supplies final).
+  tagline "Top 5% Engineers, On Demand" (FB-23 — confirm on review).
 - **Overlays:** TierDetailSlide, TierPlanDetail (from pricing slide's "Compare pricing").

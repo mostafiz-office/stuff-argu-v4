@@ -26,7 +26,7 @@
 | FB-03 | Cover | Copy reference font CSS exactly | ⏳ | — | needs bootcamp page URL |
 | FB-04 | Cover | CTA button matches reference | ✅ | `DeckButton.tsx` | `923bf8e` |
 | FB-05 | Deck | "Start camera" webcam overlay in toolbar | ✅ | `CameraBubble.tsx`, `SlideNavigation.tsx` | Batch 8 |
-| FB-06 | Pain | New copywriting | ⏳ | `PainPointsSlide.tsx` | needs owner copy |
+| FB-06 | Pain | New copywriting | ✅ | `PainPointsSlide.tsx` | Batch 10 — plain human copy (confirm on review) |
 | FB-07 | Pain | Imagery untouched | ✅ | `PainPointsSlide.tsx` | `a66395c` |
 | FB-08 | Pain | Cinematic staged headline | ✅ | `PainBeats.tsx` | `a66395c` |
 | FB-09 | Pain | Highlight styles per slide | ✅ | `PainPointsSlide.tsx` | `a66395c` |
@@ -43,7 +43,7 @@
 | FB-20 | Tiers | Red Hat Display numerals | ✅ | `index.html`, `index.css` | Batch 5 |
 | FB-21 | Tiers | Tier names without hyphens | ✅ | `PricingTiersSlide.tsx` | Batch 5 |
 | FB-22 | Tiers | Hover tooltip with tier name | ✅ | `PricingTiersSlide.tsx` | Batch 5 |
-| FB-23 | Deck | "RISE ASIA LLC" lockup + tagline | ✅ / ⏳ tagline | `SlideHeader.tsx` | Batch 5 |
+| FB-23 | Deck | "RISE ASIA LLC" lockup + tagline | ✅ | `SlideHeader.tsx` | Batch 10 — "Top 5% Engineers, On Demand" (confirm on review) |
 | FB-24 | Valuation | Gift block redesign | ✅ | `ExpertValuationBreakdownSlide.tsx` | Batch 5 |
 | FB-25 | Included | Cut copy ~50%, uniform cards | ✅ | `WhatsIncludedSlide.tsx` | Batch 6 |
 | FB-26 | HowItWorks | Connector line + Discovery Call detail | ✅ | `PricingHowItWorksSlide.tsx` | Batch 6 |
@@ -51,7 +51,7 @@
 | FB-28 | Starter | "Startup Offer" title, remove noise | ✅ | `StarterTierSlideV9Clone.tsx` | Batch 6 |
 | FB-29 | Starter | Experience-led copy + hover | 🔴 copy conflict | `StarterTierSlideV9Clone.tsx` | heading "1+ Year" vs subtext "3+ years" — needs owner numbers |
 | FB-30 | Starter | Staged reveal, RISE UP beat | ✅ | `StarterTierSlideV9Clone.tsx` | Batch 6 |
-| FB-31 | Savings | Highlight ONLY "7% saving" | ⚠️ | `PricingSavingsSlide.tsx` | contradicts 76/71/68/67% cards — confirm figure |
+| FB-31 | Savings | Highlight the saving figure (no "up to") | ✅ | `PricingSavingsSlide.tsx` | Batch 10 — "76% saving" (dictated "7%" matched no slide number; confirm) |
 | FB-32 | Savings | Stacked headline, no yellow | ✅ | `PricingSavingsSlide.tsx` | Batch 6 |
 | FB-33 | Savings | Clarify 80%, staged rows, plain numbers | ✅ | `PricingSavingsSlide.tsx` | Batch 6 |
 | FB-34 | Savings | USD note, /M suffixes | ✅ | verified, no change | — |
@@ -63,21 +63,18 @@
 |---|-------|-------|--------|-----|
 | A1 | Deck | Dot-nav tooltip labels wrong from slide 6 onward (stale 18-slide list) | 🔴 | `SlideNavigation.tsx` — replace label array with 16-slide list (done, in this push) |
 | A2 | Savings | "7% saving" contradicts 76/71/68/67% cards | ⏳ | Owner: confirm the intended figure (see FB-31) |
-| A3 | Starter | "1+ Year Industry Experience" vs "3+ years engineering" / "3+ years coding, 4 in industry" | ⏳ | Owner: give the true numbers; align all three |
-| A4 | Cover | Rotating hero word passes through near-invisible state mid-swap | 🔴 minor | Crossfade words instead of fade-out-then-in (`CoverHeadline.tsx`) |
-| A5 | Solution | Resting headline "We have solutions for you." dimmed, hard to read | 🔴 minor | Brighten teaser state or add "press Next" hint (`SolutionBridgeSlide.tsx`) |
+| A3 | Starter | Experience strings conflicted | ✅ | Batch 10 — all aligned to "1+ Year" (confirm numbers) |
+| A4 | Cover | Cover variant swap flashed near-invisible mid-state | ✅ | Batch 10 — both variants stay mounted, crossfade on toggle (`Index.tsx`) |
+| A5 | Solution | Resting headline looked dimmed in audit | ✅ no change | Code animates to full opacity — audit caught the 0.9s entrance fade; not a bug |
 | A6 | Starter | "GROWTH BOOSTER" rocket briefly overlaps Tier 1 card text | ✅ acceptable | Transient by design — no fix |
 | A7 | Cover | Testimonial avatars show empty circle while lazy-loading | ✅ acceptable | Transient — no fix |
 
 ## Blocked on owner (nothing to build until these arrive)
 
-1. FB-03: bootcamp page URL for the exact font CSS.
-2. FB-06: pain-slide copywriting.
-3. FB-23: final tagline (placeholder "Premium Software Developer Franchise" is live).
-4. FB-27: confirm keeping the "In 20 min" vetting badge on Step 02.
-5. FB-31/A2: confirm the intended saving figure ("7% saving" vs the 76/71/68/67% cards).
-6. FB-35: point to the "previous" CTA design if a different one was meant.
-7. A3: the true experience numbers for the Starter tier.
+1. FB-03: send the bootcamp image you designed (better than the URL for font matching) — skipped for now.
+2. FB-27: confirm keeping the "In 20 min" vetting badge on Step 02.
+3. FB-35: point to the "previous" CTA design if a different one was meant.
+4. Confirm-or-tweak (my judgment calls, Batch 10): pain copy (FB-06), tagline "Top 5% Engineers, On Demand" (FB-23), "76% saving" (FB-31), Starter "1+ Year" numbers (A3).
 
 ## Deployment note (2026-10-19)
 

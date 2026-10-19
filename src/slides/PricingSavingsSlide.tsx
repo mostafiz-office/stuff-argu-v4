@@ -80,10 +80,10 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 Ship More.
               </motion.h1>
               <p className="text-[26px] text-pres-text-muted">Same senior talent, a fraction of US rates.</p>
-              {/* FB-31: the slide's ONE yellow highlight */}
+              {/* FB-31: the slide's ONE yellow highlight — top saving figure, no "up to" */}
               <motion.div {...fadeUp(0.12)} className="mt-6 inline-block">
                 <span className="font-heading text-[34px] font-bold text-pres-accent">
-                  7% saving
+                  76% saving
                 </span>
               </motion.div>
             </div>

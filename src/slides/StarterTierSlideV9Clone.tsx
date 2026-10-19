@@ -102,9 +102,9 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
     {
       icon: BadgeCheck,
       title: "1+ Year Industry Experience",
-      desc: "3+ years coding, 4 in industry.",
+      desc: "A full year shipping in production.",
       tooltip:
-        "Doing coding for 3 years and joined industry — 4 years of industrial experience. A real engineer, not a trainee.",
+        "One full year building real products with production teams. A real engineer, not a trainee.",
     },
     {
       icon: Clock,
@@ -176,14 +176,14 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             1+ Year Industry Experience
                           </p>
                           <p className="text-[20px] text-pres-text-muted mt-1">
-                            3+ years engineering · production teams
+                            1+ year in industry · production teams
                           </p>
                         </div>
                       </TooltipTrigger>
                       <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
                         <div className="text-[16px] text-pres-text-muted">
-                          Doing coding for 3 years and joined industry — 4 years of
-                          industrial experience. A real engineer, not a trainee.
+                          One full year shipping real products with production teams.
+                          A real engineer, not a trainee.
                         </div>
                       </TooltipContent>
                     </Tooltip>

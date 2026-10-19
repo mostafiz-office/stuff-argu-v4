@@ -60,22 +60,29 @@ const Index = () => {
     }
   }, []);
 
-  // Cover Component wrapper passing interactive toggle and variant indicator
+  // Cover Component wrapper — both variants stay mounted and crossfade on
+  // toggle, so the headline never passes through an empty/invisible state
+  // when returning to the cover (A4).
   const CoverWrapper = useCallback(
     (props: { onNavigate?: (index: number) => void }) => {
-      if (coverVariant === "2") {
-        return (
-          <PricingCoverV1
-            {...props}
-            coverVariant="1"
-          />
-        );
-      }
+      const showV1 = coverVariant === "2";
       return (
-        <PricingCoverV3
-          {...props}
-          coverVariant="3"
-        />
+        <div className="relative h-full w-full">
+          <div
+            className="absolute inset-0 transition-opacity duration-500"
+            style={{ opacity: showV1 ? 0 : 1, pointerEvents: showV1 ? "none" : "auto" }}
+            aria-hidden={showV1}
+          >
+            <PricingCoverV3 {...props} coverVariant="3" />
+          </div>
+          <div
+            className="absolute inset-0 transition-opacity duration-500"
+            style={{ opacity: showV1 ? 1 : 0, pointerEvents: showV1 ? "auto" : "none" }}
+            aria-hidden={!showV1}
+          >
+            <PricingCoverV1 {...props} coverVariant="1" />
+          </div>
+        </div>
       );
     },
     [coverVariant]

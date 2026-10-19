@@ -2,11 +2,10 @@ import React from "react";
 import logoImg from "@/assets/riseup-asia-logo.png";
 
 /**
- * FB-23: brand lockup — "RISE ASIA" in ALL CAPS + "LLC", with the tagline
- * placeholder. PENDING OWNER: the owner will supply the final tagline;
- * swap BRAND_TAGLINE when it arrives.
+ * FB-23: brand lockup — "RISE ASIA" in ALL CAPS + "LLC", with the tagline.
+ * Owner direction Oct 19: write it plain; final sign-off on review.
  */
-export const BRAND_TAGLINE = "Premium Software Developer Franchise";
+export const BRAND_TAGLINE = "Top 5% Engineers, On Demand";
 
 export const SlideHeader: React.FC = () => {
   return (
