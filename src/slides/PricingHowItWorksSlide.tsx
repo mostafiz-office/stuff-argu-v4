@@ -1,6 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { MessageSquare, UserCheck, Rocket, HeartHandshake } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquare, UserCheck, Rocket, HeartHandshake, X, MousePointerClick } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
@@ -10,6 +10,24 @@ interface PricingHowItWorksSlideProps {
 }
 
 export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () => {
+  const [detailOpen, setDetailOpen] = useState(false);
+
+  // FB-27: Discovery Call detail = 3 segments, no "20 minutes" label
+  const discoverySegments = [
+    {
+      title: "Requirements",
+      desc: "What you're building and why it matters.",
+    },
+    {
+      title: "Stack & workflow",
+      desc: "Your tools, your team, and how you ship.",
+    },
+    {
+      title: "Tier match",
+      desc: "We match your ideal tier and plan next steps.",
+    },
+  ];
+
   const steps = [
     {
       num: "STEP 01",
@@ -77,18 +95,27 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.7, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-[120px] right-[120px] top-[56px] h-[3px] bg-gradient-to-r from-pres-accent/20 via-pres-accent to-pres-accent/20 origin-left z-0"
+              className="absolute left-[120px] right-[120px] top-[56px] h-[4px] bg-pres-accent origin-left z-0 shadow-[0_0_16px_rgba(255,173,1,0.55)]"
             />
 
             {/* 4 Step Cards Grid */}
             <div className="relative z-10 grid grid-cols-4 gap-7 w-full">
               {steps.map((step, idx) => {
                 const Icon = step.icon;
+                const isDiscovery = idx === 0;
                 return (
                   <motion.div
                     key={idx}
                     {...fadeUp(staggerDelay(idx, 0.16, 0.08))}
-                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/95 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl"
+                    role={isDiscovery ? "button" : undefined}
+                    tabIndex={isDiscovery ? 0 : undefined}
+                    onClick={isDiscovery ? () => setDetailOpen(true) : undefined}
+                    onKeyDown={isDiscovery ? (e) => { if (e.key === "Enter" || e.key === " ") setDetailOpen(true); } : undefined}
+                    className={`flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl ${
+                      isDiscovery
+                        ? "border-pres-accent/40 hover:border-pres-accent cursor-pointer hover:bg-pres-surface/95"
+                        : "border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/95"
+                    }`}
                   >
                     {/* Circle Icon */}
                     <div className="w-[66px] h-[66px] rounded-full bg-pres-surface border-[3px] border-pres-accent flex items-center justify-center text-pres-accent mb-3.5 shadow-[0_0_25px_rgba(255,173,1,0.3)] z-10">
@@ -114,12 +141,83 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     <div className="px-3.5 py-1 rounded-full bg-pres-accent/10 border border-pres-accent/25 text-pres-accent text-[25px] font-semibold">
                       {step.time}
                     </div>
+
+                    {isDiscovery && (
+                      <div className="mt-3 flex items-center gap-2 text-[19px] text-pres-text-muted">
+                        <MousePointerClick className="w-4 h-4 text-pres-accent" />
+                        Tap for detail
+                      </div>
+                    )}
                   </motion.div>
                 );
               })}
             </div>
           </div>
         </div>
+
+        {/* FB-26: Discovery Call detail view */}
+        <AnimatePresence>
+          {detailOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+              onClick={() => setDetailOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.92, y: 24 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 12 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[860px] rounded-3xl border border-pres-accent/40 bg-pres-surface p-12 shadow-[0_0_60px_rgba(255,173,1,0.25)]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-start justify-between mb-8">
+                  <div>
+                    <div className="text-[22px] font-semibold tracking-[0.15em] text-pres-accent uppercase mb-2">
+                      Step 01
+                    </div>
+                    <h2 className="font-heading text-[52px] font-bold text-white leading-tight">
+                      Discovery Call
+                    </h2>
+                  </div>
+                  <button
+                    onClick={() => setDetailOpen(false)}
+                    aria-label="Close detail"
+                    className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-pres-text-muted hover:text-white hover:border-pres-accent/60 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <div className="space-y-5">
+                  {discoverySegments.map((seg, sIdx) => (
+                    <motion.div
+                      key={seg.title}
+                      initial={{ opacity: 0, x: -18 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + sIdx * 0.09, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      className="flex items-start gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                    >
+                      <div className="w-11 h-11 shrink-0 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent font-heading font-bold text-[22px] flex items-center justify-center">
+                        {sIdx + 1}
+                      </div>
+                      <div>
+                        <div className="font-heading text-[28px] font-bold text-white leading-tight">
+                          {seg.title}
+                        </div>
+                        <div className="text-[22px] text-pres-text-muted mt-1">
+                          {seg.desc}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
