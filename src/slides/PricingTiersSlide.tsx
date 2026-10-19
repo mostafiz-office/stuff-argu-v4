@@ -38,7 +38,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
   const tiers = [
     {
-      name: "Tier 2 — Growth",
+      name: "Tier 2 Growth",
       key: "growth" as TierKey,
       experience: "2-3+ Years",
       price: "$4,299",
@@ -54,7 +54,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       ],
     },
     {
-      name: "Tier 3.A — Skilled",
+      name: "Tier 3.A Skilled",
       key: "skilled" as TierKey,
       experience: "7-15+ Years",
       price: "$6.8K–$8K",
@@ -70,7 +70,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       ],
     },
     {
-      name: "Tier 3.B — Leadership",
+      name: "Tier 3.B Leadership",
       key: "leadership" as TierKey,
       experience: "7-15+ Years",
       price: "$7.5K–$10K",

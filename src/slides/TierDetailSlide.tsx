@@ -19,17 +19,17 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
   const railRef = useRef<HTMLDivElement>(null);
   const columns = [
     {
-      name: "Tier 2 — Growth",
+      name: "Tier 2 Growth",
       price: "$4,299/M",
       badge: null,
     },
     {
-      name: "Tier 3.A — Skilled",
+      name: "Tier 3.A Skilled",
       price: "$6,800–8K/M",
       badge: "BEST VALUE",
     },
     {
-      name: "Tier 3.B — Leadership",
+      name: "Tier 3.B Leadership",
       price: "$7.5K–10K/M",
       badge: "PREMIUM",
     },
