@@ -60,7 +60,7 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
         >
           <div className="p-5 rounded-[32px] bg-pres-surface/80 border border-white/10">
             <div className="w-[340px] h-[340px] bg-white rounded-2xl p-5">
-              <img src={qrCodeImg} alt="QR code to contact RiseUp Asia" className="w-full h-full object-contain" />
+              <img src={qrCodeImg} alt="QR code to contact RISE ASIA LLC" className="w-full h-full object-contain" />
             </div>
           </div>
           <span className="text-[18px] text-pres-text-dim">Scan to connect</span>

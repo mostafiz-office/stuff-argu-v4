@@ -324,7 +324,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
                 {/* Bottom Guarantee Banner */}
                 <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between text-[18px] text-pres-text-dim">
-                  <span>Backed by RiseUp 14-Day Money-Back Guarantee</span>
+                  <span>Backed by RISE ASIA LLC 14-Day Money-Back Guarantee</span>
                   <span className="text-pres-accent font-semibold font-mono">100% Risk Free</span>
                 </div>
               </div>
