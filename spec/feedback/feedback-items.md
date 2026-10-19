@@ -110,17 +110,12 @@ consistently placed and styled.
   hover). Apply the same button component to all slide CTAs per G-08.
 - *Acceptance:* one shared button style used on cover + all CTAs.
 
-### FB-05 — Cover: "IOP camera" element · NEEDS CLARIFICATION
-- **Video:** [04:26](https://www.youtube.com/watch?v=xC5kyb477TY&t=266s) · **Files:** `src/slides/PricingCoverShared.tsx`
+### FB-05 — "Start camera" presenter webcam overlay · DONE
+- **Video:** [04:26](https://www.youtube.com/watch?v=xC5kyb477TY&t=266s) · **Files:** `src/components/presentation/SlideNavigation.tsx`, `src/components/presentation/CameraBubble.tsx` (new)
 - **Now:** element absent.
-- **Change:** Reviewer asked to "add the IOP camera thing" — meaning is unclear
-  from the audio. **Ask the owner what this is before building** (picture-in-picture?
-  camera pan effect? something else?).
-- *Acceptance:* clarified with owner, then specified.
-
----
-
-## Slides 2–4 — Pain slides (PainPointsSlide.tsx)
+- **Change:** Clarified 2026-10-19 from his screenshot + live check of the reference presentation (present-v1.riseup-asia.com): the "camera" is the toolbar video-camera icon. Verified in-browser: tooltip "Start camera"; clicking requests the webcam via getUserMedia and shows it as a presenter overlay bubble (NOT a screen recorder); no-camera case shows a "Camera unavailable" notice with Try again/Dismiss. Built the same: new `CameraBubble` component + toolbar button in `SlideNavigation` ("Start camera"/"Stop camera"), draggable mirrored preview, reference-style unavailable notice.
+- *Acceptance:* camera button in toolbar; click opens webcam bubble; unavailable case handled.
+**Status: DONE** — implemented + pushed (toolbar button, CameraBubble overlay).
 
 ### FB-06 — Pain slides: new copywriting · PENDING OWNER
 - **Video:** [04:46–05:01](https://www.youtube.com/watch?v=xC5kyb477TY&t=286s) · **Files:** `src/slides/PainPointsSlide.tsx`
@@ -455,7 +450,7 @@ consistently placed and styled.
 
 | ID | Blocker | Owner action |
 |---|---|---|
-| FB-05 | "IOP camera" meaning unclear | Explain what element/effect this is |
+| FB-05 | "IOP camera" meaning unclear | RESOLVED 2026-10-19: toolbar "Start camera" webcam overlay |
 | FB-06 | Pain-slide copy | Supply final copywriting for 3 pain pages |
 | FB-23 | Final tagline | Supply final tagline (placeholder "Premium Software Developer Franchise" meanwhile) |
 
