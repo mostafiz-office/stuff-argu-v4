@@ -43,7 +43,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       experience: "2-3+ Years",
       price: "$4,299",
       priceSuffix: "/M",
-      hours: "160 hrs/month",
+      hours: "160 hrs/M",
       badge: null,
       highlight: false,
       position: "left" as const,
@@ -59,7 +59,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       experience: "7-15+ Years",
       price: "$6.8K–$8K",
       priceSuffix: "/M",
-      hours: "160 hrs/month",
+      hours: "160 hrs/M",
       badge: "BEST VALUE",
       highlight: true,
       position: "center" as const,
@@ -75,7 +75,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       experience: "7-15+ Years",
       price: "$7.5K–$10K",
       priceSuffix: "/M",
-      hours: "160 hrs/month",
+      hours: "160 hrs/M",
       badge: null,
       highlight: false,
       position: "right" as const,
@@ -151,7 +151,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1 mb-5">
-                      <span className="text-[44px] font-medium font-heading text-white leading-none">
+                      <span className="font-price text-[44px] font-medium text-white leading-none">
                         {tier.price}
                       </span>
                       <span className="text-[22px] text-pres-text-muted font-medium">

@@ -177,6 +177,11 @@
   );
 }
 
+/* FB-20: Red Hat Display for price numerals */
+.font-price {
+  font-family: 'Red Hat Display', 'Poppins', sans-serif;
+}
+
 /* FB-15: subtle dot texture for tier cards (DesignModo reference) */
 .tier-card-dots {
   background-image: radial-gradient(hsl(var(--pres-text) / 0.08) 1.2px, transparent 1.3px);
