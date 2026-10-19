@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  CheckCircle,
   Shield,
   Clock,
   BadgeCheck,
@@ -77,12 +76,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
     };
   }, [gateStep]);
 
-  const features = [
-    "Fixes fragile vibe & AI code",
-    "Starts in 20 minutes",
-        "Works in your timezone & stack",
-    "Slack, GitHub & Jira access",
-  ];
 
   const results = [
     {
@@ -208,22 +201,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     </div>
 
                     <div className="w-full h-[1px] bg-white/10 mb-3" />
-
-                    {/* Features List */}
-                    <ul className="space-y-3 mb-6">
-                      {features.map((feature, fIdx) => (
-                        <motion.li
-                          key={fIdx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.35, delay: staggerDelay(fIdx, 0.28, 0.045) }}
-                          className="flex items-center gap-2.5"
-                        >
-                          <CheckCircle className="w-6 h-6 text-pres-accent shrink-0" />
-                          <span className="text-[22px] text-pres-text-muted">{feature}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
 
                     {/* Alim Upsell Card (Interactive Reveal) */}
                     {showAlimUpsell ? (
