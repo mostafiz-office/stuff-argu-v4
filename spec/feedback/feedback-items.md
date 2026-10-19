@@ -215,30 +215,33 @@ consistently placed and styled.
 
 ## Slide 11 — Pricing tiers (PricingTiersSlide.tsx)
 
-### FB-15 — Tier cards: fix animation smoothness · TODO
+### FB-15 — Tier cards: fix animation smoothness · DONE (commit c46b564)
 - **Video:** [17:18–17:50](https://www.youtube.com/watch?v=xC5kyb477TY&t=1038s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/lib/presentationMotion.ts`
 - **Now:** card entrance/hover animation feels stiff vs. the reference.
 - **Change:** Match the **smoothness** of the reference card animation
   (screenshot `fb_2130_designmodo_ref.jpg`): slower ease, no jank. Add the
   reference's **subtle dot texture** to the cards instead of flat fills.
 - *Acceptance:* side-by-side feel matches reference smoothness; dot texture present.
+**Status: DONE** — card entrance slowed to 0.7s with the deck ease, hover lift gentled (0.35s); .tier-card-dots radial texture added to each card (commit c46b564).
 
-### FB-16 — Tiers: remove top header writing, reclaim space · TODO
+### FB-16 — Tiers: remove top header writing, reclaim space · DONE (commit c49e64e)
 - **Video:** [17:50–19:16](https://www.youtube.com/watch?v=xC5kyb477TY&t=1070s) · **Files:** `src/slides/PricingTiersSlide.tsx`
 - **Now:** "End Stalled Projects: Pick Your Tier" header above the cards.
 - **Change:** **Delete the header writing** — "it's waste; the three pricings
   are self-understood." Use the reclaimed vertical space to **enlarge the tier
   cards**. Keep the small "Compare pricing" affordance.
 - *Acceptance:* no header text; cards visibly larger; compare affordance kept.
+**Status: DONE** — header deleted; cards enlarged (p-10 to p-12, gap-8 to gap-10, names 32 to 36px); Compare pricing button kept (commit c49e64e).
 
-### FB-17 — Tiers: prices always flat · TODO
+### FB-17 — Tiers: prices always flat · DONE (verified, Batch 1)
 - **Video:** [19:16–19:46](https://www.youtube.com/watch?v=xC5kyb477TY&t=1156s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/slides/TierDetailSlide.tsx`
 - **Now:** prices ($4,299 / $6.8K–$8K / $7.5K–$10K) are large and prominent.
 - **Change:** Per G-04: prices stay **flat, normal weight, never highlighted**.
   Focus goes to **base value** and the tier's unique points, not the number.
 - *Acceptance:* no price uses bold/highlight/display sizing.
+**Status: DONE** — verified: tier cards font-medium white 44px, plan detail font-medium white 64px, comparison header font-normal muted 24px. No code change needed.
 
-### FB-18 — Tiers: portrait the upgrade reason (2–3 unique points) · TODO
+### FB-18 — Tiers: portrait the upgrade reason (2–3 unique points) · DONE (commit a7d558c)
 - **Video:** [19:46–20:12](https://www.youtube.com/watch?v=xC5kyb477TY&t=1186s) and [23:37–25:52](https://www.youtube.com/watch?v=xC5kyb477TY&t=1417s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/data/tierFeatures.ts`
 - **Now:** cards list features uniformly; the *reason to pay more* isn't portraited.
 - **Change:** Each card leads with **2–3 unique differentiators** answering
@@ -249,10 +252,11 @@ consistently placed and styled.
   - **Growth:** no mentor developers (position honestly)
   Restructure `tierFeatures.ts` so differentiators render as the card's focus
   block, distinct from the full comparison table.
+**Status: DONE** — new TIER_DIFFERENTIATORS in tierFeatures.ts renders as each card focus block: Leadership highlights Manages up to 15 + CTO oversight; Skilled mid-level oversight + mentor devs; Growth honest no-mentor scope (commit a7d558c).
 - *Acceptance:* each card's top block = its unique 2–3 points; upgrade reason
   readable in <3 seconds.
 
-### FB-19 — Tiers: settings-controlled offer area · TODO
+### FB-19 — Tiers: settings-controlled offer area · DONE
 - **Video:** [20:12–20:53](https://www.youtube.com/watch?v=xC5kyb477TY&t=1212s) · **Files:** `src/slides/PricingTiersSlide.tsx` (+ config)
 - **Now:** no offer mechanism (the SEO deck had one).
 - **Change:** Add an **offer area controllable from settings/config**: when an
@@ -263,7 +267,7 @@ consistently placed and styled.
   in offer mode.
 **Status: DONE** — new `src/lib/pricingConfig.ts` (`PRICING_OFFER.active` flag, badge text, `wasPrices`). Offer mode shows struck-through old price + badge; inactive hides everything, prices stay flat. `wasPrices` intentionally left empty — fill real pre-offer prices before activating, never invent them.
 
-### FB-20 — Tiers: DesignModo reference, Red Hat Display, consistency · TODO
+### FB-20 — Tiers: DesignModo reference, Red Hat Display, consistency · DONE
 - **Video:** [20:53–23:37](https://www.youtube.com/watch?v=xC5kyb477TY&t=1253s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/index.css`, `index.html`
 - **Now:** inconsistent card typography/spacing ("never approved from my side").
 - **Change:** (1) Study the **DesignModo pricing page** (screenshot
@@ -273,7 +277,7 @@ consistently placed and styled.
 - *Acceptance:* consistency checklist signed off against the reference.
 **Status: DONE** — Red Hat Display loaded via Google Fonts, `.font-price` utility applied to tier numerals; consistency: uniform p-12/radius/type scale across cards (shared JSX), 160 hrs/month becomes 160 hrs/M.
 
-### FB-21 — Tiers: remove hyphens from tier names; add focus · TODO
+### FB-21 — Tiers: remove hyphens from tier names; add focus · DONE
 - **Video:** [22:52–23:37](https://www.youtube.com/watch?v=xC5kyb477TY&t=1372s) · **Files:** `src/slides/PricingTiersSlide.tsx`, `src/slides/TierDetailSlide.tsx`
 - **Now:** "Tier 2 — Growth" etc.; all cards look identical ("a confused person never buys").
 - **Change:** **Remove the hyphen** from tier names ("Tier 2 Growth" or
@@ -282,7 +286,7 @@ consistently placed and styled.
 - *Acceptance:* no hyphens in tier names; each card has one clear focus.
 **Status: DONE** — Tier 2 Growth, Tier 3.A Skilled, Tier 3.B Leadership (flows to plan detail + comparison); each card focus = its differentiator block, Skilled keeps the BEST VALUE badge.
 
-### FB-22 — Tiers: hover tooltip with tier name · TODO
+### FB-22 — Tiers: hover tooltip with tier name · DONE
 - **Video:** [26:03–26:30](https://www.youtube.com/watch?v=xC5kyb477TY&t=1563s) · **Files:** `src/slides/PricingTiersSlide.tsx`
 - **Now:** "Growth / Skilled" confuse people; no tooltip.
 - **Change:** On **hover**, show a **tooltip with the tier name** (and one-line
@@ -290,7 +294,7 @@ consistently placed and styled.
 - *Acceptance:* hovering any card reveals its name tooltip.
 **Status: DONE** — shadcn tooltip on each card: tier name + one-line plain-English meaning + price flat/white.
 
-### FB-23 — Brand lockup: RISE ASIA LLC + tagline · TODO (part PENDING OWNER)
+### FB-23 — Brand lockup: RISE ASIA LLC + tagline · DONE (tagline PENDING OWNER)
 - **Video:** [27:10–27:34](https://www.youtube.com/watch?v=xC5kyb477TY&t=1630s) · **Files:** all slides with brand lockup; `src/components/presentation/SlideHeader.tsx`
 - **Now:** "Riseup Asia" mixed case, no tagline.
 - **Change:** Write the brand as **"RISE ASIA" in ALL CAPS + "LLC"** everywhere.
