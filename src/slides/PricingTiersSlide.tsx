@@ -8,6 +8,7 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 import { TIER_DIFFERENTIATORS, TierKey } from "@/data/tierFeatures";
+import { PRICING_OFFER } from "@/lib/pricingConfig";
 import { UsdNote } from "@/components/presentation/UsdNote";
 
 interface PricingTiersSlideProps {
@@ -157,6 +158,18 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                         {tier.priceSuffix}
                       </span>
                     </div>
+
+                    {/* FB-19: offer area — only renders when an offer is active */}
+                    {PRICING_OFFER.active && PRICING_OFFER.wasPrices[tier.key] && (
+                      <div className="mb-4 flex items-center gap-3">
+                        <span className="text-[22px] text-pres-text-muted line-through">
+                          {PRICING_OFFER.wasPrices[tier.key]}/M
+                        </span>
+                        <span className="rounded-full bg-pres-accent px-3 py-1 text-[16px] font-bold text-pres-bg pres-dark-safe-accent">
+                          {PRICING_OFFER.badgeText}
+                        </span>
+                      </div>
+                    )}
 
                     {/* Hours Badge */}
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[20px] font-semibold mb-6 self-start">
