@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle,
   Shield,
@@ -27,18 +27,22 @@ interface StarterTierSlideV9CloneProps {
 export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = () => {
   const [showAlimUpsell, setShowAlimUpsell] = useState(false);
   const [rocketActive, setRocketActive] = useState(false);
+  const [showRiseUp, setShowRiseUp] = useState(false);
   const [gateStep, setGateStep] = useState<number>(0);
 
-  // 3-step navigation gate with dynamic UX tooltip:
+  // FB-30: 4-beat navigation gate — staged reveals, one per Next press:
   // Step 0 -> Step 1: Reveal Alim box (block slide advance)
   // Step 1 -> Step 2: Trigger rocket animation (block slide advance)
-  // Step 2 -> advance: Unblock advance
+  // Step 2 -> Step 3: RISE UP big-uppercase beat (block slide advance)
+  // Step 3 -> advance: Unblock advance
   useEffect(() => {
     const tooltipText =
       gateStep === 0
-        ? "👉 Press Next to reveal Chief Architect Bonus (1/2)"
+        ? "👉 Press Next to reveal Chief Architect Bonus (1/3)"
         : gateStep === 1
-        ? "🚀 Press Next to launch Rocket & Guarantee (2/2)"
+        ? "🚀 Press Next to launch Rocket & Guarantee (2/3)"
+        : gateStep === 2
+        ? "⚡ Press Next for the RISE UP moment (3/3)"
         : "✅ Perks unlocked! Press Next to continue →";
 
     window.__slideNavigationGate = {
@@ -55,11 +59,17 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
           setGateStep(2);
           return true; // handled / blocked advance
         }
+        if (gateStep === 2) {
+          presentationSound.play("reveal");
+          setShowRiseUp(true);
+          setGateStep(3);
+          return true; // handled / blocked advance
+        }
         return false; // let presentation advance
       },
       tooltip: tooltipText,
       step: gateStep,
-      totalSteps: 2,
+      totalSteps: 3,
     };
 
     return () => {
@@ -324,7 +334,38 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
           <UsdNote />
 
-          {/* Bottom subtle accent line */}
+          {/* FB-30: RISE UP beat — big uppercase, arrives on its own Next press */}
+        <AnimatePresence>
+          {showRiseUp && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute inset-0 z-30 flex items-center justify-center bg-black/60 backdrop-blur-[2px] pointer-events-none"
+            >
+              <motion.div
+                initial={{ scale: 0.7, opacity: 0, y: 40 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 1.1, opacity: 0 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center"
+              >
+                <div className="font-heading font-bold uppercase text-white leading-none tracking-tight text-[190px] drop-shadow-[0_0_60px_rgba(255,173,1,0.35)]">
+                  Rise <span className="text-pres-accent">Up</span>
+                </div>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="mx-auto mt-6 h-[6px] w-[420px] bg-pres-accent origin-center"
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Bottom subtle accent line */}
           <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
         </div>
       </ScaledSlide>
