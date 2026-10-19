@@ -13,33 +13,33 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
   const guarantees = [
     {
       icon: Zap,
-      title: "Save 80% Hiring Effort",
-      desc: "Seniors ready to ship in 20 minutes.",
+      title: "80% Less Hiring",
+      desc: "Seniors ready fast.",
     },
     {
       icon: Shield,
-      title: "Fix Fragile Vibe Code",
-      desc: "PR reviews turn hacks into clean architecture.",
+      title: "Fragile Code Fixed",
+      desc: "Reviews make it clean.",
     },
     {
       icon: RefreshCw,
-      title: "AI Hallucination Defense",
-      desc: "Tests and reviews catch bad logic early.",
+      title: "No AI Surprises",
+      desc: "Tests catch bad logic.",
     },
     {
       icon: Clock,
-      title: "Sleep Through the Night",
-      desc: "Oversight stops midnight firefights.",
+      title: "Sleep At Night",
+      desc: "No midnight firefights.",
     },
     {
       icon: Users,
-      title: "160 Dedicated Hours/Mo",
-      desc: "Embedded in your Slack, GitHub, and Jira.",
+      title: "160 Hrs / M",
+      desc: "Embedded in your tools.",
     },
     {
       icon: MessageSquare,
-      title: "Zero-Risk Replacement",
-      desc: "Not a fit? Free instant replacement.",
+      title: "Free Replacement",
+      desc: "Not a fit? Swapped.",
     },
   ];
 
@@ -71,17 +71,17 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
                 <motion.div
                   key={idx}
                   {...fadeUp(staggerDelay(idx, 0.16, 0.055))}
-                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/50 rounded-2xl p-5 flex items-start gap-4 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 hover:bg-pres-surface shadow-xl"
+                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/50 rounded-2xl p-7 flex items-center gap-5 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 hover:bg-pres-surface shadow-xl"
                 >
                   <div className="w-[44px] h-[44px] rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent shrink-0 shadow-sm">
                     <Icon className="w-5 h-5" />
                   </div>
 
                   <div>
-                    <h2 className="text-[35px] font-bold font-heading text-white mb-1 leading-snug">
+                    <h2 className="text-[30px] font-bold font-heading text-white mb-1 leading-tight whitespace-nowrap">
                       {item.title}
                     </h2>
-                    <p className="text-[25px] text-pres-text-muted leading-relaxed">
+                    <p className="text-[22px] text-pres-text-muted leading-snug whitespace-nowrap">
                       {item.desc}
                     </p>
                   </div>
