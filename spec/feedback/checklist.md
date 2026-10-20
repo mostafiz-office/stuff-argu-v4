@@ -264,6 +264,14 @@ Owner: "make white would better revert back".
 |---|-------|--------|--------|
 | Y1 | Cover V1 | Batch 34 reverted as a forward commit (no history rewrite): V1 config `labelTone` "amber" → "white". The "Time." pill is white again, exactly as before Batch 34 | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 36 — Book a Call button matches present-v1)
+
+Owner pointed at present-v1.riseup-asia.com/1: "from here book a call button make same thing for our ppt — write what you add for button". Plan written in chat and approved (including the link change) before building. Reference facts verified from that deck's own bundle and design system: primary CTAs use an "Accent gradient" (linear-gradient 135deg, pres-accent → pres-accent-glow), dark text; the hero "Book a Call" links to https://meet.rasia.pro/intro-call in a new tab.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| Z1 | Deck-wide (DeckButton) + Cover | Primary DeckButton fill is now the 135deg amber gradient (hsl(var(--pres-accent)) → hsl(var(--pres-accent-glow)), our glow token = 41 100% 65%) instead of flat amber; hover brightens the gradient (brightness-110) and lifts the glow shadow (25px/0.35 → 38px/0.5); base transition widened to transition-all so filter and shadow animate. Every primary CTA in the deck inherits it (cover "Book a Call", CTA slide buttons). The cover "Book a Call" link changes from client.rasia.pro/hiring-v1 to meet.rasia.pro/intro-call (new tab, as the reference). Label, arrow, pill shape, size and dark bold text unchanged | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

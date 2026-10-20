@@ -144,7 +144,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
         </motion.div>
         <motion.div {...fadeUp(0.32, 12)} className="flex items-center gap-4 mb-8">
           <DeckButton
-            href="https://client.rasia.pro/hiring-v1"
+            href="https://meet.rasia.pro/intro-call"
             target="_blank"
             rel="noopener noreferrer"
           >
