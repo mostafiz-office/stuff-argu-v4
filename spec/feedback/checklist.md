@@ -326,7 +326,15 @@ Owner: "why you add dot after Bangladesh?" Pixel analysis of his reference image
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AG1 | Slide 2 | `dotAfter` removed from the বাংলাদেশ beat — line 1 is now just the two white words, exactly as the reference. The only red on the slide is the "copy business" hook itself | ✅ CODE |
+| AG1 | Slide 2 | `dotAfter` removed from the বাংলাদেশ beat — line 1 is now just the two white words, exactly as the reference. The only red on the slide is the "copy business" hook itself | ✅ CODE → gaps re-solved in Batch 44 |
+
+## Owner review fixes (2026-10-20, Batch 44 — gap analysis redone, margins solved from measurements)
+
+Owner: "the gap — copy business and top and bottom words gap is not matching". Fresh pixel analysis of the reference: line 1 ink 287–383, hook body 397–514 (tall elements to 361), closing line 488–566. So the reference has **14px of air** between line 1 and the hook body, and the closing line **overlaps the hook's band by 26px**. Scaled ×0.786 to this slide: +11px air / 20px overlap. A PIL simulation of the actual CSS stack (real ink boxes of Baloo Da 2 + Plus Jakarta Sans, 0.96 line height) measured the shipped build at 15px air / **6px overlap** — the closing line floated 14px too low. Margins solved from the simulation and verified in it: hook −16 → −20px, closing −18 → −32px gives exactly +11 / 20. (Noted: PJS's i-dot/b rise is 20px vs the reference font's scaled 29px — a font-internal proportion no margin can change.)
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AH1 | Slide 2 | Hook margin −16 → −20px; closing line margin −18 → −32px, so the vertical gaps match the reference's measured geometry (top air 11px, bottom interlock 20px at slide scale) | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

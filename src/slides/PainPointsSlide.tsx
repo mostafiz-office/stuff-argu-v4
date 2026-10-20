@@ -53,6 +53,17 @@ const problems: Problem[] = [
     // cluster at x≈699,y≈361, directly above the 21px "i" stem at
     // x≈701), rising into the notch between the white words because
     // the lines are packed. The invented dotAfter is removed.
+    // Batch 44 (owner: "the gap — copy business and top and bottom
+    // words gap is not matching"): fresh pixel gap analysis of the
+    // reference — line 1 ink bottom → hook body top = 14px air,
+    // hook ink bottom → closing line ink top = 26px OVERLAP (the
+    // closing line tucks INTO the hook's band). Scaled to this
+    // slide (×0.786): +11px air on top, 20px overlap below. A PIL
+    // simulation of this exact stack (Baloo/PJS ink boxes, 0.96
+    // line height) measured the old margins at 15px air / only 6px
+    // overlap — the closing line floated instead of interlocking.
+    // Margins solved from the simulation: hook −20px, closing −32px,
+    // giving exactly +11 air and 20 overlap in the model.
     // Bengali set in Baloo Da 2 (index.html), the hook in Plus Jakarta
     // Sans 800. Sizes solved from PIL band measurements of both fonts
     // against the reference's band ratios (line 1 = 0.79 of the hook's
@@ -82,7 +93,7 @@ const problems: Problem[] = [
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         className:
-          "whitespace-nowrap -mt-[16px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[20px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
         text: "জন্য বিখ্যাত",
@@ -93,7 +104,7 @@ const problems: Problem[] = [
         fontWeight: 800,
         indentClass: "ml-[288px]",
         className:
-          "whitespace-nowrap -mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[32px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",
