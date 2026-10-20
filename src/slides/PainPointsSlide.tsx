@@ -40,10 +40,20 @@ type Problem = {
 const problems: Problem[] = [
   {
     eyebrow: "Problem 01 · Production Risk",
+    // Batch 39: split-hook title design (owner direction Oct 20) —
+    // subject white with the red dot, the hour as the pure-red hook,
+    // the payoff soft white and indented. No marker highlight in this
+    // design, so highlightIndex is -1.
     beats: [
-      { text: "Outage Panic", size: "xl" },
-      { text: "2 AM", size: "md" },
-      { text: "Production Break", size: "xl" },
+      { text: "Outage Panic", size: "md", sizePx: 56, dotAfter: true },
+      { text: "2 am", size: "xl", hook: true },
+      {
+        text: "Production Break",
+        size: "md",
+        sizePx: 45,
+        soft: true,
+        indentClass: "ml-[150px]",
+      },
     ],
     short: "Your customers find the bug before you do.",
     metric: "$18,500/M",
@@ -53,7 +63,7 @@ const problems: Problem[] = [
     imageAlt: "A technology leader responding to a late night production incident",
     highlight: "red",
     highlightStyle: "marker",
-    highlightIndex: 0,
+    highlightIndex: -1,
     align: "left",
   },
   {

@@ -288,6 +288,14 @@ Owner: "when hover button zoom in animation no need". Cause: the global `.presen
 |---|-------|--------|--------|
 | AB1 | Deck-wide (DeckButton) | Buttons no longer move on hover or press: a `.deck-button` override in index.css (same specificity as the global rule, placed after it) sets `transform: none` for hover and active states, and DeckButton carries the new class. Hover is now ONLY the color flip (amber → white on primary; faint amber wash on outline). Other `presentation-action` elements keep their lift — the change is scoped to buttons, as the owner asked | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 39 — slide 2 heading in the split-hook design)
+
+Owner supplied a reference title card (Bengali/English split-sentence hook design, specced in chat + a written spec) and directed: slide 2's heading "Outage Panic 2 AM Production Break" in the same design, with the word mapping stated first and confirmed ("make it").
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AC1 | Slide 2 (Outage Panic) | The three headline beats restyled to the split-hook design via new optional PainBeat fields (sizePx, hook, dotAfter, soft, indentClass): "Outage Panic" white bold 56px with a pure-red full-stop dot after it; "2 am" (lowercased per the design) as THE hook — pure red #FF0000 text at the full 96px; "Production Break" soft white (white/90) 45px, indented ml-[150px] so it starts under the hook's second half. Ratios follow the design spec (58 / 100 / 47 against the 96px hook). The red marker highlight is removed for this slide (highlightIndex −1 — the design has no boxes behind text); the staged cinematic beat entrances are unchanged. Slides 3 and 4 keep their existing headings | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

@@ -14,6 +14,16 @@ export interface PainBeat {
   text: string;
   /** xl = big headline beat, md = smaller supporting beat */
   size: "xl" | "md";
+  /** exact pixel size override (split-hook design ratios, Batch 39) */
+  sizePx?: number;
+  /** split-hook design: this beat is the hook — pure red text */
+  hook?: boolean;
+  /** split-hook design: a red full-stop dot after the text */
+  dotAfter?: boolean;
+  /** split-hook design: soft white instead of full white */
+  soft?: boolean;
+  /** split-hook design: stagger indent class, e.g. "ml-[150px]" */
+  indentClass?: string;
 }
 
 const Highlight: React.FC<{
@@ -48,6 +58,12 @@ const Highlight: React.FC<{
  * `highlightIndex` gets the slide's highlight treatment in the configured
  * color (FB-08: yellow/red configurable). Each pain slide uses a different
  * `highlightStyle` so no two slides feel the same (FB-11).
+ *
+ * Split-hook variant (Batch 39, Outage slide): beats can carry the
+ * split-sentence hook title design — subject in white with a red dot,
+ * the hook beat in pure red at full size, the payoff in soft white,
+ * indented. Slides using it set `highlightIndex` to -1 (no marker:
+ * the design has no highlight boxes behind text).
  */
 export const PainBeats: React.FC<{
   beats: PainBeat[];
@@ -62,6 +78,14 @@ export const PainBeats: React.FC<{
     {beats.map((beat, i) => {
       const delay = 0.15 + i * 0.55;
       const sizeClass = beat.size === "xl" ? "text-[96px]" : "text-[54px]";
+      const inner = beat.dotAfter ? (
+        <>
+          {beat.text}
+          <span className="text-[#FF0000]">.</span>
+        </>
+      ) : (
+        beat.text
+      );
       const content =
         i === highlightIndex ? (
           <Highlight
@@ -69,15 +93,18 @@ export const PainBeats: React.FC<{
             style={highlightStyle}
             delay={delay + 0.3}
           >
-            {beat.text}
+            {inner}
           </Highlight>
         ) : (
-          beat.text
+          inner
         );
       return (
         <motion.span
           key={i}
-          className={`block ${sizeClass}`}
+          className={`block ${beat.sizePx ? "" : sizeClass} ${
+            beat.hook ? "text-[#FF0000]" : ""
+          } ${beat.soft ? "text-white/90" : ""} ${beat.indentClass ?? ""}`}
+          style={beat.sizePx ? { fontSize: beat.sizePx } : undefined}
           initial={{ opacity: 0, y: 34, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay, duration: 0.85, ease: presentationEase }}
