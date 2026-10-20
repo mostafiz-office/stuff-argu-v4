@@ -248,6 +248,14 @@ Owner: "make same things for Hiring word also".
 |---|-------|--------|--------|
 | W1 | Cover V1 | "Hiring" (line 2) gets the full LiquidWord treatment via a new `liquidWords` config option on CoverHeadline (V1 sets ["Hiring"]): white base word, gradient liquid ("H" solid amber, "iring" pale gradient) rising inside the letters to the same 80% waterline, wave drifting at the surface. Replaces its old slow fade. LiquidWord also gained an entrance fade at its delay (0.3s) so a liquid word never pops in before its turn — line 2 now stays hidden until 0.9s, and "80%" fades in just before its liquid starts | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 34 — "Time." pill turns yellow)
+
+Owner: "time word background make it yellow".
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| X1 | Cover V1 | The "Time." label pill switches from white to yellow: V1 config `labelTone` "white" → "amber" (LabelDrop's existing amber variant, pres-accent background; the word still pops back dark on the pill, same drop animation, same geometry). V3's "Minutes." pill stays white — owner named the Time word only | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
