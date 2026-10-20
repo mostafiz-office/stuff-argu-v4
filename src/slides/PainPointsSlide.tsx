@@ -59,28 +59,30 @@ const problems: Problem[] = [
     // hook ink bottom → closing line ink top = 26px OVERLAP (the
     // closing line tucks INTO the hook's band). Scaled to this
     // slide (×0.786): +11px air on top, 20px overlap below. A PIL
-    // simulation of this exact stack (Baloo/PJS ink boxes, 0.96
-    // line height) measured the old margins at 15px air / only 6px
-    // overlap — the closing line floated instead of interlocking.
-    // Margins solved from the simulation: hook −20px, closing −32px,
-    // giving exactly +11 air and 20 overlap in the model.
-    // Bengali set in Baloo Da 2 (index.html), the hook in Plus Jakarta
-    // Sans 800. Sizes solved from PIL band measurements of both fonts
-    // against the reference's band ratios (line 1 = 0.79 of the hook's
-    // glyph band, closing line = 0.64, small word = 0.45 of line 1);
-    // Bengali glyphs sit shorter in their em, so line 1's point size
-    // is larger than the hook's while reading smaller, exactly like
+    // Batch 46 (owner: "fix it"): the Bengali face is now Noto Sans
+    // Bengali 900 — a traditional text face whose proportions
+    // (ink width/height 6.67, ink starting 0.20em into the em) match
+    // both the reference's class and what the owner's screen
+    // actually rendered, unlike Baloo Da 2's rounded, compressed
+    // forms (7.94, ink at 0.45em). EVERYTHING was re-solved against
+    // Noto's measured ink: sizes 106 / 56 / 87px (band ratios 0.83 /
+    // 0.53 / 0.68 of the hook), margins hook −39px, closing −5px —
+    // verified in the stack simulation at exactly +11px top air and
+    // the closing line's ink top 4px below the hook's baseline.
+    // Bengali set in Noto Sans Bengali 900 (loaded by PainBeats'
+    // BengaliFontLoader and index.html), the hook in Plus Jakarta
+    // Sans 800.
     // the original. Indents follow the reference's rightward cascade
     // (line 1 +20% of hook width, closing line +45%).
     beats: [
       {
         text: "বাংলাদেশ",
         size: "md",
-        sizePx: 112,
+        sizePx: 106,
         smallAfter: "যেখানে",
-        smallSizePx: 50,
-        fontFamily: "'Baloo Da 2', sans-serif",
-        fontWeight: 800,
+        smallSizePx: 56,
+        fontFamily: "'Noto Sans Bengali', sans-serif",
+        fontWeight: 900,
         indentClass: "ml-[125px]",
         className:
           "whitespace-nowrap [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
@@ -93,18 +95,18 @@ const problems: Problem[] = [
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         className:
-          "whitespace-nowrap -mt-[20px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[39px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
         text: "জন্য বিখ্যাত",
         size: "md",
-        sizePx: 92,
+        sizePx: 87,
         soft: true,
-        fontFamily: "'Baloo Da 2', sans-serif",
-        fontWeight: 800,
+        fontFamily: "'Noto Sans Bengali', sans-serif",
+        fontWeight: 900,
         indentClass: "ml-[288px]",
         className:
-          "whitespace-nowrap -mt-[32px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[5px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",

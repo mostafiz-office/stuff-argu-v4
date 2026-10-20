@@ -342,7 +342,15 @@ Owner's screenshot of Batch 44 showed the closing line striking through "busines
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AI1 | Slides 2–4 (PainBeats) | `BalooFontLoader` in PainBeats injects the Baloo Da 2 (700/800) Google Fonts stylesheet on mount if absent; index.html link kept as the second path | ✅ CODE |
+| AI1 | Slides 2–4 (PainBeats) | `BalooFontLoader` in PainBeats injects the Baloo Da 2 (700/800) Google Fonts stylesheet on mount if absent; index.html link kept as the second path | ✅ CODE → font switched to Noto Sans Bengali in Batch 46 |
+
+## Owner review fixes (2026-10-20, Batch 46 — Bengali face switched to Noto Sans Bengali 900, everything re-solved)
+
+Owner: "fix it". Baloo Da 2 was the wrong face twice over: its rounded, vertically compressed forms (ink w/h 7.94, ink starting 0.45em into the em) match neither the reference's traditional Bengali face nor the fallback his screen rendered (6.4). Switched to **Noto Sans Bengali 900** (ink w/h 6.67, ink at 0.20em — measurable, traditional, closest available to both) and re-solved the whole stack against its real ink: sizes line 1 106px, small word 56px, closing 87px (band ratios 0.83 / 0.53 / 0.68 of the hook); margins hook −39px, closing −5px. Stack simulation verifies exactly: top body gap +11px, closing line ink top = hook baseline +4px, 17px tuck into the hook's band. The component loader and index.html now both load Noto Sans Bengali (700/900); beats use weight 900.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AJ1 | Slide 2 + PainBeats + index.html | Bengali font Baloo Da 2 → Noto Sans Bengali 900 everywhere (beats, loader, index link); all sizes and both margins re-solved from Noto's measured ink boxes and verified in the stack simulation | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 
