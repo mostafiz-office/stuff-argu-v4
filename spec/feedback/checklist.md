@@ -334,7 +334,15 @@ Owner: "the gap — copy business and top and bottom words gap is not matching".
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AH1 | Slide 2 | Hook margin −16 → −20px; closing line margin −18 → −32px, so the vertical gaps match the reference's measured geometry (top air 11px, bottom interlock 20px at slide scale) | ✅ CODE |
+| AH1 | Slide 2 | Hook margin −16 → −20px; closing line margin −18 → −32px, so the vertical gaps match the reference's measured geometry (top air 11px, bottom interlock 20px at slide scale) | ✅ CODE → font loading hardened in Batch 45 |
+
+## Owner review fixes (2026-10-20, Batch 45 — the rendered font was a fallback; Baloo now loads with the slide)
+
+Owner's screenshot of Batch 44 showed the closing line striking through "business". Root cause found by measurement, not opinion: his preview rendered the Bengali in a FALLBACK system font (ink height/width ratio 6.4 in his screenshot vs Baloo Da 2's 7.94; glyphs visibly serifed) whose ink sits ~30px higher in the em than Baloo's — every margin had been solved against Baloo's ink boxes, so the closing line landed on the red glyph bodies. Verified on the live surface too: stufff-aug-v4.lovable.app is serving a stale build (its bundle contains no Baloo and no Bengali words at all — Lovable deploy stall), and the editor preview had the new slide code with a stale index.html, which is where the font link lived. In the Baloo model the Batch 44 geometry is correct: closing line ink top = hook baseline +1px (reference: +4 at slide scale). Fix: PainBeats now injects the Baloo Da 2 stylesheet itself (`BalooFontLoader`), so the font travels with the slide code and no stale page file can strand it again. The css2 response was verified to carry a proper bengali subset for Baloo Da 2.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AI1 | Slides 2–4 (PainBeats) | `BalooFontLoader` in PainBeats injects the Baloo Da 2 (700/800) Google Fonts stylesheet on mount if absent; index.html link kept as the second path | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

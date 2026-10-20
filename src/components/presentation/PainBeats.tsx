@@ -75,6 +75,31 @@ const Highlight: React.FC<{
  * indented. Slides using it set `highlightIndex` to -1 (no marker:
  * the design has no highlight boxes behind text).
  */
+/**
+ * Slide 2's Bengali beats are typeset in Baloo Da 2, and their
+ * spacing was measured against that font's ink. The font is ALSO
+ * linked from index.html — but preview builds have served a stale
+ * index.html while this file was already current, which silently
+ * swapped in a much taller fallback Bengali font and broke the
+ * measured gaps (Batch 45). Loading the stylesheet from the
+ * component itself makes the font travel with the slide code, so
+ * it can never be left behind again.
+ */
+const BalooFontLoader: React.FC = () => {
+  React.useEffect(() => {
+    const id = "baloo-da-2-font";
+    if (!document.getElementById(id)) {
+      const link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href =
+        "https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@700;800&display=swap";
+      document.head.appendChild(link);
+    }
+  }, []);
+  return null;
+};
+
 export const PainBeats: React.FC<{
   beats: PainBeat[];
   highlight: PainHighlightColor;
@@ -85,6 +110,7 @@ export const PainBeats: React.FC<{
   <h1
     className={`pain-headline-shadow font-heading font-bold leading-[0.96] ${className}`}
   >
+    <BalooFontLoader />
     {beats.map((beat, i) => {
       const delay = 0.15 + i * 0.55;
       const sizeClass = beat.size === "xl" ? "text-[96px]" : "text-[54px]";
