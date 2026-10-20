@@ -350,7 +350,15 @@ Owner: "fix it". Baloo Da 2 was the wrong face twice over: its rounded, vertical
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AJ1 | Slide 2 + PainBeats + index.html | Bengali font Baloo Da 2 → Noto Sans Bengali 900 everywhere (beats, loader, index link); all sizes and both margins re-solved from Noto's measured ink boxes and verified in the stack simulation | ✅ CODE |
+| AJ1 | Slide 2 + PainBeats + index.html | Bengali font Baloo Da 2 → Noto Sans Bengali 900 everywhere (beats, loader, index link); all sizes and both margins re-solved from Noto's measured ink boxes and verified in the stack simulation | ✅ CODE → slide stripped to heading only in Batch 47 |
+
+## Owner review fixes (2026-10-20, Batch 47 — slide 2 keeps only the heading)
+
+Owner's red-marked screenshot: remove the eyebrow ("Problem 01 · Production Risk"), the short line ("Your customers find the bug before you do."), the metric block ("$18,500/M / Outage & Churn Bleed") and the resolution ("Every hour down loses customers you paid to win."). Keep ONLY the heading — বাংলাদেশ যেখানে / copy business / জন্য বিখ্যাত. (His screenshot also confirms Batch 46 worked: Noto Sans Bengali rendering, closing line tucked under the hook without crossing it.)
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AK1 | Slide 2 only | New `bare` flag on the Problem data (set on Outage only): ProblemStorySlide skips the eyebrow, short line and metric/resolution row entirely; the heading block centers vertically in the freed space. Slides 3–4 unchanged (flag off) | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

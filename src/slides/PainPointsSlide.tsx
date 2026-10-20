@@ -35,6 +35,9 @@ type Problem = {
   highlightIndex: number;
   /** FB-11: mirrored layouts — text block alternates sides */
   align: "left" | "right";
+  /** Batch 47 (owner, red-marked screenshot): heading only — no
+   *  eyebrow, short line, metric or resolution on this slide */
+  bare?: boolean;
 };
 
 const problems: Problem[] = [
@@ -119,6 +122,7 @@ const problems: Problem[] = [
     highlightStyle: "marker",
     highlightIndex: -1,
     align: "left",
+    bare: true,
   },
   {
     eyebrow: "Problem 02 · Technical Debt",
@@ -185,14 +189,16 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => {
               : "pl-[100px] pr-[980px] text-left items-start"
           }`}
         >
-          <motion.p
-            {...fadeUp(0.03, 14)}
-            className="text-[20px] font-semibold uppercase text-pres-text-muted"
-          >
-            {problem.eyebrow}
-          </motion.p>
+          {!problem.bare && (
+            <motion.p
+              {...fadeUp(0.03, 14)}
+              className="text-[20px] font-semibold uppercase text-pres-text-muted"
+            >
+              {problem.eyebrow}
+            </motion.p>
+          )}
 
-          <div className="mt-5">
+          <div className={problem.bare ? "" : "mt-5"}>
             <PainBeats
               beats={problem.beats}
               highlight={problem.highlight}
@@ -201,32 +207,36 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => {
             />
           </div>
 
-          <motion.p
-            {...fadeUp(beatsEnd + 0.55, 20)}
-            className="mt-7 text-[30px] leading-snug text-pres-text/90"
-          >
-            {problem.short}
-          </motion.p>
+          {!problem.bare && (
+            <motion.p
+              {...fadeUp(beatsEnd + 0.55, 20)}
+              className="mt-7 text-[30px] leading-snug text-pres-text/90"
+            >
+              {problem.short}
+            </motion.p>
+          )}
 
-          <motion.div
-            {...fadeUp(beatsEnd + 0.85, 18)}
-            className={`mt-11 flex items-end gap-7 ${
-              mirrored ? "flex-row-reverse text-right" : ""
-            }`}
-          >
-            <div>
-              <div className="font-heading font-bold text-[66px] leading-none text-pres-accent">
-                {problem.metric}
+          {!problem.bare && (
+            <motion.div
+              {...fadeUp(beatsEnd + 0.85, 18)}
+              className={`mt-11 flex items-end gap-7 ${
+                mirrored ? "flex-row-reverse text-right" : ""
+              }`}
+            >
+              <div>
+                <div className="font-heading font-bold text-[66px] leading-none text-pres-accent">
+                  {problem.metric}
+                </div>
+                <div className="mt-3 text-[18px] font-semibold uppercase text-pres-text-muted">
+                  {problem.metricLabel}
+                </div>
               </div>
-              <div className="mt-3 text-[18px] font-semibold uppercase text-pres-text-muted">
-                {problem.metricLabel}
-              </div>
-            </div>
-            <div className="mb-1 h-[70px] w-px bg-pres-text/15" />
-            <p className="mb-1 max-w-[340px] text-[20px] leading-relaxed text-pres-text-muted">
-              {problem.resolution}
-            </p>
-          </motion.div>
+              <div className="mb-1 h-[70px] w-px bg-pres-text/15" />
+              <p className="mb-1 max-w-[340px] text-[20px] leading-relaxed text-pres-text-muted">
+                {problem.resolution}
+              </p>
+            </motion.div>
+          )}
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
