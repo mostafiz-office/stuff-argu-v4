@@ -11,7 +11,7 @@ const COPY_A: CoverCopy = {
     line1: "Cut 80% Off",
     line2: "Hiring Time.",
     fillWord: "80%",
-    fillPercent: 80,
+    fillPercent: 100,
     fadeWord: "Hiring",
     labelWord: "Time.",
     labelTone: "white",

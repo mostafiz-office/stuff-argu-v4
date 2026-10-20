@@ -92,6 +92,13 @@
 | C15 | Starter | Mirrored duplicate strip at right edge (one observation) | ✅ no change | No mirror transform exists in code outside the (inactive) camera preview — likely QA-render artifact; recheck after deploy |
 | C16 | Bands 6/7/10 | Highlight words "sit below baseline" (one observation) | ✅ no change | Plain inline spans — no code mechanism; likely mid-entrance capture; recheck after deploy |
 
+## Owner review fixes (2026-10-20, Batch 14)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| D1 | Cover | Yellow fill behind "80%" stopped at 80% height — digit tops uncovered, looked broken | ✅ CODE | Batch 14 — fill now rises to full cover (fillPercent 100 on both cover variants; water-rise animation kept) |
+| D2 | Cover | "Time." label pill padding too large; pill touched "Hiring" | ✅ CODE | Batch 14 — LabelDrop padding cut on all sides: inset -0.14em/-0.22em → -0.08em/-0.13em, radius 0.28em → 0.2em |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

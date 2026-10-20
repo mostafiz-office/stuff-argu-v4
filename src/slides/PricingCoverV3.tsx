@@ -11,7 +11,7 @@ const COPY_B: CoverCopy = {
     line1: "Senior Engineers",
     line2: "In 20 Minutes.",
     fillWord: "20",
-    fillPercent: 20,
+    fillPercent: 100,
     fadeWord: "In",
     labelWord: "Minutes.",
     labelTone: "white",
