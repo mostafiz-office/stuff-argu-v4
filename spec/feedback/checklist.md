@@ -131,6 +131,12 @@
 |---|-------|-------|--------|-----|
 | H2 | Solution | Batch 18 gave levels 1–2 only a lit legend row — too subtle; owner: their texts must come up big like the other levels | ✅ CODE | Batch 19 — two new big-text slots (StageLine): level 1 → "Initial Sign-Up", level 2 → "Training & Assessment", same 40px entrance as the phrases; text column is now 5 fixed slots arriving bottom-first |
 
+## Owner review fixes (2026-10-20, Batch 20 — slide 14 brand beat)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| J1 | Starter | Beat-3 overlay showed the text "RISE UP" — not the company name (Riseup Asia LLC); owner: use the logo | ✅ CODE | Batch 20 — overlay now shows the actual Riseup Asia logo (riseup-asia-logo.png) big in the center, same scale-in beat + amber underline bar (widened to 560px). Gate sequence verified by full reproduction: press 1 bonus box → press 2 rocket → press 3 logo beat → press 4 slide 15; nothing stuck or skipped |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

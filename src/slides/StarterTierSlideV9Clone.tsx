@@ -12,6 +12,7 @@ import { RocketAnimation } from "@/components/presentation/RocketAnimation";
 import { presentationSound } from "@/lib/presentationSound";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 import { UsdNote } from "@/components/presentation/UsdNote";
+import logoImg from "@/assets/riseup-asia-logo.png";
 import {
   Tooltip,
   TooltipContent,
@@ -32,7 +33,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
   // FB-30: 4-beat navigation gate — staged reveals, one per Next press:
   // Step 0 -> Step 1: Reveal Alim box (block slide advance)
   // Step 1 -> Step 2: Trigger rocket animation (block slide advance)
-  // Step 2 -> Step 3: RISE UP big-uppercase beat (block slide advance)
+  // Step 2 -> Step 3: logo brand beat (block slide advance)
   // Step 3 -> advance: Unblock advance
   useEffect(() => {
     const tooltipText =
@@ -311,7 +312,10 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
           <UsdNote />
 
-          {/* FB-30: RISE UP beat — big uppercase, arrives on its own Next press */}
+          {/* FB-30 brand beat — the Riseup Asia logo, big in the center
+              (owner direction Oct 20: "RISE UP" is not the company name —
+              show the actual logo instead of the text). Arrives on its own
+              Next press. */}
         <AnimatePresence>
           {showRiseUp && (
             <motion.div
@@ -328,14 +332,16 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 className="text-center"
               >
-                <div className="font-heading font-bold uppercase text-white leading-none tracking-tight text-[190px] drop-shadow-[0_0_60px_rgba(255,173,1,0.35)]">
-                  Rise <span className="text-pres-accent">Up</span>
-                </div>
+                <img
+                  src={logoImg}
+                  alt="Riseup Asia"
+                  className="mx-auto h-[190px] w-auto object-contain drop-shadow-[0_0_60px_rgba(255,173,1,0.35)]"
+                />
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="mx-auto mt-6 h-[6px] w-[420px] bg-pres-accent origin-center"
+                  className="mx-auto mt-8 h-[6px] w-[560px] bg-pres-accent origin-center"
                 />
               </motion.div>
             </motion.div>
