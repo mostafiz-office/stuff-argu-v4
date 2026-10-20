@@ -45,8 +45,14 @@ const problems: Problem[] = [
     // The block is PACKED — negative top margins interlock the lines
     // and every line carries the reference's strong soft shadow.
     // Batch 42 (owner: "update slide 2 with same word"): the heading
-    // now carries the reference's EXACT words — বাংলাদেশ • যেখানে /
+    // now carries the reference's EXACT words — বাংলাদেশ যেখানে /
     // copy business / জন্য বিখ্যাত — so the design can be judged 1:1.
+    // Batch 43 (owner: "why you add dot after Bangladesh?"): there is
+    // NO dot in the reference — pixel analysis of his image proved
+    // the red mark is the tittle of the "i" in "business" (a 25×24
+    // cluster at x≈699,y≈361, directly above the 21px "i" stem at
+    // x≈701), rising into the notch between the white words because
+    // the lines are packed. The invented dotAfter is removed.
     // Bengali set in Baloo Da 2 (index.html), the hook in Plus Jakarta
     // Sans 800. Sizes solved from PIL band measurements of both fonts
     // against the reference's band ratios (line 1 = 0.79 of the hook's
@@ -60,7 +66,6 @@ const problems: Problem[] = [
         text: "বাংলাদেশ",
         size: "md",
         sizePx: 112,
-        dotAfter: true,
         smallAfter: "যেখানে",
         smallSizePx: 50,
         fontFamily: "'Baloo Da 2', sans-serif",

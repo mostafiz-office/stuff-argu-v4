@@ -318,7 +318,15 @@ Owner: "update slide 2 with same word". The heading now IS the reference copy �
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AF1 | Slide 2 | Heading copy replaced with the exact reference words (বাংলাদেশ + red dot + যেখানে / copy business / জন্য বিখ্যাত); Baloo Da 2 loaded; per-beat fonts; measured sizes and cascade indents (125px / 288px); packing + strong shadow kept; whitespace-nowrap so the long lines never wrap | ✅ CODE |
+| AF1 | Slide 2 | Heading copy replaced with the exact reference words (বাংলাদেশ + red dot + যেখানে / copy business / জন্য বিখ্যাত); Baloo Da 2 loaded; per-beat fonts; measured sizes and cascade indents (125px / 288px); packing + strong shadow kept; whitespace-nowrap so the long lines never wrap | ✅ CODE → dot removed in Batch 43 |
+
+## Owner review fixes (2026-10-20, Batch 43 — the "dot" was the i of business)
+
+Owner: "why you add dot after Bangladesh?" Pixel analysis of his reference image proved him right: the red mark is a 25×24 cluster at x≈699, y≈361, sitting directly above the 21px-wide stem of the letter "i" in "business" (x≈701) — it is the i's tittle, lifted into the notch between the white words by the tight packing. There is NO punctuation dot in the design. (The same misread put a dot in Batches 39–41 and in the split-hook spec doc; the spec doc is corrected too.)
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AG1 | Slide 2 | `dotAfter` removed from the বাংলাদেশ beat — line 1 is now just the two white words, exactly as the reference. The only red on the slide is the "copy business" hook itself | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 
