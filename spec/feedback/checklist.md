@@ -180,6 +180,12 @@ Owner pointed at present-v1.riseup-asia.com slide 1 and approved a written plan 
 | N5 | Arrow | Small amber ArrowRight added at the card's bottom-right corner | ✅ CODE |
 | N6 | Quote text | Highlight span removed — quotes are now uniform italic gray; Cristian trimmed to the reference excerpt style with his real words ("...successfully led us through troubled times... so the team could focus..."); Jakub given the same light excerpt trim; Adam unchanged (already short) | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 25 — "20 Minutes." vertical shift)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| O1 | Cover V3 | Owner screenshot, measured: heights now match (122 vs 115px, Batch 22 worked) but the yellow block is SHIFTED UP vs the pill — top edge 20px higher, bottom edge 13px higher; red line drawn under the pair shows the fill's bottom not reaching the pill's bottom | ✅ CODE | Batch 25 — root cause: WaterFill's wrapper has overflow:hidden, and CSS aligns such inline-blocks by their bottom margin edge instead of the text baseline, so the fill rides ~0.15em high. Both WaterFill and LabelDrop wrappers are now `align-bottom`, so their boxes coincide by construction and the digits land on the same baseline as "Minutes." Geometry contract in reveal.tsx updated |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

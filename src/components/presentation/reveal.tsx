@@ -12,12 +12,19 @@ import { presentationEase } from "@/lib/presentationMotion";
 
 /** WaterFill — text/number that fills up like water to `percent` (cover "80%").
  *
- * GEOMETRY CONTRACT (Batch 22): WaterFill and LabelDrop paint the exact
- * same vertical box — the word's line box. The fill spans inset-0 of its
- * wrapper; the label rect is inset-[0em_-0.13em] (flush vertically,
- * bleeding only sideways). Same top, same bottom, same 0.2em corner
- * radius — the pair ("20" + "Minutes.") aligns perfectly by
- * construction. Do not re-add vertical bleed to either one. */
+ * GEOMETRY CONTRACT (Batches 22 + 25): WaterFill and LabelDrop paint the
+ * exact same box and sit in the exact same place:
+ *  - Same painted extent: the fill spans inset-0 of its wrapper; the label
+ *    rect is inset-[0em_-0.13em] (flush vertically, bleeding only
+ *    sideways). Same top, same bottom, same 0.2em corner radius.
+ *  - Same alignment: BOTH wrappers are `align-bottom` (vertical-align:
+ *    bottom). This matters because WaterFill's wrapper has
+ *    overflow:hidden, and CSS aligns such a box by its bottom margin
+ *    edge instead of the text baseline — left on baseline alignment it
+ *    rides ~0.15em HIGHER than the label (measured on the owner's
+ *    screenshot, Batch 25). Bottom-aligning both makes their boxes
+ *    coincide by construction.
+ * Do not remove the align-bottom or re-add vertical bleed to either one. */
 export const WaterFill: React.FC<{
   children: React.ReactNode;
   percent?: number;
@@ -33,7 +40,7 @@ export const WaterFill: React.FC<{
   duration = 1.1,
   className = "",
 }) => (
-  <span className={`relative inline-block overflow-hidden rounded-[0.2em] ${className}`}>
+  <span className={`relative inline-block overflow-hidden rounded-[0.2em] align-bottom ${className}`}>
     <span className="relative z-10">{children}</span>
     <motion.span
       aria-hidden
@@ -58,7 +65,7 @@ export const LabelDrop: React.FC<{
   delay?: number;
   className?: string;
 }> = ({ children, tone = "amber", delay = 0, className = "" }) => (
-  <span className={`relative inline-block ${className}`}>
+  <span className={`relative inline-block align-bottom ${className}`}>
     <motion.span
       aria-hidden
       className={`absolute inset-[0em_-0.13em] rounded-[0.2em] ${
