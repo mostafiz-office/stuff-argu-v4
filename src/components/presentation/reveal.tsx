@@ -54,7 +54,7 @@ export const LabelDrop: React.FC<{
   <span className={`relative inline-block ${className}`}>
     <motion.span
       aria-hidden
-      className={`absolute inset-[-0.14em_-0.28em] rounded-[0.28em] ${
+      className={`absolute inset-[-0.14em_-0.22em] rounded-[0.28em] ${
         tone === "white" ? "bg-white" : "bg-pres-accent"
       }`}
       initial={{ y: "-130%", opacity: 0 }}

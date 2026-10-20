@@ -47,7 +47,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 2 Growth",
       key: "growth" as TierKey,
       meaning: "A full-time developer who clears your backlog.",
-      experience: "2-3+ Years",
+      experience: "4+ Years",
       price: "$4,299",
       priceSuffix: "/M",
       hours: "160 hrs/M",
@@ -64,8 +64,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 3.A Skilled",
       key: "skilled" as TierKey,
       meaning: "A mentor-grade developer with architecture oversight.",
-      experience: "7-15+ Years",
-      price: "$6.8K–$8K",
+      experience: "6+ Years",
+      price: "$6,800–$8,000",
       priceSuffix: "/M",
       hours: "160 hrs/M",
       badge: "BEST VALUE",
@@ -81,8 +81,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       name: "Tier 3.B Leadership",
       key: "leadership" as TierKey,
       meaning: "A tech lead managing up to 15 engineers.",
-      experience: "7-15+ Years",
-      price: "$7.5K–$10K",
+      experience: "8+ Years",
+      price: "$7,500–$10,000",
       priceSuffix: "/M",
       hours: "160 hrs/M",
       badge: null,
@@ -197,7 +197,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                       {TIER_DIFFERENTIATORS[tier.key].map((d, dIdx) => (
                         <li key={dIdx} className="flex items-start gap-3">
                           <span className="mt-[10px] h-[8px] w-[8px] shrink-0 rounded-full bg-pres-accent" />
-                          <span className="text-[24px] font-medium text-white leading-snug">
+                          <span className="text-[24px] font-medium text-white leading-snug whitespace-nowrap">
                             {d.highlight ? (
                               <>
                                 {d.text.split(d.highlight)[0]}

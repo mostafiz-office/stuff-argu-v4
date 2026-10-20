@@ -79,7 +79,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 <br />
                 Ship More.
               </motion.h1>
-              <p className="text-[26px] text-pres-text-muted">Same senior talent, a fraction of US rates.</p>
+              <p className="text-[26px] text-pres-text-muted">Top talent, a fraction of US rates.</p>
               {/* FB-31: the slide's ONE yellow highlight — top saving figure, no "up to" */}
               <motion.div {...fadeUp(0.12)} className="mt-6 inline-block">
                 <span className="font-heading text-[34px] font-bold text-pres-accent">

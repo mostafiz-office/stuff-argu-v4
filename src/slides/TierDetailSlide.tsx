@@ -25,12 +25,12 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
     },
     {
       name: "Tier 3.A Skilled",
-      price: "$6,800–8K/M",
+      price: "$6,800–$8,000/M",
       badge: "BEST VALUE",
     },
     {
       name: "Tier 3.B Leadership",
-      price: "$7.5K–10K/M",
+      price: "$7,500–$10,000/M",
       badge: "PREMIUM",
     },
   ];
@@ -182,6 +182,8 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                     ))}
                   </section>
                 ))}
+                {/* Spacer so the last rows can scroll fully clear of the cue */}
+                <div className="h-[110px]" aria-hidden="true" />
               </div>
 
               <div

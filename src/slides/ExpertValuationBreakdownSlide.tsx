@@ -40,7 +40,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
           {...fadeUp(0)}
           className="pres-title font-bold font-heading tracking-tight mb-10"
         >
-          What The Chief Architect Is Worth
+          What the Chief Architect Is Worth
         </motion.h1>
 
         <div className="grid grid-cols-3 gap-8 mb-8">
@@ -105,6 +105,9 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
           {...fadeUp(0.42)}
           className="grid grid-cols-4 gap-6"
         >
+          <p className="col-span-4 -mb-2 text-[20px] font-semibold uppercase tracking-[0.2em] text-pres-text-muted">
+            Bonus value included free with each tier
+          </p>
           {tiers.map((t) => (
             <div
               key={t.name}
@@ -112,7 +115,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
             >
               <div className="text-[24px] font-bold font-heading mb-2">{t.name}</div>
               <div className="text-[34px] font-bold text-green-400 font-mono">
-                {t.value}<span className="text-[22px]"> / M FREE</span>
+                {t.value}<span className="text-[22px]">/M FREE</span>
               </div>
             </div>
           ))}

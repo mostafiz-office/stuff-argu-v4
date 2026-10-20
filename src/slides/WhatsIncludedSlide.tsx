@@ -13,7 +13,7 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
   const guarantees = [
     {
       icon: Zap,
-      title: "80% Less Hiring",
+      title: "80% Less Hiring Effort",
       desc: "Seniors ready fast.",
     },
     {
@@ -28,12 +28,12 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
     },
     {
       icon: Clock,
-      title: "Sleep At Night",
+      title: "Sleep at Night",
       desc: "No midnight firefights.",
     },
     {
       icon: Users,
-      title: "160 Hrs / M",
+      title: "160 Hrs/M",
       desc: "Embedded in your tools.",
     },
     {

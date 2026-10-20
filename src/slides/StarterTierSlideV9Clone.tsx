@@ -85,15 +85,15 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
       flat: false,
     },
     {
-      metric: "160h",
-      label: "Pure senior dev/M",
+      metric: "160 hrs",
+      label: "Pure dev time/M",
       tooltip: "160 dedicated hours per month fixing fragile vibe-code and shipping roadmap features",
       flat: false,
     },
     {
-      metric: "$10,000",
+      metric: "$2,500/M",
       label: "Chief Architect Bonus",
-      tooltip: "Alim's expert oversight valued at up to $10,000/M ($625/hr standard consulting) — fixes AI hallucinations",
+      tooltip: "Your Tier 1 architect bonus is worth $2,500/M — up to $10,000/M on higher tiers",
       flat: true,
     },
   ];

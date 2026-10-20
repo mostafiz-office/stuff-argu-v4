@@ -71,20 +71,43 @@
 | B1 | Deck | Gate tooltip pills read as speaker notes | ✅ CODE | Batch 12 — rewritten viewer-facing |
 | B2 | HowItWorks | Steps 03/04 looked dimmed (one observation) | ✅ no change | No code mechanism; likely mid-entrance |
 
+## New issues from the 2026-10-20 human-eye QA (Batch 13)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| C1 | Solution | Shrunken caption sits tilted (~-8°) — looks like a broken animation | ✅ CODE | Batch 13 — rotateY removed, caption sits flat |
+| C2 | Compare | Prices inconsistent (card/table mismatch, missing $) | ✅ CODE | Batch 13 — full numbers everywhere: $4,299 / $6,800–$8,000 / $7,500–$10,000 |
+| C3 | Compare | Experience numbers contradicted the cards (4/6/8 vs 2-3+/7-15+) | ✅ CODE | Batch 13 — cards aligned to table: 4+ / 6+ / 8+ Years (owner to confirm) |
+| C4 | Compare | "Alim Expert Oversight" label unclear | ✅ CODE | Batch 13 — renamed "Chief Architect Oversight" |
+| C5 | Compare | "Versatile" vague; "QA Automation Engineers" bare "2" | ✅ CODE | Batch 13 — "24/7 priority SLA"; "2 included" |
+| C6 | Compare | "Scroll for more" cue covered a row value | ✅ CODE | Batch 13 — 110px bottom spacer in scroll region |
+| C7 | Architect | Heading title case ("What The…") | ✅ CODE | Batch 13 — "What the Chief Architect Is Worth" |
+| C8 | Architect | Tier value cards read as tier pricing; "/ M FREE" cramped | ✅ CODE | Batch 13 — "/M FREE" + "Bonus value included free with each tier" caption |
+| C9 | Included | "80% Less Hiring" awkward; "Sleep At Night" case; "160 Hrs / M" | ✅ CODE | Batch 13 — "80% Less Hiring Effort", "Sleep at Night", "160 Hrs/M" |
+| C10 | Starter | Stats contradicted the slide ("Pure senior dev/M", "$10,000" bonus vs $2,500/M box) | ✅ CODE | Batch 13 — "160 hrs / Pure dev time/M"; bonus stat "$2,500/M" |
+| C11 | Savings | "Same senior talent" subtitle vs Starter (1+ yr) row | ✅ CODE | Batch 13 — "Top talent, a fraction of US rates." |
+| C12 | CTA | "Call Now" button much narrower than "Schedule a Call" | ✅ CODE | Batch 13 — both buttons min-w-[360px] |
+| C13 | Cover | Label pill behind "Time." slightly touched neighbor letters | ✅ CODE | Batch 13 — LabelDrop horizontal bleed 0.28em → 0.22em |
+| C14 | Tiers | "Owns complex features end-to-end" wrapped with stranded "end" | ✅ CODE | Batch 13 — differentiator lines whitespace-nowrap |
+| C15 | Starter | Mirrored duplicate strip at right edge (one observation) | ✅ no change | No mirror transform exists in code outside the (inactive) camera preview — likely QA-render artifact; recheck after deploy |
+| C16 | Bands 6/7/10 | Highlight words "sit below baseline" (one observation) | ✅ no change | Plain inline spans — no code mechanism; likely mid-entrance capture; recheck after deploy |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
 2. FB-27: confirm keeping the "In 20 min" vetting badge on Step 02.
 3. FB-35: point to the "previous" CTA design if a different one was meant.
 4. Confirm-or-tweak (my judgment calls, Batch 10): pain copy (FB-06), tagline "Top 5% Engineers, On Demand" (FB-23), "76% saving" (FB-31), Starter "1+ Year" numbers (A3).
+5. Confirm-or-tweak (Batch 13, C3): tier experience figures aligned to 4+ / 6+ / 8+ years across cards and compare table.
 
 ## Deploy status (2026-10-20 QA)
 
 **STALLED:** the live app serves a pre-Batch-9 build. Commits `3795ebc` (Batch 9:
 dot-nav labels + spec rewrite), `2c61dc5` (Batch 10: copy pass + cover crossfade),
-`0e3a78d` (FB-03: Plus Jakarta Sans cover) are on `main` (verified in repo) but NOT
-live — bundle inspection confirms. Owner action: check Lovable dashboard (GitHub
-sync / Publish). Code state vs live state tracked per item below as CODE/LIVE.
+`0e3a78d` (FB-03: Plus Jakarta Sans cover), `cee874e` (Batch 12: viewer-facing gate
+tooltips), and Batch 13 (human-eye QA fixes C1–C14) are on `main` (verified in repo)
+but NOT live — bundle inspection confirms. Owner action: check Lovable dashboard
+(GitHub sync / Publish). Code state vs live state tracked per item below as CODE/LIVE.
 
 ## Deployment note (2026-10-19)
 
