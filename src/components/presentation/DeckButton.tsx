@@ -38,7 +38,7 @@ export const DeckButton: React.FC<DeckButtonProps> = ({
   ariaLabel,
 }) => {
   const base =
-    "presentation-action presentation-focus inline-flex items-center justify-center gap-2 rounded-full font-body font-semibold whitespace-nowrap transition-all duration-200";
+    "presentation-action presentation-focus deck-button inline-flex items-center justify-center gap-2 rounded-full font-body font-semibold whitespace-nowrap transition-all duration-200";
   const styles =
     variant === "primary"
       ? "bg-pres-accent hover:bg-pres-text text-pres-bg pres-dark-safe-accent text-[17px] px-[30px] py-[12px]"

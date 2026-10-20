@@ -280,6 +280,14 @@ Owner: "not same". Cause found and owned: Batch 36 copied the gradient recipe fr
 |---|-------|--------|--------|
 | AA1 | Deck-wide (DeckButton) + Cover + CTA slide | DeckButton rebuilt to the present-v1 hero CTA's exact spec: FLAT pres-accent fill (gradient and glow shadow removed), Poppins semibold (font-body 600, was Ubuntu bold), 17px text (was 24px), padding 12px by 30px (was 20px by 40px), 8px icon gap, hover flips the fill to WHITE (pres-text) with the dark text unchanged, 0.2s transition. Outline variant matched to their sibling outline button: 1.5px pres-accent/40 border, transparent fill, WHITE text (was amber), same 17px size and padding. Call-site icons scaled to the new size: cover arrow 24px → 18px, cover Sparkles 24px → 16px in accent, CTA slide icons 32/28px → 18px | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 38 — no zoom on button hover)
+
+Owner: "when hover button zoom in animation no need". Cause: the global `.presentation-action:hover` rule in index.css lifts and zooms every action element (`translateY(-3px) scale(1.015)`), and DeckButton carries that class — the zoom rode underneath Batch 37's color flip.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AB1 | Deck-wide (DeckButton) | Buttons no longer move on hover or press: a `.deck-button` override in index.css (same specificity as the global rule, placed after it) sets `transform: none` for hover and active states, and DeckButton carries the new class. Hover is now ONLY the color flip (amber → white on primary; faint amber wash on outline). Other `presentation-action` elements keep their lift — the change is scoped to buttons, as the owner asked | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

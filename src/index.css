@@ -377,6 +377,15 @@
   transform: translateY(0) scale(0.98);
 }
 
+/* DeckButton (Batch 38, owner direction): no hover lift or zoom on the
+   deck's buttons — the hover is a pure color flip (amber to white),
+   matching the present-v1 hero CTA. Same specificity as the rules
+   above, later in the file, so it wins for .deck-button elements. */
+.deck-button:hover,
+.deck-button:active {
+  transform: none;
+}
+
 .presentation-focus:focus-visible,
 .presentation-action:focus-visible,
 .presentation-control:focus-visible,
