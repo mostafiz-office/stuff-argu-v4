@@ -40,40 +40,45 @@ type Problem = {
 const problems: Problem[] = [
   {
     eyebrow: "Problem 01 · Production Risk",
-    // Batch 39: split-hook title design (owner direction Oct 20) —
-    // subject white with the red dot, the hour as the pure-red hook,
-    // the payoff soft white and indented. No marker highlight in this
-    // design, so highlightIndex is -1.
-    // Batch 40 (measured against the reference card): the block is
-    // scaled up and PACKED — negative top margins interlock the lines
-    // (line 1 to hook gap ~10% of hook height, payoff tucked up into
-    // the hook's line box) and every line carries the reference's
-    // strong soft shadow.
+    // Split-hook title design (Batches 39–41, owner direction Oct 20):
+    // no marker highlight in this design, so highlightIndex is -1.
+    // The block is PACKED — negative top margins interlock the lines
+    // and every line carries the reference's strong soft shadow.
+    // Batch 41 (owner: "change copy as well — same size, same word,
+    // same character size"): the copy itself now mirrors the
+    // reference's word structure, using only the heading's own words.
+    // Reference: [one big word] • [one small word] / [wide two-word
+    // red hook] / [closing words]. Ours: "Outage" • "Panic" /
+    // "production break" / "2 am". Sizes measured in Ubuntu Bold:
+    // the hook at 90px spans 740px ≈ 88% of the text column, the
+    // reference hook's share of its frame.
     beats: [
       {
-        text: "Outage Panic",
+        text: "Outage",
         size: "md",
         sizePx: 64,
         dotAfter: true,
+        smallAfter: "Panic",
+        smallSizePx: 28,
         className:
           "[text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "2 am",
+        text: "production break",
         size: "xl",
-        sizePx: 110,
+        sizePx: 90,
         hook: true,
         className:
-          "-mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "-mt-[16px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "Production Break",
+        text: "2 am",
         size: "md",
-        sizePx: 52,
+        sizePx: 58,
         soft: true,
-        indentClass: "ml-[160px]",
+        indentClass: "ml-[335px]",
         className:
-          "-mt-[20px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "-mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",

@@ -26,6 +26,10 @@ export interface PainBeat {
   indentClass?: string;
   /** extra classes for this beat's line (split-hook packing, shadows) */
   className?: string;
+  /** split-hook design: small connector word after the red dot, same line */
+  smallAfter?: string;
+  /** pixel size of the small connector word */
+  smallSizePx?: number;
 }
 
 const Highlight: React.FC<{
@@ -80,13 +84,21 @@ export const PainBeats: React.FC<{
     {beats.map((beat, i) => {
       const delay = 0.15 + i * 0.55;
       const sizeClass = beat.size === "xl" ? "text-[96px]" : "text-[54px]";
-      const inner = beat.dotAfter ? (
+      const inner = (
         <>
           {beat.text}
-          <span className="text-[#FF0000]">.</span>
+          {beat.dotAfter && <span className="text-[#FF0000]">.</span>}
+          {beat.smallAfter && (
+            <span
+              style={{
+                fontSize: beat.smallSizePx ?? 28,
+                marginLeft: 16,
+              }}
+            >
+              {beat.smallAfter}
+            </span>
+          )}
         </>
-      ) : (
-        beat.text
       );
       const content =
         i === highlightIndex ? (

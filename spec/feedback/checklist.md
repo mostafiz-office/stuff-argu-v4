@@ -302,7 +302,15 @@ Owner compared screenshots side by side: "not actually same design, not feeling 
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AD1 | Slide 2 (Outage Panic) | Split-hook block scaled up (64 / 110 / 52px) and packed to the reference's geometry: hook pulled up −18px (line 1 → hook gap now ~10% of hook height), payoff tucked −20px into the hook's line box with its indent widened to 160px; every line gets the reference's strong soft text shadow (0 14px 34px black/65 + 0 4px 10px black/60, replacing the faint inherited headline shadow on these beats). New generic `className` field on PainBeat carries the packing. Ubuntu has no 800 weight in this deck, so the heaviness comes from scale, packing and shadow rather than a heavier cut | ✅ CODE |
+| AD1 | Slide 2 (Outage Panic) | Split-hook block scaled up (64 / 110 / 52px) and packed to the reference's geometry: hook pulled up −18px (line 1 → hook gap now ~10% of hook height), payoff tucked −20px into the hook's line box with its indent widened to 160px; every line gets the reference's strong soft text shadow (0 14px 34px black/65 + 0 4px 10px black/60, replacing the faint inherited headline shadow on these beats). New generic `className` field on PainBeat carries the packing. Ubuntu has no 800 weight in this deck, so the heaviness comes from scale, packing and shadow rather than a heavier cut | ✅ CODE → copy restructured in Batch 41 |
+
+## Owner review fixes (2026-10-20, Batch 41 — the copy mirrors the reference's word structure)
+
+Owner: "it doesn't feel same — maybe you change copy as well, same size, same word, same character size". Correct diagnosis: the reference's hook is a WIDE two-word phrase ("copy business", 13 chars, 88% of the frame); ours was "2 am", a 4-character stub that cannot dominate at any size. The heading's copy is now rearranged into the reference's exact slots, using only the heading's own words — nothing invented, nothing dropped.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AE1 | Slide 2 (Outage Panic) | Beats are now: line 1 "Outage" white 64px + red dot + "Panic" as the small connector word (28px, new `smallAfter`/`smallSizePx` fields on PainBeat) — mirroring [বাংলাদেশ • যেখানে]; line 2 the hook becomes "production break" (lowercase, pure red) at 90px, which measures 740px wide in Ubuntu Bold = 88% of the text column, the reference hook's exact share of its frame; line 3 "2 am" soft white 58px, indented 335px (≈45% of the hook's width, the reference closing line's position). Packing and strong shadow from Batch 40 retained, margins re-derived for the new sizes (−16px / −18px) | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 
