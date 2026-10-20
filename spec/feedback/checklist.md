@@ -232,6 +232,14 @@ Owner corrected Batch 30 in his own words: someone pours water into the "80%", a
 |---|-------|--------|--------|
 | U1 | Cover V1 | `LiquidWord` final level changed from near-full (surface at 6% of the box) to an 80% glyph fill: the rise now stops with the wave surface at 32% of the word box, computed from the measured Plus Jakarta Sans metrics (baseline at 89.2% of the 1.04em line box, cap span 71.6% of the box; 89.2 − 0.8 × 71.6 ≈ 32). The top fifth of every digit ("8", "0", "%") stays empty; the wave keeps drifting at the 80% line forever; the fill replays on every visit to slide 1 | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 32 — white top on "80%")
+
+Owner annotated a screenshot (red box over the empty tops of the "80%" digits): "this red mark of 80% word top side make white". The top 20% must not be see-through; it keeps white text.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| V1 | Cover V1 | `LiquidWord`'s base copy is now a visible WHITE copy of the word (was an invisible layout placeholder). The liquid gradient still paints only the bottom 80% inside the letters; above the wavy waterline the digits are white text, so the word is always fully readable — white top, watery gradient below | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

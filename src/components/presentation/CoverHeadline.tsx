@@ -86,8 +86,10 @@ const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
 
   return (
     <span className="relative mx-[0.09em] inline-block">
-      {/* layout placeholder — invisible, holds the word's box */}
-      <span className="invisible">{word}</span>
+      {/* white base copy — the word is always fully present in white;
+          the liquid paints over its bottom 80%, so the top of every
+          digit above the waterline stays white text */}
+      <span className="text-white">{word}</span>
       {/* the liquid copy: gradient letters under the wavy clip */}
       <motion.span
         aria-hidden
