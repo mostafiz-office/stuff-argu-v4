@@ -77,49 +77,47 @@ const problems: Problem[] = [
     // Sans 800.
     // the original. Indents follow the reference's rightward cascade
     // (line 1 +20% of hook width, closing line +45%).
-    // Batch 48 (owner: "Outage production break 2 am — same
-    // meaning"): the English heading returns, carrying the same
-    // split sentence in the proven template — "Outage" the subject
-    // (বাংলাদেশ's slot), "production break" the red hook ("copy
-    // business"'s slot), "2 am" the closing beat (জন্য বিখ্যাত's
-    // slot). All three lines in Plus Jakarta Sans 800; sizes and
-    // margins re-solved from PJS ink boxes (Outage 78px, hook 94px,
-    // 2 am 80px; hook margin +9px, closing −12px) and verified in
-    // the stack simulation at +11px top air and the closing line's
-    // ink top 4px below the hook's baseline. Cascade indents scaled
-    // to the hook's 775px width: line 1 +20% (155px), closing +45%
-    // (349px).
+    // Batch 49 (owner picked the copy): the slide now speaks to the
+    // SaaS owner who vibe coded his app — deadline coming, production
+    // down, no sleep. "Deadline" + small "coming" / hook "production
+    // is down" / closing "no sleep tonight", all Plus Jakarta Sans
+    // 800, sizes and gaps solved from PJS ink boxes and verified in
+    // the stack simulation (top air +11px, closing ink top = hook
+    // baseline +4px): 96 + 41 / 94 / 63px, margins −5 / −7px,
+    // cascade indents 171 / 385px (20% / 45% of the hook's 856px).
     beats: [
       {
-        text: "Outage",
+        text: "Deadline",
         size: "md",
-        sizePx: 78,
+        sizePx: 96,
+        smallAfter: "coming",
+        smallSizePx: 41,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
-        indentClass: "ml-[155px]",
+        indentClass: "ml-[171px]",
         className:
           "whitespace-nowrap [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "production break",
+        text: "production is down",
         size: "xl",
         sizePx: 94,
         hook: true,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         className:
-          "whitespace-nowrap mt-[9px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[5px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "2 am",
+        text: "no sleep tonight",
         size: "md",
-        sizePx: 80,
+        sizePx: 63,
         soft: true,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
-        indentClass: "ml-[349px]",
+        indentClass: "ml-[385px]",
         className:
-          "whitespace-nowrap -mt-[12px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[7px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",

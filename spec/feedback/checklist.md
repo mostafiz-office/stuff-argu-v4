@@ -358,15 +358,15 @@ Owner's red-marked screenshot: remove the eyebrow ("Problem 01 · Production Ris
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AK1 | Slide 2 only | New `bare` flag on the Problem data (set on Outage only): ProblemStorySlide skips the eyebrow, short line and metric/resolution row entirely; the heading block centers vertically in the freed space. Slides 3–4 unchanged (flag off) | ✅ CODE → heading back to English in Batch 48 |
+| AK1 | Slide 2 only | New `bare` flag on the Problem data (set on Outage only): ProblemStorySlide skips the eyebrow, short line and metric/resolution row entirely; the heading block centers vertically in the freed space. Slides 3–4 unchanged (flag off) | ✅ CODE → final copy applied in Batch 49 |
 
-## Owner review fixes (2026-10-20, Batch 48 — English heading in the proven template)
+## Owner review fixes (2026-10-20, Batch 49 — the SaaS owner title, owner's pick)
 
-Owner: "Outage production break 2 am — same meaning". The English heading carries the same split sentence in the template proven with the exact Bengali words: "Outage" in the subject slot, "production break" (lowercase, pure red) in the hook slot, "2 am" in the closing slot. All three lines Plus Jakarta Sans 800. Sizes/margins re-solved from PJS ink boxes and verified in the stack simulation: Outage 78px, hook 94px (775px wide), 2 am 80px; hook margin +9px, closing −12px → +11px top air, closing ink top = hook baseline +4px. Cascade indents scaled to the wider hook: 155px / 349px. Bare mode (Batch 47) kept — heading only on the slide.
+After several copy rounds the owner briefed the persona precisely: a SaaS owner whose app (his own or his team's) was vibe coded; at midnight/2 am he can't sleep — production is down, a deadline is coming, he feels the tension. From five options written to that brief he picked: **Deadline** *coming* / **production is down** / **no sleep tonight**. Built in the split-hook template, all Plus Jakarta Sans 800, sizes/gaps solved from PJS ink boxes and verified in the stack simulation (+11px top air, closing ink top = hook baseline +4px): Deadline 96px + small "coming" 41px, hook 94px (856px wide), closing 63px; margins −5/−7px; cascade indents 171/385px. Bare mode kept — heading only on the slide. (An earlier English build, "Outage / production break / 2 am", was prepared locally as Batch 48 but never pushed — the owner interrupted it to choose copy first; this batch supersedes it.)
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AL1 | Slide 2 | Beats replaced with Outage / production break / 2 am in the split-hook template (PJS 800, measured sizes, solved margins, cascade indents) | ✅ CODE |
+| AM1 | Slide 2 | Beats replaced with Deadline + coming / production is down / no sleep tonight in the split-hook template (PJS 800, measured sizes, solved margins, cascade indents) | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 
