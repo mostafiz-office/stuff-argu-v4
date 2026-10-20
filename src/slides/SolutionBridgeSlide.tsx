@@ -44,6 +44,25 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
 };
 
 /**
+ * StageLine — the big text for pyramid levels 1 and 2 (owner direction
+ * Oct 20: EVERY level gets a big text that comes up with it, like the
+ * phrase levels — lighting only the legend row was too subtle).
+ * Index 0 pairs with level 1, index 1 with level 2.
+ */
+const STAGE_TEXTS = ["Initial Sign-Up", "Training & Assessment"];
+
+const StageLine: React.FC<{ index: number }> = ({ index }) => (
+  <motion.div
+    initial={{ opacity: 0, x: 48 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5, ease: presentationEase }}
+    className="font-heading text-[40px] font-semibold leading-tight text-white"
+  >
+    {STAGE_TEXTS[index]}
+  </motion.div>
+);
+
+/**
  * SolutionBridgeSlide (FB-12, FB-13) — replaces the standalone "We have
  * solutions for you." slide AND the separate pyramid slide with one
  * continuous beat.
@@ -51,10 +70,11 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
  * The solution line opens big and centered. On Next it shrinks and glides
  * left while the hiring pyramid rises on the right (all levels dimmed).
  * Each further Next press lights one pyramid level BOTTOM to TOP — bright
- * and slightly bigger, earlier levels stay lit — with the paired content:
- * levels 1–2 light their legend rows; level 3 brings "Save Time Hiring",
- * level 4 "Avoid Missing Deadlines", level 5 "Find Top 5% Talent". Only
- * when the pyramid is complete does Next move on to the next slide.
+ * and slightly bigger, earlier levels stay lit — and every level brings its
+ * own big text on the right: level 1 "Initial Sign-Up", level 2 "Training
+ * & Assessment", level 3 "Save Time Hiring", level 4 "Avoid Missing
+ * Deadlines", level 5 "Find Top 5% Talent". Only when the pyramid is
+ * complete does Next move on to the next slide.
  * (Owner-approved walk, Oct 20 — supersedes the earlier one-by-one and
  * all-at-once variants.)
  */
@@ -147,14 +167,17 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
             </h2>
             <div className="mt-8 flex items-start gap-14">
               <PyramidVisual className="w-[560px] shrink-0" litCount={litCount} />
-              {/* Fixed slots: each phrase keeps its final position from the
-                  start (top = Find Top 5%, middle = Avoid Missing, bottom =
-                  Save Time Hiring) and appears when its pyramid level lights
-                  — Save (level 3) first, Find (level 5) last. */}
+              {/* Fixed slots: each text keeps its final position from the
+                  start and appears when its pyramid level lights — bottom to
+                  top: Initial Sign-Up (1), Training & Assessment (2),
+                  Save Time Hiring (3), Avoid Missing Deadlines (4),
+                  Find Top 5% Talent (5). */}
               <div className="flex flex-col justify-center gap-10 pt-16">
                 <div className="h-[52px]">{litCount >= 5 && <Phrase index={0} />}</div>
                 <div className="h-[52px]">{litCount >= 4 && <Phrase index={1} />}</div>
                 <div className="h-[52px]">{litCount >= 3 && <Phrase index={2} />}</div>
+                <div className="h-[52px]">{litCount >= 2 && <StageLine index={1} />}</div>
+                <div className="h-[52px]">{litCount >= 1 && <StageLine index={0} />}</div>
               </div>
             </div>
           </motion.div>
