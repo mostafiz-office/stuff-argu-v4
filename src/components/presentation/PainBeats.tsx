@@ -24,6 +24,8 @@ export interface PainBeat {
   soft?: boolean;
   /** split-hook design: stagger indent class, e.g. "ml-[150px]" */
   indentClass?: string;
+  /** extra classes for this beat's line (split-hook packing, shadows) */
+  className?: string;
 }
 
 const Highlight: React.FC<{
@@ -103,7 +105,9 @@ export const PainBeats: React.FC<{
           key={i}
           className={`block ${beat.sizePx ? "" : sizeClass} ${
             beat.hook ? "text-[#FF0000]" : ""
-          } ${beat.soft ? "text-white/90" : ""} ${beat.indentClass ?? ""}`}
+          } ${beat.soft ? "text-white/90" : ""} ${beat.indentClass ?? ""} ${
+            beat.className ?? ""
+          }`}
           style={beat.sizePx ? { fontSize: beat.sizePx } : undefined}
           initial={{ opacity: 0, y: 34, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}

@@ -294,7 +294,15 @@ Owner supplied a reference title card (Bengali/English split-sentence hook desig
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AC1 | Slide 2 (Outage Panic) | The three headline beats restyled to the split-hook design via new optional PainBeat fields (sizePx, hook, dotAfter, soft, indentClass): "Outage Panic" white bold 56px with a pure-red full-stop dot after it; "2 am" (lowercased per the design) as THE hook — pure red #FF0000 text at the full 96px; "Production Break" soft white (white/90) 45px, indented ml-[150px] so it starts under the hook's second half. Ratios follow the design spec (58 / 100 / 47 against the 96px hook). The red marker highlight is removed for this slide (highlightIndex −1 — the design has no boxes behind text); the staged cinematic beat entrances are unchanged. Slides 3 and 4 keep their existing headings | ✅ CODE |
+| AC1 | Slide 2 (Outage Panic) | The three headline beats restyled to the split-hook design via new optional PainBeat fields (sizePx, hook, dotAfter, soft, indentClass): "Outage Panic" white bold 56px with a pure-red full-stop dot after it; "2 am" (lowercased per the design) as THE hook — pure red #FF0000 text at the full 96px; "Production Break" soft white (white/90) 45px, indented ml-[150px] so it starts under the hook's second half. Ratios follow the design spec (58 / 100 / 47 against the 96px hook). The red marker highlight is removed for this slide (highlightIndex −1 — the design has no boxes behind text); the staged cinematic beat entrances are unchanged. Slides 3 and 4 keep their existing headings | ✅ CODE → geometry enhanced in Batch 40 |
+
+## Owner review fixes (2026-10-20, Batch 40 — make slide 2 FEEL like the reference)
+
+Owner compared screenshots side by side: "not actually same design, not feeling same". Pixel measurement of both images found the size ratios were already close (line1/hook 0.76 vs 0.79; payoff/hook 0.60 vs 0.64) — the gap was SPACING and SHADOW: the reference packs its lines (gap ≈10% of hook height; the payoff line's rows OVERLAP the hook's by ~21%, interlocked), while ours floated (gap ≈71%; +36% gap before the payoff), and the reference carries a strong soft shadow while ours was faint.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AD1 | Slide 2 (Outage Panic) | Split-hook block scaled up (64 / 110 / 52px) and packed to the reference's geometry: hook pulled up −18px (line 1 → hook gap now ~10% of hook height), payoff tucked −20px into the hook's line box with its indent widened to 160px; every line gets the reference's strong soft text shadow (0 14px 34px black/65 + 0 4px 10px black/60, replacing the faint inherited headline shadow on these beats). New generic `className` field on PainBeat carries the packing. Ubuntu has no 800 weight in this deck, so the heaviness comes from scale, packing and shadow rather than a heavier cut | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

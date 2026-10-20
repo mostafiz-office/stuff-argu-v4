@@ -44,15 +44,36 @@ const problems: Problem[] = [
     // subject white with the red dot, the hour as the pure-red hook,
     // the payoff soft white and indented. No marker highlight in this
     // design, so highlightIndex is -1.
+    // Batch 40 (measured against the reference card): the block is
+    // scaled up and PACKED — negative top margins interlock the lines
+    // (line 1 to hook gap ~10% of hook height, payoff tucked up into
+    // the hook's line box) and every line carries the reference's
+    // strong soft shadow.
     beats: [
-      { text: "Outage Panic", size: "md", sizePx: 56, dotAfter: true },
-      { text: "2 am", size: "xl", hook: true },
+      {
+        text: "Outage Panic",
+        size: "md",
+        sizePx: 64,
+        dotAfter: true,
+        className:
+          "[text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+      },
+      {
+        text: "2 am",
+        size: "xl",
+        sizePx: 110,
+        hook: true,
+        className:
+          "-mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+      },
       {
         text: "Production Break",
         size: "md",
-        sizePx: 45,
+        sizePx: 52,
         soft: true,
-        indentClass: "ml-[150px]",
+        indentClass: "ml-[160px]",
+        className:
+          "-mt-[20px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",
