@@ -119,6 +119,12 @@
 |---|-------|-------|--------|-----|
 | G1 | Solution | Pyramid read as stacked flat-topped bars/steps, NOT a triangle like the original pyramid slide | ✅ CODE | Batch 17 — PyramidVisual rebuilt as a true triangle: both sides on one straight line (half-width linear from apex point to 280px base half-width), top band is a small triangle, thin dark seams kept, same colors/numbers/legend |
 
+## Owner review fixes (2026-10-20, Batch 18 — approved bottom-up pyramid walk)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| H1 | Solution | Owner-approved choreography (supersedes E1/F1): walk the pyramid bottom→top, one level per Next press, each level's text with it; pyramid must complete before slide 6 | ✅ CODE | Batch 18 — gate: split press shows pyramid (all dimmed); 5 more presses light levels 1→5, each bright + ~1.07× bigger with glow while the rest stay dimmed; lit levels stay lit. Phrases: level 3 → "Save Time Hiring" (bottom slot), level 4 → "Avoid Missing Deadlines" (middle), level 5 → "Find Top 5% Talent" (top); fixed-height slots keep positions steady. Levels 1–2 light their legend rows. Hint pill: "reveal the solution" → "light level N (N of 5)" → "Press Next to continue". 6 gate presses + advance |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

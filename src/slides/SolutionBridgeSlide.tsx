@@ -23,7 +23,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
     <motion.div
       initial={{ opacity: 0, x: 48 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2, ease: presentationEase }}
+      transition={{ duration: 0.5, ease: presentationEase }}
       className="font-heading text-[40px] leading-tight text-white"
     >
       {p.before}
@@ -33,7 +33,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
         </MarkerHighlight>
       )}
       {index === 1 && (
-        <UnderlineSweep colorClassName="bg-destructive" delay={0.45}>
+        <UnderlineSweep colorClassName="bg-destructive" delay={0.25}>
           {p.focus}
         </UnderlineSweep>
       )}
@@ -48,19 +48,29 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
  * solutions for you." slide AND the separate pyramid slide with one
  * continuous beat.
  *
- * The solution line opens big and centered. On ONE Next press it shrinks and
- * glides left while the hiring pyramid rises on the right and all three
- * phrases land next to it in a quick stagger — the viewer feels no slide
- * change. One more Next press moves on to the next slide.
+ * The solution line opens big and centered. On Next it shrinks and glides
+ * left while the hiring pyramid rises on the right (all levels dimmed).
+ * Each further Next press lights one pyramid level BOTTOM to TOP — bright
+ * and slightly bigger, earlier levels stay lit — with the paired content:
+ * levels 1–2 light their legend rows; level 3 brings "Save Time Hiring",
+ * level 4 "Avoid Missing Deadlines", level 5 "Find Top 5% Talent". Only
+ * when the pyramid is complete does Next move on to the next slide.
+ * (Owner-approved walk, Oct 20 — supersedes the earlier one-by-one and
+ * all-at-once variants.)
  */
 export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
   const [split, setSplit] = useState(false);
-  const [phraseCount, setPhraseCount] = useState(0);
+  const [litCount, setLitCount] = useState(0);
 
   useEffect(() => {
-    const step = !split ? 0 : 1;
+    const step = !split ? 0 : litCount + 1;
     const tooltips = [
       "Press Next to reveal the solution",
+      "Press Next to light level 1 (1 of 5)",
+      "Press Next to light level 2 (2 of 5)",
+      "Press Next to light level 3 (3 of 5)",
+      "Press Next to light level 4 (4 of 5)",
+      "Press Next to light level 5 (5 of 5)",
       "Press Next to continue",
     ];
     window.__slideNavigationGate = {
@@ -68,21 +78,26 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
         if (!split) {
           presentationSound.play("reveal");
           setSplit(true);
-          // Owner direction Oct 20: ONE press brings the pyramid and ALL
-          // three phrases (they still land one after another via stagger).
-          setPhraseCount(3);
+          return true;
+        }
+        // Owner-approved plan (Oct 20): walk the pyramid BOTTOM to TOP,
+        // one level per Next press; only when all 5 levels are lit does
+        // the gate release to slide 6.
+        if (litCount < 5) {
+          presentationSound.play("reveal");
+          setLitCount((c) => c + 1);
           return true;
         }
         return false;
       },
       tooltip: tooltips[step],
       step,
-      totalSteps: 2,
+      totalSteps: 6,
     };
     return () => {
       window.__slideNavigationGate = undefined;
     };
-  }, [split, phraseCount]);
+  }, [split, litCount]);
 
   return (
     <ScaledSlide>
@@ -131,11 +146,15 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
               How We Find the Top 5%
             </h2>
             <div className="mt-8 flex items-start gap-14">
-              <PyramidVisual className="w-[560px] shrink-0" />
+              <PyramidVisual className="w-[560px] shrink-0" litCount={litCount} />
+              {/* Fixed slots: each phrase keeps its final position from the
+                  start (top = Find Top 5%, middle = Avoid Missing, bottom =
+                  Save Time Hiring) and appears when its pyramid level lights
+                  — Save (level 3) first, Find (level 5) last. */}
               <div className="flex flex-col justify-center gap-10 pt-16">
-                {phraseCount >= 1 && <Phrase index={0} />}
-                {phraseCount >= 2 && <Phrase index={1} />}
-                {phraseCount >= 3 && <Phrase index={2} />}
+                <div className="h-[52px]">{litCount >= 5 && <Phrase index={0} />}</div>
+                <div className="h-[52px]">{litCount >= 4 && <Phrase index={1} />}</div>
+                <div className="h-[52px]">{litCount >= 3 && <Phrase index={2} />}</div>
               </div>
             </div>
           </motion.div>
