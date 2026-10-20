@@ -49,28 +49,30 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
  * continuous beat.
  *
  * The solution line opens big and centered. On Next it shrinks and glides
- * left (near-3D: slight rotateY) while the hiring pyramid rises on the
- * right — the viewer feels no slide change. Three more Next presses reveal
- * the phrases one by one next to the pyramid. Uses the deck's navigation
- * gate pattern (same as the starter tier slide).
+ * left while the hiring pyramid rises on the right — the viewer feels no
+ * slide change. The first phrase arrives with the split; two more Next
+ * presses reveal the remaining phrases one by one next to the pyramid.
  */
 export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
   const [split, setSplit] = useState(false);
   const [phraseCount, setPhraseCount] = useState(0);
 
   useEffect(() => {
-    const step = !split ? 0 : phraseCount + 1;
+    const step = !split ? 0 : phraseCount;
     const tooltips = [
       "Press Next to reveal the solution",
       "Press Next for more (1 of 3)",
       "Press Next for more (2 of 3)",
-      "Press Next for more (3 of 3)",
+      "Press Next to continue",
     ];
     window.__slideNavigationGate = {
       trigger: () => {
         if (!split) {
           presentationSound.play("reveal");
           setSplit(true);
+          // First phrase arrives WITH the split so the "(n of 3)" hint pill
+          // always matches the number of phrases actually on screen.
+          setPhraseCount(1);
           return true;
         }
         if (phraseCount < 3) {
@@ -104,7 +106,7 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
             initial={{ x: 0, y: 0, scale: 1, rotateY: 0, opacity: 0 }}
             animate={
               split
-                ? { x: -700, y: -300, scale: 0.32, rotateY: 0, opacity: 1 }
+                ? { x: -640, y: -300, scale: 0.32, rotateY: 0, opacity: 1 }
                 : { x: 0, y: 0, scale: 1, rotateY: 0, opacity: 1 }
             }
             transition={{ duration: 0.9, ease: presentationEase }}

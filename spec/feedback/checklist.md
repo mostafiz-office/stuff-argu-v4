@@ -99,6 +99,14 @@
 | D1 | Cover | Yellow fill behind "80%" stopped at 80% height — digit tops uncovered, looked broken | ✅ CODE | Batch 14 — fill now rises to full cover (fillPercent 100 on both cover variants; water-rise animation kept) |
 | D2 | Cover | "Time." label pill padding too large; pill touched "Hiring" | ✅ CODE | Batch 14 — LabelDrop padding cut on all sides: inset -0.14em/-0.22em → -0.08em/-0.13em, radius 0.28em → 0.2em |
 
+## Owner review fixes (2026-10-20, Batch 15 — slide 5 + header)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| E1 | Solution | Hint pill counted "(3 of 3)" while only 2 phrases were on screen — last phrase ("Save Time Hiring") hid behind one more press than promised; felt broken | ✅ CODE | Batch 15 — first phrase now arrives WITH the split: press1 = pyramid + "Find Top 5% Talent", pill "(1 of 3)" always matches phrases on screen |
+| E2 | Solution | Shrunken "We have solutions for you." landed flush against the slide's left edge, misaligned with the 60px header inset | ✅ CODE | Batch 15 — caption x target -700 → -640 (left edge ≈ 62px, lines up with the logo) |
+| E3 | Header (all slides) | "RISE ASIA LLC" text beside the logo looked wrong; tagline belongs under the logo | ✅ CODE | Batch 15 — shared SlideHeader rebuilt: logo on top, "Top 5% Engineers, On Demand" below it, "RISE ASIA LLC" text removed (applies deck-wide — it's one component) |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
