@@ -107,6 +107,12 @@
 | E2 | Solution | Shrunken "We have solutions for you." landed flush against the slide's left edge, misaligned with the 60px header inset | ✅ CODE | Batch 15 — caption x target -700 → -640 (left edge ≈ 62px, lines up with the logo) |
 | E3 | Header (all slides) | "RISE ASIA LLC" text beside the logo looked wrong; tagline belongs under the logo | ✅ CODE | Batch 15 — shared SlideHeader rebuilt: logo on top, "Top 5% Engineers, On Demand" below it, "RISE ASIA LLC" text removed (applies deck-wide — it's one component) |
 
+## Owner review fixes (2026-10-20, Batch 16 — slide 5 phrases)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| F1 | Solution | Pressing Next showed phrases one press at a time; owner wants all three to come up on the one press | ✅ CODE | Batch 16 — ONE Next press: line shrinks, pyramid rises, all three phrases land in a quick 0.2s stagger (the review's "one by one" feel kept via animation, no more per-phrase gate presses); hint pill is just "reveal the solution" → "Press Next to continue" |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

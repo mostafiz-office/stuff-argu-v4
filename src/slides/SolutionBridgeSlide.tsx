@@ -23,7 +23,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
     <motion.div
       initial={{ opacity: 0, x: 48 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, ease: presentationEase }}
+      transition={{ duration: 0.5, delay: index * 0.2, ease: presentationEase }}
       className="font-heading text-[40px] leading-tight text-white"
     >
       {p.before}
@@ -33,7 +33,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
         </MarkerHighlight>
       )}
       {index === 1 && (
-        <UnderlineSweep colorClassName="bg-destructive" delay={0.25}>
+        <UnderlineSweep colorClassName="bg-destructive" delay={0.45}>
           {p.focus}
         </UnderlineSweep>
       )}
@@ -48,21 +48,19 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
  * solutions for you." slide AND the separate pyramid slide with one
  * continuous beat.
  *
- * The solution line opens big and centered. On Next it shrinks and glides
- * left while the hiring pyramid rises on the right — the viewer feels no
- * slide change. The first phrase arrives with the split; two more Next
- * presses reveal the remaining phrases one by one next to the pyramid.
+ * The solution line opens big and centered. On ONE Next press it shrinks and
+ * glides left while the hiring pyramid rises on the right and all three
+ * phrases land next to it in a quick stagger — the viewer feels no slide
+ * change. One more Next press moves on to the next slide.
  */
 export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
   const [split, setSplit] = useState(false);
   const [phraseCount, setPhraseCount] = useState(0);
 
   useEffect(() => {
-    const step = !split ? 0 : phraseCount;
+    const step = !split ? 0 : 1;
     const tooltips = [
       "Press Next to reveal the solution",
-      "Press Next for more (1 of 3)",
-      "Press Next for more (2 of 3)",
       "Press Next to continue",
     ];
     window.__slideNavigationGate = {
@@ -70,21 +68,16 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
         if (!split) {
           presentationSound.play("reveal");
           setSplit(true);
-          // First phrase arrives WITH the split so the "(n of 3)" hint pill
-          // always matches the number of phrases actually on screen.
-          setPhraseCount(1);
-          return true;
-        }
-        if (phraseCount < 3) {
-          presentationSound.play("reveal");
-          setPhraseCount((c) => c + 1);
+          // Owner direction Oct 20: ONE press brings the pyramid and ALL
+          // three phrases (they still land one after another via stagger).
+          setPhraseCount(3);
           return true;
         }
         return false;
       },
-      tooltip: step < 4 ? tooltips[step] : "Press Next to continue",
+      tooltip: tooltips[step],
       step,
-      totalSteps: 4,
+      totalSteps: 2,
     };
     return () => {
       window.__slideNavigationGate = undefined;
