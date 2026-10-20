@@ -5,6 +5,14 @@ import logoImg from "@/assets/riseup-asia-logo.png";
  * Brand lockup — the Riseup Asia logo with the tagline under it.
  * Owner direction Oct 20: no "RISE ASIA LLC" text beside the logo; the
  * tagline sits below the logo instead.
+ *
+ * Lockup width (owner direction Oct 20: logo at 100% opacity, and the
+ * tagline exactly as wide as the logo): the logo PNG is 854×214 with the
+ * visible artwork at 820×168 (transparent padding). At h-[54px] the box
+ * is 54 × 854/214 ≈ 216px wide; the artwork spans x ≈ 6px → 213px
+ * (≈207px wide). The tagline box is set to that artwork span and the
+ * line is justified to fill it exactly (Poppins 400 measures ≈204px at
+ * 13.5px, so justification adds under 1px per word gap).
  */
 export const BRAND_TAGLINE = "Top 5% Engineers, On Demand";
 
@@ -15,9 +23,9 @@ export const SlideHeader: React.FC = () => {
         <img
           src={logoImg}
           alt="Riseup Asia"
-          className="h-[48px] w-auto opacity-80 object-contain"
+          className="h-[54px] w-auto object-contain"
         />
-        <span className="text-[14px] tracking-[0.08em] text-pres-text-muted">
+        <span className="ml-[6px] block w-[207px] whitespace-nowrap text-[13.5px] text-pres-text-muted [text-align:justify] [text-align-last:justify]">
           {BRAND_TAGLINE}
         </span>
       </div>

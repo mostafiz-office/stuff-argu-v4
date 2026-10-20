@@ -137,6 +137,16 @@
 |---|-------|-------|--------|-----|
 | J1 | Starter | Beat-3 overlay showed the text "RISE UP" — not the company name (Riseup Asia LLC); owner: use the logo | ✅ CODE | Batch 20 — overlay now shows the actual Riseup Asia logo (riseup-asia-logo.png) big in the center, same scale-in beat + amber underline bar (widened to 560px). Gate sequence verified by full reproduction: press 1 bonus box → press 2 rocket → press 3 logo beat → press 4 slide 15; nothing stuck or skipped |
 
+## Owner review fixes (2026-10-20, Batch 21 — cover polish)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| K1 | Cover (both) | Filled word ("80%" / "20") was white text on the yellow fill — poor contrast; owner: the number should be black | ✅ CODE | Batch 21 — fill-word text animates white → near-black (rgba(24,18,8,1)) as the fill completes (CoverHeadline); dark on amber, same trick as the label pills |
+| K2 | Cover V3 | "20" fill and "Minutes." pill touched with no gap — looked jammed/overlapping | ✅ CODE | Batch 21 — both treated words get mx-[0.09em] margins in CoverHeadline, so the painted treatments never touch |
+| K3 | All slides (header) | Header logo looked faded — must be 100% opacity | ✅ CODE | Batch 21 — opacity-80 removed from the SlideHeader logo |
+| K4 | All slides (header) | Logo and tagline must be the same width | ✅ CODE | Batch 21 — measured lockup: logo PNG 854×214, artwork 820×168; logo h 48→54px (box ≈216px, artwork ≈207px wide starting at x≈6px); tagline box set to ml-[6px] w-[207px], 13.5px (Poppins measures ≈204px there) and justified to fill exactly |
+| K5 | Cover (both) | Too much yellow on slide 1 — yellow only for the highlights | ✅ CODE | Batch 21 — secondary cover yellows demoted to white/neutral in PricingCoverShared: right-rail stat values + borders, testimonial highlight spans, chip check icons; ambient glow halved (/20 → /10). Remaining amber: the number fill (the highlight), the Book a Call CTA (deck-wide standard button), small LinkedIn badges and hover borders |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

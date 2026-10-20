@@ -47,11 +47,21 @@ export const CoverHeadline: React.FC<{
         if (word === fillWord) {
           return (
             <React.Fragment key={i}>
-              <WaterFill percent={fillPercent} delay={delay + 0.15} duration={1.1}>
+              <WaterFill
+                percent={fillPercent}
+                delay={delay + 0.15}
+                duration={1.1}
+                className="mx-[0.09em]"
+              >
                 <motion.span
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay, duration: 0.4, ease: presentationEase }}
+                  initial={{ opacity: 0, y: 14, color: "#ffffff" }}
+                  animate={{ opacity: 1, y: 0, color: "rgba(24,18,8,1)" }}
+                  transition={{
+                    delay,
+                    duration: 0.4,
+                    ease: presentationEase,
+                    color: { delay: delay + 0.95, duration: 0.35 },
+                  }}
                 >
                   {word}
                 </motion.span>
@@ -63,7 +73,11 @@ export const CoverHeadline: React.FC<{
         if (word === labelWord) {
           return (
             <React.Fragment key={i}>
-              <LabelDrop tone={labelTone} delay={Math.max(delay, 1.6)}>
+              <LabelDrop
+                tone={labelTone}
+                delay={Math.max(delay, 1.6)}
+                className="mx-[0.09em]"
+              >
                 {word}
               </LabelDrop>
               {" "}

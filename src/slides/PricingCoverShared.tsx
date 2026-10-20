@@ -102,7 +102,7 @@ const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; 
       </span>
     </div>
     <p className="text-[18px] text-pres-text italic leading-snug">
-      “{recommendation.quoteBefore}<span className="not-italic font-semibold text-pres-accent">{recommendation.highlight}</span>{recommendation.quoteAfter}”
+      “{recommendation.quoteBefore}<span className="not-italic font-semibold text-white">{recommendation.highlight}</span>{recommendation.quoteAfter}”
     </p>
   </motion.a>
 );
@@ -114,7 +114,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
 
       {/* Full-height Marek portrait */}
       <div className="absolute left-[700px] bottom-0 w-[760px] h-[1000px] z-[4] pointer-events-none flex items-end justify-center">
-        <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full bg-pres-accent/20 blur-[120px]" />
+        <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full bg-pres-accent/10 blur-[120px]" />
         <img
           src={marekImg}
           alt="Marek F."
@@ -128,7 +128,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
         <motion.div {...fadeUp(0.24, 12)} className="flex flex-wrap gap-3 mb-8">
           {copy.chips.map((c) => (
             <span key={c} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 border border-white/15 text-[20px] font-medium">
-              <Check className="w-5 h-5 text-pres-accent" />
+              <Check className="w-5 h-5 text-white/70" />
               {c}
             </span>
           ))}
@@ -157,9 +157,9 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
           <motion.div
             key={h.a}
             {...scaleIn(staggerDelay(i, 0.54, 0.07))}
-            className="px-6 py-5 rounded-2xl bg-black/55 border border-pres-accent/30 backdrop-blur-md text-[24px] font-bold font-heading"
+            className="px-6 py-5 rounded-2xl bg-black/55 border border-white/15 backdrop-blur-md text-[24px] font-bold font-heading"
           >
-            <span className="text-pres-accent">{h.a}</span>
+            <span className="text-white">{h.a}</span>
             {h.b}
           </motion.div>
         ))}
