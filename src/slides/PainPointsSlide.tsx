@@ -155,7 +155,9 @@ const problems: Problem[] = [
     highlight: "yellow",
     highlightStyle: "marker",
     highlightIndex: 1,
-    align: "right",
+    // Batch 51 (owner): left-side placement like slide 2 — was the
+    // mirrored right layout from FB-11.
+    align: "left",
   },
   {
     eyebrow: "Problem 03 · Hiring Drag",

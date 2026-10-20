@@ -376,6 +376,14 @@ Owner: the words should not arrive line by line — each word comes at a differe
 |---|-------|--------|--------|
 | AN1 | Slide 2 + PainBeats | `wordAnim` beat mode: per-word staggered entrances with per-word directions (left/right alternating, closing line drops down), 0.5s word stagger, per-word soft drop shadow; enabled on slide 2's three beats only | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 51 — slide 3 text moves to the left)
+
+Owner: "update slide 3 left side text placement like slide 2" — understanding shared in chat first, owner confirmed "go". Slide 3 (Fragile Vibe & / AI Code) was the mirrored layout from FB-11 (align "right": text block at pl-[980px], right-aligned, flipped overlay). Now align "left", identical placement to slide 2 (pl-[100px] pr-[980px], left-aligned, standard overlay). Copy, yellow marker highlight and line animation unchanged — placement only, as agreed.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AO1 | Slide 3 | `align: "right"` → `"left"` on the Fragile problem data — text block, alignment and overlay gradient now match slide 2's left-side placement | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
