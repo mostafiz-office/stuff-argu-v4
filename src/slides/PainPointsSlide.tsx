@@ -85,6 +85,11 @@ const problems: Problem[] = [
     // the stack simulation (top air +11px, closing ink top = hook
     // baseline +4px): 96 + 41 / 94 / 63px, margins −5 / −7px,
     // cascade indents 171 / 385px (20% / 45% of the hook's 856px).
+    // Batch 50 (owner): word-by-word entrance (wordAnim) — Deadline
+    // from the left, coming from the right, the hook's words
+    // alternating sides, the closing line's words dropping down,
+    // one word every 0.5s; every word carries a soft drop shadow
+    // (WORD_SHADOW in PainBeats) instead of the old line shadow.
     beats: [
       {
         text: "Deadline",
@@ -94,9 +99,10 @@ const problems: Problem[] = [
         smallSizePx: 41,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
+        wordAnim: true,
         indentClass: "ml-[171px]",
         className:
-          "whitespace-nowrap [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap",
       },
       {
         text: "production is down",
@@ -105,8 +111,9 @@ const problems: Problem[] = [
         hook: true,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
+        wordAnim: true,
         className:
-          "whitespace-nowrap -mt-[5px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[5px]",
       },
       {
         text: "no sleep tonight",
@@ -115,9 +122,10 @@ const problems: Problem[] = [
         soft: true,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
+        wordAnim: true,
         indentClass: "ml-[385px]",
         className:
-          "whitespace-nowrap -mt-[7px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[7px]",
       },
     ],
     short: "Your customers find the bug before you do.",

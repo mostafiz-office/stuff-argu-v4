@@ -366,7 +366,15 @@ After several copy rounds the owner briefed the persona precisely: a SaaS owner 
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AM1 | Slide 2 | Beats replaced with Deadline + coming / production is down / no sleep tonight in the split-hook template (PJS 800, measured sizes, solved margins, cascade indents) | ✅ CODE |
+| AM1 | Slide 2 | Beats replaced with Deadline + coming / production is down / no sleep tonight in the split-hook template (PJS 800, measured sizes, solved margins, cascade indents) | ✅ CODE → word animation in Batch 50 |
+
+## Owner review fixes (2026-10-20, Batch 50 — word-by-word entrance + per-word shadow)
+
+Owner: the words should not arrive line by line — each word comes at a different time from a different direction, slowly, so people can read and relate; and every word gets a little drop shadow. New `wordAnim` mode in PainBeats (slide 2's beats only; slides 3–4 keep the line cinematic arrival): words are counted across the whole heading; word N enters at 0.25s + N×0.5s with a 0.6s slide-and-unblur. Directions: Deadline from the left, "coming" from the right, the hook's words alternate left/right (production / is / down), the closing line's words drop down from above (no / sleep / tonight). Every word carries WORD_SHADOW (0 8px 22px black/55 + 0 2px 8px black/50); the old per-line arbitrary shadow was removed from these beats so shadows don't stack.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AN1 | Slide 2 + PainBeats | `wordAnim` beat mode: per-word staggered entrances with per-word directions (left/right alternating, closing line drops down), 0.5s word stagger, per-word soft drop shadow; enabled on slide 2's three beats only | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 
