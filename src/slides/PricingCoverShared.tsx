@@ -7,7 +7,7 @@ import marekImg from "@/assets/marek.webp";
 import cristianAsset from "@/assets/recommendations/cristian-stancalau.png.asset.json";
 import jakubAsset from "@/assets/recommendations/jakub-szubarga.png.asset.json";
 import adamAsset from "@/assets/recommendations/adam-lewkowicz.png.asset.json";
-import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, scaleIn, staggerDelay, presentationEase } from "@/lib/presentationMotion";
 import { DeckButton } from "@/components/presentation/DeckButton";
 import { CoverHeadline, CoverHeadlineConfig } from "@/components/presentation/CoverHeadline";
 
@@ -37,9 +37,9 @@ const CRISTIAN_RECOMMENDATION: Recommendation = {
   name: "Cristian Stancalău",
   role: "Expert Java Engineer · Best Practices · Reliability",
   image: cristianAsset.url,
-  quoteBefore: "Our code review team had the privilege of being managed by Marek, who ",
-  highlight: "successfully led us through troubled times",
-  quoteAfter: "… so the team could focus on daily activities with minimum stress until our targets were reached.",
+  quoteBefore: "...successfully led us through troubled times... so the team could focus on daily activities with minimum stress until our targets were reached.",
+  highlight: "",
+  quoteAfter: "",
 };
 
 export const COVER_RECOMMENDATIONS = {
@@ -49,8 +49,8 @@ export const COVER_RECOMMENDATIONS = {
       name: "Jakub Szubarga",
       role: "Platform Systems Engineer · .NET · TS · Architecture",
       image: jakubAsset.url,
-      quoteBefore: "During that time I witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader. ",
-      highlight: "He was excellent at performing tasks associated with these roles.",
+      quoteBefore: "Witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader... He was excellent at performing tasks associated with these roles.",
+      highlight: "",
       quoteAfter: "",
     },
   ],
@@ -59,8 +59,8 @@ export const COVER_RECOMMENDATIONS = {
       name: "Adam Lewkowicz",
       role: "Founder & CTO at Vercom S.A. · CPaaS",
       image: adamAsset.url,
-      quoteBefore: "Marek is a high level professional, qualified and well organised person. ",
-      highlight: "Marek is a kind of person you can rely on!",
+      quoteBefore: "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!",
+      highlight: "",
       quoteAfter: "",
     },
     CRISTIAN_RECOMMENDATION,
@@ -81,11 +81,19 @@ const highlights = [
 
 const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; delay: number }> = ({ recommendation, className, delay }) => (
   <motion.a
-    {...fadeUp(delay, 12)}
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    whileHover={{ scale: 1.02 }}
+    transition={{
+      duration: 0.5,
+      delay,
+      ease: presentationEase,
+      scale: { duration: 0.3, delay: 0, ease: presentationEase },
+    }}
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`presentation-action presentation-focus block overflow-hidden p-5 rounded-xl bg-black/65 border border-white/15 backdrop-blur-md hover:border-pres-accent/60 shadow-xl ${className ?? ""}`}
+    className={`presentation-action presentation-focus group relative block overflow-hidden p-5 rounded-xl bg-gradient-to-b from-[#211d15]/90 to-black/90 border border-pres-accent/30 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-pres-accent hover:shadow-[0_0_44px_rgba(255,173,1,0.25)] ${className ?? ""}`}
   >
     <div className="flex items-center justify-between gap-3 mb-3">
       <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -93,17 +101,18 @@ const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; 
           <img src={recommendation.image} alt={recommendation.name} className="w-full h-full object-cover" />
         </div>
         <div className="min-w-0">
-          <div className="font-bold text-[20px] font-heading leading-tight">{recommendation.name}</div>
+          <div className="font-bold text-[20px] font-heading leading-tight transition-colors duration-300 group-hover:text-pres-accent">{recommendation.name}</div>
           <div className="text-[15px] text-pres-text-muted truncate">{recommendation.role}</div>
         </div>
       </div>
-      <span className="flex shrink-0 items-center gap-1.5 px-2.5 py-1 rounded-full bg-pres-accent/15 border border-pres-accent/40 text-pres-accent text-[14px] font-semibold">
-        <Linkedin className="w-3.5 h-3.5 fill-current" /> LinkedIn
+      <span className="flex shrink-0 items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a66c2]/15 border border-[#0a66c2]/45 text-[#63a4e8] text-[14px] font-semibold">
+        <Linkedin className="w-3.5 h-3.5 fill-current" /> Verified
       </span>
     </div>
-    <p className="text-[18px] text-pres-text italic leading-snug">
-      “{recommendation.quoteBefore}<span className="not-italic font-semibold text-white">{recommendation.highlight}</span>{recommendation.quoteAfter}”
+    <p className="text-[18px] text-pres-text italic leading-snug pb-6">
+      “{recommendation.quoteBefore}{recommendation.highlight}{recommendation.quoteAfter}”
     </p>
+    <ArrowRight className="absolute bottom-4 right-5 w-5 h-5 text-pres-accent" />
   </motion.a>
 );
 

@@ -167,6 +167,19 @@ Owner rule: em dashes, hyphens in compound words, and underlines read as AI slop
 | M6 | Plan overlay | Bug found by the sweep: TierPlanDetail's tier switcher buttons split names on " — " which no longer exists in tier names, so the buttons rendered EMPTY. Now derives the short name by stripping the "Tier N" prefix ("Growth" / "Skilled" / "Leadership") | ✅ CODE |
 | — | Compare table | Row divider lines (border-b) kept: they are table structure, not text underlines | — |
 
+## Owner review fixes (2026-10-20, Batch 24 — cover recommendation cards, reference matched)
+
+Owner pointed at present-v1.riseup-asia.com slide 1 and approved a written plan to match its recommendation boxes (design, hover, text style). Applied to the shared cover QuoteCard (both variants):
+
+| # | Aspect | Change | Status |
+|---|--------|--------|--------|
+| N1 | Background | Flat black/65 → subtle vertical gradient, warm charcoal top (#211d15) to black bottom | ✅ CODE |
+| N2 | Border | White/15 → thin muted amber at rest (accent/30); hover brightens to full amber | ✅ CODE |
+| N3 | Hover | Soft amber glow (0 0 44px, 25% amber), slight zoom scale 1.02 via whileHover (entrance transition preserved, scale has its own 0.3s timing), name turns amber via group-hover | ✅ CODE |
+| N4 | Badge | Amber "LinkedIn" pill → blue "Verified" pill (#0a66c2 family) with LinkedIn icon | ✅ CODE |
+| N5 | Arrow | Small amber ArrowRight added at the card's bottom-right corner | ✅ CODE |
+| N6 | Quote text | Highlight span removed — quotes are now uniform italic gray; Cristian trimmed to the reference excerpt style with his real words ("...successfully led us through troubled times... so the team could focus..."); Jakub given the same light excerpt trim; Adam unchanged (already short) | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
