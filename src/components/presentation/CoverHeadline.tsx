@@ -23,9 +23,13 @@ export interface CoverHeadlineConfig {
   accentWord?: string;
   /**
    * when true, the fillWord renders with the same name treatment
-   * (gradient letters, NO water-fill box) instead of the WaterFill.
-   * Owner direction Oct 20 for V1's "80%": pale gradient letters are
-   * invisible on the amber box, and the name graphic has no box.
+   * (gradient letters, NO water-fill box) instead of the WaterFill —
+   * and it LOADS like water, left to right (owner direction Oct 20):
+   * a faint ghost copy sits in place while the gradient copy is
+   * revealed through a clip window growing 0% → 100% width with a
+   * glowing waterline at the front, replaying on every mount. Words
+   * after it in the same line wait an extra 0.5s so the sequence
+   * reads: first word, water load, rest of the line.
    */
   fillGradient?: boolean;
 }
@@ -55,24 +59,59 @@ export const CoverHeadline: React.FC<{
     fillGradient = false,
   } = config;
 
-  const renderLine = (line: string, baseDelay: number) => (
+  const renderLine = (line: string, baseDelay: number) => {
+    const words = line.split(" ");
+    const fillIdx = fillGradient ? words.indexOf(fillWord) : -1;
+    return (
     <span className="block">
-      {line.split(" ").map((word, i) => {
-        const delay = baseDelay + i * 0.08;
+      {words.map((word, i) => {
+        const delay =
+          baseDelay + i * 0.08 + (fillIdx >= 0 && i > fillIdx ? 0.5 : 0);
         if (word === fillWord) {
           if (fillGradient) {
             return (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay, duration: 0.4, ease: presentationEase }}
-                className="mx-[0.09em] inline-block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay, duration: 0.3, ease: presentationEase }}
+                className="relative mx-[0.09em] inline-block"
               >
-                <span className="text-pres-accent">{word.charAt(0)}</span>
-                <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
+                {/* ghost copy — the word's unfilled state */}
+                <span className="text-white/[0.16]">
+                  {word.charAt(0)}
                   {word.slice(1)}
                 </span>
+                {/* gradient copy, revealed left to right like water */}
+                <motion.span
+                  aria-hidden
+                  className="absolute inset-0"
+                  initial={{ clipPath: "inset(0 100% 0 0)" }}
+                  animate={{ clipPath: "inset(0 0% 0 0)" }}
+                  transition={{
+                    delay: delay + 0.15,
+                    duration: 1.1,
+                    ease: presentationEase,
+                  }}
+                >
+                  <span className="text-pres-accent">{word.charAt(0)}</span>
+                  <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
+                    {word.slice(1)}
+                  </span>
+                </motion.span>
+                {/* the moving waterline at the reveal front */}
+                <motion.span
+                  aria-hidden
+                  className="absolute top-0 bottom-0 w-[0.32em] bg-[linear-gradient(90deg,transparent,rgba(255,173,1,0.45),transparent)]"
+                  initial={{ left: "0%", opacity: 0 }}
+                  animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    delay: delay + 0.15,
+                    duration: 1.1,
+                    ease: presentationEase,
+                    times: [0, 0.08, 0.92, 1],
+                  }}
+                />
                 {" "}
               </motion.span>
             );
@@ -149,7 +188,8 @@ export const CoverHeadline: React.FC<{
         );
       })}
     </span>
-  );
+    );
+  };
 
   return (
     <h1

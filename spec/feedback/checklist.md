@@ -208,6 +208,14 @@ Owner chose the gradient reading of his "make 80% text color like this" ask.
 |---|-------|--------|--------|
 | R1 | Cover V1 | "80%" now carries the name treatment like "Cut": "8" in solid amber, "0%" in the pale amber gradient, directly on the dark background. The amber water-fill box is REMOVED for this word (new `fillGradient` option on CoverHeadline) because pale gradient letters are invisible on the amber box, and the reference name graphic has no box. WaterFill entrance replaced by the standard word fade-up. V3's "20" keeps its water fill (owner named "80%" only; same option can be switched on for "20" on his word) | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 29 — "80%" water load)
+
+Owner clarified and approved the plan in chat: the gradient "80%" should LOAD in a watery way, left to right, every time the slide loads.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| S1 | Cover V1 | The gradient "80%" now water-loads: a faint ghost copy (white 16%) sits in place; the gradient copy is revealed through a clip window growing 0% → 100% width over 1.1s (clipPath inset animation), with a soft glowing waterline bar riding the reveal front and fading out at the end. Mount-triggered, so it replays on every visit to the cover. Words after it in the line ("Off") wait an extra 0.5s, so the sequence reads: "Cut" lands, "80%" loads, "Off" arrives, "Time." pill drops | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
