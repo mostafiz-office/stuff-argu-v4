@@ -21,6 +21,13 @@ export interface CoverHeadlineConfig {
    * pale amber gradient. Optional; only the V1 cover sets it ("Cut").
    */
   accentWord?: string;
+  /**
+   * when true, the fillWord renders with the same name treatment
+   * (gradient letters, NO water-fill box) instead of the WaterFill.
+   * Owner direction Oct 20 for V1's "80%": pale gradient letters are
+   * invisible on the amber box, and the name graphic has no box.
+   */
+  fillGradient?: boolean;
 }
 
 /**
@@ -45,6 +52,7 @@ export const CoverHeadline: React.FC<{
     labelWord,
     labelTone = "white",
     accentWord,
+    fillGradient = false,
   } = config;
 
   const renderLine = (line: string, baseDelay: number) => (
@@ -52,6 +60,23 @@ export const CoverHeadline: React.FC<{
       {line.split(" ").map((word, i) => {
         const delay = baseDelay + i * 0.08;
         if (word === fillWord) {
+          if (fillGradient) {
+            return (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay, duration: 0.4, ease: presentationEase }}
+                className="mx-[0.09em] inline-block"
+              >
+                <span className="text-pres-accent">{word.charAt(0)}</span>
+                <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
+                  {word.slice(1)}
+                </span>
+                {" "}
+              </motion.span>
+            );
+          }
           return (
             <React.Fragment key={i}>
               <WaterFill

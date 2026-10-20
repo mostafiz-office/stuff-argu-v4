@@ -200,6 +200,14 @@ Owner showed his "Alim Ul Karim" graphic and approved the plan in chat: apply it
 |---|-------|--------|--------|
 | Q1 | Cover V1 | "Cut" now renders like "Alim": first letter "C" in solid amber (pres-accent), remaining letters "ut" in a pale amber gradient (#ffc95e → #ffdf9e → #fff3cf, bg-clip-text). Implemented as a data-driven `accentWord` option on CoverHeadline; V3 does not set it and is unchanged. "Time." pill untouched (dark text on white, per the approved plan); "Hiring" stays white | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 28 — "80%" gradient)
+
+Owner chose the gradient reading of his "make 80% text color like this" ask.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| R1 | Cover V1 | "80%" now carries the name treatment like "Cut": "8" in solid amber, "0%" in the pale amber gradient, directly on the dark background. The amber water-fill box is REMOVED for this word (new `fillGradient` option on CoverHeadline) because pale gradient letters are invisible on the amber box, and the reference name graphic has no box. WaterFill entrance replaced by the standard word fade-up. V3's "20" keeps its water fill (owner named "80%" only; same option can be switched on for "20" on his word) | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

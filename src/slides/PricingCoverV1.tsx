@@ -16,6 +16,7 @@ const COPY_A: CoverCopy = {
     labelWord: "Time.",
     labelTone: "white",
     accentWord: "Cut",
+    fillGradient: true,
   },
 };
 
