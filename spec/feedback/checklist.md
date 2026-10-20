@@ -113,6 +113,12 @@
 |---|-------|-------|--------|-----|
 | F1 | Solution | Pressing Next showed phrases one press at a time; owner wants all three to come up on the one press | ✅ CODE | Batch 16 — ONE Next press: line shrinks, pyramid rises, all three phrases land in a quick 0.2s stagger (the review's "one by one" feel kept via animation, no more per-phrase gate presses); hint pill is just "reveal the solution" → "Press Next to continue" |
 
+## Owner review fixes (2026-10-20, Batch 17 — pyramid shape)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| G1 | Solution | Pyramid read as stacked flat-topped bars/steps, NOT a triangle like the original pyramid slide | ✅ CODE | Batch 17 — PyramidVisual rebuilt as a true triangle: both sides on one straight line (half-width linear from apex point to 280px base half-width), top band is a small triangle, thin dark seams kept, same colors/numbers/legend |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

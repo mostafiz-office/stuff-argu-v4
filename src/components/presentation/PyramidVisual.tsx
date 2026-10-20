@@ -9,18 +9,38 @@ const STAGES = [
 ];
 
 /**
- * PyramidVisual — simplified static hiring-pyramid graphic for the solution
- * bridge (FB-12/FB-13). Five stacked stages, bottom = stage 1. The full
- * interactive explorer lived on the old standalone pyramid slide.
+ * PyramidVisual — static hiring-pyramid graphic for the solution bridge
+ * (FB-12/FB-13). A TRUE TRIANGLE silhouette (owner direction Oct 20: match
+ * the original pyramid slide) — five bands sliced from one triangle, so both
+ * sides run in a single straight line from the apex point to the base
+ * corners; the top band is a small triangle, not a flat-topped bar.
+ * Bottom = stage 1. The full interactive explorer lived on the old
+ * standalone pyramid slide.
  */
 export const PyramidVisual: React.FC<{ className?: string }> = ({ className = "" }) => {
+  const CX = 300;
+  const APEX_Y = 8;
+  const BASE_Y = 552;
+  const H = BASE_Y - APEX_Y;
+  const BASE_HW = 280;
+  const GAP = 3;
+  // Half-width of the triangle at a given y — linear from 0 at the apex to
+  // BASE_HW at the base, which is what keeps both sides perfectly straight.
+  const hwAt = (y: number) => (BASE_HW * (y - APEX_Y)) / H;
+
   const layers = STAGES.map((s, i) => {
-    const yt = 448 - i * 112;
-    const yb = yt + 104;
-    const bhw = 280 - i * 36;
-    const thw = 244 - i * 36;
-    const pts = `${300 - bhw},${yb} ${300 + bhw},${yb} ${300 + thw},${yt} ${300 - thw},${yt}`;
-    return { ...s, pts, cy: yt + 52, num: i + 1 };
+    const bandH = H / 5;
+    const yTopRaw = APEX_Y + (4 - i) * bandH;
+    const yBotRaw = APEX_Y + (5 - i) * bandH;
+    const yTop = i === 4 ? yTopRaw : yTopRaw + GAP;
+    const yBot = i === 0 ? yBotRaw : yBotRaw - GAP;
+    const pts =
+      i === 4
+        ? `${CX},${yTop} ${CX + hwAt(yBot)},${yBot} ${CX - hwAt(yBot)},${yBot}`
+        : `${CX - hwAt(yBot)},${yBot} ${CX + hwAt(yBot)},${yBot} ${CX + hwAt(yTop)},${yTop} ${CX - hwAt(yTop)},${yTop}`;
+    // Top band is a triangle: its visual center sits ~2/3 down from the apex.
+    const cy = i === 4 ? yTop + (yBot - yTop) * 0.66 : (yTop + yBot) / 2;
+    return { ...s, pts, cy, num: i + 1 };
   });
 
   return (
