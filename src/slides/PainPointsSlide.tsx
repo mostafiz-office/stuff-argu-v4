@@ -77,39 +77,49 @@ const problems: Problem[] = [
     // Sans 800.
     // the original. Indents follow the reference's rightward cascade
     // (line 1 +20% of hook width, closing line +45%).
+    // Batch 48 (owner: "Outage production break 2 am — same
+    // meaning"): the English heading returns, carrying the same
+    // split sentence in the proven template — "Outage" the subject
+    // (বাংলাদেশ's slot), "production break" the red hook ("copy
+    // business"'s slot), "2 am" the closing beat (জন্য বিখ্যাত's
+    // slot). All three lines in Plus Jakarta Sans 800; sizes and
+    // margins re-solved from PJS ink boxes (Outage 78px, hook 94px,
+    // 2 am 80px; hook margin +9px, closing −12px) and verified in
+    // the stack simulation at +11px top air and the closing line's
+    // ink top 4px below the hook's baseline. Cascade indents scaled
+    // to the hook's 775px width: line 1 +20% (155px), closing +45%
+    // (349px).
     beats: [
       {
-        text: "বাংলাদেশ",
+        text: "Outage",
         size: "md",
-        sizePx: 106,
-        smallAfter: "যেখানে",
-        smallSizePx: 56,
-        fontFamily: "'Noto Sans Bengali', sans-serif",
-        fontWeight: 900,
-        indentClass: "ml-[125px]",
+        sizePx: 78,
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
+        indentClass: "ml-[155px]",
         className:
           "whitespace-nowrap [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "copy business",
+        text: "production break",
         size: "xl",
         sizePx: 94,
         hook: true,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         className:
-          "whitespace-nowrap -mt-[39px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap mt-[9px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "জন্য বিখ্যাত",
+        text: "2 am",
         size: "md",
-        sizePx: 87,
+        sizePx: 80,
         soft: true,
-        fontFamily: "'Noto Sans Bengali', sans-serif",
-        fontWeight: 900,
-        indentClass: "ml-[288px]",
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
+        indentClass: "ml-[349px]",
         className:
-          "whitespace-nowrap -mt-[5px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[12px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",
