@@ -216,6 +216,14 @@ Owner clarified and approved the plan in chat: the gradient "80%" should LOAD in
 |---|-------|--------|--------|
 | S1 | Cover V1 | The gradient "80%" now water-loads: a faint ghost copy (white 16%) sits in place; the gradient copy is revealed through a clip window growing 0% → 100% width over 1.1s (clipPath inset animation), with a soft glowing waterline bar riding the reveal front and fading out at the end. Mount-triggered, so it replays on every visit to the cover. Words after it in the line ("Off") wait an extra 0.5s, so the sequence reads: "Cut" lands, "80%" loads, "Off" arrives, "Time." pill drops | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 30 — liquid INSIDE the "80%" letters)
+
+Owner rejected Batch 29's over-the-top wipe ("it's not watery way — 80% inside that color would be watery liquid") and approved the corrected plan: the letters are the vessel, the color inside them is liquid with a wave surface.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| T1 | Cover V1 | New `LiquidWord` component in CoverHeadline replaces the Batch 29 wipe AND the Batch 28 static gradient: the gradient "80%" is gated by a clip window whose top edge is a travelling sine wave (generated polygon, constant point count for interpolation). On mount the liquid level rises inside the letters 102% → 6% over 1.25s with the wave phase advancing (waves churn while rising); afterwards the wave loops forever (2.8s cycle, gentle bob) so the word stays liquid. No ghost, no wipe bar (per the approved plan); an invisible layout copy holds the word's box. "Off" now waits an extra 1.0s to land as the fill completes | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

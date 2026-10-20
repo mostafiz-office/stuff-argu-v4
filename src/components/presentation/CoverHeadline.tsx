@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { presentationEase } from "@/lib/presentationMotion";
 import { WaterFill, LabelDrop } from "@/components/presentation/reveal";
 
@@ -22,17 +22,85 @@ export interface CoverHeadlineConfig {
    */
   accentWord?: string;
   /**
-   * when true, the fillWord renders with the same name treatment
-   * (gradient letters, NO water-fill box) instead of the WaterFill —
-   * and it LOADS like water, left to right (owner direction Oct 20):
-   * a faint ghost copy sits in place while the gradient copy is
-   * revealed through a clip window growing 0% → 100% width with a
-   * glowing waterline at the front, replaying on every mount. Words
-   * after it in the same line wait an extra 0.5s so the sequence
-   * reads: first word, water load, rest of the line.
+   * when true, the fillWord's letters become a vessel for liquid
+   * (owner direction Oct 20): the gradient copy is gated by a clip
+   * window whose top edge is a travelling wave — on mount the liquid
+   * level rises inside the letters from empty to full over 1.25s,
+   * then the wave keeps drifting forever so the word stays liquid.
+   * Words after it in the same line wait an extra 1s so the sequence
+   * reads: first word, liquid fills, rest of the line.
    */
   fillGradient?: boolean;
 }
+
+/**
+ * A clip polygon whose top edge is a sine wave at `level` (percent of
+ * the word box height, measured from the top) with travelling `phase`.
+ * Point count is constant so framer can interpolate between frames.
+ */
+const liquidPolygon = (level: number, phase: number): string => {
+  const pts: string[] = [];
+  for (let x = 0; x <= 100; x += 5) {
+    const y = level + Math.sin((x / 100) * Math.PI * 3 + phase) * 3;
+    pts.push(`${x}% ${y.toFixed(2)}%`);
+  }
+  return `polygon(${pts.join(", ")}, 100% 100%, 0% 100%)`;
+};
+
+/**
+ * The liquid fill word ("80%"): gradient letters revealed by a rising,
+ * wavy clip window, so the color inside the letters behaves like
+ * water — it fills on mount and its surface never stops moving.
+ */
+const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
+  const controls = useAnimationControls();
+
+  React.useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const rise: string[] = [];
+      for (let f = 0; f <= 10; f++) {
+        rise.push(liquidPolygon(102 - (102 - 6) * (f / 10), (f / 10) * Math.PI * 3));
+      }
+      await controls.start({
+        clipPath: rise,
+        transition: { delay: delay + 0.15, duration: 1.25, ease: "easeInOut" },
+      });
+      if (cancelled) return;
+      const loop: string[] = [];
+      for (let f = 0; f <= 12; f++) {
+        loop.push(liquidPolygon(6 + Math.sin((f / 12) * Math.PI * 2) * 0.7, (f / 12) * Math.PI * 2));
+      }
+      controls.start({
+        clipPath: loop,
+        transition: { duration: 2.8, repeat: Infinity, ease: "linear" },
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [controls, delay]);
+
+  return (
+    <span className="relative mx-[0.09em] inline-block">
+      {/* layout placeholder — invisible, holds the word's box */}
+      <span className="invisible">{word}</span>
+      {/* the liquid copy: gradient letters under the wavy clip */}
+      <motion.span
+        aria-hidden
+        animate={controls}
+        initial={{ clipPath: liquidPolygon(102, 0) }}
+        className="absolute inset-0"
+      >
+        <span className="text-pres-accent">{word.charAt(0)}</span>
+        <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
+          {word.slice(1)}
+        </span>
+      </motion.span>
+      {" "}
+    </span>
+  );
+};
 
 /**
  * CoverHeadline — the staged cover animation (FB-02).
@@ -66,55 +134,10 @@ export const CoverHeadline: React.FC<{
     <span className="block">
       {words.map((word, i) => {
         const delay =
-          baseDelay + i * 0.08 + (fillIdx >= 0 && i > fillIdx ? 0.5 : 0);
+          baseDelay + i * 0.08 + (fillIdx >= 0 && i > fillIdx ? 1.0 : 0);
         if (word === fillWord) {
           if (fillGradient) {
-            return (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay, duration: 0.3, ease: presentationEase }}
-                className="relative mx-[0.09em] inline-block"
-              >
-                {/* ghost copy — the word's unfilled state */}
-                <span className="text-white/[0.16]">
-                  {word.charAt(0)}
-                  {word.slice(1)}
-                </span>
-                {/* gradient copy, revealed left to right like water */}
-                <motion.span
-                  aria-hidden
-                  className="absolute inset-0"
-                  initial={{ clipPath: "inset(0 100% 0 0)" }}
-                  animate={{ clipPath: "inset(0 0% 0 0)" }}
-                  transition={{
-                    delay: delay + 0.15,
-                    duration: 1.1,
-                    ease: presentationEase,
-                  }}
-                >
-                  <span className="text-pres-accent">{word.charAt(0)}</span>
-                  <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
-                    {word.slice(1)}
-                  </span>
-                </motion.span>
-                {/* the moving waterline at the reveal front */}
-                <motion.span
-                  aria-hidden
-                  className="absolute top-0 bottom-0 w-[0.32em] bg-[linear-gradient(90deg,transparent,rgba(255,173,1,0.45),transparent)]"
-                  initial={{ left: "0%", opacity: 0 }}
-                  animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
-                  transition={{
-                    delay: delay + 0.15,
-                    duration: 1.1,
-                    ease: presentationEase,
-                    times: [0, 0.08, 0.92, 1],
-                  }}
-                />
-                {" "}
-              </motion.span>
-            );
+            return <LiquidWord key={i} word={word} delay={delay} />;
           }
           return (
             <React.Fragment key={i}>
