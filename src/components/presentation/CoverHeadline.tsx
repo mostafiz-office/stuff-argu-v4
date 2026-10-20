@@ -25,10 +25,13 @@ export interface CoverHeadlineConfig {
    * when true, the fillWord's letters become a vessel for liquid
    * (owner direction Oct 20): the gradient copy is gated by a clip
    * window whose top edge is a travelling wave — on mount the liquid
-   * level rises inside the letters from empty to full over 1.25s,
-   * then the wave keeps drifting forever so the word stays liquid.
-   * Words after it in the same line wait an extra 1s so the sequence
-   * reads: first word, liquid fills, rest of the line.
+   * rises inside the letters and STOPS at 80% of the glyph height
+   * (the number made literal: water fills only 80% of "80%", the top
+   * of each digit stays empty; surface level 32% of the word box =
+   * baseline 89% minus 80% of the 71.6% cap span, from the measured
+   * Plus Jakarta Sans metrics), then the wave keeps drifting forever
+   * at that line. Words after it in the same line wait an extra 1s
+   * so the sequence reads: first word, liquid fills, rest of the line.
    */
   fillGradient?: boolean;
 }
@@ -60,7 +63,7 @@ const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
     (async () => {
       const rise: string[] = [];
       for (let f = 0; f <= 10; f++) {
-        rise.push(liquidPolygon(102 - (102 - 6) * (f / 10), (f / 10) * Math.PI * 3));
+        rise.push(liquidPolygon(102 - (102 - 32) * (f / 10), (f / 10) * Math.PI * 3));
       }
       await controls.start({
         clipPath: rise,
@@ -69,7 +72,7 @@ const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
       if (cancelled) return;
       const loop: string[] = [];
       for (let f = 0; f <= 12; f++) {
-        loop.push(liquidPolygon(6 + Math.sin((f / 12) * Math.PI * 2) * 0.7, (f / 12) * Math.PI * 2));
+        loop.push(liquidPolygon(32 + Math.sin((f / 12) * Math.PI * 2) * 0.7, (f / 12) * Math.PI * 2));
       }
       controls.start({
         clipPath: loop,

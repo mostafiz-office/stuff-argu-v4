@@ -224,6 +224,14 @@ Owner rejected Batch 29's over-the-top wipe ("it's not watery way — 80% inside
 |---|-------|--------|--------|
 | T1 | Cover V1 | New `LiquidWord` component in CoverHeadline replaces the Batch 29 wipe AND the Batch 28 static gradient: the gradient "80%" is gated by a clip window whose top edge is a travelling sine wave (generated polygon, constant point count for interpolation). On mount the liquid level rises inside the letters 102% → 6% over 1.25s with the wave phase advancing (waves churn while rising); afterwards the wave loops forever (2.8s cycle, gentle bob) so the word stays liquid. No ghost, no wipe bar (per the approved plan); an invisible layout copy holds the word's box. "Off" now waits an extra 1.0s to land as the fill completes | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 31 — the water fills only 80%)
+
+Owner corrected Batch 30 in his own words: someone pours water into the "80%", and "the water contain only eighty percent" — the liquid must stop at 80% of the word, never fill it whole. Confirmed in chat before building.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| U1 | Cover V1 | `LiquidWord` final level changed from near-full (surface at 6% of the box) to an 80% glyph fill: the rise now stops with the wave surface at 32% of the word box, computed from the measured Plus Jakarta Sans metrics (baseline at 89.2% of the 1.04em line box, cap span 71.6% of the box; 89.2 − 0.8 × 71.6 ≈ 32). The top fifth of every digit ("8", "0", "%") stays empty; the wave keeps drifting at the 80% line forever; the fill replays on every visit to slide 1 | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
