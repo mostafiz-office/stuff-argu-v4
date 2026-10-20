@@ -30,6 +30,10 @@ export interface PainBeat {
   smallAfter?: string;
   /** pixel size of the small connector word */
   smallSizePx?: number;
+  /** per-beat font family (e.g. the Bengali display face on slide 2) */
+  fontFamily?: string;
+  /** per-beat font weight */
+  fontWeight?: number;
 }
 
 const Highlight: React.FC<{
@@ -120,7 +124,11 @@ export const PainBeats: React.FC<{
           } ${beat.soft ? "text-white/90" : ""} ${beat.indentClass ?? ""} ${
             beat.className ?? ""
           }`}
-          style={beat.sizePx ? { fontSize: beat.sizePx } : undefined}
+          style={{
+            ...(beat.sizePx ? { fontSize: beat.sizePx } : {}),
+            ...(beat.fontFamily ? { fontFamily: beat.fontFamily } : {}),
+            ...(beat.fontWeight ? { fontWeight: beat.fontWeight } : {}),
+          }}
           initial={{ opacity: 0, y: 34, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay, duration: 0.85, ease: presentationEase }}

@@ -310,7 +310,15 @@ Owner: "it doesn't feel same — maybe you change copy as well, same size, same 
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| AE1 | Slide 2 (Outage Panic) | Beats are now: line 1 "Outage" white 64px + red dot + "Panic" as the small connector word (28px, new `smallAfter`/`smallSizePx` fields on PainBeat) — mirroring [বাংলাদেশ • যেখানে]; line 2 the hook becomes "production break" (lowercase, pure red) at 90px, which measures 740px wide in Ubuntu Bold = 88% of the text column, the reference hook's exact share of its frame; line 3 "2 am" soft white 58px, indented 335px (≈45% of the hook's width, the reference closing line's position). Packing and strong shadow from Batch 40 retained, margins re-derived for the new sizes (−16px / −18px) | ✅ CODE |
+| AE1 | Slide 2 (Outage Panic) | Beats are now: line 1 "Outage" white 64px + red dot + "Panic" as the small connector word (28px, new `smallAfter`/`smallSizePx` fields on PainBeat) — mirroring [বাংলাদেশ • যেখানে]; line 2 the hook becomes "production break" (lowercase, pure red) at 90px, which measures 740px wide in Ubuntu Bold = 88% of the text column, the reference hook's exact share of its frame; line 3 "2 am" soft white 58px, indented 335px (≈45% of the hook's width, the reference closing line's position). Packing and strong shadow from Batch 40 retained, margins re-derived for the new sizes (−16px / −18px) | ✅ CODE → superseded by Batch 42 (owner asked for the exact reference words) |
+
+## Owner review fixes (2026-10-20, Batch 42 — slide 2 carries the reference's exact words)
+
+Owner: "update slide 2 with same word". The heading now IS the reference copy — বাংলাদেশ • যেখানে / copy business / জন্য বিখ্যাত — in the reference's design, so it can be judged 1:1. Baloo Da 2 (700/800) added to index.html for the Bengali; the hook is Plus Jakarta Sans 800. Sizes solved from PIL band measurements against the reference's glyph-band ratios (line 1 = 0.79 × hook band, closing = 0.64, small word = 0.45 × line 1): line 1 112px + small word 50px, hook 94px, closing 92px. Indents follow the reference's rightward cascade (+20% / +45% of hook width). PainBeat gained per-beat `fontFamily`/`fontWeight`.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AF1 | Slide 2 | Heading copy replaced with the exact reference words (বাংলাদেশ + red dot + যেখানে / copy business / জন্য বিখ্যাত); Baloo Da 2 loaded; per-beat fonts; measured sizes and cascade indents (125px / 288px); packing + strong shadow kept; whitespace-nowrap so the long lines never wrap | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

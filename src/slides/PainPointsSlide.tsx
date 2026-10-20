@@ -40,45 +40,55 @@ type Problem = {
 const problems: Problem[] = [
   {
     eyebrow: "Problem 01 · Production Risk",
-    // Split-hook title design (Batches 39–41, owner direction Oct 20):
+    // Split-hook title design (Batches 39–42, owner direction Oct 20):
     // no marker highlight in this design, so highlightIndex is -1.
     // The block is PACKED — negative top margins interlock the lines
     // and every line carries the reference's strong soft shadow.
-    // Batch 41 (owner: "change copy as well — same size, same word,
-    // same character size"): the copy itself now mirrors the
-    // reference's word structure, using only the heading's own words.
-    // Reference: [one big word] • [one small word] / [wide two-word
-    // red hook] / [closing words]. Ours: "Outage" • "Panic" /
-    // "production break" / "2 am". Sizes measured in Ubuntu Bold:
-    // the hook at 90px spans 740px ≈ 88% of the text column, the
-    // reference hook's share of its frame.
+    // Batch 42 (owner: "update slide 2 with same word"): the heading
+    // now carries the reference's EXACT words — বাংলাদেশ • যেখানে /
+    // copy business / জন্য বিখ্যাত — so the design can be judged 1:1.
+    // Bengali set in Baloo Da 2 (index.html), the hook in Plus Jakarta
+    // Sans 800. Sizes solved from PIL band measurements of both fonts
+    // against the reference's band ratios (line 1 = 0.79 of the hook's
+    // glyph band, closing line = 0.64, small word = 0.45 of line 1);
+    // Bengali glyphs sit shorter in their em, so line 1's point size
+    // is larger than the hook's while reading smaller, exactly like
+    // the original. Indents follow the reference's rightward cascade
+    // (line 1 +20% of hook width, closing line +45%).
     beats: [
       {
-        text: "Outage",
+        text: "বাংলাদেশ",
         size: "md",
-        sizePx: 64,
+        sizePx: 112,
         dotAfter: true,
-        smallAfter: "Panic",
-        smallSizePx: 28,
+        smallAfter: "যেখানে",
+        smallSizePx: 50,
+        fontFamily: "'Baloo Da 2', sans-serif",
+        fontWeight: 800,
+        indentClass: "ml-[125px]",
         className:
-          "[text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "production break",
+        text: "copy business",
         size: "xl",
-        sizePx: 90,
+        sizePx: 94,
         hook: true,
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
         className:
-          "-mt-[16px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[16px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
       {
-        text: "2 am",
+        text: "জন্য বিখ্যাত",
         size: "md",
-        sizePx: 58,
+        sizePx: 92,
         soft: true,
-        indentClass: "ml-[335px]",
+        fontFamily: "'Baloo Da 2', sans-serif",
+        fontWeight: 800,
+        indentClass: "ml-[288px]",
         className:
-          "-mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
+          "whitespace-nowrap -mt-[18px] [text-shadow:0_14px_34px_rgba(0,0,0,0.65),0_4px_10px_rgba(0,0,0,0.6)]",
       },
     ],
     short: "Your customers find the bug before you do.",
