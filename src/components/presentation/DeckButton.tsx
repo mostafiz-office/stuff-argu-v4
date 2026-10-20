@@ -15,13 +15,16 @@ type DeckButtonProps = {
 /**
  * DeckButton — the single shared CTA button for the whole deck (FB-04).
  *
- * Shape source: the "Apply" button on the owner's Bootcamp Feedback reference
- * slide — pill, dark bold text, fully rounded. `pres-dark-safe-accent`
- * keeps the dark-on-amber contrast safe on mobile browsers that auto-darken.
- * Fill (owner direction Oct 20, Batch 36): the primary variant uses the
- * present-v1 deck's "Accent gradient" recipe — linear-gradient(135deg,
- * pres-accent → pres-accent-glow) — instead of flat amber; hover brightens
- * the gradient and lifts the glow shadow.
+ * Spec (owner direction Oct 20, Batch 37): an exact match of the hero
+ * "Book a Call" button on present-v1.riseup-asia.com slide 1, read from
+ * that deck's own code — flat amber pill (pres-accent, NO gradient, NO
+ * shadow), near-black Poppins semibold 17px text, 12px by 30px padding,
+ * 8px icon gap; on hover the fill flips to white (pres-text) while the
+ * text stays dark, over 0.2s. The outline variant mirrors its sibling
+ * outline button on the same row: 1.5px pres-accent/40 border,
+ * transparent fill, white text, same size.
+ * `pres-dark-safe-accent` keeps the dark-on-amber contrast safe on
+ * mobile browsers that auto-darken.
  * Used on the cover, the CTA slide, and every future slide CTA (G-08).
  */
 export const DeckButton: React.FC<DeckButtonProps> = ({
@@ -35,11 +38,11 @@ export const DeckButton: React.FC<DeckButtonProps> = ({
   ariaLabel,
 }) => {
   const base =
-    "presentation-action presentation-focus inline-flex items-center justify-center gap-3 rounded-full font-heading font-bold whitespace-nowrap transition-all duration-200";
+    "presentation-action presentation-focus inline-flex items-center justify-center gap-2 rounded-full font-body font-semibold whitespace-nowrap transition-all duration-200";
   const styles =
     variant === "primary"
-      ? "bg-[linear-gradient(135deg,hsl(var(--pres-accent))_0%,hsl(var(--pres-accent-glow))_100%)] hover:brightness-110 text-pres-bg pres-dark-safe-accent text-[24px] px-10 py-5 shadow-[0_0_25px_rgba(255,173,1,0.35)] hover:shadow-[0_0_38px_rgba(255,173,1,0.5)]"
-      : "border-2 border-pres-accent/60 text-pres-accent hover:bg-pres-accent/10 text-[22px] px-9 py-4";
+      ? "bg-pres-accent hover:bg-pres-text text-pres-bg pres-dark-safe-accent text-[17px] px-[30px] py-[12px]"
+      : "border-[1.5px] border-pres-accent/40 text-pres-text hover:bg-pres-accent/10 text-[17px] px-[30px] py-[12px]";
   const cls = `${base} ${styles} ${className}`.trim();
 
   if (href) {

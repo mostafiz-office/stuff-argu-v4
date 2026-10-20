@@ -270,7 +270,15 @@ Owner pointed at present-v1.riseup-asia.com/1: "from here book a call button mak
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| Z1 | Deck-wide (DeckButton) + Cover | Primary DeckButton fill is now the 135deg amber gradient (hsl(var(--pres-accent)) → hsl(var(--pres-accent-glow)), our glow token = 41 100% 65%) instead of flat amber; hover brightens the gradient (brightness-110) and lifts the glow shadow (25px/0.35 → 38px/0.5); base transition widened to transition-all so filter and shadow animate. Every primary CTA in the deck inherits it (cover "Book a Call", CTA slide buttons). The cover "Book a Call" link changes from client.rasia.pro/hiring-v1 to meet.rasia.pro/intro-call (new tab, as the reference). Label, arrow, pill shape, size and dark bold text unchanged | ✅ CODE |
+| Z1 | Deck-wide (DeckButton) + Cover | Primary DeckButton fill is now the 135deg amber gradient (hsl(var(--pres-accent)) → hsl(var(--pres-accent-glow)), our glow token = 41 100% 65%) instead of flat amber; hover brightens the gradient (brightness-110) and lifts the glow shadow (25px/0.35 → 38px/0.5); base transition widened to transition-all so filter and shadow animate. Every primary CTA in the deck inherits it (cover "Book a Call", CTA slide buttons). The cover "Book a Call" link changes from client.rasia.pro/hiring-v1 to meet.rasia.pro/intro-call (new tab, as the reference). Label, arrow, pill shape, size and dark bold text unchanged | ✅ CODE → button spec SUPERSEDED by Batch 37 (the gradient came from the reference's design-system doc for a DIFFERENT button; the hero button itself is flat — the link change stands) |
+
+## Owner review fixes (2026-10-20, Batch 37 — button rebuilt to the hero button's real spec)
+
+Owner: "not same". Cause found and owned: Batch 36 copied the gradient recipe from present-v1's design-system doc, which describes its DOWNLOAD-panel button; the hero "Book a Call" in that deck's own hero chunk (StaffAugHeroSlide) is a different spec, extracted and explained in chat, then approved ("yes") before this build.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AA1 | Deck-wide (DeckButton) + Cover + CTA slide | DeckButton rebuilt to the present-v1 hero CTA's exact spec: FLAT pres-accent fill (gradient and glow shadow removed), Poppins semibold (font-body 600, was Ubuntu bold), 17px text (was 24px), padding 12px by 30px (was 20px by 40px), 8px icon gap, hover flips the fill to WHITE (pres-text) with the dark text unchanged, 0.2s transition. Outline variant matched to their sibling outline button: 1.5px pres-accent/40 border, transparent fill, WHITE text (was amber), same 17px size and padding. Call-site icons scaled to the new size: cover arrow 24px → 18px, cover Sparkles 24px → 16px in accent, CTA slide icons 32/28px → 18px | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

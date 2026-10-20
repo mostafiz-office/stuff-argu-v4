@@ -40,14 +40,14 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
           <div className="flex flex-col items-start gap-6">
             <motion.div {...fadeUp(0.32, 12)}>
               <DeckButton href="https://meet.rasia.pro/intro-call" target="_blank" rel="noopener noreferrer" className="min-w-[360px]">
-                <CalendarCheck className="w-8 h-8" />
+                <CalendarCheck className="w-[18px] h-[18px]" />
                 Schedule a Call
-                <ArrowRight className="w-7 h-7" />
+                <ArrowRight className="w-[18px] h-[18px]" />
               </DeckButton>
             </motion.div>
             <motion.div {...fadeUp(0.4, 12)}>
               <DeckButton href="https://call.rasia.pro/riseup-offical-v1" target="_blank" rel="noopener noreferrer" className="min-w-[360px]">
-                <Phone className="w-8 h-8" />
+                <Phone className="w-[18px] h-[18px]" />
                 Call Now
               </DeckButton>
             </motion.div>

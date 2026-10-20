@@ -148,10 +148,10 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book a Call <ArrowRight className="w-6 h-6" />
+            Book a Call <ArrowRight className="w-[18px] h-[18px]" />
           </DeckButton>
           <DeckButton variant="outline" onClick={() => onNavigate?.(1)}>
-            <Sparkles className="w-6 h-6" /> Explore Tiers
+            <Sparkles className="w-4 h-4 text-pres-accent" /> Explore Tiers
           </DeckButton>
         </motion.div>
         {recommendations[0] && (
