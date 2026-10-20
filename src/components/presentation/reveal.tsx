@@ -12,18 +12,23 @@ import { presentationEase } from "@/lib/presentationMotion";
 
 /** WaterFill — text/number that fills up like water to `percent` (cover "80%").
  *
- * GEOMETRY CONTRACT (Batches 22 + 25): WaterFill and LabelDrop paint the
+ * GEOMETRY CONTRACT (Batches 22 + 25 + 26): WaterFill and LabelDrop paint the
  * exact same box and sit in the exact same place:
- *  - Same painted extent: the fill spans inset-0 of its wrapper; the label
- *    rect is inset-[0em_-0.13em] (flush vertically, bleeding only
- *    sideways). Same top, same bottom, same 0.2em corner radius.
+ *  - Same painted extent: BOTH treatments paint the word's line box
+ *    shaved by 0.07em at the top and bottom (the fill via an inner clip
+ *    window at inset-y 0.07em; the label rect is inset-[0.07em_-0.13em],
+ *    flush vertically inside that shave, bleeding only sideways). Same
+ *    top, same bottom, same 0.2em corner radius — and the shave leaves a
+ *    0.14em air channel between the two treatments when they stack on
+ *    adjacent lines ("80%" over "Time."), so they never touch
+ *    (Batch 26).
  *  - Same alignment: BOTH wrappers are `align-bottom` (vertical-align:
- *    bottom). This matters because WaterFill's wrapper has
- *    overflow:hidden, and CSS aligns such a box by its bottom margin
- *    edge instead of the text baseline — left on baseline alignment it
- *    rides ~0.15em HIGHER than the label (measured on the owner's
- *    screenshot, Batch 25). Bottom-aligning both makes their boxes
- *    coincide by construction.
+ *    bottom). This matters because a box with overflow:hidden anywhere
+ *    in its alignment path aligns by its bottom margin edge instead of
+ *    the text baseline — left on baseline alignment the fill rides
+ *    ~0.15em HIGHER than the label (measured on the owner's screenshot,
+ *    Batch 25). Bottom-aligning both makes their boxes coincide by
+ *    construction.
  * Do not remove the align-bottom or re-add vertical bleed to either one. */
 export const WaterFill: React.FC<{
   children: React.ReactNode;
@@ -40,15 +45,17 @@ export const WaterFill: React.FC<{
   duration = 1.1,
   className = "",
 }) => (
-  <span className={`relative inline-block overflow-hidden rounded-[0.2em] align-bottom ${className}`}>
+  <span className={`relative inline-block align-bottom ${className}`}>
+    <span className="absolute inset-x-0 top-[0.07em] bottom-[0.07em] overflow-hidden rounded-[0.2em]">
+      <motion.span
+        aria-hidden
+        className={`absolute bottom-0 left-0 right-0 ${fillClassName}`}
+        initial={{ height: "0%" }}
+        animate={{ height: `${percent}%` }}
+        transition={{ delay, duration, ease: presentationEase }}
+      />
+    </span>
     <span className="relative z-10">{children}</span>
-    <motion.span
-      aria-hidden
-      className={`absolute bottom-0 left-0 right-0 ${fillClassName}`}
-      initial={{ height: "0%" }}
-      animate={{ height: `${percent}%` }}
-      transition={{ delay, duration, ease: presentationEase }}
-    />
   </span>
 );
 
@@ -68,7 +75,7 @@ export const LabelDrop: React.FC<{
   <span className={`relative inline-block align-bottom ${className}`}>
     <motion.span
       aria-hidden
-      className={`absolute inset-[0em_-0.13em] rounded-[0.2em] ${
+      className={`absolute inset-[0.07em_-0.13em] rounded-[0.2em] ${
         tone === "white" ? "bg-white" : "bg-pres-accent"
       }`}
       initial={{ y: "-130%", opacity: 0 }}
