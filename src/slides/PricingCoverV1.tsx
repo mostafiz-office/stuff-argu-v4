@@ -15,6 +15,7 @@ const COPY_A: CoverCopy = {
     fadeWord: "Hiring",
     labelWord: "Time.",
     labelTone: "white",
+    accentWord: "Cut",
   },
 };
 

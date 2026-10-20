@@ -15,6 +15,12 @@ export interface CoverHeadlineConfig {
   labelWord: string;
   /** label tone — reviewer leans white ("too much yellow already") */
   labelTone?: "amber" | "white";
+  /**
+   * word that gets the "Alim Karim" name treatment (owner direction
+   * Oct 20): first letter in solid amber, the remaining letters in a
+   * pale amber gradient. Optional; only the V1 cover sets it ("Cut").
+   */
+  accentWord?: string;
 }
 
 /**
@@ -38,6 +44,7 @@ export const CoverHeadline: React.FC<{
     fadeWord,
     labelWord,
     labelTone = "white",
+    accentWord,
   } = config;
 
   const renderLine = (line: string, baseDelay: number) => (
@@ -85,6 +92,22 @@ export const CoverHeadline: React.FC<{
           );
         }
         const slow = word === fadeWord;
+        if (word === accentWord) {
+          return (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay, duration: 0.4, ease: presentationEase }}
+            >
+              <span className="text-pres-accent">{word.charAt(0)}</span>
+              <span className="bg-[linear-gradient(90deg,#ffc95e_0%,#ffdf9e_55%,#fff3cf_100%)] bg-clip-text text-transparent">
+                {word.slice(1)}
+              </span>
+              {" "}
+            </motion.span>
+          );
+        }
         return (
           <motion.span
             key={i}

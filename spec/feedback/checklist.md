@@ -192,6 +192,14 @@ Owner pointed at present-v1.riseup-asia.com slide 1 and approved a written plan 
 |---|-------|-------|--------|-----|
 | P1 | Cover V1 | "80%" (line 1) and "Time." (line 2) read as attached: both treatments paint the FULL line height, and adjacent line boxes share an edge, so where the two overlap horizontally the paints touch with zero air | ✅ CODE | Batch 26 — both paints now stop 0.07em short at top and bottom inside their line boxes (fill paints through an inner clip window at inset-y 0.07em; label rect inset → 0.07em vertical), leaving a guaranteed 0.14em (~13px) air channel between stacked treatments. Same line pairs ("20" + "Minutes.") keep identical edges; glyph coverage unchanged (digits sit well inside the shaved box) |
 
+## Owner review fixes (2026-10-20, Batch 27 — "Cut" name treatment)
+
+Owner showed his "Alim Ul Karim" graphic and approved the plan in chat: apply its lettering pattern to the V1 cover headline's "Cut".
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| Q1 | Cover V1 | "Cut" now renders like "Alim": first letter "C" in solid amber (pres-accent), remaining letters "ut" in a pale amber gradient (#ffc95e → #ffdf9e → #fff3cf, bg-clip-text). Implemented as a data-driven `accentWord` option on CoverHeadline; V3 does not set it and is unchanged. "Time." pill untouched (dark text on white, per the approved plan); "Hiring" stays white | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
