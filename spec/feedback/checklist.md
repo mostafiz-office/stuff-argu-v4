@@ -240,6 +240,14 @@ Owner annotated a screenshot (red box over the empty tops of the "80%" digits): 
 |---|-------|--------|--------|
 | V1 | Cover V1 | `LiquidWord`'s base copy is now a visible WHITE copy of the word (was an invisible layout placeholder). The liquid gradient still paints only the bottom 80% inside the letters; above the wavy waterline the digits are white text, so the word is always fully readable — white top, watery gradient below | ✅ CODE |
 
+## Owner review fixes (2026-10-20, Batch 33 — same liquid for "Hiring")
+
+Owner: "make same things for Hiring word also".
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| W1 | Cover V1 | "Hiring" (line 2) gets the full LiquidWord treatment via a new `liquidWords` config option on CoverHeadline (V1 sets ["Hiring"]): white base word, gradient liquid ("H" solid amber, "iring" pale gradient) rising inside the letters to the same 80% waterline, wave drifting at the surface. Replaces its old slow fade. LiquidWord also gained an entrance fade at its delay (0.3s) so a liquid word never pops in before its turn — line 2 now stays hidden until 0.9s, and "80%" fades in just before its liquid starts | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

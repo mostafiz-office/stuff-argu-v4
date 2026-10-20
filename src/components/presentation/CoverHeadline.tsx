@@ -34,6 +34,12 @@ export interface CoverHeadlineConfig {
    * so the sequence reads: first word, liquid fills, rest of the line.
    */
   fillGradient?: boolean;
+  /**
+   * additional words that get the full LiquidWord treatment (white
+   * base, gradient liquid filling the bottom 80% of the letters,
+   * wave at the waterline). V1 sets ["Hiring"] (owner, Oct 20).
+   */
+  liquidWords?: string[];
 }
 
 /**
@@ -85,7 +91,12 @@ const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
   }, [controls, delay]);
 
   return (
-    <span className="relative mx-[0.09em] inline-block">
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay, duration: 0.3, ease: presentationEase }}
+      className="relative mx-[0.09em] inline-block"
+    >
       {/* white base copy — the word is always fully present in white;
           the liquid paints over its bottom 80%, so the top of every
           digit above the waterline stays white text */}
@@ -103,7 +114,7 @@ const LiquidWord = ({ word, delay }: { word: string; delay: number }) => {
         </span>
       </motion.span>
       {" "}
-    </span>
+    </motion.span>
   );
 };
 
@@ -130,6 +141,7 @@ export const CoverHeadline: React.FC<{
     labelTone = "white",
     accentWord,
     fillGradient = false,
+    liquidWords,
   } = config;
 
   const renderLine = (line: string, baseDelay: number) => {
@@ -143,8 +155,7 @@ export const CoverHeadline: React.FC<{
         if (word === fillWord) {
           if (fillGradient) {
             return <LiquidWord key={i} word={word} delay={delay} />;
-          }
-          return (
+          }          return (
             <React.Fragment key={i}>
               <WaterFill
                 percent={fillPercent}
@@ -168,6 +179,9 @@ export const CoverHeadline: React.FC<{
               {" "}
             </React.Fragment>
           );
+        }
+        if (liquidWords?.includes(word)) {
+          return <LiquidWord key={i} word={word} delay={delay} />;
         }
         if (word === labelWord) {
           return (
