@@ -254,7 +254,15 @@ Owner: "time word background make it yellow".
 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
-| X1 | Cover V1 | The "Time." label pill switches from white to yellow: V1 config `labelTone` "white" → "amber" (LabelDrop's existing amber variant, pres-accent background; the word still pops back dark on the pill, same drop animation, same geometry). V3's "Minutes." pill stays white — owner named the Time word only | ✅ CODE |
+| X1 | Cover V1 | The "Time." label pill switches from white to yellow: V1 config `labelTone` "white" → "amber" (LabelDrop's existing amber variant, pres-accent background; the word still pops back dark on the pill, same drop animation, same geometry). V3's "Minutes." pill stays white — owner named the Time word only | ✅ CODE → REVERTED in Batch 35 (owner: white is better) |
+
+## Owner review fixes (2026-10-20, Batch 35 — revert: "Time." pill back to white)
+
+Owner: "make white would better revert back".
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| Y1 | Cover V1 | Batch 34 reverted as a forward commit (no history rewrite): V1 config `labelTone` "amber" → "white". The "Time." pill is white again, exactly as before Batch 34 | ✅ CODE |
 
 ## Blocked on owner (nothing to build until these arrive)
 

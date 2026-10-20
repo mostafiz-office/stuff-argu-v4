@@ -14,7 +14,7 @@ const COPY_A: CoverCopy = {
     fillPercent: 100,
     fadeWord: "Hiring",
     labelWord: "Time.",
-    labelTone: "amber",
+    labelTone: "white",
     accentWord: "Cut",
     fillGradient: true,
     liquidWords: ["Hiring"],
