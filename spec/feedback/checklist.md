@@ -153,6 +153,20 @@
 |---|-------|-------|--------|-----|
 | L1 | Cover V3 | The "20" fill and "Minutes." pill are not aligned — different heights, pill stuck out above and below the fill | ✅ CODE | Batch 22 — root cause in reveal.tsx: the fill paints exactly the word's line box, but the label rect had a -0.08em vertical bleed, making it ~14px taller with different top/bottom edges. Both treatments now paint the identical vertical box (label inset → 0em vertical, sideways bleed kept) with the same 0.2em corner radius (fill wrapper rounded to match); geometry contract documented in the component |
 
+## Owner review fixes (2026-10-20, Batch 23 — no dashes, no underlines)
+
+Owner rule: em dashes, hyphens in compound words, and underlines read as AI slop — remove them deck-wide. Full sweep of every slide's rendered copy, verified by grep (zero left in copy; code comments untouched).
+
+| # | Scope | Change | Status |
+|---|-------|--------|--------|
+| M1 | All slides | Em dashes removed from all rendered copy (8 spots): promise line "No instability, no churn, no rewrites", valuation line, savings subtitle, CTA line, 3 starter tooltips, starter bonus name line (now "Alim Ul Karim · 20+ Yr Enterprise Veteran"), compare table cell "No mentor overhead, honest scope" | ✅ CODE |
+| M2 | All slides | En dash ranges rewritten with "to": prices ($6,800 to $8,000 etc. on tiers, detail, savings), "15 to 21 days", "Day 3 to 7", "2 to 4 hrs / wk", team scope "3 to 5" | ✅ CODE |
+| M3 | All slides | Hyphenated compounds opened up: full time, mentor level, CTO level, vibe code, money back guarantee, 14 day, prescreened, prevetted, mid level, AI built, late night, "Initial Sign Up" + "Client Specific Simulation" (pyramid legend and stage texts) | ✅ CODE |
+| M4 | Slides 3, 7 | Underlines removed: Fragile Code's underline sweep → marker highlight; Product Health's red underline sweep → red marker highlight | ✅ CODE |
+| M5 | Slides 5, 14 | Under-text bars removed: the amber accent bar under slide 5's headline, and the amber bar under slide 14's logo beat (the logo's own swoosh stays) | ✅ CODE |
+| M6 | Plan overlay | Bug found by the sweep: TierPlanDetail's tier switcher buttons split names on " — " which no longer exists in tier names, so the buttons rendered EMPTY. Now derives the short name by stripping the "Tier N" prefix ("Growth" / "Skilled" / "Leadership") | ✅ CODE |
+| — | Compare table | Row divider lines (border-b) kept: they are table structure, not text underlines | — |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

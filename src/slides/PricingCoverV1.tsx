@@ -5,7 +5,7 @@ const COPY_A: CoverCopy = {
   label: "Elite Engineers",
   line1: "Cut 80% Off",
   line2: "Hiring Time.",
-  body: "Pre-vetted top 5% engineers ready to join your team this week.",
+  body: "Prevetted top 5% engineers ready to join your team this week.",
   chips: ["Top 5% Talent", "Hire in 20 Min"],
   headline: {
     line1: "Cut 80% Off",

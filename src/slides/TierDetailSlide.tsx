@@ -25,12 +25,12 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
     },
     {
       name: "Tier 3.A Skilled",
-      price: "$6,800–$8,000/M",
+      price: "$6,800 to $8,000/M",
       badge: "BEST VALUE",
     },
     {
       name: "Tier 3.B Leadership",
-      price: "$7,500–$10,000/M",
+      price: "$7,500 to $10,000/M",
       badge: "PREMIUM",
     },
   ];

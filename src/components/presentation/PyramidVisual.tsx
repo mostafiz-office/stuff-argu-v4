@@ -1,10 +1,10 @@
 import React from "react";
 
 const STAGES = [
-  { name: "Initial Sign-Up", color: "hsl(200, 80%, 50%)" },
+  { name: "Initial Sign Up", color: "hsl(200, 80%, 50%)" },
   { name: "Training & Assessment", color: "hsl(160, 70%, 42%)" },
   { name: "Practical Assignment", color: "hsl(35, 90%, 55%)" },
-  { name: "Client-Specific Simulation", color: "hsl(350, 75%, 55%)" },
+  { name: "Client Specific Simulation", color: "hsl(350, 75%, 55%)" },
   { name: "Live Test & Hire", color: "hsl(41, 100%, 50%)" },
 ];
 
@@ -17,10 +17,7 @@ const STAGES = [
  * Bottom = stage 1. The full interactive explorer lived on the old
  * standalone pyramid slide.
  */
-export const PyramidVisual: React.FC<{ className?: string; litCount?: number }> = ({
-  className = "",
-  litCount = 5,
-}) => {
+export const PyramidVisual: React.FC<{ className?: string }> = ({ className = "" }) => {
   const CX = 300;
   const APEX_Y = 8;
   const BASE_Y = 552;
@@ -57,90 +54,25 @@ export const PyramidVisual: React.FC<{ className?: string; litCount?: number }> 
             </linearGradient>
           ))}
         </defs>
-        {layers.map((l) => {
-          // Waiting layers sit dimmed; completed ones stay fully lit; the
-          // level that just arrived pops slightly bigger with a glow.
-          const state =
-            l.num > litCount ? "waiting" : l.num === litCount ? "active" : "done";
-          return (
-            <g
-              key={l.num}
-              style={{
-                opacity: state === "waiting" ? 0.38 : 1,
-                filter:
-                  state === "waiting"
-                    ? "saturate(0.5) brightness(0.75)"
-                    : state === "active"
-                      ? `brightness(1.15) drop-shadow(0 0 18px ${l.color})`
-                      : undefined,
-                transform: state === "active" ? "scale(1.07)" : "scale(1)",
-                transformBox: "fill-box",
-                transformOrigin: "center",
-                transition:
-                  "opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease",
-              }}
-            >
-              <polygon
-                points={l.pts}
-                fill={`url(#sbPyr${l.num - 1})`}
-                stroke="rgba(0,0,0,0.35)"
-                strokeWidth="2"
-                strokeLinejoin="round"
-              />
-              <circle
-                cx={300}
-                cy={l.cy}
-                r={26}
-                fill="rgba(0,0,0,0.45)"
-                stroke="white"
-                strokeWidth={2}
-              />
-              <text
-                x={300}
-                y={l.cy + 1}
-                fill="white"
-                fontFamily="var(--font-heading, 'Ubuntu', sans-serif)"
-                fontWeight={700}
-                fontSize={24}
-                textAnchor="middle"
-                dominantBaseline="central"
-              >
-                {l.num}
-              </text>
-            </g>
-          );
-        })}
+        {layers.map((l) => (
+          <g key={l.num}>
+            <polygon points={l.pts} fill={`url(#sbPyr${l.num - 1})`} stroke="rgba(0,0,0,0.35)" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx={300} cy={l.cy} r={26} fill="rgba(0,0,0,0.45)" stroke="white" strokeWidth={2} />
+            <text x={300} y={l.cy + 1} fill="white" fontFamily="var(--font-heading, 'Ubuntu', sans-serif)" fontWeight={700} fontSize={24} textAnchor="middle" dominantBaseline="central">
+              {l.num}
+            </text>
+          </g>
+        ))}
       </svg>
       <ul className="mt-4 space-y-2">
-        {STAGES.map((s, i) => {
-          const lit = i + 1 <= litCount;
-          const active = i + 1 === litCount;
-          return (
-            <li
-              key={s.name}
-              className="flex items-center gap-3 text-[18px] transition-opacity duration-500"
-              style={{ opacity: lit ? 1 : 0.4 }}
-            >
-              <span
-                className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full font-heading text-[14px] font-bold text-white"
-                style={{ background: s.color }}
-              >
-                {i + 1}
-              </span>
-              <span
-                className={
-                  active
-                    ? "font-semibold text-white"
-                    : lit
-                      ? "text-pres-text"
-                      : "text-pres-text-muted"
-                }
-              >
-                {s.name}
-              </span>
-            </li>
-          );
-        })}
+        {STAGES.map((s, i) => (
+          <li key={s.name} className="flex items-center gap-3 text-[18px] text-pres-text-muted">
+            <span className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full font-heading text-[14px] font-bold text-white" style={{ background: s.color }}>
+              {i + 1}
+            </span>
+            {s.name}
+          </li>
+        ))}
       </ul>
     </div>
   );

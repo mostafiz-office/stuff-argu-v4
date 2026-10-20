@@ -97,7 +97,7 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
           >
             <Shield className="w-4 h-4 text-pres-accent shrink-0" />
             <span className="text-[25px] text-pres-text-muted font-medium">
-              14-day trial with money-back guarantee (conditions apply).
+              14 day trial with money back guarantee (conditions apply).
             </span>
           </motion.div>
         </div>

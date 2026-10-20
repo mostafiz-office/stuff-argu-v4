@@ -4,7 +4,7 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { presentationEase } from "@/lib/presentationMotion";
 import { presentationSound } from "@/lib/presentationSound";
-import { MarkerHighlight, UnderlineSweep } from "@/components/presentation/reveal";
+import { MarkerHighlight } from "@/components/presentation/reveal";
 import { PyramidVisual } from "@/components/presentation/PyramidVisual";
 
 interface SolutionBridgeSlideProps {
@@ -33,9 +33,9 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
         </MarkerHighlight>
       )}
       {index === 1 && (
-        <UnderlineSweep colorClassName="bg-destructive" delay={0.25}>
+        <MarkerHighlight colorClassName="bg-destructive/70" delay={0.25}>
           {p.focus}
-        </UnderlineSweep>
+        </MarkerHighlight>
       )}
       {index === 2 && <span className="font-extrabold">{p.focus}</span>}
       {p.after}
@@ -49,7 +49,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
  * phrase levels — lighting only the legend row was too subtle).
  * Index 0 pairs with level 1, index 1 with level 2.
  */
-const STAGE_TEXTS = ["Initial Sign-Up", "Training & Assessment"];
+const STAGE_TEXTS = ["Initial Sign Up", "Training & Assessment"];
 
 const StageLine: React.FC<{ index: number }> = ({ index }) => (
   <motion.div
@@ -141,16 +141,6 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
           >
             We have <span className="text-pres-accent">solutions</span> for you.
           </motion.h1>
-        </div>
-
-        {/* Accent bar under the big line — fades away in the split */}
-        <div className="absolute bottom-[126px] left-1/2 -translate-x-1/2">
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: split ? 0 : 1, scaleX: split ? 0 : 1 }}
-            transition={{ delay: split ? 0 : 0.22, duration: 0.5 }}
-            className="h-[6px] w-[180px] origin-center rounded-full bg-pres-accent"
-          />
         </div>
 
         {/* Pyramid + phrases rise on the right — near-3D entrance */}

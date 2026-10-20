@@ -18,8 +18,8 @@ export type TierSummary = {
 const KEYS = ["growth", "skilled", "leadership"] as const;
 const AUDIENCE = [
   "For teams that need a reliable engineer to stabilise code and ship weekly.",
-  "For products that need senior engineers to fix AI-built logic and lead the stack.",
-  "For companies that need CTO-level oversight, a managed team and 24/7 assurance.",
+  "For products that need senior engineers to fix AI built logic and lead the stack.",
+  "For companies that need CTO level oversight, a managed team and 24/7 assurance.",
 ];
 
 interface Props {
@@ -67,7 +67,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   onClick={() => onSelect(i)}
                   className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
                 >
-                  {t.name.split(" — ")[1]}
+                  {t.name.replace(/^Tier\s+\S+\s+/, "")}
                 </button>
               )
             )}

@@ -40,7 +40,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       num: "STEP 02",
       icon: UserCheck,
       title: "7-Stage Vetting",
-      desc: "Pick from pre-screened top 5% candidates.",
+      desc: "Pick from prescreened top 5% candidates.",
       time: "In 20 min",
     },
     {
@@ -48,7 +48,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       icon: Rocket,
       title: "Rapid Onboarding",
       desc: "Your engineer joins Slack and starts shipping.",
-      time: "Day 3–7",
+      time: "Day 3 to 7",
     },
     {
       num: "STEP 04",

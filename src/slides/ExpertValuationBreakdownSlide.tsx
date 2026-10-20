@@ -17,7 +17,7 @@ interface ExpertValuationBreakdownSlideProps {
 
 const steps = [
   { icon: DollarSign, title: "Market Rate", value: "$625 / hr", sub: "Enterprise CTO standard" },
-  { icon: Clock, title: "Dedicated Hours", value: "2–4 hrs / wk", sub: "8–16 hrs per month" },
+  { icon: Clock, title: "Dedicated Hours", value: "2 to 4 hrs / wk", sub: "8 to 16 hrs per month" },
   { icon: Gift, title: "Your Value", value: "Up to $10k / M", sub: "100% free with your tier", highlight: true },
 ];
 
@@ -92,7 +92,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                 </TooltipTrigger>
                 <TooltipContent side="top" className="max-w-[320px] p-4 text-center">
                   <div className="text-[16px] text-pres-text-muted">
-                    Up to $10k/M in architecture oversight ($625/hr value) — included
+                    Up to $10k/M in architecture oversight ($625/hr value) included
                     with your tier at no extra cost.
                   </div>
                 </TooltipContent>

@@ -82,19 +82,19 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
     {
       metric: "80%",
       label: "Hiring effort saved",
-      tooltip: "Save 80% hiring effort — skip 3-month recruiting cycles, start in 20 minutes",
+      tooltip: "Save 80% hiring effort, skip 3 month recruiting cycles, start in 20 minutes",
       flat: false,
     },
     {
       metric: "160 hrs",
       label: "Pure dev time/M",
-      tooltip: "160 dedicated hours per month fixing fragile vibe-code and shipping roadmap features",
+      tooltip: "160 dedicated hours per month fixing fragile vibe code and shipping roadmap features",
       flat: false,
     },
     {
       metric: "$2,500/M",
       label: "Chief Architect Bonus",
-      tooltip: "Your Tier 1 architect bonus is worth $2,500/M — up to $10,000/M on higher tiers",
+      tooltip: "Your Tier 1 architect bonus is worth $2,500/M, up to $10,000/M on higher tiers",
       flat: true,
     },
   ];
@@ -112,7 +112,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
       title: "Startup Benefit",
       desc: "Senior output at a startup price.",
       tooltip:
-        "80% less hiring effort — matched and shipping fast, no recruiting cycle.",
+        "80% less hiring effort. Matched and shipping fast, no recruiting cycle.",
     },
     {
       icon: Shield,
@@ -218,7 +218,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
                         </div>
                         <p className="text-[20px] font-bold text-white mb-0.5">
-                          Alim Ul Karim — 20+ Yr Enterprise Veteran
+                          Alim Ul Karim · 20+ Yr Enterprise Veteran
                         </p>
                         <p className="text-[20px] text-pres-text-muted mb-1.5">
                           Kickoff audit included · <span className="text-white">$2,500/M</span> value FREE
@@ -303,7 +303,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
                 {/* Bottom Guarantee Banner */}
                 <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between text-[18px] text-pres-text-dim">
-                  <span>Backed by RISE ASIA LLC 14-Day Money-Back Guarantee</span>
+                  <span>Backed by RISE ASIA LLC 14 Day Money Back Guarantee</span>
                   <span className="text-white/80 font-semibold font-mono">100% Risk Free</span>
                 </div>
               </div>
@@ -336,12 +336,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                   src={logoImg}
                   alt="Riseup Asia"
                   className="mx-auto h-[190px] w-auto object-contain drop-shadow-[0_0_60px_rgba(255,173,1,0.35)]"
-                />
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="mx-auto mt-8 h-[6px] w-[560px] bg-pres-accent origin-center"
                 />
               </motion.div>
             </motion.div>

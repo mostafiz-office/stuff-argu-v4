@@ -27,7 +27,7 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
             <span className="block">Dream Team</span>
           </motion.h1>
           <motion.p {...fadeUp(0.16)} className="text-[26px] leading-[1.5] text-pres-text-muted mb-9">
-            Book a call — matched with the right talent in days.
+            Book a call and get matched with the right talent in days.
           </motion.p>
           <motion.a
             {...fadeUp(0.24, 12)}

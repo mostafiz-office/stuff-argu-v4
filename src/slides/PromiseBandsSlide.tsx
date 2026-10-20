@@ -67,7 +67,7 @@ export const DeliveryPromisesSlide: React.FC = () => (
     eyebrow="Delivery"
     title="What you get"
     bands={[
-      { index: "01", before: "Hiring solved in ", emphasis: "15–21 days", after: "" },
+      { index: "01", before: "Hiring solved in ", emphasis: "15 to 21 days", after: "" },
       { index: "02", before: "Our engineers ", emphasis: "never", after: " miss a deadline" },
       { index: "03", before: "The ", emphasis: "shortest path", after: " to the correct answer" },
     ]}
@@ -80,7 +80,7 @@ export const ProductHealthSlide: React.FC = () => (
     title="Built to stay stable"
     bands={[
       { index: "01", before: "", emphasis: "Stable, secure", after: " product improvements" },
-      { index: "02", before: "", emphasis: "No instability", after: " — no churn, no rewrites" },
+      { index: "02", before: "", emphasis: "No instability", after: ", no churn, no rewrites" },
       { index: "03", before: "", emphasis: "Root cause", after: " analysis, not symptom patching" },
     ]}
   />

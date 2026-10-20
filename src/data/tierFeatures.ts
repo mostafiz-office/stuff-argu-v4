@@ -19,7 +19,7 @@ export const TIER_FEATURE_GROUPS: Array<{ label: string; rows: FeatureRow[] }> =
   {
     label: "Team & Leadership",
     rows: [
-      { feature: "Team management scope", growth: "Up to 2", skilled: "3–5", leadership: "Up to 15" },
+      { feature: "Team management scope", growth: "Up to 2", skilled: "3 to 5", leadership: "Up to 15" },
       { feature: "Architecture decisions", growth: "Limited", skilled: true, leadership: true },
       { feature: "Dedicated project management", growth: false, skilled: false, leadership: true },
       { feature: "CTO-level strategic oversight", growth: false, skilled: false, leadership: true },
@@ -55,7 +55,7 @@ export const TIER_DIFFERENTIATORS: Record<TierKey, TierDifferentiator[]> = {
   growth: [
     { text: "Full-time dedicated developer" },
     { text: "Clears backlog and fragile code" },
-    { text: "No mentor overhead — honest scope" },
+    { text: "No mentor overhead, honest scope" },
   ],
   skilled: [
     { text: "Mid-level architecture oversight" },

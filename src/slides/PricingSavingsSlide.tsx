@@ -14,7 +14,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Starter Developer",
       tier: "Tier 1",
-      usRate: "$6,000–$8,000/M",
+      usRate: "$6,000 to $8,000/M",
       riseUpRate: "$1,900/M",
       savings: "Up to 76% Savings",
       riseUpWidth: "24%",
@@ -23,9 +23,9 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
       accentText: "text-red-400",
     },
     {
-      role: "Mid-Level Developer",
+      role: "Mid Level Developer",
       tier: "Tier 2",
-      usRate: "$10,000–$15,000/M",
+      usRate: "$10,000 to $15,000/M",
       riseUpRate: "$4,299/M",
       savings: "Up to 71% Savings",
       riseUpWidth: "29%",
@@ -36,8 +36,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Skilled Expert",
       tier: "Tier 3.A",
-      usRate: "$18,000–$25,000/M",
-      riseUpRate: "$6,800–$8,000/M",
+      usRate: "$18,000 to $25,000/M",
+      riseUpRate: "$6,800 to $8,000/M",
       savings: "Up to 68% Savings",
       riseUpWidth: "32%",
       color: "from-purple-500 to-indigo-600",
@@ -47,8 +47,8 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
     {
       role: "Tech Leadership",
       tier: "Tier 3.B",
-      usRate: "$22,000–$30,000/M",
-      riseUpRate: "$7,500–$10,000/M",
+      usRate: "$22,000 to $30,000/M",
+      riseUpRate: "$7,500 to $10,000/M",
       savings: "Up to 67% Savings",
       riseUpWidth: "33%",
       color: "from-pink-500 to-rose-500",
@@ -94,7 +94,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
             >
               <div className="text-[64px] font-bold font-heading text-white leading-none mb-3">80%</div>
               <div className="text-[30px] font-bold font-heading text-white mb-2">Hiring effort saved</div>
-              <p className="text-[22px] text-pres-text-muted">We source, vet, and match — you skip the recruiting cycle.</p>
+              <p className="text-[22px] text-pres-text-muted">We source, vet, and match. You skip the recruiting cycle.</p>
             </motion.div>
           </div>
 
