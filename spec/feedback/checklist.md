@@ -147,6 +147,12 @@
 | K4 | All slides (header) | Logo and tagline must be the same width | ✅ CODE | Batch 21 — measured lockup: logo PNG 854×214, artwork 820×168; logo h 48→54px (box ≈216px, artwork ≈207px wide starting at x≈6px); tagline box set to ml-[6px] w-[207px], 13.5px (Poppins measures ≈204px there) and justified to fill exactly |
 | K5 | Cover (both) | Too much yellow on slide 1 — yellow only for the highlights | ✅ CODE | Batch 21 — secondary cover yellows demoted to white/neutral in PricingCoverShared: right-rail stat values + borders, testimonial highlight spans, chip check icons; ambient glow halved (/20 → /10). Remaining amber: the number fill (the highlight), the Book a Call CTA (deck-wide standard button), small LinkedIn badges and hover borders |
 
+## Owner review fixes (2026-10-20, Batch 22 — "20 Minutes." alignment)
+
+| # | Slide | Issue | Status | Fix |
+|---|-------|-------|--------|-----|
+| L1 | Cover V3 | The "20" fill and "Minutes." pill are not aligned — different heights, pill stuck out above and below the fill | ✅ CODE | Batch 22 — root cause in reveal.tsx: the fill paints exactly the word's line box, but the label rect had a -0.08em vertical bleed, making it ~14px taller with different top/bottom edges. Both treatments now paint the identical vertical box (label inset → 0em vertical, sideways bleed kept) with the same 0.2em corner radius (fill wrapper rounded to match); geometry contract documented in the component |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

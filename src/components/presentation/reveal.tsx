@@ -10,7 +10,14 @@ import { presentationEase } from "@/lib/presentationMotion";
  * they stay reusable across slides and projects (spec sample library).
  */
 
-/** WaterFill — text/number that fills up like water to `percent` (cover "80%"). */
+/** WaterFill — text/number that fills up like water to `percent` (cover "80%").
+ *
+ * GEOMETRY CONTRACT (Batch 22): WaterFill and LabelDrop paint the exact
+ * same vertical box — the word's line box. The fill spans inset-0 of its
+ * wrapper; the label rect is inset-[0em_-0.13em] (flush vertically,
+ * bleeding only sideways). Same top, same bottom, same 0.2em corner
+ * radius — the pair ("20" + "Minutes.") aligns perfectly by
+ * construction. Do not re-add vertical bleed to either one. */
 export const WaterFill: React.FC<{
   children: React.ReactNode;
   percent?: number;
@@ -26,7 +33,7 @@ export const WaterFill: React.FC<{
   duration = 1.1,
   className = "",
 }) => (
-  <span className={`relative inline-block overflow-hidden ${className}`}>
+  <span className={`relative inline-block overflow-hidden rounded-[0.2em] ${className}`}>
     <span className="relative z-10">{children}</span>
     <motion.span
       aria-hidden
@@ -54,7 +61,7 @@ export const LabelDrop: React.FC<{
   <span className={`relative inline-block ${className}`}>
     <motion.span
       aria-hidden
-      className={`absolute inset-[-0.08em_-0.13em] rounded-[0.2em] ${
+      className={`absolute inset-[0em_-0.13em] rounded-[0.2em] ${
         tone === "white" ? "bg-white" : "bg-pres-accent"
       }`}
       initial={{ y: "-130%", opacity: 0 }}
