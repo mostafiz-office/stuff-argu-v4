@@ -37,12 +37,12 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
   useEffect(() => {
     const tooltipText =
       gateStep === 0
-        ? "👉 Press Next to reveal Chief Architect Bonus (1/3)"
+        ? "Press Next to reveal the bonus (1 of 3)"
         : gateStep === 1
-        ? "🚀 Press Next to launch Rocket & Guarantee (2/3)"
+        ? "Press Next to continue (2 of 3)"
         : gateStep === 2
-        ? "⚡ Press Next for the RISE UP moment (3/3)"
-        : "✅ Perks unlocked! Press Next to continue →";
+        ? "Press Next for more (3 of 3)"
+        : "Press Next to continue";
 
     window.__slideNavigationGate = {
       trigger: () => {

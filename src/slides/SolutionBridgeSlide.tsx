@@ -61,10 +61,10 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
   useEffect(() => {
     const step = !split ? 0 : phraseCount + 1;
     const tooltips = [
-      "Press Next: shrink the solution line & reveal the pyramid",
-      "Press Next: phrase 1 of 3",
-      "Press Next: phrase 2 of 3",
-      "Press Next: phrase 3 of 3",
+      "Press Next to reveal the solution",
+      "Press Next for more (1 of 3)",
+      "Press Next for more (2 of 3)",
+      "Press Next for more (3 of 3)",
     ];
     window.__slideNavigationGate = {
       trigger: () => {

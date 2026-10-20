@@ -23,10 +23,10 @@
 |----|-------|-----|--------|------|--------|
 | FB-01 | Cover | Cut copy, single yellow focus | ✅ | `CoverHeadline.tsx` | `58a9ef2` |
 | FB-02 | Cover | Water-fill + label-drop animation | ✅ | `CoverHeadline.tsx` | `58a9ef2` |
-| FB-03 | Cover | Copy reference font CSS exactly | ✅ | `CoverHeadline.tsx`, `tailwind.config.ts`, `index.html` | Batch 11 — owner sent the designed image; reference is Plus Jakarta Sans (verified via riseup-pro.com Google Fonts + letterform match); cover headline now `font-cover` |
+| FB-03 | Cover | Copy reference font CSS exactly | ✅ CODE / ⏳ LIVE | `CoverHeadline.tsx`, `tailwind.config.ts`, `index.html` | Batch 11 — owner sent the designed image; reference is Plus Jakarta Sans (verified via riseup-pro.com Google Fonts + letterform match); cover headline now `font-cover` |
 | FB-04 | Cover | CTA button matches reference | ✅ | `DeckButton.tsx` | `923bf8e` |
 | FB-05 | Deck | "Start camera" webcam overlay in toolbar | ✅ | `CameraBubble.tsx`, `SlideNavigation.tsx` | Batch 8 |
-| FB-06 | Pain | New copywriting | ✅ | `PainPointsSlide.tsx` | Batch 10 — plain human copy (confirm on review) |
+| FB-06 | Pain | New copywriting | ✅ CODE / ⏳ LIVE | `PainPointsSlide.tsx` | Batch 10 — plain human copy (confirm on review) |
 | FB-07 | Pain | Imagery untouched | ✅ | `PainPointsSlide.tsx` | `a66395c` |
 | FB-08 | Pain | Cinematic staged headline | ✅ | `PainBeats.tsx` | `a66395c` |
 | FB-09 | Pain | Highlight styles per slide | ✅ | `PainPointsSlide.tsx` | `a66395c` |
@@ -43,7 +43,7 @@
 | FB-20 | Tiers | Red Hat Display numerals | ✅ | `index.html`, `index.css` | Batch 5 |
 | FB-21 | Tiers | Tier names without hyphens | ✅ | `PricingTiersSlide.tsx` | Batch 5 |
 | FB-22 | Tiers | Hover tooltip with tier name | ✅ | `PricingTiersSlide.tsx` | Batch 5 |
-| FB-23 | Deck | "RISE ASIA LLC" lockup + tagline | ✅ | `SlideHeader.tsx` | Batch 10 — "Top 5% Engineers, On Demand" (confirm on review) |
+| FB-23 | Deck | "RISE ASIA LLC" lockup + tagline | ✅ CODE / ⏳ LIVE | `SlideHeader.tsx` | Batch 10 — "Top 5% Engineers, On Demand" (confirm on review) |
 | FB-24 | Valuation | Gift block redesign | ✅ | `ExpertValuationBreakdownSlide.tsx` | Batch 5 |
 | FB-25 | Included | Cut copy ~50%, uniform cards | ✅ | `WhatsIncludedSlide.tsx` | Batch 6 |
 | FB-26 | HowItWorks | Connector line + Discovery Call detail | ✅ | `PricingHowItWorksSlide.tsx` | Batch 6 |
@@ -51,7 +51,7 @@
 | FB-28 | Starter | "Startup Offer" title, remove noise | ✅ | `StarterTierSlideV9Clone.tsx` | Batch 6 |
 | FB-29 | Starter | Experience-led copy + hover | 🔴 copy conflict | `StarterTierSlideV9Clone.tsx` | heading "1+ Year" vs subtext "3+ years" — needs owner numbers |
 | FB-30 | Starter | Staged reveal, RISE UP beat | ✅ | `StarterTierSlideV9Clone.tsx` | Batch 6 |
-| FB-31 | Savings | Highlight the saving figure (no "up to") | ✅ | `PricingSavingsSlide.tsx` | Batch 10 — "76% saving" (dictated "7%" matched no slide number; confirm) |
+| FB-31 | Savings | Highlight the saving figure (no "up to") | ✅ CODE / ⏳ LIVE | `PricingSavingsSlide.tsx` | Batch 10 — "76% saving" (dictated "7%" matched no slide number; confirm) |
 | FB-32 | Savings | Stacked headline, no yellow | ✅ | `PricingSavingsSlide.tsx` | Batch 6 |
 | FB-33 | Savings | Clarify 80%, staged rows, plain numbers | ✅ | `PricingSavingsSlide.tsx` | Batch 6 |
 | FB-34 | Savings | USD note, /M suffixes | ✅ | verified, no change | — |
@@ -61,13 +61,15 @@
 
 | # | Slide | Issue | Status | Fix |
 |---|-------|-------|--------|-----|
-| A1 | Deck | Dot-nav tooltip labels wrong from slide 6 onward (stale 18-slide list) | 🔴 | `SlideNavigation.tsx` — replace label array with 16-slide list (done, in this push) |
+| A1 | Deck | Dot-nav tooltip labels wrong from slide 6 onward (stale 18-slide list) | ✅ CODE / ⏳ LIVE | `SlideNavigation.tsx` — 16-slide list (Batch 9) |
 | A2 | Savings | "7% saving" contradicts 76/71/68/67% cards | ⏳ | Owner: confirm the intended figure (see FB-31) |
-| A3 | Starter | Experience strings conflicted | ✅ | Batch 10 — all aligned to "1+ Year" (confirm numbers) |
-| A4 | Cover | Cover variant swap flashed near-invisible mid-state | ✅ | Batch 10 — both variants stay mounted, crossfade on toggle (`Index.tsx`) |
+| A3 | Starter | Experience strings conflicted | ✅ CODE / ⏳ LIVE | Batch 10 — all aligned to "1+ Year" (confirm numbers) |
+| A4 | Cover | Cover variant swap flashed near-invisible mid-state | ✅ CODE / ⏳ LIVE | Batch 10 — both variants stay mounted, crossfade on toggle (`Index.tsx`) |
 | A5 | Solution | Resting headline looked dimmed in audit | ✅ no change | Code animates to full opacity — audit caught the 0.9s entrance fade; not a bug |
 | A6 | Starter | "GROWTH BOOSTER" rocket briefly overlaps Tier 1 card text | ✅ acceptable | Transient by design — no fix |
 | A7 | Cover | Testimonial avatars show empty circle while lazy-loading | ✅ acceptable | Transient — no fix |
+| B1 | Deck | Gate tooltip pills read as speaker notes | ✅ CODE | Batch 12 — rewritten viewer-facing |
+| B2 | HowItWorks | Steps 03/04 looked dimmed (one observation) | ✅ no change | No code mechanism; likely mid-entrance |
 
 ## Blocked on owner (nothing to build until these arrive)
 
@@ -75,6 +77,14 @@
 2. FB-27: confirm keeping the "In 20 min" vetting badge on Step 02.
 3. FB-35: point to the "previous" CTA design if a different one was meant.
 4. Confirm-or-tweak (my judgment calls, Batch 10): pain copy (FB-06), tagline "Top 5% Engineers, On Demand" (FB-23), "76% saving" (FB-31), Starter "1+ Year" numbers (A3).
+
+## Deploy status (2026-10-20 QA)
+
+**STALLED:** the live app serves a pre-Batch-9 build. Commits `3795ebc` (Batch 9:
+dot-nav labels + spec rewrite), `2c61dc5` (Batch 10: copy pass + cover crossfade),
+`0e3a78d` (FB-03: Plus Jakarta Sans cover) are on `main` (verified in repo) but NOT
+live — bundle inspection confirms. Owner action: check Lovable dashboard (GitHub
+sync / Publish). Code state vs live state tracked per item below as CODE/LIVE.
 
 ## Deployment note (2026-10-19)
 
