@@ -480,6 +480,14 @@ Owner: "no need slide 6,7,8 remove it". The exact list was restated and confirme
 |---|-------|--------|--------|
 | BA1 | Index + SlideNavigation | Slides 6/7/8 (Delivery Promises, Product Health, Who We Are) removed from the deck; dot labels aligned; deck now 13 slides | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 64 — slide 5: Save + Hiring highlighted)
+
+Owner (annotated screenshot of slide 5): "also highlight save and hiring word here". The L3 phrase previously had NO marker ("Hiring" was extrabold only). Fix: PHRASES gains an optional `focus2`; "Save Time Hiring" is restructured to focus "Save" + focus2 "Hiring", both wrapped in MarkerHighlight with the L3 pyramid band's orange — hsl(35, 90%, 55%) = rgb(244, 157, 37) at 70% (bg-[rgba(244,157,37,0.7)]) — completing the slide's own system (L5 amber pres-accent, L4 red destructive, L3 orange). Save sweeps at 0.25s, Hiring at 0.45s.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BB1 | Slide 5 (SolutionBridgeSlide) | Marker highlights on "Save" and "Hiring" in the L3 phrase, L3 orange, matching the 5% / Missing system | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

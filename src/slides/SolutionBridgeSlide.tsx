@@ -11,10 +11,22 @@ interface SolutionBridgeSlideProps {
   onNavigate?: (index: number) => void;
 }
 
-const PHRASES = [
+interface PhraseDef {
+  before: string;
+  focus: string;
+  after: string;
+  focus2?: string;
+}
+
+// Batch 64 (owner): in "Save Time Hiring" BOTH "Save" and "Hiring"
+// carry the marker (it previously had none — "Hiring" was only
+// extrabold). Marker colours follow the pyramid bands they pair
+// with: L5 amber (pres-accent), L4 red (destructive), L3 orange
+// hsl(35, 90%, 55%) = rgb(244, 157, 37) at 70%.
+const PHRASES: PhraseDef[] = [
   { before: "Find Top ", focus: "5%", after: " Talent" },
   { before: "Avoid ", focus: "Missing", after: " Deadlines" },
-  { before: "Save Time ", focus: "Hiring", after: "" },
+  { before: "", focus: "Save", after: " Time ", focus2: "Hiring" },
 ];
 
 const Phrase: React.FC<{ index: number }> = ({ index }) => {
@@ -37,8 +49,23 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
           {p.focus}
         </MarkerHighlight>
       )}
-      {index === 2 && <span className="font-extrabold">{p.focus}</span>}
+      {index === 2 && (
+        <MarkerHighlight
+          colorClassName="bg-[rgba(244,157,37,0.7)]"
+          delay={0.25}
+        >
+          {p.focus}
+        </MarkerHighlight>
+      )}
       {p.after}
+      {p.focus2 && (
+        <MarkerHighlight
+          colorClassName="bg-[rgba(244,157,37,0.7)]"
+          delay={0.45}
+        >
+          {p.focus2}
+        </MarkerHighlight>
+      )}
     </motion.div>
   );
 };
