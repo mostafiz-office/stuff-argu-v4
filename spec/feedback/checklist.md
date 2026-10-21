@@ -576,6 +576,14 @@ Owner rejected Batch 73's whole-badge yellow and refined the plan over three rou
 |---|-------|--------|--------|
 | BM1 | Slide 12 (PricingSavingsSlide) | Savings badges segmented (white "Up to", yellow %, S solid + fading "avings"); headline "Less."/"More." yellow | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 76 — slide 13 design transplant)
+
+Owner first asked for slide 13 to become present-v1 slide 26 exactly, then CORRECTED: slide 13 keeps OUR content word for word; only the DESIGN comes from present-v1's Contact slide (live /26; their spec doc "Slide 35 — Contact": QR card 412 wide, inner row gap 80, column gap 38, glow blob, halftone right half). Built: QR card moved LEFT in the reference style (white card, thin gold border, our QR image, "Scan to connect" caption); content column RIGHT — eyebrow, headline, NEW short gold underline bar, subline, email as an icon-badge row, Schedule a Call / Call Now as uniform 400px gold pills (our order and links kept); golden radial glow + halftone dot texture behind the right content; the old bottom accent line and center glow removed for fidelity. SlideHeader kept (stated assumption, uncorrected). Nothing imported from their content (no address, no social icons, no "RiseupAsia" headline). This also settles FB-35's open question in practice: the "previous" contact design he remembered is this present-v1 slide; its composition now lives on our slide 13 with our copy.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BN1 | Slide 13 (PricingCTASlide) | Design rebuilt to present-v1 Contact layout (QR left, content right, gold bar + icon-badge rows); content unchanged | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
