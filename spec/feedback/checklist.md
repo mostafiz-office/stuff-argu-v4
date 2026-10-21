@@ -448,6 +448,14 @@ Caught on the Batch 58 simulation before the owner saw it live: the M87 ring fil
 |---|-------|--------|--------|
 | AW1 | Slide 4 + PainBeats | BlackHoleLetter: img scale(1.95) inside a masked wrapper so the ring itself is the object | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 60 — owner's own black hole image, transparent, no overlap)
+
+Owner supplied his own black hole image (white accretion-disc render) and directed: use THIS image in Sinkhole, background transparent, sized so it does NOT overlap the h or the l. Changes: (1) the M87 data module is replaced — `blackHoleData.ts` now carries the owner's image, processed offline (cropped to the ring at (550,209)–(1330,989) of his 1800×1200 PNG, alpha built from luminance with a radial falloff so the space background is transparent and the glow melts out; the dark interior disc stays; WebP 640×640, 85KB). Measured visible extent inside the 0.8em display box: solid bright parts end at ±0.33em (the letters' bearing edge), ring spans ~0.63em. (2) BlackHoleLetter simplified: 0.8em box, verticalAlign −0.13em, margins −0.11em (layout slot still the "o" advance), no mask/zoom/filter — the transparency is baked into the asset. Verified on the simulation: no square patch, no touch on h or l, word reads instantly.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AX1 | Slide 4 + PainBeats + asset | Owner's black hole image (transparent cutout) as the "o", contained in its letter space per his no-overlap rule | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

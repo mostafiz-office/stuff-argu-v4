@@ -231,26 +231,22 @@ function TileLetter({
 // Batch 57: object-letter device (same reference) — a letter is
 // replaced by an object that means the word.
 // Batch 58 (owner): the object is a REAL photograph, like the rocket
-// in the reference — the Event Horizon Telescope image of the M87
-// black hole (CC BY 4.0, EHT Collaboration), oversized in the "o"
-// slot of Sinkhole with its edges melted by a radial mask so no
-// square patch ever shows.
+// in the reference (first the EHT M87 image; Batch 60: the owner's
+// own black hole image with a transparent background, kept inside
+// its letter space so it never overlaps the h or the l).
 function BlackHoleLetter({ delay }: { delay: number }) {
   return (
     <motion.span
       className="inline-block"
       style={{
-        width: "1.05em",
-        height: "1.05em",
-        verticalAlign: "-0.255em",
-        margin: "0 -0.235em",
-        overflow: "hidden",
-        // Batch 59: mask widened (solid to 62%, gone by 88%) because
-        // the photo is zoomed inside the box (see img transform).
-        maskImage: "radial-gradient(circle, black 62%, transparent 88%)",
-        WebkitMaskImage:
-          "radial-gradient(circle, black 62%, transparent 88%)",
-        filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.55))",
+        // Batch 60 (owner): his own black hole image, pre-cut with a
+        // transparent background, sized to sit INSIDE its letter
+        // space — the bright ring spans ~0.63em and never touches the
+        // neighbouring h or l.
+        width: "0.8em",
+        height: "0.8em",
+        verticalAlign: "-0.13em",
+        margin: "0 -0.11em",
       }}
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -261,15 +257,7 @@ function BlackHoleLetter({ delay }: { delay: number }) {
         alt=""
         aria-hidden
         draggable={false}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          // The ring fills only ~45% of the source frame; zoom so the
-          // ring itself spans ~0.9em and reads as an object in the
-          // word, like the rocket in the reference.
-          transform: "scale(1.95)",
-        }}
+        style={{ width: "100%", height: "100%", objectFit: "contain" }}
       />
     </motion.span>
   );
