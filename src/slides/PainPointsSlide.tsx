@@ -143,8 +143,22 @@ const problems: Problem[] = [
   {
     eyebrow: "Problem 02 · Technical Debt",
     beats: [
-      { text: "Fragile Vibe &", size: "xl" },
-      { text: "AI Code", size: "xl" },
+      {
+        text: "Nobody can explain",
+        pillWords: ["explain"],
+        sizePx: 76,
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
+        className: "whitespace-nowrap pain-headline-shadow",
+      },
+      {
+        text: "what the AI wrote.",
+        pillWords: ["AI"],
+        sizePx: 76,
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 800,
+        className: "whitespace-nowrap pain-headline-shadow mt-[10px]",
+      },
     ],
     short: "Nobody can explain what the AI wrote.",
     metric: "3× Slower",
@@ -154,10 +168,12 @@ const problems: Problem[] = [
     imageAlt: "Software engineers investigating unstable code on office monitors",
     highlight: "yellow",
     highlightStyle: "marker",
-    highlightIndex: 1,
-    // Batch 51 (owner): left-side placement like slide 2 — was the
-    // mirrored right layout from FB-11.
-    align: "left",
+    highlightIndex: -1,
+    // Batch 52 (owner): right-side gradient-pill title, heading only
+    // (plan: gradient-pill-title-slide3-plan.md). Supersedes Batch 51's
+    // left placement of the old layout.
+    align: "right",
+    bare: true,
   },
   {
     eyebrow: "Problem 03 · Hiring Drag",

@@ -38,6 +38,9 @@ export interface PainBeat {
    *  timing and direction with its own soft drop shadow, instead of
    *  the whole line arriving at once (owner direction, slide 2) */
   wordAnim?: boolean;
+  /** Batch 52: words (matched without punctuation) that sit on an
+   *  amber gradient pill, per the owner's reference design. */
+  pillWords?: string[];
 }
 
 const Highlight: React.FC<{
@@ -108,6 +111,38 @@ const BengaliFontLoader: React.FC = () => {
 const WORD_SHADOW =
   "0 8px 22px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.5)";
 
+// Batch 52: gradient pill highlight (owner's reference design) — the key
+// word sits on an amber gradient pill with near-black text (the deck
+// rule for text on amber), popping in just after its line arrives.
+function PillWord({
+  children,
+  delay,
+}: {
+  children: string;
+  delay: number;
+}) {
+  return (
+    <motion.span
+      className="inline-block"
+      style={{
+        background:
+          "linear-gradient(135deg, #ffd97a 0%, #ffad01 55%, #dd8f00 100%)",
+        color: "#1a1206",
+        borderRadius: "0.18em",
+        padding: "0.08em 0.32em",
+        margin: "0 0.05em",
+        boxShadow: "0 10px 26px rgba(0,0,0,0.45)",
+        textShadow: "none",
+      }}
+      initial={{ opacity: 0, scale: 0.88 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.45, delay: delay + 0.35, ease: presentationEase }}
+    >
+      {children}
+    </motion.span>
+  );
+}
+
 export const PainBeats: React.FC<{
   beats: PainBeat[];
   highlight: PainHighlightColor;
@@ -134,6 +169,24 @@ export const PainBeats: React.FC<{
           (n, b) => n + b.text.split(" ").length + (b.smallAfter ? 1 : 0),
           0,
         );
+      // Batch 52: line text with gradient-pill words (slide 3 design).
+      const renderPillText = () => {
+        const parts = beat.text.split(" ");
+        return (
+          <>
+            {parts.map((w, wi) => {
+              const clean = w.replace(/[^A-Za-z]/g, "");
+              const isPill = beat.pillWords!.includes(clean);
+              return (
+                <React.Fragment key={wi}>
+                  {isPill ? <PillWord delay={delay}>{w}</PillWord> : w}
+                  {wi < parts.length - 1 ? " " : null}
+                </React.Fragment>
+              );
+            })}
+          </>
+        );
+      };
       const renderWords = () => {
         const parts = beat.text.split(" ");
         const spans = parts.map((word, wi) => {
@@ -192,6 +245,8 @@ export const PainBeats: React.FC<{
       };
       const inner = beat.wordAnim ? (
         renderWords()
+      ) : beat.pillWords && beat.pillWords.length > 0 ? (
+        renderPillText()
       ) : (
         <>
           {beat.text}
@@ -210,7 +265,7 @@ export const PainBeats: React.FC<{
       );
       const content = beat.wordAnim ? (
         inner
-      ) : i === highlightIndex ? (
+      ) : i === highlightIndex && !beat.pillWords ? (
           <Highlight
             color={highlight}
             style={highlightStyle}

@@ -384,6 +384,14 @@ Owner: "update slide 3 left side text placement like slide 2" — understanding 
 |---|-------|--------|--------|
 | AO1 | Slide 3 | `align: "right"` → `"left"` on the Fragile problem data — text block, alignment and overlay gradient now match slide 2's left-side placement | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 52 — slide 3 gradient-pill title)
+
+Owner shared a reference (statement headline, key words on a gradient pill) and approved the plan in `gradient-pill-title-slide3-plan.md`: slide 3 gets a heading-only title on the RIGHT side — "Nobody can explain / what the AI wrote." in Plus Jakarta Sans 800 at 76px (measured fit: ~764px / ~689px in the 840px block) — with "explain" and "AI" on amber gradient pills (light amber → #FFAD01 → deep amber, near-black word, pill pops in 0.35s after its line). New data-driven `pillWords` on PainBeat + `PillWord` in PainBeats; the marker highlight is bypassed for pill beats (highlightIndex -1). Supersedes AO1/Batch 51: align back to "right", `bare: true` added; short/metric/resolution data kept in the file but hidden by bare mode.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AP1 | Slide 3 + PainBeats | Gradient-pill title per the approved plan: right side, bare, pillWords ["explain"] / ["AI"], PJS 800 76px | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
