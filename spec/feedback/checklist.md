@@ -400,6 +400,14 @@ Owner: on slide 3 he sees NO image on the left, and the pill background must be 
 |---|-------|--------|--------|
 | AQ1 | Slide 3 + PainBeats | `imageFlip: true` on slide 3 (photo subject moves left, dark wall behind the title); PillWord background now a translucent amber gradient with a glass edge | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 54 — slide 3 matched closer to the reference)
+
+Owner compared the build with his reference screenshot twice ("still not same") and approved the assistant's written fix list. Changes: (1) title grows 76px → 118px and restacks to 3 lines — "Nobody can / explain what / the AI wrote." (the proposed "explain what the" line measures 1007px at 118px, too wide for the 840px block, so "the" moves to line 3; all lines ≤ ~804px, verified by PIL measurement); (2) the pill becomes a DARK amber glass — vertical deep-amber gradient at 0.66–0.74 alpha, subtle light edge, WHITE word — the reference's dark-glass structure in our amber (supersedes the bright pill of Batches 52–53); (3) pill word at semibold 600 against the ExtraBold plain words (the reference's weight contrast); (4) pill padding up to 0.14em × 0.42em so the word sits centered.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AR1 | Slide 3 + PainBeats | Title 118px in 3 lines (Split A, measured); PillWord = dark amber glass, white 600 word, generous padding | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
