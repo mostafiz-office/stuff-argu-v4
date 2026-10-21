@@ -42,6 +42,9 @@ export interface PainBeat {
   /** Batch 52: words (matched without punctuation) that sit on an
    *  amber gradient pill, per the owner's reference design. */
   pillWords?: string[];
+  /** Batch 62: words wrapped in a design-tool selection box
+   * (amber outline, corner handles, mouse arrow) instead of a pill. */
+  selectWords?: string[];
   /** Batch 57: character index replaced by a gradient letter tile
    *  (the letter-tile device from the owner's Design/Publish ref). */
   tileAt?: number;
@@ -165,6 +168,95 @@ function PillWord({
     >
       {children}
     </motion.span>
+  );
+}
+
+// Batch 62: selection-box device (owner's design-tool reference) —
+// the highlight is a rectangle SELECTION drawn over the word: amber
+// outline, white corner handles, a mouse arrow settling at the
+// bottom-right corner. The word itself stays plain (bold white) —
+// a selection never recolors its text. The frame draws in from the
+// top-left like a mouse drag (clip-path), handles reveal as the
+// drag passes their corner.
+function SelectWord({
+  children,
+  delay,
+}: {
+  children: string;
+  delay: number;
+}) {
+  const handle = (pos: React.CSSProperties) => (
+    <span
+      style={{
+        position: "absolute",
+        width: "0.085em",
+        height: "0.085em",
+        background: "#ffffff",
+        border: "0.018em solid #ffad01",
+        zIndex: 2,
+        ...pos,
+      }}
+    />
+  );
+  return (
+    <span
+      className="relative inline-block"
+      style={{ lineHeight: 1, padding: "0.05em 0.14em", margin: "0 0.04em" }}
+    >
+      {children}
+      <motion.span
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: "-0.055em",
+          left: "-0.055em",
+          right: "-0.055em",
+          bottom: "-0.055em",
+          zIndex: 1,
+        }}
+        initial={{ clipPath: "inset(0% 100% 100% 0%)" }}
+        animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+        transition={{ duration: 0.5, delay: delay + 0.35, ease: presentationEase }}
+      >
+        <span
+          style={{
+            position: "absolute",
+            top: "0.055em",
+            left: "0.055em",
+            right: "0.055em",
+            bottom: "0.055em",
+            border: "0.025em solid #ffad01",
+          }}
+        />
+        {handle({ top: "0.0125em", left: "0.0125em" })}
+        {handle({ top: "0.0125em", right: "0.0125em" })}
+        {handle({ bottom: "0.0125em", left: "0.0125em" })}
+        {handle({ bottom: "0.0125em", right: "0.0125em" })}
+      </motion.span>
+      <motion.svg
+        aria-hidden
+        viewBox="0 0 24 24"
+        style={{
+          position: "absolute",
+          width: "0.3em",
+          height: "0.3em",
+          right: "-0.19em",
+          bottom: "-0.22em",
+          zIndex: 3,
+          filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))",
+        }}
+        initial={{ opacity: 0, x: 10, y: 10 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.35, delay: delay + 0.95, ease: presentationEase }}
+      >
+        <path
+          d="M5 3l14 7-6.2 1.6L9.5 18z"
+          fill="#ffad01"
+          stroke="rgba(0,0,0,0.55)"
+          strokeWidth="1"
+        />
+      </motion.svg>
+    </span>
   );
 }
 
@@ -309,6 +401,28 @@ export const PainBeats: React.FC<{
           </>
         );
       };
+      // Batch 62: line text with selection-box words (slide 3).
+      const renderSelectText = () => {
+        const parts = beat.text.split(" ");
+        return (
+          <>
+            {parts.map((w, wi) => {
+              const clean = w.replace(/[^A-Za-z]/g, "");
+              const isSelect = beat.selectWords!.includes(clean);
+              return (
+                <React.Fragment key={wi}>
+                  {isSelect ? (
+                    <SelectWord delay={delay}>{w}</SelectWord>
+                  ) : (
+                    w
+                  )}
+                  {wi < parts.length - 1 ? " " : null}
+                </React.Fragment>
+              );
+            })}
+          </>
+        );
+      };
       // Batch 57: line text with letter devices (tile / object letter).
       const renderDeviceText = () => {
         const chars = beat.text.split("");
@@ -389,6 +503,8 @@ export const PainBeats: React.FC<{
       };
       const inner = beat.wordAnim ? (
         renderWords()
+      ) : beat.selectWords && beat.selectWords.length > 0 ? (
+        renderSelectText()
       ) : beat.pillWords && beat.pillWords.length > 0 ? (
         renderPillText()
       ) : beat.tileAt !== undefined || beat.objectAt !== undefined ? (
@@ -412,6 +528,7 @@ export const PainBeats: React.FC<{
       const content = beat.wordAnim ? (
         inner
       ) : i === highlightIndex &&
+        !beat.selectWords &&
         !beat.pillWords &&
         beat.tileAt === undefined &&
         beat.objectAt === undefined ? (

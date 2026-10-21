@@ -156,7 +156,7 @@ const problems: Problem[] = [
       },
       {
         text: "explain what",
-        pillWords: ["explain"],
+        selectWords: ["explain"],
         sizePx: 118,
         fontFamily: "'Ubuntu', sans-serif",
         fontWeight: 800,
@@ -164,7 +164,7 @@ const problems: Problem[] = [
       },
       {
         text: "the AI wrote.",
-        pillWords: ["AI"],
+        selectWords: ["AI"],
         sizePx: 118,
         fontFamily: "'Ubuntu', sans-serif",
         fontWeight: 800,
@@ -183,6 +183,9 @@ const problems: Problem[] = [
     // Batch 52 (owner): right-side gradient-pill title, heading only
     // (plan: gradient-pill-title-slide3-plan.md). Supersedes Batch 51's
     // left placement of the old layout.
+    // Batch 62 (owner): the pill device is replaced by the design-tool
+    // SELECTION BOX (amber outline + corner handles + mouse arrow) on
+    // "explain" and "AI" — see SelectWord in PainBeats.
     align: "right",
     bare: true,
     // Batch 53: the photo's subject sits on its right half (dark wall

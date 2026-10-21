@@ -464,6 +464,14 @@ Assistant's design review of Batch 60 (requested by the owner): both words read 
 |---|-------|--------|--------|
 | AY1 | Slide 4 + PainBeats | BlackHoleLetter box 0.80em → 0.86em for device balance; no-touch re-verified by measurement | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 62 — slide 3 selection-box highlight)
+
+Owner shared a design-tool screenshot (empty rectangle outline, corner handles, mouse arrow) and asked for that highlight device on slide 3. After a clarification round he approved: AMBER box (not the screenshot's blue), pills removed, box on the highlighted words ("explain" and "AI" both boxed — his "1 & 2"; the alternative reading, "AI" back to plain, is a one-line data change if he corrects it). Implementation: new `selectWords` field on PainBeat + `SelectWord` in PainBeats — the word stays plain bold white (a selection never recolours its text); an amber outline (0.025em) draws in from the top-left via clip-path like a mouse drag at delay+0.35; four white corner handles (0.085em, amber edge) reveal as the drag passes; an amber mouse arrow (0.3em SVG) settles at the bottom-right corner at delay+0.95. PillWord remains in the file, unused. Fit re-measured: line 2 ≈ 806px, line 3 ≈ 822px in the 840 block. Checklist AZ1.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AZ1 | Slide 3 + PainBeats | Selection-box highlight (amber outline + handles + cursor arrow) replaces the glass pill on "explain" and "AI" | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
