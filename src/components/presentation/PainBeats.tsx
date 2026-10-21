@@ -116,10 +116,15 @@ const WORD_SHADOW =
 // Batch 53 (owner): the pill background is TRANSLUCENT like the
 // reference — a glassy amber gradient with a light top edge.
 // Batch 54 (owner, after comparing with the reference): the pill is a
-// DARK amber glass (deep amber, lighter at the top) with a WHITE word
-// at semibold — the reference's dark-glass structure in our amber,
-// against the ExtraBold plain words around it. Padding is generous so
-// the word sits centered in the pill.
+// DARK amber glass (deep amber, lighter at the top) with a WHITE word —
+// the reference's dark-glass structure in our amber, against the bold
+// plain words around it.
+// Batch 56 (owner: typography is Ubuntu; pill top padding too much):
+// pill geometry now MEASURED from the owner's reference — pill height
+// ≈ 1.1 × font size (was 1.24em), side padding ≈ 0.24em, radius
+// ≈ 0.13em, word at Ubuntu 500. lineHeight 1 on the pill centers the
+// ink optically (at the inherited 0.96 the ink sat low, which read as
+// excess top padding).
 function PillWord({
   children,
   delay,
@@ -135,9 +140,10 @@ function PillWord({
           "linear-gradient(180deg, rgba(158,102,16,0.66) 0%, rgba(110,68,6,0.74) 100%)",
         border: "1px solid rgba(255,196,86,0.38)",
         color: "#ffffff",
-        fontWeight: 600,
-        borderRadius: "0.16em",
-        padding: "0.14em 0.42em",
+        fontWeight: 500,
+        lineHeight: 1,
+        borderRadius: "0.13em",
+        padding: "0.05em 0.24em",
         margin: "0 0.05em",
         boxShadow: "0 12px 28px rgba(0,0,0,0.5)",
         textShadow: "0 2px 10px rgba(0,0,0,0.45)",

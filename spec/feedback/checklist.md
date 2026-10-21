@@ -416,6 +416,14 @@ Caught on the Batch 54 simulation render before the owner saw it live: at 118px 
 |---|-------|--------|--------|
 | AS1 | Slide 3 | Beat margins mt-[19px] → mt-[34px] on lines 2–3 so consecutive pills never touch | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 56 — slide 3 Ubuntu + measured pill geometry)
+
+Owner: typography must be Ubuntu (the Batch 52 switch to Plus Jakarta Sans followed slide 2 and was never his instruction for slide 3), and the pill's top padding is too much. Fixes: slide 3's three beats now `fontFamily: 'Ubuntu'` at weight 700 (slide 2's beats verified untouched — still PJS); Ubuntu measured at 118px: lines 657 / 776 / 792px, all fit. Pill geometry MEASURED from the owner's reference image (engineering/product pills): pill height ≈ 1.07–1.16 × font size and side padding ≈ 0.22em there — PillWord now lineHeight 1 (optically centers the ink; at the inherited 0.96 line-height Ubuntu's ink sits low, which is what read as excess top padding), padding 0.05em × 0.24em (total height 1.10em, was 1.24em), radius 0.13em, word at Ubuntu 500 against the 700 plain words. Pill-to-pill clearance grows to ~17px.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AT1 | Slide 3 + PainBeats | Beats → Ubuntu 700; PillWord → measured reference geometry (lh 1, pad 0.05/0.24em, radius 0.13em, word 500) | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
