@@ -440,6 +440,14 @@ Owner (after Batch 57): the reference objects are REAL (a real rocket) — repla
 |---|-------|--------|--------|
 | AV1 | Slide 4 + PainBeats + asset | Real M87 black hole photo as the "o" of Sinkhole (radial-masked, oversized); tile enlarged/overlapping per the reference. NOTE: push-files rejects binaries (not UTF-8), so the JPEG ships as a data-URI module `src/assets/blackHoleData.ts` (unmodified bytes, EHT credit in the header) | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 59 — black hole zoomed to object scale)
+
+Caught on the Batch 58 simulation before the owner saw it live: the M87 ring fills only ~45% of its frame, so at the planned 1.05em box the visible ring measured ~0.47em — smaller than the "o" it replaces, reading as a glowing dot instead of an object. Fix inside the approved plan: the photo now zooms 1.95× inside its box (mask moved to the wrapper span, widened to solid 62% / gone 88%), so the ring spans ~0.9em like the reference's rocket. Verified on the re-rendered simulation: word still reads instantly, ring overlaps h/l edges slightly like the reference's objects do.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AW1 | Slide 4 + PainBeats | BlackHoleLetter: img scale(1.95) inside a masked wrapper so the ring itself is the object | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

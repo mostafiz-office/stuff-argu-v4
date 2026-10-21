@@ -244,6 +244,13 @@ function BlackHoleLetter({ delay }: { delay: number }) {
         height: "1.05em",
         verticalAlign: "-0.255em",
         margin: "0 -0.235em",
+        overflow: "hidden",
+        // Batch 59: mask widened (solid to 62%, gone by 88%) because
+        // the photo is zoomed inside the box (see img transform).
+        maskImage: "radial-gradient(circle, black 62%, transparent 88%)",
+        WebkitMaskImage:
+          "radial-gradient(circle, black 62%, transparent 88%)",
+        filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.55))",
       }}
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -258,11 +265,10 @@ function BlackHoleLetter({ delay }: { delay: number }) {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          maskImage:
-            "radial-gradient(circle, black 52%, transparent 71%)",
-          WebkitMaskImage:
-            "radial-gradient(circle, black 52%, transparent 71%)",
-          filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.55))",
+          // The ring fills only ~45% of the source frame; zoom so the
+          // ring itself spans ~0.9em and reads as an object in the
+          // word, like the rocket in the reference.
+          transform: "scale(1.95)",
         }}
       />
     </motion.span>
