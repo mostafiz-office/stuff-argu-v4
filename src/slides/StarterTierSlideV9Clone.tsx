@@ -5,6 +5,7 @@ import {
   Clock,
   BadgeCheck,
   Sparkles,
+  CheckCircle,
 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
@@ -176,14 +177,15 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             1+ Year Industry Experience
                           </p>
                           <p className="text-[20px] text-pres-text-muted mt-1">
-                            1+ year in industry · production teams
+                            3+ years coding · 1+ year in industry
                           </p>
                         </div>
                       </TooltipTrigger>
                       <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
                         <div className="text-[16px] text-pres-text-muted">
-                          One full year shipping real products with production teams.
-                          A real engineer, not a trainee.
+                          Doing coding for 3 years, plus one full year shipping
+                          real products with production teams. A real engineer,
+                          not a trainee.
                         </div>
                       </TooltipContent>
                     </Tooltip>
@@ -201,6 +203,25 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     </div>
 
                     <div className="w-full h-[1px] bg-white/10 mb-3" />
+
+                    {/* Batch 71: Tier 1 feature checklist restored (was on the
+                        slide in the review video; dropped in the FB-29 rewrite) */}
+                    <ul className="mb-5 space-y-2.5">
+                      {[
+                        "Fixes fragile vibe & AI code",
+                        "Starts in 20 minutes",
+                        "Works in your timezone & stack",
+                        "Slack, GitHub & Jira access",
+                      ].map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-center gap-2.5 text-[20px] text-white/85"
+                        >
+                          <CheckCircle className="w-5 h-5 shrink-0 text-pres-accent" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
 
                     {/* Alim Upsell Card (Interactive Reveal) */}
                     {showAlimUpsell ? (

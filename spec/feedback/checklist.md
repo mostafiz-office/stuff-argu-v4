@@ -536,6 +536,14 @@ Owner marked the Startup Offer subline "No contracts. No hiring risk. Just resul
 |---|-------|--------|--------|
 | BH1 | Slide 11 (StarterTierSlideV9Clone) | Subline "No contracts. No hiring risk. Just results." removed | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 71 — starter features restored)
+
+Owner pointed at the review video (t=1848, the 29:53–32:27 Startup Offer block): pricing features from that feedback were missing on slide 11. Audit shared in chat first (video transcript + the 30:30 spec screenshot vs current code); owner approved the restore ("yes update"). Restored in the left pricing card, in the old card's order (price → hours/deposit → checklist → bonus box): the 4-item checklist "Fixes fragile vibe & AI code" / "Starts in 20 minutes" / "Works in your timezone & stack" / "Slack, GitHub & Jira access" (amber CheckCircle icons, white/85 text) — dropped during the FB-29/Batch 10 rewrite (Batch 10's A3 "1+ Year" alignment is what removed the coding half). Experience line restored: focus subline now "3+ years coding · 1+ year in industry", and the hover detail now opens "Doing coding for 3 years, plus one full year shipping real products…" (video: detail below + more on hover). The "Fix Fragile Vibe Code" right-side row was NOT separately restored — its feature is back as checklist item 1, per the approved proposal's scope. Verified still present (not missing): the 14 Day Money Back Guarantee / 100% Risk Free bottom banner.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BI1 | Slide 11 (StarterTierSlideV9Clone) | Tier 1 feature checklist (4 items) restored in the pricing card; "3+ years coding" restored to the experience line + hover | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
