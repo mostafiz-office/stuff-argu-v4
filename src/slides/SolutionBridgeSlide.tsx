@@ -112,13 +112,13 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
   useEffect(() => {
     const step = !split ? 0 : litCount + 1;
     const tooltips = [
-      "Press Next to reveal the solution",
-      "Press Next to light level 1 (1 of 5)",
-      "Press Next to light level 2 (2 of 5)",
-      "Press Next to light level 3 (3 of 5)",
-      "Press Next to light level 4 (4 of 5)",
-      "Press Next to light level 5 (5 of 5)",
-      "Press Next to continue",
+      "Reveal solution",
+      "Level 1 (1 of 5)",
+      "Level 2 (2 of 5)",
+      "Level 3 (3 of 5)",
+      "Level 4 (4 of 5)",
+      "Level 5 (5 of 5)",
+      "Continue",
     ];
     window.__slideNavigationGate = {
       trigger: () => {

@@ -467,3 +467,18 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Batch 69: light gate hint (replaces the bouncing amber pill) */
+@keyframes gate-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gate-hint {
+  animation: gate-hint-in 0.3s ease both;
+}

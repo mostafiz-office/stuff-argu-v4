@@ -293,10 +293,13 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
       {/* Interactive Gate Tooltip Bubble - Top Right */}
       {gateTooltip && (
-        <div className="fixed top-[74px] right-6 z-[250] pointer-events-none animate-bounce">
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-xs font-bold font-heading shadow-[0_0_25px_rgba(255,173,1,0.6)] border border-white/30">
-            <span>{gateTooltip}</span>
-          </div>
+        <div
+          key={gateTooltip}
+          className="gate-hint fixed top-[78px] right-7 z-[250] pointer-events-none"
+        >
+          <span className="text-[13px] font-medium tracking-wide text-white/55">
+            {gateTooltip}
+          </span>
         </div>
       )}
 

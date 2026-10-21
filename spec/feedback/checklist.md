@@ -520,6 +520,14 @@ Owner asked for tooltips on the TierPlanDetail switcher pills ("when hover on th
 |---|-------|--------|--------|
 | BF1 | Pricing overlay (TierPlanDetail) | Hover tooltips with full pricing details on the tier switcher pills | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 69 — gate hint pill removed)
+
+Owner: remove the animated amber gate pill ("Press Next to reveal the bonus (1 of 3)"); replace with a light, one/two-word, non-highlighted tooltip. Plan approved, then "go". Built: SlideNavigation's shared hint is now plain muted text (13px, white/55, medium, no fill/glow/border, no bounce) at the same top-right spot, with a soft 0.3s fade on change (`.gate-hint` keyframe appended to index.css; the div is keyed by its text so each step change re-fades). Texts shortened at the source — Starter: "Reveal bonus (1 of 3)" / "Growth booster (2 of 3)" / "Almost done (3 of 3)" / "Continue"; SolutionBridge: "Reveal solution" / "Level 1 (1 of 5)" … "Level 5 (5 of 5)" / "Continue". Gate mechanics untouched. Because the renderer is shared, both gated slides (5 and 11) got the light treatment, as stated in the approved plan.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BG1 | Slides 5 + 11 (shared SlideNavigation) | Bouncing amber gate pill replaced by a light one/two-word text hint; hint texts shortened | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
