@@ -456,6 +456,14 @@ Owner supplied his own black hole image (white accretion-disc render) and direct
 |---|-------|--------|--------|
 | AX1 | Slide 4 + PainBeats + asset | Owner's black hole image (transparent cutout) as the "o", contained in its letter space per his no-overlap rule | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 61 — black hole grown for balance)
+
+Assistant's design review of Batch 60 (requested by the owner): both words read instantly and the tile position is right; the one imbalance — the hole (ring ~0.63em) is visually quieter than the 0.92em tile. Owner approved the recommended growth. Box 0.80em → 0.86em (ring ~0.68em), verticalAlign −0.16em, margins −0.14em. No-touch verified by font measurement at 176px: the "o" centre sits 0.370em from the h ink edge and 0.372em from the l ink edge; the asset's bright extent is 0.409 of its box, reaching 0.352em — ~3px of air remains on both sides.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AY1 | Slide 4 + PainBeats | BlackHoleLetter box 0.80em → 0.86em for device balance; no-touch re-verified by measurement | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

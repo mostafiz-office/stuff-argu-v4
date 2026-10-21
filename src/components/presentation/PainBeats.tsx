@@ -241,12 +241,14 @@ function BlackHoleLetter({ delay }: { delay: number }) {
       style={{
         // Batch 60 (owner): his own black hole image, pre-cut with a
         // transparent background, sized to sit INSIDE its letter
-        // space — the bright ring spans ~0.63em and never touches the
-        // neighbouring h or l.
-        width: "0.8em",
-        height: "0.8em",
-        verticalAlign: "-0.13em",
-        margin: "0 -0.11em",
+        // space. Batch 61 (owner-approved growth): box 0.86em, ring
+        // ~0.68em; the asset's bright extent (0.409 of box) reaches
+        // 0.352em from centre vs the measured 0.370em to the h/l ink
+        // — still no touch.
+        width: "0.86em",
+        height: "0.86em",
+        verticalAlign: "-0.16em",
+        margin: "0 -0.14em",
       }}
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
