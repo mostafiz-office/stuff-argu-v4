@@ -128,12 +128,19 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   tabIndex={0}
                   aria-label={`View ${tier.name} details`}
                   onClick={(e) => { e.stopPropagation(); setOverlay(idx); }}
+                  // Batch 65 (owner): hover timing copied from
+                  // present-v1's card system (.player-card): EVERY
+                  // hover property — lift, border, background,
+                  // shadow — runs on ONE 450ms cubic-bezier
+                  // (0.22, 1, 0.36, 1) clock, in and out. Before,
+                  // the lift took 0.35s while border/shadow snapped
+                  // in 200ms, which felt fast and unpremium.
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: staggerDelay(idx, 0.22, 0.1), duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
+                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
                   whileTap={{ scale: 0.99 }}
-                  className={`group cursor-pointer relative flex flex-col h-full p-12 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-200 backdrop-blur-md shadow-2xl ${
+                  className={`group cursor-pointer relative flex flex-col h-full p-12 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-md shadow-2xl ${
                     tier.highlight
                       ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
                       : "bg-pres-surface/75 border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
@@ -211,7 +218,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 font-heading text-[20px] font-semibold text-pres-accent opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0">
+                    <div className="mt-6 font-heading text-[20px] font-semibold text-pres-accent opacity-0 translate-y-1 transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:translate-y-0">
                       View details →
                     </div>
                   </div>

@@ -488,6 +488,14 @@ Owner (annotated screenshot of slide 5): "also highlight save and hiring word he
 |---|-------|--------|--------|
 | BB1 | Slide 5 (SolutionBridgeSlide) | Marker highlights on "Save" and "Hiring" in the L3 phrase, L3 orange, matching the 5% / Missing system | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 65 — pricing card hover smoothness)
+
+Owner pointed at present-v1 slide 22's card hover ("hover in and hover out that smooth... currently it's too fast and not premium feel") and asked for the same on our slide 6 (Pricing Tiers). Extracted from present-v1's compiled CSS: its showcase card class (.player-card) runs transform, border-color and box-shadow on ONE clock — 0.45s cubic-bezier(0.22, 1, 0.36, 1) — hover translateY(-4px) scale(1.015), border accent 0.6, layered shadow + amber glow. Ours had split clocks (lift 0.35s framer, border/shadow 200ms CSS) — the snap he felt. Fix (timing only, geometry unchanged): whileHover duration 0.35 → 0.45 (same ease); card class transition duration-200 → duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)]; the card's "View details →" group-hover reveal aligned to the same 450ms curve. Buttons untouched (DeckButton system). Note: the reference uses no literal transition-delay — the "little delay" feel is the 450ms expo tail, applied symmetrically in and out.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BC1 | Slide 6 (PricingTiersSlide) | All tier-card hover properties unified on the reference's 450ms cubic-bezier(0.22,1,0.36,1) clock, hover in and out | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
