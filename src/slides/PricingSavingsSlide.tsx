@@ -75,9 +75,9 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                 {...fadeUp(0)}
                 className="pres-title font-bold font-heading tracking-tight text-white mb-4"
               >
-                Pay Less.
+                Pay <span className="text-pres-accent">Less.</span>
                 <br />
-                Ship More.
+                Ship <span className="text-pres-accent">More.</span>
               </motion.h1>
               <p className="text-[26px] text-pres-text-muted">Top talent, a fraction of US rates.</p>
               {/* FB-31: the slide's ONE yellow highlight — top saving figure, no "up to" */}
@@ -110,7 +110,22 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                     <span className="text-[30px] font-bold font-heading text-white">{item.role}</span>
                     <span className="text-[18px] font-semibold px-3 py-1 rounded-full bg-white/10 text-white/80">{item.tier}</span>
                   </div>
-                  <span className="text-[20px] font-semibold px-4 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent">{item.savings}</span>
+                  <span className="text-[20px] font-medium px-4 py-1 rounded-full bg-white/10 text-white">
+                    Up to{" "}
+                    <span className="font-semibold text-pres-accent">
+                      {item.savings.match(/\d+%/)?.[0]}
+                    </span>{" "}
+                    <span className="text-pres-accent">S</span>
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(90deg,#ffc95e,#ffdf9e 55%,#fff3cf)",
+                      }}
+                    >
+                      avings
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-center justify-between text-[22px]">
                   <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>

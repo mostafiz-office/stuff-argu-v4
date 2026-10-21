@@ -568,6 +568,14 @@ Owner supplied the seo-packages-v2 link system (`?p1=500=highlight&p2=999&p3=120
 |---|-------|--------|--------|
 | BL1 | Deck-wide (urlOffers + PricingTiersSlide, TierPlanDetail, TierDetailSlide, StarterTierSlideV9Clone) | URL-driven offers: t1/t2/t3a/t3b with highlight/badge grammar; struck real price + yellow offer price | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 75 — slide 12 badge + headline refinement)
+
+Owner rejected Batch 73's whole-badge yellow and refined the plan over three rounds before "go": badge returns to the quiet dark pill; inside it, "Up to" stays plain white, the percentage is YELLOW TEXT ONLY (no pill/block behind the number), and "Savings" uses the slide-1 word treatment — "S" solid yellow, "avings" in the fading pale-amber gradient (90deg, #ffc95e → #ffdf9e 55% → #fff3cf, the Batch 27 recipe). Headline: "Less." and "More." in yellow (text-pres-accent); "Pay" and "Ship" stay white — this supersedes FB-32's all-white headline and FB-31's single-highlight rule at his explicit direction. The "76% saving" amber line, 80% card, rate rows and prices untouched.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BM1 | Slide 12 (PricingSavingsSlide) | Savings badges segmented (white "Up to", yellow %, S solid + fading "avings"); headline "Less."/"More." yellow | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
