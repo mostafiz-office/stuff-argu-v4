@@ -6,6 +6,7 @@ import {
   UnderlineSweep,
   DragReveal,
 } from "@/components/presentation/reveal";
+import { blackHoleImage } from "@/assets/blackHoleData";
 
 export type PainHighlightColor = "yellow" | "red";
 export type PainHighlightStyle = "marker" | "underline" | "drag";
@@ -50,7 +51,7 @@ export interface PainBeat {
    *  object-letter device from the same reference). */
   objectAt?: number;
   /** The object that replaces the letter. */
-  objectKind?: "vortex";
+  objectKind?: "blackhole";
 }
 
 const Highlight: React.FC<{
@@ -171,6 +172,9 @@ function PillWord({
 // letter is replaced by an amber gradient tile, slightly rotated,
 // bearing a symbol that means the word's pain (an hourglass for the
 // hiring wait) or the letter itself in black.
+// Batch 58 (owner): the tile acts like the reference's — oversized
+// (0.92em) with negative margins so it overlaps its neighbours and
+// sits centred on the cap-height band; hourglass enlarged.
 function TileLetter({
   delay,
   symbol,
@@ -184,14 +188,14 @@ function TileLetter({
     <motion.span
       className="inline-flex items-center justify-center"
       style={{
-        width: "0.84em",
-        height: "0.84em",
+        width: "0.92em",
+        height: "0.92em",
         borderRadius: "0.15em",
         background:
           "linear-gradient(135deg, #ffd97a 0%, #ffad01 55%, #dd8f00 100%)",
         verticalAlign: "-0.1em",
-        margin: "0 0.03em",
-        boxShadow: "0 12px 28px rgba(0,0,0,0.5)",
+        margin: "0 -0.05em",
+        boxShadow: "0 14px 32px rgba(0,0,0,0.55)",
       }}
       initial={{ opacity: 0, scale: 0.7, rotate: -16 }}
       animate={{ opacity: 1, scale: 1, rotate: -6 }}
@@ -201,7 +205,7 @@ function TileLetter({
         <svg
           viewBox="0 0 64 64"
           aria-hidden
-          style={{ height: "0.5em", width: "0.5em" }}
+          style={{ height: "0.56em", width: "0.56em" }}
         >
           <path
             fill="#1a1206"
@@ -225,66 +229,42 @@ function TileLetter({
 }
 
 // Batch 57: object-letter device (same reference) — a letter is
-// replaced by an object that means the word. The vortex is the "o" of
-// Sinkhole: a black hole with an amber swirl rim.
-function VortexLetter({ delay }: { delay: number }) {
+// replaced by an object that means the word.
+// Batch 58 (owner): the object is a REAL photograph, like the rocket
+// in the reference — the Event Horizon Telescope image of the M87
+// black hole (CC BY 4.0, EHT Collaboration), oversized in the "o"
+// slot of Sinkhole with its edges melted by a radial mask so no
+// square patch ever shows.
+function BlackHoleLetter({ delay }: { delay: number }) {
   return (
     <motion.span
       className="inline-block"
       style={{
-        width: "0.8em",
-        height: "0.8em",
-        verticalAlign: "-0.14em",
-        margin: "0 0.02em",
+        width: "1.05em",
+        height: "1.05em",
+        verticalAlign: "-0.255em",
+        margin: "0 -0.235em",
       }}
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.55, delay: delay + 0.35, ease: presentationEase }}
     >
-      <svg
-        viewBox="0 0 100 100"
+      <img
+        src={blackHoleImage}
+        alt=""
         aria-hidden
+        draggable={false}
         style={{
           width: "100%",
           height: "100%",
-          filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.6))",
+          objectFit: "cover",
+          maskImage:
+            "radial-gradient(circle, black 52%, transparent 71%)",
+          WebkitMaskImage:
+            "radial-gradient(circle, black 52%, transparent 71%)",
+          filter: "drop-shadow(0 8px 20px rgba(0,0,0,0.55))",
         }}
-      >
-        <defs>
-          <radialGradient id="vortexCore" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#000000" />
-            <stop offset="55%" stopColor="#0b0714" />
-            <stop offset="85%" stopColor="#241203" />
-            <stop offset="100%" stopColor="#3a2002" />
-          </radialGradient>
-        </defs>
-        <circle cx="50" cy="50" r="47" fill="url(#vortexCore)" />
-        <path
-          d="M50 12 a38 38 0 1 1 -26.9 11"
-          fill="none"
-          stroke="#ffad01"
-          strokeWidth="5"
-          strokeLinecap="round"
-          opacity="0.9"
-        />
-        <path
-          d="M50 24 a26 26 0 1 1 -18.4 7.6"
-          fill="none"
-          stroke="#ffc95e"
-          strokeWidth="4"
-          strokeLinecap="round"
-          opacity="0.75"
-        />
-        <path
-          d="M50 36 a14 14 0 1 1 -9.9 4.1"
-          fill="none"
-          stroke="#ffe1a0"
-          strokeWidth="3"
-          strokeLinecap="round"
-          opacity="0.6"
-        />
-        <circle cx="50" cy="50" r="7" fill="#000000" />
-      </svg>
+      />
     </motion.span>
   );
 }
@@ -348,8 +328,8 @@ export const PainBeats: React.FC<{
                     letter={ch}
                   />
                 );
-              if (beat.objectAt === ci && beat.objectKind === "vortex")
-                return <VortexLetter key={ci} delay={delay} />;
+              if (beat.objectAt === ci && beat.objectKind === "blackhole")
+                return <BlackHoleLetter key={ci} delay={delay} />;
               return <React.Fragment key={ci}>{ch}</React.Fragment>;
             })}
           </>

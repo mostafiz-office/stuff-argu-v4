@@ -432,6 +432,14 @@ Owner shared a new reference ("Design / Publish": a letter replaced by a gradien
 |---|-------|--------|--------|
 | AU1 | Slide 4 + PainBeats | Letter-object title per the approved plan: hourglass tile in "Hiring", vortex "o" in "Sinkhole", 176px Ubuntu Bold, bare | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 58 — slide 4 real black hole photo + tile presence)
+
+Owner (after Batch 57): the reference objects are REAL (a real rocket) — replace the drawn vortex with a real black hole image; and enhance the "Hiring" tile's position/presence. Plan shared, owner said "go". Changes: (1) `VortexLetter` SVG deleted → `BlackHoleLetter`: the Event Horizon Telescope M87 photograph (CC BY 4.0, EHT Collaboration; shipped as `src/assets/blackHoleData.ts` — a data-URI module, because push-files rejects binary files; the 960px Commons JPEG, 24KB, unmodified) at 1.05em in the "o" slot, negative margins keep the letter slot at the "o" advance, radial mask (solid to 52%, gone by 71%) melts its black edges into the slide; `objectKind` renamed "vortex" → "blackhole". (2) TileLetter: 0.84em → 0.92em with −0.05em margins so it overlaps H and r like the reference's tile, centred on the cap band (verticalAlign −0.1em at the new size), hourglass 0.5em → 0.56em, deeper shadow.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AV1 | Slide 4 + PainBeats + asset | Real M87 black hole photo as the "o" of Sinkhole (radial-masked, oversized); tile enlarged/overlapping per the reference. NOTE: push-files rejects binaries (not UTF-8), so the JPEG ships as a data-URI module `src/assets/blackHoleData.ts` (unmodified bytes, EHT credit in the header) | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

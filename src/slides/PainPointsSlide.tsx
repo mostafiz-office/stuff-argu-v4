@@ -205,7 +205,7 @@ const problems: Problem[] = [
       {
         text: "Sinkhole",
         objectAt: 5,
-        objectKind: "vortex",
+        objectKind: "blackhole",
         sizePx: 176,
         fontFamily: "'Ubuntu', sans-serif",
         fontWeight: 700,
@@ -223,8 +223,11 @@ const problems: Problem[] = [
     highlightIndex: -1,
     align: "left",
     // Batch 57 (owner): letter-object title, heading only — the "i" of
-    // Hiring becomes an amber hourglass tile, the "o" of Sinkhole a
-    // black-hole vortex (plan: letter-object-title-slide4-plan.md).
+    // Hiring becomes an amber hourglass tile, the "o" of Sinkhole an
+    // object letter (plan: letter-object-title-slide4-plan.md).
+    // Batch 58 (owner): the "o" is the REAL M87 black hole photo
+    // (oversized, radial-masked); the tile is enlarged to overlap its
+    // neighbours like the reference's tile.
     // Photo verified: subject right, dark copy space left — no flip.
     bare: true,
   },
