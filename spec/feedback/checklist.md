@@ -496,6 +496,14 @@ Owner pointed at present-v1 slide 22's card hover ("hover in and hover out that 
 |---|-------|--------|--------|
 | BC1 | Slide 6 (PricingTiersSlide) | All tier-card hover properties unified on the reference's 450ms cubic-bezier(0.22,1,0.36,1) clock, hover in and out | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 66 — How It Works: all steps clickable)
+
+Owner asked why only Step 01's detail worked on slide 10 (How It Works). Root cause (verified in code): FB-26 only ever wired Step 01 — `isDiscovery` gated the role, tabIndex, onClick and the "Tap for detail" hint; steps 02–04 were display-only. Fix (owner "go"): the overlay is now data-driven — state `detailStep: number | null`; every step carries 3 `segments` (Step 01's copy unchanged; Step 02's segments group the deck's own named stages — Screening / Real work tests / Live test & hire — no invented stage names; Step 03: Joins your tools / Learns your codebase / Starts shipping; Step 04: Architect supervision / Regular audits / Flexible scaling). All four cards are buttons (click + Enter/Space), share Step 01's accent border treatment, and show "Tap for detail". Step 02's card badge "In 20 min" untouched (FB-27 judgment call stands).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BD1 | Slide 10 (PricingHowItWorksSlide) | Detail overlays for Steps 02–04 in Step 01's pattern; all cards clickable with the detail hint | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

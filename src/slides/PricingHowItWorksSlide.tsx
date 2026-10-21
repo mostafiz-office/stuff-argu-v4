@@ -10,24 +10,11 @@ interface PricingHowItWorksSlideProps {
 }
 
 export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () => {
-  const [detailOpen, setDetailOpen] = useState(false);
+  // Batch 66 (owner): every step now opens a detail overlay, not
+  // only Step 01 — detailStep holds the open step index (null = closed).
+  const [detailStep, setDetailStep] = useState<number | null>(null);
 
-  // FB-27: Discovery Call detail = 3 segments, no "20 minutes" label
-  const discoverySegments = [
-    {
-      title: "Requirements",
-      desc: "What you're building and why it matters.",
-    },
-    {
-      title: "Stack & workflow",
-      desc: "Your tools, your team, and how you ship.",
-    },
-    {
-      title: "Tier match",
-      desc: "We match your ideal tier and plan next steps.",
-    },
-  ];
-
+  // FB-27: detail overlays carry 3 segments each, no "20 minutes" label.
   const steps = [
     {
       num: "STEP 01",
@@ -35,6 +22,20 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       title: "Discovery Call",
       desc: "Share your goals; we match your tier.",
       time: "Day 1",
+      segments: [
+        {
+          title: "Requirements",
+          desc: "What you're building and why it matters.",
+        },
+        {
+          title: "Stack & workflow",
+          desc: "Your tools, your team, and how you ship.",
+        },
+        {
+          title: "Tier match",
+          desc: "We match your ideal tier and plan next steps.",
+        },
+      ],
     },
     {
       num: "STEP 02",
@@ -42,6 +43,20 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       title: "7-Stage Vetting",
       desc: "Pick from prescreened top 5% candidates.",
       time: "In 20 min",
+      segments: [
+        {
+          title: "Screening",
+          desc: "Initial sign up and training, assessed at every step.",
+        },
+        {
+          title: "Real work tests",
+          desc: "Practical assignments and a simulation of your real project.",
+        },
+        {
+          title: "Live test & hire",
+          desc: "You interview the finalists live and pick your hire.",
+        },
+      ],
     },
     {
       num: "STEP 03",
@@ -49,6 +64,20 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       title: "Rapid Onboarding",
       desc: "Your engineer joins Slack and starts shipping.",
       time: "Day 3 to 7",
+      segments: [
+        {
+          title: "Joins your tools",
+          desc: "Slack, repos, and access set up from day one.",
+        },
+        {
+          title: "Learns your codebase",
+          desc: "Docs, walkthroughs, and your workflow, fast.",
+        },
+        {
+          title: "Starts shipping",
+          desc: "First real tasks inside the first week.",
+        },
+      ],
     },
     {
       num: "STEP 04",
@@ -56,6 +85,20 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       title: "Ongoing Support",
       desc: "Architect supervision, audits, flexible scaling.",
       time: "Ongoing",
+      segments: [
+        {
+          title: "Architect supervision",
+          desc: "A chief architect oversees the work quality.",
+        },
+        {
+          title: "Regular audits",
+          desc: "Code and delivery checked on a steady rhythm.",
+        },
+        {
+          title: "Flexible scaling",
+          desc: "Scale the team up or down as needs change.",
+        },
+      ],
     },
   ];
 
@@ -102,20 +145,15 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
             <div className="relative z-10 grid grid-cols-4 gap-7 w-full">
               {steps.map((step, idx) => {
                 const Icon = step.icon;
-                const isDiscovery = idx === 0;
                 return (
                   <motion.div
                     key={idx}
                     {...fadeUp(staggerDelay(idx, 0.16, 0.08))}
-                    role={isDiscovery ? "button" : undefined}
-                    tabIndex={isDiscovery ? 0 : undefined}
-                    onClick={isDiscovery ? () => setDetailOpen(true) : undefined}
-                    onKeyDown={isDiscovery ? (e) => { if (e.key === "Enter" || e.key === " ") setDetailOpen(true); } : undefined}
-                    className={`flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl ${
-                      isDiscovery
-                        ? "border-pres-accent/40 hover:border-pres-accent cursor-pointer hover:bg-pres-surface/95"
-                        : "border-white/10 hover:border-pres-accent/40 hover:bg-pres-surface/95"
-                    }`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setDetailStep(idx)}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setDetailStep(idx); }}
+                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-pres-accent/40 hover:border-pres-accent cursor-pointer hover:bg-pres-surface/95 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl"
                   >
                     {/* Circle Icon */}
                     <div className="w-[66px] h-[66px] rounded-full bg-pres-surface border-[3px] border-pres-accent flex items-center justify-center text-pres-accent mb-3.5 shadow-[0_0_25px_rgba(255,173,1,0.3)] z-10">
@@ -142,12 +180,10 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                       {step.time}
                     </div>
 
-                    {isDiscovery && (
-                      <div className="mt-3 flex items-center gap-2 text-[19px] font-semibold text-pres-accent">
-                        <MousePointerClick className="w-4 h-4 text-pres-accent" />
-                        Tap for detail
-                      </div>
-                    )}
+                    <div className="mt-3 flex items-center gap-2 text-[19px] font-semibold text-pres-accent">
+                      <MousePointerClick className="w-4 h-4 text-pres-accent" />
+                      Tap for detail
+                    </div>
                   </motion.div>
                 );
               })}
@@ -155,16 +191,16 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
           </div>
         </div>
 
-        {/* FB-26: Discovery Call detail view */}
+        {/* FB-26 detail view, Batch 66: one overlay for every step */}
         <AnimatePresence>
-          {detailOpen && (
+          {detailStep !== null && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-              onClick={() => setDetailOpen(false)}
+              onClick={() => setDetailStep(null)}
             >
               <motion.div
                 initial={{ scale: 0.92, y: 24 }}
@@ -177,14 +213,14 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                 <div className="flex items-start justify-between mb-8">
                   <div>
                     <div className="text-[22px] font-semibold tracking-[0.15em] text-pres-accent uppercase mb-2">
-                      Step 01
+                      {steps[detailStep].num}
                     </div>
                     <h2 className="font-heading text-[52px] font-bold text-white leading-tight">
-                      Discovery Call
+                      {steps[detailStep].title}
                     </h2>
                   </div>
                   <button
-                    onClick={() => setDetailOpen(false)}
+                    onClick={() => setDetailStep(null)}
                     aria-label="Close detail"
                     className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-pres-text-muted hover:text-white hover:border-pres-accent/60 transition-colors"
                   >
@@ -192,7 +228,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                   </button>
                 </div>
                 <div className="space-y-5">
-                  {discoverySegments.map((seg, sIdx) => (
+                  {steps[detailStep].segments.map((seg, sIdx) => (
                     <motion.div
                       key={seg.title}
                       initial={{ opacity: 0, x: -18 }}
