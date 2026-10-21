@@ -504,6 +504,14 @@ Owner asked why only Step 01's detail worked on slide 10 (How It Works). Root ca
 |---|-------|--------|--------|
 | BD1 | Slide 10 (PricingHowItWorksSlide) | Detail overlays for Steps 02–04 in Step 01's pattern; all cards clickable with the detail hint | ✅ CODE |
 
+## Owner ruling (2026-10-21, Batch 67 — FB-27 CLOSED)
+
+Owner: Step 02 must not say "20 minutes" — the vetting badge now reads **"7 to 21 days"** (range written with "to", per his standing rule). This closes the FB-27 judgment call: the "In 20 min" badge kept since Batch 6 is removed at his direction. Only the Step 02 card badge changed; Step 02's overlay segments carry no time claim. (The V3 cover's "Hire in 20 Minutes" headline is a separate claim — untouched, his call if he wants it revisited.)
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BE1 | Slide 10 (PricingHowItWorksSlide) | Step 02 time badge "In 20 min" → "7 to 21 days" | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

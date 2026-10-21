@@ -42,7 +42,7 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
       icon: UserCheck,
       title: "7-Stage Vetting",
       desc: "Pick from prescreened top 5% candidates.",
-      time: "In 20 min",
+      time: "7 to 21 days",
       segments: [
         {
           title: "Screening",
