@@ -160,7 +160,7 @@ const problems: Problem[] = [
         sizePx: 118,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
-        className: "whitespace-nowrap pain-headline-shadow mt-[19px]",
+        className: "whitespace-nowrap pain-headline-shadow mt-[34px]",
       },
       {
         text: "the AI wrote.",
@@ -168,7 +168,7 @@ const problems: Problem[] = [
         sizePx: 118,
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
-        className: "whitespace-nowrap pain-headline-shadow mt-[19px]",
+        className: "whitespace-nowrap pain-headline-shadow mt-[34px]",
       },
     ],
     short: "Nobody can explain what the AI wrote.",

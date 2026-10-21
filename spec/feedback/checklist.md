@@ -408,6 +408,14 @@ Owner compared the build with his reference screenshot twice ("still not same") 
 |---|-------|--------|--------|
 | AR1 | Slide 3 + PainBeats | Title 118px in 3 lines (Split A, measured); PillWord = dark amber glass, white 600 word, generous padding | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 55 — slide 3 pill clearance)
+
+Caught on the Batch 54 simulation render before the owner saw it live: at 118px the pill is 146px tall (line box 113 + 0.28em padding) but the line pitch was 132px (0.96em box + 19px), so the "explain" and "AI" pills — whose x-ranges intersect — would touch by ~14px between lines. Line gap raised 19px → 34px (pitch 147px, clears the pill; also closer to the reference's airy leading). Slide 3 beats only.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AS1 | Slide 3 | Beat margins mt-[19px] → mt-[34px] on lines 2–3 so consecutive pills never touch | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
