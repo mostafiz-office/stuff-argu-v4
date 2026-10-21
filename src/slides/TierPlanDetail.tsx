@@ -5,6 +5,12 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 import { TIER_FEATURE_GROUPS } from "@/data/tierFeatures";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export type TierSummary = {
   name: string;
@@ -58,17 +64,39 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           </div>
           <p className="mt-10 text-[28px] leading-[1.35] text-pres-text-muted">{AUDIENCE[index]}</p>
 
+          <TooltipProvider delayDuration={300}>
           <div className="mt-12 flex flex-wrap gap-3">
             {tiers.map((t, i) =>
               i === index ? null : (
-                <button
-                  key={t.name}
-                  type="button"
-                  onClick={() => onSelect(i)}
-                  className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
-                >
-                  {t.name.replace(/^Tier\s+\S+\s+/, "")}
-                </button>
+                <Tooltip key={t.name}>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      onClick={() => onSelect(i)}
+                      className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
+                    >
+                      {t.name.replace(/^Tier\s+\S+\s+/, "")}
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-[320px] p-4 text-left">
+                    <div className="flex items-center gap-2">
+                      <span className="font-heading text-[18px] font-bold text-white">{t.name}</span>
+                      {t.badge && (
+                        <span className="pres-dark-safe-accent rounded-full bg-pres-accent px-2 py-0.5 font-heading text-[11px] font-bold text-pres-bg">
+                          {t.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1 text-[15px] text-pres-text-muted">{AUDIENCE[i]}</div>
+                    <div className="mt-2 text-[15px] text-white">
+                      {t.price}
+                      {t.priceSuffix}
+                    </div>
+                    <div className="mt-1 text-[15px] text-pres-text-muted">
+                      {t.experience} Experience · {t.hours}
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
               )
             )}
             <button
@@ -79,6 +107,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
               Compare all plans
             </button>
           </div>
+          </TooltipProvider>
         </motion.div>
 
         <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[56px]">

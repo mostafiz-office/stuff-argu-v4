@@ -512,6 +512,14 @@ Owner: Step 02 must not say "20 minutes" — the vetting badge now reads **"7 to
 |---|-------|--------|--------|
 | BE1 | Slide 10 (PricingHowItWorksSlide) | Step 02 time badge "In 20 min" → "7 to 21 days" | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 68 — plan detail switcher tooltips)
+
+Owner asked for tooltips on the TierPlanDetail switcher pills ("when hover on those also tooltip tier names growth, leadership of all pricing details"); plan approved, then "go". Built with the same ui/tooltip system as the pricing cards (FB-22): each switcher pill (the two non-open tiers) shows, above the pill after a 300ms hover delay — full tier name, badge chip when present (Skilled's BEST VALUE), the tier's audience line, flat price with suffix, and "Experience · hours". All values come from the tiers prop + AUDIENCE already in the component; nothing new written. "Compare all plans" gets no tooltip (it opens the full table); pill clicks still switch tiers.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BF1 | Pricing overlay (TierPlanDetail) | Hover tooltips with full pricing details on the tier switcher pills | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
