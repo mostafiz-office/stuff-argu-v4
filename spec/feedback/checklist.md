@@ -528,6 +528,14 @@ Owner: remove the animated amber gate pill ("Press Next to reveal the bonus (1 o
 |---|-------|--------|--------|
 | BG1 | Slides 5 + 11 (shared SlideNavigation) | Bouncing amber gate pill replaced by a light one/two-word text hint; hint texts shortened | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 70 — Startup Offer subline removed)
+
+Owner marked the Startup Offer subline "No contracts. No hiring risk. Just results." for removal. Deleted the span from the slide's h1; the title "Startup Offer" stands alone. Nothing else on the slide changed.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BH1 | Slide 11 (StarterTierSlideV9Clone) | Subline "No contracts. No hiring risk. Just results." removed | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

@@ -145,7 +145,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 className="pres-title font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
                 Startup <span className="text-pres-accent">Offer</span>
-                <span className="block text-[26px] font-normal font-sans text-pres-text-muted tracking-normal mt-3">No contracts. No hiring risk. Just results.</span>
               </motion.h1>
 
             </div>
