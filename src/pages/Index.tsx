@@ -4,9 +4,7 @@ import { PricingCoverV3 } from "@/slides/PricingCoverV3";
 import { PricingCoverV1 } from "@/slides/PricingCoverV1";
 import { OutagePanicSlide, FragileCodeSlide, HiringSinkholeSlide } from "@/slides/PainPointsSlide";
 import { SolutionBridgeSlide } from "@/slides/SolutionBridgeSlide";
-import { DeliveryPromisesSlide, ProductHealthSlide } from "@/slides/PromiseBandsSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
-import { WhoWeAreSlide } from "@/slides/IdentitySlides";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
 import { ExpertValuationBreakdownSlide } from "@/slides/ExpertValuationBreakdownSlide";
 import { PricingSavingsSlide } from "@/slides/PricingSavingsSlide";
@@ -95,9 +93,6 @@ const Index = () => {
       FragileCodeSlide,
       HiringSinkholeSlide,
       SolutionBridgeSlide,
-      DeliveryPromisesSlide,
-      ProductHealthSlide,
-      WhoWeAreSlide,
       PricingTiersSlide,
       PremiumExpertSlideV2,
       ExpertValuationBreakdownSlide,

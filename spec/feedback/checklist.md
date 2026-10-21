@@ -472,6 +472,14 @@ Owner shared a design-tool screenshot (empty rectangle outline, corner handles, 
 |---|-------|--------|--------|
 | AZ1 | Slide 3 + PainBeats | Selection-box highlight (amber outline + handles + cursor arrow) replaces the glass pill on "explain" and "AI" | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 63 — slides 6, 7, 8 removed)
+
+Owner: "no need slide 6,7,8 remove it". The exact list was restated and confirmed by him before executing (Delivery Promises, Product Health, Who We Are). Changes: Index.tsx — the three components leave the slides array and their imports are removed (deck 16 → 13 slides; after The Solutions the flow lands directly on Pricing Tiers); SlideNavigation.tsx — the three dot labels removed from the inline label array so dots stay aligned. The component files (PromiseBandsSlide.tsx, IdentitySlides.tsx) stay in the repo unreferenced, as with the Batch 4 removals — reversible by a forward commit. New order: Cover, Outage Panic, Fragile AI Code, Hiring Sinkhole, The Solutions, Pricing Tiers, Chief Architect, Architect Value, What's Included, How It Works, Startup Offer, Cost Savings, Contact.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BA1 | Index + SlideNavigation | Slides 6/7/8 (Delivery Promises, Product Health, Who We Are) removed from the deck; dot labels aligned; deck now 13 slides | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).
