@@ -8,7 +8,13 @@ import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
 import { TIER_DIFFERENTIATORS, TierKey } from "@/data/tierFeatures";
-import { PRICING_OFFER } from "@/lib/pricingConfig";
+import {
+  getUrlOffer,
+  isDiscounted,
+  anyUrlHighlight,
+  formatOfferPrice,
+  offerBadgeText,
+} from "@/lib/urlOffers";
 import {
   Tooltip,
   TooltipContent,
@@ -96,6 +102,29 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
     },
   ];
 
+  // Batch 74: URL offers (see src/lib/urlOffers.ts). effectiveTiers carries
+  // the display price (offer price when discounted), the struck real price,
+  // and the featured/badge state after the URL highlight rules. Without
+  // parameters this is exactly the deck's normal state.
+  const urlHighlightActive = anyUrlHighlight();
+  const effectiveTiers = tiers.map((tier) => {
+    const offer = getUrlOffer(tier.key);
+    const discounted = isDiscounted(tier.key);
+    const featured = urlHighlightActive ? !!offer?.featured : tier.highlight;
+    return {
+      ...tier,
+      price: discounted ? formatOfferPrice(offer!.amount!) : tier.price,
+      wasPrice: discounted ? tier.price : null,
+      offerBadge: discounted ? offerBadgeText(tier.key) : null,
+      highlight: featured,
+      badge: discounted
+        ? tier.badge
+        : urlHighlightActive
+          ? (offer?.badge ?? (offer?.featured ? tier.badge : null))
+          : tier.badge,
+    };
+  });
+
   return (
     <>
     <ScaledSlide>
@@ -119,7 +148,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
           {/* 3-Column Tier Cards Grid */}
           <TooltipProvider>
           <div className="grid grid-cols-3 gap-10 w-full">
-            {tiers.map((tier, idx) => (
+            {effectiveTiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <Tooltip>
                 <TooltipTrigger asChild>
@@ -170,7 +199,11 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1 mb-5">
-                      <span className="font-price text-[44px] font-medium text-white leading-none">
+                      <span
+                        className={`font-price text-[44px] font-medium leading-none ${
+                          tier.wasPrice ? "text-pres-accent" : "text-white"
+                        }`}
+                      >
                         {tier.price}
                       </span>
                       <span className="text-[22px] text-pres-text-muted font-medium">
@@ -178,14 +211,17 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                       </span>
                     </div>
 
-                    {/* FB-19: offer area — only renders when an offer is active */}
-                    {PRICING_OFFER.active && PRICING_OFFER.wasPrices[tier.key] && (
+                    {/* Batch 74: URL offer area — struck real price +
+                        offer badge, only when this tier is discounted
+                        via the link (supersedes the FB-19 config render) */}
+                    {tier.wasPrice && (
                       <div className="mb-4 flex items-center gap-3">
                         <span className="text-[22px] text-pres-text-muted line-through">
-                          {PRICING_OFFER.wasPrices[tier.key]}/M
+                          {tier.wasPrice}
+                          {tier.priceSuffix}
                         </span>
                         <span className="rounded-full bg-pres-accent px-3 py-1 text-[16px] font-bold text-pres-bg pres-dark-safe-accent">
-                          {PRICING_OFFER.badgeText}
+                          {tier.offerBadge}
                         </span>
                       </div>
                     )}
@@ -266,7 +302,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
             <TierDetailSlide />
           ) : (
             <TierPlanDetail
-              tiers={tiers}
+              tiers={effectiveTiers}
               index={overlay as number}
               onSelect={(i) => setOverlay(i)}
               onCompare={() => setOverlay("compare")}

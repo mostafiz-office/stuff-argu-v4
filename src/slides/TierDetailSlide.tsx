@@ -6,6 +6,12 @@ import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { TIER_FEATURE_GROUPS as groups } from "@/data/tierFeatures";
 import { fadeIn, fadeUp, staggerDelay } from "@/lib/presentationMotion";
 import { UsdNote } from "@/components/presentation/UsdNote";
+import {
+  getUrlOffer,
+  isDiscounted,
+  formatOfferPrice,
+  type UrlOfferKey,
+} from "@/lib/urlOffers";
 
 interface TierDetailSlideProps {
   onNavigate?: (index: number) => void;
@@ -20,20 +26,34 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
   const columns = [
     {
       name: "Tier 2 Growth",
+      key: "growth" as UrlOfferKey,
       price: "$4,299/M",
       badge: null,
     },
     {
       name: "Tier 3.A Skilled",
+      key: "skilled" as UrlOfferKey,
       price: "$6,800 to $8,000/M",
       badge: "BEST VALUE",
     },
     {
       name: "Tier 3.B Leadership",
+      key: "leadership" as UrlOfferKey,
       price: "$7,500 to $10,000/M",
       badge: "PREMIUM",
     },
   ];
+
+  // Batch 74: URL offers in the comparison header — struck real price +
+  // yellow offer price, same rules as the pricing cards.
+  const effectiveColumns = columns.map((col) => {
+    const offer = getUrlOffer(col.key);
+    const discounted = isDiscounted(col.key);
+    return {
+      ...col,
+      offerPrice: discounted ? `${formatOfferPrice(offer!.amount!)}/M` : null,
+    };
+  });
 
   const updateScrollState = useCallback(() => {
     const node = scrollRef.current;
@@ -120,7 +140,7 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                 </span>
                 <span className="mt-2 text-[18px] text-pres-text-muted">Scroll to explore all 14 features</span>
               </div>
-              {columns.map((col, idx) => (
+              {effectiveColumns.map((col, idx) => (
                 <motion.div
                   key={col.name}
                   {...fadeUp(staggerDelay(idx, 0.12, 0.05), 12)}
@@ -134,7 +154,16 @@ export const TierDetailSlide: React.FC<TierDetailSlideProps> = () => {
                     </span>
                   )}
                   <div className="font-heading font-bold text-[31px] leading-tight text-pres-text">{col.name}</div>
-                  <div className="comparison-tier-price text-[24px] font-normal text-pres-text-muted mt-2">{col.price}</div>
+                  <div className="comparison-tier-price text-[24px] font-normal text-pres-text-muted mt-2">
+                    {col.offerPrice ? (
+                      <>
+                        <span className="line-through opacity-70">{col.price}</span>{" "}
+                        <span className="font-medium text-pres-accent">{col.offerPrice}</span>
+                      </>
+                    ) : (
+                      col.price
+                    )}
+                  </div>
                 </motion.div>
               ))}
             </div>

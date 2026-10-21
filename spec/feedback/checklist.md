@@ -560,6 +560,14 @@ Owner marked all four savings badges on slide 12 (Cost Savings) in red: "make al
 |---|-------|--------|--------|
 | BK1 | Slide 12 (PricingSavingsSlide) | All four "Up to N% Savings" badges turned yellow (solid amber, dark text) | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 74 — URL offer system)
+
+Owner supplied the seo-packages-v2 link system (`?p1=500=highlight&p2=999&p3=1200`) and asked for the same offer mechanics here; plan shared in chat first (understanding + shortcodes + build steps + 3 decisions), owner approved the `t1 / t2 / t3a / t3b` style and the plan ("this style do it"). Built: new `src/lib/urlOffers.ts` parses the query string once — t1 Starter, t2 Growth, t3a Skilled, t3b Leadership; grammar mirrors the reference (`t2=3499` offer only, `t2=highlight` feature only, `t2=3499=highlight` both, `t2=3499=Any Words` offer + badge text). Safety: an amount counts only as a plain positive number below the tier's real low price (1900/4299/6800/7500), else ignored; if any parameter features a tier, only those tiers are featured, else deck defaults. Surfaces wired: PricingTiersSlide cards (offer price in yellow, struck real price + offer badge below it; tooltips and TierPlanDetail inherit the effective tiers; TierPlanDetail header shows struck + badge too, and its switcher tooltips show effective prices), TierDetailSlide comparison headers (struck + yellow), StarterTierSlideV9Clone card (t1: struck $1,900/M + chip + yellow offer price). Range tiers take one flat offer price (approved proposal). Cost Savings slide deliberately untouched (its percentages derive from standard prices). The FB-19 config render is superseded by the URL system; PRICING_OFFER.badgeText ("Launch offer") remains the default badge text. Example: `?t1=1500&t2=3499=highlight&t3a=5900&t3b=6900`.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BL1 | Deck-wide (urlOffers + PricingTiersSlide, TierPlanDetail, TierDetailSlide, StarterTierSlideV9Clone) | URL-driven offers: t1/t2/t3a/t3b with highlight/badge grammar; struck real price + yellow offer price | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

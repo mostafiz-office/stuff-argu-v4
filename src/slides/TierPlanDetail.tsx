@@ -19,6 +19,9 @@ export type TierSummary = {
   priceSuffix: string;
   hours: string;
   badge: string | null;
+  /** Batch 74: struck real price + offer badge when URL-discounted */
+  wasPrice?: string | null;
+  offerBadge?: string | null;
 };
 
 const KEYS = ["growth", "skilled", "leadership"] as const;
@@ -55,8 +58,27 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           <p className="mt-3 text-[22px] font-medium uppercase tracking-wider text-pres-text-dim">
             {tier.experience} Experience
           </p>
-          <div className="mt-8 flex items-baseline gap-2">
-            <span className="font-heading text-[64px] font-medium leading-none text-white">{tier.price}</span>
+          {tier.wasPrice && (
+            <div className="mt-8 flex items-center gap-3">
+              <span className="text-[26px] text-pres-text-muted line-through">
+                {tier.wasPrice}
+                {tier.priceSuffix}
+              </span>
+              {tier.offerBadge && (
+                <span className="pres-dark-safe-accent rounded-full bg-pres-accent px-3 py-1 font-heading text-[16px] font-bold text-pres-bg">
+                  {tier.offerBadge}
+                </span>
+              )}
+            </div>
+          )}
+          <div className={`${tier.wasPrice ? "mt-3" : "mt-8"} flex items-baseline gap-2`}>
+            <span
+              className={`font-heading text-[64px] font-medium leading-none ${
+                tier.wasPrice ? "text-pres-accent" : "text-white"
+              }`}
+            >
+              {tier.price}
+            </span>
             <span className="text-[28px] font-medium text-pres-text-muted">{tier.priceSuffix}</span>
           </div>
           <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-pres-accent/20 bg-pres-accent/10 px-4 py-1.5 text-[22px] font-semibold text-pres-accent">

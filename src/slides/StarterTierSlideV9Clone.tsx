@@ -14,6 +14,12 @@ import { presentationSound } from "@/lib/presentationSound";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 import { UsdNote } from "@/components/presentation/UsdNote";
 import {
+  getUrlOffer,
+  isDiscounted,
+  formatOfferPrice,
+  offerBadgeText,
+} from "@/lib/urlOffers";
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -28,6 +34,10 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
   const [showAlimUpsell, setShowAlimUpsell] = useState(false);
   const [rocketActive, setRocketActive] = useState(false);
   const [gateStep, setGateStep] = useState<number>(0);
+
+  // Batch 74: t1 URL offer for the Starter card (see src/lib/urlOffers.ts)
+  const starterOffer = getUrlOffer("starter");
+  const starterDiscounted = isDiscounted("starter");
 
   // FB-30 gate, Batch 72: the logo brand beat is REMOVED (owner: no
   // Next press should bring the Riseup Asia logo). Two beats remain:
@@ -180,9 +190,23 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       </TooltipContent>
                     </Tooltip>
 
+                    {(starterDiscounted || starterOffer?.featured) && (
+                      <div className="flex items-center gap-3 mb-2">
+                        {starterDiscounted && (
+                          <span className="text-[20px] text-pres-text-muted line-through">$1,900/M</span>
+                        )}
+                        <span className="rounded-full bg-pres-accent px-3 py-1 text-[15px] font-bold text-pres-bg pres-dark-safe-accent">
+                          {offerBadgeText("starter")}
+                        </span>
+                      </div>
+                    )}
                     <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-[56px] font-medium font-heading text-white leading-none">
-                        $1,900
+                      <span
+                        className={`text-[56px] font-medium font-heading leading-none ${
+                          starterDiscounted ? "text-pres-accent" : "text-white"
+                        }`}
+                      >
+                        {starterDiscounted ? formatOfferPrice(starterOffer!.amount!) : "$1,900"}
                       </span>
                       <span className="text-[26px] text-pres-text-muted font-medium">/M</span>
                     </div>
