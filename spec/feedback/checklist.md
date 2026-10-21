@@ -392,6 +392,14 @@ Owner shared a reference (statement headline, key words on a gradient pill) and 
 |---|-------|--------|--------|
 | AP1 | Slide 3 + PainBeats | Gradient-pill title per the approved plan: right side, bare, pillWords ["explain"] / ["AI"], PJS 800 76px | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 53 — slide 3 photo side + translucent pill)
+
+Owner: on slide 3 he sees NO image on the left, and the pill background must be MORE TRANSPARENT like the reference. Diagnosis (verified on the live build + the photo itself): the fragile-code photo is composed subject-right / dark-wall-left (the two engineers and monitors occupy x≈42–100%; the left ~42% is a near-black wall, mean brightness 18/255). With Batch 52's text on the right, the title covers the subject and the visible left side is the empty wall — the image reads as missing. Fix: new data-driven `imageFlip` on the Problem (img `scaleX(-1)`, safe — fadeIn animates opacity only), set on slide 3 only: subject lands on the left, title sits over the dark wall on the right. Pill: opaque gradient → translucent glass gradient (rgba amber 0.80–0.88) with a light top edge border, per the reference.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AQ1 | Slide 3 + PainBeats | `imageFlip: true` on slide 3 (photo subject moves left, dark wall behind the title); PillWord background now a translucent amber gradient with a glass edge | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

@@ -114,6 +114,9 @@ const WORD_SHADOW =
 // Batch 52: gradient pill highlight (owner's reference design) — the key
 // word sits on an amber gradient pill with near-black text (the deck
 // rule for text on amber), popping in just after its line arrives.
+// Batch 53 (owner): the pill background is TRANSLUCENT like the
+// reference — a glassy amber gradient with a light top edge, the photo
+// faintly present behind it.
 function PillWord({
   children,
   delay,
@@ -126,7 +129,8 @@ function PillWord({
       className="inline-block"
       style={{
         background:
-          "linear-gradient(135deg, #ffd97a 0%, #ffad01 55%, #dd8f00 100%)",
+          "linear-gradient(135deg, rgba(255,217,122,0.88) 0%, rgba(255,173,1,0.8) 55%, rgba(221,143,0,0.88) 100%)",
+        border: "1px solid rgba(255,224,158,0.55)",
         color: "#1a1206",
         borderRadius: "0.18em",
         padding: "0.08em 0.32em",

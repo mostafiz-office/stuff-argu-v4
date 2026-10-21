@@ -38,6 +38,10 @@ type Problem = {
   /** Batch 47 (owner, red-marked screenshot): heading only — no
    *  eyebrow, short line, metric or resolution on this slide */
   bare?: boolean;
+  /** Batch 53: flip the photo horizontally — for photos composed with
+   *  the subject on one side and dark copy space on the other, so the
+   *  subject lands opposite the text block. */
+  imageFlip?: boolean;
 };
 
 const problems: Problem[] = [
@@ -174,6 +178,10 @@ const problems: Problem[] = [
     // left placement of the old layout.
     align: "right",
     bare: true,
+    // Batch 53: the photo's subject sits on its right half (dark wall
+    // on the left) — flipped so the engineers show on the left and the
+    // title sits over the dark wall on the right.
+    imageFlip: true,
   },
   {
     eyebrow: "Problem 03 · Hiring Drag",
@@ -208,6 +216,7 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => {
           height={1088}
           loading="eager"
           className="absolute inset-0 w-full h-full object-cover"
+          style={problem.imageFlip ? { transform: "scaleX(-1)" } : undefined}
         />
         <div
           className={`absolute inset-0 ${
