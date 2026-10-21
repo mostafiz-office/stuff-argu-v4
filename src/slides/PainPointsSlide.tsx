@@ -193,8 +193,24 @@ const problems: Problem[] = [
   {
     eyebrow: "Problem 03 · Hiring Drag",
     beats: [
-      { text: "The 90-Day", size: "xl" },
-      { text: "Hiring Sinkhole", size: "xl" },
+      {
+        text: "Hiring",
+        tileAt: 1,
+        tileSymbol: "hourglass",
+        sizePx: 176,
+        fontFamily: "'Ubuntu', sans-serif",
+        fontWeight: 700,
+        className: "whitespace-nowrap pain-headline-shadow",
+      },
+      {
+        text: "Sinkhole",
+        objectAt: 5,
+        objectKind: "vortex",
+        sizePx: 176,
+        fontFamily: "'Ubuntu', sans-serif",
+        fontWeight: 700,
+        className: "whitespace-nowrap pain-headline-shadow mt-[10px]",
+      },
     ],
     short: "Three months to hire. Zero guarantee they deliver.",
     metric: "Save 80%",
@@ -204,8 +220,13 @@ const problems: Problem[] = [
     imageAlt: "A hiring manager beside an empty engineering workstation",
     highlight: "yellow",
     highlightStyle: "drag",
-    highlightIndex: 1,
+    highlightIndex: -1,
     align: "left",
+    // Batch 57 (owner): letter-object title, heading only — the "i" of
+    // Hiring becomes an amber hourglass tile, the "o" of Sinkhole a
+    // black-hole vortex (plan: letter-object-title-slide4-plan.md).
+    // Photo verified: subject right, dark copy space left — no flip.
+    bare: true,
   },
 ];
 

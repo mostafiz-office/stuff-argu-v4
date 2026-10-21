@@ -424,6 +424,14 @@ Owner: typography must be Ubuntu (the Batch 52 switch to Plus Jakarta Sans follo
 |---|-------|--------|--------|
 | AT1 | Slide 3 + PainBeats | Beats → Ubuntu 700; PillWord → measured reference geometry (lh 1, pad 0.05/0.24em, radius 0.13em, word 500) | ✅ CODE |
 
+## Owner review fixes (2026-10-21, Batch 57 — slide 4 letter-object title)
+
+Owner shared a new reference ("Design / Publish": a letter replaced by a gradient tile bearing the letter; a letter replaced by an object that means the word — rocket for publish) and approved the assistant's plan (`letter-object-title-slide4-plan.md`, primary option). Slide 4 (Problem 03) is now heading-only (`bare: true`), left side, Ubuntu Bold at 176px (measured: Hiring ≈ 649px, Sinkhole ≈ 798px in the 840px block): "Hiring" with the "i" replaced by an amber gradient TILE (rotated −6°) bearing a black HOURGLASS (the 90-day wait), and "Sinkhole" with the "o" replaced by a black-hole VORTEX (dark disc, amber swirl arcs). New data-driven `tileAt`/`tileSymbol`/`objectAt`/`objectKind` on PainBeat + `TileLetter`/`VortexLetter` in PainBeats; highlight bypassed for device beats. Photo checked first (the slide 3 lesson): subject sits right, dark copy space left — no flip needed. Slides 2–3 untouched (diff-verified).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| AU1 | Slide 4 + PainBeats | Letter-object title per the approved plan: hourglass tile in "Hiring", vortex "o" in "Sinkhole", 176px Ubuntu Bold, bare | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

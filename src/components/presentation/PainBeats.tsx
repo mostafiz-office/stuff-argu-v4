@@ -41,6 +41,16 @@ export interface PainBeat {
   /** Batch 52: words (matched without punctuation) that sit on an
    *  amber gradient pill, per the owner's reference design. */
   pillWords?: string[];
+  /** Batch 57: character index replaced by a gradient letter tile
+   *  (the letter-tile device from the owner's Design/Publish ref). */
+  tileAt?: number;
+  /** What the tile bears: an hourglass symbol or the letter itself. */
+  tileSymbol?: "hourglass" | "letter";
+  /** Batch 57: character index replaced by an object (the
+   *  object-letter device from the same reference). */
+  objectAt?: number;
+  /** The object that replaces the letter. */
+  objectKind?: "vortex";
 }
 
 const Highlight: React.FC<{
@@ -157,6 +167,128 @@ function PillWord({
   );
 }
 
+// Batch 57: letter-tile device (owner's Design/Publish reference) — a
+// letter is replaced by an amber gradient tile, slightly rotated,
+// bearing a symbol that means the word's pain (an hourglass for the
+// hiring wait) or the letter itself in black.
+function TileLetter({
+  delay,
+  symbol,
+  letter,
+}: {
+  delay: number;
+  symbol: "hourglass" | "letter";
+  letter: string;
+}) {
+  return (
+    <motion.span
+      className="inline-flex items-center justify-center"
+      style={{
+        width: "0.84em",
+        height: "0.84em",
+        borderRadius: "0.15em",
+        background:
+          "linear-gradient(135deg, #ffd97a 0%, #ffad01 55%, #dd8f00 100%)",
+        verticalAlign: "-0.1em",
+        margin: "0 0.03em",
+        boxShadow: "0 12px 28px rgba(0,0,0,0.5)",
+      }}
+      initial={{ opacity: 0, scale: 0.7, rotate: -16 }}
+      animate={{ opacity: 1, scale: 1, rotate: -6 }}
+      transition={{ duration: 0.5, delay: delay + 0.35, ease: presentationEase }}
+    >
+      {symbol === "hourglass" ? (
+        <svg
+          viewBox="0 0 64 64"
+          aria-hidden
+          style={{ height: "0.5em", width: "0.5em" }}
+        >
+          <path
+            fill="#1a1206"
+            d="M14 8h36v7H14zM14 49h36v7H14zM20 15h24c0 11-6.6 14.3-12 17 5.4 2.7 12 6 12 17H20c0-11 6.6-14.3 12-17-5.4-2.7-12-6-12-17z"
+          />
+        </svg>
+      ) : (
+        <span
+          style={{
+            color: "#1a1206",
+            fontWeight: 700,
+            fontSize: "0.62em",
+            lineHeight: 1,
+          }}
+        >
+          {letter}
+        </span>
+      )}
+    </motion.span>
+  );
+}
+
+// Batch 57: object-letter device (same reference) — a letter is
+// replaced by an object that means the word. The vortex is the "o" of
+// Sinkhole: a black hole with an amber swirl rim.
+function VortexLetter({ delay }: { delay: number }) {
+  return (
+    <motion.span
+      className="inline-block"
+      style={{
+        width: "0.8em",
+        height: "0.8em",
+        verticalAlign: "-0.14em",
+        margin: "0 0.02em",
+      }}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.55, delay: delay + 0.35, ease: presentationEase }}
+    >
+      <svg
+        viewBox="0 0 100 100"
+        aria-hidden
+        style={{
+          width: "100%",
+          height: "100%",
+          filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.6))",
+        }}
+      >
+        <defs>
+          <radialGradient id="vortexCore" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#000000" />
+            <stop offset="55%" stopColor="#0b0714" />
+            <stop offset="85%" stopColor="#241203" />
+            <stop offset="100%" stopColor="#3a2002" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="47" fill="url(#vortexCore)" />
+        <path
+          d="M50 12 a38 38 0 1 1 -26.9 11"
+          fill="none"
+          stroke="#ffad01"
+          strokeWidth="5"
+          strokeLinecap="round"
+          opacity="0.9"
+        />
+        <path
+          d="M50 24 a26 26 0 1 1 -18.4 7.6"
+          fill="none"
+          stroke="#ffc95e"
+          strokeWidth="4"
+          strokeLinecap="round"
+          opacity="0.75"
+        />
+        <path
+          d="M50 36 a14 14 0 1 1 -9.9 4.1"
+          fill="none"
+          stroke="#ffe1a0"
+          strokeWidth="3"
+          strokeLinecap="round"
+          opacity="0.6"
+        />
+        <circle cx="50" cy="50" r="7" fill="#000000" />
+      </svg>
+    </motion.span>
+  );
+}
+
 export const PainBeats: React.FC<{
   beats: PainBeat[];
   highlight: PainHighlightColor;
@@ -197,6 +329,28 @@ export const PainBeats: React.FC<{
                   {wi < parts.length - 1 ? " " : null}
                 </React.Fragment>
               );
+            })}
+          </>
+        );
+      };
+      // Batch 57: line text with letter devices (tile / object letter).
+      const renderDeviceText = () => {
+        const chars = beat.text.split("");
+        return (
+          <>
+            {chars.map((ch, ci) => {
+              if (beat.tileAt === ci)
+                return (
+                  <TileLetter
+                    key={ci}
+                    delay={delay}
+                    symbol={beat.tileSymbol ?? "letter"}
+                    letter={ch}
+                  />
+                );
+              if (beat.objectAt === ci && beat.objectKind === "vortex")
+                return <VortexLetter key={ci} delay={delay} />;
+              return <React.Fragment key={ci}>{ch}</React.Fragment>;
             })}
           </>
         );
@@ -261,6 +415,8 @@ export const PainBeats: React.FC<{
         renderWords()
       ) : beat.pillWords && beat.pillWords.length > 0 ? (
         renderPillText()
+      ) : beat.tileAt !== undefined || beat.objectAt !== undefined ? (
+        renderDeviceText()
       ) : (
         <>
           {beat.text}
@@ -279,7 +435,10 @@ export const PainBeats: React.FC<{
       );
       const content = beat.wordAnim ? (
         inner
-      ) : i === highlightIndex && !beat.pillWords ? (
+      ) : i === highlightIndex &&
+        !beat.pillWords &&
+        beat.tileAt === undefined &&
+        beat.objectAt === undefined ? (
           <Highlight
             color={highlight}
             style={highlightStyle}
