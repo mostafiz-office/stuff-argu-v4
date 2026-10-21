@@ -552,6 +552,14 @@ Owner: the Riseup Asia logo overlay on slide 11 must go — no Next press should
 |---|-------|--------|--------|
 | BJ1 | Slide 11 (StarterTierSlideV9Clone) | Logo brand beat removed; gate is now 2 beats, third Next advances | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 73 — savings badges yellow)
+
+Owner marked all four savings badges on slide 12 (Cost Savings) in red: "make all % yellow". The badges were neutralized in Batch 6 (FB-31) — he now overrides that for these badges. One shared span renders all four ("Up to 76% / 71% / 68% / 67% Savings"): now the deck's standard yellow badge — solid `bg-pres-accent`, dark text (`pres-dark-safe-accent`), semibold. The slide's headline highlight "76% saving" stays as is, so the slide now carries the amber headline plus four amber badges, at his explicit direction.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BK1 | Slide 12 (PricingSavingsSlide) | All four "Up to N% Savings" badges turned yellow (solid amber, dark text) | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

@@ -110,7 +110,7 @@ export const PricingSavingsSlide: React.FC<PricingSavingsSlideProps> = () => {
                     <span className="text-[30px] font-bold font-heading text-white">{item.role}</span>
                     <span className="text-[18px] font-semibold px-3 py-1 rounded-full bg-white/10 text-white/80">{item.tier}</span>
                   </div>
-                  <span className="text-[20px] font-medium px-4 py-1 rounded-full bg-white/10 text-white/70">{item.savings}</span>
+                  <span className="text-[20px] font-semibold px-4 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent">{item.savings}</span>
                 </div>
                 <div className="flex items-center justify-between text-[22px]">
                   <span className="text-pres-text-dim">US <span className="line-through">{item.usRate}</span></span>
