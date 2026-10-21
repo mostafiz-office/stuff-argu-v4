@@ -544,6 +544,14 @@ Owner pointed at the review video (t=1848, the 29:53–32:27 Startup Offer block
 |---|-------|--------|--------|
 | BI1 | Slide 11 (StarterTierSlideV9Clone) | Tier 1 feature checklist (4 items) restored in the pricing card; "3+ years coding" restored to the experience line + hover | ✅ CODE |
 
+## Owner direction (2026-10-21, Batch 72 — logo beat removed)
+
+Owner: the Riseup Asia logo overlay on slide 11 must go — no Next press should bring it. Removed beat 3 of the gate entirely (overlay JSX, showRiseUp state, logo import, AnimatePresence import), superseding FB-30's third beat and Batch 20's logo treatment at his direction. The gate is now 2 beats: press 1 reveals the Chief Architect Bonus, press 2 fires the rocket (Growth Booster), press 3 advances to slide 12. Hints renumbered: "Reveal bonus (1 of 2)" / "Growth booster (2 of 2)" / "Continue".
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BJ1 | Slide 11 (StarterTierSlideV9Clone) | Logo brand beat removed; gate is now 2 beats, third Next advances | ✅ CODE |
+
 ## Blocked on owner (nothing to build until these arrive)
 
 1. FB-03: DONE — font matched from the designed image (Plus Jakarta Sans).

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Shield,
   Clock,
@@ -13,7 +13,6 @@ import { RocketAnimation } from "@/components/presentation/RocketAnimation";
 import { presentationSound } from "@/lib/presentationSound";
 import { fadeUp, scaleIn, staggerDelay } from "@/lib/presentationMotion";
 import { UsdNote } from "@/components/presentation/UsdNote";
-import logoImg from "@/assets/riseup-asia-logo.png";
 import {
   Tooltip,
   TooltipContent,
@@ -28,22 +27,19 @@ interface StarterTierSlideV9CloneProps {
 export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = () => {
   const [showAlimUpsell, setShowAlimUpsell] = useState(false);
   const [rocketActive, setRocketActive] = useState(false);
-  const [showRiseUp, setShowRiseUp] = useState(false);
   const [gateStep, setGateStep] = useState<number>(0);
 
-  // FB-30: 4-beat navigation gate — staged reveals, one per Next press:
+  // FB-30 gate, Batch 72: the logo brand beat is REMOVED (owner: no
+  // Next press should bring the Riseup Asia logo). Two beats remain:
   // Step 0 -> Step 1: Reveal Alim box (block slide advance)
   // Step 1 -> Step 2: Trigger rocket animation (block slide advance)
-  // Step 2 -> Step 3: logo brand beat (block slide advance)
-  // Step 3 -> advance: Unblock advance
+  // Step 2 -> advance: Unblock advance
   useEffect(() => {
     const tooltipText =
       gateStep === 0
-        ? "Reveal bonus (1 of 3)"
+        ? "Reveal bonus (1 of 2)"
         : gateStep === 1
-        ? "Growth booster (2 of 3)"
-        : gateStep === 2
-        ? "Almost done (3 of 3)"
+        ? "Growth booster (2 of 2)"
         : "Continue";
 
     window.__slideNavigationGate = {
@@ -60,17 +56,11 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
           setGateStep(2);
           return true; // handled / blocked advance
         }
-        if (gateStep === 2) {
-          presentationSound.play("reveal");
-          setShowRiseUp(true);
-          setGateStep(3);
-          return true; // handled / blocked advance
-        }
         return false; // let presentation advance
       },
       tooltip: tooltipText,
       step: gateStep,
-      totalSteps: 3,
+      totalSteps: 2,
     };
 
     return () => {
@@ -332,35 +322,6 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
           <UsdNote />
 
-          {/* FB-30 brand beat — the Riseup Asia logo, big in the center
-              (owner direction Oct 20: "RISE UP" is not the company name —
-              show the actual logo instead of the text). Arrives on its own
-              Next press. */}
-        <AnimatePresence>
-          {showRiseUp && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 z-30 flex items-center justify-center bg-black/60 backdrop-blur-[2px] pointer-events-none"
-            >
-              <motion.div
-                initial={{ scale: 0.7, opacity: 0, y: 40 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 1.1, opacity: 0 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="text-center"
-              >
-                <img
-                  src={logoImg}
-                  alt="Riseup Asia"
-                  className="mx-auto h-[190px] w-auto object-contain drop-shadow-[0_0_60px_rgba(255,173,1,0.35)]"
-                />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Bottom subtle accent line */}
           <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />
