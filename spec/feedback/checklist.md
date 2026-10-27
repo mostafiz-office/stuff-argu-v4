@@ -608,3 +608,11 @@ but NOT live — bundle inspection confirms. Owner action: check Lovable dashboa
 none of this work is live there. The custom domain must be pointed at the v4
 deployment in the Lovable dashboard (owner action). Always verify fixes on the
 lovable.app URL.
+
+## Owner direction (2026-10-27, Batch 77 — header tagline deleted)
+
+Owner (annotated screenshot, red mark under the logo): "no tagline need below logo". Deleted the "Top 5% Engineers, On Demand" tagline span from the shared `SlideHeader.tsx` (the `BRAND_TAGLINE` export is gone — it was used nowhere else). The header is now the logo alone, deck-wide, since every slide renders this one component. The thin rule directly under the logo wordmark is part of the logo PNG artwork itself, not a code element, so it is untouched. Landed on top of the owner's Oct 27 Lovable-side commits (HEAD at build time `fc6fcf0`).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BO1 | All (SlideHeader) | Tagline below logo deleted; header is logo only | ✅ CODE |
