@@ -616,3 +616,11 @@ Owner (annotated screenshot, red mark under the logo): "no tagline need below lo
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BO1 | All (SlideHeader) | Tagline below logo deleted; header is logo only | ✅ CODE |
+
+## Owner direction (2026-10-27, Batch 78 — slide number in the URL)
+
+Owner asked why the URL never shows the slide number after changing slides. Root cause verified in code: (1) Index.tsx controls PresentationEngine, so the engine's built-in ?slide= read/write effects (uncontrolled path only) never run; (2) Index hardcoded `useState(0)` — "always initialize on Slide 1"; (3) a mount effect DELETED `slide` from the URL. Fix, all in `src/pages/Index.tsx`: the mount cleanup now strips only the legacy `cover` param; `currentIndex` initializes from `?slide=` (1-based, validated 1..13, else cover); a `currentIndex` effect writes `slide` = index+1 via replaceState on every slide change, preserving all other params (offer params t1/t2/... survive). replaceState chosen deliberately (same as the engine's existing convention): the address bar always shows the current slide without one history entry per change — so the browser Back button will NOT step through slides; switching that to pushState is a one-line change if he wants it. Gate beats don't change the index, so they write nothing. PresentationEngine untouched.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BP1 | Deck-wide (Index) | ?slide=N deep-link in + out: URL shows current slide number, link opens that slide | ✅ CODE |

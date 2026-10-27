@@ -35,15 +35,13 @@ const Index = () => {
   }, [coverVariant]);
 
 
-  // Clean URL parameters on initial mount so reloads never get trapped
+  // Clean the legacy cover parameter on initial mount. The slide
+  // parameter is intentionally KEPT: it is the deck's deep-link
+  // (?slide=6 opens slide 6) and is written on every slide change.
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
       let changed = false;
-      if (params.has("slide")) {
-        params.delete("slide");
-        changed = true;
-      }
       if (params.has("cover")) {
         params.delete("cover");
         changed = true;
@@ -106,8 +104,22 @@ const Index = () => {
 
   const totalSlides = slides.length;
 
-  // Always initialize on Slide 1 (Index 0) on fresh visit and page reload
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  // Initialize from the URL's ?slide= parameter when present and valid
+  // (1-based: ?slide=6 opens slide 6); otherwise start on the cover.
+  const [currentIndex, setCurrentIndex] = useState<number>(() => {
+    try {
+      const parsed = parseInt(
+        new URLSearchParams(window.location.search).get("slide") || "",
+        10
+      );
+      if (!isNaN(parsed) && parsed >= 1 && parsed <= totalSlides) {
+        return parsed - 1;
+      }
+    } catch {
+      // Ignore sandboxed iframe location restrictions
+    }
+    return 0;
+  });
   const [direction, setDirection] = useState<number>(1);
 
   // Core navigation handler: updates state cleanly in memory
@@ -144,6 +156,24 @@ const Index = () => {
       handleNavigate(currentIndex - 1);
     }
   }, [currentIndex, handleNavigate]);
+
+  // Keep the slide number in the URL (?slide=6) on every slide change,
+  // preserving any other parameters already present. replaceState (not
+  // pushState) so the address bar always shows the current slide without
+  // adding one history entry per slide change.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      params.set("slide", (currentIndex + 1).toString());
+      const next = `${window.location.pathname}?${params.toString()}`;
+      const current = `${window.location.pathname}${window.location.search}`;
+      if (next !== current) {
+        window.history.replaceState(null, "", next);
+      }
+    } catch {
+      // Ignore sandboxed iframe history security restrictions
+    }
+  }, [currentIndex]);
 
   return (
     <PresentationEngine
