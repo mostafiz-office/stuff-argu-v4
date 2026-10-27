@@ -632,3 +632,11 @@ Owner sent three Drive photos himself (replacing the earlier Drive-stock recomme
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BQ1 | Slides 2, 3, 4 (PainPointsSlide) | Photos swapped for owner-picked Drive photos; fades, titles, devices unchanged | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 80 — bottom dot of the current slide advances gated steps)
+
+Owner report (slide 5 screenshot, red mark on the bottom dots): tapping the below navigation never brought the pyramid slide; the pyramid only appeared through the top-right Next/Prev. Root cause found in code: the pyramid is a 6-step gate driven only by Next (SlideNavigation goNext / Index handleNext check window.__slideNavigationGate first), while bottom dots call handleNavigate directly, which jumps slides and never touches the gate — and tapping the dot of the slide you are already on was an explicit no-op (newIndex !== currentIndex guard). Fix, in src/pages/Index.tsx handleNavigate only: when newIndex === currentIndex and a gate is registered, trigger it (one step per tap); when the gate is finished the tap stays put. Dots for other slides still jump as before; Next/Prev/swipe/keyboard behaviour unchanged; the pyramid design itself unchanged. Same rule automatically covers slide 11's gated bonus/rocket steps.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BR1 | Slide 5 (+ all gated slides) | Active bottom dot advances gate steps like Next; other dots unchanged | ✅ CODE |

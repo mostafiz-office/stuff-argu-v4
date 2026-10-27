@@ -125,7 +125,19 @@ const Index = () => {
   // Core navigation handler: updates state cleanly in memory
   const handleNavigate = useCallback(
     (newIndex: number) => {
-      if (newIndex >= 0 && newIndex < totalSlides && newIndex !== currentIndex) {
+      // Batch 80: tapping the bottom dot of the slide you are already on
+      // advances that slide's gated steps (slide 5 pyramid, slide 11
+      // bonus/rocket) instead of doing nothing. Dots for other slides
+      // still jump slides as before; when the gate is finished the tap
+      // stays put, because the dot already points at this slide.
+      if (newIndex === currentIndex) {
+        const gate = window.__slideNavigationGate;
+        if (gate && typeof gate.trigger === "function") {
+          gate.trigger();
+        }
+        return;
+      }
+      if (newIndex >= 0 && newIndex < totalSlides) {
         // Returning to slide 1 from any other slide shows the other cover.
         if (newIndex === 0) setCoverVariant((prev) => nextCoverOnReturn(prev));
         setDirection(newIndex > currentIndex ? 1 : -1);
