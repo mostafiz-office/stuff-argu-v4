@@ -640,3 +640,11 @@ Owner report (slide 5 screenshot, red mark on the bottom dots): tapping the belo
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BR1 | Slide 5 (+ all gated slides) | Active bottom dot advances gate steps like Next; other dots unchanged | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 81 — slide 3 photo replaced again)
+
+Owner sent a second Drive photo for slide 3 ("diverse-programming-engineers-talking-about-html", three engineers around code monitors) with "use this image instead of current" — replacing the Batch 79 slide-3 photo the same night. Content swapped inside the existing slide3FragileImageData module (WebP q80, round-trip hash-verified), so no import change. Composition call: the Batch 53 imageFlip is REMOVED for this photo — its people already sit left-center and its code monitors sit right, so flipping would have put the people under the right-side title; unflipped, the dark monitors sit under the title behind the right overlay fade and the people stay visible left. Title, selection boxes, fade unchanged.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BS1 | Slide 3 (PainPointsSlide) | Photo replaced with owner's second pick; imageFlip removed (composition) | ✅ CODE |

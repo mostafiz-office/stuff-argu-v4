@@ -191,7 +191,6 @@ const problems: Problem[] = [
     // Batch 53: the photo's subject sits on its right half (dark wall
     // on the left) — flipped so the engineers show on the left and the
     // title sits over the dark wall on the right.
-    imageFlip: true,
   },
   {
     eyebrow: "Problem 03 · Hiring Drag",
