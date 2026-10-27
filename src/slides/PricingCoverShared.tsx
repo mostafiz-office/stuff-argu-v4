@@ -4,9 +4,9 @@ import { ArrowRight, Sparkles, Check, Linkedin } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import marekImg from "@/assets/marek.webp";
-import cristianAsset from "@/assets/recommendations/cristian-stancalau.png.asset.json";
-import jakubAsset from "@/assets/recommendations/jakub-szubarga.png.asset.json";
-import adamAsset from "@/assets/recommendations/adam-lewkowicz.png.asset.json";
+import cristianImg from "@/assets/recommendations/cristian-stancalau.png";
+import jakubImg from "@/assets/recommendations/jakub-szubarga.png";
+import adamImg from "@/assets/recommendations/adam-lewkowicz.png";
 import { fadeUp, scaleIn, staggerDelay, presentationEase } from "@/lib/presentationMotion";
 import { DeckButton } from "@/components/presentation/DeckButton";
 import { CoverHeadline, CoverHeadlineConfig } from "@/components/presentation/CoverHeadline";
@@ -36,7 +36,7 @@ export interface Recommendation {
 const CRISTIAN_RECOMMENDATION: Recommendation = {
   name: "Cristian Stancalău",
   role: "Expert Java Engineer · Best Practices · Reliability",
-  image: cristianAsset.url,
+  image: cristianImg,
   quoteBefore: "...successfully led us through troubled times... so the team could focus on daily activities with minimum stress until our targets were reached.",
   highlight: "",
   quoteAfter: "",
@@ -48,7 +48,7 @@ export const COVER_RECOMMENDATIONS = {
     {
       name: "Jakub Szubarga",
       role: "Platform Systems Engineer · .NET · TS · Architecture",
-      image: jakubAsset.url,
+      image: jakubImg,
       quoteBefore: "Witnessed him in each of the following roles: software developer, designer, solution architect, speaker, scrum master and team leader... He was excellent at performing tasks associated with these roles.",
       highlight: "",
       quoteAfter: "",
@@ -58,7 +58,7 @@ export const COVER_RECOMMENDATIONS = {
     {
       name: "Adam Lewkowicz",
       role: "Founder & CTO at Vercom S.A. · CPaaS",
-      image: adamAsset.url,
+      image: adamImg,
       quoteBefore: "Marek is a high level professional, qualified and well organised person. Marek is a kind of person you can rely on!",
       highlight: "",
       quoteAfter: "",
@@ -98,7 +98,7 @@ const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; 
     <div className="flex items-center justify-between gap-3 mb-3">
       <div className="flex min-w-0 flex-1 items-center gap-3">
         <div className="w-12 h-12 shrink-0 rounded-full overflow-hidden border-2 border-pres-accent/50 bg-pres-surface">
-          <img src={recommendation.image} alt={recommendation.name} className="w-full h-full object-cover" />
+          <img src={recommendation.image} alt={recommendation.name} loading="eager" decoding="async" className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.style.display = "none"; }} />
         </div>
         <div className="min-w-0">
           <div className="font-bold text-[20px] font-heading leading-tight transition-colors duration-300 group-hover:text-pres-accent">{recommendation.name}</div>
