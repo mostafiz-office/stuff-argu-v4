@@ -9,9 +9,9 @@ import {
   PainHighlightColor,
   PainHighlightStyle,
 } from "@/components/presentation/PainBeats";
-import outageImage from "@/assets/problem-outage.jpg";
-import fragileCodeImage from "@/assets/problem-fragile-code.jpg";
-import hiringImage from "@/assets/problem-hiring.jpg";
+import { slide2OutageImage } from "@/assets/slide2OutageImageData";
+import { slide3FragileImage } from "@/assets/slide3FragileImageData";
+import { slide4HiringImage } from "@/assets/slide4HiringImageData";
 
 interface ProblemSlideProps {
   onNavigate?: (index: number) => void;
@@ -136,8 +136,8 @@ const problems: Problem[] = [
     metric: "$18,500/M",
     metricLabel: "Outage & Churn Bleed",
     resolution: "Every hour down loses customers you paid to win.",
-    image: outageImage,
-    imageAlt: "A technology leader responding to a late night production incident",
+    image: slide2OutageImage,
+    imageAlt: "Two developers discussing programming code on a large monitor",
     highlight: "red",
     highlightStyle: "marker",
     highlightIndex: -1,
@@ -175,8 +175,8 @@ const problems: Problem[] = [
     metric: "3× Slower",
     metricLabel: "Velocity & Bug Bleed",
     resolution: "Shortcuts today, stalled releases tomorrow.",
-    image: fragileCodeImage,
-    imageAlt: "Software engineers investigating unstable code on office monitors",
+    image: slide3FragileImage,
+    imageAlt: "Developers working together over computer code on a monitor",
     highlight: "yellow",
     highlightStyle: "marker",
     highlightIndex: -1,
@@ -219,8 +219,8 @@ const problems: Problem[] = [
     metric: "Save 80%",
     metricLabel: "Recruiting Time Saved",
     resolution: "Every empty seat pushes the roadmap back.",
-    image: hiringImage,
-    imageAlt: "A hiring manager beside an empty engineering workstation",
+    image: slide4HiringImage,
+    imageAlt: "A businessman writing on documents at a desk in a storage office",
     highlight: "yellow",
     highlightStyle: "drag",
     highlightIndex: -1,

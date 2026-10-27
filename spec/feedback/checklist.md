@@ -624,3 +624,11 @@ Owner asked why the URL never shows the slide number after changing slides. Root
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BP1 | Deck-wide (Index) | ?slide=N deep-link in + out: URL shows current slide number, link opens that slide | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 79 — pain-slide photos swapped for owner-picked Drive photos)
+
+Owner sent three Drive photos himself (replacing the earlier Drive-stock recommendations, which he did not pick): slide 2 = "developers-discussing-programming-code", slide 3 = "developers-working-with-computer-codes-in-team", slide 4 = "boxes-logistics-and-writing-with-business-man". All three ship as WebP data-URI modules (slide2OutageImageData, slide3FragileImageData, slide4HiringImageData — 90KB / 69KB / 70KB WebP, round-trip hash-verified) because push-files rejects binary files (Batch 60 precedent). PainPointsSlide.tsx is the only file changed: the three imports + image fields + imageAlts. NOTHING else changed per slide: slide 2 keeps its left overlay fade, title, word animation and align-left; slide 3 keeps imageFlip: true (new photo is subject-right like the old one) plus its right overlay fade and the "explain"/"AI" selection boxes; slide 4 keeps its left overlay fade, title, hourglass tile and black-hole 'o'. The old problem-*.jpg assets stay in the repo unreferenced (reversible).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BQ1 | Slides 2, 3, 4 (PainPointsSlide) | Photos swapped for owner-picked Drive photos; fades, titles, devices unchanged | ✅ CODE |
