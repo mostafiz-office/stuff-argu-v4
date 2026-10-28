@@ -705,3 +705,12 @@ Owner-approved plan: price anchoring was missing before the solution and pricing
 | BX1 | New slide 5 | Bad hire $35,000 anchor slide, qualitative loss lines, owner's closing line | ✅ CODE |
 | BX2 | New slide 6 | Anchor comparison: $35,000 lost vs from $1,900/M Riseup engineer | ✅ CODE |
 | BX3 | Deck-wide | 13 → 15 slides; labels, URL range, sub-dot index moved with solution slide | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 89 — slide 6 becomes the problems, comparison dropped)
+
+Owner correction on Batch 88: no comparison on slide 6 — the slide stays in the problem instead, so the anchoring plan fills out as number, then problems, then solution. New slide 6 "Behind the $35,000": four problem beats tied to the earlier pain slides (production breaks again at 2 AM; nobody can fix what was written; deadlines slip again; hire again from zero, $35,000 was only round one), closing "This is what a cheap hire really costs.". Same slot, so the deck stays 15 slides and the solution stays slide 7. AnchorComparisonSlide removed from the order and dot label "The Comparison" → "Real Cost"; the comparison file stays in the repo unreferenced, so it can return before pricing with a one-line change if he asks.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BY1 | New slide 6 | Problems-behind-the-$35,000 slide replaces the comparison slide | ✅ CODE |
+| BY2 | Deck-wide | Comparison out of the order + label; file kept unreferenced (reversible) | ✅ CODE |

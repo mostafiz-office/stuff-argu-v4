@@ -348,7 +348,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
                 type="button"
                 onClick={() => onNavigate(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "The Comparison", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "Real Cost", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
                 className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
                   isActive
                     ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
