@@ -755,3 +755,12 @@ Owner picked Direction 1 for the cheap-feeling slide 5. Cut: the four loss lines
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CD1 | Slide 5 | Pure anchor: lines + question cut, bridge line added | ✅ CODE |
+
+## Owner-approved density fix (2026-10-28, Batch 95 — all three detail pages)
+
+Owner said "fix all" to the density + Slack plan. Density built: focus block of the tier's 3 differentiators (from TIER_DIFFERENTIATORS, highlight substring in amber) leads the right column; Delivery group leaves the list and becomes one shared muted line derived from the data ("Every plan includes: ..."); excluded X-rows filtered out of detail pages (comparison overlay keeps them); remaining rows condensed (26px to 24px, padding 16px to 12px, group gaps 56px to 36px). One shared component, so Growth, Skilled, and Leadership change together. Header, switcher pills, Compare button, tooltips, and URL offers untouched. Slack NOT changed in this batch: Skilled's Slack value still needs the owner's exact words — no guessed SLA claim was put live; it remains a one-line data change in tierFeatures.ts once he supplies it (or says "use Priority Slack" to confirm the guess).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CE1 | All 3 detail pages | Focus block + shared delivery line + X-rows out + condensed rows | ✅ CODE |
+| CE2 | Slack row | Skilled value still needs owner's exact wording — NOT guessed | ⏳ WAITING |

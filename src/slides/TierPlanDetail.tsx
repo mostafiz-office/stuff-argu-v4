@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, CheckCircle, Clock, X } from "lucide-react";
+import { Award, CheckCircle, Clock } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
-import { TIER_FEATURE_GROUPS } from "@/data/tierFeatures";
+import { TIER_FEATURE_GROUPS, TIER_DIFFERENTIATORS } from "@/data/tierFeatures";
 import {
   Tooltip,
   TooltipContent,
@@ -38,6 +38,16 @@ interface Props {
   onCompare: () => void;
 }
 
+/**
+ * Batch 95 (owner-approved density fix, Oct 28 2026): the detail pages
+ * carried 14 rows with no focus. Delivery (identical on all tiers)
+ * becomes one shared line; excluded X-rows leave the detail pages
+ * (comparison overlay keeps them); the tier's 3 differentiators lead
+ * as the focus block; remaining rows condense. One shared component,
+ * so all three tiers (Growth, Skilled, Leadership) change together.
+ * Slack values untouched here — Skilled's Slack wording still needs
+ * the owner's exact words (see tierFeatures.ts, Skilled cell).
+ */
 export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onCompare }) => {
   const tier = tiers[index];
   const key = KEYS[index];
@@ -132,9 +142,33 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           </TooltipProvider>
         </motion.div>
 
-        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[56px]">
-          {TIER_FEATURE_GROUPS.map((group, gi) => (
-            <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.12, 0.08), 20)}>
+        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[36px]">
+          {/* Focus first: the tier's 3 differentiators (already in data,
+              already on the tier cards) — the "why this price" landing
+              point. The rest below is reference to scan, not to read. */}
+          <motion.div key={`focus-${index}`} {...fadeUp(0.12, 20)} className="flex flex-col gap-4">
+            {TIER_DIFFERENTIATORS[key].map((d) => (
+              <div key={d.text} className="flex items-center gap-3">
+                <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
+                <span className="text-[30px] font-bold leading-tight text-white">
+                  {d.highlight ? (
+                    <>
+                      {d.text.split(d.highlight)[0]}
+                      <span className="text-pres-accent">{d.highlight}</span>
+                      {d.text.split(d.highlight)[1]}
+                    </>
+                  ) : (
+                    d.text
+                  )}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+          {TIER_FEATURE_GROUPS.filter((group) => group.label !== "Delivery").map((group, gi) => {
+            const included = group.rows.filter((row) => row[key] !== false);
+            if (included.length === 0) return null;
+            return (
+            <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.2, 0.08), 20)}>
               <div className="mb-4 flex items-center gap-3">
                 <span aria-hidden className="h-[22px] w-[6px] shrink-0 rounded-full bg-pres-accent" />
                 <span className="font-heading text-[22px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
@@ -142,29 +176,34 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-x-8">
-                {group.rows.map((row) => {
+                {included.map((row) => {
                   const v = row[key];
-                  const off = v === false;
                   return (
                     <div
                       key={row.feature}
-                      className={`flex items-center gap-3 border-b border-pres-text/10 py-[16px] ${off ? "opacity-45" : ""}`}
+                      className="flex items-center gap-3 border-b border-pres-text/10 py-[12px]"
                     >
-                      {off ? (
-                        <X className="h-7 w-7 shrink-0 text-pres-text-dim" aria-label="Not included" />
-                      ) : (
-                        <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
-                      )}
-                      <span className={`flex-1 text-[26px] leading-tight ${off ? "text-pres-text-dim" : ""}`}>{row.feature}</span>
+                      <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
+                      <span className="flex-1 text-[24px] leading-tight">{row.feature}</span>
                       {typeof v === "string" && (
-                        <span className="whitespace-nowrap font-heading text-[26px] font-bold text-pres-accent">{v}</span>
+                        <span className="whitespace-nowrap font-heading text-[24px] font-bold text-pres-accent">{v}</span>
                       )}
                     </div>
                   );
                 })}
               </div>
             </motion.div>
-          ))}
+            );
+          })}
+          {/* Delivery is identical on all three tiers, so it leaves the
+              list and becomes one shared line — words already in data. */}
+          <motion.p key={`shared-${index}`} {...fadeUp(0.4, 18)} className="text-[20px] leading-snug text-pres-text-muted">
+            Every plan includes:{" "}
+            {TIER_FEATURE_GROUPS.find((g) => g.label === "Delivery")!
+              .rows.map((row) => row.feature)
+              .join(", ")}
+            .
+          </motion.p>
         </div>
       </section>
     </ScaledSlide>
