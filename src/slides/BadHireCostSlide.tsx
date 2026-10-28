@@ -1,27 +1,29 @@
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, fadeIn, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, fadeIn } from "@/lib/presentationMotion";
 import { slide5CostImage } from "@/assets/slide5CostImageData";
 
 /**
  * Batch 88 (owner-approved plan, Oct 28 2026): price anchoring slide 1 of 2.
  * Sits between Hiring Sinkhole and the solution pyramid. Plants the anchor:
- * one bad hire costs around $35,000 — the owner's figure. No invented
- * splits, so the loss lines stay qualitative. Single-step slide, no gate.
+ * one bad hire costs around $35,000 — the owner's figure. Single-step
+ * slide, no gate.
  * Batch 90 (owner direction 1): rebuilt into the pain-slide family —
  * full-bleed photo + problem-story overlay + text block, same shell as
- * slides 2 to 4. The $35,000 is now the deck's own amber (pres-accent),
- * not red — red stays a single-word accent on slide 2 only. Text LEFT:
- * the photo's clean dark curtain sits left, the founder right, no flip.
+ * slides 2 to 4. The $35,000 is the deck's own amber (pres-accent), not
+ * red. Text LEFT: the photo's clean dark curtain sits left, the founder
+ * right, no flip.
+ * Batch 94 (owner pick, Direction 1, Oct 28 2026): stripped to a pure
+ * anchor. The four loss lines and the closing question are gone — they
+ * made the slide a generic number-plus-bullet template, repeated pains
+ * from slides 2 to 4, and doubled slide 6's dot list. What remains is
+ * the number, the photo, and air, plus one bridge line: "That is what
+ * you can count." It frames $35,000 as the countable part and sets up
+ * slide 6's uncountable part without giving it away. Count-up animation
+ * on the number was offered but not picked — still available as a small
+ * addition on his word.
  */
-const LOSS_LINES = [
-  "Months of salary, paid while nothing ships",
-  "Recruiting and onboarding, paid twice",
-  "Fragile AI code the next engineer must rewrite",
-  "Deadlines missed while you hire again",
-];
-
 export const BadHireCostSlide = () => {
   return (
     <ScaledSlide>
@@ -53,28 +55,15 @@ export const BadHireCostSlide = () => {
           >
             $35,000
           </motion.div>
-          <motion.p {...fadeUp(0.2)} className="text-[28px] text-white/85 mt-4 mb-12">
+          <motion.p {...fadeUp(0.2)} className="text-[28px] text-white/85 mt-4 mb-14">
             lost on one bad hire
           </motion.p>
 
-          <div className="flex flex-col items-start gap-4 mb-14">
-            {LOSS_LINES.map((line, i) => (
-              <motion.div
-                key={line}
-                {...fadeUp(staggerDelay(i, 0.3, 0.12))}
-                className="flex items-center gap-3"
-              >
-                <span className="h-[8px] w-[8px] shrink-0 rounded-full bg-pres-accent" />
-                <span className="text-[26px] text-white/90">{line}</span>
-              </motion.div>
-            ))}
-          </div>
-
           <motion.p
-            {...fadeUp(0.85)}
+            {...fadeUp(0.5)}
             className="text-[36px] font-bold font-heading text-white"
           >
-            Do you want to lose $35,000 hiring a cheap developer?
+            That is what you can count.
           </motion.p>
         </div>
       </div>

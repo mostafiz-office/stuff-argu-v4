@@ -747,3 +747,11 @@ Owner screenshot of the V1 cover: "Cut" felt like too much coloring. Diagnosis: 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CC1 | Cover V1 | "Cut" plain white; accent treatment removed from config | ✅ CODE |
+
+## Owner pick Direction 1 (2026-10-28, Batch 94 — slide 5 stripped to pure anchor)
+
+Owner picked Direction 1 for the cheap-feeling slide 5. Cut: the four loss lines and the closing question (generic number-plus-bullet template, repeated slides 2-4 pains, doubled slide 6's dot list). Kept: eyebrow "The cost of a cheap hire", giant amber $35,000 at 160px, "lost on one bad hire", photo shell unchanged. Added: bridge line "That is what you can count." (36px bold) — frames $35,000 as the countable part and sets up slide 6's uncountable part. Count-up animation was offered but not picked; still available as a small addition on his word. Same slot, single step, no gate.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CD1 | Slide 5 | Pure anchor: lines + question cut, bridge line added | ✅ CODE |
