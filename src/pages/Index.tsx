@@ -128,14 +128,45 @@ const Index = () => {
       // Batch 80: tapping the bottom dot of the slide you are already on
       // advances that slide's gated steps (slide 5 pyramid, slide 11
       // bonus/rocket) instead of doing nothing. Dots for other slides
-      // still jump slides as before; when the gate is finished the tap
-      // stays put, because the dot already points at this slide.
+      // still jump slides as before.
+      // Batch 86 (owner: the sequence must END on slide 6): Batch 80
+      // ignored trigger()'s return value, so once the pyramid was
+      // complete the dot went dead and never moved on — unlike Next,
+      // which advances when trigger() returns false. Now the dot
+      // mirrors Next exactly: a consumed step stays, an exhausted gate
+      // advances to the next slide, and a slide with no gate stays put.
       if (newIndex === currentIndex) {
         const gate = window.__slideNavigationGate;
         if (gate && typeof gate.trigger === "function") {
-          gate.trigger();
+          const isHandled = gate.trigger();
+          if (isHandled) {
+            return;
+          }
+          if (currentIndex < totalSlides - 1) {
+            setDirection(1);
+            setCurrentIndex(currentIndex + 1);
+          }
         }
         return;
+      }
+      // Batch 86b (owner: bottom nav must not SKIP the pyramid): a
+      // FORWARD dot tap while a gate is unfinished advances one gated
+      // step and stays, exactly like Next — tapping slide 6's dot from
+      // slide 5 walks reveal, Initial Sign Up, Training & Assessment,
+      // Save Time Hiring, Avoid Missing Deadlines, Find Top 5% Talent,
+      // and only when the gate is finished does the tap jump to the
+      // tapped slide. Backward taps always jump freely. (An earlier
+      // forward-dot fix was approved but never landed on main — the
+      // current code proves it — so it is re-applied here surgically
+      // on fresh HEAD instead of as a full-file rewrite.)
+      if (newIndex > currentIndex) {
+        const gate = window.__slideNavigationGate;
+        if (gate && typeof gate.trigger === "function") {
+          const isHandled = gate.trigger();
+          if (isHandled) {
+            return;
+          }
+        }
       }
       if (newIndex >= 0 && newIndex < totalSlides) {
         // Returning to slide 1 from any other slide shows the other cover.
