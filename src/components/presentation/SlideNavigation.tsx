@@ -348,19 +348,19 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
                 type="button"
                 onClick={() => onNavigate(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "The Comparison", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
                 className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
                   isActive
                     ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
                     : "w-2 h-2 bg-white/30 hover:bg-white/70"
                 }`}
               />
-              {/* Batch 87 (owner: six levels between slides 5 and 6): while
+              {/* Batch 87 (owner: six levels between the solution and pricing dots; Batch 88 moved the solution slide from index 4 to index 6, sub-dots moved with it): while
                   on slide 5, six small sub-dots appear between the slide 5
                   and slide 6 dots — one per pyramid step, in order. Tap
                   them one by one to walk the pyramid, or tap any one to
                   jump straight to that level. Reached steps glow amber. */}
-              {idx === 4 && currentIndex === 4 && (
+              {idx === 6 && currentIndex === 6 && (
                 <span className="flex items-center gap-1.5 mx-0.5" role="group" aria-label="Pyramid steps">
                   {["Reveal solution", "Initial Sign Up", "Training & Assessment", "Save Time Hiring", "Avoid Missing Deadlines", "Find Top 5% Talent"].map((label, i) => {
                     const stepNo = i + 1;

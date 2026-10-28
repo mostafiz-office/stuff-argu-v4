@@ -695,3 +695,13 @@ Owner confirmed the design after the understanding round: add six extra steps in
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BW1 | Slide 5 nav | Six pyramid sub-dots between dots 5 and 6, visible on slide 5, each jumping to its level | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 88 — price anchoring slides after slide 4)
+
+Owner-approved plan: price anchoring was missing before the solution and pricing. Two new slides inserted between Hiring Sinkhole and the solution pyramid (deck 13 → 15 slides). Slide 5 "Bad Hire Cost": big red $35,000 anchor (the owner's figure, no invented splits — loss lines stay qualitative: salary while nothing ships, recruiting paid twice, fragile AI code to rewrite, deadlines missed), closing "Do you want to lose $35,000 hiring a cheap developer?". Slide 6 "The Comparison": cheap hire $35,000 lost vs Riseup engineer from $1,900/M (deck's own starter price, shown early per the approved plan so the anchor has a number), deck-true rows only, closing "Same work. A fraction of the loss.". Both single-step, no gates. Renumbering: solution pyramid → slide 7, pricing → slide 8, rest shift by two; dot labels + URL range follow; Batch 87 pyramid sub-dots moved with the solution slide (index 4 → 6). Website pages (franchise / forward-deploy SEO, linking, EAT) NOT in this batch — still needs his site + URLs.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BX1 | New slide 5 | Bad hire $35,000 anchor slide, qualitative loss lines, owner's closing line | ✅ CODE |
+| BX2 | New slide 6 | Anchor comparison: $35,000 lost vs from $1,900/M Riseup engineer | ✅ CODE |
+| BX3 | Deck-wide | 13 → 15 slides; labels, URL range, sub-dot index moved with solution slide | ✅ CODE |

@@ -4,6 +4,8 @@ import { PricingCoverV3 } from "@/slides/PricingCoverV3";
 import { PricingCoverV1 } from "@/slides/PricingCoverV1";
 import { OutagePanicSlide, FragileCodeSlide, HiringSinkholeSlide } from "@/slides/PainPointsSlide";
 import { SolutionBridgeSlide } from "@/slides/SolutionBridgeSlide";
+import { BadHireCostSlide } from "@/slides/BadHireCostSlide";
+import { AnchorComparisonSlide } from "@/slides/AnchorComparisonSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
 import { ExpertValuationBreakdownSlide } from "@/slides/ExpertValuationBreakdownSlide";
@@ -90,6 +92,10 @@ const Index = () => {
       OutagePanicSlide,
       FragileCodeSlide,
       HiringSinkholeSlide,
+      // Batch 88: price anchoring slides — the $35,000 loss, then the
+      // comparison — sit between the pain and the solution pyramid.
+      BadHireCostSlide,
+      AnchorComparisonSlide,
       SolutionBridgeSlide,
       PricingTiersSlide,
       PremiumExpertSlideV2,
