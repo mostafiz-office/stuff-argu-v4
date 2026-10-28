@@ -714,3 +714,12 @@ Owner correction on Batch 88: no comparison on slide 6 — the slide stays in th
 |---|-------|--------|--------|
 | BY1 | New slide 6 | Problems-behind-the-$35,000 slide replaces the comparison slide | ✅ CODE |
 | BY2 | Deck-wide | Comparison out of the order + label; file kept unreferenced (reversible) | ✅ CODE |
+
+## Owner direction 1 (2026-10-28, Batch 90 — anchor slides join the pain family)
+
+Owner agreed slides 5 and 6 did not match the other slides' design and picked direction 1: both rebuilt on the pain-slide shell — full-bleed photo + problem-story overlay + side text block, exactly like slides 2 to 4 — and the $35,000 anchor moved from red to the deck's own amber (pres-accent), so red stays a single-word accent on slide 2 only. Photos picked from the Drive stock folder after viewing (swap offer stands): slide 5 = late-night founder at a laptop, dark red curtains, text LEFT (clean curtain left, man right, no flip); slide 6 = dark empty office desk, text RIGHT (desk left, window side under the right overlay fade, no flip). Copy, order, and gates unchanged; deck stays 15 slides.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BZ1 | Slide 5 | Photo-backed pain shell, amber $35,000, text left | ✅ CODE |
+| BZ2 | Slide 6 | Photo-backed pain shell, amber $35,000 in title, text right | ✅ CODE |

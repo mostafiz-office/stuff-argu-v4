@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, fadeIn, staggerDelay } from "@/lib/presentationMotion";
+import { slide5CostImage } from "@/assets/slide5CostImageData";
 
 /**
  * Batch 88 (owner-approved plan, Oct 28 2026): price anchoring slide 1 of 2.
  * Sits between Hiring Sinkhole and the solution pyramid. Plants the anchor:
  * one bad hire costs around $35,000 — the owner's figure. No invented
- * splits, so the loss lines stay qualitative. Single-step slide, no gate,
- * so the story keeps moving into the comparison.
+ * splits, so the loss lines stay qualitative. Single-step slide, no gate.
+ * Batch 90 (owner direction 1): rebuilt into the pain-slide family —
+ * full-bleed photo + problem-story overlay + text block, same shell as
+ * slides 2 to 4. The $35,000 is now the deck's own amber (pres-accent),
+ * not red — red stays a single-word accent on slide 2 only. Text LEFT:
+ * the photo's clean dark curtain sits left, the founder right, no flip.
  */
 const LOSS_LINES = [
   "Months of salary, paid while nothing ships",
@@ -20,13 +25,20 @@ const LOSS_LINES = [
 export const BadHireCostSlide = () => {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
+      <div className="slide-dark-bg problem-story relative w-[1920px] h-[1080px] overflow-hidden text-pres-text font-sans">
+        <motion.img
+          {...fadeIn(0)}
+          src={slide5CostImage}
+          alt="Founder working late at a laptop"
+          width={1920}
+          height={1088}
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 problem-story-overlay" />
         <SlideHeader />
 
-        {/* Ambient center glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
-
-        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col items-center text-center">
+        <div className="relative z-10 h-full flex flex-col justify-center pt-[40px] pl-[100px] pr-[980px] text-left items-start">
           <motion.p
             {...fadeUp(0)}
             className="text-[20px] font-semibold uppercase tracking-[0.2em] text-pres-text-muted mb-6"
@@ -34,10 +46,10 @@ export const BadHireCostSlide = () => {
             The cost of a cheap hire
           </motion.p>
 
-          {/* The anchor: loss red, same red as slide 2's "down" */}
+          {/* The anchor: deck amber, the deck's own focus colour */}
           <motion.div
             {...fadeUp(0.1)}
-            className="font-price text-[160px] font-bold leading-none text-[#FF0000]"
+            className="font-price text-[160px] font-bold leading-none text-pres-accent"
           >
             $35,000
           </motion.div>

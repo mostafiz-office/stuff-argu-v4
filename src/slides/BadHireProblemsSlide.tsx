@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, fadeIn, staggerDelay } from "@/lib/presentationMotion";
+import { slide6ProblemsImage } from "@/assets/slide6ProblemsImageData";
 
 /**
  * Batch 89 (owner direction, Oct 28 2026): slide 6 stops being the
  * comparison and becomes the second half of the anchoring story. Slide 5
  * gave the number ($35,000); this slide shows the problems behind it, so
- * the pain peaks right before the solution pyramid. Replaces
- * AnchorComparisonSlide in the slide order; that file stays in the repo
- * unreferenced, so the comparison can return with a one-line change.
- * Single-step slide, no gate, no new numbers.
+ * the pain peaks right before the solution pyramid. Single-step slide,
+ * no gate, no new numbers.
+ * Batch 90 (owner direction 1): rebuilt into the pain-slide family —
+ * full-bleed photo + problem-story overlay + text block, same shell as
+ * slides 2 to 4. The $35,000 in the title is now the deck's own amber
+ * (pres-accent), not red. Text RIGHT: the empty desk reads left, the
+ * window side takes the right overlay fade, no flip.
  */
 const PROBLEM_BEATS = [
   {
@@ -34,21 +38,28 @@ const PROBLEM_BEATS = [
 export const BadHireProblemsSlide = () => {
   return (
     <ScaledSlide>
-      <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
+      <div className="slide-dark-bg problem-story relative w-[1920px] h-[1080px] overflow-hidden text-pres-text font-sans">
+        <motion.img
+          {...fadeIn(0)}
+          src={slide6ProblemsImage}
+          alt="Empty office desk with a laptop"
+          width={1920}
+          height={1088}
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 problem-story-overlay-right" />
         <SlideHeader />
 
-        {/* Ambient center glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
-
-        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col items-center">
+        <div className="relative z-10 h-full flex flex-col justify-center pt-[40px] pl-[980px] pr-[100px] text-right items-end">
           <motion.h1
             {...fadeUp(0)}
-            className="text-[64px] font-bold font-heading text-white text-center mb-12"
+            className="text-[64px] font-bold font-heading text-white mb-12"
           >
-            Behind the <span className="text-[#FF0000]">$35,000</span>
+            Behind the <span className="text-pres-accent">$35,000</span>
           </motion.h1>
 
-          <div className="flex flex-col gap-8 w-full max-w-[1100px] mb-14">
+          <div className="flex flex-col gap-8 w-full mb-14">
             {PROBLEM_BEATS.map((beat, i) => (
               <motion.div key={beat.lead} {...fadeUp(staggerDelay(i, 0.15, 0.12))}>
                 <p className="text-[28px] font-bold font-heading text-white leading-tight">
@@ -61,7 +72,7 @@ export const BadHireProblemsSlide = () => {
 
           <motion.p
             {...fadeUp(0.75)}
-            className="text-[36px] font-bold font-heading text-white text-center"
+            className="text-[36px] font-bold font-heading text-white"
           >
             This is what a cheap hire really costs.
           </motion.p>
