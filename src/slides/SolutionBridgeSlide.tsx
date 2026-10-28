@@ -128,6 +128,16 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
       "Continue",
     ];
     window.__slideNavigationGate = {
+      // Batch 87: sub-dot jumps — tapping sub-dot N (1..6) lands exactly
+      // on that pyramid step: 1 = reveal, 2..6 = levels 1..5. Works both
+      // ways, so the dots can be tapped in order one by one or jumped
+      // to directly. Sound only when moving forward.
+      goToStep: (target: number) => {
+        if (target < 1 || target > 6) return;
+        if (target > step) presentationSound.play("reveal");
+        setSplit(true);
+        setLitCount(target - 1);
+      },
       trigger: () => {
         if (!split) {
           presentationSound.play("reveal");

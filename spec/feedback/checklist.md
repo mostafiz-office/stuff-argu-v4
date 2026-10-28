@@ -687,3 +687,11 @@ Owner's follow-up made the real behaviour clear: he taps the NEXT dot (slide 6) 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BV2 | Slide 5 (+ all gated slides) | Forward dot taps advance one gated step while unfinished instead of jumping past the sequence | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 87 — six pyramid sub-dots between slide 5 and 6 dots)
+
+Owner confirmed the design after the understanding round: add six extra steps in the navigation between slides 5 and 6, each dot going to the next pyramid level one by one. Implementation: SolutionBridgeSlide's gate gains goToStep (1 = reveal, 2..6 = levels 1..5; works forward and back, sound only moving forward); SlideNavigation polls the gate step and, only while on slide 5, renders six small sub-dots between the slide 5 and slide 6 dots — reached steps glow amber, upcoming ones are small white. Tap in order to walk one by one, or tap any dot to jump straight to that level. Batch 86 dot-stepping untouched. Scope kept to slide 5 only (slide 11's bonus/rocket gate has no sub-dots).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BW1 | Slide 5 nav | Six pyramid sub-dots between dots 5 and 6, visible on slide 5, each jumping to its level | ✅ CODE |

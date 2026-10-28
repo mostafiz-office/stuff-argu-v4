@@ -25,6 +25,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [gateTooltip, setGateTooltip] = useState<string | null>(null);
+  const [gateStep, setGateStep] = useState<number | null>(null);
   const [soundMuted, setSoundMuted] = useState(() => presentationSound.isMuted());
   const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
   const [cameraError, setCameraError] = useState(false);
@@ -41,7 +42,8 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
     };
   }, []);
 
-  // Poll for interactive gate tooltip state
+  // Poll for interactive gate tooltip state (Batch 87: also track the
+  // gate step, so the pyramid sub-dots can light up as steps are reached)
   useEffect(() => {
     const updateGate = () => {
       const gate = window.__slideNavigationGate;
@@ -50,6 +52,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       } else {
         setGateTooltip(null);
       }
+      setGateStep(typeof gate?.step === "number" ? gate.step : null);
     };
 
     updateGate();
@@ -340,18 +343,51 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
         {Array.from({ length: totalSlides }).map((_, idx) => {
           const isActive = idx === currentIndex;
           return (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => onNavigate(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-               title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
-              className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
-                isActive
-                  ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
-                  : "w-2 h-2 bg-white/30 hover:bg-white/70"
-              }`}
-            />
+            <React.Fragment key={idx}>
+              <button
+                type="button"
+                onClick={() => onNavigate(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+                className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
+                  isActive
+                    ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
+                    : "w-2 h-2 bg-white/30 hover:bg-white/70"
+                }`}
+              />
+              {/* Batch 87 (owner: six levels between slides 5 and 6): while
+                  on slide 5, six small sub-dots appear between the slide 5
+                  and slide 6 dots — one per pyramid step, in order. Tap
+                  them one by one to walk the pyramid, or tap any one to
+                  jump straight to that level. Reached steps glow amber. */}
+              {idx === 4 && currentIndex === 4 && (
+                <span className="flex items-center gap-1.5 mx-0.5" role="group" aria-label="Pyramid steps">
+                  {["Reveal solution", "Initial Sign Up", "Training & Assessment", "Save Time Hiring", "Avoid Missing Deadlines", "Find Top 5% Talent"].map((label, i) => {
+                    const stepNo = i + 1;
+                    const reached = gateStep !== null && gateStep >= stepNo;
+                    return (
+                      <button
+                        key={stepNo}
+                        type="button"
+                        title={`Pyramid step ${stepNo}: ${label}`}
+                        aria-label={`Pyramid step ${stepNo}: ${label}`}
+                        onClick={() => {
+                          const gate = window.__slideNavigationGate;
+                          if (gate && typeof gate.goToStep === "function") {
+                            gate.goToStep(stepNo);
+                          }
+                        }}
+                        className={`rounded-full transition-all duration-300 cursor-pointer ${
+                          reached
+                            ? "w-2 h-2 bg-pres-accent shadow-[0_0_8px_rgba(255,173,1,0.6)]"
+                            : "w-1.5 h-1.5 bg-white/30 hover:bg-white/70"
+                        }`}
+                      />
+                    );
+                  })}
+                </span>
+              )}
+            </React.Fragment>
           );
         })}
       </div>
