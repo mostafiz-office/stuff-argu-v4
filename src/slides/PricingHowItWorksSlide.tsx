@@ -153,7 +153,8 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                     tabIndex={0}
                     onClick={() => setDetailStep(idx)}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setDetailStep(idx); }}
-                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-pres-accent/40 hover:border-pres-accent cursor-pointer hover:bg-pres-surface/95 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 shadow-xl"
+                    whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+                    className="flex flex-col items-center text-center p-6 rounded-3xl bg-pres-surface/85 border border-pres-accent/40 hover:border-pres-accent cursor-pointer hover:bg-pres-surface/95 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] shadow-xl hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                   >
                     {/* Circle Icon */}
                     <div className="w-[66px] h-[66px] rounded-full bg-pres-surface border-[3px] border-pres-accent flex items-center justify-center text-pres-accent mb-3.5 shadow-[0_0_25px_rgba(255,173,1,0.3)] z-10">

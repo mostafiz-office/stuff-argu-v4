@@ -71,7 +71,8 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
                 <motion.div
                   key={idx}
                   {...fadeUp(staggerDelay(idx, 0.16, 0.055))}
-                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/50 rounded-2xl p-7 flex items-center gap-5 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 hover:bg-pres-surface shadow-xl"
+                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/60 rounded-2xl p-7 flex items-center gap-5 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-pres-surface shadow-xl hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                 >
                   <div className="w-[44px] h-[44px] rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent shrink-0 shadow-sm">
                     <Icon className="w-5 h-5" />

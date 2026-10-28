@@ -45,11 +45,15 @@ export interface PainBeat {
   /** Batch 62: words wrapped in a design-tool selection box
    * (amber outline, corner handles, mouse arrow) instead of a pill. */
   selectWords?: string[];
+  /** Batch 82: per-word text colours for wordAnim lines, keyed by the
+   * word without punctuation (slide 2 hook: production amber, is
+   * white, down red). Inline colour beats the line-level hook class. */
+  wordColors?: Record<string, string>;
   /** Batch 57: character index replaced by a gradient letter tile
    *  (the letter-tile device from the owner's Design/Publish ref). */
   tileAt?: number;
   /** What the tile bears: an hourglass symbol or the letter itself. */
-  tileSymbol?: "hourglass" | "letter";
+  tileSymbol?: "hourglass" | "letter" | "person";
   /** Batch 57: character index replaced by an object (the
    *  object-letter device from the same reference). */
   objectAt?: number;
@@ -273,7 +277,7 @@ function TileLetter({
   letter,
 }: {
   delay: number;
-  symbol: "hourglass" | "letter";
+  symbol: "hourglass" | "letter" | "person";
   letter: string;
 }) {
   return (
@@ -302,6 +306,20 @@ function TileLetter({
           <path
             fill="#1a1206"
             d="M14 8h36v7H14zM14 49h36v7H14zM20 15h24c0 11-6.6 14.3-12 17 5.4 2.7 12 6 12 17H20c0-11 6.6-14.3 12-17-5.4-2.7-12-6-12-17z"
+          />
+        </svg>
+      ) : symbol === "person" ? (
+        // Batch 82 (owner: the hourglass tile does not read as hiring):
+        // a person silhouette — head + shoulders — the hire itself.
+        <svg
+          viewBox="0 0 64 64"
+          aria-hidden
+          style={{ height: "0.56em", width: "0.56em" }}
+        >
+          <circle cx="32" cy="20" r="11" fill="#1a1206" />
+          <path
+            fill="#1a1206"
+            d="M10 56c0-10 9.5-18 22-18s22 8 22 18z"
           />
         </svg>
       ) : (
@@ -454,12 +472,22 @@ export const PainBeats: React.FC<{
             : gi % 2 === 0
               ? { x: -72 }
               : { x: 72 };
+          // Batch 82: wordAnim lines can now carry per-word colours
+          // (slide 2 hook) and selection boxes (slide 2 "sleep", same
+          // device as slide 3 "explain"). The box draws after its word
+          // lands: entrance delay + 0.6s settle, then the outline
+          // sweeps (SelectWord adds +0.35) and the cursor lands (+0.95).
+          const clean = word.replace(/[^A-Za-z]/g, "");
+          const wordColor = beat.wordColors?.[clean];
+          const isSelect = beat.selectWords?.includes(clean);
+          const enterDelay = 0.25 + gi * 0.5;
           return (
             <motion.span
               key={wi}
               className="inline-block"
               style={{
                 textShadow: WORD_SHADOW,
+                ...(wordColor ? { color: wordColor } : {}),
                 ...(wi < parts.length - 1
                   ? { marginRight: "0.27em" }
                   : {}),
@@ -467,12 +495,16 @@ export const PainBeats: React.FC<{
               initial={{ opacity: 0, ...from, filter: "blur(6px)" }}
               animate={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
               transition={{
-                delay: 0.25 + gi * 0.5,
+                delay: enterDelay,
                 duration: 0.6,
                 ease: presentationEase,
               }}
             >
-              {word}
+              {isSelect ? (
+                <SelectWord delay={enterDelay + 0.6}>{word}</SelectWord>
+              ) : (
+                word
+              )}
             </motion.span>
           );
         });

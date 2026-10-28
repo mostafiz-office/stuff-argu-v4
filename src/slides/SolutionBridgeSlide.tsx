@@ -20,9 +20,12 @@ interface PhraseDef {
 
 // Batch 64 (owner): in "Save Time Hiring" BOTH "Save" and "Hiring"
 // carry the marker (it previously had none — "Hiring" was only
-// extrabold). Marker colours follow the pyramid bands they pair
-// with: L5 amber (pres-accent), L4 red (destructive), L3 orange
-// hsl(35, 90%, 55%) = rgb(244, 157, 37) at 70%.
+// extrabold). Batch 82 (owner): the markers must match OUR colours —
+// L3 "Save"/"Hiring" switch from band orange to our yellow
+// (pres-accent); L4 "Missing" switches from destructive red to its
+// own band red hsl(350, 75%, 55%) = rgb(226, 54, 83) at 70%; L5 "5%"
+// goes SOLID pres-accent with dark text, so the yellow on "Top 5%"
+// is exactly our yellow, not a faded wash.
 const PHRASES: PhraseDef[] = [
   { before: "Find Top ", focus: "5%", after: " Talent" },
   { before: "Avoid ", focus: "Missing", after: " Deadlines" },
@@ -40,18 +43,22 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
     >
       {p.before}
       {index === 0 && (
-        <MarkerHighlight colorClassName="bg-pres-accent/70" delay={0.25}>
+        <MarkerHighlight
+          colorClassName="bg-pres-accent"
+          className="pres-dark-safe-accent"
+          delay={0.25}
+        >
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 1 && (
-        <MarkerHighlight colorClassName="bg-destructive/70" delay={0.25}>
+        <MarkerHighlight colorClassName="bg-[rgba(226,54,83,0.7)]" delay={0.25}>
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 2 && (
         <MarkerHighlight
-          colorClassName="bg-[rgba(244,157,37,0.7)]"
+          colorClassName="bg-pres-accent/70"
           delay={0.25}
         >
           {p.focus}
@@ -60,7 +67,7 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
       {p.after}
       {p.focus2 && (
         <MarkerHighlight
-          colorClassName="bg-[rgba(244,157,37,0.7)]"
+          colorClassName="bg-pres-accent/70"
           delay={0.45}
         >
           {p.focus2}

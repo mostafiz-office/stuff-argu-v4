@@ -648,3 +648,26 @@ Owner sent a second Drive photo for slide 3 ("diverse-programming-engineers-talk
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | BS1 | Slide 3 (PainPointsSlide) | Photo replaced with owner's second pick; imageFlip removed (composition) | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 82 — voice-feedback round 1: slides 1, 2, 4, 5)
+
+Owner's voice round (no approval asks — "create a task list, plan it, start working"). This batch covers the fully-specified items; pricing transplant, card hovers and detail-page density follow as Batches 83–85.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BT1 | Slide 1 (V3 cover) | "20" WaterFill box now bleeds 0.13em sideways, exactly like the "Minutes." pill; treated-word wrapper margins 0.09em → 0.22em so the air to neighbours stays 0.09em on both treatments — one shared padding, no cut left edge, no near-touch between the "20" box and the pill | ✅ CODE |
+| BT2 | Slide 2 hook | Recoloured word by word via new PainBeat.wordColors: "production" our yellow #FFAD01, "is" white, "down" hook red #FF0000 (was: whole line red) | ✅ CODE |
+| BT3 | Slide 2 closing | "sleep" in "no sleep tonight" gets the slide 3 "explain" selection-box device (amber outline draws in, corner handles, mouse arrow) — renderWords now honours selectWords inside wordAnim; box draws after the word lands (enter + 0.6s) | ✅ CODE |
+| BT4 | Slide 4 title | Hourglass tile retired at owner's word ("does not read as hiring"): new TileLetter symbol "person" — black head + shoulders silhouette on the same amber tile, same size/tilt/shadow | ✅ CODE |
+| BT5 | Slide 5 pyramid | L3 "Save"/"Hiring" markers band-orange → our yellow pres-accent/70; L4 "Missing" marker destructive red → its own band red rgba(226,54,83,0.7); L5 "5%" marker → SOLID pres-accent with dark text, so the yellow on "Top 5%" is exactly our yellow | ✅ CODE |
+| BT6 | Slide 5 dots | No code change: Batch 80's active-dot gate trigger verified sound (gate trigger step 0 reveals the pyramid); owner's repeat report attributed to Lovable preview sync lag — retest once the preview pulls Batch 80 | ✅ CODE (verify in preview) |
+
+## Owner direction (2026-10-28, Batches 83–85 — voice-feedback round 2: pricing, hovers, detail pages)
+
+Built locally in edit83/; push held for the single combined tap (Batch 82's three push cards timed out untapped — see Batch 82 note).
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| BU1 | Slide 6 (Pricing Tiers) | Card design transplanted from the v1 deck's slide 2 pricing (owner's link; bundle-extracted, content untouched): rounded-2xl, 28px/24px padding, 2px borders, gradient wash on the featured card, flush top-right corner badge (solid amber, dark text, 14px, 0.05em tracking) replacing the floating pill, small uppercase dim tier name, amber experience line, 48px bold price (this deck's price face kept), text-only subtle hours pill, check-icon feature rows in muted 18px, v1 entrance (0.3 + idx*0.12, 0.6s), gap-8 grid, v1 subline above the grid. Kept: 3 tiers, URL offers, tooltips, View details reveal, Batch 65 hover lift. Dropped: dot texture, divider, Clock icon (v1 has none) | ✅ CODE |
+| BU2 | Slides 7, 8, 9, 10 | Premium card hover (Batch 65 recipe) on every card: whileHover lift -8px + scale 1.015 on one 450ms cubic-bezier(0.22,1,0.36,1) clock, border + shadow on the same clock, amber glow. Slide 7 profile + pillar cards, slide 8 stat + featured cards (featured glow intensifies on hover) + tier rows (plain divs: CSS lift), slide 9 guarantee cards, slide 10 step cards (click-to-overlay untouched) | ✅ CODE |
+| BU3 | Pricing detail (TierPlanDetail) | Hierarchy pass on the single-tier detail overlay: group headers get an amber accent bar + 22px, rows breathe more (16px), excluded rows double-coded (dim text + X + opacity), values never wrap (whitespace-nowrap) so the amber values stay the visual anchors. Comparison overlay untouched — it already has per-column colour highlighting | ✅ CODE |

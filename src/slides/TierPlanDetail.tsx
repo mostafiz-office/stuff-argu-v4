@@ -135,8 +135,11 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
         <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[56px]">
           {TIER_FEATURE_GROUPS.map((group, gi) => (
             <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.12, 0.08), 20)}>
-              <div className="mb-3 font-heading text-[20px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
-                {group.label}
+              <div className="mb-4 flex items-center gap-3">
+                <span aria-hidden className="h-[22px] w-[6px] shrink-0 rounded-full bg-pres-accent" />
+                <span className="font-heading text-[22px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
+                  {group.label}
+                </span>
               </div>
               <div className="grid grid-cols-2 gap-x-8">
                 {group.rows.map((row) => {
@@ -145,16 +148,16 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   return (
                     <div
                       key={row.feature}
-                      className={`flex items-center gap-3 border-b border-pres-text/10 py-[14px] ${off ? "opacity-45" : ""}`}
+                      className={`flex items-center gap-3 border-b border-pres-text/10 py-[16px] ${off ? "opacity-45" : ""}`}
                     >
                       {off ? (
                         <X className="h-7 w-7 shrink-0 text-pres-text-dim" aria-label="Not included" />
                       ) : (
                         <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
                       )}
-                      <span className="flex-1 text-[26px] leading-tight">{row.feature}</span>
+                      <span className={`flex-1 text-[26px] leading-tight ${off ? "text-pres-text-dim" : ""}`}>{row.feature}</span>
                       {typeof v === "string" && (
-                        <span className="font-heading text-[26px] font-bold text-pres-accent">{v}</span>
+                        <span className="whitespace-nowrap font-heading text-[26px] font-bold text-pres-accent">{v}</span>
                       )}
                     </div>
                   );

@@ -116,6 +116,13 @@ const problems: Problem[] = [
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         wordAnim: true,
+        // Batch 82 (owner): hook recoloured word by word — production
+        // in our yellow, is in white, down in the hook red.
+        wordColors: {
+          production: "#FFAD01",
+          is: "#FFFFFF",
+          down: "#FF0000",
+        },
         className:
           "whitespace-nowrap -mt-[5px]",
       },
@@ -127,6 +134,9 @@ const problems: Problem[] = [
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 800,
         wordAnim: true,
+        // Batch 82 (owner): "sleep" gets the slide 3 "explain"
+        // selection-box animation (same device, same timing logic).
+        selectWords: ["sleep"],
         indentClass: "ml-[385px]",
         className:
           "whitespace-nowrap -mt-[7px]",
@@ -198,7 +208,8 @@ const problems: Problem[] = [
       {
         text: "Hiring",
         tileAt: 1,
-        tileSymbol: "hourglass",
+        // Batch 82 (owner: hourglass does not read as hiring).
+        tileSymbol: "person",
         sizePx: 176,
         fontFamily: "'Ubuntu', sans-serif",
         fontWeight: 700,

@@ -161,7 +161,7 @@ export const CoverHeadline: React.FC<{
                 percent={fillPercent}
                 delay={delay + 0.15}
                 duration={1.1}
-                className="mx-[0.09em]"
+                className="mx-[0.22em]"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 14, color: "#ffffff" }}
@@ -189,7 +189,7 @@ export const CoverHeadline: React.FC<{
               <LabelDrop
                 tone={labelTone}
                 delay={Math.max(delay, 1.6)}
-                className="mx-[0.09em]"
+                className="mx-[0.22em]"
               >
                 {word}
               </LabelDrop>

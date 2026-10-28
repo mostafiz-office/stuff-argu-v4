@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { TierPlanDetail } from "@/slides/TierPlanDetail";
 import { motion } from "framer-motion";
-import { Award, Clock, ArrowLeft, Columns3 } from "lucide-react";
+import { Award, Check, ArrowLeft, Columns3 } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
@@ -145,9 +145,15 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
         {/* Flexbox Centered Main Content Wrapper */}
         <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
+          {/* Batch 83 (owner: make pricing like the v1 deck's slide 2):
+              v1's subline above the grid; 160 hrs/M is this deck's own
+              data, already shown on every card's hours pill. */}
+          <p className="text-center text-[18px] text-pres-text-muted mb-10">
+            All plans include 160 dedicated hours/month. Scale anytime.
+          </p>
           {/* 3-Column Tier Cards Grid */}
           <TooltipProvider>
-          <div className="grid grid-cols-3 gap-10 w-full">
+          <div className="grid grid-cols-3 gap-8 w-full">
             {effectiveTiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <Tooltip>
@@ -166,47 +172,51 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   // in 200ms, which felt fast and unpremium.
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: staggerDelay(idx, 0.22, 0.1), duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: staggerDelay(idx, 0.3, 0.12), duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
                   whileTap={{ scale: 0.99 }}
-                  className={`group cursor-pointer relative flex flex-col h-full p-12 rounded-3xl border transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-md shadow-2xl ${
+                  // Batch 83: card chrome transplanted from the v1 deck's
+                  // pricing slide (same 3 tiers, same price family):
+                  // rounded-2xl, 28px/24px padding, 2px borders, gradient
+                  // wash on the featured card, opaque surface otherwise.
+                  // Hover lift + 450ms clock (Batch 65) and the View
+                  // details reveal are this deck's own systems, kept.
+                  className={`group cursor-pointer relative flex flex-col h-full p-7 px-6 rounded-2xl border-2 overflow-hidden transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] shadow-2xl ${
                     tier.highlight
-                      ? "bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.2)]"
-                      : "bg-pres-surface/75 border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
+                      ? "bg-[linear-gradient(180deg,hsl(var(--pres-accent)/0.1)_0%,hsl(var(--pres-bg-surface))_100%)] border-pres-accent/40 shadow-[0_0_35px_rgba(255,173,1,0.2)]"
+                      : "bg-pres-surface border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                   }`}
                 >
-                  {/* FB-15: subtle dot texture */}
-                  <div aria-hidden className="tier-card-dots pointer-events-none absolute inset-0 rounded-3xl" />
-
-                  {/* Best Value Badge */}
+                  {/* Best Value Badge — v1 corner badge: flush top-right,
+                      solid amber, dark text, small caps tracking. */}
                   {tier.badge && (
-                    <div className="absolute -top-3.5 right-7 px-3.5 py-1 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[18px] font-bold font-heading flex items-center gap-1.5 shadow-lg">
+                    <div className="absolute top-0 right-0 px-4 py-2 rounded-bl-xl bg-pres-accent text-pres-bg pres-dark-safe-accent text-[14px] font-bold tracking-[0.05em] flex items-center gap-2">
                       <Award className="w-3.5 h-3.5 fill-current" />
                       <span>{tier.badge}</span>
                     </div>
                   )}
 
                   <div className="flex flex-col">
-                    {/* Tier Name */}
-                    <h3 className="text-[36px] font-bold font-heading text-white mb-1">
+                    {/* Tier Name — v1: small uppercase dim name */}
+                    <h3 className="text-[16px] font-semibold uppercase tracking-[0.12em] text-pres-text-dim">
                       {tier.name}
                     </h3>
 
-                    {/* Experience */}
-                    <p className="text-[18px] font-medium text-pres-text-dim uppercase tracking-wider mb-6">
+                    {/* Experience — v1: amber line under the name */}
+                    <p className="text-[18px] font-medium text-pres-accent mt-2 leading-[1.3]">
                       {tier.experience} Experience
                     </p>
 
-                    {/* Price */}
-                    <div className="flex items-baseline gap-1 mb-5">
+                    {/* Price — v1 size/weight, this deck's price face kept */}
+                    <div className="flex items-baseline gap-1 mt-5">
                       <span
-                        className={`font-price text-[44px] font-medium leading-none ${
+                        className={`font-price text-[48px] font-bold leading-none ${
                           tier.wasPrice ? "text-pres-accent" : "text-white"
                         }`}
                       >
                         {tier.price}
                       </span>
-                      <span className="text-[22px] text-pres-text-muted font-medium">
+                      <span className="text-[20px] text-pres-text-dim font-medium">
                         {tier.priceSuffix}
                       </span>
                     </div>
@@ -226,21 +236,17 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                       </div>
                     )}
 
-                    {/* Hours Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[20px] font-semibold mb-6 self-start">
-                      <Clock className="w-3.5 h-3.5" />
+                    {/* Hours Badge — v1 text-only subtle pill */}
+                    <div className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5 bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[16px] font-semibold self-start">
                       <span>{tier.hours}</span>
                     </div>
 
-                    {/* Divider */}
-                    <div className="w-full h-[1px] bg-white/10 mb-6" />
-
                     {/* FB-18: differentiator focus block — the "why this price" */}
-                    <ul className="space-y-4">
+                    <ul className="mt-3 space-y-2.5 flex-1">
                       {TIER_DIFFERENTIATORS[tier.key].map((d, dIdx) => (
                         <li key={dIdx} className="flex items-start gap-3">
-                          <span className="mt-[10px] h-[8px] w-[8px] shrink-0 rounded-full bg-pres-accent" />
-                          <span className="text-[24px] font-medium text-white leading-snug whitespace-nowrap">
+                          <Check className="mt-[3px] h-[18px] w-[18px] shrink-0 text-pres-accent" />
+                          <span className="text-[18px] text-pres-text-muted leading-[1.4]">
                             {d.highlight ? (
                               <>
                                 {d.text.split(d.highlight)[0]}

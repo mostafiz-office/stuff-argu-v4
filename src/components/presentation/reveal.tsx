@@ -17,7 +17,11 @@ import { presentationEase } from "@/lib/presentationMotion";
  *  - Same painted extent: BOTH treatments paint the word's line box
  *    shaved by 0.07em at the top and bottom (the fill via an inner clip
  *    window at inset-y 0.07em; the label rect is inset-[0.07em_-0.13em],
- *    flush vertically inside that shave, bleeding only sideways). Same
+ *    flush vertically inside that shave, bleeding only sideways). Batch 82
+ *    (owner: "20" and "Minutes." must share one padding): the fill
+ *    window now bleeds 0.13em sideways too, exactly like the label —
+ *    the treated words' wrapper margins grew 0.09em to 0.22em in
+ *    CoverHeadline so the air to neighbouring words stays 0.09em. Same
  *    top, same bottom, same 0.2em corner radius — and the shave leaves a
  *    0.14em air channel between the two treatments when they stack on
  *    adjacent lines ("80%" over "Time."), so they never touch
@@ -46,7 +50,7 @@ export const WaterFill: React.FC<{
   className = "",
 }) => (
   <span className={`relative inline-block align-bottom ${className}`}>
-    <span className="absolute inset-x-0 top-[0.07em] bottom-[0.07em] overflow-hidden rounded-[0.2em]">
+    <span className="absolute left-[-0.13em] right-[-0.13em] top-[0.07em] bottom-[0.07em] overflow-hidden rounded-[0.2em]">
       <motion.span
         aria-hidden
         className={`absolute bottom-0 left-0 right-0 ${fillClassName}`}
