@@ -764,3 +764,11 @@ Owner said "fix all" to the density + Slack plan. Density built: focus block of 
 |---|-------|--------|--------|
 | CE1 | All 3 detail pages | Focus block + shared delivery line + X-rows out + condensed rows | ✅ CODE |
 | CE2 | Slack row | Skilled value still needs owner's exact wording — NOT guessed | ⏳ WAITING |
+
+## Owner direction (2026-10-28, Batch 96 — slide 6 line replaced)
+
+Owner: "is only the money." does not read clearly and must be replaced with a different line. Diagnosis: money sounds like cost, so the line can read backwards as "that is all" — the opposite of the slide's meaning. Fix, one line only: "is not the whole cost." Same size (36px bold), same position, same structure ($35,000 above it), so no layout change. Nothing else on the slide changed — right-side lines, photo, split layout all untouched.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CF1 | Slide 6 | "is only the money." → "is not the whole cost." | ✅ CODE |

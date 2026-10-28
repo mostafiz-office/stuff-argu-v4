@@ -10,7 +10,7 @@ import { slide6ProblemsImage } from "@/assets/slide6ProblemsImageData";
  * Batch 90 (owner direction 1): rebuilt into the pain-slide family.
  * Batch 91 (owner-approved loop framing): recap steps + punch hero.
  * Batch 92 (owner pick, Plan 1, Oct 28 2026): REPLACES the loop. "The
- * $35,000 is only the receipt." Slide 5 gave the money; this slide shows
+ * $35,000 is not the whole cost." Slide 5 gave the money; this slide shows
  * what the money does not cover, so the true cost feels bigger than
  * $35,000 without any new figure being claimed. Split layout: the anchor
  * number repeated at slide 5's size on the left, three unpriced lines on
@@ -19,6 +19,10 @@ import { slide6ProblemsImage } from "@/assets/slide6ProblemsImageData";
  * numbers, no new prices, no invented claims — the three lines are
  * consequences of what slides 2 to 5 already established. Single-step
  * slide, no gate.
+ * Batch 96 (owner direction, Oct 28 2026): the "is only the money."
+ * line read backwards (money sounds like cost, so it heard as "that
+ * is all") and was replaced with "is not the whole cost.", which
+ * cannot flip. Nothing else on the slide changed.
  */
 const UNPRICED_LINES = [
   "Customers who stop waiting.",
@@ -58,7 +62,7 @@ export const BadHireProblemsSlide = () => {
               {...fadeUp(0.15)}
               className="text-[36px] font-bold font-heading text-white mt-6"
             >
-              is only the money.
+              is not the whole cost.
             </motion.p>
           </div>
 
