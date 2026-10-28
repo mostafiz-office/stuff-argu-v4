@@ -723,3 +723,11 @@ Owner agreed slides 5 and 6 did not match the other slides' design and picked di
 |---|-------|--------|--------|
 | BZ1 | Slide 5 | Photo-backed pain shell, amber $35,000, text left | ✅ CODE |
 | BZ2 | Slide 6 | Photo-backed pain shell, amber $35,000 in title, text right | ✅ CODE |
+
+## Owner-approved loop framing (2026-10-28, Batch 91 — slide 6 rebuilt again)
+
+Owner caught that the four slide 6 beats are already told (01 = slide 2, 02 = slide 3, 03 = slide 2 deadline pressure + solution L4 promise, 04 = slide 4 + slide 5 loss lines), so the slide was a recap pretending to be new. Rebuilt: the four become short recap steps in ONE LOOP (amber numerals 01-04, 34px bold) with the return cue "and it starts again.", and the punch "The $35,000 was only round one." is the hero (48px bold, amber number). Big title and all four sub-lines deleted (about 75 words down to about 25). Extra dark wash (pres-bg gradient) deepens the right text zone so white type never fights the bright window. Photo, side, and order unchanged; no new numbers or claims.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CA1 | Slide 6 | Loop recap steps + return cue + punch hero; title/subs cut; deeper text wash | ✅ CODE |
