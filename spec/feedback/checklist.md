@@ -731,3 +731,11 @@ Owner caught that the four slide 6 beats are already told (01 = slide 2, 02 = sl
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CA1 | Slide 6 | Loop recap steps + return cue + punch hero; title/subs cut; deeper text wash | ✅ CODE |
+
+## Owner pick Plan 1 (2026-10-28, Batch 92 — slide 6 becomes "only the receipt")
+
+Owner picked Plan 1 from the 3-plan replan. REPLACES the Batch 91 loop: split layout, giant amber $35,000 at slide 5's size on the left with "is only the money." under it, hairline divider, three unpriced lines on the right with amber dots ("Customers who stop waiting." / "A team stuck rewriting." / "Nights you don't get back."). Empty-desk photo stays as a dim backdrop (both story overlays + pres-bg wash) so type never fights the window. The anchor grows in the viewer's mind with no new figure claimed; the three lines are consequences of slides 2-5, not new claims. Same slot, single step, no gate.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CB1 | Slide 6 | Receipt split: amber $35,000 + "is only the money." + 3 unpriced lines; loop removed | ✅ CODE |

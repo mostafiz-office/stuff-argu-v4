@@ -6,28 +6,24 @@ import { slide6ProblemsImage } from "@/assets/slide6ProblemsImageData";
 
 /**
  * Batch 89 (owner direction, Oct 28 2026): slide 6 stops being the
- * comparison and becomes the second half of the anchoring story. Slide 5
- * gave the number ($35,000); this slide shows the problems behind it, so
- * the pain peaks right before the solution pyramid. Single-step slide,
- * no gate, no new numbers.
- * Batch 90 (owner direction 1): rebuilt into the pain-slide family —
- * full-bleed photo + problem-story overlay + text block, same shell as
- * slides 2 to 4. The $35,000 is the deck's own amber (pres-accent), not
- * red. Text RIGHT: the empty desk reads left, the window side takes the
- * right overlay fade, no flip.
- * Batch 91 (owner-approved loop framing, Oct 28 2026): the four beats are
- * already told on slides 2 to 5, so they stop pretending to be new. They
- * become short recap steps in ONE LOOP that repeats — the loop and the
- * repeat are the new information — and the punch line is the hero. The
- * sub-lines and the big title are gone (about 75 words down to about 25).
- * An extra dark wash deepens the right text zone so white type never
- * fights the bright window again.
+ * comparison and becomes the second half of the anchoring story.
+ * Batch 90 (owner direction 1): rebuilt into the pain-slide family.
+ * Batch 91 (owner-approved loop framing): recap steps + punch hero.
+ * Batch 92 (owner pick, Plan 1, Oct 28 2026): REPLACES the loop. "The
+ * $35,000 is only the receipt." Slide 5 gave the money; this slide shows
+ * what the money does not cover, so the true cost feels bigger than
+ * $35,000 without any new figure being claimed. Split layout: the anchor
+ * number repeated at slide 5's size on the left, three unpriced lines on
+ * the right. The empty-desk photo stays as a dim backdrop (both story
+ * overlays plus a wash, so white type never fights the window). No new
+ * numbers, no new prices, no invented claims — the three lines are
+ * consequences of what slides 2 to 5 already established. Single-step
+ * slide, no gate.
  */
-const LOOP_STEPS = [
-  { num: "01", text: "Production breaks again." },
-  { num: "02", text: "Nobody can fix it." },
-  { num: "03", text: "Deadlines slip again." },
-  { num: "04", text: "You hire again from zero." },
+const UNPRICED_LINES = [
+  "Customers who stop waiting.",
+  "A team stuck rewriting.",
+  "Nights you don't get back.",
 ];
 
 export const BadHireProblemsSlide = () => {
@@ -43,49 +39,45 @@ export const BadHireProblemsSlide = () => {
           loading="eager"
           className="absolute inset-0 w-full h-full object-cover"
         />
+        {/* Dim backdrop: both story fades plus a wash, photo as texture */}
+        <div className="absolute inset-0 problem-story-overlay" />
         <div className="absolute inset-0 problem-story-overlay-right" />
-        {/* Extra wash: the window side alone is too bright for small type */}
-        <div className="absolute inset-0 bg-gradient-to-l from-pres-bg/90 via-pres-bg/50 to-transparent" />
+        <div className="absolute inset-0 bg-pres-bg/60" />
         <SlideHeader />
 
-        <div className="relative z-10 h-full flex flex-col justify-center pt-[40px] pl-[980px] pr-[100px] text-right items-end">
-          <motion.p
-            {...fadeUp(0)}
-            className="text-[20px] font-semibold uppercase tracking-[0.2em] text-pres-text-muted mb-10"
-          >
-            Behind the $35,000
-          </motion.p>
+        <div className="relative z-10 h-full flex items-center px-[100px]">
+          {/* Left: the anchor, repeated at slide 5's size */}
+          <div className="w-[840px] shrink-0">
+            <motion.div
+              {...fadeUp(0)}
+              className="font-price text-[160px] font-bold leading-none text-pres-accent"
+            >
+              $35,000
+            </motion.div>
+            <motion.p
+              {...fadeUp(0.15)}
+              className="text-[36px] font-bold font-heading text-white mt-6"
+            >
+              is only the money.
+            </motion.p>
+          </div>
 
-          <div className="flex flex-col gap-5 mb-8">
-            {LOOP_STEPS.map((step, i) => (
+          {/* Hairline divider, same language as the pain-slide metric row */}
+          <div className="h-[320px] w-px bg-pres-text/15 shrink-0 mx-[80px]" />
+
+          {/* Right: what the money does not cover */}
+          <div className="flex flex-col items-start gap-6">
+            {UNPRICED_LINES.map((line, i) => (
               <motion.div
-                key={step.num}
-                {...fadeUp(staggerDelay(i, 0.15, 0.12))}
-                className="flex items-baseline gap-4"
+                key={line}
+                {...fadeUp(staggerDelay(i, 0.3, 0.12))}
+                className="flex items-center gap-4"
               >
-                <span className="text-[34px] font-bold font-heading text-pres-accent">
-                  {step.num}
-                </span>
-                <span className="text-[34px] font-bold font-heading text-white leading-tight">
-                  {step.text}
-                </span>
+                <span className="h-[10px] w-[10px] shrink-0 rounded-full bg-pres-accent" />
+                <span className="text-[30px] text-white/90 leading-tight">{line}</span>
               </motion.div>
             ))}
           </div>
-
-          <motion.p
-            {...fadeUp(0.7)}
-            className="text-[24px] font-semibold text-pres-accent mb-12"
-          >
-            and it starts again.
-          </motion.p>
-
-          <motion.p
-            {...fadeUp(0.9)}
-            className="text-[48px] font-bold font-heading text-white leading-tight"
-          >
-            The <span className="text-pres-accent">$35,000</span> was only round one.
-          </motion.p>
         </div>
       </div>
     </ScaledSlide>
