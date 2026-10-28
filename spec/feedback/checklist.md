@@ -739,3 +739,11 @@ Owner picked Plan 1 from the 3-plan replan. REPLACES the Batch 91 loop: split la
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CB1 | Slide 6 | Receipt split: amber $35,000 + "is only the money." + 3 unpriced lines; loop removed | ✅ CODE |
+
+## Owner direction (2026-10-28, Batch 93 — "Cut" goes white)
+
+Owner screenshot of the V1 cover: "Cut" felt like too much coloring. Diagnosis: Cut was fully amber (C solid + "ut" pale gradient, Batch 27) next to 80% also fully amber (Batch 28) and above Hiring's amber liquid (Batch 33) — three amber words in the headline. Fix, owner-approved: remove `accentWord: "Cut"` from PricingCoverV1's headline config only. Cut now renders as a plain white word; 80% keeps its amber (it is the message), Hiring keeps its liquid, V3 untouched, CoverHeadline's accentWord option left intact (reversible in one config line). Spacing verified: the accent branch and the plain branch render identical spans, and PIL measurement on Plus Jakarta Sans 800 gives 0.26em air (about 31px at 120px) between Cut and 80% — no crowding.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CC1 | Cover V1 | "Cut" plain white; accent treatment removed from config | ✅ CODE |
