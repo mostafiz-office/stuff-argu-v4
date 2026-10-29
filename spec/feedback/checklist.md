@@ -780,3 +780,11 @@ Owner approved the comparison plan. QuoteCard in PricingCoverShared.tsx rebuilt 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CG1 | Cover V1 + V3 | QuoteCard rebuilt to present-v1 live card spec | ✅ CODE |
+
+## Slide 2 line-to-line gap (2026-10-29, Batch 98 — PainPointsSlide only)
+
+Owner (Romanized Bangla): "ektu gap hobe line to line" — a little gap between the lines. Slide 2's title was packed by design (Batch 49: hook -5px, closing -7px, lines interlocked). Changed to hook mt-[10px] and closing mt-[10px], so a little air sits between "Deadline coming" / "production is down" / "no sleep tonight". Indents (171/385px), sizes (96+41/94/63px), wordAnim, wordColors and the "sleep" selection box untouched. Block grows 32px total, absorbed by the centered text block.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CH1 | Slide 2 (Outage) | Title line gaps -5/-7px to +10/+10px | ✅ CODE |

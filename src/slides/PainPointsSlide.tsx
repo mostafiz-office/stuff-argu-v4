@@ -94,6 +94,12 @@ const problems: Problem[] = [
     // alternating sides, the closing line's words dropping down,
     // one word every 0.5s; every word carries a soft drop shadow
     // (WORD_SHADOW in PainBeats) instead of the old line shadow.
+    // Batch 98 (owner Oct 29: "ektu gap hobe line to line"): the two
+    // packed negative margins are now small positive gaps — hook
+    // and closing lines each mt-[10px], so a little air sits
+    // between the lines instead of the interlock. Indents (171 /
+    // 385px), sizes, wordAnim, wordColors and the "sleep"
+    // selection box are untouched.
     beats: [
       {
         text: "Deadline",
@@ -124,7 +130,7 @@ const problems: Problem[] = [
           down: "#FF0000",
         },
         className:
-          "whitespace-nowrap -mt-[5px]",
+          "whitespace-nowrap mt-[10px]",
       },
       {
         text: "no sleep tonight",
@@ -139,7 +145,7 @@ const problems: Problem[] = [
         selectWords: ["sleep"],
         indentClass: "ml-[385px]",
         className:
-          "whitespace-nowrap -mt-[7px]",
+          "whitespace-nowrap mt-[10px]",
       },
     ],
     short: "Your customers find the bug before you do.",
