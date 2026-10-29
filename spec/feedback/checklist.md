@@ -846,3 +846,29 @@ deployed link.
 |---|------|--------|--------|
 | CK2 | Dot nav | Instant custom tooltips on dots + sub-dots | ✅ CODE |
 | CK3 | Camera | C shortcut + kind-aware error notice + play-error surface | ✅ CODE |
+
+## Slide 12 = v1 slide 7 exact match (2026-10-29, Batch 102 — PricingHowItWorksSlide)
+
+Owner approved the plan ("approve go make exactly"). Built per the
+approved recommendations: D1 columns stay clickable invisibly (detail
+overlays + segments untouched, "Tap for detail" line removed, so the
+static slide matches v1); D2 Step 02 keeps "7 to 21 days" — v1's
+"As fast as 20 min" deliberately NOT restored, per the Batch 67
+accuracy correction (strict v1 on that badge is a one-line change if
+he ever orders it); D3 hover lift kept. Everything else is strict v1:
+headline 68px absolute top 90, subline 22px top 178 (v1's exact words),
+grid absolute left/right 80 top 300 bottom 60 gap 32, plain columns
+(card chrome, blur, shadow all out), 80px icon nodes with 32px icons
+at 70px top margin centered on the line, line 3px gradient top 410
+drawn over 1s, labels 14px bold amber, titles 26px, descs 17px,
+amber-pill badges 14px, step 3 renamed "Onboarding", all four descs
+and Step 03 time ("Day 6–14") replaced with v1's words, texture 28px
+at 3%, center glow removed. Untouched: logo header, toolbar/dots,
+bottom accent line, overlay content, URL offers, all other slides.
+Note: HEAD at build time was 2599721 ("Fixed keyboard effect order",
+a Lovable-side commit) — verified it did not touch this file before
+editing (all Batch 66/67/84 markers intact).
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK4 | Slide 12 | Rebuilt to v1 slide 7 exact values | ✅ CODE |
