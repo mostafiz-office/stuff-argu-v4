@@ -145,12 +145,13 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 {...fadeUp(0)}
                 className="pres-title font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
-                Startup <span className="text-pres-accent">Offer</span>
+                Startup Offer
               </motion.h1>
 
             </div>
 
             {/* Batch 104 (owner: coloring + alignment): amber discipline, contrast lift, unified right-column surfaces, equal-height columns */}
+            {/* Batch 105 (owner approved: de-boxed stats, single amber focus on price, left-aligned stats, more air, hero gradient) */}
             {/* Main 2-Column Content */}
             <div className="flex gap-10 w-full items-stretch">
               {/* Left Column: Pricing Card (w: 600px) */}
@@ -159,14 +160,14 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 className="w-[600px] flex-shrink-0"
               >
                 <div className="h-full w-full">
-                  <div className="relative p-9 rounded-3xl bg-pres-surface/90 border border-pres-accent/40 shadow-2xl backdrop-blur-md overflow-hidden h-full">
+                  <div className="relative p-10 rounded-3xl bg-gradient-to-b from-pres-accent/10 to-pres-surface border border-pres-accent/40 shadow-2xl backdrop-blur-md overflow-hidden h-full">
 
                     {/* Card Header */}
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[20px] font-bold tracking-wider text-pres-text-dim uppercase">
                         Tier 1
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent text-[18px] font-bold font-heading">
+                      <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-white/85 text-[18px] font-bold font-heading">
                         STARTER
                       </span>
                     </div>
@@ -203,9 +204,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     )}
                     <div className="flex items-baseline gap-2 mb-1">
                       <span
-                        className={`text-[56px] font-bold font-heading leading-none ${
-                          starterDiscounted ? "text-pres-accent" : "text-white"
-                        }`}
+                        className="text-[56px] font-bold font-heading leading-none text-pres-accent"
                       >
                         {starterDiscounted ? formatOfferPrice(starterOffer!.amount!) : "$1,900"}
                       </span>
@@ -275,15 +274,15 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
               </motion.div>
 
               {/* Right Column: Metrics, Guarantees, Urgency */}
-              <div className="flex-1 flex flex-col justify-start gap-5">
+              <div className="flex-1 flex flex-col justify-start gap-6">
                 {/* 3 Result Metrics with Tooltips */}
-                <div className="grid grid-cols-3 gap-5">
+                <div className="grid grid-cols-3">
                   {results.map((res, idx) => (
                     <Tooltip key={idx}>
                       <TooltipTrigger asChild>
                         <motion.div
                           {...scaleIn(staggerDelay(idx, 0.22, 0.07))}
-                          className="py-7 px-4 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 backdrop-blur-md transition-all cursor-pointer group text-center shadow-lg"
+                          className={`py-2 px-6 text-left cursor-pointer${idx > 0 ? " border-l border-white/10" : ""}`}
                         >
                           <div className="text-[56px] font-heading leading-none mb-3 font-medium text-white">
                             {res.metric}
@@ -301,7 +300,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 </div>
 
                 {/* 3 Guarantees */}
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {guarantees.map((item, idx) => {
                     const Icon = item.icon;
                     return (
@@ -337,7 +336,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 </div>
 
                 {/* Bottom Guarantee Banner */}
-                <div className="px-6 py-3 rounded-2xl bg-pres-surface/80 border border-white/10 flex items-center justify-between text-[18px] text-white/70">
+                <div className="mt-auto px-6 py-4 border-t border-white/10 flex items-center justify-between text-[18px] text-white/70">
                   <span>Backed by RISE ASIA LLC 14 Day Money Back Guarantee</span>
                   <span className="text-white/80 font-semibold">100% Risk Free</span>
                 </div>

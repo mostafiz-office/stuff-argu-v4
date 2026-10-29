@@ -916,3 +916,29 @@ slides. D2 "160 hrs" duplication deliberately kept (pill + stat card).
 | # | Area | Change | Status |
 |---|------|--------|--------|
 | CK7 | Slide 13 | Coloring discipline + contrast + alignment | ✅ CODE |
+
+## Slide 13 bolder improvements (2026-10-29, Batch 105 — StarterTierSlideV9Clone)
+
+Owner approved the second plan (D1 Offer -> white built as part of
+the approved plan; D2 duplication kept, no content change). De-box:
+stats lost card chrome -> borderless number row with thin vertical
+dividers (grid gap removed, cells py-2 px-6, border-l on 2nd/3rd);
+banner lost its box -> hairline-top strip (mt-auto, px-6 py-4).
+Single amber focus: price bold AMBER unconditionally, headline
+"Offer" -> white, STARTER pill -> quiet dark (white/10 + white/15
+border). Alignment: stats left-aligned (same 744 content edge as
+row icon boxes + banner text); verification catch: stretch alone
+does NOT align visual bottoms (right content ends early), so the
+banner got mt-auto — bottoms now meet in BOTH bonus states, at the
+cost of ~128px air above the banner when revealed. Air: card p-9
+-> p-10, right column gap-5 -> gap-6, rows space-y-4 -> space-y-5.
+Hero: card gradient accent/10 -> surface (slide 8 featured
+precedent), amber border kept. Render: PIL wireframe at 1920x1080
+(compare/slide13-batch105-wireframe.png) confirms shared edges,
+single focus, fit (content ~834 < 1080). Untouched: copy, prices,
+gate + rocket, tooltips, URL offers, header, glow, accent line,
+other slides. URL offer badge stays amber (conditional badge only).
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK8 | Slide 13 | De-boxed stats, price amber focus, aligned edges, air, hero gradient | ✅ CODE |
