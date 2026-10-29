@@ -50,6 +50,9 @@ interface Props {
  * Batch 107 (owner-approved premium pass, Oct 29 2026): flat bold
  * price, quiet pills, white values, muted checks, focus panel,
  * shared top edge + pinned bottoms, Batch 65 lift+glow on pills.
+ * Batch 108 (owner-approved focus pass, Oct 29 2026): quiet scale
+ * (focus 28, labels 20, rows 20, shared 18->16 fallback), single
+ * column rows, column gaps 28. Zero words removed.
  */
 export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onCompare }) => {
   const tier = tiers[index];
@@ -145,15 +148,15 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           </TooltipProvider>
         </motion.div>
 
-        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-start gap-[36px]">
+        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-start gap-[28px]">
           {/* Focus first: the tier's 3 differentiators (already in data,
               already on the tier cards) — the "why this price" landing
               point. The rest below is reference to scan, not to read. */}
-          <motion.div key={`focus-${index}`} {...fadeUp(0.12, 20)} className="flex flex-col gap-4 rounded-2xl bg-white/5 p-6">
+          <motion.div key={`focus-${index}`} {...fadeUp(0.12, 20)} className="flex flex-col gap-4 rounded-2xl bg-white/5 p-5">
             {TIER_DIFFERENTIATORS[key].map((d) => (
               <div key={d.text} className="flex items-center gap-3">
                 <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent/80" aria-label="Included" />
-                <span className="text-[30px] font-bold leading-tight text-white">
+                <span className="text-[28px] font-bold leading-tight text-white">
                   {d.highlight ? (
                     <>
                       {d.text.split(d.highlight)[0]}
@@ -174,22 +177,22 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
             <motion.div key={`${index}-${group.label}`} {...fadeUp(staggerDelay(gi, 0.2, 0.08), 20)}>
               <div className="mb-4 flex items-center gap-3">
                 <span aria-hidden className="h-[22px] w-[6px] shrink-0 rounded-full bg-pres-accent" />
-                <span className="font-heading text-[22px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
+                <span className="font-heading text-[20px] font-bold uppercase tracking-[0.2em] text-pres-text-muted">
                   {group.label}
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-x-8">
+              <div className="flex flex-col">
                 {included.map((row) => {
                   const v = row[key];
                   return (
                     <div
                       key={row.feature}
-                      className="flex items-center gap-3 border-b border-pres-text/10 py-[12px] transition-colors hover:bg-white/[0.03]"
+                      className="flex items-center gap-3 border-b border-pres-text/10 py-[10px] transition-colors hover:bg-white/[0.03]"
                     >
                       <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent/80" aria-label="Included" />
-                      <span className="flex-1 text-[24px] leading-tight">{row.feature}</span>
+                      <span className="flex-1 text-[20px] leading-tight">{row.feature}</span>
                       {typeof v === "string" && (
-                        <span className="whitespace-nowrap font-heading text-[24px] font-bold text-white">{v}</span>
+                        <span className="whitespace-nowrap font-heading text-[20px] font-semibold text-white">{v}</span>
                       )}
                     </div>
                   );
@@ -200,7 +203,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           })}
           {/* Delivery is identical on all three tiers, so it leaves the
               list and becomes one shared line — words already in data. */}
-          <motion.p key={`shared-${index}`} {...fadeUp(0.4, 18)} className="mt-auto text-[20px] leading-snug text-pres-text-muted">
+          <motion.p key={`shared-${index}`} {...fadeUp(0.4, 18)} className="mt-auto text-[16px] leading-snug text-pres-text-muted">
             Every plan includes:{" "}
             {TIER_FEATURE_GROUPS.find((g) => g.label === "Delivery")!
               .rows.map((row) => row.feature)

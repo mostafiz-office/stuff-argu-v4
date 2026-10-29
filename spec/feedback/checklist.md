@@ -1001,3 +1001,31 @@ slide 8 cards, Skilled Slack wording (still needs his words).
 | # | Area | Change | Status |
 |---|------|--------|--------|
 | CK10 | Detail pages x3 | Flat price, quiet pills/values, focus panel, pinned edges, hover lift+glow | ✅ CODE |
+
+## Detail pages focus pass (2026-10-29, Batch 108 — TierPlanDetail)
+
+Owner approved the quiet + linear plan. Same feedback as Batch 95
+("too much text, can't focus") persisted after the row cut, so
+this round attacks layout, not word count: ZERO words removed.
+Quiet scale, right column only: focus 30->28px bold (panel,
+amber highlights, muted checks kept); group labels 22->20px;
+rows 24->20px, values bold->semibold; row padding py-12->py-10;
+column gaps 36->28px. Rows: 2-col grid -> single column
+(feature left, value right, hairlines kept) — eye scans straight
+down. Fit math (Tailwind leadings, preflight 1.5): Leadership,
+the binding tier with 9 rows, landed 861 vs the 860px region at
+the approved scale — at capacity — so the plan's own fallback
+branch fired: shared line 18->16px, focus panel p-6->p-5, final
+stack 847 (13px spare). Growth/Skilled (6 rows) ~697 with room.
+Render: PIL wireframe of Leadership at exact code values
+(compare/detail-leadership-batch108-wireframe.png); the first
+render wrongly painted all focus lines amber and was corrected
+— only "up to 15" carries the highlight in the real data.
+Untouched: all words/values, copy, prices, focus items, groups,
+rows, shared line, left column, switcher/tooltips, offers,
+compare overlay, slide 8, Batch 107 hover, Skilled Slack wording
+(still needs his exact words).
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK11 | Detail pages x3 | Quiet scale, single-column rows, pinned fit | ✅ CODE |
