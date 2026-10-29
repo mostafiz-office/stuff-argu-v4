@@ -14,7 +14,7 @@ export type PainHighlightStyle = "marker" | "underline" | "drag";
 export interface PainBeat {
   text: string;
   /** xl = big headline beat, md = smaller supporting beat */
-  size: "xl" | "md";
+  size?: "xl" | "md";
   /** exact pixel size override (split-hook design ratios, Batch 39) */
   sizePx?: number;
   /** split-hook design: this beat is the hook — pure red text */

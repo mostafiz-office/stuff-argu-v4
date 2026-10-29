@@ -17,7 +17,7 @@ const STAGES = [
  * Bottom = stage 1. The full interactive explorer lived on the old
  * standalone pyramid slide.
  */
-export const PyramidVisual: React.FC<{ className?: string }> = ({ className = "" }) => {
+export const PyramidVisual: React.FC<{ className?: string; litCount?: number }> = ({ className = "", litCount }) => {
   const CX = 300;
   const APEX_Y = 8;
   const BASE_Y = 552;
@@ -55,7 +55,7 @@ export const PyramidVisual: React.FC<{ className?: string }> = ({ className = ""
           ))}
         </defs>
         {layers.map((l) => (
-          <g key={l.num}>
+          <g key={l.num} style={{ opacity: litCount === undefined || l.num <= litCount ? 1 : 0.18, transition: "opacity 500ms ease" }}>
             <polygon points={l.pts} fill={`url(#sbPyr${l.num - 1})`} stroke="rgba(0,0,0,0.35)" strokeWidth="2" strokeLinejoin="round" />
             <circle cx={300} cy={l.cy} r={26} fill="rgba(0,0,0,0.45)" stroke="white" strokeWidth={2} />
             <text x={300} y={l.cy + 1} fill="white" fontFamily="var(--font-heading, 'Ubuntu', sans-serif)" fontWeight={700} fontSize={24} textAnchor="middle" dominantBaseline="central">
