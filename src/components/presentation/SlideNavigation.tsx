@@ -103,39 +103,6 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
     }
   }, []);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't intercept if user is typing in an input
-      if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) {
-        return;
-      }
-      // Comparison overlay owns the keyboard while open
-      if (window.__comparisonOpen) return;
-
-      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        goNext();
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        e.preventDefault();
-        goPrev();
-      } else if (e.key === "f" || e.key === "F") {
-        e.preventDefault();
-        toggleFullscreen();
-      } else if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        // Batch 101 (owner: camera shortcuts): C toggles the camera,
-        // mirroring F for fullscreen. Modifier-guarded so Ctrl+C
-        // (copy) is never hijacked.
-        e.preventDefault();
-        toggleCamera();
-      } else if (e.key === "Escape") {
-        setIsFullscreen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goNext, goPrev, toggleFullscreen, toggleCamera]);
 
   // Touch swipe support
   useEffect(() => {
@@ -218,6 +185,40 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       );
     }
   }, [cameraStream]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't intercept if user is typing in an input
+      if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) {
+        return;
+      }
+      // Comparison overlay owns the keyboard while open
+      if (window.__comparisonOpen) return;
+
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        goNext();
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        goPrev();
+      } else if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        // Batch 101 (owner: camera shortcuts): C toggles the camera,
+        // mirroring F for fullscreen. Modifier-guarded so Ctrl+C
+        // (copy) is never hijacked.
+        e.preventDefault();
+        toggleCamera();
+      } else if (e.key === "Escape") {
+        setIsFullscreen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goNext, goPrev, toggleFullscreen, toggleCamera]);
 
   const stopCamera = useCallback(() => {
     setCameraStream((s) => {
