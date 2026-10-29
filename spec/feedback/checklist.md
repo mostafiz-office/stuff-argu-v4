@@ -891,3 +891,28 @@ history (ac95072a and earlier) and is restorable.
 |---|------|--------|--------|
 | CK5 | Slide 12 | Overlays + lift removed (strict v1 static) | ✅ CODE |
 | CK6 | Slide 12 | Step 02 badge held at "7 to 21 days" | ⏳ WAITING |
+
+## Slide 13 coloring + alignment (2026-10-29, Batch 104 — StarterTierSlideV9Clone)
+
+Owner approved the plan ("yes"; D1 conservative direction accepted as
+the plan default, D2 duplication kept unchanged — no content change
+without his word). Coloring: amber disciplined — focus box and bonus
+panel borders/tints moved to quiet white, checklist checks + benefit
+icons + sparkle unified at muted amber/80, stat/guarantee hover
+borders to white/20; left card keeps its accent/40 border as the hero
+and STARTER pill + Offer word stay solid amber. Contrast: dim/muted
+body text lifted to white/70-75 (focus subline, /M, hours row, bonus
+lines, guarantee descs, banner); right column unified to one surface
+(surface/80) and one border (white/10); price medium -> bold so it
+dominates the 56px stat numbers; "100% Risk Free" mono -> deck body
+font. Alignment: main row items-start -> items-stretch with an
+h-full chain (wrapper + card) so the left card bottom always meets
+the banner bottom in both bonus states; bonus panel p-3.5 -> p-5 so
+its text edge matches the focus box; divider mb-3 -> mb-5; stale
+"520px" comment corrected to 600px. Untouched: all copy, prices, gate
++ rocket, tooltips, URL offers, header, glow, accent line, other
+slides. D2 "160 hrs" duplication deliberately kept (pill + stat card).
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK7 | Slide 13 | Coloring discipline + contrast + alignment | ✅ CODE |
