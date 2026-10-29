@@ -821,3 +821,28 @@ and focus blocks unchanged.
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CK1 | Slide 8 (Pricing) | Rebuilt to v1 slide 2 exact code values + AI plan doc | ✅ CODE |
+
+## Dot tooltips + camera shortcuts (2026-10-29, Batch 101 — SlideNavigation + CameraBubble)
+
+Owner approved both plans. (1) Tooltips: dots already had native title
+tooltips, but those are slow and invisible on touch — replaced with
+instant custom tooltips above every main dot ("N. <Slide name>", same
+labels) and every pyramid sub-dot ("Pyramid step N: <name>"). The
+wrapper span (not the button) carries the tooltip so the dot's hover
+scale doesn't scale the tooltip text; native titles removed from dots
+to avoid double tooltips; aria-labels stay; tap still navigates
+immediately (long-press shows the tooltip on touch). Toolbar button
+titles untouched. (2) Camera: added C to toggle the camera (mirrors F
+for fullscreen), modifier-guarded so Ctrl+C copy is never hijacked;
+button title now "Start/Stop camera (C)". Error notice split by cause:
+permission denied (with allow-and-retry guidance), no camera found
+(original text), other (incl. preview-frame note: open the deployed
+link directly). Bubble now surfaces a failed video start instead of
+swallowing it. Caveat that stands: a preview iframe can block the
+camera entirely and no code overrides that — test on the direct
+deployed link.
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK2 | Dot nav | Instant custom tooltips on dots + sub-dots | ✅ CODE |
+| CK3 | Camera | C shortcut + kind-aware error notice + play-error surface | ✅ CODE |

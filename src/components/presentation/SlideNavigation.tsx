@@ -28,7 +28,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
   const [gateStep, setGateStep] = useState<number | null>(null);
   const [soundMuted, setSoundMuted] = useState(() => presentationSound.isMuted());
   const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
-  const [cameraError, setCameraError] = useState(false);
+  const [cameraError, setCameraError] = useState<null | "denied" | "notfound" | "other">(null);
 
   useEffect(() => presentationSound.subscribe(setSoundMuted), []);
 
@@ -122,6 +122,12 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       } else if (e.key === "f" || e.key === "F") {
         e.preventDefault();
         toggleFullscreen();
+      } else if ((e.key === "c" || e.key === "C") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        // Batch 101 (owner: camera shortcuts): C toggles the camera,
+        // mirroring F for fullscreen. Modifier-guarded so Ctrl+C
+        // (copy) is never hijacked.
+        e.preventDefault();
+        toggleCamera();
       } else if (e.key === "Escape") {
         setIsFullscreen(false);
       }
@@ -129,7 +135,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goNext, goPrev, toggleFullscreen]);
+  }, [goNext, goPrev, toggleFullscreen, toggleCamera]);
 
   // Touch swipe support
   useEffect(() => {
@@ -188,7 +194,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       setCameraStream(null);
       return;
     }
-    setCameraError(false);
+    setCameraError(null);
     try {
       if (!navigator.mediaDevices?.getUserMedia) throw new Error("unsupported");
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -197,8 +203,19 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       });
       stream.getVideoTracks()[0]?.addEventListener("ended", () => setCameraStream(null));
       setCameraStream(stream);
-    } catch {
-      setCameraError(true);
+    } catch (err) {
+      // Batch 101: name the failure instead of one generic notice.
+      // NotAllowedError = permission denied; NotFoundError /
+      // OverconstrainedError = no matching camera; anything else
+      // (unsupported API, blocked frame) = other.
+      const name = (err as { name?: string } | null)?.name;
+      setCameraError(
+        name === "NotAllowedError"
+          ? "denied"
+          : name === "NotFoundError" || name === "OverconstrainedError"
+            ? "notfound"
+            : "other",
+      );
     }
   }, [cameraStream]);
 
@@ -261,7 +278,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           className={`presentation-control p-1.5 rounded-full cursor-pointer ${
             cameraStream ? "text-red-400 hover:text-red-300" : "text-white/90 hover:text-pres-accent"
           }`}
-          title={cameraStream ? "Stop camera" : "Start camera"}
+          title={cameraStream ? "Stop camera (C)" : "Start camera (C)"}
         >
           {cameraStream ? <VideoOff className="w-4 h-4" /> : <Video className="w-4 h-4" />}
         </button>
@@ -310,13 +327,21 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
       {cameraStream && <CameraBubble stream={cameraStream} onClose={stopCamera} />}
 
       {/* Camera unavailable notice (mirrors the reference deck) */}
-      {cameraError && (
+      {cameraError !== null && (
         <div className="fixed bottom-8 left-1/2 z-[300] -translate-x-1/2 pointer-events-auto">
           <div className="flex items-center gap-4 rounded-2xl border border-white/15 bg-pres-surface/95 px-6 py-4 shadow-2xl backdrop-blur-md">
             <ShieldAlert className="h-8 w-8 shrink-0 text-pres-accent" />
             <div>
-              <div className="font-heading text-[18px] font-bold text-white">Camera unavailable</div>
-              <div className="text-[15px] text-pres-text-muted">No camera found on this device.</div>
+              <div className="font-heading text-[18px] font-bold text-white">
+                {cameraError === "denied" ? "Camera permission denied" : "Camera unavailable"}
+              </div>
+              <div className="text-[15px] text-pres-text-muted">
+                {cameraError === "denied"
+                  ? "Camera permission was denied. Allow camera access in your browser, then try again."
+                  : cameraError === "notfound"
+                    ? "No camera found on this device."
+                    : "The camera could not be started. If this is a preview frame, open the deployed link directly and try again."}
+              </div>
             </div>
             <div className="flex items-center gap-2 pl-2">
               <button
@@ -328,7 +353,7 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => setCameraError(false)}
+                onClick={() => setCameraError(null)}
                 className="rounded-full border border-white/20 px-4 py-1.5 text-[15px] font-semibold text-white/80 hover:text-white cursor-pointer"
               >
                 Dismiss
@@ -344,17 +369,27 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
           const isActive = idx === currentIndex;
           return (
             <React.Fragment key={idx}>
-              <button
-                type="button"
-                onClick={() => onNavigate(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                 title={`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "Real Cost", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
-                className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
-                  isActive
-                    ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
-                    : "w-2 h-2 bg-white/30 hover:bg-white/70"
-                }`}
-              />
+              {/* Batch 101 (owner: slide tooltips): instant custom tooltip
+                  above each dot — the native title tooltips were slow
+                  and invisible on touch. The wrapper span (not the
+                  button) carries the tooltip so the button's hover
+                  scale doesn't scale the tooltip text. Tap still
+                  navigates immediately; on touch, long-press shows it. */}
+              <span className="group relative flex">
+                <button
+                  type="button"
+                  onClick={() => onNavigate(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`presentation-dot transition-all duration-300 rounded-full cursor-pointer ${
+                    isActive
+                      ? "w-7 h-2 bg-pres-accent shadow-[0_0_10px_rgba(255,173,1,0.5)]"
+                      : "w-2 h-2 bg-white/30 hover:bg-white/70"
+                  }`}
+                />
+                <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-black/90 px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-xl transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  {`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "Real Cost", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+                </span>
+              </span>
               {/* Batch 87 (owner: six levels between the solution and pricing dots; Batch 88 moved the solution slide from index 4 to index 6, sub-dots moved with it): while
                   on slide 5, six small sub-dots appear between the slide 5
                   and slide 6 dots — one per pyramid step, in order. Tap
@@ -366,23 +401,26 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
                     const stepNo = i + 1;
                     const reached = gateStep !== null && gateStep >= stepNo;
                     return (
-                      <button
-                        key={stepNo}
-                        type="button"
-                        title={`Pyramid step ${stepNo}: ${label}`}
-                        aria-label={`Pyramid step ${stepNo}: ${label}`}
-                        onClick={() => {
-                          const gate = window.__slideNavigationGate;
-                          if (gate && typeof gate.goToStep === "function") {
-                            gate.goToStep(stepNo);
-                          }
-                        }}
-                        className={`rounded-full transition-all duration-300 cursor-pointer ${
-                          reached
-                            ? "w-2 h-2 bg-pres-accent shadow-[0_0_8px_rgba(255,173,1,0.6)]"
-                            : "w-1.5 h-1.5 bg-white/30 hover:bg-white/70"
-                        }`}
-                      />
+                      <span key={stepNo} className="group relative flex">
+                        <button
+                          type="button"
+                          aria-label={`Pyramid step ${stepNo}: ${label}`}
+                          onClick={() => {
+                            const gate = window.__slideNavigationGate;
+                            if (gate && typeof gate.goToStep === "function") {
+                              gate.goToStep(stepNo);
+                            }
+                          }}
+                          className={`rounded-full transition-all duration-300 cursor-pointer ${
+                            reached
+                              ? "w-2 h-2 bg-pres-accent shadow-[0_0_8px_rgba(255,173,1,0.6)]"
+                              : "w-1.5 h-1.5 bg-white/30 hover:bg-white/70"
+                          }`}
+                        />
+                        <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-black/90 px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-xl transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
+                          {`Pyramid step ${stepNo}: ${label}`}
+                        </span>
+                      </span>
                     );
                   })}
                 </span>

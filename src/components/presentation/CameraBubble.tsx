@@ -13,13 +13,14 @@ interface CameraBubbleProps {
 export const CameraBubble: React.FC<CameraBubbleProps> = ({ stream, onClose }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [playFailed, setPlayFailed] = useState(false);
   const dragRef = useRef<{ startX: number; startY: number; origX: number; origY: number } | null>(null);
 
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
       v.srcObject = stream;
-      v.play().catch(() => {});
+      v.play().catch(() => setPlayFailed(true));
     }
     return () => {
       if (v) v.srcObject = null;
@@ -60,6 +61,11 @@ export const CameraBubble: React.FC<CameraBubbleProps> = ({ stream, onClose }) =
           playsInline
           className="h-[240px] w-full -scale-x-100 object-cover pointer-events-none"
         />
+        {playFailed && (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/70 px-4 text-center text-[14px] text-white/80">
+            Video preview failed to start
+          </div>
+        )}
         <button
           type="button"
           onClick={onClose}
