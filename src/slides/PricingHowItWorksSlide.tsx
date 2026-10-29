@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, UserCheck, Rocket, HeartHandshake, X } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { MessageSquare, UserCheck, Rocket, HeartHandshake } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp } from "@/lib/presentationMotion";
@@ -10,97 +10,39 @@ interface PricingHowItWorksSlideProps {
 }
 
 export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () => {
-  // Batch 66 (owner): every step now opens a detail overlay, not
-  // only Step 01 — detailStep holds the open step index (null = closed).
-  const [detailStep, setDetailStep] = useState<number | null>(null);
 
-  // FB-27: detail overlays carry 3 segments each, no "20 minutes" label.
-  // Batch 102 (D2, approved recommendations): Step 02 keeps "7 to 21 days" —
-  // v1's "As fast as 20 min" is NOT restored, per the Batch 67 accuracy correction.
+  // Batch 103 (strict v1): detail overlays removed — v1 steps are not
+  // clickable and have no overlays. Step 02 keeps "7 to 21 days": v1's
+  // "As fast as 20 min" is NOT restored, per the Batch 67 accuracy ruling
+  // (no "20 minutes" for vetting). Restoring it needs his explicit word.
   const steps = [
     {
       num: "STEP 01",
       icon: MessageSquare,
       title: "Discovery Call",
       desc: "Share your requirements, tech stack, and team culture. We'll recommend the right tier.",
-      time: "Day 1",
-      segments: [
-        {
-          title: "Requirements",
-          desc: "What you're building and why it matters.",
-        },
-        {
-          title: "Stack & workflow",
-          desc: "Your tools, your team, and how you ship.",
-        },
-        {
-          title: "Tier match",
-          desc: "We match your ideal tier and plan next steps.",
-        },
-      ],
+      time: "Day 1"
     },
     {
       num: "STEP 02",
       icon: UserCheck,
       title: "7-Stage Vetting",
       desc: "We present candidates who passed our 7-stage assessment. You interview & select.",
-      time: "7 to 21 days",
-      segments: [
-        {
-          title: "Screening",
-          desc: "Initial sign up and training, assessed at every step.",
-        },
-        {
-          title: "Real work tests",
-          desc: "Practical assignments and a simulation of your real project.",
-        },
-        {
-          title: "Live test & hire",
-          desc: "You interview the finalists live and pick your hire.",
-        },
-      ],
+      time: "7 to 21 days"
     },
     {
       num: "STEP 03",
       icon: Rocket,
       title: "Onboarding",
       desc: "Your new team member joins your tools, attends standups, and starts contributing.",
-      time: "Day 6–14",
-      segments: [
-        {
-          title: "Joins your tools",
-          desc: "Slack, repos, and access set up from day one.",
-        },
-        {
-          title: "Learns your codebase",
-          desc: "Docs, walkthroughs, and your workflow, fast.",
-        },
-        {
-          title: "Starts shipping",
-          desc: "First real tasks inside the first week.",
-        },
-      ],
+      time: "Day 6–14"
     },
     {
       num: "STEP 04",
       icon: HeartHandshake,
       title: "Ongoing Support",
       desc: "Continuous performance monitoring, monthly check-ins, and scaling as needed.",
-      time: "Ongoing",
-      segments: [
-        {
-          title: "Architect supervision",
-          desc: "A chief architect oversees the work quality.",
-        },
-        {
-          title: "Regular audits",
-          desc: "Code and delivery checked on a steady rhythm.",
-        },
-        {
-          title: "Flexible scaling",
-          desc: "Scale the team up or down as needs change.",
-        },
-      ],
+      time: "Ongoing"
     },
   ];
 
@@ -162,17 +104,11 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + idx * 0.18, duration: 0.6, ease: "easeOut" }}
-                role="button"
-                tabIndex={0}
-                onClick={() => setDetailStep(idx)}
-                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setDetailStep(idx); }}
-                whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
-                className="flex flex-col items-center text-center cursor-pointer"
+                className="flex flex-col items-center text-center"
               >
-                {/* Batch 102: v1 icon node — 80px circle, 70px top margin
-                    so it centers on the timeline line. Static look is
-                    v1-exact; the column stays clickable (D1) and keeps
-                    the hover lift (D3) per the approved recommendations. */}
+                {/* Batch 103: v1 icon node — 80px circle, 70px top margin
+                    so it centers on the timeline line. Columns are plain
+                    static blocks now, exactly like v1: no click, no lift. */}
                 <div className="relative z-20 mt-[70px] flex h-[80px] w-[80px] items-center justify-center rounded-full bg-pres-surface border-[3px] border-pres-accent text-pres-accent shadow-[0_0_24px_hsl(var(--pres-accent)/0.2)]">
                   <Icon className="w-8 h-8" />
                 </div>
@@ -203,69 +139,6 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
           })}
         </div>
 
-        {/* FB-26 detail view, Batch 66: one overlay for every step */}
-        <AnimatePresence>
-          {detailStep !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-              onClick={() => setDetailStep(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.92, y: 24 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.95, y: 12 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="w-[860px] rounded-3xl border border-pres-accent/40 bg-pres-surface p-12 shadow-[0_0_60px_rgba(255,173,1,0.25)]"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-start justify-between mb-8">
-                  <div>
-                    <div className="text-[22px] font-semibold tracking-[0.15em] text-pres-accent uppercase mb-2">
-                      {steps[detailStep].num}
-                    </div>
-                    <h2 className="font-heading text-[52px] font-bold text-white leading-tight">
-                      {steps[detailStep].title}
-                    </h2>
-                  </div>
-                  <button
-                    onClick={() => setDetailStep(null)}
-                    aria-label="Close detail"
-                    className="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-pres-text-muted hover:text-white hover:border-pres-accent/60 transition-colors"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-                <div className="space-y-5">
-                  {steps[detailStep].segments.map((seg, sIdx) => (
-                    <motion.div
-                      key={seg.title}
-                      initial={{ opacity: 0, x: -18 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + sIdx * 0.09, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="flex items-start gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-                    >
-                      <div className="w-11 h-11 shrink-0 rounded-full bg-pres-accent text-pres-bg pres-dark-safe-accent font-heading font-bold text-[22px] flex items-center justify-center">
-                        {sIdx + 1}
-                      </div>
-                      <div>
-                        <div className="font-heading text-[28px] font-bold text-white leading-tight">
-                          {seg.title}
-                        </div>
-                        <div className="text-[22px] text-pres-text-muted mt-1">
-                          {seg.desc}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Bottom subtle accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gradient-to-r from-transparent via-pres-accent to-transparent opacity-80" />

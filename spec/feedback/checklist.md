@@ -872,3 +872,22 @@ editing (all Batch 66/67/84 markers intact).
 | # | Area | Change | Status |
 |---|------|--------|--------|
 | CK4 | Slide 12 | Rebuilt to v1 slide 7 exact values | ✅ CODE |
+
+## Slide 12 strict-v1 gaps (2026-10-29, Batch 103 — PricingHowItWorksSlide)
+
+Owner: "now fix the gaps" after the Batch 102 landing message. Fixed:
+D1 detail overlays removed entirely (click/keyboard handlers, the 63-line
+overlay panel, all 12 segments, dead imports useState/AnimatePresence/X)
+and D3 hover lift removed + default cursor — columns are now plain
+static blocks exactly like v1. HELD: D2 Step 02 badge stays "7 to 21
+days". "Fix the gaps" named no exact item, and restoring v1's "As fast
+as 20 min" would contradict his explicit Batch 67 ruling (no "20
+minutes" for vetting, FB-27 closed). Per the ambiguous-approval guard
+it needs his explicit override phrase ("use 20 min") — a one-line
+change when given. Overlay content is not destroyed: it lives in repo
+history (ac95072a and earlier) and is restorable.
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK5 | Slide 12 | Overlays + lift removed (strict v1 static) | ✅ CODE |
+| CK6 | Slide 12 | Step 02 badge held at "7 to 21 days" | ⏳ WAITING |
