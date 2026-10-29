@@ -968,3 +968,36 @@ other slides, 160 hrs duplication kept.
 | # | Area | Change | Status |
 |---|------|--------|--------|
 | CK9 | Slide 13 | Price flat, Startup highlighted, quiet chrome, even gaps | ✅ CODE |
+
+## Pricing detail pages premium pass (2026-10-29, Batch 107 — TierPlanDetail + PricingTiersSlide Back button)
+
+Owner approved the plan (one shared component = all three tiers:
+Growth, Skilled, Leadership; comparison overlay deliberately
+untouched per Batch 85). Price medium -> bold white, discounted
+also white (badge + strikethrough carry the offer). Amber
+discipline: row values bold amber -> bold white; focus + row
+checks solid -> muted /80; focus highlight words + group bars
+stay solid amber; offer + tooltip badges stay solid amber.
+Quiet pills: hours pill + tier badge pill -> white/10 fill,
+white/15 border, white/85 text, /80 icons. Focus block -> white/5
+rounded panel, no border. Rows keep hairlines + gain subtle
+hover tint (white/0.03, no lift — rows are not clickable).
+Hover animation (Batch 65 recipe: y -8, scale 1.015, 0.45s
+presentationEase, amber/60 border, layered glow): switcher
+pills + Compare pill (motion.button) + Back button in
+PricingTiersSlide (motion.button, autoFocus kept). Alignment:
+left column top-140 -> top-150 + flex-col, switcher mt-auto;
+right column justify-center -> justify-start, shared line
+mt-auto — both columns share top y=150 and bottom y=1010.
+Tradeoff, disclosed: pinning leaves ~400px air above the
+switcher and ~270px above the footnote (wireframe shows both);
+the slide's bottom edge is finished on both sides instead.
+Render: PIL wireframe at 1920x1080
+(compare/detail-growth-batch107-wireframe.png). Untouched:
+copy, price values, focus items, groups, rows, shared line,
+switcher behavior + tooltips, URL offers, compare overlay,
+slide 8 cards, Skilled Slack wording (still needs his words).
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK10 | Detail pages x3 | Flat price, quiet pills/values, focus panel, pinned edges, hover lift+glow | ✅ CODE |

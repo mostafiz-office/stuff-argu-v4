@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Award, CheckCircle2, ArrowLeft } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, presentationEase, staggerDelay } from "@/lib/presentationMotion";
 import { TierKey } from "@/data/tierFeatures";
 import {
   getUrlOffer,
@@ -311,15 +311,17 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
               onCompare={() => setOverlay("compare")}
             />
           )}
-          <button
+          <motion.button
             type="button"
             autoFocus
             onClick={() => setCompareOpen(false)}
-            className="fixed right-6 top-5 z-[210] inline-flex items-center gap-2 rounded-full border border-pres-accent/60 bg-pres-surface/90 px-5 py-2.5 font-heading text-[16px] font-semibold text-pres-accent hover:bg-pres-accent hover:text-pres-bg"
+            whileHover={{ y: -8, scale: 1.015 }}
+            transition={{ duration: 0.45, ease: presentationEase }}
+            className="fixed right-6 top-5 z-[210] inline-flex items-center gap-2 rounded-full border border-pres-accent/60 bg-pres-surface/90 px-5 py-2.5 font-heading text-[16px] font-semibold text-pres-accent hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to pricing
-          </button>
+          </motion.button>
         </div>,
         document.body
       )}

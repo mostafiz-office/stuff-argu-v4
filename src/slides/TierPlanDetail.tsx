@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Award, CheckCircle, Clock } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
+import { fadeUp, presentationEase, staggerDelay } from "@/lib/presentationMotion";
 import { TIER_FEATURE_GROUPS, TIER_DIFFERENTIATORS } from "@/data/tierFeatures";
 import {
   Tooltip,
@@ -47,6 +47,9 @@ interface Props {
  * so all three tiers (Growth, Skilled, Leadership) change together.
  * Slack values untouched here — Skilled's Slack wording still needs
  * the owner's exact words (see tierFeatures.ts, Skilled cell).
+ * Batch 107 (owner-approved premium pass, Oct 29 2026): flat bold
+ * price, quiet pills, white values, muted checks, focus panel,
+ * shared top edge + pinned bottoms, Batch 65 lift+glow on pills.
  */
 export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onCompare }) => {
   const tier = tiers[index];
@@ -58,10 +61,10 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
         <SlideHeader />
         <div className="pointer-events-none absolute right-[-200px] top-[100px] h-[700px] w-[900px] rounded-full bg-pres-accent/5 blur-[170px]" />
 
-        <motion.div key={`head-${index}`} {...fadeUp(0.02, 18)} className="absolute left-[80px] top-[140px] w-[560px]">
+        <motion.div key={`head-${index}`} {...fadeUp(0.02, 18)} className="absolute bottom-[70px] left-[80px] top-[150px] flex w-[560px] flex-col">
           {tier.badge && (
-            <div className="pres-dark-safe-accent mb-5 inline-flex items-center gap-2 rounded-full bg-pres-accent px-4 py-1.5 font-heading text-[18px] font-bold text-pres-bg">
-              <Award className="h-4 w-4" /> {tier.badge}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-heading text-[18px] font-bold text-white/85">
+              <Award className="h-4 w-4 text-pres-accent/80" /> {tier.badge}
             </div>
           )}
           <h1 className="font-heading text-[64px] font-bold leading-[1.05]">{tier.name}</h1>
@@ -82,33 +85,31 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
             </div>
           )}
           <div className={`${tier.wasPrice ? "mt-3" : "mt-8"} flex items-baseline gap-2`}>
-            <span
-              className={`font-heading text-[64px] font-medium leading-none ${
-                tier.wasPrice ? "text-pres-accent" : "text-white"
-              }`}
-            >
+            <span className="font-heading text-[64px] font-bold leading-none text-white">
               {tier.price}
             </span>
             <span className="text-[28px] font-medium text-pres-text-muted">{tier.priceSuffix}</span>
           </div>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-pres-accent/20 bg-pres-accent/10 px-4 py-1.5 text-[22px] font-semibold text-pres-accent">
-            <Clock className="h-5 w-5" /> {tier.hours}
+          <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/10 px-4 py-1.5 text-[22px] font-semibold text-white/85">
+            <Clock className="h-5 w-5 text-pres-accent/80" /> {tier.hours}
           </div>
           <p className="mt-10 text-[28px] leading-[1.35] text-pres-text-muted">{AUDIENCE[index]}</p>
 
           <TooltipProvider delayDuration={300}>
-          <div className="mt-12 flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-3">
             {tiers.map((t, i) =>
               i === index ? null : (
                 <Tooltip key={t.name}>
                   <TooltipTrigger asChild>
-                    <button
+                    <motion.button
                       type="button"
                       onClick={() => onSelect(i)}
-                      className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent hover:text-pres-accent"
+                      whileHover={{ y: -8, scale: 1.015 }}
+                      transition={{ duration: 0.45, ease: presentationEase }}
+                      className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent/60 hover:text-pres-accent hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
                     >
                       {t.name.replace(/^Tier\s+\S+\s+/, "")}
-                    </button>
+                    </motion.button>
                   </TooltipTrigger>
                   <TooltipContent side="top" className="max-w-[320px] p-4 text-left">
                     <div className="flex items-center gap-2">
@@ -131,25 +132,27 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                 </Tooltip>
               )
             )}
-            <button
+            <motion.button
               type="button"
               onClick={onCompare}
-              className="rounded-full border border-pres-accent/60 px-6 py-3 font-heading text-[22px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg"
+              whileHover={{ y: -8, scale: 1.015 }}
+              transition={{ duration: 0.45, ease: presentationEase }}
+              className="rounded-full border border-pres-accent/60 px-6 py-3 font-heading text-[22px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
             >
               Compare all plans
-            </button>
+            </motion.button>
           </div>
           </TooltipProvider>
         </motion.div>
 
-        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-center gap-[36px]">
+        <div className="absolute bottom-[70px] left-[720px] right-[80px] top-[150px] flex flex-col justify-start gap-[36px]">
           {/* Focus first: the tier's 3 differentiators (already in data,
               already on the tier cards) — the "why this price" landing
               point. The rest below is reference to scan, not to read. */}
-          <motion.div key={`focus-${index}`} {...fadeUp(0.12, 20)} className="flex flex-col gap-4">
+          <motion.div key={`focus-${index}`} {...fadeUp(0.12, 20)} className="flex flex-col gap-4 rounded-2xl bg-white/5 p-6">
             {TIER_DIFFERENTIATORS[key].map((d) => (
               <div key={d.text} className="flex items-center gap-3">
-                <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
+                <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent/80" aria-label="Included" />
                 <span className="text-[30px] font-bold leading-tight text-white">
                   {d.highlight ? (
                     <>
@@ -181,12 +184,12 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   return (
                     <div
                       key={row.feature}
-                      className="flex items-center gap-3 border-b border-pres-text/10 py-[12px]"
+                      className="flex items-center gap-3 border-b border-pres-text/10 py-[12px] transition-colors hover:bg-white/[0.03]"
                     >
-                      <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent" aria-label="Included" />
+                      <CheckCircle className="h-7 w-7 shrink-0 text-pres-accent/80" aria-label="Included" />
                       <span className="flex-1 text-[24px] leading-tight">{row.feature}</span>
                       {typeof v === "string" && (
-                        <span className="whitespace-nowrap font-heading text-[24px] font-bold text-pres-accent">{v}</span>
+                        <span className="whitespace-nowrap font-heading text-[24px] font-bold text-white">{v}</span>
                       )}
                     </div>
                   );
@@ -197,7 +200,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           })}
           {/* Delivery is identical on all three tiers, so it leaves the
               list and becomes one shared line — words already in data. */}
-          <motion.p key={`shared-${index}`} {...fadeUp(0.4, 18)} className="text-[20px] leading-snug text-pres-text-muted">
+          <motion.p key={`shared-${index}`} {...fadeUp(0.4, 18)} className="mt-auto text-[20px] leading-snug text-pres-text-muted">
             Every plan includes:{" "}
             {TIER_FEATURE_GROUPS.find((g) => g.label === "Delivery")!
               .rows.map((row) => row.feature)
