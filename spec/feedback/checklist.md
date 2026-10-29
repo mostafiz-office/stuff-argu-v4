@@ -942,3 +942,29 @@ other slides. URL offer badge stays amber (conditional badge only).
 | # | Area | Change | Status |
 |---|------|--------|--------|
 | CK8 | Slide 13 | De-boxed stats, price amber focus, aligned edges, air, hero gradient | ✅ CODE |
+
+## Slide 13 premium round (2026-10-29, Batch 106 — StarterTierSlideV9Clone)
+
+Owner approved the third plan, correcting Batch 105: pricing flat,
+"Startup" highlighted. Price amber -> bold white (weight kept, color
+removed; discounted state also white, badge + strikethrough carry
+the offer). Headline: "Startup" amber + "Offer" white (swap of the
+original FB-28 treatment, per his explicit call). Premium quiet
+chrome: hero border amber/40 -> white/15 + 80x4px amber signature
+bar centered at the top edge; focus + bonus panels lost their
+borders (white/5 fill only); benefit icon boxes removed -> bare
+muted-amber 24px icons on the shared 744 edge. Alignment: right
+column mt-auto -> justify-between (even 88px gaps, tops + bottoms
+still aligned). Caught mid-build: an extra ">" from the card edit
+broke esbuild parse — fixed by removing the stray character and
+re-verified clean before pushing (lesson: re-run esbuild after
+every manual fix, not just after the script). Render: PIL wireframe
+at 1920x1080 (compare/slide13-batch106-wireframe.png); headline
+spacing corrected after a first render drew "Offer" too far right
+(PIL fixed-offset artifact, not the code). Untouched: copy, price
+values, gate + rocket, tooltips, offers, header, glow, accent line,
+other slides, 160 hrs duplication kept.
+
+| # | Area | Change | Status |
+|---|------|--------|--------|
+| CK9 | Slide 13 | Price flat, Startup highlighted, quiet chrome, even gaps | ✅ CODE |

@@ -145,13 +145,14 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 {...fadeUp(0)}
                 className="pres-title font-bold font-heading tracking-tight text-white whitespace-nowrap"
               >
-                Startup Offer
+                <span className="text-pres-accent">Startup</span> Offer
               </motion.h1>
 
             </div>
 
             {/* Batch 104 (owner: coloring + alignment): amber discipline, contrast lift, unified right-column surfaces, equal-height columns */}
             {/* Batch 105 (owner approved: de-boxed stats, single amber focus on price, left-aligned stats, more air, hero gradient) */}
+            {/* Batch 106 (owner approved: price flat, Startup highlighted, premium quiet chrome, even gaps) */}
             {/* Main 2-Column Content */}
             <div className="flex gap-10 w-full items-stretch">
               {/* Left Column: Pricing Card (w: 600px) */}
@@ -160,7 +161,9 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 className="w-[600px] flex-shrink-0"
               >
                 <div className="h-full w-full">
-                  <div className="relative p-10 rounded-3xl bg-gradient-to-b from-pres-accent/10 to-pres-surface border border-pres-accent/40 shadow-2xl backdrop-blur-md overflow-hidden h-full">
+                  <div className="relative p-10 rounded-3xl bg-gradient-to-b from-pres-accent/10 to-pres-surface border border-white/15 shadow-2xl backdrop-blur-md overflow-hidden h-full">
+                    {/* Batch 106: single amber signature bar on the hero card */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] h-[4px] rounded-full bg-pres-accent" />
 
                     {/* Card Header */}
                     <div className="flex items-center justify-between mb-1">
@@ -174,7 +177,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
 
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <div className="mb-5 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 cursor-pointer">
+                        <div className="mb-5 rounded-2xl bg-white/5 px-5 py-4 cursor-pointer">
                           <p className="text-[26px] font-bold font-heading text-white leading-tight">
                             1+ Year Industry Experience
                           </p>
@@ -204,7 +207,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                     )}
                     <div className="flex items-baseline gap-2 mb-1">
                       <span
-                        className="text-[56px] font-bold font-heading leading-none text-pres-accent"
+                        className="text-[56px] font-bold font-heading leading-none text-white"
                       >
                         {starterDiscounted ? formatOfferPrice(starterOffer!.amount!) : "$1,900"}
                       </span>
@@ -243,7 +246,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4 }}
-                        className="p-5 rounded-2xl bg-white/5 border border-white/15 backdrop-blur-md"
+                        className="p-5 rounded-2xl bg-white/5 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-[20px] font-bold text-white uppercase tracking-wider">
@@ -274,7 +277,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
               </motion.div>
 
               {/* Right Column: Metrics, Guarantees, Urgency */}
-              <div className="flex-1 flex flex-col justify-start gap-6">
+              <div className="flex-1 flex flex-col justify-between gap-6">
                 {/* 3 Result Metrics with Tooltips */}
                 <div className="grid grid-cols-3">
                   {results.map((res, idx) => (
@@ -312,9 +315,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
                             className="px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 flex items-center gap-3.5 backdrop-blur-md cursor-pointer transition-colors"
                           >
-                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-pres-accent/80 shrink-0">
-                              <Icon className="w-6 h-6" />
-                            </div>
+                            <Icon className="w-6 h-6 shrink-0 text-pres-accent/80" />
                             <div>
                               <h4 className="text-[30px] font-bold font-heading text-white">
                                 {item.title}
@@ -336,7 +337,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                 </div>
 
                 {/* Bottom Guarantee Banner */}
-                <div className="mt-auto px-6 py-4 border-t border-white/10 flex items-center justify-between text-[18px] text-white/70">
+                <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between text-[18px] text-white/70">
                   <span>Backed by RISE ASIA LLC 14 Day Money Back Guarantee</span>
                   <span className="text-white/80 font-semibold">100% Risk Free</span>
                 </div>
