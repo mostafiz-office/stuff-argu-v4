@@ -796,3 +796,28 @@ Owner (Romanized Bangla): "color gula 5% er color hobe ar ektu bigger hobe taile
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CJ1 | Slide 7 (Solution) | Phrase markers unified to solid 5% yellow + px-2 | ✅ CODE |
+
+## Slide 8 exactly like v1 slide 2 (2026-10-29, Batch 100 — PricingTiersSlide only)
+
+Owner: "fix it" + an AI plan so any AI can reproduce it exactly. Built to
+v1's own bundle.js code values (see spec/feedback/ai-plan-slide-8-exact-
+match.md, the AI-executable spec). Headline ADDED: "Choose Your Plan"
+Ubuntu 700 52px left 80 top 90, "Plan" amber; subline moved to absolute
+left 80 top 178 (same text); grid absolute left 80 right 80 top 240
+bottom 80 (1760x760, gap 32). Names gained the dash (Tier 2 — Growth
+etc.). Experience to v1 ranges (2-3+ / 7-15+ / 7-15+). Prices to v1
+format: Ubuntu bold, 48px single / 36px range by string length,
+"/mo" suffix, en-dash ranges; hours pill to "160 hrs/month" with exact
+v1 bg/border (0.08/0.15) via inline style. Features to v1's 4-item
+lists as card-local data (shared differentiators untouched, so detail
+focus blocks stay); icons plain Check to circled CheckCircle2.
+Texture to 28px / 3%. Ambient glow, hover "View details" line, and
+"Compare pricing" button DELETED (v1 has none). KEPT: card chrome,
+badge, hover lift, card click to detail views, tooltips, overlays,
+URL offers, toolbar/dots, USD note, bottom line. Detail headers follow
+the new price format (they read the same tier objects); detail rows
+and focus blocks unchanged.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CK1 | Slide 8 (Pricing) | Rebuilt to v1 slide 2 exact code values + AI plan doc | ✅ CODE |

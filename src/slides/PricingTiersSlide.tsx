@@ -3,11 +3,11 @@ import { createPortal } from "react-dom";
 import { TierDetailSlide } from "@/slides/TierDetailSlide";
 import { TierPlanDetail } from "@/slides/TierPlanDetail";
 import { motion } from "framer-motion";
-import { Award, Check, ArrowLeft, Columns3 } from "lucide-react";
+import { Award, CheckCircle2, ArrowLeft } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, staggerDelay } from "@/lib/presentationMotion";
-import { TIER_DIFFERENTIATORS, TierKey } from "@/data/tierFeatures";
+import { TierKey } from "@/data/tierFeatures";
 import {
   getUrlOffer,
   isDiscounted,
@@ -50,54 +50,57 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
 
   const tiers = [
     {
-      name: "Tier 2 Growth",
+      name: "Tier 2 — Growth",
       key: "growth" as TierKey,
       meaning: "A full time developer who clears your backlog.",
-      experience: "4+ Years",
+      experience: "2-3+ Years",
       price: "$4,299",
-      priceSuffix: "/M",
-      hours: "160 hrs/M",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
       badge: null,
       highlight: false,
       position: "left" as const,
       features: [
-        "Fixes fragile vibe code & debt",
-        "Saves 80% hiring effort",
-        "Daily standups & Slack sync",
+        "Fluent, autonomous coder",
+        "Breaks down & delegates tasks",
+        "Full sprint participation",
+        "Daily standups & Slack access",
       ],
     },
     {
-      name: "Tier 3.A Skilled",
+      name: "Tier 3.A — Skilled",
       key: "skilled" as TierKey,
       meaning: "A mentor level developer with architecture oversight.",
-      experience: "6+ Years",
-      price: "$6,800 to $8,000",
-      priceSuffix: "/M",
-      hours: "160 hrs/M",
+      experience: "7-15+ Years",
+      price: "$6,800–$8,000",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
       badge: "BEST VALUE",
       highlight: true,
       position: "center" as const,
       features: [
-        "Fixes AI & fragile logic",
-        "Ready in 20 minutes",
-        "Deep stack leadership",
+        "Best-in-class developer",
+        "Deep expertise in their stack",
+        "Manages 3-5 team members",
+        "Architecture & code quality",
       ],
     },
     {
-      name: "Tier 3.B Leadership",
+      name: "Tier 3.B — Leadership",
       key: "leadership" as TierKey,
       meaning: "A tech lead managing up to 15 engineers.",
-      experience: "8+ Years",
-      price: "$7,500 to $10,000",
-      priceSuffix: "/M",
-      hours: "160 hrs/M",
+      experience: "7-15+ Years",
+      price: "$7,500–$10,000",
+      priceSuffix: "/mo",
+      hours: "160 hrs/month",
       badge: null,
       highlight: false,
       position: "right" as const,
       features: [
-        "CTO level architecture oversight",
-        "Audits complex AI systems",
-        "24/7 priority SLA",
+        "Project management focus",
+        "Manages up to 15 developers",
+        "CTO-level strategic oversight",
+        "24/7 SLA & priority support",
       ],
     },
   ];
@@ -131,29 +134,35 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
       <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
         <SlideHeader />
 
-        {/* 45 degree repeating line texture */}
+        {/* 45 degree repeating line texture — v1 exact: 28px, 3% */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-20"
+          className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(45deg, transparent, transparent 18px, hsl(var(--pres-accent) / 0.08) 18px, hsl(var(--pres-accent) / 0.08) 19px)",
+              "repeating-linear-gradient(45deg, transparent, transparent 28px, hsl(var(--pres-accent) / 0.03) 28px, hsl(var(--pres-accent) / 0.03) 29px)",
           }}
         />
 
-        {/* Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-pres-accent/5 blur-[160px] pointer-events-none" />
 
-        {/* Flexbox Centered Main Content Wrapper */}
-        <div className="relative z-10 w-full max-w-[1760px] px-[80px] flex flex-col justify-center">
-          {/* Batch 83 (owner: make pricing like the v1 deck's slide 2):
-              v1's subline above the grid; 160 hrs/M is this deck's own
-              data, already shown on every card's hours pill. */}
-          <p className="text-center text-[18px] text-pres-text-muted mb-10">
-            All plans include 160 dedicated hours/month. Scale anytime.
-          </p>
+        {/* Batch 100 (owner: slide 8 exactly like v1 slide 2):
+              headline + subline + grid all absolutely positioned at
+              v1's exact coordinates. Full AI-executable spec:
+              spec/feedback/ai-plan-slide-8-exact-match.md */}
+        <motion.h1
+          {...fadeUp(0)}
+          className="absolute left-[80px] top-[90px] z-10 font-heading text-[52px] font-bold text-white"
+        >
+          Choose Your{" "}<span className="text-pres-accent">Plan</span>
+        </motion.h1>
+        <motion.p
+          {...fadeUp(0.15)}
+          className="absolute left-[80px] top-[178px] z-10 text-[18px] text-pres-text-muted"
+        >
+          All plans include 160 dedicated hours/month. Scale anytime.
+        </motion.p>
           {/* 3-Column Tier Cards Grid */}
           <TooltipProvider>
-          <div className="grid grid-cols-3 gap-8 w-full">
+          <div className="absolute left-[80px] right-[80px] top-[240px] bottom-[80px] z-10 grid grid-cols-3 gap-8">
             {effectiveTiers.map((tier, idx) => (
               <div key={idx} className="flex flex-col">
                 <Tooltip>
@@ -181,7 +190,7 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   // wash on the featured card, opaque surface otherwise.
                   // Hover lift + 450ms clock (Batch 65) and the View
                   // details reveal are this deck's own systems, kept.
-                  className={`group cursor-pointer relative flex flex-col h-full p-7 px-6 rounded-2xl border-2 overflow-hidden transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] shadow-2xl ${
+                  className={`cursor-pointer relative flex flex-col h-full p-7 px-6 rounded-2xl border-2 overflow-hidden transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] shadow-2xl ${
                     tier.highlight
                       ? "bg-[linear-gradient(180deg,hsl(var(--pres-accent)/0.1)_0%,hsl(var(--pres-bg-surface))_100%)] border-pres-accent/40 shadow-[0_0_35px_rgba(255,173,1,0.2)]"
                       : "bg-pres-surface border-white/10 hover:border-pres-accent hover:bg-pres-surface/90 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
@@ -210,7 +219,9 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     {/* Price — v1 size/weight, this deck's price face kept */}
                     <div className="flex items-baseline gap-1 mt-5">
                       <span
-                        className={`font-price text-[48px] font-bold leading-none ${
+                        className={`font-heading font-bold leading-none ${
+                          tier.price.length > 8 ? "text-[36px]" : "text-[48px]"
+                        } ${
                           tier.wasPrice ? "text-pres-accent" : "text-white"
                         }`}
                       >
@@ -237,32 +248,29 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     )}
 
                     {/* Hours Badge — v1 text-only subtle pill */}
-                    <div className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5 bg-pres-accent/10 border border-pres-accent/20 text-pres-accent text-[16px] font-semibold self-start">
+                    <div
+                      className="mt-2 inline-flex items-center rounded-lg px-3 py-1.5 text-pres-accent text-[16px] font-semibold self-start"
+                      style={{
+                        background: "hsl(var(--pres-accent) / 0.08)",
+                        border: "1px solid hsl(var(--pres-accent) / 0.15)",
+                      }}
+                    >
                       <span>{tier.hours}</span>
                     </div>
 
-                    {/* FB-18: differentiator focus block — the "why this price" */}
+                    {/* Batch 100: v1's card feature lists (card-local).
+                        The shared differentiators stay untouched for
+                        the detail views' focus blocks. */}
                     <ul className="mt-3 space-y-2.5 flex-1">
-                      {TIER_DIFFERENTIATORS[tier.key].map((d, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-3">
-                          <Check className="mt-[3px] h-[18px] w-[18px] shrink-0 text-pres-accent" />
+                      {tier.features.map((f, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-3">
+                          <CheckCircle2 className="mt-[3px] h-[18px] w-[18px] shrink-0 text-pres-accent" />
                           <span className="text-[18px] text-pres-text-muted leading-[1.4]">
-                            {d.highlight ? (
-                              <>
-                                {d.text.split(d.highlight)[0]}
-                                <span className="text-pres-accent font-semibold">{d.highlight}</span>
-                                {d.text.split(d.highlight)[1]}
-                              </>
-                            ) : (
-                              d.text
-                            )}
+                            {f}
                           </span>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 font-heading text-[20px] font-semibold text-pres-accent opacity-0 translate-y-1 transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:translate-y-0">
-                      View details →
-                    </div>
                   </div>
                 </motion.div>
                 </TooltipTrigger>
@@ -277,17 +285,6 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
           </div>
           </TooltipProvider>
 
-          <motion.div {...fadeUp(0.42)} className="mt-12 flex justify-center">
-            <button
-              type="button"
-              onClick={(e) => { e.stopPropagation(); setCompareOpen(true); }}
-              className="inline-flex items-center gap-3 rounded-full border-2 border-pres-accent px-10 py-4 font-heading text-[26px] font-bold text-pres-accent transition-colors duration-200 hover:bg-pres-accent hover:text-pres-bg"
-            >
-              <Columns3 className="h-7 w-7" />
-              Compare pricing
-            </button>
-          </motion.div>
-        </div>
 
         <UsdNote />
 
