@@ -772,3 +772,11 @@ Owner: "is only the money." does not read clearly and must be replaced with a di
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CF1 | Slide 6 | "is only the money." → "is not the whole cost." | ✅ CODE |
+
+## Owner-approved testimonial match (2026-10-29, Batch 97 — QuoteCard = present-v1 live cards)
+
+Owner approved the comparison plan. QuoteCard in PricingCoverShared.tsx rebuilt to the live present-v1 cards (measured Oct 29 from present-v1.riseup-asia.com/1): warm gradient out, flat near-black bg-[#0d0d0f]/90 in; border amber/30 to faint gold amber/15; radius 12px to 14px; avatar 48px with amber ring to 44px plain; name 20px to 16px, hover-amber removed; role 15px truncated to 13px wrapping; quote 18px to 14px; Verified text 14px to 11px, icon 14px to 12px; arrow 20px to 16px; left card width 640px to 400px (right card keeps its 420px column, stat cards untouched). Hover is halo-only now: framer zoom removed AND the shared presentation-action CSS lift removed (it would otherwise still move the card on hover), full-amber border removed, softer 32px glow kept. Padding 20px, blue pill structure, italic quote, link target, both-card arrangement, and our people/quotes (Cristian/Jakub/Adam) all unchanged. Both cover variants share the component, so V1 and V3 update together. Present-v1 sizes were screenshot estimates, so border softness/radius are match-by-eye targets for his preview check.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CG1 | Cover V1 + V3 | QuoteCard rebuilt to present-v1 live card spec | ✅ CODE |

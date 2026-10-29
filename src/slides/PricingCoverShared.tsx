@@ -79,40 +79,49 @@ const highlights = [
   { a: "Chief Architect", b: " Included" },
 ];
 
+/**
+ * Batch 97 (owner-approved, Oct 29 2026): QuoteCard matched to the LIVE
+ * present-v1 testimonial cards (measured Oct 29 from
+ * present-v1.riseup-asia.com/1). Was bigger, warmer, louder on every
+ * dimension; now: flat near-black bg (no warm gradient), faint gold
+ * border, 14px radius, 44px plain avatar, 16px name / 13px wrapping
+ * role / 14px quote, 11px Verified text, 16px arrow, halo-only hover
+ * (no zoom, no lift, no full-amber border, no name-amber). Both cover
+ * variants share this component, so V1 and V3 update together. People
+ * and quotes unchanged (ours, not present-v1's).
+ */
 const QuoteCard: React.FC<{ recommendation: Recommendation; className?: string; delay: number }> = ({ recommendation, className, delay }) => (
   <motion.a
     initial={{ opacity: 0, y: 12 }}
     animate={{ opacity: 1, y: 0 }}
-    whileHover={{ scale: 1.02 }}
     transition={{
       duration: 0.5,
       delay,
       ease: presentationEase,
-      scale: { duration: 0.3, delay: 0, ease: presentationEase },
     }}
     href={MAREK_URL}
     target="_blank"
     rel="noopener noreferrer"
-    className={`presentation-action presentation-focus group relative block overflow-hidden p-5 rounded-xl bg-gradient-to-b from-[#211d15]/90 to-black/90 border border-pres-accent/30 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-pres-accent hover:shadow-[0_0_44px_rgba(255,173,1,0.25)] ${className ?? ""}`}
+    className={`presentation-focus relative block overflow-hidden p-5 rounded-[14px] bg-[#0d0d0f]/90 border border-pres-accent/15 backdrop-blur-md transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(255,173,1,0.20)] ${className ?? ""}`}
   >
     <div className="flex items-center justify-between gap-3 mb-3">
       <div className="flex min-w-0 flex-1 items-center gap-3">
-        <div className="w-12 h-12 shrink-0 rounded-full overflow-hidden border-2 border-pres-accent/50 bg-pres-surface">
+        <div className="w-11 h-11 shrink-0 rounded-full overflow-hidden bg-pres-surface">
           <img src={recommendation.image} alt={recommendation.name} loading="eager" decoding="async" className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.style.display = "none"; }} />
         </div>
         <div className="min-w-0">
-          <div className="font-bold text-[20px] font-heading leading-tight transition-colors duration-300 group-hover:text-pres-accent">{recommendation.name}</div>
-          <div className="text-[15px] text-pres-text-muted truncate">{recommendation.role}</div>
+          <div className="font-bold text-[16px] font-heading leading-tight">{recommendation.name}</div>
+          <div className="text-[13px] text-pres-text-muted">{recommendation.role}</div>
         </div>
       </div>
-      <span className="flex shrink-0 items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a66c2]/15 border border-[#0a66c2]/45 text-[#63a4e8] text-[14px] font-semibold">
-        <Linkedin className="w-3.5 h-3.5 fill-current" /> Verified
+      <span className="flex shrink-0 items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0a66c2]/15 border border-[#0a66c2]/45 text-[#63a4e8] text-[11px] font-semibold">
+        <Linkedin className="w-3 h-3 fill-current" /> Verified
       </span>
     </div>
-    <p className="text-[18px] text-pres-text italic leading-snug pb-6">
+    <p className="text-[14px] text-pres-text italic leading-snug pb-6">
       “{recommendation.quoteBefore}{recommendation.highlight}{recommendation.quoteAfter}”
     </p>
-    <ArrowRight className="absolute bottom-4 right-5 w-5 h-5 text-pres-accent" />
+    <ArrowRight className="absolute bottom-4 right-5 w-4 h-4 text-pres-accent" />
   </motion.a>
 );
 
@@ -155,7 +164,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
           </DeckButton>
         </motion.div>
         {recommendations[0] && (
-          <QuoteCard recommendation={recommendations[0]} delay={0.5} className="max-w-[640px]" />
+          <QuoteCard recommendation={recommendations[0]} delay={0.5} className="max-w-[400px]" />
         )}
       </div>
 
