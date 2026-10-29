@@ -788,3 +788,11 @@ Owner (Romanized Bangla): "ektu gap hobe line to line" — a little gap between 
 | # | Slide | Change | Status |
 |---|-------|--------|--------|
 | CH1 | Slide 2 (Outage) | Title line gaps -5/-7px to +10/+10px | ✅ CODE |
+
+## Pyramid markers unified (2026-10-29, Batch 99 — SolutionBridgeSlide Phrase only)
+
+Owner (Romanized Bangla): "color gula 5% er color hobe ar ektu bigger hobe taile padding ta thik thakbe". All four phrase markers now solid bg-pres-accent with pres-dark-safe-accent text (dark text required — white on solid yellow would not read), like the 5% marker already was: Missing loses its band red rgba(226,54,83,0.7), Save/Hiring lose their amber/70 wash. Markers a little wider: px-2 on the Phrase calls overrides the component's px-1 (Tailwind scale order). Shared MarkerHighlight default untouched (PainBeats markers keep their size); pyramid bands and numbered circles untouched.
+
+| # | Slide | Change | Status |
+|---|-------|--------|--------|
+| CJ1 | Slide 7 (Solution) | Phrase markers unified to solid 5% yellow + px-2 | ✅ CODE |

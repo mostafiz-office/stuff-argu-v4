@@ -26,6 +26,15 @@ interface PhraseDef {
 // own band red hsl(350, 75%, 55%) = rgb(226, 54, 83) at 70%; L5 "5%"
 // goes SOLID pres-accent with dark text, so the yellow on "Top 5%"
 // is exactly our yellow, not a faded wash.
+// Batch 99 (owner Oct 29: markers = the 5% color, a little bigger,
+// then the padding is right): ALL phrase markers are now solid
+// pres-accent with dark text, like the 5% marker already was —
+// Missing loses its band red, Save/Hiring lose their amber/70
+// wash. Markers are also a little wider: px-2 on these calls
+// overrides the component's px-1 (Tailwind scale order). The
+// shared MarkerHighlight default is untouched, so pain-slide
+// markers (PainBeats) keep their size. Pyramid bands and the
+// numbered circles are untouched.
 const PHRASES: PhraseDef[] = [
   { before: "Find Top ", focus: "5%", after: " Talent" },
   { before: "Avoid ", focus: "Missing", after: " Deadlines" },
@@ -45,20 +54,25 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
       {index === 0 && (
         <MarkerHighlight
           colorClassName="bg-pres-accent"
-          className="pres-dark-safe-accent"
+          className="pres-dark-safe-accent px-2"
           delay={0.25}
         >
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 1 && (
-        <MarkerHighlight colorClassName="bg-[rgba(226,54,83,0.7)]" delay={0.25}>
+        <MarkerHighlight
+          colorClassName="bg-pres-accent"
+          className="pres-dark-safe-accent px-2"
+          delay={0.25}
+        >
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 2 && (
         <MarkerHighlight
-          colorClassName="bg-pres-accent/70"
+          colorClassName="bg-pres-accent"
+          className="pres-dark-safe-accent px-2"
           delay={0.25}
         >
           {p.focus}
@@ -67,7 +81,8 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
       {p.after}
       {p.focus2 && (
         <MarkerHighlight
-          colorClassName="bg-pres-accent/70"
+          colorClassName="bg-pres-accent"
+          className="pres-dark-safe-accent px-2"
           delay={0.45}
         >
           {p.focus2}
