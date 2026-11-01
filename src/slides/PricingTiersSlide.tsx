@@ -182,7 +182,6 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: staggerDelay(idx, 0.3, 0.12), duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
                   whileTap={{ scale: 0.99 }}
                   // Batch 83: card chrome transplanted from the v1 deck's
                   // pricing slide (same 3 tiers, same price family):
@@ -315,7 +314,6 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
             type="button"
             autoFocus
             onClick={() => setCompareOpen(false)}
-            whileHover={{ y: -8, scale: 1.015 }}
             transition={{ duration: 0.45, ease: presentationEase }}
             className="fixed right-6 top-5 z-[210] inline-flex items-center gap-2 rounded-full border border-pres-accent/60 bg-pres-surface/90 px-5 py-2.5 font-heading text-[16px] font-semibold text-pres-accent hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
           >

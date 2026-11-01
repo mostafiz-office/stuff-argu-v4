@@ -51,7 +51,6 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                 <motion.div
                   key={s.title}
                   {...scaleIn(staggerDelay(i, 0.16, 0.08))}
-                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
                   className="p-8 rounded-3xl border shadow-xl bg-pres-surface/75 border-white/10 transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-pres-accent/60 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -73,8 +72,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
                 <TooltipTrigger asChild>
                   <motion.div
                     {...scaleIn(staggerDelay(i, 0.16, 0.08))}
-                    whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
-                    className="p-8 rounded-3xl border shadow-xl bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.25)] cursor-pointer transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_0_50px_rgba(255,173,1,0.4)]"
+                      className="p-8 rounded-3xl border shadow-xl bg-pres-surface/95 border-pres-accent shadow-[0_0_35px_rgba(255,173,1,0.25)] cursor-pointer transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_0_50px_rgba(255,173,1,0.4)]"
                   >
                     <div className="flex items-center gap-4 mb-5">
                       <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-pres-accent text-pres-bg pres-dark-safe-accent shadow-[0_0_20px_rgba(255,173,1,0.4)]">
@@ -113,7 +111,7 @@ export const ExpertValuationBreakdownSlide: React.FC<ExpertValuationBreakdownSli
           {tiers.map((t) => (
             <div
               key={t.name}
-              className={`p-6 rounded-2xl border transition-[border-color,background-color,box-shadow,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.015] hover:border-pres-accent/60 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)] ${t.highlight ? "bg-pres-accent/10 border-pres-accent" : "bg-pres-surface/70 border-white/10"}`}
+              className={`p-6 rounded-2xl border transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-pres-accent/60 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)] ${t.highlight ? "bg-pres-accent/10 border-pres-accent" : "bg-pres-surface/70 border-white/10"}`}
             >
               <div className="text-[24px] font-bold font-heading mb-2">{t.name}</div>
               <div className="text-[34px] font-bold text-green-400 font-mono">

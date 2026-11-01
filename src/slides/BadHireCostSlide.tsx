@@ -1,29 +1,26 @@
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import { fadeUp, fadeIn } from "@/lib/presentationMotion";
+import { fadeUp, fadeIn, staggerDelay } from "@/lib/presentationMotion";
 import { slide5CostImage } from "@/assets/slide5CostImageData";
 
 /**
- * Batch 88 (owner-approved plan, Oct 28 2026): price anchoring slide 1 of 2.
- * Sits between Hiring Sinkhole and the solution pyramid. Plants the anchor:
- * one bad hire costs around $35,000 — the owner's figure. Single-step
+ * 2026-11-01 feedback update: slides 5 + 6 merged into ONE unified slide.
+ * Previously slide 5 gave the $35,000 anchor alone and slide 6 repeated
+ * the same anchor with the three unpriced consequences. This slide keeps
+ * every element from both: the anchor, the bridge line, the "is not the
+ * whole cost" line, and the three unpriced lines. Nothing is dropped.
+ * The layout is slightly larger than either old slide and the right-hand
+ * panel is lighter (white/10 with a soft border and blur) so the merged
+ * section reads cleanly and the $35,000 stays prominent. Single-step
  * slide, no gate.
- * Batch 90 (owner direction 1): rebuilt into the pain-slide family —
- * full-bleed photo + problem-story overlay + text block, same shell as
- * slides 2 to 4. The $35,000 is the deck's own amber (pres-accent), not
- * red. Text LEFT: the photo's clean dark curtain sits left, the founder
- * right, no flip.
- * Batch 94 (owner pick, Direction 1, Oct 28 2026): stripped to a pure
- * anchor. The four loss lines and the closing question are gone — they
- * made the slide a generic number-plus-bullet template, repeated pains
- * from slides 2 to 4, and doubled slide 6's dot list. What remains is
- * the number, the photo, and air, plus one bridge line: "That is what
- * you can count." It frames $35,000 as the countable part and sets up
- * slide 6's uncountable part without giving it away. Count-up animation
- * on the number was offered but not picked — still available as a small
- * addition on his word.
  */
+const UNPRICED_LINES = [
+  "Customers who stop waiting.",
+  "A team stuck rewriting.",
+  "Nights you don't get back.",
+];
+
 export const BadHireCostSlide = () => {
   return (
     <ScaledSlide>
@@ -40,31 +37,56 @@ export const BadHireCostSlide = () => {
         <div className="absolute inset-0 problem-story-overlay" />
         <SlideHeader />
 
-        <div className="relative z-10 h-full flex flex-col justify-center pt-[40px] pl-[100px] pr-[980px] text-left items-start">
-          <motion.p
-            {...fadeUp(0)}
-            className="text-[20px] font-semibold uppercase tracking-[0.2em] text-pres-text-muted mb-6"
-          >
-            The cost of a cheap hire
-          </motion.p>
+        <div className="relative z-10 h-full flex items-center px-[100px] gap-[80px]">
+          {/* Left: the anchor, slightly larger than before */}
+          <div className="w-[880px] shrink-0">
+            <motion.p
+              {...fadeUp(0)}
+              className="text-[22px] font-semibold uppercase tracking-[0.2em] text-pres-text-muted mb-6"
+            >
+              The cost of a cheap hire
+            </motion.p>
+            <motion.div
+              {...fadeUp(0.1)}
+              className="font-price text-[180px] font-bold leading-none text-pres-accent"
+            >
+              $35,000
+            </motion.div>
+            <motion.p {...fadeUp(0.2)} className="text-[30px] text-white/85 mt-4 mb-10">
+              lost on one bad hire
+            </motion.p>
+            <motion.p
+              {...fadeUp(0.3)}
+              className="text-[38px] font-bold font-heading text-white"
+            >
+              That is what you can count.
+            </motion.p>
+          </div>
 
-          {/* The anchor: deck amber, the deck's own focus colour */}
-          <motion.div
-            {...fadeUp(0.1)}
-            className="font-price text-[160px] font-bold leading-none text-pres-accent"
-          >
-            $35,000
-          </motion.div>
-          <motion.p {...fadeUp(0.2)} className="text-[28px] text-white/85 mt-4 mb-14">
-            lost on one bad hire
-          </motion.p>
+          {/* Hairline divider */}
+          <div className="h-[360px] w-px bg-white/20 shrink-0" />
 
-          <motion.p
-            {...fadeUp(0.5)}
-            className="text-[36px] font-bold font-heading text-white"
-          >
-            That is what you can count.
-          </motion.p>
+          {/* Right: what the money does not cover, in a lighter panel */}
+          <div className="flex-1 rounded-3xl bg-white/10 border border-white/15 backdrop-blur-md px-10 py-10">
+            <motion.p
+              {...fadeUp(0.15)}
+              className="text-[38px] font-bold font-heading text-white mb-8"
+            >
+              is not the whole cost.
+            </motion.p>
+            <div className="flex flex-col items-start gap-6">
+              {UNPRICED_LINES.map((line, i) => (
+                <motion.div
+                  key={line}
+                  {...fadeUp(staggerDelay(i, 0.3, 0.12))}
+                  className="flex items-center gap-4"
+                >
+                  <span className="h-[10px] w-[10px] shrink-0 rounded-full bg-pres-accent" />
+                  <span className="text-[32px] text-white/90 leading-tight">{line}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </ScaledSlide>

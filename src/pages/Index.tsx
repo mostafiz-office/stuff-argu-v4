@@ -5,7 +5,6 @@ import { PricingCoverV1 } from "@/slides/PricingCoverV1";
 import { OutagePanicSlide, FragileCodeSlide, HiringSinkholeSlide } from "@/slides/PainPointsSlide";
 import { SolutionBridgeSlide } from "@/slides/SolutionBridgeSlide";
 import { BadHireCostSlide } from "@/slides/BadHireCostSlide";
-import { BadHireProblemsSlide } from "@/slides/BadHireProblemsSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
 import { ExpertValuationBreakdownSlide } from "@/slides/ExpertValuationBreakdownSlide";
@@ -92,13 +91,13 @@ const Index = () => {
       OutagePanicSlide,
       FragileCodeSlide,
       HiringSinkholeSlide,
-      // Batch 88: price anchoring slides sit between the pain and the
-      // solution pyramid. Batch 89: the second one stopped being the
-      // comparison at the owner's word and became the problems behind
-      // the $35,000 instead; AnchorComparisonSlide stays in the repo
-      // unreferenced, so the comparison can return with a one-line change.
+      // 2026-11-01 feedback update: slides 5 + 6 merged into ONE slide.
+      // BadHireCostSlide now contains both the $35,000 anchor and the
+      // three unpriced consequences that used to live on
+      // BadHireProblemsSlide. The deck is now 14 slides, not 15, so
+      // every later slide shifts down by one index. AnchorComparisonSlide
+      // stays in the repo unreferenced, as before.
       BadHireCostSlide,
-      BadHireProblemsSlide,
       SolutionBridgeSlide,
       PricingTiersSlide,
       PremiumExpertSlideV2,

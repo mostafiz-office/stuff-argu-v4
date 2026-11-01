@@ -39,7 +39,6 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
         <div className="flex gap-10">
           <motion.div
             {...fadeUp(0.16)}
-            whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
             className="w-[520px] p-6 rounded-3xl bg-pres-surface/90 border border-pres-accent/30 shadow-2xl transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-pres-accent/60 hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
           >
             <div className="w-full h-[400px] rounded-2xl overflow-hidden mb-5 bg-black/50">
@@ -60,8 +59,7 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
                 <motion.div
                   key={p.title}
                   {...fadeUp(staggerDelay(i, 0.24, 0.07))}
-                  whileHover={{ y: -8, scale: 1.015, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
-                  className="p-8 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/60 hover:bg-pres-surface/90 flex flex-col justify-center shadow-xl transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
+                        className="p-8 rounded-3xl bg-pres-surface/75 border border-white/10 hover:border-pres-accent/60 hover:bg-pres-surface/90 flex flex-col justify-center shadow-xl transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent mb-5">
                     <Icon className="w-8 h-8" />

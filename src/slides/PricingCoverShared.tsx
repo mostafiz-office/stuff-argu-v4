@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Check, Linkedin } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
-import marekImg from "@/assets/marek.webp";
+import { marekCleanImage } from "@/assets/marekCleanImageData";
 import cristianImg from "@/assets/recommendations/cristian-stancalau.png";
 import jakubImg from "@/assets/recommendations/jakub-szubarga.png";
 import adamImg from "@/assets/recommendations/adam-lewkowicz.png";
@@ -134,9 +134,9 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
       <div className="absolute left-[700px] bottom-0 w-[760px] h-[1000px] z-[4] pointer-events-none flex items-end justify-center">
         <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2 w-[640px] h-[640px] rounded-full bg-pres-accent/10 blur-[120px]" />
         <img
-          src={marekImg}
-          alt="Marek F."
-          className="relative h-full w-auto max-w-none object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)]"
+          src={marekCleanImage}
+          alt="Marek Flejszman"
+          className="relative h-full w-auto max-w-none object-contain object-bottom origin-bottom scale-[1.08] drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)]"
         />
       </div>
 
@@ -159,7 +159,7 @@ export const PricingCoverShared: React.FC<Props> = ({ copy, recommendations, onN
           >
             Book a Call <ArrowRight className="w-[18px] h-[18px]" />
           </DeckButton>
-          <DeckButton variant="outline" onClick={() => onNavigate?.(1)}>
+          <DeckButton variant="outline" onClick={() => onNavigate?.(6)}>
             <Sparkles className="w-4 h-4 text-pres-accent" /> Explore Tiers
           </DeckButton>
         </motion.div>
