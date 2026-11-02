@@ -118,7 +118,10 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                       {tt.name.replace(/^Tier\s+\S+\s+/, "")}
                     </motion.button>
                   </TooltipTrigger>
-                  <TooltipContent side="top" className="max-w-[320px] p-4 text-left">
+                  {/* 2026-11-03: same black-tooltip fix as PricingTiersSlide
+                      — force black so this detail-view popup cannot
+                      show yellow/white either. */}
+                  <TooltipContent side="top" className="max-w-[320px] p-4 text-left !bg-black border-white/15 text-white shadow-xl">
                     <div className="flex items-center gap-2">
                       <span className="font-heading text-[18px] font-bold text-white">{tt.name}</span>
                       {tt.badge && (

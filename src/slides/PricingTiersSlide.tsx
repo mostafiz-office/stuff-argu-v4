@@ -273,7 +273,12 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                   </div>
                 </motion.div>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-[300px] p-4 text-left">
+                {/* 2026-11-03: force black tooltip background. The
+                    default alone let the live build show a solid
+                    yellow background with white text (unreadable).
+                    !bg-black wins over any theme/default background,
+                    matching the example image's black tooltip. */}
+                <TooltipContent side="top" className="max-w-[300px] p-4 text-left !bg-black border-white/15 text-white shadow-xl">
                   <div className="font-heading text-[18px] font-bold text-white">{tier.name}</div>
                   <div className="mt-1 text-[15px] text-pres-text-muted">{tier.meaning}</div>
                   <div className="mt-2 text-[15px] text-white">{tier.price}{tier.priceSuffix}</div>
