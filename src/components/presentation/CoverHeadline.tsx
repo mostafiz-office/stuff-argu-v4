@@ -189,7 +189,11 @@ export const CoverHeadline: React.FC<{
               <LabelDrop
                 tone={labelTone}
                 delay={Math.max(delay, 1.6)}
-                className="mx-[0.22em]"
+                // 2026-11-02: wider middle gap (0.34em) so the label
+                // never touches/overlaps the neighbouring word
+                // ("Hiring" / "In"), on top of the equal label padding
+                // now in LabelDrop itself.
+                className="mx-[0.34em]"
               >
                 {word}
               </LabelDrop>

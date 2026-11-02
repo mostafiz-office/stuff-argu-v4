@@ -99,51 +99,59 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
           <p className="mt-10 text-[28px] leading-[1.35] text-pres-text-muted">{AUDIENCE[index]}</p>
 
           <TooltipProvider delayDuration={300}>
-          <div className="mt-auto flex flex-wrap gap-3">
-            {tiers.map((t, i) =>
-              i === index ? null : (
-                <Tooltip key={t.name}>
+          {/* 2026-11-02 feedback round 2: all three buttons on ONE line,
+              "Compare all plans" in the CENTRE, hover changes colour
+              and a light shadow only — no movement (no y lift, no scale). */}
+          <div className="mt-auto flex flex-nowrap items-center gap-3">
+            {(() => {
+              const others = tiers.map((tt, i) => ({ tt, i })).filter(({ i }) => i !== index);
+              const first = others[0];
+              const rest = others.slice(1);
+              const tierButton = ({ tt, i }: { tt: (typeof tiers)[number]; i: number }) => (
+                <Tooltip key={tt.name}>
                   <TooltipTrigger asChild>
                     <motion.button
                       type="button"
                       onClick={() => onSelect(i)}
-                      whileHover={{ y: -8, scale: 1.015 }}
-                      transition={{ duration: 0.45, ease: presentationEase }}
-                      className="rounded-full border border-pres-text/20 px-6 py-3 font-heading text-[22px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent/60 hover:text-pres-accent hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
+                      className="whitespace-nowrap rounded-full border border-pres-text/20 px-4 py-2.5 font-heading text-[20px] font-semibold text-pres-text-muted transition-colors hover:border-pres-accent/60 hover:text-pres-accent hover:shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
                     >
-                      {t.name.replace(/^Tier\s+\S+\s+/, "")}
+                      {tt.name.replace(/^Tier\s+\S+\s+/, "")}
                     </motion.button>
                   </TooltipTrigger>
                   <TooltipContent side="top" className="max-w-[320px] p-4 text-left">
                     <div className="flex items-center gap-2">
-                      <span className="font-heading text-[18px] font-bold text-white">{t.name}</span>
-                      {t.badge && (
+                      <span className="font-heading text-[18px] font-bold text-white">{tt.name}</span>
+                      {tt.badge && (
                         <span className="pres-dark-safe-accent rounded-full bg-pres-accent px-2 py-0.5 font-heading text-[11px] font-bold text-pres-bg">
-                          {t.badge}
+                          {tt.badge}
                         </span>
                       )}
                     </div>
                     <div className="mt-1 text-[15px] text-pres-text-muted">{AUDIENCE[i]}</div>
                     <div className="mt-2 text-[15px] text-white">
-                      {t.price}
-                      {t.priceSuffix}
+                      {tt.price}
+                      {tt.priceSuffix}
                     </div>
                     <div className="mt-1 text-[15px] text-pres-text-muted">
-                      {t.experience} Experience · {t.hours}
+                      {tt.experience} Experience · {tt.hours}
                     </div>
                   </TooltipContent>
                 </Tooltip>
-              )
-            )}
-            <motion.button
-              type="button"
-              onClick={onCompare}
-              whileHover={{ y: -8, scale: 1.015 }}
-              transition={{ duration: 0.45, ease: presentationEase }}
-              className="rounded-full border border-pres-accent/60 px-6 py-3 font-heading text-[22px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_18px_40px_rgba(0,0,0,0.45),0_0_32px_rgba(255,173,1,0.25)]"
-            >
-              Compare all plans
-            </motion.button>
+              );
+              return (
+                <>
+                  {first ? tierButton(first) : null}
+                  <motion.button
+                    type="button"
+                    onClick={onCompare}
+                    className="whitespace-nowrap rounded-full border border-pres-accent/60 px-4 py-2.5 font-heading text-[20px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
+                  >
+                    Compare all plans
+                  </motion.button>
+                  {rest.map(({ tt, i }) => tierButton({ tt, i }))}
+                </>
+              );
+            })()}
           </div>
           </TooltipProvider>
         </motion.div>

@@ -7,7 +7,6 @@ import { SolutionBridgeSlide } from "@/slides/SolutionBridgeSlide";
 import { BadHireCostSlide } from "@/slides/BadHireCostSlide";
 import { PricingTiersSlide } from "@/slides/PricingTiersSlide";
 import { PremiumExpertSlideV2 } from "@/slides/PremiumExpertSlideV2";
-import { ExpertValuationBreakdownSlide } from "@/slides/ExpertValuationBreakdownSlide";
 import { PricingSavingsSlide } from "@/slides/PricingSavingsSlide";
 import { WhatsIncludedSlide } from "@/slides/WhatsIncludedSlide";
 import { PricingHowItWorksSlide } from "@/slides/PricingHowItWorksSlide";
@@ -100,8 +99,12 @@ const Index = () => {
       BadHireCostSlide,
       SolutionBridgeSlide,
       PricingTiersSlide,
+      // 2026-11-02 feedback round 2: slides 8 + 9 merged into ONE
+      // slide. PremiumExpertSlideV2 now contains both the Chief
+      // Architect service and its valuation / per-tier bonus values.
+      // ExpertValuationBreakdownSlide stays in the repo unreferenced,
+      // so the merge is reversible. The deck is now 13 slides.
       PremiumExpertSlideV2,
-      ExpertValuationBreakdownSlide,
       WhatsIncludedSlide,
       PricingHowItWorksSlide,
       StarterTierSlideV9Clone,

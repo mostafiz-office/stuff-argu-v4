@@ -24,7 +24,7 @@ interface PricingCTASlideProps {
  * badges; golden radial glow + halftone dot texture behind the
  * right-hand content.
  */
-export const PricingCTASlide: React.FC<PricingCTASlideProps> = ({ onNavigate }) => (
+export const PricingCTASlide: React.FC<PricingCTASlideProps> = () => (
   <ScaledSlide>
     <div className="slide-dark-bg relative w-[1920px] h-[1080px] overflow-hidden text-white font-sans flex items-center justify-center">
       <SlideHeader />
@@ -92,32 +92,19 @@ export const PricingCTASlide: React.FC<PricingCTASlideProps> = ({ onNavigate }) 
               </DeckButton>
             </motion.div>
             <motion.div {...fadeUp(0.44, 12)}>
-              <DeckButton href="https://call.rasia.pro/riseup-offical-v1" target="_blank" rel="noopener noreferrer" className="w-[400px]">
+              {/* 2026-11-02: Call Now on a WHITE background, distinct
+                  from Schedule a Call which stays yellow (primary). */}
+              <DeckButton variant="white" href="https://call.rasia.pro/riseup-offical-v1" target="_blank" rel="noopener noreferrer" className="w-[400px]">
                 <Phone className="w-[18px] h-[18px]" />
                 Call Now
               </DeckButton>
             </motion.div>
           </div>
 
-          {/* 2026-11-01 feedback update: final slide polish. Secondary
-              actions only — the primary Schedule/Call buttons above stay
-              dominant. These use the deck's own navigation, so they never
-              leave the deck, and they have no hover lift, only colour. */}
-          <motion.div {...fadeUp(0.52, 12)} className="flex flex-wrap items-center gap-4 mt-9">
-            <DeckButton variant="outline" onClick={() => onNavigate?.(6)} className="w-auto">
-              View pricing again
-            </DeckButton>
-            <DeckButton variant="outline" onClick={() => onNavigate?.(9)} className="w-auto">
-              See what&apos;s included
-            </DeckButton>
-          </motion.div>
-          <motion.div {...fadeUp(0.58, 12)} className="flex flex-wrap gap-3 mt-6">
-            {["160 hrs / month", "Chief Architect included", "14-day trial"].map((chip) => (
-              <span key={chip} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[18px] text-pres-text-muted">
-                {chip}
-              </span>
-            ))}
-          </motion.div>
+          {/* 2026-11-02 feedback round 2: secondary actions
+              ("View pricing again", "See what's included") and the
+              160 hrs / Chief Architect / 14-day trial chips are
+              HIDDEN per owner feedback — primary buttons only. */}
         </div>
       </div>
     </div>

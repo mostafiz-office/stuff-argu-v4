@@ -61,6 +61,9 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
             >
               What's <span className="text-pres-accent">Included</span>
             </motion.h1>
+            <motion.p {...fadeUp(0.08)} className="mt-4 text-[24px] text-pres-text-muted">
+              Every plan comes with these guarantees — no extra charges.
+            </motion.p>
           </div>
 
           {/* 3×2 Grid of Guarantee Cards */}
@@ -71,17 +74,24 @@ export const WhatsIncludedSlide: React.FC<WhatsIncludedSlideProps> = () => {
                 <motion.div
                   key={idx}
                   {...fadeUp(staggerDelay(idx, 0.16, 0.055))}
-                  className="bg-pres-surface/85 border border-pres-accent/20 hover:border-pres-accent/60 rounded-2xl p-7 flex items-center gap-5 backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-pres-surface shadow-xl hover:shadow-[0_0_35px_hsl(var(--pres-accent)/0.25)]"
+                  // 2026-11-02 feedback round 2: card redesign to
+                  // match the v1 reference slide 6 — vertical flat cards
+                  // (icon on top, title below, description below), dark
+                  // slate surface, subtle border, NO shadow at all, so
+                  // hover can never overlap a neighbouring card. Main
+                  // deck's own card titles/descriptions are kept; only
+                  // the design follows the reference.
+                  className="bg-[#14141B] border border-white/5 rounded-[18px] p-8 flex flex-col items-start gap-0 backdrop-blur-md transition-[border-color,background-color] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-pres-accent/30 hover:bg-[#17171F] shadow-none hover:shadow-none"
                 >
-                  <div className="w-[44px] h-[44px] rounded-xl bg-pres-accent/15 border border-pres-accent/30 flex items-center justify-center text-pres-accent shrink-0 shadow-sm">
-                    <Icon className="w-5 h-5" />
+                  <div className="w-[48px] h-[48px] rounded-xl bg-[#1B1A1F] border border-pres-accent/20 flex items-center justify-center text-pres-accent shrink-0 mb-6">
+                    <Icon className="w-6 h-6" />
                   </div>
 
                   <div>
-                    <h2 className="text-[30px] font-bold font-heading text-white mb-1 leading-tight whitespace-nowrap">
+                    <h2 className="text-[30px] font-bold font-heading text-white mb-2 leading-tight">
                       {item.title}
                     </h2>
-                    <p className="text-[22px] text-pres-text-muted leading-snug whitespace-nowrap">
+                    <p className="text-[22px] text-pres-text-muted leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

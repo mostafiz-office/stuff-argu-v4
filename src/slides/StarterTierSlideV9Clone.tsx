@@ -170,7 +170,9 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       <span className="text-[20px] font-bold tracking-wider text-pres-text-dim uppercase">
                         Tier 1
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-white/85 text-[18px] font-bold font-heading">
+                      {/* 2026-11-02: STARTER badge keeps its corner
+                          position, now on a solid white background. */}
+                      <span className="px-2.5 py-0.5 rounded-full bg-white border border-white text-pres-bg text-[18px] font-bold font-heading">
                         STARTER
                       </span>
                     </div>
@@ -232,9 +234,9 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       ].map((feature) => (
                         <li
                           key={feature}
-                          className="flex items-center gap-2.5 text-[20px] text-white/85"
+                          className="flex items-center gap-2.5 text-[24px] text-white/85"
                         >
-                          <CheckCircle className="w-5 h-5 shrink-0 text-pres-accent/80" />
+                          <CheckCircle className="w-6 h-6 shrink-0 text-pres-accent/80" />
                           {feature}
                         </li>
                       ))}
@@ -246,21 +248,23 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4 }}
-                        className="p-5 rounded-2xl bg-white/5 backdrop-blur-md"
+                        // 2026-11-02: bonus card in light yellow/white
+                        // so it reads as a bonus, not another dark panel.
+                        className="p-5 rounded-2xl bg-[linear-gradient(180deg,#FFF9E6,#FFFFFF)] border border-pres-accent/50 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[20px] font-bold text-white uppercase tracking-wider">
+                          <span className="text-[20px] font-bold text-pres-bg uppercase tracking-wider">
                             Chief Architect Bonus Included
                           </span>
-                          <Sparkles className="w-3.5 h-3.5 text-pres-accent/80" />
+                          <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
                         </div>
-                        <p className="text-[20px] font-bold text-white mb-0.5">
+                        <p className="text-[20px] font-bold text-pres-bg mb-0.5">
                           Alim Ul Karim · 20+ Yr Enterprise Veteran
                         </p>
-                        <p className="text-[20px] text-white/75 mb-1.5">
-                          Kickoff audit included · <span className="text-white">$2,500/M</span> value FREE
+                        <p className="text-[20px] text-pres-bg/80 mb-1.5">
+                          Kickoff audit included · <span className="text-pres-bg">$2,500/M</span> value FREE
                         </p>
-                        <div className="text-[20px] font-semibold text-white/70 bg-white/5 px-2 py-0.5 rounded-lg text-center">
+                        <div className="text-[20px] font-semibold text-pres-bg/70 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
                           Upgrade to Tier 2 or 3 for ongoing weekly architecture hours
                         </div>
                       </motion.div>
@@ -315,12 +319,12 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
                             className="px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 flex items-center gap-3.5 backdrop-blur-md cursor-pointer transition-colors"
                           >
-                            <Icon className="w-6 h-6 shrink-0 text-pres-accent/80" />
+                            <Icon className="w-7 h-7 shrink-0 text-pres-accent/80" />
                             <div>
-                              <h4 className="text-[30px] font-bold font-heading text-white">
+                              <h4 className="text-[34px] font-bold font-heading text-white">
                                 {item.title}
                               </h4>
-                              <p className="text-[22px] text-white/75 mt-1">
+                              <p className="text-[24px] text-white/75 mt-1">
                                 {item.desc}
                               </p>
                             </div>

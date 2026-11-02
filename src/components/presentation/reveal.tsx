@@ -79,7 +79,12 @@ export const LabelDrop: React.FC<{
   <span className={`relative inline-block align-bottom ${className}`}>
     <motion.span
       aria-hidden
-      className={`absolute inset-[0.07em_-0.13em] rounded-[0.2em] ${
+      // 2026-11-02 feedback round 2: EQUAL padding on all sides.
+      // The old inset [0.07em -0.13em] shaved the top/bottom and
+      // bled only sideways, so the label looked tighter vertically
+      // than horizontally. inset -0.16em expands the label by the
+      // same 0.16em on top, bottom, left and right.
+      className={`absolute inset-[-0.16em] rounded-[0.2em] ${
         tone === "white" ? "bg-white" : "bg-pres-accent"
       }`}
       initial={{ y: "-130%", opacity: 0 }}
@@ -114,7 +119,10 @@ export const MarkerHighlight: React.FC<{
   duration = 0.5,
   className = "",
 }) => (
-  <span className={`relative inline-block px-1 ${className}`}>
+  // 2026-11-02 feedback round 2: EQUAL padding on all sides.
+  // Inline style padding 0.16em beats the old px-1 (horizontal only,
+  // vertical padding came only from the clipped marker shape).
+  <span className={`relative inline-block ${className}`} style={{ padding: "0.16em" }}>
     <motion.span
       aria-hidden
       className={`absolute inset-0 origin-left ${colorClassName}`}

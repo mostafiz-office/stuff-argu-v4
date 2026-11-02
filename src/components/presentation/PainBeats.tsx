@@ -205,7 +205,7 @@ function SelectWord({
   return (
     <span
       className="relative inline-block"
-      style={{ lineHeight: 1, padding: "0.05em 0.14em", margin: "0 0.04em" }}
+      style={{ lineHeight: 1, padding: "0.14em 0.14em", margin: "0 0.08em" }}
     >
       {children}
       <motion.span
@@ -260,6 +260,67 @@ function SelectWord({
           strokeWidth="1"
         />
       </motion.svg>
+    </span>
+  );
+}
+
+
+// 2026-11-02 feedback round 2, slide 3 "AI":
+// a circular outline draws around the word, then a yellow
+// background fills behind it and stays. Equal 0.14em padding.
+function CircleFillWord({ children, delay }: { children: string; delay: number }) {
+  return (
+    <span className="relative inline-block" style={{ lineHeight: 1, padding: "0.14em 0.14em", margin: "0 0.08em" }}>
+      <motion.span
+        aria-hidden
+        style={{ position: "absolute", inset: "-0.14em", borderRadius: "50%", border: "0.025em solid #ffad01", zIndex: 1 }}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: delay + 0.35, ease: presentationEase }}
+      />
+      <motion.span
+        aria-hidden
+        style={{ position: "absolute", inset: "-0.14em", borderRadius: "50%", background: "#ffad01", zIndex: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: delay + 0.95, ease: presentationEase }}
+      />
+      <motion.span
+        className="relative"
+        style={{ zIndex: 2 }}
+        initial={{ color: "rgba(255,255,255,1)" }}
+        animate={{ color: "rgba(24,18,8,1)" }}
+        transition={{ delay: delay + 1.05, duration: 0.3, ease: presentationEase }}
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+}
+
+// 2026-11-02 feedback round 2, slide 2 "sleep":
+// yellow background with equal 0.14em padding that appears,
+// holds, disappears, then the slide background shows again,
+// looping so the appear/disappear cycle repeats.
+function LoopHighlightWord({ children, delay }: { children: string; delay: number }) {
+  return (
+    <span className="relative inline-block" style={{ lineHeight: 1, padding: "0.14em 0.14em", margin: "0 0.08em" }}>
+      <motion.span
+        aria-hidden
+        style={{ position: "absolute", inset: 0, borderRadius: "0.13em", background: "#ffad01", zIndex: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 1, 0] }}
+        transition={{ delay, duration: 3.2, times: [0, 0.2, 0.7, 1], repeat: Infinity, repeatDelay: 0.8, ease: presentationEase }}
+      />
+      <motion.span
+        className="relative"
+        style={{ zIndex: 2 }}
+        initial={{ color: "rgba(255,255,255,1)" }}
+        animate={{ color: ["rgba(255,255,255,1)", "rgba(24,18,8,1)", "rgba(24,18,8,1)", "rgba(255,255,255,1)"] }}
+        transition={{ delay, duration: 3.2, times: [0, 0.2, 0.7, 1], repeat: Infinity, repeatDelay: 0.8, ease: presentationEase }}
+      >
+        {children}
+      </motion.span>
     </span>
   );
 }
@@ -430,7 +491,11 @@ export const PainBeats: React.FC<{
               return (
                 <React.Fragment key={wi}>
                   {isSelect ? (
-                    <SelectWord delay={delay}>{w}</SelectWord>
+                    clean === "AI" ? (
+                      <CircleFillWord delay={delay}>{w}</CircleFillWord>
+                    ) : (
+                      <SelectWord delay={delay}>{w}</SelectWord>
+                    )
                   ) : (
                     w
                   )}
@@ -501,7 +566,11 @@ export const PainBeats: React.FC<{
               }}
             >
               {isSelect ? (
-                <SelectWord delay={enterDelay + 0.6}>{word}</SelectWord>
+                clean === "sleep" ? (
+                  <LoopHighlightWord delay={enterDelay + 0.6}>{word}</LoopHighlightWord>
+                ) : (
+                  <SelectWord delay={enterDelay + 0.6}>{word}</SelectWord>
+                )
               ) : (
                 word
               )}

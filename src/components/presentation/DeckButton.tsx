@@ -5,7 +5,7 @@ type DeckButtonProps = {
   /** Renders an <a> when provided, otherwise a <button>. */
   href?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "white";
   className?: string;
   target?: string;
   rel?: string;
@@ -42,7 +42,9 @@ export const DeckButton: React.FC<DeckButtonProps> = ({
   const styles =
     variant === "primary"
       ? "bg-pres-accent hover:bg-pres-text text-pres-bg pres-dark-safe-accent text-[17px] px-[30px] py-[12px]"
-      : "border-[1.5px] border-pres-accent/40 text-pres-text hover:bg-pres-accent/10 text-[17px] px-[30px] py-[12px]";
+      : variant === "white"
+        ? "bg-white hover:bg-pres-accent text-pres-bg pres-dark-safe-accent text-[17px] px-[30px] py-[12px]"
+        : "border-[1.5px] border-pres-accent/40 text-pres-text hover:bg-pres-accent/10 text-[17px] px-[30px] py-[12px]";
   const cls = `${base} ${styles} ${className}`.trim();
 
   if (href) {

@@ -54,25 +54,28 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
       {index === 0 && (
         <MarkerHighlight
           colorClassName="bg-pres-accent"
-          className="pres-dark-safe-accent px-2"
+          className="pres-dark-safe-accent"
           delay={0.25}
         >
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 1 && (
+        // 2026-11-02: "Missing" stays yellow (lighter yellow shade,
+        // still clearly yellow, distinct from the 5% gold).
         <MarkerHighlight
-          colorClassName="bg-pres-accent"
-          className="pres-dark-safe-accent px-2"
+          colorClassName="bg-[#FFD34D]"
+          className="pres-dark-safe-accent"
           delay={0.25}
         >
           {p.focus}
         </MarkerHighlight>
       )}
       {index === 2 && (
+        // 2026-11-02: "Save" gets a professional sky blue.
         <MarkerHighlight
-          colorClassName="bg-pres-accent"
-          className="pres-dark-safe-accent px-2"
+          colorClassName="bg-[#38BDF8]"
+          className="pres-dark-safe-accent"
           delay={0.25}
         >
           {p.focus}
@@ -80,9 +83,10 @@ const Phrase: React.FC<{ index: number }> = ({ index }) => {
       )}
       {p.after}
       {p.focus2 && (
+        // 2026-11-02: "Hiring" gets a different professional colour, emerald.
         <MarkerHighlight
-          colorClassName="bg-pres-accent"
-          className="pres-dark-safe-accent px-2"
+          colorClassName="bg-[#34D399]"
+          className="pres-dark-safe-accent"
           delay={0.45}
         >
           {p.focus2}
@@ -228,6 +232,37 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
                 <div className="h-[52px]">{litCount >= 2 && <StageLine index={1} />}</div>
                 <div className="h-[52px]">{litCount >= 1 && <StageLine index={0} />}</div>
               </div>
+            </div>
+            {/* 2026-11-02 feedback round 2: visible 5-step sub-navigation.
+                Appears with the pyramid, shows all 5 levels by name,
+                tapping a level jumps straight to it, and it disappears
+                with this slide — so after step 5 the deck is back on
+                the main navigation. */}
+            <div className="mt-10 flex flex-wrap items-center gap-3 rounded-full bg-black/60 border border-white/15 px-5 py-3 backdrop-blur-md">
+              <span className="text-[16px] font-semibold text-white/70 whitespace-nowrap">
+                {litCount === 0 ? "Pyramid steps" : `Step ${litCount} of 5`}
+              </span>
+              {["Initial Sign Up", "Training & Assessment", "Save Time Hiring", "Avoid Missing Deadlines", "Find Top 5% Talent"].map((label, i) => {
+                const level = i + 1;
+                const active = litCount === level;
+                const done = litCount > level;
+                return (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => { setSplit(true); setLitCount(level); }}
+                    className={`whitespace-nowrap rounded-full px-4 py-2 text-[16px] font-semibold transition-colors ${
+                      active
+                        ? "bg-pres-accent text-pres-bg pres-dark-safe-accent"
+                        : done
+                          ? "border border-pres-accent/50 text-pres-accent"
+                          : "border border-white/15 text-white/70 hover:border-pres-accent/50 hover:text-white"
+                    }`}
+                  >
+                    {level}. {label}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}

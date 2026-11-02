@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
@@ -22,6 +23,20 @@ const UNPRICED_LINES = [
 ];
 
 export const BadHireCostSlide = () => {
+  // 2026-11-02 feedback round 2: price counts up from $30,000 to
+  // $35,000 over 2.2s when the slide is reached, then stays at $35,000.
+  const [price, setPrice] = useState(30000);
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / 2200);
+      setPrice(Math.round(30000 + 5000 * p));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
   return (
     <ScaledSlide>
       <div className="slide-dark-bg problem-story relative w-[1920px] h-[1080px] overflow-hidden text-pres-text font-sans">
@@ -50,7 +65,7 @@ export const BadHireCostSlide = () => {
               {...fadeUp(0.1)}
               className="font-price text-[180px] font-bold leading-none text-pres-accent"
             >
-              $35,000
+              ${price.toLocaleString("en-US")}
             </motion.div>
             <motion.p {...fadeUp(0.2)} className="text-[30px] text-white/85 mt-4 mb-10">
               lost on one bad hire

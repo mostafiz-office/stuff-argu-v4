@@ -263,8 +263,8 @@ export const PricingTiersSlide: React.FC<PricingTiersSlideProps> = () => {
                     <ul className="mt-3 space-y-2.5 flex-1">
                       {tier.features.map((f, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-3">
-                          <CheckCircle2 className="mt-[3px] h-[18px] w-[18px] shrink-0 text-pres-accent" />
-                          <span className="text-[18px] text-pres-text-muted leading-[1.4]">
+                          <CheckCircle2 className="mt-[4px] h-[22px] w-[22px] shrink-0 text-pres-accent" />
+                          <span className="text-[22px] text-pres-text-muted leading-[1.4]">
                             {f}
                           </span>
                         </li>
