@@ -233,37 +233,13 @@ export const SolutionBridgeSlide: React.FC<SolutionBridgeSlideProps> = () => {
                 <div className="h-[52px]">{litCount >= 1 && <StageLine index={0} />}</div>
               </div>
             </div>
-            {/* 2026-11-02 feedback round 2: visible 5-step sub-navigation.
-                Appears with the pyramid, shows all 5 levels by name,
-                tapping a level jumps straight to it, and it disappears
-                with this slide — so after step 5 the deck is back on
-                the main navigation. */}
-            <div className="mt-10 flex flex-wrap items-center gap-3 rounded-full bg-black/60 border border-white/15 px-5 py-3 backdrop-blur-md">
-              <span className="text-[16px] font-semibold text-white/70 whitespace-nowrap">
-                {litCount === 0 ? "Pyramid steps" : `Step ${litCount} of 5`}
-              </span>
-              {["Initial Sign Up", "Training & Assessment", "Save Time Hiring", "Avoid Missing Deadlines", "Find Top 5% Talent"].map((label, i) => {
-                const level = i + 1;
-                const active = litCount === level;
-                const done = litCount > level;
-                return (
-                  <button
-                    key={label}
-                    type="button"
-                    onClick={() => { setSplit(true); setLitCount(level); }}
-                    className={`whitespace-nowrap rounded-full px-4 py-2 text-[16px] font-semibold transition-colors ${
-                      active
-                        ? "bg-pres-accent text-pres-bg pres-dark-safe-accent"
-                        : done
-                          ? "border border-pres-accent/50 text-pres-accent"
-                          : "border border-white/15 text-white/70 hover:border-pres-accent/50 hover:text-white"
-                    }`}
-                  >
-                    {level}. {label}
-                  </button>
-                );
-              })}
-            </div>
+            {/* 2026-11-03: the in-slide "Pyramid steps" list bar was
+                removed completely, per the owner's instruction. Its
+                job is now done by the six sub-dots inside the main
+                bottom indicator (SlideNavigation, index 5), which
+                show on arrival, highlight the active sub-step, and
+                disappear automatically when the deck leaves slide 6
+                — so this list can never appear on the next slide. */}
           </motion.div>
         )}
 

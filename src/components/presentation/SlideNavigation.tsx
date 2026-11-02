@@ -388,15 +388,23 @@ export const SlideNavigation: React.FC<SlideNavigationProps> = ({
                   }`}
                 />
                 <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-black/90 px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-xl transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  {`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "Real Cost", "The Solutions", "Pricing Tiers", "Chief Architect", "Architect Value", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
+                  {`${idx + 1}. ${["Cover", "Outage Panic", "Fragile AI Code", "Hiring Sinkhole", "Bad Hire Cost", "The Solutions", "Pricing Tiers", "Chief Architect Bonus", "What's Included", "How It Works", "Startup Offer", "Cost Savings", "Contact"][idx] ?? "Presentation"}`}
                 </span>
               </span>
-              {/* Batch 87 (owner: six levels between the solution and pricing dots; Batch 88 moved the solution slide from index 4 to index 6, sub-dots moved with it): while
-                  on slide 5, six small sub-dots appear between the slide 5
-                  and slide 6 dots — one per pyramid step, in order. Tap
-                  them one by one to walk the pyramid, or tap any one to
-                  jump straight to that level. Reached steps glow amber. */}
-              {idx === 6 && currentIndex === 6 && (
+              {/* Batch 87 (owner: six levels between the solution and pricing dots; Batch 88 moved the solution slide from index 4 to index 6, sub-dots moved with it).
+                  2026-11-03 fix: after the 2026-11-01/02 merges the deck is
+                  13 slides and SolutionBridge is slide 6, index 5 — NOT
+                  index 6. The old index 6 made the sub-dots appear on
+                  slide 7 (Pricing Tiers) and never on slide 6 itself.
+                  Now, while on slide 6 (index 5), six small sub-dots
+                  appear inside the main indicator, right after dot 6 —
+                  one per pyramid step, in order. Tap them one by one
+                  to walk the pyramid, or tap any one to jump straight
+                  to that level. Reached steps glow amber. When the
+                  gate is exhausted and the deck moves to slide 7,
+                  currentIndex is no longer 5, so only the main dots
+                  show again — automatically, with no extra click. */}
+              {idx === 5 && currentIndex === 5 && (
                 <span className="flex items-center gap-1.5 mx-0.5" role="group" aria-label="Pyramid steps">
                   {["Reveal solution", "Initial Sign Up", "Training & Assessment", "Save Time Hiring", "Avoid Missing Deadlines", "Find Top 5% Talent"].map((label, i) => {
                     const stepNo = i + 1;
