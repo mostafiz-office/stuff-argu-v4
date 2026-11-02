@@ -188,7 +188,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           </p>
                         </div>
                       </TooltipTrigger>
-                      <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
+                      <TooltipContent side="top" className="max-w-[340px] p-4 text-left !bg-black border-white/15 text-white shadow-xl">
                         <div className="text-[16px] text-pres-text-muted">
                           Doing coding for 3 years, plus one full year shipping
                           real products with production teams. A real engineer,
@@ -253,7 +253,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         className="p-5 rounded-2xl bg-[linear-gradient(180deg,#FFF9E6,#FFFFFF)] border border-pres-accent/50 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[20px] font-bold text-pres-bg uppercase tracking-wider">
+                          <span className="text-[20px] font-bold text-[#DD8F00] uppercase tracking-wider">
                             Chief Architect Bonus Included
                           </span>
                           <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
@@ -299,15 +299,17 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           </div>
                         </motion.div>
                       </TooltipTrigger>
-                      <TooltipContent side="top" className="max-w-[320px] p-3 text-center text-[16px]">
+                      <TooltipContent side="top" className="max-w-[320px] p-3 text-center text-[16px] !bg-black border-white/15 text-white shadow-xl">
                         {res.tooltip}
                       </TooltipContent>
                     </Tooltip>
                   ))}
                 </div>
 
-                {/* 3 Guarantees */}
-                <div className="space-y-5">
+                {/* 3 Guarantees — timeline layout, like the Next Steps example:
+                    vertical gold line, circular icons on the line, cards right of it. */}
+                <div className="relative space-y-5">
+                  <div className="absolute left-[28px] top-[56px] bottom-[56px] w-[2px] bg-pres-accent/50 pointer-events-none" />
                   {guarantees.map((item, idx) => {
                     const Icon = item.icon;
                     return (
@@ -317,11 +319,14 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
-                            className="px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 flex items-center gap-3.5 backdrop-blur-md cursor-pointer transition-colors"
+                            className="flex items-center gap-5 cursor-pointer"
                           >
-                            <Icon className="w-7 h-7 shrink-0 text-pres-accent/80" />
-                            <div>
+                            <div className="relative z-10 w-14 h-14 shrink-0 rounded-full border border-pres-accent/60 bg-[#14141B] flex items-center justify-center">
+                              <Icon className="w-7 h-7 shrink-0 text-pres-accent" />
+                            </div>
+                            <div className="flex-1 px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 backdrop-blur-md transition-colors">
                               <h4 className="text-[34px] font-bold font-heading text-white">
+                                <span className="text-pres-accent mr-3">0{idx + 1}</span>
                                 {item.title}
                               </h4>
                               <p className="text-[24px] text-white/75 mt-1">
@@ -330,7 +335,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             </div>
                           </motion.div>
                         </TooltipTrigger>
-                        <TooltipContent side="top" className="max-w-[340px] p-4 text-left">
+                        <TooltipContent side="top" className="max-w-[340px] p-4 text-left !bg-black border-white/15 text-white shadow-xl">
                           <div className="text-[16px] text-pres-text-muted">
                             {item.tooltip}
                           </div>
