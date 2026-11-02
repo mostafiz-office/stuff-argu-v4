@@ -298,26 +298,42 @@ function CircleFillWord({ children, delay }: { children: string; delay: number }
   );
 }
 
-// 2026-11-02 feedback round 2, slide 2 "sleep":
-// yellow background with equal 0.14em padding that appears,
-// holds, disappears, then the slide background shows again,
+// 2026-11-02 feedback round 2, slide 2 "sleep": yellow background
+// with equal 0.14em padding that appears, holds, disappears,
 // looping so the appear/disappear cycle repeats.
+// 2026-11-03 fix (slide 2/13): the word must never be plain.
+// A yellow border outline in the EXACT same box (same inset,
+// same corner radius) crossfades against the fill, so when the
+// fill hides the outline shows, and when the outline hides the
+// fill shows. Only opacity animates — no position, scale, or
+// size change anywhere — so "sleep" and its neighbours ("no",
+// "tonight") cannot move. Outer box, padding, and margin are
+// unchanged from the 2026-11-02 version.
 function LoopHighlightWord({ children, delay }: { children: string; delay: number }) {
+  const times = [0, 0.25, 0.6, 0.85, 1];
+  const transition = { delay, duration: 3.2, times, repeat: Infinity, repeatDelay: 0.8, ease: presentationEase };
   return (
     <span className="relative inline-block" style={{ lineHeight: 1, padding: "0.14em 0.14em", margin: "0 0.08em" }}>
       <motion.span
         aria-hidden
         style={{ position: "absolute", inset: 0, borderRadius: "0.13em", background: "#ffad01", zIndex: 1 }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 1, 0] }}
-        transition={{ delay, duration: 3.2, times: [0, 0.2, 0.7, 1], repeat: Infinity, repeatDelay: 0.8, ease: presentationEase }}
+        animate={{ opacity: [0, 1, 1, 0, 0] }}
+        transition={transition}
+      />
+      <motion.span
+        aria-hidden
+        style={{ position: "absolute", inset: 0, borderRadius: "0.13em", border: "0.025em solid #ffad01", background: "transparent", zIndex: 1 }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: [1, 0, 0, 1, 1] }}
+        transition={transition}
       />
       <motion.span
         className="relative"
         style={{ zIndex: 2 }}
         initial={{ color: "rgba(255,255,255,1)" }}
-        animate={{ color: ["rgba(255,255,255,1)", "rgba(24,18,8,1)", "rgba(24,18,8,1)", "rgba(255,255,255,1)"] }}
-        transition={{ delay, duration: 3.2, times: [0, 0.2, 0.7, 1], repeat: Infinity, repeatDelay: 0.8, ease: presentationEase }}
+        animate={{ color: ["rgba(255,255,255,1)", "rgba(24,18,8,1)", "rgba(24,18,8,1)", "rgba(255,255,255,1)", "rgba(255,255,255,1)"] }}
+        transition={transition}
       >
         {children}
       </motion.span>
