@@ -239,7 +239,16 @@ export const CoverHeadline: React.FC<{
 
   return (
     <h1
-      className={`font-cover font-bold tracking-tight leading-[1.04] whitespace-nowrap ${className}`}
+      // 2026-11-03 cover fix, both variants (V3 "Minutes." and V1
+      // "Time."): leading raised from 1.04 to 1.28. The LabelDrop
+      // box bleeds 0.16em above its word, which is larger than the
+      // ~0.04em gap a 1.04 leading leaves between lines, so the
+      // white label used to cover the bottom of the line above
+      // ("Engineers" / "80%"). At 1.28 the extra 0.24em of line
+      // spacing clears that bleed with clear air to spare, while
+      // the label padding itself is unchanged. Shared by both
+      // variants because both use this one component.
+      className={`font-cover font-bold tracking-tight leading-[1.28] whitespace-nowrap ${className}`}
     >
       {renderLine(line1, 0.15)}
       {renderLine(line2, 0.9)}
