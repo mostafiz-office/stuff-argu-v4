@@ -147,7 +147,7 @@ export const TierPlanDetail: React.FC<Props> = ({ tiers, index, onSelect, onComp
                   <motion.button
                     type="button"
                     onClick={onCompare}
-                    className="whitespace-nowrap rounded-full border border-pres-accent/60 px-4 py-2.5 font-heading text-[20px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-pres-bg hover:shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
+                    className="whitespace-nowrap rounded-full border border-pres-accent/60 px-4 py-2.5 font-heading text-[20px] font-semibold text-pres-accent transition-colors hover:bg-pres-accent hover:text-[#181208] hover:shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
                   >
                     Compare all plans
                   </motion.button>
