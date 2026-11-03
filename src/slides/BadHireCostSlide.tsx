@@ -49,7 +49,7 @@ export const BadHireCostSlide = () => {
           loading="eager"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 problem-story-overlay" />
+        <div className="absolute inset-0 problem-story-overlay-treated" />
         <SlideHeader />
 
         <div className="relative z-10 h-full flex items-center px-[100px] gap-[80px]">

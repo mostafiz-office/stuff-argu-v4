@@ -270,7 +270,7 @@ const ProblemStorySlide: React.FC<{ problem: Problem }> = ({ problem }) => {
         />
         <div
           className={`absolute inset-0 ${
-            mirrored ? "problem-story-overlay-right" : "problem-story-overlay"
+            mirrored ? "problem-story-overlay-treated-right" : "problem-story-overlay-treated"
           }`}
         />
         <SlideHeader />

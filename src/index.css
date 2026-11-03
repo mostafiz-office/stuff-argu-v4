@@ -177,6 +177,32 @@
   );
 }
 
+/* 2026-11-03: lighter overlays for slides 2-5 ONLY. Their background images
+   already carry a full black gradient fade on the text side (final-blend
+   treatment), so the original 0.98 overlay on top would double-darken and
+   black out subjects near the text side (slide 4 face, slide 3-B rightmost
+   faces). These lighter versions are only a safety net. The original
+   classes above are unchanged and still used by BadHireProblemsSlide. */
+.problem-story-overlay-treated {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--pres-bg) / 0.30) 0%,
+    hsl(var(--pres-bg) / 0.20) 35%,
+    hsl(var(--pres-bg) / 0.08) 58%,
+    hsl(var(--pres-bg) / 0) 82%
+  );
+}
+
+.problem-story-overlay-treated-right {
+  background: linear-gradient(
+    270deg,
+    hsl(var(--pres-bg) / 0.30) 0%,
+    hsl(var(--pres-bg) / 0.20) 35%,
+    hsl(var(--pres-bg) / 0.08) 58%,
+    hsl(var(--pres-bg) / 0) 82%
+  );
+}
+
 /* FB-20: Red Hat Display for price numerals */
 .font-price {
   font-family: 'Red Hat Display', 'Poppins', sans-serif;
