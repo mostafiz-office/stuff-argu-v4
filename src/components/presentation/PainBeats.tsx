@@ -309,11 +309,24 @@ function CircleFillWord({ children, delay }: { children: string; delay: number }
 // size change anywhere — so "sleep" and its neighbours ("no",
 // "tonight") cannot move. Outer box, padding, and margin are
 // unchanged from the 2026-11-02 version.
+// 2026-11-03 fix (slide 2/13, "sleep" padding): equal CSS padding does NOT
+// give equal VISUAL padding for this word. Measured with the real Plus
+// Jakarta Sans ExtraBold metrics at 63px (ascent 66, descent 14, ink of
+// "sleep" 9.5px below the line-box top and 6.5px below the line-box
+// bottom, left bearing 1px, right bearing 2.2px), the old 0.14em-all-sides
+// padding gave visual gaps of left 9.8px, right 11.0px, top 18.3px,
+// bottom 2.3px — tight at the bottom and left, roomy at the top, exactly
+// as seen in the user's screenshot. The padding below is therefore
+// deliberately asymmetric in code so the MEASURED ink-to-edge gaps are
+// all 11px: top 0.024em, right 0.140em, bottom 0.278em, left 0.159em.
+// Do not "tidy" these back to equal values — that reintroduces the bug.
+// Colour (#ffad01) and animation are unchanged; only opacity animates,
+// so the word and its neighbours cannot move.
 function LoopHighlightWord({ children, delay }: { children: string; delay: number }) {
   const times = [0, 0.25, 0.6, 0.85, 1];
   const transition = { delay, duration: 3.2, times, repeat: Infinity, repeatDelay: 0.8, ease: presentationEase };
   return (
-    <span className="relative inline-block" style={{ lineHeight: 1, padding: "0.14em 0.14em", margin: "0 0.08em" }}>
+    <span className="relative inline-block" style={{ lineHeight: 1, padding: "0.024em 0.140em 0.278em 0.159em", margin: "0 0.08em" }}>
       <motion.span
         aria-hidden
         style={{ position: "absolute", inset: 0, borderRadius: "0.13em", background: "#ffad01", zIndex: 1 }}
@@ -330,7 +343,7 @@ function LoopHighlightWord({ children, delay }: { children: string; delay: numbe
       />
       <motion.span
         className="relative"
-        style={{ zIndex: 2 }}
+        style={{ zIndex: 2, lineHeight: 1 }}
         initial={{ color: "rgba(255,255,255,1)" }}
         animate={{ color: ["rgba(255,255,255,1)", "rgba(24,18,8,1)", "rgba(24,18,8,1)", "rgba(255,255,255,1)", "rgba(255,255,255,1)"] }}
         transition={transition}
