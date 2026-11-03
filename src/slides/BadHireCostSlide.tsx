@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Clock, RefreshCw, Moon } from "lucide-react";
 import { ScaledSlide } from "@/components/presentation/ScaledSlide";
 import { SlideHeader } from "@/components/presentation/SlideHeader";
 import { fadeUp, fadeIn, staggerDelay } from "@/lib/presentationMotion";
@@ -33,6 +34,14 @@ const UNPRICED_LINES = [
   "A team stuck rewriting.",
   "Nights you don't get back.",
 ];
+
+// 2026-11-04 slide 5 icon fix (user-approved defaults): one icon per
+// timeline badge, paired BY INDEX with UNPRICED_LINES — do not reorder
+// either array. Waiting -> Clock, rewriting -> RefreshCw, nights -> Moon.
+// Clock and RefreshCw are already used elsewhere in this repo; Moon is a
+// core lucide export (verified against lucide's icon list at plan time).
+// Icons are decorative (aria-hidden): the card title already names the step.
+const UNPRICED_ICONS = [Clock, RefreshCw, Moon];
 
 export const BadHireCostSlide = () => {
   // 2026-11-02 feedback round 2: price counts up from $30,000 to
@@ -107,7 +116,9 @@ export const BadHireCostSlide = () => {
                 className="absolute left-[27px] top-0 bottom-0 w-[2px] bg-pres-accent/70"
               />
               <div className="flex flex-col gap-6">
-                {UNPRICED_LINES.map((line, i) => (
+                {UNPRICED_LINES.map((line, i) => {
+                  const Icon = UNPRICED_ICONS[i];
+                  return (
                   <motion.div
                     key={line}
                     {...fadeUp(staggerDelay(i, 0.3, 0.12))}
@@ -115,13 +126,16 @@ export const BadHireCostSlide = () => {
                   >
                     <span
                       aria-hidden
-                      className="h-[56px] w-[56px] shrink-0 rounded-full border-2 border-pres-accent bg-black/60"
-                    />
+                      className="h-[56px] w-[56px] shrink-0 rounded-full border-2 border-pres-accent bg-black/60 flex items-center justify-center"
+                    >
+                      <Icon className="w-7 h-7 shrink-0 text-pres-accent" aria-hidden />
+                    </span>
                     <div className="flex-1 rounded-2xl bg-black/50 border border-white/15 backdrop-blur-md px-8 py-6">
                       <p className="text-[32px] font-bold text-white leading-tight">{line}</p>
                     </div>
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
