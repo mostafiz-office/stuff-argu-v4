@@ -70,7 +70,16 @@ export const PremiumExpertSlideV2: React.FC<PremiumExpertSlideV2Props> = () => (
             {...fadeUp(0.12)}
             className="w-[340px] shrink-0 p-4 rounded-3xl bg-pres-surface/90 border border-pres-accent/40 shadow-2xl transition-[border-color,background-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-pres-accent/60 hover:shadow-[0_0_20px_hsl(var(--pres-accent)/0.2)]"
           >
-            <div className="w-full h-[120px] rounded-2xl overflow-hidden mb-3 bg-black/50">
+            {/* 2026-11-03: photo box height matches the source photo's
+                aspect (1200x800 = 1.5:1) at the card's inner width
+                (340 - 32 padding = 308px, so 308 / 1.5 = 205px). The old
+                120px box with object-cover cropped the bottom 42% of
+                the photo, leaving only the head visible. At 205px
+                object-cover crops nothing, so head, shoulders, and
+                chest all show at the same face size. Do not shrink
+                this back to 120px without also changing the fit mode —
+                that reintroduces the head-only crop. */}
+            <div className="w-full h-[205px] rounded-2xl overflow-hidden mb-3 bg-black/50">
               <img src={alimImg} alt="Alim Ul Karim" className="w-full h-full object-cover object-top" />
             </div>
             <p className="font-bold text-[26px] font-heading leading-tight">Alim Ul Karim</p>
