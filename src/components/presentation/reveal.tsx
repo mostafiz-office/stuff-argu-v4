@@ -75,15 +75,41 @@ export const LabelDrop: React.FC<{
   tone?: LabelTone;
   delay?: number;
   className?: string;
-}> = ({ children, tone = "amber", delay = 0, className = "" }) => (
+  /**
+   * Optional per-word inset override (CSS inset shorthand, e.g.
+   * "0.118em -0.150em 0.041em -0.239em" = top right bottom left).
+   * When omitted the box keeps the default inset-[-0.16em] and
+   * renders exactly as before. 2026-11-04 slide 1 fix: equal CSS
+   * inset does NOT give equal VISUAL gaps (line-box slack and
+   * glyph bearings differ per side and per word — measured on
+   * the cover screenshots, "Time." gaps were L 14.9 / R 22.9 /
+   * T 47.0 / B 40.1 slide px and "Minutes." L 20.6 / R 24.1 /
+   * T 47.0 / B 40.1 slide px, box height 135 screenshot px =
+   * 154.8 slide px, so the render scale is ~0.872). The override
+   * values are therefore deliberately ASYMMETRIC: they equalise
+   * the measured ink-to-edge gaps to a common 22 slide px target
+   * (the largest equal gap that keeps a positive clearance to
+   * the neighbouring word — the plan's largest-gap target of
+   * 47px would have needed a left inset of about -0.52em, which
+   * exceeds the 0.34em word gap and would overlap "Hiring"/"In").
+   * Do NOT tidy these back to equal values — that reintroduces
+   * the reported imbalance. Applied via inline style (not a
+   * dynamic Tailwind class) because Tailwind cannot generate
+   * classes built from runtime strings.
+   */
+  inset?: string;
+}> = ({ children, tone = "amber", delay = 0, className = "", inset }) => (
   <span className={`relative inline-block align-bottom ${className}`}>
     <motion.span
       aria-hidden
+      style={inset ? { inset } : undefined}
       // 2026-11-02 feedback round 2: EQUAL padding on all sides.
       // The old inset [0.07em -0.13em] shaved the top/bottom and
       // bled only sideways, so the label looked tighter vertically
       // than horizontally. inset -0.16em expands the label by the
-      // same 0.16em on top, bottom, left and right.
+      // same 0.16em on top, bottom, left and right. (Superseded
+      // for the cover labelWords by the `inset` prop above, which
+      // overrides this class via inline style when supplied.)
       className={`absolute inset-[-0.16em] rounded-[0.2em] ${
         tone === "white" ? "bg-white" : "bg-pres-accent"
       }`}

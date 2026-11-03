@@ -184,11 +184,28 @@ export const CoverHeadline: React.FC<{
           return <LiquidWord key={i} word={word} delay={delay} />;
         }
         if (word === labelWord) {
+          // 2026-11-04 slide 1 fix: per-word label-box inset so the
+          // VISUAL padding (ink edge -> box edge) is equal on all
+          // four sides at a common 22 slide px target. Values are
+          // CSS inset shorthand (top right bottom left), computed
+          // from the measured gaps in the plan (see LabelDrop's
+          // `inset` prop comment for the full derivation). The two
+          // words share top/bottom values (their vertical gaps
+          // were identical: T 47.0 / B 40.1 slide px) and differ
+          // left/right (different glyph bearings). Do NOT make
+          // these equal — equal CSS inset is what caused the bug.
+          const labelInset =
+            word === "Time."
+              ? "0.118em -0.150em 0.041em -0.239em"
+              : word === "Minutes."
+                ? "0.118em -0.137em 0.041em -0.176em"
+                : undefined;
           return (
             <React.Fragment key={i}>
               <LabelDrop
                 tone={labelTone}
                 delay={Math.max(delay, 1.6)}
+                inset={labelInset}
                 // 2026-11-02: wider middle gap (0.34em) so the label
                 // never touches/overlaps the neighbouring word
                 // ("Hiring" / "In"), on top of the equal label padding
