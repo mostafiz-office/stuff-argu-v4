@@ -15,6 +15,18 @@ import { slide5CostImage } from "@/assets/slide5CostImageData";
  * panel is lighter (white/10 with a soft border and blur) so the merged
  * section reads cleanly and the $35,000 stays prominent. Single-step
  * slide, no gate.
+ *
+ * 2026-11-03 redesign (slide 5/13, example-led): left number stays the
+ * same count-up but renders WHITE (was pres-accent yellow); the closing
+ * line now sits in a dark highlight bar under the subtitle, as in the
+ * example; the right side is rebuilt as the example's timeline — heading
+ * "WHAT THE MONEY DOESN'T COVER", a vertical gold line, circular
+ * gold-ringed badges, and three separate dark cards (not the old single
+ * light panel with dot bullets). Per the approved plan's defaults, the
+ * current wording is kept (no guessed chip amounts or card subtitles
+ * from the blurry example image were printed), the eyebrow is kept, the
+ * centre divider is removed, and icon badges are plain gold rings
+ * (no guessed glyphs).
  */
 const UNPRICED_LINES = [
   "Customers who stop waiting.",
@@ -63,43 +75,54 @@ export const BadHireCostSlide = () => {
             </motion.p>
             <motion.div
               {...fadeUp(0.1)}
-              className="font-price text-[180px] font-bold leading-none text-pres-accent"
+              className="font-price text-[180px] font-bold leading-none text-white"
             >
               ${price.toLocaleString("en-US")}
             </motion.div>
-            <motion.p {...fadeUp(0.2)} className="text-[30px] text-white/85 mt-4 mb-10">
+            <motion.p {...fadeUp(0.2)} className="text-[30px] text-white/85 mt-4 mb-8">
               lost on one bad hire
             </motion.p>
-            <motion.p
+            <motion.div
               {...fadeUp(0.3)}
-              className="text-[38px] font-bold font-heading text-white"
+              className="rounded-2xl bg-black/50 border border-white/15 backdrop-blur-md px-8 py-5"
             >
-              That is what you can count.
-            </motion.p>
+              <p className="text-[38px] font-bold font-heading text-white leading-tight">
+                That is what you can count.
+              </p>
+            </motion.div>
           </div>
 
-          {/* Hairline divider */}
-          <div className="h-[360px] w-px bg-white/20 shrink-0" />
-
-          {/* Right: what the money does not cover, in a lighter panel */}
-          <div className="flex-1 rounded-3xl bg-white/10 border border-white/15 backdrop-blur-md px-10 py-10">
+          {/* Right: what the money does not cover, as a timeline of dark cards */}
+          <div className="flex-1 relative">
             <motion.p
               {...fadeUp(0.15)}
-              className="text-[38px] font-bold font-heading text-white mb-8"
+              className="text-[20px] font-semibold uppercase tracking-[0.25em] text-white/70 mb-8"
             >
-              is not the whole cost.
+              What the money doesn&apos;t cover
             </motion.p>
-            <div className="flex flex-col items-start gap-6">
-              {UNPRICED_LINES.map((line, i) => (
-                <motion.div
-                  key={line}
-                  {...fadeUp(staggerDelay(i, 0.3, 0.12))}
-                  className="flex items-center gap-4"
-                >
-                  <span className="h-[10px] w-[10px] shrink-0 rounded-full bg-pres-accent" />
-                  <span className="text-[32px] text-white/90 leading-tight">{line}</span>
-                </motion.div>
-              ))}
+            <div className="relative">
+              {/* Vertical gold timeline line, running the full card stack */}
+              <div
+                aria-hidden
+                className="absolute left-[27px] top-0 bottom-0 w-[2px] bg-pres-accent/70"
+              />
+              <div className="flex flex-col gap-6">
+                {UNPRICED_LINES.map((line, i) => (
+                  <motion.div
+                    key={line}
+                    {...fadeUp(staggerDelay(i, 0.3, 0.12))}
+                    className="relative flex items-center gap-6"
+                  >
+                    <span
+                      aria-hidden
+                      className="h-[56px] w-[56px] shrink-0 rounded-full border-2 border-pres-accent bg-black/60"
+                    />
+                    <div className="flex-1 rounded-2xl bg-black/50 border border-white/15 backdrop-blur-md px-8 py-6">
+                      <p className="text-[32px] font-bold text-white leading-tight">{line}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
