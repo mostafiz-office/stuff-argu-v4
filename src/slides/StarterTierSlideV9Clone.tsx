@@ -172,7 +172,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                       </span>
                       {/* 2026-11-02: STARTER badge keeps its corner
                           position, now on a solid white background. */}
-                      <span className="px-2.5 py-0.5 rounded-full bg-white border border-white text-pres-bg text-[18px] font-bold font-heading">
+                      <span className="px-2.5 py-0.5 rounded-full bg-white border border-white text-[#181208] text-[18px] font-bold font-heading">
                         STARTER
                       </span>
                     </div>
@@ -202,7 +202,7 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                         {starterDiscounted && (
                           <span className="text-[20px] text-pres-text-muted line-through">$1,900/M</span>
                         )}
-                        <span className="rounded-full bg-pres-accent px-3 py-1 text-[15px] font-bold text-pres-bg pres-dark-safe-accent">
+                        <span className="rounded-full bg-pres-accent px-3 py-1 text-[15px] font-bold text-[#181208] pres-dark-safe-accent">
                           {offerBadgeText("starter")}
                         </span>
                       </div>
@@ -258,13 +258,13 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                           </span>
                           <Sparkles className="w-3.5 h-3.5 text-pres-accent" />
                         </div>
-                        <p className="text-[20px] font-bold text-pres-bg mb-0.5">
+                        <p className="text-[20px] font-bold text-[#181208] mb-0.5">
                           Alim Ul Karim · 20+ Yr Enterprise Veteran
                         </p>
-                        <p className="text-[20px] text-pres-bg/80 mb-1.5">
-                          Kickoff audit included · <span className="text-pres-bg">$2,500/M</span> value FREE
+                        <p className="text-[20px] text-[#181208]/80 mb-1.5">
+                          Kickoff audit included · <span className="text-[#181208]">$2,500/M</span> value FREE
                         </p>
-                        <div className="text-[20px] font-semibold text-pres-bg/70 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
+                        <div className="text-[20px] font-semibold text-[#181208]/70 bg-pres-accent/15 px-2 py-0.5 rounded-lg text-center">
                           Upgrade to Tier 2 or 3 for ongoing weekly architecture hours
                         </div>
                       </motion.div>
