@@ -109,7 +109,19 @@ export const PricingHowItWorksSlide: React.FC<PricingHowItWorksSlideProps> = () 
                 {/* Batch 103: v1 icon node — 80px circle, 70px top margin
                     so it centers on the timeline line. Columns are plain
                     static blocks now, exactly like v1: no click, no lift. */}
-                <div className="relative z-20 mt-[70px] flex h-[80px] w-[80px] items-center justify-center rounded-full bg-pres-surface border-[3px] border-pres-accent text-pres-accent shadow-[0_0_24px_hsl(var(--pres-accent)/0.2)]">
+                {/* 2026-11-04 step 10 fix: icon background MUST be opaque,
+                    otherwise the timeline line shows through the circle
+                    interiors. On the new preview the icons measured
+                    TRANSPARENT (interior colour = slide background,
+                    distance 0-3.2) even though this class was
+                    bg-pres-surface — the same class-resolution
+                    divergence seen on step 11's text-pres-bg. An
+                    explicit dark background (#0B0B0E, the sampled
+                    slide background) hides the line behind every
+                    circle regardless of how pres-surface resolves
+                    in a given build. z-20, size, ring, and position
+                    are unchanged; the line itself is untouched. */}
+                <div className="relative z-20 mt-[70px] flex h-[80px] w-[80px] items-center justify-center rounded-full bg-[#0B0B0E] border-[3px] border-pres-accent text-pres-accent shadow-[0_0_24px_hsl(var(--pres-accent)/0.2)]">
                   <Icon className="w-8 h-8" />
                 </div>
 
