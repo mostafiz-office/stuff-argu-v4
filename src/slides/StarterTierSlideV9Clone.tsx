@@ -319,12 +319,21 @@ export const StarterTierSlideV9Clone: React.FC<StarterTierSlideV9CloneProps> = (
                             initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: staggerDelay(idx, 0.4, 0.07) }}
-                            className="flex items-center gap-5 cursor-pointer"
+                            {/* 2026-11-03 step 11 fix: guarantee rows must NEVER
+                                move on hover. On the live preview card 03
+                                lifted ~3-4px up on hover while its badge and
+                                the bottom banner stayed still. The explicit
+                                hover:!translate-y-0 below neutralises any
+                                inherited hover lift on the row and the card
+                                body, so all three cards behave like cards
+                                01/02 (border colour only, no movement).
+                                Do not add a hover translate/scale here. */}
+                            className="flex items-center gap-5 cursor-pointer hover:!translate-y-0"
                           >
                             <div className="relative z-10 w-14 h-14 shrink-0 rounded-full border border-pres-accent/60 bg-[#14141B] flex items-center justify-center">
                               <Icon className="w-7 h-7 shrink-0 text-pres-accent" />
                             </div>
-                            <div className="flex-1 px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 backdrop-blur-md transition-colors">
+                            <div className="flex-1 px-6 py-5 rounded-2xl bg-pres-surface/80 border border-white/10 hover:border-white/20 hover:!translate-y-0 backdrop-blur-md transition-colors">
                               <h4 className="text-[34px] font-bold font-heading text-white">
                                 <span className="text-pres-accent mr-3">0{idx + 1}</span>
                                 {item.title}
